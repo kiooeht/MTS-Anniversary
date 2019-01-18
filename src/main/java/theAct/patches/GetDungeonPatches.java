@@ -30,7 +30,7 @@ public class GetDungeonPatches {
 
     @SpirePatch(clz=CardCrawlGame.class, method="getDungeon", paramtypez={String.class, AbstractPlayer.class})
     public static class getDungeon1 {
-        public static AbstractDungeon Postfix(CardCrawlGame self, String key, AbstractPlayer p, AbstractDungeon dungeon) {
+        public static AbstractDungeon Postfix(AbstractDungeon dungeon, CardCrawlGame self, String key, AbstractPlayer p) {
             if (dungeon == null) {
                 AbstractDungeonBuilder builder = customDungeons.get(key);
                 if (builder != null) {
@@ -43,7 +43,7 @@ public class GetDungeonPatches {
 
     @SpirePatch(clz=CardCrawlGame.class, method="getDungeon", paramtypez={String.class, AbstractPlayer.class, SaveFile.class})
     public static class getDungeon2 {
-        public static AbstractDungeon Postfix(CardCrawlGame self, String key, AbstractPlayer p, SaveFile save, AbstractDungeon dungeon) {
+        public static AbstractDungeon Postfix(AbstractDungeon dungeon, CardCrawlGame self, String key, AbstractPlayer p, SaveFile save) {
             if (dungeon == null) {
                 AbstractDungeonBuilder builder = customDungeons.get(key);
                 if (builder != null) {
