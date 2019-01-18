@@ -1,6 +1,7 @@
 package theAct.events;
 
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
@@ -26,11 +27,14 @@ public class ForkInTheRoad extends AbstractImageEvent
     {
         switch (buttonPressed) {
             case 0:
-                // TODO: Go to City
+                CardCrawlGame.nextDungeon = TheCity.ID;
                 break;
             case 1:
-                // TODO: Go to Jungle
+                CardCrawlGame.nextDungeon = Jungle.ID;
                 break;
         }
+
+        AbstractDungeon.fadeOut();
+        AbstractDungeon.isDungeonBeaten = true;
     }
 }
