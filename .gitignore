@@ -10,6 +10,9 @@ out/
 .project
 .settings/
 
+# vs-code
+.factorypath
+
 # maven build target
 target/
 
@@ -77,3 +80,4 @@ $RECYCLE.BIN/
 
 # Spriter files
 *.autosave.scml
+chronoPom.xml
