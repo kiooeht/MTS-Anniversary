@@ -10,6 +10,9 @@ out/
 .project
 .settings/
 
+# vs-code
+.factorypath
+
 # maven build target
 target/
 
