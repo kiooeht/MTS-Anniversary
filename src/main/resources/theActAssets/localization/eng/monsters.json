@@ -1,0 +1,11 @@
+{
+	"theJungle:Phrog": {
+		"MOVES": [
+			"Lick"
+		],
+		"NAME": "Phrog",
+		"DIALOG": [
+			"riiiiibbit!"
+		]
+	}
+}
