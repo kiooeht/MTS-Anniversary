@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.screens.GameOverStat;
 import com.megacrit.cardcrawl.screens.VictoryScreen;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
+import theAct.dungeons.Jungle;
 
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class VictoryOrDeathScreenCreateGameOverStatsPatch { //TODO: victory/deat
                 locator = Locator.class
         )
         public static void Insert(VictoryScreen __instance) {
-            if (CardCrawlGame.dungeon instanceof TheJungle/* || WentThroughJungleBoolean*/) {
+            if (CardCrawlGame.dungeon instanceof Jungle/* || WentThroughJungleBoolean*/) {
                 try {
                     String elite2Points = Integer.toString((int) VictoryScreen.class.getDeclaredField("elite2Points").get(null));
                     __instance.stats.add(new GameOverStat(VictoryScreen.JUNGLE_ELITE.NAME + " (" + CardCrawlGame.elites2Slain + ")", null, elite2Points)); //TODO: JUNGLE_ELITE localization
@@ -52,7 +53,7 @@ public class VictoryOrDeathScreenCreateGameOverStatsPatch { //TODO: victory/deat
                 locator = Locator.class
         )
         public static void Insert(DeathScreen __instance) {
-            if (CardCrawlGame.dungeon instanceof TheJungle/* || WentThroughJungleBoolean*/) {
+            if (CardCrawlGame.dungeon instanceof Jungle/* || WentThroughJungleBoolean*/) {
                 try {
                     String elite2Points = Integer.toString((int) DeathScreen.class.getDeclaredField("elite2Points").get(null));
                     __instance.stats.add(new GameOverStat(DeathScreen.JUNGLE_ELITE.NAME + " (" + CardCrawlGame.elites2Slain + ")", null, elite2Points)); //TODO: JUNGLE_ELITE localization
