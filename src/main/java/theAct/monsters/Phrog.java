@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.unique.ApplyStasisAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAct.TheActMod;
@@ -22,6 +23,8 @@ public class Phrog extends AbstractMonster {
 
 	public Phrog() {
 		super(STRINGS.NAME, ID, 75, 0, 0, 300, 300, null, 0, 0);
+
+		this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
 
 		switch(AbstractDungeon.ascensionLevel){
 			case 7:
