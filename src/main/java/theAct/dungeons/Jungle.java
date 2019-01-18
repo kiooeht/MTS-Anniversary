@@ -27,6 +27,7 @@ public class Jungle extends AbstractDungeon
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
     public static final String[] TEXT = uiStrings.TEXT;
     public static final String NAME = TEXT[0];
+    public static final String NUM = TEXT[1];
 
     public Jungle(AbstractPlayer p, ArrayList<String> emptyList)
     {
