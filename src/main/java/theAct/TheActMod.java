@@ -36,6 +36,11 @@ public class TheActMod implements
         BaseMod.subscribe(new TheActMod());
     }
 
+    public static String makeID(String id)
+    {
+        return "theJungle:" + id;
+    }
+
     public static String assetPath(String path)
     {
         return "theActAssets/" + path;
