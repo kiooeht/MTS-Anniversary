@@ -75,11 +75,11 @@ public class SneckoCultEvent extends AbstractImageEvent {
 
     private void randomizeCost() {
         if (!AbstractDungeon.isScreenUp) {
-            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[3], false, false, false, false);
+            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[4], false, false, false, false);
         } else {
             AbstractDungeon.dynamicBanner.hide();
             AbstractDungeon.previousScreen = AbstractDungeon.screen;
-            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[3], false, false, false, false);
+            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[4], false, false, false, false);
         }
     }
 }
