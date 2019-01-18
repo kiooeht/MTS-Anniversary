@@ -13,15 +13,15 @@ import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 
 public class GetDungeonPatches {
     public interface AbstractDungeonBuilder {
-        public AbstractDungeon build(AbstractPlayer p, ArrayList<String> theList);
-        public AbstractDungeon build(AbstractPlayer p, SaveFile save);
+        public abstract AbstractDungeon build(AbstractPlayer p, ArrayList<String> theList);
+        public abstract AbstractDungeon build(AbstractPlayer p, SaveFile save);
     }
     // Note: this should at some point be moved to BaseMod
     public static HashMap<String,AbstractDungeonBuilder> customDungeons = new HashMap<>();
     public static HashMap<String,String> nextDungeons = new HashMap<>();
 
-    public static void addDungeon(String name, AbstractDungeonBuilder builder) {
-        customDungeons.put(name,builder);
+    public static void addDungeon(String id, AbstractDungeonBuilder builder) {
+        customDungeons.put(id, builder);
     }
 
     public static void addNextDungeon(String fromId, String toId) {

@@ -14,6 +14,8 @@ import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import com.megacrit.cardcrawl.scenes.TheCityScene;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
+import theAct.patches.GetDungeonPatches;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -61,6 +63,19 @@ public class Jungle extends AbstractDungeon
         mapRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + saveFile.act_num * 100);
         generateMap();
         firstRoomChosen = true;
+    }
+
+    public static GetDungeonPatches.AbstractDungeonBuilder builder() {
+        return new GetDungeonPatches.AbstractDungeonBuilder() {
+            @Override
+            public AbstractDungeon build(AbstractPlayer p, ArrayList<String> theList) {
+                return new Jungle(p,theList);
+            }
+            @Override
+            public AbstractDungeon build(AbstractPlayer p, SaveFile save) {
+                return new Jungle(p,save);
+            }
+        };
     }
 
     @Override
