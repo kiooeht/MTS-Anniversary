@@ -65,6 +65,8 @@ public class Jungle extends AbstractDungeon
         mapRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + saveFile.act_num * 100);
         generateMap();
         firstRoomChosen = true;
+
+        populatePathTaken(saveFile);
     }
 
     public static GetDungeonPatches.AbstractDungeonBuilder builder() {
