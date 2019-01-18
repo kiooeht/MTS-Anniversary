@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.TreasureRoomBoss;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 
-public class GetDungeonPatch {
+public class GetDungeonPatches {
     public interface AbstractDungeonBuilder {
         public AbstractDungeon build(AbstractPlayer p, ArrayList<String> theList);
         public AbstractDungeon build(AbstractPlayer p, SaveFile save);
