@@ -11,6 +11,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -74,5 +75,6 @@ public class TheActMod implements
         String path = "localization/" + language + "/";
 
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));
+        BaseMod.loadCustomStringsFile(UIStrings.class, assetPath(path + "ui.json"));
     }
 }
