@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import com.megacrit.cardcrawl.scenes.TheCityScene;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
+import theAct.TheActMod;
 import theAct.patches.GetDungeonPatches;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.Collections;
 
 public class Jungle extends AbstractDungeon
 {
-    public static final String ID = "Jungle";
+    public static final String ID = TheActMod.makeID("Jungle");
 
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
     public static final String[] TEXT = uiStrings.TEXT;
