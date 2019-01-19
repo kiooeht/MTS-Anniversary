@@ -1,7 +1,9 @@
 package theAct.monsters;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -50,6 +52,11 @@ public class SilentTribesmen extends AbstractMonster {
             blockMoveAmt = BLOCK_MOVE_AMT;
             stunAmt = STUN_AMT;
         }
+        if (AbstractDungeon.ascensionLevel >= 2) {
+            damage.add(new DamageInfo(this, MED_ATK_DMG + MED_ATK_DMG_ASC_MODIFIER));
+        } else {
+            damage.add(new DamageInfo(this, MED_ATK_DMG));
+        }
     }
 
     @Override
@@ -77,6 +84,9 @@ public class SilentTribesmen extends AbstractMonster {
             case 0:
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, blockMoveAmt));
                 break;
+            case 1:
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0)));
+                break;
         }
         rollMove();
     }
@@ -87,6 +97,6 @@ public class SilentTribesmen extends AbstractMonster {
             setMove((byte)0, Intent.DEFEND);
             isFirstTurn = false;
         }
-
+        setMove((byte)1, Intent.ATTACK, damage.get(0).base);
     }
 }
