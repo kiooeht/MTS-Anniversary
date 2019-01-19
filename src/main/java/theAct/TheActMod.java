@@ -24,6 +24,7 @@ import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import theAct.dungeons.Jungle;
 import theAct.monsters.Phrog;
+import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
 
 @SpireInitializer
@@ -61,6 +62,9 @@ public class TheActMod implements
 
         // Add monsters here
         BaseMod.addMonster(Phrog.ID, Phrog::new);
+
+        BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
+
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());

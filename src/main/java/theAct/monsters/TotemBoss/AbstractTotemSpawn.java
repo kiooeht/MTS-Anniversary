@@ -32,7 +32,7 @@ public class AbstractTotemSpawn extends AbstractMonster {
 
 
     public AbstractTotemSpawn(String name, String ID, TotemBoss boss) {
-        super(name, ID, 420, 0.0F, 0F, 100.0F, 150.0F, TheActMod.assetPath("images/phtotem.png"), -90.0F, 0.0F);
+        super(name, ID, 420, 0.0F, 0F, 100.0F, 150.0F, TheActMod.assetPath("images/monsters/phtotem.png"), -90.0F, 0.0F);
 
 
 
