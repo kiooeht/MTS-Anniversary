@@ -98,11 +98,11 @@ public class KidnappersEvent extends AbstractImageEvent {
 
     private void removeCard() {
         if (!AbstractDungeon.isScreenUp) {
-            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[5], false, false, false, false);
+            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[6], false, false, false, false);
         } else {
             AbstractDungeon.dynamicBanner.hide();
             AbstractDungeon.previousScreen = AbstractDungeon.screen;
-            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[5], false, false, false, false);
+            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[6], false, false, false, false);
         }
     }
 }
