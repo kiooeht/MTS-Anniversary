@@ -1,4 +1,15 @@
 {
+	"theJungle:Cassacara": {
+		"MOVES": [
+			"Big Bite",
+			"Chew",
+			"Bottomless Stomach"
+		],
+		"NAME": "Cassacara",
+		"DIALOG": [
+			"@RrraahrRGHhh!!@"
+		]
+	},
 	"theJungle:Phrog": {
 		"MOVES": [
 			"Lick"
