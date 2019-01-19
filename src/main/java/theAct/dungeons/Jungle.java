@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.scenes.TheCityScene;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import theAct.TheActMod;
+import theAct.monsters.Phrog;
 import theAct.patches.GetDungeonPatches;
 
 import java.util.ArrayList;
@@ -156,7 +157,7 @@ public class Jungle extends AbstractDungeon
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
         monsters.add(new MonsterInfo("Gremlin Leader", 1.0F));
         monsters.add(new MonsterInfo("Slavers", 1.0F));
-        monsters.add(new MonsterInfo("Book of Stabbing", 1.0F));
+        monsters.add(new MonsterInfo(Phrog.ID, 1.0f));
         MonsterInfo.normalizeWeights(monsters);
         populateMonsterList(monsters, count, true);
     }
