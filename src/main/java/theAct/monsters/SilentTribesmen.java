@@ -1,11 +1,13 @@
 package theAct.monsters;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.BarricadePower;
 import theAct.TheActMod;
 
 public class SilentTribesmen extends AbstractMonster {
@@ -51,6 +53,7 @@ public class SilentTribesmen extends AbstractMonster {
     @Override
     public void usePreBattleAction() {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, blockAmt));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new BarricadePower(this)));
     }
 
     @Override
