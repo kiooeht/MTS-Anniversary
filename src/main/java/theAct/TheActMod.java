@@ -25,6 +25,10 @@ import theAct.dungeons.Jungle;
 import theAct.events.ExcessResources;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
+import theAct.events.GremlinQuiz;
+import theAct.monsters.Phrog;
+import theAct.monsters.SlimyTreeVines;
+import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
 import theAct.relics.WildMango;
 import theAct.relics.WildPear;
@@ -38,13 +42,13 @@ public class TheActMod implements
         EditRelicsSubscriber,
         CustomSavable<Boolean>
 {
-	
-	
+
+
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
 
     public static boolean wentToTheJungle = false;
-    
-    
+
+
 
     public static void initialize()
     {
@@ -73,13 +77,20 @@ public class TheActMod implements
         // Add events here
         BaseMod.addEvent(River.ID, River.class, Jungle.ID);
         BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
+        BaseMod.addEvent(GremlinQuiz.ID, GremlinQuiz.class, Jungle.ID);
         BaseMod.addEvent(ExcessResources.ID, ExcessResources.class, Jungle.ID);
 
         // Add monsters here
+        BaseMod.addMonster(Phrog.ID, Phrog::new);
+        BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
+        BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
         GetDungeonPatches.addNextDungeon(Jungle.ID, TheBeyond.ID);
+
+        //savable boolean
+        BaseMod.addSaveField("wentToTheJungle", this);
     }
 
     @Override
@@ -99,7 +110,6 @@ public class TheActMod implements
         }
     }
 
-    @Override
     public void receiveEditRelics() {
         BaseMod.addRelic(new WildMango(), RelicType.SHARED);
         BaseMod.addRelic(new WildStrawberry(), RelicType.SHARED);
@@ -116,6 +126,7 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));
         BaseMod.loadCustomStringsFile(UIStrings.class, assetPath(path + "ui.json"));
         BaseMod.loadCustomStringsFile(CardStrings.class, assetPath(path + "cards.json"));
+        BaseMod.loadCustomStringsFile(MonsterStrings.class, assetPath(path + "monsters.json"));
         BaseMod.loadCustomStringsFile(PowerStrings.class, assetPath(path + "powers.json"));
         BaseMod.loadCustomStringsFile(RelicStrings.class, assetPath(path + "relics.json"));
     }
@@ -128,7 +139,11 @@ public class TheActMod implements
 
     @Override
     public void onLoad(Boolean loadedBoolean) {
-        wentToTheJungle = loadedBoolean;
+        if (loadedBoolean != null) {
+            wentToTheJungle = loadedBoolean;
+        } else {
+            wentToTheJungle = false;
+        }
         logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
     }
 }
