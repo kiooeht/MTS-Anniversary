@@ -20,7 +20,9 @@
       "Identify the enemies in this picture.",
       "theActAssets/images/events/quiz/identify1.png",
       "In what order (from left to right) do the Red Mask Bandits appear?",
-      "images/events/redMaskTomb.jpg"
+      "images/events/redMaskTomb.jpg",
+      "What is NOT a card for The Silent?",
+      ""
     ],
     "OPTIONS": [
       "[Begin Quiz]",
@@ -42,7 +44,12 @@
       ">Pointy, Romeo, Bear",
       "Bear, Pointy, Romeo",
       "Romeo, Pointy, Bear",
-      "Pointy, Bear, Romeo"
+      "Pointy, Bear, Romeo",
+
+      ">Blade Storm",
+      "Dodge and Roll",
+      "Doppelganger",
+      "Riddle with Holes"
     ]
   }
 }
