@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BarricadePower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.vfx.combat.ClashEffect;
 import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
 import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 import theAct.TheActMod;
@@ -105,7 +106,9 @@ public class SilentTribesmen extends AbstractMonster {
                 break;
             case 1:
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0)));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new CleaveEffect(true)));
+
+                AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.utility.SFXAction("ATTACK_HEAVY"));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new ClashEffect(AbstractDungeon.player.drawX,AbstractDungeon.player.drawY)));
                 break;
             case 2:
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new DexterityPower(AbstractDungeon.player, -dexLossAmt), -dexLossAmt));
