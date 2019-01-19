@@ -146,4 +146,5 @@ public class SilentTribesmen extends AbstractMonster {
             }
         }
     }
+
 }
