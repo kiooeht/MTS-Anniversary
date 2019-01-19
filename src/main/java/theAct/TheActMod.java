@@ -12,6 +12,9 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,6 +27,7 @@ import basemod.interfaces.PostInitializeSubscriber;
 import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
+import theAct.monsters.Flameango;
 import theAct.patches.GetDungeonPatches;
 
 @SpireInitializer
@@ -70,6 +74,12 @@ public class TheActMod implements
         BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
 
         // Add monsters here
+        BaseMod.addMonster(makeID("3_Flameangoes"), () -> new MonsterGroup(new AbstractMonster[] {
+                new Flameango(),
+                new Flameango(),
+                new Flameango()
+        }));
+        BaseMod.addMonsterEncounter(Jungle.ID, new MonsterInfo(makeID("3_Flameangoes"), 2));
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
