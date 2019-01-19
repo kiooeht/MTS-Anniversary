@@ -10,8 +10,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.AbstractPower.PowerType;
-
 import theAct.TheActMod;
 
 public class SwingingTrapPower extends AbstractPower {
@@ -35,19 +33,19 @@ public class SwingingTrapPower extends AbstractPower {
 	}
     @Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[1];
+		this.description = strings.DESCRIPTIONS[1];
 		if (this.phase == 0) {
-			this.description = this.description + DESCRIPTIONS[2];
+			this.description = this.description + strings.DESCRIPTIONS[2];
 			this.loadRegion("strength");
 		}
 		else if (this.phase == 1) {
-			this.description = this.description + DESCRIPTIONS[3] + this.thornsAmt + DESCRIPTIONS[4];
+			this.description = this.description + strings.DESCRIPTIONS[3] + this.thornsAmt + strings.DESCRIPTIONS[4];
 			this.loadRegion("thorns");
 		} else if (this.phase == 2) {
-			this.description = this.description + DESCRIPTIONS[5];
+			this.description = this.description + strings.DESCRIPTIONS[5];
 			this.loadRegion("weak");
 		}
-		this.description = this.description + DESCRIPTIONS[0];
+		this.description = this.description + strings.DESCRIPTIONS[0];
 	}
 	private void cyclePhase() {
 		this.phase++;
