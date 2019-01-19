@@ -10,7 +10,11 @@ import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.monsters.MonsterInfo;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,6 +28,7 @@ import basemod.interfaces.PostInitializeSubscriber;
 import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
+import theAct.monsters.SpyderBoss.SpyderBoss;
 import theAct.patches.GetDungeonPatches;
 
 @SpireInitializer
@@ -70,6 +75,11 @@ public class TheActMod implements
         BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
 
         // Add monsters here
+        
+        
+        BaseMod.addMonster(TheActMod.makeID("SpyderNest"), () -> new MonsterGroup(new AbstractMonster[]{
+                new SpyderBoss()
+        }));
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
@@ -103,6 +113,7 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));
         BaseMod.loadCustomStringsFile(UIStrings.class, assetPath(path + "ui.json"));
         BaseMod.loadCustomStringsFile(CardStrings.class, assetPath(path + "cards.json"));
+        BaseMod.loadCustomStringsFile(MonsterStrings.class, assetPath(path + "monsters.json"));
     }
 
     @Override
