@@ -1,7 +1,6 @@
 package theAct.powers;
 
 import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -29,15 +28,13 @@ public class CautiousPower extends Power {
     }
 
     public void updateDescription() {
-        if (this.amount == 1){
-        this.description = powerStrings.DESCRIPTIONS[0] + this.amount + powerStrings.DESCRIPTIONS[1];
-    }
-    else if (this.amount == 0){
-            this.description = powerStrings.DESCRIPTIONS[0] + this.amount + powerStrings.DESCRIPTIONS[2];
-
-        }
-    else{
+        if (this.amount == 0) {
             this.description = powerStrings.DESCRIPTIONS[3];
+        } else if (this.amount == 1) {
+            this.description = powerStrings.DESCRIPTIONS[0] + this.amount + powerStrings.DESCRIPTIONS[1];
+
+        } else {
+            this.description = powerStrings.DESCRIPTIONS[0] + this.amount + powerStrings.DESCRIPTIONS[2];
         }
     }
 
@@ -48,6 +45,7 @@ public class CautiousPower extends Power {
     @Override
     public int onAttacked(DamageInfo info, int damage) {
         amount--;
+        this.updateDescription();
         if (amount == 0 && owner instanceof SilentTribesmen) {
             AbstractDungeon.actionManager.addToBottom(new ChangeStateAction((AbstractMonster) owner, SilentTribesmen.STUNNED));
         }

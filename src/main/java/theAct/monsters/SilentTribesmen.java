@@ -2,6 +2,7 @@ package theAct.monsters;
 
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BarricadePower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
 import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 import theAct.TheActMod;
 import theAct.powers.CautiousPower;
@@ -29,10 +31,10 @@ public class SilentTribesmen extends AbstractMonster {
     private static final int BLOCK_MOVE_ASC_MODIFIER = 5;
     private static final int STUN_AMT = 4;
     private static final int STUN_AMT_ASC_MODIFIER = 1;
-    private static final int MED_ATK_DMG = 16;
+    private static final int MED_ATK_DMG = 9;
     private static final int MED_ATK_DMG_ASC_MODIFIER = 2;
     private static final int BIG_ATK_DMG = 3;
-    private static final int BIG_ATK_DMG_TIMES = 10;
+    private static final int BIG_ATK_DMG_TIMES = 5;
     private static final int BIG_ATK_DMG_TIMES_ASC_MODIFIER = 1;
     private static final int DEX_LOSS_AMT = 1;
     private static final int DEX_LOSS_AMT_ASC_MODIFIER = 1;
@@ -103,8 +105,7 @@ public class SilentTribesmen extends AbstractMonster {
                 break;
             case 1:
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0)));
-                AbstractDungeon.actionManager.addToTop(new VFXAction(new ThrowDaggerEffect(AbstractDungeon.player.drawX,AbstractDungeon.player.drawY)));
-
+                AbstractDungeon.actionManager.addToTop(new VFXAction(new CleaveEffect(true)));
                 break;
             case 2:
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new DexterityPower(AbstractDungeon.player, -dexLossAmt), -dexLossAmt));
@@ -112,6 +113,7 @@ public class SilentTribesmen extends AbstractMonster {
             case 3:
                 for (int i = 0; i < bigAtkAmt; i++) {
                     AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(1)));
+                    AbstractDungeon.actionManager.addToTop(new VFXAction(new ThrowDaggerEffect(AbstractDungeon.player.drawX,AbstractDungeon.player.drawY)));
                 }
                 break;
             case 4:
