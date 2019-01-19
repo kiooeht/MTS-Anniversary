@@ -1,5 +1,6 @@
 package theAct.monsters;
 
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -10,11 +11,13 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BarricadePower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 import theAct.TheActMod;
 import theAct.powers.CautiousPower;
 
 public class SilentTribesmen extends AbstractMonster {
     public static final String ID = TheActMod.makeID("SilentTribesmen");
+    public static final String ENCOUNTER_ID = TheActMod.makeID("SilentTribesmenEncounter");
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     private static final int MIN_HP = 30;
@@ -100,6 +103,8 @@ public class SilentTribesmen extends AbstractMonster {
                 break;
             case 1:
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0)));
+                AbstractDungeon.actionManager.addToTop(new VFXAction(new ThrowDaggerEffect(AbstractDungeon.player.drawX,AbstractDungeon.player.drawY)));
+
                 break;
             case 2:
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new DexterityPower(AbstractDungeon.player, -dexLossAmt), -dexLossAmt));

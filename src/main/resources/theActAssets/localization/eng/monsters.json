@@ -84,5 +84,18 @@
 		"DIALOG": [
 			""
 		]
+	},
+	"theJungle:SilentTribesmen": {
+		"MOVES": [
+			"Backflip",
+			"Neutralize",
+			"Sneaky Strike",
+			"Blade Dance"
+
+		],
+		"NAME": "Silent Clansman",
+		"DIALOG": [
+			""
+		]
 	}
 }
