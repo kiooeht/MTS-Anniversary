@@ -74,6 +74,9 @@ public class TheActMod implements
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
         GetDungeonPatches.addNextDungeon(Jungle.ID, TheBeyond.ID);
+
+        //savable boolean
+        BaseMod.addSaveField("wentToTheJungle", this);
     }
 
     @Override
