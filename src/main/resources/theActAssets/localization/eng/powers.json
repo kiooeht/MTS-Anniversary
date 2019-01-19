@@ -8,6 +8,14 @@
 			" is #rdigested."
 		]
 	},
+	"theJungle:SlothfulPower": {
+		"NAME": "Slothful",
+		"DESCRIPTIONS": [
+			"Negates #b",
+			" buff.",
+			" buffs."
+		]
+	},
 	"theJungle:TotemStrengthPower": {
 		"NAME" : "Totemic Rage",
 		"DESCRIPTIONS": [

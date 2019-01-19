@@ -44,6 +44,25 @@
       "Pick a card to randomize"
     ]
   },
+  "theJungle:ExcessResources": {
+    "NAME": "Nature's Temptation",
+    "DESCRIPTIONS": [
+      "After wandering through the jungle for what feels like an eternity you come across a clearing with #pfruits neatly arrayed in the middle. NL NL You are #r@hungry@ from stumbling through this blasted place and would #p~love~ to eat some despite how bad of an idea that would be.",
+      "You #p@MUST@ have some. You eat one, then another and when you've had your fill, just one more is all you need. NL Only 3 fruits remain: NL NL A somewhat tainted #rStrawberry looking like it would #rhurt to eat. NL A ~juicy~ #gPear that makes you #ywant #yto #ytake #ya #ybreak just looking at it. NL A #yMango which is so big that it would #ySlow you down.",
+      "It would be foolish to partake in this obvious trap. A lone #rberry lies in a corner, it will suffice.",
+      "You take that last #ydelectable #ytreat and put it in your mouth. It #r@sizzles@ and #r~burns~ on its way down.",
+      "Nobody could deny such a #p@gift@ in your circumstances. With each bite, you feel your motivation being #y~sapped~ .",
+      "Where do you even start? The fruit seems to bear more of its #r~delicious~ #r~flesh~ every time you look at it. NL NL ~...~ NL NL When you finally finish, you feel stuffed and #yslow ."
+    ],
+    "OPTIONS": [
+      "[Give in] Give in to your desires.",
+      "[Resist] A little berry will suffice.",
+      "Continue on with your adventure.",
+      "[Eat] #gObtain: #rWild #rStrawberry",
+      "[Consume] #gObtain: #gWild #gPear",
+      "[Devour] #gObtain: #yWild #yMango"
+    ]
+  },
   "theJungle:GremlinQuiz" : {
     "NAME": "Gremlin Quiz Show",
     "DESCRIPTIONS": [

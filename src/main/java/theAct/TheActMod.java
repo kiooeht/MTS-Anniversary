@@ -22,6 +22,7 @@ import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import theAct.dungeons.Jungle;
+import theAct.events.ExcessResources;
 import theAct.events.FauxPas;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
@@ -30,6 +31,9 @@ import theAct.monsters.Phrog;
 import theAct.monsters.SlimyTreeVines;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
+import theAct.relics.WildMango;
+import theAct.relics.WildPear;
+import theAct.relics.WildStrawberry;
 import theAct.relics.PaperFaux;
 
 @SpireInitializer
@@ -40,13 +44,13 @@ public class TheActMod implements
         EditRelicsSubscriber,
         CustomSavable<Boolean>
 {
-	
-	
+
+
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
 
     public static boolean wentToTheJungle = false;
-    
-    
+
+
 
     public static void initialize()
     {
@@ -77,6 +81,7 @@ public class TheActMod implements
         BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
         BaseMod.addEvent(FauxPas.ID, FauxPas.class, Jungle.ID);
         BaseMod.addEvent(GremlinQuiz.ID, GremlinQuiz.class, Jungle.ID);
+        BaseMod.addEvent(ExcessResources.ID, ExcessResources.class, Jungle.ID);
 
         // Add monsters here
         BaseMod.addMonster(Phrog.ID, Phrog::new);
@@ -96,6 +101,9 @@ public class TheActMod implements
     {
         //event relics
         BaseMod.addRelic(new PaperFaux(), RelicType.SHARED);
+        BaseMod.addRelic(new WildMango(), RelicType.SHARED);
+        BaseMod.addRelic(new WildStrawberry(), RelicType.SHARED);
+        BaseMod.addRelic(new WildPear(), RelicType.SHARED);
     }
 
     @Override
