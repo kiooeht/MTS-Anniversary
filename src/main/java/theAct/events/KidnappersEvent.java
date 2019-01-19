@@ -50,7 +50,12 @@ public class KidnappersEvent extends AbstractImageEvent {
                         imageEventText.updateBodyText(DESCRIPTIONS[1]);
                         imageEventText.setDialogOption(OPTIONS[1] + HEALTH_LOSS + OPTIONS[2]);
                         imageEventText.setDialogOption(OPTIONS[3]);
-                        imageEventText.setDialogOption(OPTIONS[4], AbstractDungeon.player.gold >= GOLD_AMT);
+                        if (AbstractDungeon.player.gold >= GOLD_AMT) {
+                            imageEventText.setDialogOption(OPTIONS[4] + GOLD_AMT + OPTIONS[5]);
+                        } else {
+                            imageEventText.setDialogOption(OPTIONS[6] + GOLD_AMT + OPTIONS[7], true);
+                        }
+
                         screenNum = 1;
                         break;
                 }
@@ -62,7 +67,7 @@ public class KidnappersEvent extends AbstractImageEvent {
                         AbstractDungeon.effectList.add(new FlashAtkImgEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, AbstractGameAction.AttackEffect.FIRE));
                         removeCard();
                         imageEventText.updateBodyText(DESCRIPTIONS[2]);
-                        imageEventText.setDialogOption(OPTIONS[5]);
+                        imageEventText.setDialogOption(OPTIONS[8]);
                         imageEventText.clearRemainingOptions();
                         screenNum = 2;
                         break;
@@ -73,7 +78,7 @@ public class KidnappersEvent extends AbstractImageEvent {
                     case 2:
                         AbstractDungeon.player.loseGold(GOLD_AMT);
                         imageEventText.updateBodyText(DESCRIPTIONS[2]);
-                        imageEventText.setDialogOption(OPTIONS[5]);
+                        imageEventText.setDialogOption(OPTIONS[9]);
                         imageEventText.clearRemainingOptions();
                         screenNum = 2;
                 }
@@ -98,11 +103,11 @@ public class KidnappersEvent extends AbstractImageEvent {
 
     private void removeCard() {
         if (!AbstractDungeon.isScreenUp) {
-            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[6], false, false, false, false);
+            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[10], false, false, false, false);
         } else {
             AbstractDungeon.dynamicBanner.hide();
             AbstractDungeon.previousScreen = AbstractDungeon.screen;
-            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[6], false, false, false, false);
+            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[10], false, false, false, false);
         }
     }
 }
