@@ -1,0 +1,7 @@
+{
+  "theJungle:SpiritDisease": {
+    "NAME": "Spirit Disease",
+    "DESCRIPTIONS": ["The next non-boss chest will have its relic replaced by a spirit poop."],
+    "FLAVOR": "A strange plague from drinking strange water... You don't feel too well.."
+  }
+}

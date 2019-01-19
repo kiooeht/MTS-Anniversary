@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.ui.DialogWord;
 import theAct.TheActMod;
+import theAct.relics.SpiritDisease;
 
 public class River extends AbstractImageEvent
 {
@@ -62,6 +63,7 @@ public class River extends AbstractImageEvent
                 if(cardsToRemove > 0)
                     AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck.getPurgeableCards(),
                         cardsToRemove, OPTIONS[3] + cardsToRemove + OPTIONS[4], false, false, false, true);
+                AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F, new SpiritDisease());
                 this.imageEventText.updateDialogOption(0, OPTIONS[2]);
                 this.imageEventText.clearRemainingOptions();
                 this.screen = CUR_SCREEN.COMPLETE;

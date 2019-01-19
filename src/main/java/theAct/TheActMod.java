@@ -2,6 +2,9 @@ package theAct;
 
 import java.nio.charset.StandardCharsets;
 
+import basemod.helpers.BaseModCardTags;
+import basemod.helpers.RelicType;
+import basemod.interfaces.EditRelicsSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -11,6 +14,7 @@ import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
 import org.apache.logging.log4j.LogManager;
@@ -25,10 +29,12 @@ import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
 import theAct.patches.GetDungeonPatches;
+import theAct.relics.SpiritDisease;
 
 @SpireInitializer
 public class TheActMod implements
         PostInitializeSubscriber,
+        EditRelicsSubscriber,
         EditKeywordsSubscriber,
         EditStringsSubscriber
 {
@@ -96,5 +102,12 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));
         BaseMod.loadCustomStringsFile(UIStrings.class, assetPath(path + "ui.json"));
         BaseMod.loadCustomStringsFile(CardStrings.class, assetPath(path + "cards.json"));
+        BaseMod.loadCustomStringsFile(RelicStrings.class, assetPath(path + "relics.json"));
+    }
+
+    @Override
+    public void receiveEditRelics()
+    {
+        BaseMod.addRelic(new SpiritDisease(), RelicType.SHARED);
     }
 }
