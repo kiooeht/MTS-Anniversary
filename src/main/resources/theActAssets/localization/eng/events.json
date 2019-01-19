@@ -43,7 +43,9 @@
       "What is missing in this image?",
       "theActAssets/images/events/quiz/card3.png",
       "By how much does your max HP increase if you get all three fruits?",
-      ""
+      "",
+      "Name two curses that are shown in this image.",
+      "theActAssets/images/events/quiz/curses1.png"
     ],
     "OPTIONS": [
       "[Begin Quiz]",
@@ -119,7 +121,12 @@
       ">31",
       "34",
       "29",
-      "26"
+      "26",
+
+      ">Shame and Writhe",
+      "Regret and Pain",
+      "Shame and Injury",
+      "Pride and Regret"
     ]
   }
 }
