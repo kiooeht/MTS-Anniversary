@@ -57,7 +57,7 @@ public class KidnappersEvent extends AbstractImageEvent {
                     case 0:
                         imageEventText.loadImage(TheActMod.assetPath("images/events/KidnappersEventTwo.png"));
                         imageEventText.updateBodyText(DESCRIPTIONS[1]);
-                        imageEventText.setDialogOption(OPTIONS[1] + HEALTH_LOSS + OPTIONS[2]);
+                        imageEventText.updateDialogOption(0, OPTIONS[1] + HEALTH_LOSS + OPTIONS[2]);
                         imageEventText.setDialogOption(OPTIONS[3]);
                         if (AbstractDungeon.player.gold >= GOLD_AMT) {
                             imageEventText.setDialogOption(OPTIONS[4] + GOLD_AMT + OPTIONS[5]);
