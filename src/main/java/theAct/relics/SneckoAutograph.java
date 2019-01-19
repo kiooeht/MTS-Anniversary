@@ -112,6 +112,7 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
         coloredCards.clear();
         potions.clear();
         relics.clear();
+        getUpdatedDescription();
     }
 
     @Override
@@ -123,6 +124,10 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     @Override
     public String getUpdatedDescription()
     {
-        return CLICKABLE_DESCRIPTIONS()[0] + DESCRIPTIONS[0] + counter + DESCRIPTIONS[1];
+        if (counter > 0) {
+            return CLICKABLE_DESCRIPTIONS()[0] + DESCRIPTIONS[0] + counter + DESCRIPTIONS[1];
+        } else {
+            return DESCRIPTIONS[2];
+        }
     }
 }
