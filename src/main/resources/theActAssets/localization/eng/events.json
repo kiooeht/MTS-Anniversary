@@ -74,6 +74,8 @@
       "theActAssets/images/events/quiz/card2.png",
       "What power is this?",
       "theActAssets/images/events/quiz/power1.png",
+      "What power is this?",
+      "theActAssets/images/events/quiz/power2.png",
       "What is missing in this image?",
       "theActAssets/images/events/quiz/card3.png",
       "By how much does your max HP increase if you get all three fruits?",
@@ -81,7 +83,13 @@
       "Name two curses that are shown in this image.",
       "theActAssets/images/events/quiz/curses1.png",
       "What effect does Ascension 16 have?",
-      ""
+      "",
+      "What is the rarity of the relic in this picture?",
+      "theActAssets/images/events/quiz/relic1.png",
+      "What is the rarity of the relic in this picture?",
+      "theActAssets/images/events/quiz/relic1.png",
+      "What is the rarity of the relic in this picture?",
+      "theActAssets/images/events/quiz/relic1.png"
     ],
     "OPTIONS": [
       "[Begin Quiz]",
@@ -149,6 +157,11 @@
       "Panache",
       "Lock-On",
 
+      ">Metalicize",
+      "Dexterity",
+      "Barricade",
+      "Plated Armor",
+
       ">A bomb",
       "A flask",
       "A blade",
@@ -167,7 +180,22 @@
       ">Shops are more costly",
       "Unfavorable Events",
       "Bosses are tougher",
-      "Upgraded cards appear less often"
+      "Upgraded cards appear less often",
+
+      ">Common",
+      "Uncommon",
+      "Rare",
+      "Shop",
+
+      "Common",
+      "Uncommon",
+      ">Rare",
+      "Shop",
+
+      "Common",
+      "Uncommon",
+      "Rare",
+      ">Shop"
     ]
   },
   "theJungle:FauxPas" : {
