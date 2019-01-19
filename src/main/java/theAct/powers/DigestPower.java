@@ -1,5 +1,8 @@
 package theAct.powers;
 
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,6 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import theAct.TheActMod;
 import theAct.powers.abstracts.Power;
 
@@ -18,6 +22,7 @@ public class DigestPower extends Power {
 	private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(powerID);
 
 	private AbstractCard card;
+	private boolean justApplied;
 
 	public DigestPower(AbstractCreature owner, AbstractCard card, int amount) {
 		this.owner = owner;
@@ -27,16 +32,30 @@ public class DigestPower extends Power {
 		this.setImage("digestPower84.png", "digestPower32.png");
 		this.ID = powerID;
 		this.card = card;
+		this.justApplied = true;
 		this.updateDescription();
 	}
 
 	public void updateDescription() {
 		this.description =
 			strings.DESCRIPTIONS[0] +
-			card.name +
-			strings.DESCRIPTIONS[1] +
 			amount +
-			strings.DESCRIPTIONS[2];
+			strings.DESCRIPTIONS[1] +
+			card.name +
+			strings.DESCRIPTIONS[2] +
+			card.name +
+			strings.DESCRIPTIONS[3];
+	}
+
+	@Override
+	public void atEndOfTurn(boolean isPlayer) {
+		if(justApplied){
+			this.justApplied = false;
+			return;
+		}
+
+		AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new ExhaustCardEffect(this.card), 1.0f));
+		AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, this));
 	}
 
 	@Override

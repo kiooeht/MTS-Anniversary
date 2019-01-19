@@ -5,7 +5,6 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.campfire.CampfireBurningEffect;
-import theAct.TheActMod;
 import theAct.dungeons.Jungle;
 
 import java.lang.reflect.Field;
@@ -18,7 +17,6 @@ public class CampfireBurningEffectPatch {
 
     public static void Postfix(CampfireBurningEffect __instance) {
         if (CardCrawlGame.dungeon instanceof Jungle) {
-            TheActMod.logger.info("CampfireBurningEffect patch reached for Jungle");
             try {
                 Field colorField = AbstractGameEffect.class.getDeclaredField("color");
                 colorField.setAccessible(true);
@@ -27,7 +25,6 @@ public class CampfireBurningEffectPatch {
                 ((Color)colorField.get(__instance)).g -= 0.0f; //TODO: find appropriate variance
                 ((Color)colorField.get(__instance)).b -= 0.0f; //MathUtils.random(0.5f), etc
             } catch (NoSuchFieldException | IllegalAccessException E) {
-                //logger info
                 E.printStackTrace();
             }
         }

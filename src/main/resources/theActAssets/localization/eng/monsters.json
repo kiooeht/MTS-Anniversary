@@ -1,20 +1,4 @@
 {
-	"theJungle:Cassacara": {
-		"MOVES": [
-			"Big Bites",
-			"Chew",
-			"Bottomless Stomach"
-		],
-		"NAME": "Cassacara",
-		"DIALOG": [
-			"@RRraahrRGHh!!@"
-		]
-	},
-	"theJungle:CarcassSack": {
-		"MOVES": [],
-		"NAME": "Carcass Sack",
-		"DIALOG": []
-	},
 	"theJungle:Phrog": {
 		"MOVES": [
 			"Lick"
@@ -22,6 +6,69 @@
 		"NAME": "Phrog",
 		"DIALOG": [
 			"riiiiibbit!"
+		]
+	},
+	"theJungle:TotemBoss": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "Totem Speaker",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:BashTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "BashTotem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:BuffTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "BuffTotem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:DebuffTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "DebuffTotem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:ShieldOtherTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "ShieldOtherTotem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:DoubleStrikeTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "DoubleStrikeTotem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:AttackAndShieldTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "AttackAndShieldTotem",
+		"DIALOG": [
+			""
 		]
 	}
 }
