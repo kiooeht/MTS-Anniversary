@@ -18,6 +18,8 @@ public class SilentTribesmen extends AbstractMonster {
     private static final int START_BLOCK_AMT = 10;
     private static final int START_BLOCK_ASC_MODIFIER = 5;
     private int blockAmt;
+    public static final String STUNNED = "STUNNED";
+    public static final String NOTSTUNNED = "NOTSTUNNED";
 
     public SilentTribesmen(float x, float y) {
         super(NAME, ID, MAX_HP, 0.0F, 10.0F, 280.0F, 280.0F, null, x, y);
@@ -31,6 +33,18 @@ public class SilentTribesmen extends AbstractMonster {
             blockAmt = START_BLOCK_AMT + START_BLOCK_ASC_MODIFIER;
         } else {
             blockAmt = START_BLOCK_AMT;
+        }
+    }
+
+    @Override
+    public void changeState(String state) {
+        switch(state) {
+            case NOTSTUNNED:
+                break;
+            case STUNNED:
+                setMove((byte)4, Intent.STUN);
+                createIntent();
+                break;
         }
     }
 
