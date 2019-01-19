@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.vfx.RainingGoldEffect;
 import theAct.TheActMod;
+import theAct.events.buttons.ImageDialogOptionButton;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -75,8 +76,14 @@ public class GremlinQuiz extends AbstractImageEvent
                     text = text.substring(1);
                     correctAnswer = i;
                 }
-                text = OPTIONS[i + START_ABCD_INDEX] + text;
-                imageEventText.updateDialogOption(i, text);
+                if (text.startsWith("img:")) {
+                    String imgPath = text.substring(4);
+                    text = OPTIONS[i + START_ABCD_INDEX];
+                    updateImgDialogOption(i, text, imgPath);
+                } else {
+                    text = OPTIONS[i + START_ABCD_INDEX] + text;
+                    imageEventText.updateDialogOption(i, text);
+                }
             }
         }
     }
@@ -207,5 +214,11 @@ public class GremlinQuiz extends AbstractImageEvent
             ++incorrectCount;
             System.out.println("WRONG!");
         }
+    }
+
+    private void updateImgDialogOption(int slot, String text, String imgPath)
+    {
+        imageEventText.updateDialogOption(slot, text);
+        imageEventText.optionList.set(slot, new ImageDialogOptionButton(slot, text, imgPath));
     }
 }
