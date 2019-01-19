@@ -24,12 +24,14 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster.EnemyType;
 import com.megacrit.cardcrawl.monsters.AbstractMonster.Intent;
-import com.megacrit.cardcrawl.powers.MinionPower;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import theAct.TheActMod;
 import theAct.actions.TotemFallWaitAction;
+import theAct.powers.ImmunityPower;
+import theAct.powers.TotemFleePower;
+import theAct.powers.TotemStrengthPower;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,31 +46,24 @@ public class TotemBoss extends AbstractMonster {
 
 
     private int healAmt;
-    private boolean totems;
     public boolean stopTotemFall;
     public int encounterSlotsUsed = 1;
     public ArrayList<Integer> remainingTotems = new ArrayList<>();
     public ArrayList<AbstractTotemSpawn> livingTotems = new ArrayList<>();
 
-    private boolean firstMove = true;
+
 
     public TotemBoss() {
-        super(NAME, "Reptomancer", AbstractDungeon.monsterHpRng.random(180, 190), 0.0F, -30.0F, 220.0F, 320.0F, (String)null, -20.0F, 10.0F);
+        super(NAME, "Reptomancer", 10, 0.0F, -30.0F, 220.0F, 320.0F, (String)null, -20.0F, 10.0F);
         this.type = EnemyType.ELITE;
         this.loadAnimation("images/monsters/theForest/mage/skeleton.atlas", "images/monsters/theForest/mage/skeleton.json", 1.0F);
-        if (AbstractDungeon.ascensionLevel >= 8) {
-            this.setHp(190, 200);
+
+        if (AbstractDungeon.ascensionLevel >= 19) {
+            this.healAmt = 3;
         } else {
-            this.setHp(180, 190);
+            this.healAmt = 2;
         }
 
-        if (AbstractDungeon.ascensionLevel >= 3) {
-            this.damage.add(new DamageInfo(this, 16));
-            this.damage.add(new DamageInfo(this, 34));
-        } else {
-            this.damage.add(new DamageInfo(this, 13));
-            this.damage.add(new DamageInfo(this, 30));
-        }
 
         TrackEntry e = this.state.setAnimation(0, "Idle", true);
         this.stateData.setMix("Idle", "Sumon", 0.1F);
@@ -77,6 +72,10 @@ public class TotemBoss extends AbstractMonster {
         this.stateData.setMix("Idle", "Hurt", 0.1F);
         this.stateData.setMix("Attack", "Idle", 0.1F);
         e.setTime(e.getEndTime() * MathUtils.random());
+
+        this.powers.add(new TotemFleePower(this));
+        this.powers.add(new TotemStrengthPower(this));
+        this.powers.add(new ImmunityPower(this));
     }
 
     public void usePreBattleAction() {
@@ -148,6 +147,12 @@ public class TotemBoss extends AbstractMonster {
     public void resolveTotemDeath(AbstractTotemSpawn m){
         this.stopTotemFall = true;
         livingTotems.remove(m);
+        for (AbstractMonster m2 : livingTotems) {
+
+            if (!m2.isDying) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m2, this, new StrengthPower(m2, 1), 1));
+            }
+        }
 
 
         if (remainingTotems.size() == 0 && livingTotems.size() == 0){
@@ -176,24 +181,6 @@ public class TotemBoss extends AbstractMonster {
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
     }
 
-    private boolean canSpawn() {
-        int aliveCount = 0;
-        Iterator var2 = AbstractDungeon.getMonsters().monsters.iterator();
-
-        while(var2.hasNext()) {
-            AbstractMonster m = (AbstractMonster)var2.next();
-            if (m != this && !m.isDying) {
-                ++aliveCount;
-            }
-        }
-
-        if (aliveCount > 3) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     public void damage(DamageInfo info) {
         super.damage(info);
         if (info.owner != null && info.type != DamageType.THORNS && info.output > 0) {
@@ -207,13 +194,6 @@ public class TotemBoss extends AbstractMonster {
         this.useFastShakeAnimation(5.0F);
         CardCrawlGame.screenShake.rumble(4.0F);
         super.die();
-        /*
-        if (MathUtils.randomBoolean()) {
-            CardCrawlGame.sound.play("VO_CHAMP_3A");
-        } else {
-            CardCrawlGame.sound.play("VO_CHAMP_3B");
-        }
-        */
 
         AbstractDungeon.scene.fadeInAmbiance();
         this.onBossVictoryLogic();
@@ -224,6 +204,8 @@ public class TotemBoss extends AbstractMonster {
         this.setMove((byte) 0, Intent.BUFF);
 
     }
+
+
 
     public void changeState(String key) {
         byte var3 = -1;
