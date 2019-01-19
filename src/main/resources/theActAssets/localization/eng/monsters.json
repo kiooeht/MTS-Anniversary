@@ -109,8 +109,8 @@
 		]
 	},
 	"theJungle:SlimyTreeVines": {
-		"NAME": "Slimy Tree Vines",
-		"MOVES": ["Tangle"],
-		"DIALOG": []
+		"NAME": "Slimy Jungle Vines",
+		"MOVES": ["Tangle","Split"],
+		"DIALOG": ["Jungle Vines"]
 	}
 }
