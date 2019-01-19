@@ -24,6 +24,8 @@ public class SilentTribesmen extends AbstractMonster {
     private static final int BLOCK_MOVE_ASC_MODIFIER = 5;
     private static final int STUN_AMT = 4;
     private static final int STUN_AMT_ASC_MODIFIER = 1;
+    private static final int MED_ATK_DMG = 16;
+    private static final int MED_ATK_DMG_ASC_MODIFIER = 2;
     private int blockAmt;
     private int blockMoveAmt;
     private int stunAmt;
@@ -41,17 +43,11 @@ public class SilentTribesmen extends AbstractMonster {
         }
         if (AbstractDungeon.ascensionLevel >= 17) {
             blockAmt = START_BLOCK_AMT + START_BLOCK_ASC_MODIFIER;
-        } else {
-            blockAmt = START_BLOCK_AMT;
-        }
-        if (AbstractDungeon.ascensionLevel >= 17) {
             blockMoveAmt = BLOCK_MOVE_AMT + BLOCK_MOVE_ASC_MODIFIER;
-        } else {
-            blockMoveAmt = BLOCK_MOVE_AMT;
-        }
-        if (AbstractDungeon.ascensionLevel >= 17) {
             stunAmt = STUN_AMT + STUN_AMT_ASC_MODIFIER;
         } else {
+            blockAmt = START_BLOCK_AMT;
+            blockMoveAmt = BLOCK_MOVE_AMT;
             stunAmt = STUN_AMT;
         }
     }
@@ -91,5 +87,6 @@ public class SilentTribesmen extends AbstractMonster {
             setMove((byte)0, Intent.DEFEND);
             isFirstTurn = false;
         }
+
     }
 }
