@@ -22,6 +22,8 @@
       "",
       "Identify the enemies in this picture.",
       "theActAssets/images/events/quiz/identify1.png",
+      "Identify the enemies in this picture.",
+      "theActAssets/images/events/quiz/identify2.png",
       "In what order (from left to right) do the Red Mask Bandits appear?",
       "images/events/redMaskTomb.jpg",
       "What is NOT a card for The Silent?",
@@ -61,6 +63,11 @@
       "Fungi Beast, Chosen, Spike Slime",
       "Snecko, Acid Slime, Cultist",
       "Awakened One, Louse, Snake Plant",
+
+      ">The Maw, Hexaghost, The Transient",
+      "Donu, Spire Growth, The Maw",
+      "Jaw Worm, Donu, The Guardian",
+      "Writhing Mass, Fungi Beast, Shelled Parasite",
 
       ">Pointy, Romeo, Bear",
       "Bear, Pointy, Romeo",
