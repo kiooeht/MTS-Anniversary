@@ -42,5 +42,12 @@
 			" damage.",
 			"#gRESETTING NL This trap is harmless while #gResetting."
 		]
+	},
+	"theJungle:FungalInfectionPower": {
+		"NAME": "Fungal Infection",
+		"DESCRIPTIONS": [
+			"Place a random #rSpore #rStatus on top of your deck each turn. NL Lasts #b",
+			" more turns."
+		]
 	}
 }

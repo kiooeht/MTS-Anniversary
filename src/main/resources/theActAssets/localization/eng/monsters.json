@@ -87,9 +87,23 @@
 	},
 	"theJungle:SwingingAxe": {
 		"MOVES": [
-			""
+			"Reboot"
 		],
 		"NAME": "Swinging Axe Trap",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:FunGuy": {
+		"MOVES": [
+			"Chomp",
+			"Infection",
+			"Spread Spores",
+			"Sporeburst",
+			"Growth",
+			"Assimilate"
+		],
+		"NAME": "Fungi Core",
 		"DIALOG": [
 			""
 		]
