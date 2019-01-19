@@ -8,6 +8,7 @@ package theAct.monsters.TotemBoss;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -15,8 +16,11 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.GoldenSlashEffect;
 import theAct.TheActMod;
+
+import java.util.Iterator;
 
 public class AttackAndShieldTotem extends AbstractTotemSpawn {
     public static final String ID = TheActMod.makeID("AttackAndShieldTotem");
@@ -62,6 +66,14 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(new GoldenSlashEffect(AbstractDungeon.player.hb.cX - 60.0F * Settings.scale, AbstractDungeon.player.hb.cY, false), vfxSpeed));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AttackEffect.NONE));
+
+                for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+
+                    if (!m.isDying && !(m instanceof TotemBoss)) {
+                        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, this, this.secondaryEffect));
+                    }
+                }
+
                 break;
         }
 
@@ -70,7 +82,7 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
 
     protected void getMove(int num)
     {
-        this.setMove((byte)1, intentType, this.attackDmg);
+        this.setMove((byte)1, Intent.ATTACK_DEFEND, this.attackDmg);
     }
 
     static {
