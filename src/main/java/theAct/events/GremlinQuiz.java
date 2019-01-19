@@ -1,9 +1,11 @@
 package theAct.events;
 
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.vfx.RainingGoldEffect;
 import theAct.TheActMod;
 
 import java.util.ArrayList;
@@ -20,7 +22,17 @@ public class GremlinQuiz extends AbstractImageEvent
     private static final String[] OPTIONS = eventStrings.OPTIONS;
 
     private static final int QUESTION_COUNT = 3;
+    private static final int PRIZE_GOLD = 50;
+    private static final float PRIZE_DAMAGE = 0.07f;
+    private static final float A_PRIZE_DAMAGE = 0.10f;
     private static final String BASE_IMG = "images/events/spinTheWheel.jpg";
+
+    private static final int START_QUESTION_INDEX = 5;
+    private static final int START_ABCD_INDEX = 5;
+    private static final int START_ANSWER_INDEX = START_ABCD_INDEX + 4;
+    private static final int NUM_ANSWERS = 4;
+
+    private float hpLossPercent;
 
     private Question currQuestion = null;
     private int correctCount = 0;
@@ -38,12 +50,12 @@ public class GremlinQuiz extends AbstractImageEvent
 
         void updateBodyText()
         {
-            String image = DESCRIPTIONS[num * 2 + 1];
+            String image = DESCRIPTIONS[START_QUESTION_INDEX + num * 2 + 1];
             if (image.isEmpty()) {
                 image = BASE_IMG;
             }
             imageEventText.loadImage(image);
-            imageEventText.updateBodyText(DESCRIPTIONS[num * 2]);
+            imageEventText.updateBodyText(DESCRIPTIONS[START_QUESTION_INDEX + num * 2]);
         }
 
         void updateDialogAnswers()
@@ -52,7 +64,7 @@ public class GremlinQuiz extends AbstractImageEvent
 
             List<String> options = new ArrayList<>();
             for (int i=0; i<4; ++i) {
-                options.add(OPTIONS[5 + (num-1) * 4 + i]);
+                options.add(OPTIONS[START_ANSWER_INDEX + num * NUM_ANSWERS + i]);
             }
 
             Collections.shuffle(options, new Random(AbstractDungeon.eventRng.randomLong()));
@@ -63,7 +75,7 @@ public class GremlinQuiz extends AbstractImageEvent
                     text = text.substring(1);
                     correctAnswer = i;
                 }
-                text = OPTIONS[i + 1] + text;
+                text = OPTIONS[i + START_ABCD_INDEX] + text;
                 imageEventText.updateDialogOption(i, text);
             }
         }
@@ -75,10 +87,17 @@ public class GremlinQuiz extends AbstractImageEvent
     {
         super(NAME, DESCRIPTIONS[0], BASE_IMG);
 
+        hpLossPercent = PRIZE_DAMAGE;
+        if (AbstractDungeon.ascensionLevel >= 15) {
+            hpLossPercent = A_PRIZE_DAMAGE;
+        }
+
         // Shuffle questions
         List<Question> tmpList = new ArrayList<>();
-        for (int i=2; i<DESCRIPTIONS.length; i+=2) {
-            tmpList.add(new Question(i/2));
+        int qNum = 0;
+        for (int i=START_QUESTION_INDEX; i<DESCRIPTIONS.length; i+=2) {
+            tmpList.add(new Question(qNum));
+            ++qNum;
         }
         Collections.shuffle(tmpList, new Random(AbstractDungeon.eventRng.randomLong()));
 
@@ -104,6 +123,27 @@ public class GremlinQuiz extends AbstractImageEvent
                 checkAnswer(buttonPressed);
                 nextQuestion();
                 break;
+            case 2: // Prize
+                int gold = getGoldPrize();
+                if (gold > 0) {
+                    AbstractDungeon.effectList.add(new RainingGoldEffect(gold));
+                    AbstractDungeon.player.gainGold(gold);
+                }
+                int damage = getDamagePrize();
+                if (damage > 0) {
+                    CardCrawlGame.sound.play("ATTACK_DAGGER_6");
+                    CardCrawlGame.sound.play("BLOOD_SPLAT");
+                    AbstractDungeon.player.damage(new DamageInfo(null, damage, DamageInfo.DamageType.HP_LOSS));
+                }
+
+                screenNum = 3;
+                imageEventText.updateDialogOption(0, OPTIONS[4]);
+                imageEventText.clearRemainingOptions();
+                openMap();
+                break;
+            case 3: // Done
+                openMap();
+                break;
         }
     }
 
@@ -113,14 +153,42 @@ public class GremlinQuiz extends AbstractImageEvent
             // Out of questions
             screenNum = 2;
             imageEventText.loadImage(BASE_IMG);
-            imageEventText.updateBodyText(DESCRIPTIONS[1]);
+
+            String body = String.format(DESCRIPTIONS[1], correctCount, correctCount+incorrectCount);
+            String prize = OPTIONS[1];
+            if (incorrectCount == 0) {
+                body += DESCRIPTIONS[2];
+            } else if (correctCount == 0) {
+                body += DESCRIPTIONS[3];
+            } else {
+                body += DESCRIPTIONS[4];
+            }
+            if (correctCount > 0) {
+                prize += String.format(OPTIONS[2], getGoldPrize());
+            }
+            if (incorrectCount > 0) {
+                prize += String.format(OPTIONS[3], getDamagePrize());
+            }
+
+            imageEventText.updateBodyText(body);
             imageEventText.clearAllDialogs();
+            imageEventText.setDialogOption(prize);
             return;
         }
 
         currQuestion = questionList.remove(0);
         currQuestion.updateBodyText();
         currQuestion.updateDialogAnswers();
+    }
+
+    private int getGoldPrize()
+    {
+        return correctCount * PRIZE_GOLD;
+    }
+
+    private int getDamagePrize()
+    {
+        return (int)(incorrectCount * (AbstractDungeon.player.maxHealth * hpLossPercent));
     }
 
     private void checkAnswer(int buttonPressed)

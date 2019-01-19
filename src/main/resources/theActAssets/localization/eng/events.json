@@ -13,8 +13,11 @@
   "theJungle:GremlinQuiz" : {
     "NAME": "Gremlin Quiz Show",
     "DESCRIPTIONS": [
-      "\" LIGHTS. CAMERA. #p@ACTION!@ \" NL NL A gremlin with a wide smile approaches you. NL NL \"It's time again for the Spire-Famous Gremlin Quiz Show! I've got three questions for you, here's your chance to win some #gfabulous #gprizes! NL Are you ~R~ ~E~ ~A~ ~D~ ~Y~ ~?~ Of course you are!\"",
-      "DONE",
+      "\" LIGHTS. CAMERA. #p@ACTION!@ \" NL NL A gremlin with a wide smile approaches you. NL NL \" It's time again for the Spire-Famous Gremlin Quiz Show! I've got questions for you, here's your chance to win some #gfabulous #gprizes! NL Are you ~R~ ~E~ ~A~ ~D~ ~Y~ ~?~ Of course you are! \"",
+      "\" Please wait while we tally your score... NL NL You got #b%d #bout #bof #b%d questions right! NL ",
+      "#gYou #gdid #ggreat! NL Here is your prize. \"",
+      "#rHow #rdisappointing... \"",
+      "Do better next time. \"",
       "What is the name of the Bronze Automaton's biggest attack?",
       "",
       "Identify the enemies in this picture.",
@@ -26,6 +29,10 @@
     ],
     "OPTIONS": [
       "[Begin Quiz]",
+      "[Claim Prize] ",
+      " #gGain #g%d #gGold.",
+      " #rLose #r%d #rHP.",
+      "[Leave]",
       "[Aπ] ",
       "[Bπ] ",
       "[Cπ] ",
