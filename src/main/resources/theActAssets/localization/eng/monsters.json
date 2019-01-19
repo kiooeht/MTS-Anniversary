@@ -81,15 +81,5 @@
 		"DIALOG": [
 			""
 		]
-	},
-	"theJungle:SpyderNest": {
-		"MOVES": [
-			"Egg Throw",
-            "Hatch"
-		],
-		"NAME": "Spyder Nest",
-		"DIALOG": [
-			""
-		]
 	}
 }
