@@ -80,7 +80,9 @@ public class SilentTribesmen extends AbstractMonster {
         switch (nextMove) {
             case 0:
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, blockMoveAmt));
+                break;
         }
+        rollMove();
     }
 
     @Override
