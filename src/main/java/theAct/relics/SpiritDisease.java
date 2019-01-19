@@ -1,26 +1,13 @@
 package theAct.relics;
 
 import basemod.abstracts.CustomRelic;
-import basemod.helpers.BaseModCardTags;
-import basemod.interfaces.RelicGetSubscriber;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.SpiritPoop;
-import com.sun.imageio.plugins.common.ImageUtil;
 import theAct.TheActMod;
-
-import java.lang.reflect.Field;
 
 public class SpiritDisease extends CustomRelic
 {
