@@ -80,7 +80,7 @@ public class SwingingAxe extends AbstractMonster
     @Override
     protected void getMove(final int num) {
     	if (!this.hasPower(SwingingTrapPower.powerID)) {
-    		this.setMove((byte)2, Intent.BUFF);
+    		this.setMove(MOVES[0], (byte)2, Intent.BUFF);
     	}
     	this.setMove((byte)1, Intent.ATTACK, this.damage.get(0).base);
     }
