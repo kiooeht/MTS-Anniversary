@@ -4,8 +4,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
+import com.megacrit.cardcrawl.events.GenericEventDialog;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import theAct.dungeons.Jungle;
+import theAct.patches.GoToNextDungeonPatch;
 
 public class ForkInTheRoad extends AbstractImageEvent
 {
@@ -33,6 +35,12 @@ public class ForkInTheRoad extends AbstractImageEvent
                 CardCrawlGame.nextDungeon = Jungle.ID;
                 break;
         }
+
+        AbstractDungeon.rs = AbstractDungeon.RenderScene.NORMAL;
+        if (AbstractDungeon.currMapNode.room instanceof GoToNextDungeonPatch.ForkEventRoom) {
+            AbstractDungeon.currMapNode.room = ((GoToNextDungeonPatch.ForkEventRoom) AbstractDungeon.currMapNode.room).originalRoom;
+        }
+        GenericEventDialog.hide();
 
         AbstractDungeon.fadeOut();
         AbstractDungeon.isDungeonBeaten = true;

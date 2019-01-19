@@ -24,7 +24,7 @@ public class GoToNextDungeonPatch
     public static SpireReturn<Void> Insert(ProceedButton __instance, AbstractRoom room)
     {
         if (CardCrawlGame.dungeon instanceof Exordium) {
-            AbstractDungeon.currMapNode.room = new ForkEventRoom();
+            AbstractDungeon.currMapNode.room = new ForkEventRoom(AbstractDungeon.currMapNode.room);
             AbstractDungeon.getCurrRoom().onPlayerEntry();
             AbstractDungeon.rs = AbstractDungeon.RenderScene.EVENT;
 
@@ -46,11 +46,17 @@ public class GoToNextDungeonPatch
 
     public static class ForkEventRoom extends EventRoom
     {
+        public AbstractRoom originalRoom;
+
+        ForkEventRoom(AbstractRoom originalRoom)
+        {
+            this.originalRoom = originalRoom;
+        }
+
         @Override
         public void onPlayerEntry()
         {
             AbstractDungeon.overlayMenu.proceedButton.hide();
-            String eventName = AbstractDungeon.eventList.remove(0);
             this.event = new ForkInTheRoad();
             this.event.onEnterRoom();
         }
