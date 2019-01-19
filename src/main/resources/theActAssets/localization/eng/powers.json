@@ -7,5 +7,13 @@
 			" is returned to your hand. NL NL At the end of your turn ",
 			" is #Exhausted."
 		]
+	},
+	"theJungle:SlothfulPower": {
+		"NAME" : "Slothful",
+		"DESCRIPTIONS": [
+			"Negates #b",
+			" buff.",
+			" buffs."
+		]
 	}
 }

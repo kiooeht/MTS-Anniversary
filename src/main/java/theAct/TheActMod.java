@@ -2,15 +2,15 @@ package theAct;
 
 import java.nio.charset.StandardCharsets;
 
+import basemod.helpers.RelicType;
+import basemod.interfaces.EditRelicsSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.localization.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,15 +22,20 @@ import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import theAct.dungeons.Jungle;
+import theAct.events.ExcessResources;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
 import theAct.patches.GetDungeonPatches;
+import theAct.relics.WildMango;
+import theAct.relics.WildPear;
+import theAct.relics.WildStrawberry;
 
 @SpireInitializer
 public class TheActMod implements
         PostInitializeSubscriber,
         EditKeywordsSubscriber,
         EditStringsSubscriber,
+        EditRelicsSubscriber,
         CustomSavable<Boolean>
 {
 	
@@ -68,6 +73,7 @@ public class TheActMod implements
         // Add events here
         BaseMod.addEvent(River.ID, River.class, Jungle.ID);
         BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
+        BaseMod.addEvent(ExcessResources.ID, ExcessResources.class, Jungle.ID);
 
         // Add monsters here
 
@@ -94,6 +100,13 @@ public class TheActMod implements
     }
 
     @Override
+    public void receiveEditRelics() {
+        BaseMod.addRelic(new WildMango(), RelicType.SHARED);
+        BaseMod.addRelic(new WildStrawberry(), RelicType.SHARED);
+        BaseMod.addRelic(new WildPear(), RelicType.SHARED);
+    }
+
+    @Override
     public void receiveEditStrings()
     {
         String language = "eng";
@@ -103,6 +116,8 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));
         BaseMod.loadCustomStringsFile(UIStrings.class, assetPath(path + "ui.json"));
         BaseMod.loadCustomStringsFile(CardStrings.class, assetPath(path + "cards.json"));
+        BaseMod.loadCustomStringsFile(PowerStrings.class, assetPath(path + "powers.json"));
+        BaseMod.loadCustomStringsFile(RelicStrings.class, assetPath(path + "relics.json"));
     }
 
     @Override
