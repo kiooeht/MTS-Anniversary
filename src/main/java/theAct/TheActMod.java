@@ -26,6 +26,7 @@ import basemod.interfaces.PostInitializeSubscriber;
 import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
+import theAct.events.GremlinQuiz;
 import theAct.monsters.Phrog;
 import theAct.monsters.SlimyTreeVines;
 import theAct.monsters.TotemBoss.TotemBoss;
@@ -73,6 +74,7 @@ public class TheActMod implements
         // Add events here
         BaseMod.addEvent(River.ID, River.class, Jungle.ID);
         BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
+        BaseMod.addEvent(GremlinQuiz.ID, GremlinQuiz.class, Jungle.ID);
 
         // Add monsters here
         BaseMod.addMonster(Phrog.ID, Phrog::new);

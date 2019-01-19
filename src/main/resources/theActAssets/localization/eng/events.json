@@ -10,7 +10,6 @@
       "[Go Right] Enter "
     ]
   },
-
   "theJungle:River" : {
     "NAME": "Spirit River",
 
@@ -43,6 +42,132 @@
       "[Leave]",
       "[Leave]",
       "Pick a card to randomize"
+    ]
+  },
+  "theJungle:GremlinQuiz" : {
+    "NAME": "Gremlin Quiz Show",
+    "DESCRIPTIONS": [
+      "\" LIGHTS. CAMERA. #p@ACTION!@ \" NL NL A gremlin with a wide smile approaches you. NL NL \" It's time again for the Spire-Famous Gremlin Quiz Show! I've got questions for you, here's your chance to win some #gfabulous #gprizes! NL Are you ~R~ ~E~ ~A~ ~D~ ~Y~ ~?~ Of course you are! \"",
+      "\" Please wait while we tally your score... NL NL You got #b%d #bout #bof #b%d questions right! NL ",
+      "#gYou #gdid #ggreat! NL Here is your prize. \"",
+      "#rHow #rdisappointing... \"",
+      "Do better next time. \"",
+      "What is the name of the Bronze Automaton's biggest attack?",
+      "",
+      "Identify the enemies in this picture.",
+      "theActAssets/images/events/quiz/identify1.png",
+      "Identify the enemies in this picture.",
+      "theActAssets/images/events/quiz/identify2.png",
+      "In what order (from left to right) do the Red Mask Bandits appear?",
+      "images/events/redMaskTomb.jpg",
+      "What is NOT a card for The Silent?",
+      "",
+      "What card is this?",
+      "theActAssets/images/events/quiz/card1.png",
+      "Which of these enemies can make you weak?",
+      "",
+      "Which of these enemies holds their weapon in their left hand?",
+      "",
+      "How many tentacles does the Spire Growth have?",
+      "",
+      "Match this card art with its beta art.",
+      "theActAssets/images/events/quiz/card2.png",
+      "What power is this?",
+      "theActAssets/images/events/quiz/power1.png",
+      "What is missing in this image?",
+      "theActAssets/images/events/quiz/card3.png",
+      "By how much does your max HP increase if you get all three fruits?",
+      "",
+      "Name two curses that are shown in this image.",
+      "theActAssets/images/events/quiz/curses1.png",
+      "What effect does Ascension 16 have?",
+      ""
+    ],
+    "OPTIONS": [
+      "[Begin Quiz]",
+      "[Claim Prize] ",
+      " #gGain #g%d #gGold.",
+      " #rLose #r%d #rHP.",
+      "[Leave]",
+      "[Aπ] ",
+      "[Bπ] ",
+      "[Cπ] ",
+      "[Dπ] ",
+
+      "Sweeping Beam",
+      ">Hyper Beam",
+      "Hyper Blast",
+      "Disintegrate",
+
+      ">Chosen, Snecko, Darkling",
+      "Fungi Beast, Chosen, Spike Slime",
+      "Snecko, Acid Slime, Cultist",
+      "Awakened One, Louse, Snake Plant",
+
+      ">The Maw, Hexaghost, The Transient",
+      "Donu, Spire Growth, The Maw",
+      "Jaw Worm, Donu, The Guardian",
+      "Writhing Mass, Fungi Beast, Shelled Parasite",
+
+      ">Pointy, Romeo, Bear",
+      "Bear, Pointy, Romeo",
+      "Romeo, Pointy, Bear",
+      "Pointy, Bear, Romeo",
+
+      ">Blade Storm",
+      "Dodge and Roll",
+      "Doppelganger",
+      "Riddle with Holes",
+
+      "Boot Sequence",
+      ">Recursion",
+      "Machine Learning",
+      "Reinforced Body",
+
+      "Spike Slime",
+      "Red Louse",
+      "Mad Gremlin",
+      ">Blue Slaver",
+
+      "The Collector",
+      "The Time Eater",
+      "The Mystic",
+      ">The Centurion",
+
+      "One",
+      "Two",
+      ">Three",
+      "Four",
+
+      "img:images/1024PortraitsBeta/green/skill/backflip.png",
+      "img:images/1024PortraitsBeta/green/skill/outmaneuver.png",
+      "img:images/1024PortraitsBeta/green/skill/blur.png",
+      ">img:images/1024PortraitsBeta/green/skill/acrobatics.png",
+
+      ">Enrage",
+      "Choke",
+      "Panache",
+      "Lock-On",
+
+      ">A bomb",
+      "A flask",
+      "A blade",
+      "A syringe",
+
+      ">31",
+      "34",
+      "29",
+      "26",
+
+      ">Shame and Writhe",
+      "Regret and Pain",
+      "Shame and Injury",
+      "Pride and Regret",
+
+      ">Shops are more costly",
+      "Unfavorable Events",
+      "Bosses are tougher",
+      "Upgraded cards appear less often"
     ]
   }
 }
