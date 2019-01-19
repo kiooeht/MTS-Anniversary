@@ -22,6 +22,7 @@ import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import theAct.dungeons.Jungle;
+import theAct.monsters.Phrog;
 import theAct.patches.GetDungeonPatches;
 
 @SpireInitializer
@@ -32,8 +33,7 @@ public class TheActMod implements
 {
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
 
-    public static void initialize()
-    {
+    public static void initialize() {
         BaseMod.subscribe(new TheActMod());
     }
 
@@ -59,11 +59,13 @@ public class TheActMod implements
         // Add events here
 
         // Add monsters here
+        BaseMod.addMonster(Phrog.ID, Phrog::new);
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
         GetDungeonPatches.addNextDungeon(Exordium.ID, Jungle.ID);
         GetDungeonPatches.addNextDungeon(Jungle.ID, TheBeyond.ID);
+
 
     }
 
