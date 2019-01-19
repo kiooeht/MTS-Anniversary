@@ -35,7 +35,7 @@ public class BuffTotem extends AbstractTotemSpawn {
     public Integer secondaryEffect;
 
     public BuffTotem(TotemBoss boss) {
-        super(NAME, ID, boss);
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemgreen.png"));
 
         if (AbstractDungeon.ascensionLevel >= 19) {
             this.attackDmg = 4;
