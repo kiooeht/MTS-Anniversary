@@ -3,6 +3,7 @@ package theAct;
 import java.nio.charset.StandardCharsets;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
@@ -10,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
 import org.apache.logging.log4j.LogManager;
@@ -22,6 +24,7 @@ import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import theAct.dungeons.Jungle;
 import theAct.patches.GetDungeonPatches;
+import theAct.potions.*;
 
 @SpireInitializer
 public class TheActMod implements
@@ -59,6 +62,9 @@ public class TheActMod implements
 
         // Add monsters here
 
+        //Potions
+        BaseMod.addPotion(JungleJuice.class, Color.GREEN, Color.GRAY, Color.BLACK, JungleJuice.POTION_ID);
+
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
         GetDungeonPatches.addNextDungeon(Exordium.ID, Jungle.ID);
@@ -92,5 +98,6 @@ public class TheActMod implements
 
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));
         BaseMod.loadCustomStringsFile(UIStrings.class, assetPath(path + "ui.json"));
+        BaseMod.loadCustomStringsFile(PotionStrings.class, assetPath(path + "potions.json"));
     }
 }

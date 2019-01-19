@@ -1,0 +1,10 @@
+{
+  "JungleJuicePotion": {
+    "NAME": "Jungle Juice",
+    "DESCRIPTIONS": [
+      "Gain #b",
+      " #yStrength and receive #b",
+      " #yPoison."
+    ]
+  }
+}
