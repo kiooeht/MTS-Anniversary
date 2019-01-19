@@ -116,9 +116,8 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     }
 
     @Override
-    public AbstractRelic makeCopy()
-    {
-        return new SpiritDisease();
+    public AbstractRelic makeCopy() {
+        return new SneckoAutograph();
     }
 
     @Override
