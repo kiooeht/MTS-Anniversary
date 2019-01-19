@@ -107,7 +107,9 @@ public class SilentTribesmen extends AbstractMonster {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new DexterityPower(AbstractDungeon.player, -dexLossAmt), -dexLossAmt));
                 break;
             case 3:
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(1)));
+                for (int i = 0; i < bigAtkAmt; i++) {
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(1)));
+                }
                 break;
         }
         rollMove();
