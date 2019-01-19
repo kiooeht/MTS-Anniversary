@@ -78,11 +78,7 @@ public class TheActMod implements
         BaseMod.addEvent(KidnappersEvent.ID, KidnappersEvent.class, Jungle.ID);
 
         // Add monsters here
-        BaseMod.addMonster(makeID("3_Flameangoes"), () -> new MonsterGroup(new AbstractMonster[] {
-                new Flameango(-650.0f * Settings.scale),
-                new Flameango(-150.0f * Settings.scale),
-                new Flameango(350.0f * Settings.scale)
-        }));
+        BaseMod.addMonster(Flameango.ID, () -> new Flameango(0));
         BaseMod.addMonster(Phrog.ID, Phrog::new);
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
