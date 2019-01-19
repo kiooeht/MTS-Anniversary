@@ -85,6 +85,7 @@
 			""
 		]
 	},
+<<<<<<< HEAD
 	"theJungle:SilentTribesmen": {
 		"MOVES": [
 			"Backflip",
@@ -94,6 +95,13 @@
 
 		],
 		"NAME": "Silent Clansman",
+=======
+	"theJungle:SwingingAxe": {
+		"MOVES": [
+			""
+		],
+		"NAME": "Swinging Axe Trap",
+>>>>>>> 9592b0883f26fec5e0600b93bc07275e0fafe0df
 		"DIALOG": [
 			""
 		]

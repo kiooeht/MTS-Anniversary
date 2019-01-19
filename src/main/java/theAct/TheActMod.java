@@ -14,6 +14,8 @@ import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
@@ -23,6 +25,8 @@ import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
 import theAct.monsters.SilentTribesmen;
+import theAct.monsters.Phrog;
+import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
 
 import java.nio.charset.StandardCharsets;
@@ -73,10 +77,15 @@ public class TheActMod implements
         // Add monsters here
         BaseMod.addMonster(SilentTribesmen.ENCOUNTER_ID, SilentTribesmen.ID, () -> new MonsterGroup(
                 new AbstractMonster[] { new SilentTribesmen(-280.0f, 10.0f), new SilentTribesmen(80.0f, 30.0f) }));
+        BaseMod.addMonster(Phrog.ID, Phrog::new);
+        BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
         GetDungeonPatches.addNextDungeon(Jungle.ID, TheBeyond.ID);
+
+        //savable boolean
+        BaseMod.addSaveField("wentToTheJungle", this);
     }
 
     @Override
@@ -106,6 +115,8 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));
         BaseMod.loadCustomStringsFile(UIStrings.class, assetPath(path + "ui.json"));
         BaseMod.loadCustomStringsFile(CardStrings.class, assetPath(path + "cards.json"));
+        BaseMod.loadCustomStringsFile(MonsterStrings.class, assetPath(path + "monsters.json"));
+        BaseMod.loadCustomStringsFile(PowerStrings.class, assetPath(path + "powers.json"));
     }
 
     @Override
