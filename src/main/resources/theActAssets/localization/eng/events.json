@@ -1,4 +1,27 @@
 {
+  "theJungle:FauxPas" : {
+    "NAME": "Faux Pas",
+    "DESCRIPTIONS": [
+      "As you walk through a #gdense #gportion of the Jungle, walls of trees seem to ~bend~ ~and~ ~twist~ into a narrow passageway. You catch a flash of light reflecting off several pairs of eyes, #y~skulking~ in the #pshadows near the tunnel of trees, watching your approach.",
+      "You decide to explore the strange formation of trees. As you walk the path, you are constantly surrounded by the ~rustling~ ~of~ #g~leaves,~ hushed whispers, and @muffled@ @laughter.@ Eventually, you find yourself approaching a clearing in the dense trees, with a #ystrange #yobject located on a stump right in the center. Just when you think you're walking right into an ambush, a #ysmall #yorange #yfaux ~leaps~ from behind a tree and sits at the entrance to the clearing in front of you, eyeing you curiously.",
+      "You decide, this time, that discretion is the better part of valor and make your way around the cluster of trees.",
+      "Something about the #yplayful #yfauxes captures a rare part of your imagination. You decide to humor the #yfaux and, before you know it, you find yourself caught up in their various games. NL NL Some time later you find yourself back at the entrance of the trees, out of breath but with a #rrenewed #rvigor for your quest.",
+      "A #p~hushed~ #p~silence~ falls over the clearing, and you could swear you see the faux's expression change to one of #p~deep~ #p~sadness.~ You turn to look at a quiet @sniffle@ you hear to your right, but there is nothing. When you look back, the faux's leader is gone. NL NL All that's left is the #ystrange #yobject on the stump, which you decide to take back with you, along with a deep #psense #pof #pshame for having disappointed the forest's critters.",
+      "You can only assume this is a trap. You decide to turn and flee. NL NL The fauxes begin crying excitedly. #b\"A #brace?\" #g~\"I~ #g~love~ #g~races!\"~ #p\"I'll #p@definitely@ #pwin #pthis #ptime!\" #r\"Wow, #rthis #rone #ris #rfast!\" NL NL The voices close in, but you stay just ahead of them. Just when you think your lungs might give out, you burst out into the open, outside of the maw of the forest. Your pursuers stop, and silence falls. NL NL After you catch your breath, you notice a small sack lying on the ground, #yfilled #ywith #ygold. Attached is a note simply saying #p\"winner!\" NL NL What strange creatures.",
+      "Before you can react, he speaks. #y\"Are #yyou #your #ynew #yfriend?\" NL NL Chattering voices suddenly fill the forest around you. #g\"I #glove #gnew #gfriends!\" #b\"Do #byou #bthink #bthis #bone #bwill #bstay #ba #bwhile?\" #p\"Oh #pit's #pbeen #p~so~ #p~long!\"~ #r\"I'm #rso #rexcited #rto #rplay #rwith #ryou!\" NL NL The faux speaks again. #y\"It's #ygoing #yto #ybe #y@so@ #y@much@ #y@fun!@ #yDon't #yyou #yagree?\" NL NL Do you agree?"
+    ],
+    "OPTIONS": [
+      "[Enter] Explore the passageway.",
+      "[Leave] Turn back.",
+      "[Agree] #gGain #g5 #gMaximum #gHP. #rLose #r10 #rHP.",
+      "[Disagree] #gObtain #ga #gspecial #gRelic. #rBecome #rCursed #r- #rShame.",
+      "[Run] #yGain #y200 #yGold. #rBecome #rCursed #r- #rNormality",
+      "[Leave]",
+      "[Agree] #gGain #g5 #gMaximum #gHP. #rLose #r15 #rHP.",
+      "[Run] #yGain #y150 #yGold. #rBecome #rCursed #r- #rNormality",
+      "[Continue]"
+    ]
+  },
   "theAct:ForkInTheRoad" : {
     "NAME": "Fork in the Road",
     "DESCRIPTIONS": [
