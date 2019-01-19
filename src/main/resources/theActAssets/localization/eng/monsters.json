@@ -1,7 +1,10 @@
 {
 	"theJungle:Phrog": {
 		"MOVES": [
-			"Lick"
+			"Lick",
+			"Jump",
+			"Croak",
+			""
 		],
 		"NAME": "Phrog",
 		"DIALOG": [
