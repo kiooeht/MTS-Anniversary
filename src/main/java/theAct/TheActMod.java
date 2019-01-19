@@ -23,6 +23,7 @@ import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import theAct.dungeons.Jungle;
 import theAct.events.ExcessResources;
+import theAct.events.FauxPas;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
 import theAct.events.GremlinQuiz;
@@ -33,6 +34,7 @@ import theAct.patches.GetDungeonPatches;
 import theAct.relics.WildMango;
 import theAct.relics.WildPear;
 import theAct.relics.WildStrawberry;
+import theAct.relics.PaperFaux;
 
 @SpireInitializer
 public class TheActMod implements
@@ -77,6 +79,7 @@ public class TheActMod implements
         // Add events here
         BaseMod.addEvent(River.ID, River.class, Jungle.ID);
         BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
+        BaseMod.addEvent(FauxPas.ID, FauxPas.class, Jungle.ID);
         BaseMod.addEvent(GremlinQuiz.ID, GremlinQuiz.class, Jungle.ID);
         BaseMod.addEvent(ExcessResources.ID, ExcessResources.class, Jungle.ID);
 
@@ -94,6 +97,16 @@ public class TheActMod implements
     }
 
     @Override
+    public void receiveEditRelics()
+    {
+        //event relics
+        BaseMod.addRelic(new PaperFaux(), RelicType.SHARED);
+        BaseMod.addRelic(new WildMango(), RelicType.SHARED);
+        BaseMod.addRelic(new WildStrawberry(), RelicType.SHARED);
+        BaseMod.addRelic(new WildPear(), RelicType.SHARED);
+    }
+
+    @Override
     public void receiveEditKeywords()
     {
         String language = "eng";
@@ -108,12 +121,6 @@ public class TheActMod implements
                 BaseMod.addKeyword(keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
             }
         }
-    }
-
-    public void receiveEditRelics() {
-        BaseMod.addRelic(new WildMango(), RelicType.SHARED);
-        BaseMod.addRelic(new WildStrawberry(), RelicType.SHARED);
-        BaseMod.addRelic(new WildPear(), RelicType.SHARED);
     }
 
     @Override
