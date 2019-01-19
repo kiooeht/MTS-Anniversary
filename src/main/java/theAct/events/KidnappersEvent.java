@@ -78,9 +78,25 @@ public class KidnappersEvent extends AbstractImageEvent {
                         imageEventText.updateBodyText(DESCRIPTIONS[2]);
                         imageEventText.setDialogOption(OPTIONS[8]);
                         imageEventText.clearRemainingOptions();
-                        screenNum = 2;
+                        screenNum = 3;
                         break;
                     case 1:
+                        imageEventText.setDialogOption(OPTIONS[9]);
+                        imageEventText.updateBodyText(DESCRIPTIONS[3]);
+                        screenNum = 2;
+                        break;
+                    case 2:
+                        AbstractDungeon.player.loseGold(GOLD_AMT);
+                        imageEventText.updateBodyText(DESCRIPTIONS[4]);
+                        imageEventText.setDialogOption(OPTIONS[10]);
+                        imageEventText.clearRemainingOptions();
+                        screenNum = 3;
+                        break;
+                }
+                break;
+            case 2:
+                switch(i) {
+                    case 0:
                         AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter("KidnapperSilents");
                         enterCombatFromImage();
                         int rng = AbstractDungeon.miscRng.random(silentRelics.size() - 1);
@@ -99,16 +115,9 @@ public class KidnappersEvent extends AbstractImageEvent {
                         }
                         AbstractDungeon.lastCombatMetricKey = "KidnapperSilents";
                         break;
-                    case 2:
-                        AbstractDungeon.player.loseGold(GOLD_AMT);
-                        imageEventText.updateBodyText(DESCRIPTIONS[2]);
-                        imageEventText.setDialogOption(OPTIONS[9]);
-                        imageEventText.clearRemainingOptions();
-                        screenNum = 2;
-                        break;
                 }
                 break;
-            case 2:
+            case 3:
                 openMap();
                 break;
         }
@@ -128,11 +137,11 @@ public class KidnappersEvent extends AbstractImageEvent {
 
     private void removeCard() {
         if (!AbstractDungeon.isScreenUp) {
-            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[10], false, false, false, false);
+            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[11], false, false, false, false);
         } else {
             AbstractDungeon.dynamicBanner.hide();
             AbstractDungeon.previousScreen = AbstractDungeon.screen;
-            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[10], false, false, false, false);
+            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[11], false, false, false, false);
         }
     }
 }
