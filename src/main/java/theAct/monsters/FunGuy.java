@@ -94,6 +94,7 @@ public class FunGuy extends AbstractMonster {
 		this.damage.add(new DamageInfo(this, chompDamage));
 		this.damage.add(new DamageInfo(this, burstDamage));
 		this.damage.add(new DamageInfo(this, assymDamage));
+		this.damage.add(new DamageInfo(this, assymDamage+2));
 	}
 	
 	@Override
@@ -128,7 +129,7 @@ public class FunGuy extends AbstractMonster {
 			for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
 				if (m != null && m != this && !m.isDeadOrEscaped()) {
 					AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4f));
-					AbstractDungeon.actionManager.addToBottom(new VampireDamageAction(m, this.damage.get(2), AbstractGameAction.AttackEffect.POISON));
+					AbstractDungeon.actionManager.addToBottom(new VampireDamageAction(m, this.damage.get(3), AbstractGameAction.AttackEffect.POISON));
 					AbstractDungeon.actionManager.addToBottom(new SuicideAction(m));
 				}
 			}
