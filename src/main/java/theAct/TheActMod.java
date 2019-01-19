@@ -97,11 +97,13 @@ public class TheActMod implements
 
     @Override
     public Boolean onSave() {
+        logger.info("Saving wentToTheJungle boolean: " + wentToTheJungle);
         return wentToTheJungle;
     }
 
     @Override
     public void onLoad(Boolean loadedBoolean) {
         wentToTheJungle = loadedBoolean;
+        logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
     }
 }

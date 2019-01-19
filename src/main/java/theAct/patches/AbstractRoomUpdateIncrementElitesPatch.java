@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
+import theAct.TheActMod;
 import theAct.dungeons.Jungle;
 
 import java.lang.reflect.Field;
@@ -31,7 +32,7 @@ public class AbstractRoomUpdateIncrementElitesPatch {
                     && CardCrawlGame.dungeon instanceof Jungle
             ) {
                 ++CardCrawlGame.elites2Slain;
-                //AbstractRoom.logger.info("ELITES SLAIN " + CardCrawlGame.elites2Slain); logger has private access
+                TheActMod.logger.info("Jungle elites: " + CardCrawlGame.elites2Slain);
             }
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
