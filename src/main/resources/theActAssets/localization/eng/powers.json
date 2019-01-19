@@ -1,0 +1,57 @@
+{
+	"theJungle:DigestPower": {
+		"NAME" : "Digestion",
+		"DESCRIPTIONS": [
+			"After taking damage #b",
+			" times, ",
+			" is returned to your hand. NL NL At the end of your turn ",
+			" is #rdigested."
+		]
+	},
+	"theJungle:TotemStrengthPower": {
+		"NAME" : "Totemic Rage",
+		"DESCRIPTIONS": [
+			"When a Totem is destroyed, remaining Totems gain 1 Strength."
+		]
+	},
+	"theJungle:BlockFromStrengthPower": {
+		"NAME" : "Defensive",
+		"DESCRIPTIONS": [
+			"Strength increases the amount of Block this enemy provides."
+		]
+	},
+	"theJungle:TotemFleePower": {
+		"NAME" : "Cowardice",
+		"DESCRIPTIONS": [
+			"When all Totems are destroyed, this enemy will flee."
+		]
+	},
+	"theJungle:ImmunityPower": {
+		"NAME" : "Immunity",
+		"DESCRIPTIONS": [
+			"This enemy cannot be damaged."
+		]
+	},
+	"theJungle:Swinging Trap": {
+		"NAME": "Pendulum Trap",
+		"DESCRIPTIONS": [
+			"NL NL Changes position each time you play a card. NL Cycles between #rIncoming, #rMidswing, and #gResetting.",
+			"#yPOSITION: ",
+			"#rINCOMING NL Ending your turn while this trap is #rIncoming will cause it to deal damage to you.", 
+			"#rMIDSWING NL Playing an #yAttack card while this trap is in #rMidswing will cause you to take #b", 
+			" damage.",
+			"#gRESETTING NL This trap is harmless while #gResetting."
+		]
+	},
+	"theJungle:FungalInfectionPower": {
+		"NAME": "Fungal Infection",
+		"DESCRIPTIONS": [
+			"Place a random #rSpore #rStatus on top of your deck each turn. NL Lasts #b",
+			" more turns."
+		]
+	},
+	"theJungle:RegenerativeSlime": {
+		"NAME": "Regenerative Slime",
+		"DESCRIPTIONS": ["Whenever you play a non-Attack card, this heals #b"," HP."]
+	}
+}

@@ -1,0 +1,116 @@
+{
+	"theJungle:Cassacara": {
+		"MOVES": [
+			"Big Bite",
+			"Chew",
+			"Bottomless Stomach"
+		],
+		"NAME": "Cassacara",
+		"DIALOG": [
+			"@RrraahrRGHhh!!@"
+		]
+	},
+	"theJungle:Phrog": {
+		"MOVES": [
+			"Lick",
+			"Jump",
+			"Croak",
+			""
+		],
+		"NAME": "Phrog",
+		"DIALOG": [
+			"riiiiibbit!"
+		]
+	},
+	"theJungle:TotemBoss": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "Totem Speaker",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:BashTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "BashTotem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:BuffTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "BuffTotem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:DebuffTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "DebuffTotem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:ShieldOtherTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "ShieldOtherTotem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:DoubleStrikeTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "DoubleStrikeTotem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:AttackAndShieldTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "AttackAndShieldTotem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:SwingingAxe": {
+		"MOVES": [
+			"Reboot"
+		],
+		"NAME": "Swinging Axe Trap",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:FunGuy": {
+		"MOVES": [
+			"Chomp",
+			"Infection",
+			"Spread Spores",
+			"Sporeburst",
+			"Growth",
+			"Assimilate"
+		],
+		"NAME": "Fungi Core",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:SlimyTreeVines": {
+		"NAME": "Slimy Jungle Vines",
+		"MOVES": ["Tangle","Split"],
+		"DIALOG": ["Jungle Vines"]
+	}
+}

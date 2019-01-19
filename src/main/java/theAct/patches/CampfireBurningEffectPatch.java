@@ -27,7 +27,6 @@ public class CampfireBurningEffectPatch {
                 ((Color)colorField.get(__instance)).g -= 0.0f; //TODO: find appropriate variance
                 ((Color)colorField.get(__instance)).b -= 0.0f; //MathUtils.random(0.5f), etc
             } catch (NoSuchFieldException | IllegalAccessException E) {
-                //logger info
                 E.printStackTrace();
             }
         }

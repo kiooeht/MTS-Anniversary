@@ -2,21 +2,16 @@ package theAct;
 
 import java.nio.charset.StandardCharsets;
 
-import basemod.abstracts.CustomSavableRaw;
-import basemod.helpers.RelicType;
-import basemod.interfaces.EditRelicsSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonPrimitive;
-import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
 import org.apache.logging.log4j.LogManager;
@@ -24,6 +19,7 @@ import org.apache.logging.log4j.Logger;
 
 import basemod.BaseMod;
 import basemod.ModPanel;
+import basemod.abstracts.CustomSavable;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
@@ -31,19 +27,25 @@ import theAct.dungeons.Jungle;
 import theAct.events.FauxPas;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
+import theAct.monsters.Phrog;
+import theAct.monsters.SlimyTreeVines;
+import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
-import theAct.relics.SpiritDisease;
 
 @SpireInitializer
 public class TheActMod implements
         PostInitializeSubscriber,
-        EditRelicsSubscriber,
         EditKeywordsSubscriber,
         EditStringsSubscriber,
-        CustomSavableRaw
+        CustomSavable<Boolean>
 {
+	
+	
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
+
     public static boolean wentToTheJungle = false;
+    
+    
 
     public static void initialize()
     {
@@ -75,6 +77,9 @@ public class TheActMod implements
         BaseMod.addEvent(FauxPas.ID, FauxPas.class, Jungle.ID);
 
         // Add monsters here
+        BaseMod.addMonster(Phrog.ID, Phrog::new);
+        BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
+        BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
@@ -111,24 +116,19 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));
         BaseMod.loadCustomStringsFile(UIStrings.class, assetPath(path + "ui.json"));
         BaseMod.loadCustomStringsFile(CardStrings.class, assetPath(path + "cards.json"));
-        BaseMod.loadCustomStringsFile(RelicStrings.class, assetPath(path + "relics.json"));
+        BaseMod.loadCustomStringsFile(MonsterStrings.class, assetPath(path + "monsters.json"));
+        BaseMod.loadCustomStringsFile(PowerStrings.class, assetPath(path + "powers.json"));
     }
 
     @Override
-    public void receiveEditRelics()
-    {
-        BaseMod.addRelic(new SpiritDisease(), RelicType.SHARED);
-    }
-
-    @Override
-    public JsonElement onSaveRaw() {
+    public Boolean onSave() {
         logger.info("Saving wentToTheJungle boolean: " + wentToTheJungle);
-        return new JsonPrimitive(wentToTheJungle);
+        return wentToTheJungle;
     }
 
     @Override
-    public void onLoadRaw(JsonElement loadedBoolean) {
-        wentToTheJungle = loadedBoolean.getAsBoolean();
+    public void onLoad(Boolean loadedBoolean) {
+        wentToTheJungle = loadedBoolean;
         logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
     }
 }
