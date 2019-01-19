@@ -30,23 +30,23 @@
     "NAME": "Misty Forest",
     "DESCRIPTIONS": [
       "As you're traversing through the ~foggy~ ~jungle~ , a rope suddenly tightens around your ankle. NL #r@You've@ #r@been@ #r@caught@ #r@in@ #r@a@ #r@trap!@",
-      "A number of tribesmen surround you. They are wearing #g~green~ robes and #r@animal@ #r@skulls@ #r@for@ #r@masks@ . You can't help but feel #r~malice~ coming from them. NL \"We caught one!\" NL ~\"Hey,~ ~this~ ~one~ ~doesn't~ ~look~ ~like~ ~a~ ~cultist...?\"~ NL \"You never know with those guys, #@rlet's@ #r@get@ #r@'em...@ \" NL You may have time to escape in the confusion.",
-      "You make it clear that you are #r~NOT~ a cultist, nor an enemy, and have no qualms with their clan. NL Negotiating is a bit #r@painful@, but they let you go, for a small price.",
+      "A number of tribesmen surround you. They are wearing #g~green~ robes and #r@animal@ #r@skulls@ #r@for@ #r@masks@ . You can't help but feel #r~malice~ coming from them. NL \"We caught one!\" NL ~\"Hey,~ ~this~ ~one~ ~doesn't~ ~look~ ~like~ ~a~ ~cultist...?\"~ NL \"You never know with those guys, #r@let's@ #r@get@ #r@'em...@ \" NL You may have time to escape in the confusion.",
+      "You make it clear that you are #r~NOT~ a cultist, nor an enemy, and have no qualms with their clan. NL Negotiating is a bit #r@painful@ , but they let you go, for a small price.",
       "You struggle hard, but manage to use your weapon and break through the rope while they approach. NL They give chase, while more tribesmen surround you!",
-      "Seeing as you are not a cultist or an animal, you manage to bribe them with gold. NL They untie you and let you leave in piece, ~but~ ~you~ ~can't~ ~shake~ ~the~ ~feeling~ ~that~ ~someone~ ~keeps~ ~watching~ ~you...~"
+      "Seeing as you are not a cultist or an animal, you manage to bribe them with #ysome #ygold. NL They untie you and let you leave in piece, #r~but~ #r~you~ #r~can't~ #r~shake~ #r~the~ #r~feeling~ #r~that~ #r~someone~ #r~keeps~ #r~watching~ #r~you...~"
     ],
     "OPTIONS": [
       "[Proceed.]",
-      "[Negotiate] #g(Lose #r",
-      " #rHP #gand #gremove #g1 #gcard #gfrom #gyour #gdeck.)",
-      "[Cut the Rope] #r(Enter #ra #rfight!)",
-      "[Bribe] #g(Lose #y",
-      " #ggold.)",
-      "[Locked] (Requires: ",
-      " gold.)",
+      "[Negotiate] #gLose #r",
+      " #rHP . #gremove #g1 #gcard #gfrom #gyour #gdeck.",
+      "[Cut the Rope] #rEnter #ra #rfight!",
+      "[Bribe] #rLose #y",
+      " #ygold.",
+      "[Locked] Requires: ",
+      " gold.",
       "[Leave.]",
       "[#rFight!]",
-      "[Proceed.]"
+      "Remove a card from your deck."
     ]
   }
 }
