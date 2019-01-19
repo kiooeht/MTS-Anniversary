@@ -42,6 +42,8 @@
       "theActAssets/images/events/quiz/power1.png",
       "What is missing in this image?",
       "theActAssets/images/events/quiz/card3.png",
+      "By how much does your max HP increase if you get all three fruits?",
+      ""
     ],
     "OPTIONS": [
       "[Begin Quiz]",
@@ -112,7 +114,12 @@
       ">A bomb",
       "A flask",
       "A blade",
-      "A syringe"
+      "A syringe",
+
+      ">31",
+      "34",
+      "29",
+      "26"
     ]
   }
 }
