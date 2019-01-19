@@ -27,7 +27,9 @@
       "What is NOT a card for The Silent?",
       "",
       "What card is this?",
-      "theActAssets/images/events/quiz/card1.png"
+      "theActAssets/images/events/quiz/card1.png",
+      "Which of these enemies can make you weak?",
+      ""
     ],
     "OPTIONS": [
       "[Begin Quiz]",
@@ -63,7 +65,12 @@
       "Boot Sequence",
       ">Recursion",
       "Machine Learning",
-      "Reinforced Body"
+      "Reinforced Body",
+
+      "Spike Slime",
+      "Red Louse",
+      "Mad Gremlin",
+      ">Blue Slaver"
     ]
   }
 }
