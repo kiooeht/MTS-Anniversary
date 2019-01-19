@@ -32,7 +32,7 @@
 			"This enemy cannot be damaged."
 		]
 	},
-	"theJungle:Swinging Trap": {
+	"theJungle:SwingingTrapPower": {
 		"NAME": "Pendulum Trap",
 		"DESCRIPTIONS": [
 			"NL NL Changes position each time you play a card. NL Cycles between #rIncoming, #rMidswing, and #gResetting.",
