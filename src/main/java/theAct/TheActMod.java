@@ -21,6 +21,7 @@ import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import theAct.dungeons.Jungle;
+import theAct.events.River;
 import theAct.patches.GetDungeonPatches;
 
 @SpireInitializer
@@ -56,6 +57,7 @@ public class TheActMod implements
         BaseMod.registerModBadge(ImageMaster.loadImage(assetPath("modBadge.png")), "MTS Anniversary Act", "Everyone", "TODO", settingsPanel);
 
         // Add events here
+        BaseMod.addEvent(makeID("River"), River.class, "Jungle");
 
         // Add monsters here
 

@@ -9,5 +9,24 @@
       "[Go Left] Enter ",
       "[Go Right] Enter "
     ]
+  },
+
+  "theJungle:River" : {
+    "NAME": "Spirit River",
+
+    "DESCRIPTIONS" : [
+      "Lost and thirsty, you are pleasantly surprised by a river running across your path. However, a cautious taste of the water reveals a suspicious taste...",
+      "Drinking the water, you initially feel ~refreshed~ , however, you soon feel ~unwell~ from drinking the tainted water.",
+      "Not wanting to take a risk, you ford the river and move on."
+    ],
+
+    "OPTIONS" : [
+      "[Drink] #gRemove #g",
+      " #gcards #gfrom #gyour #gdeck. #rAdd #ra #rSpirit #rDisease #rto #ryour #rdeck.",
+      "[Leave]",
+      "Select ",
+      " Cards to Remove.",
+      "Confirm Cards to Remove"
+    ]
   }
 }
