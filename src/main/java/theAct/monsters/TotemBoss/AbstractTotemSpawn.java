@@ -53,6 +53,12 @@ public class AbstractTotemSpawn extends AbstractMonster {
     private Method refupdateDeathAnimation;
     private Method refupdateIntent;
 
+    public static Float beamOffsetX = 25F * Settings.scale;
+    public static Float beamOffsetY = 40F * Settings.scale;
+
+    public static Float beamOffsetX2 = -35F * Settings.scale;
+    public static Float beamOffsetY2 = 40F * Settings.scale;
+
 
 
     public Intent intentType = Intent.BUFF;
