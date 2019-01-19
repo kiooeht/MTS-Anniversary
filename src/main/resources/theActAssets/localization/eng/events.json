@@ -37,7 +37,9 @@
       "Match this card art with its beta art.",
       "theActAssets/images/events/quiz/card2.png",
       "What power is this?",
-      "theActAssets/images/events/quiz/power1.png"
+      "theActAssets/images/events/quiz/power1.png",
+      "What is missing in this image?",
+      "theActAssets/images/events/quiz/card3.png",
     ],
     "OPTIONS": [
       "[Begin Quiz]",
@@ -98,7 +100,12 @@
       ">Enrage",
       "Choke",
       "Panache",
-      "Lock-On"
+      "Lock-On",
+
+      ">A bomb",
+      "A flask",
+      "A blade",
+      "A syringe"
     ]
   }
 }
