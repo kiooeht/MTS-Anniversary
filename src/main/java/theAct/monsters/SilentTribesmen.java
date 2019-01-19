@@ -89,6 +89,7 @@ public class SilentTribesmen extends AbstractMonster {
     protected void getMove(int i) {
         if (isFirstTurn) {
             setMove((byte)0, Intent.DEFEND);
+            isFirstTurn = false;
         }
     }
 }
