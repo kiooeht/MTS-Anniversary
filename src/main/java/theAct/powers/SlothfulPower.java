@@ -36,7 +36,7 @@ public class SlothfulPower extends Power implements OnReceivePowerPower {
 
     @Override
     public boolean onReceivePower(AbstractPower p, AbstractCreature ptarget, AbstractCreature psource) {
-        if(p.type == PowerType.BUFF && ptarget == AbstractDungeon.player) {
+        if(p.type == PowerType.BUFF && ptarget == owner) {
             flash();
             this.onSpecificTrigger();
             return false;
