@@ -1,8 +1,11 @@
 package theAct.monsters;
 
+import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.unique.ApplyStasisAction;
@@ -26,9 +29,6 @@ import theAct.powers.abstracts.Power;
 import javax.smartcardio.Card;
 
 public class Phrog extends AbstractMonster {
-	/*
-		Turn one he takes a card and then keeps it for 3 turns.
-	 */
 	public static final String ID = TheActMod.makeID("Phrog");
 	private static final MonsterStrings STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
 
@@ -39,9 +39,9 @@ public class Phrog extends AbstractMonster {
 	private AbstractCard card;
 
 	public Phrog() {
-		super(STRINGS.NAME, ID, 75, 0, 0, 300, 300, null, 0, 0);
+		super(STRINGS.NAME, ID, 75, 0, 0, 300, 300, null, 0, 0f);
 
-		this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
+		//this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
 
 		switch(AbstractDungeon.ascensionLevel){
 			case 7:
@@ -54,6 +54,16 @@ public class Phrog extends AbstractMonster {
 		this.damage.add(new DamageInfo(this, tackleDamage));
 
 		this.setHp(minHP, maxHP);
+
+		this.animY += 25f;
+
+		this.loadAnimation(
+			TheActMod.assetPath("images/monsters/phrog/Phrog.atlas"),
+			TheActMod.assetPath("images/monsters/phrog/Phrog.json"),
+			0.75f);
+
+		AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
+		e.setTime(e.getEndTime() * MathUtils.random());
 	}
 
 	@Override
@@ -66,13 +76,16 @@ public class Phrog extends AbstractMonster {
 				AbstractDungeon.actionManager.addToBottom(new PhrogLickAction(this, 3));
 				break;
 			case MoveBytes.TACKLE:
+				AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
 				AbstractDungeon.actionManager.addToBottom(new DamageAction(p, damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 				break;
 			case MoveBytes.JUMP:
+				AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new WeakPower(p, 2, true), 2));
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new FrailPower(p, 2, true), 2));
 				break;
 			case MoveBytes.CROAK:
+				AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 5), 5));
 				break;
 			case MoveBytes.STUNNED:
@@ -80,7 +93,25 @@ public class Phrog extends AbstractMonster {
 				break;
 		}
 
+
+
 		AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
+	}
+
+	public void changeState(String key){
+		switch (key) {
+			case "ATTACK":
+				this.state.setAnimation(1, "attack", false);
+				break;
+		}
+	}
+
+	@Override
+	public void damage(DamageInfo info) {
+		super.damage(info);
+		if (info.owner != null && info.type != DamageInfo.DamageType.THORNS && info.output > 0) {
+			this.state.setAnimation(2, "oof", false);
+		}
 	}
 
 	public void setCard(AbstractCard card){
