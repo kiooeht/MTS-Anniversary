@@ -30,10 +30,10 @@ public class VictoryOrDeathScreenCreateGameOverStatsPatch {
                 locator = Locator.class
         )
         public static void Insert(VictoryScreen __instance) {
-            if (CardCrawlGame.dungeon instanceof Exordium || CardCrawlGame.dungeon instanceof TheCity) {
+            boolean act3OrHigher = CardCrawlGame.dungeon instanceof TheBeyond || CardCrawlGame.dungeon instanceof TheEnding;
+            if (CardCrawlGame.dungeon instanceof Exordium || CardCrawlGame.dungeon instanceof TheCity || (act3OrHigher && !TheActMod.wentToTheJungle)) {
                 return;
             }
-            boolean act3OrHigher = CardCrawlGame.dungeon instanceof TheBeyond || CardCrawlGame.dungeon instanceof TheEnding;
             if (act3OrHigher) {
                 __instance.stats.remove(4);
                 __instance.stats.remove(3);
@@ -76,10 +76,10 @@ public class VictoryOrDeathScreenCreateGameOverStatsPatch {
                 locator = Locator.class
         )
         public static void Insert(DeathScreen __instance) {
-            if (CardCrawlGame.dungeon instanceof Exordium || CardCrawlGame.dungeon instanceof TheCity) {
+            boolean act3OrHigher = CardCrawlGame.dungeon instanceof TheBeyond || CardCrawlGame.dungeon instanceof TheEnding;
+            if (CardCrawlGame.dungeon instanceof Exordium || CardCrawlGame.dungeon instanceof TheCity || (act3OrHigher && !TheActMod.wentToTheJungle)) {
                 return;
             }
-            boolean act3OrHigher = CardCrawlGame.dungeon instanceof TheBeyond || CardCrawlGame.dungeon instanceof TheEnding;
             if (act3OrHigher) {
                 __instance.stats.remove(4);
                 __instance.stats.remove(3);
