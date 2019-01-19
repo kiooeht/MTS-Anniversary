@@ -45,7 +45,9 @@
       "By how much does your max HP increase if you get all three fruits?",
       "",
       "Name two curses that are shown in this image.",
-      "theActAssets/images/events/quiz/curses1.png"
+      "theActAssets/images/events/quiz/curses1.png",
+      "What effect does Ascension 16 have?",
+      ""
     ],
     "OPTIONS": [
       "[Begin Quiz]",
@@ -126,7 +128,12 @@
       ">Shame and Writhe",
       "Regret and Pain",
       "Shame and Injury",
-      "Pride and Regret"
+      "Pride and Regret",
+
+      ">Shops are more costly",
+      "Unfavorable Events",
+      "Bosses are tougher",
+      "Upgraded cards appear less often"
     ]
   }
 }
