@@ -10,6 +10,7 @@ import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
@@ -78,9 +79,9 @@ public class TheActMod implements
 
         // Add monsters here
         BaseMod.addMonster(makeID("3_Flameangoes"), () -> new MonsterGroup(new AbstractMonster[] {
-                new Flameango(),
-                new Flameango(),
-                new Flameango()
+                new Flameango(-650.0f * Settings.scale),
+                new Flameango(-150.0f * Settings.scale),
+                new Flameango(350.0f * Settings.scale)
         }));
         BaseMod.addMonster(Phrog.ID, Phrog::new);
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
@@ -89,7 +90,6 @@ public class TheActMod implements
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
 
         // Add Encounters here
-        BaseMod.addMonsterEncounter(Jungle.ID, new MonsterInfo(makeID("3_Flameangoes"), 2));
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
@@ -128,6 +128,7 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(CardStrings.class, assetPath(path + "cards.json"));
         BaseMod.loadCustomStringsFile(MonsterStrings.class, assetPath(path + "monsters.json"));
         BaseMod.loadCustomStringsFile(PowerStrings.class, assetPath(path + "powers.json"));
+        BaseMod.loadCustomStringsFile(RelicStrings.class, assetPath(path + "relics.json"));
     }
 
     @Override
