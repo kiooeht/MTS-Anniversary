@@ -23,6 +23,7 @@ public class KidnappersEvent extends AbstractImageEvent {
     private int screenNum = 0;
     private int HEALTH_LOSS;
     private boolean cardSelected = false;
+    private static int GOLD_AMT;
 
     public KidnappersEvent() {
         super(NAME, DESCRIPTIONS[0], TheActMod.assetPath("images/events/KidnappersEvent.png"));
@@ -31,6 +32,11 @@ public class KidnappersEvent extends AbstractImageEvent {
             HEALTH_LOSS = 15;
         } else {
             HEALTH_LOSS = 10;
+        }
+        if (AbstractDungeon.ascensionLevel >= 15) {
+            GOLD_AMT = 100;
+        } else {
+            GOLD_AMT = 50;
         }
     }
 
@@ -44,6 +50,7 @@ public class KidnappersEvent extends AbstractImageEvent {
                         imageEventText.updateBodyText(DESCRIPTIONS[1]);
                         imageEventText.setDialogOption(OPTIONS[1] + HEALTH_LOSS + OPTIONS[2]);
                         imageEventText.setDialogOption(OPTIONS[3]);
+                        imageEventText.setDialogOption(OPTIONS[4], AbstractDungeon.player.gold >= GOLD_AMT);
                         screenNum = 1;
                         break;
                 }
@@ -55,7 +62,7 @@ public class KidnappersEvent extends AbstractImageEvent {
                         AbstractDungeon.effectList.add(new FlashAtkImgEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, AbstractGameAction.AttackEffect.FIRE));
                         removeCard();
                         imageEventText.updateBodyText(DESCRIPTIONS[2]);
-                        imageEventText.setDialogOption(OPTIONS[4]);
+                        imageEventText.setDialogOption(OPTIONS[5]);
                         imageEventText.clearRemainingOptions();
                         screenNum = 2;
                         break;
@@ -63,6 +70,12 @@ public class KidnappersEvent extends AbstractImageEvent {
                         AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter("KidnapperSilents");
                         enterCombatFromImage();
                         AbstractDungeon.lastCombatMetricKey = "Colosseum Nobs";
+                    case 2:
+                        AbstractDungeon.player.loseGold(GOLD_AMT);
+                        imageEventText.updateBodyText(DESCRIPTIONS[2]);
+                        imageEventText.setDialogOption(OPTIONS[5]);
+                        imageEventText.clearRemainingOptions();
+                        screenNum = 2;
                 }
                 break;
             case 2:
