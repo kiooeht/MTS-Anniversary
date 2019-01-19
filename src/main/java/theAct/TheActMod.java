@@ -21,6 +21,7 @@ import theAct.events.River;
 import theAct.events.SneckoCultEvent;
 import theAct.monsters.Phrog;
 import theAct.monsters.SwingingAxe;
+import theAct.monsters.SlimyTreeVines;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
 
@@ -33,13 +34,13 @@ public class TheActMod implements
         EditStringsSubscriber,
         CustomSavable<Boolean>
 {
-
-
+	
+	
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
 
     public static boolean wentToTheJungle = false;
-
-
+    
+    
 
     public static void initialize()
     {
@@ -74,8 +75,10 @@ public class TheActMod implements
         BaseMod.addMonster(Phrog.ID, Phrog::new);
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
         BaseMod.addMonster(SwingingAxe.ID, () -> {return new SwingingAxe();});
+        BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
 
         // Add Encounters here
+
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
