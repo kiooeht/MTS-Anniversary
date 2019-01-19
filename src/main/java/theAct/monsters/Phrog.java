@@ -8,6 +8,9 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAct.TheActMod;
+import theAct.actions.PhrogLickAction;
+
+import javax.smartcardio.Card;
 
 public class Phrog extends AbstractMonster {
 	/*
@@ -16,8 +19,8 @@ public class Phrog extends AbstractMonster {
 	public static final String ID = TheActMod.makeID("Phrog");
 	private static final MonsterStrings STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
 
-	private int maxHP = 73;
-	private int minHP = 87;
+	private int maxHP = 87;
+	private int minHP = 73;
 
 	AbstractCard heldCard;
 
@@ -28,21 +31,26 @@ public class Phrog extends AbstractMonster {
 
 		switch(AbstractDungeon.ascensionLevel){
 			case 7:
-				//hp increase
+				this.minHP += 5;
+				this.maxHP += 5;
 			case 2:
 				//two damage increase
 		}
 
-		setHp(minHP, maxHP);
+		this.setHp(minHP, maxHP);
 	}
 
 	@Override
 	public void takeTurn() {
 		switch(this.nextMove) {
 			case 0:
-				AbstractDungeon.actionManager.addToBottom(new ApplyStasisAction(this));
+				AbstractDungeon.actionManager.addToBottom(new PhrogLickAction(this, 3));
 				break;
 		}
+	}
+
+	public void setHeldCard(AbstractCard card) {
+		this.heldCard = card;
 	}
 
 	@Override
