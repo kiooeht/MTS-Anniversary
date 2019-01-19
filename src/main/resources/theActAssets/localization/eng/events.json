@@ -1,2 +1,13 @@
 {
+  "theAct:ForkInTheRoad" : {
+    "NAME":  "Fork in the Road",
+    "DESCRIPTIONS": [
+      "TODO: Somebody with writing skill please write this."
+    ],
+    "OPTIONS": [
+      ".",
+      "[Go Left] Enter ",
+      "[Go Right] Enter "
+    ]
+  }
 }

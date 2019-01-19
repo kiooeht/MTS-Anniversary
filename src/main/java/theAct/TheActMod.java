@@ -64,9 +64,7 @@ public class TheActMod implements
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
-        GetDungeonPatches.addNextDungeon(Exordium.ID, Jungle.ID);
         GetDungeonPatches.addNextDungeon(Jungle.ID, TheBeyond.ID);
-
     }
 
     @Override
