@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.events.GenericEventDialog;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import theAct.TheActMod;
 import theAct.dungeons.Jungle;
 import theAct.patches.GoToNextDungeonPatch;
 
@@ -33,6 +34,7 @@ public class ForkInTheRoad extends AbstractImageEvent
                 break;
             case 1:
                 CardCrawlGame.nextDungeon = Jungle.ID;
+                TheActMod.wentToTheJungle = true;
                 break;
         }
 
