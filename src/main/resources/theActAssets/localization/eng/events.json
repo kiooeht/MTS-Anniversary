@@ -15,10 +15,12 @@
     "DESCRIPTIONS": [
       "INTRO",
       "DONE",
-      "QUESTION 1",
+      "What is the name of the Bronze Automaton's biggest attack?",
       "",
-      "QUESTION 2",
-      "images/events/designerPunched2.jpg"
+      "Identify the enemies in this picture.",
+      "theActAssets/images/events/quiz/identify1.png",
+      "In what order (from left to right) do the Red Mask Bandits appear?",
+      "images/events/redMaskTomb.jpg"
     ],
     "OPTIONS": [
       "[Begin Quiz]",
@@ -27,15 +29,20 @@
       "[Cπ] ",
       "[Dπ] ",
 
-      "Answer 1.1",
-      ">Answer 1.2",
-      "Answer 1.3",
-      "Answer 1.4",
+      "Sweeping Beam",
+      ">Hyper Beam",
+      "Hyper Blast",
+      "Disintegrate",
 
-      "Answer 2.1",
-      "Answer 2.2",
-      "Answer 2.3",
-      ">Answer 2.4"
+      ">Chosen, Snecko, Darkling",
+      "Fungi Beast, Chosen, Spike Slime",
+      "Snecko, Acid Slime, Cultist",
+      "Awakened One, Louse, Snake Plant",
+
+      ">Pointy, Romeo, Bear",
+      "Bear, Pointy, Romeo",
+      "Romeo, Pointy, Bear",
+      "Pointy, Bear, Romeo"
     ]
   }
 }
