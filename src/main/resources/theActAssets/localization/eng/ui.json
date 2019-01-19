@@ -4,5 +4,10 @@
       "The Jungle",
       "Act 2"
     ]
+  },
+
+  "theJungle:DysenteryEasterEgg" :
+  {
+    "TEXT": [ "You have died of dysentery." ]
   }
 }
