@@ -1,8 +1,12 @@
 package theAct.monsters;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.unique.ApplyStasisAction;
+import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,8 +15,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.FrailPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import theAct.TheActMod;
 import theAct.actions.PhrogLickAction;
+import theAct.powers.DigestPower;
+import theAct.powers.abstracts.Power;
 
 import javax.smartcardio.Card;
 
@@ -27,7 +36,7 @@ public class Phrog extends AbstractMonster {
 	private int minHP = 97;
 	private int tackleDamage = 25;
 
-	AbstractCard heldCard;
+	private AbstractCard card;
 
 	public Phrog() {
 		super(STRINGS.NAME, ID, 75, 0, 0, 300, 300, null, 0, 0);
@@ -52,27 +61,61 @@ public class Phrog extends AbstractMonster {
 		AbstractPlayer p = AbstractDungeon.player;
 
 		switch(this.nextMove) {
-			case 0:
+			case MoveBytes.LICK:
+				AbstractDungeon.actionManager.addToBottom(new TalkAction(this, STRINGS.DIALOG[0], 1.0f, 2.0f));
 				AbstractDungeon.actionManager.addToBottom(new PhrogLickAction(this, 3));
 				break;
-			case 1:
+			case MoveBytes.TACKLE:
 				AbstractDungeon.actionManager.addToBottom(new DamageAction(p, damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 				break;
+			case MoveBytes.JUMP:
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new WeakPower(p, 2, true), 2));
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new FrailPower(p, 2, true), 2));
+				break;
+			case MoveBytes.CROAK:
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 5), 5));
+				break;
+			case MoveBytes.STUNNED:
+				AbstractDungeon.actionManager.addToBottom(new TextAboveCreatureAction(this, TextAboveCreatureAction.TextType.STUNNED));
+				break;
 		}
+
+		AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
 	}
 
-	public void setHeldCard(AbstractCard card) {
-		this.heldCard = card;
+	public void setCard(AbstractCard card){
+		this.card = card;
 	}
 
 	@Override
 	protected void getMove(int roll) {
-		if(this.heldCard == null) {
+		if(!this.lastMove(MoveBytes.LICK)) {
 			this.setMove(STRINGS.MOVES[0], MoveBytes.LICK, Intent.MAGIC);
+			return;
+		}
+		switch(card.type){
+			case ATTACK:
+				this.setMove(MoveBytes.TACKLE, Intent.ATTACK, damage.get(0).base);
+				break;
+			case SKILL:
+				// 2 frail/weak
+				this.setMove(STRINGS.MOVES[1], MoveBytes.JUMP, Intent.STRONG_DEBUFF);
+				break;
+			case POWER:
+				this.setMove(STRINGS.MOVES[2], MoveBytes.CROAK, Intent.BUFF);
+				break;
+			case STATUS:
+			case CURSE:
+				this.setMove(MoveBytes.STUNNED, Intent.STUN);
+				break;
 		}
 	}
 
 	private static class MoveBytes {
 		private static final byte LICK = 0;
+		private static final byte TACKLE = 1;
+		private static final byte CROAK = 2;
+		private static final byte JUMP = 4;
+		private static final byte STUNNED = 3;
 	}
 }
