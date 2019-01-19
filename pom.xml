@@ -21,28 +21,28 @@
             <artifactId>slaythespire</artifactId>
             <version>${SlayTheSpire.version}</version>
             <scope>system</scope>
-            <systemPath>${basedir}/../lib/desktop-1.0.jar</systemPath>
+            <systemPath>D:/Documents/My_Mods/lib/desktop-1.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
             <artifactId>ModTheSpire</artifactId>
             <version>${ModTheSpire.version}</version>
             <scope>system</scope>
-            <systemPath>${basedir}/../lib/ModTheSpire.jar</systemPath>
+            <systemPath>D:/Documents/My_Mods/lib/ModTheSpire.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>basemod</groupId>
             <artifactId>basemod</artifactId>
             <version>5.8.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/../lib/BaseMod.jar</systemPath>
+            <systemPath>D:/Documents/My_Mods/lib/BaseMod.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl.mod</groupId>
             <artifactId>stslib</artifactId>
             <version>1.11.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/../lib/StSLib.jar</systemPath>
+            <systemPath>D:/Documents/My_Mods/lib/StSLib.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -83,7 +83,8 @@
                         <phase>package</phase>
                         <configuration>
                             <target>
-                                <copy file="target/${artifactId}.jar" tofile="${alt.build.dir}/${artifactId}.jar"/>
+                                <copy file="target/${artifactId}.jar" tofile="D:/Documents/My_Mods/mods/${artifactId}.jar"/>
+								<copy file="target/${artifactId}.jar" tofile="K:/Steam/steamapps/common/SlayTheSpire/mods/${artifactId}.jar"/>
                             </target>
                         </configuration>
                         <goals>

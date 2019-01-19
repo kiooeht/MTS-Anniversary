@@ -12,7 +12,10 @@
 	},
 	"theJungle:Phrog": {
 		"MOVES": [
-			"Lick"
+			"Lick",
+			"Jump",
+			"Croak",
+			""
 		],
 		"NAME": "Phrog",
 		"DIALOG": [
@@ -81,5 +84,33 @@
 		"DIALOG": [
 			""
 		]
+	},
+	"theJungle:SwingingAxe": {
+		"MOVES": [
+			"Reboot"
+		],
+		"NAME": "Swinging Axe Trap",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:FunGuy": {
+		"MOVES": [
+			"Chomp",
+			"Infection",
+			"Spread Spores",
+			"Sporeburst",
+			"Growth",
+			"Assimilate"
+		],
+		"NAME": "Fungi Core",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:SlimyTreeVines": {
+		"NAME": "Slimy Jungle Vines",
+		"MOVES": ["Tangle","Split"],
+		"DIALOG": ["Jungle Vines"]
 	}
 }
