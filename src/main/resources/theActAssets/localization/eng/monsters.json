@@ -91,11 +91,16 @@
 			"Neutralize",
 			"Sneaky Strike",
 			"Blade Dance"
-
 		],
 		"NAME": "Silent Clansman",
-		"DIALOG": [
-			""
-		]
+		"theJungle:SwingingAxe": {
+			"MOVES": [
+				""
+			],
+			"NAME": "Swinging Axe Trap",
+			"DIALOG": [
+				""
+			]
+		}
 	}
 }
