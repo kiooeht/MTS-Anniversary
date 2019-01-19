@@ -7,6 +7,8 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 import theAct.dungeons.Jungle;
 
+import java.lang.reflect.Field;
+
 import static com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase.COMBAT;
 
 @SpirePatch(
@@ -17,7 +19,9 @@ public class AbstractRoomUpdateIncrementElitesPatch {
 
     public static void Postfix(AbstractRoom __instance) {
         try {
-            float endBattleTimer = (float) AbstractRoom.class.getDeclaredField("endBattleTimer").get(__instance);
+            Field endBattleTimerField = AbstractRoom.class.getDeclaredField("endBattleTimer");
+            endBattleTimerField.setAccessible(true);
+            float endBattleTimer = (float) endBattleTimerField.get(__instance);
             if (__instance.phase == COMBAT
                     && __instance.isBattleOver
                     && AbstractDungeon.actionManager.actions.isEmpty()

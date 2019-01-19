@@ -16,6 +16,7 @@ import javassist.CtBehavior;
 import theAct.TheActMod;
 import theAct.dungeons.Jungle;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class VictoryOrDeathScreenCreateGameOverStatsPatch {
@@ -40,7 +41,9 @@ public class VictoryOrDeathScreenCreateGameOverStatsPatch {
             }
             if (CardCrawlGame.dungeon instanceof Jungle || TheActMod.wentToTheJungle) {
                 try {
-                    String elite2Points = Integer.toString((int) VictoryScreen.class.getDeclaredField("elite2Points").get(null));
+                    Field elite2PointsField = VictoryScreen.class.getDeclaredField("elite2Points");
+                    elite2PointsField.setAccessible(true);
+                    String elite2Points = Integer.toString((int) elite2PointsField.get(null));
                     __instance.stats.add(new GameOverStat(/*Jungle Elite localized String + */"PLACEHOLDER ELITES: (" + CardCrawlGame.elites2Slain + ")", null, elite2Points)); //TODO: JUNGLE_ELITE localization
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
@@ -48,8 +51,12 @@ public class VictoryOrDeathScreenCreateGameOverStatsPatch {
             }
             if (act3OrHigher) {
                 try {
-                    String elite3Points = Integer.toString((int) VictoryScreen.class.getDeclaredField("elite3Points").get(null));
-                    String localizedString = ((ScoreBonusStrings)VictoryScreen.class.getDeclaredField("BEYOND_ELITE").get(null)).NAME;
+                    Field elite3PointsField = VictoryScreen.class.getDeclaredField("elite3Points");
+                    elite3PointsField.setAccessible(true);
+                    String elite3Points = Integer.toString((int) elite3PointsField.get(null));
+                    Field localizedStringField = VictoryScreen.class.getDeclaredField("BEYOND_ELITE");
+                    localizedStringField.setAccessible(true);
+                    String localizedString = ((ScoreBonusStrings)localizedStringField.get(null)).NAME;
                     __instance.stats.add(new GameOverStat(localizedString + " (" + CardCrawlGame.elites2Slain + ")", null, elite3Points));
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
@@ -86,7 +93,9 @@ public class VictoryOrDeathScreenCreateGameOverStatsPatch {
             }
             if (CardCrawlGame.dungeon instanceof Jungle || TheActMod.wentToTheJungle) {
                 try {
-                    String elite2Points = Integer.toString((int) DeathScreen.class.getDeclaredField("elite2Points").get(null));
+                    Field elite2PointsField = DeathScreen.class.getDeclaredField("elite3Points");
+                    elite2PointsField.setAccessible(true);
+                    String elite2Points = Integer.toString((int) elite2PointsField.get(null));
                     __instance.stats.add(new GameOverStat(/*Jungle Elite localized String + */"PLACEHOLDER ELITES: (" + CardCrawlGame.elites2Slain + ")", null, elite2Points)); //TODO: JUNGLE_ELITE localization
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
@@ -94,8 +103,12 @@ public class VictoryOrDeathScreenCreateGameOverStatsPatch {
             }
             if (act3OrHigher) {
                 try {
-                    String elite3Points = Integer.toString((int) DeathScreen.class.getDeclaredField("elite3Points").get(null));
-                    String localizedString = ((ScoreBonusStrings)DeathScreen.class.getDeclaredField("BEYOND_ELITE").get(null)).NAME;
+                    Field elite3PointsField = DeathScreen.class.getDeclaredField("elite3Points");
+                    elite3PointsField.setAccessible(true);
+                    String elite3Points = Integer.toString((int) elite3PointsField.get(null));
+                    Field localizedStringField = DeathScreen.class.getDeclaredField("BEYOND_ELITE");
+                    localizedStringField.setAccessible(true);
+                    String localizedString = ((ScoreBonusStrings)localizedStringField.get(null)).NAME;
                     __instance.stats.add(new GameOverStat(localizedString + " (" + CardCrawlGame.elites2Slain + ")", null, elite3Points));
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
