@@ -2,11 +2,13 @@ package theAct;
 
 import java.nio.charset.StandardCharsets;
 
-import basemod.abstracts.CustomSavable;
+import basemod.abstracts.CustomSavableRaw;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonPrimitive;
 import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -29,7 +31,7 @@ public class TheActMod implements
         PostInitializeSubscriber,
         EditKeywordsSubscriber,
         EditStringsSubscriber,
-        CustomSavable<Boolean>
+        CustomSavableRaw
 {
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
     public static boolean wentToTheJungle = false;
@@ -65,6 +67,9 @@ public class TheActMod implements
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
         GetDungeonPatches.addNextDungeon(Jungle.ID, TheBeyond.ID);
+
+        //savable boolean
+        BaseMod.addSaveField("wentToTheJungle", this);
     }
 
     @Override
@@ -96,14 +101,14 @@ public class TheActMod implements
     }
 
     @Override
-    public Boolean onSave() {
+    public JsonElement onSaveRaw() {
         logger.info("Saving wentToTheJungle boolean: " + wentToTheJungle);
-        return wentToTheJungle;
+        return new JsonPrimitive(wentToTheJungle);
     }
 
     @Override
-    public void onLoad(Boolean loadedBoolean) {
-        wentToTheJungle = loadedBoolean;
+    public void onLoadRaw(JsonElement loadedBoolean) {
+        wentToTheJungle = loadedBoolean.getAsBoolean();
         logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
     }
 }
