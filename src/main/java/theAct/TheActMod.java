@@ -2,6 +2,8 @@ package theAct;
 
 import java.nio.charset.StandardCharsets;
 
+import basemod.helpers.RelicType;
+import basemod.interfaces.EditRelicsSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -31,12 +33,14 @@ import theAct.monsters.Phrog;
 import theAct.monsters.SlimyTreeVines;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
+import theAct.relics.PaperFaux;
 
 @SpireInitializer
 public class TheActMod implements
         PostInitializeSubscriber,
         EditKeywordsSubscriber,
         EditStringsSubscriber,
+        EditRelicsSubscriber,
         CustomSavable<Boolean>
 {
 	
@@ -87,6 +91,13 @@ public class TheActMod implements
 
         //savable boolean
         BaseMod.addSaveField("wentToTheJungle", this);
+    }
+
+    @Override
+    public void receiveEditRelics()
+    {
+        //event relics
+        BaseMod.addRelic(new PaperFaux(), RelicType.SHARED);
     }
 
     @Override

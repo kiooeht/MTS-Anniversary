@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.vfx.RainingGoldEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theAct.TheActMod;
+import theAct.relics.PaperFaux;
 
 public class FauxPas extends AbstractImageEvent {
     public static final String ID = TheActMod.makeID("FauxPas");
@@ -81,7 +82,7 @@ public class FauxPas extends AbstractImageEvent {
                         imageEventText.updateDialogOption(0, OPTIONS[5]);
                         imageEventText.clearRemainingOptions();
                         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Shame(), Settings.WIDTH / 2, Settings.HEIGHT / 2));
-                        //TODO make special relic, obtain here
+                        AbstractDungeon.getCurrRoom().spawnRelicAndObtain(this.drawX, this.drawY, new PaperFaux());
                         currentScreen = CurrentScreen.COMPLETE;
                         break;
                     case 2:
