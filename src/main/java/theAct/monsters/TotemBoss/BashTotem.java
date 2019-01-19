@@ -28,7 +28,7 @@ public class BashTotem extends AbstractTotemSpawn {
     public Integer attackDmg;
 
     public BashTotem(TotemBoss boss) {
-        super(NAME, ID, boss);
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemred.png"));
 
 
         if (AbstractDungeon.ascensionLevel >= 19) {

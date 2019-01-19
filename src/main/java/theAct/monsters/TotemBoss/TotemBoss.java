@@ -32,6 +32,7 @@ import theAct.actions.TotemFallWaitAction;
 import theAct.powers.ImmunityPower;
 import theAct.powers.TotemFleePower;
 import theAct.powers.TotemStrengthPower;
+import theAct.vfx.TotemShadowParticle;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,7 +45,7 @@ public class TotemBoss extends AbstractMonster {
     public static final String[] MOVES;
     public static final String[] DIALOG;
 
-
+    private TotemShadowParticle totemShadow;
     private int healAmt;
     public boolean stopTotemFall;
     public int encounterSlotsUsed = 1;
@@ -76,6 +77,8 @@ public class TotemBoss extends AbstractMonster {
         this.powers.add(new TotemFleePower(this));
         this.powers.add(new TotemStrengthPower(this));
         this.powers.add(new ImmunityPower(this));
+
+
     }
 
     public void usePreBattleAction() {
@@ -95,6 +98,10 @@ public class TotemBoss extends AbstractMonster {
         spawnNewTotem();
         spawnNewTotem();
         spawnNewTotem();
+
+        this.totemShadow = new TotemShadowParticle(this);
+
+        AbstractDungeon.effectList.add(this.totemShadow);
 
     }
 
@@ -191,6 +198,7 @@ public class TotemBoss extends AbstractMonster {
     }
 
     public void die() {
+        this.totemShadow.isDone = true;
         this.useFastShakeAnimation(5.0F);
         CardCrawlGame.screenShake.rumble(4.0F);
         super.die();

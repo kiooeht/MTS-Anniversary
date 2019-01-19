@@ -33,7 +33,7 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
     public Integer secondaryEffect;
 
     public AttackAndShieldTotem(TotemBoss boss) {
-        super(NAME, ID, boss);
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totempurple.png"));
 
 
         if (AbstractDungeon.ascensionLevel >= 19) {

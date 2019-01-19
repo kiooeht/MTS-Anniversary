@@ -29,7 +29,7 @@ public class DoubleStrikeTotem extends AbstractTotemSpawn {
     public Integer secondaryEffect;
 
     public DoubleStrikeTotem(TotemBoss boss) {
-        super(NAME, ID, boss);
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemorange.png"));
 
         if (AbstractDungeon.ascensionLevel >= 19) {
             this.attackDmg = 4;
