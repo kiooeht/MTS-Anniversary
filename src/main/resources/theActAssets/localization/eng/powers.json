@@ -49,5 +49,9 @@
 			"Place a random #rSpore #rStatus on top of your deck each turn. NL Lasts #b",
 			" more turns."
 		]
+	},
+	"theJungle:RegenerativeSlime": {
+		"NAME": "Regenerative Slime",
+		"DESCRIPTIONS": ["Whenever you play a non-Attack card, this heals #b"," HP."]
 	}
 }

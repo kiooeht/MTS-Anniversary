@@ -15,7 +15,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import theAct.powers.RegenerativeSlime;
+import theAct.powers.RegenerativeSlimePower;
 
 public class SlimyTreeVines extends AbstractMonster {
     public static final String ID = "theJungle:SlimyTreeVines";
@@ -43,12 +43,13 @@ public class SlimyTreeVines extends AbstractMonster {
     private static final byte ATTACK_2 = 3;
 
     public SlimyTreeVines() {
-        this(0,0);
+        this(0, 0);
     }
 
     public SlimyTreeVines(float x, float y) {
         super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, x, y);
-        this.loadAnimation("theActAssets/images/monsters/SlimeTreeVines/skeleton.atlas", "theActAssets/images/monsters/SlimeTreeVines/skeleton.json", 1.0f);
+        this.loadAnimation("theActAssets/images/monsters/SlimyTreeVines/skeleton.atlas",
+                "theActAssets/images/monsters/SlimyTreeVines/skeleton.json", 1.0f);
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
         if (AbstractDungeon.ascensionLevel >= 7) {
@@ -69,7 +70,8 @@ public class SlimyTreeVines extends AbstractMonster {
 
     @Override
     public void usePreBattleAction() {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new RegenerativeSlime(this, healAmt)));
+        AbstractDungeon.actionManager
+                .addToBottom(new ApplyPowerAction(this, this, new RegenerativeSlimePower(this, healAmt)));
     }
 
     @Override

@@ -77,7 +77,7 @@ public class TheActMod implements
         // Add monsters here
         BaseMod.addMonster(Phrog.ID, Phrog::new);
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
-        BaseMod.addMonster(SlimyTreeVines.ID, SlimyTreeVines::new);
+        BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
