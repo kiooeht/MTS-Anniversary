@@ -37,7 +37,7 @@ public class FungalInfectionPower extends Power {
 	}
 
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+		this.description = strings.DESCRIPTIONS[0] + this.amount + strings.DESCRIPTIONS[1];
 	}
 
 	@Override
