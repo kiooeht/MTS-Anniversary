@@ -1,0 +1,11 @@
+{
+	"theJungle:DigestPower": {
+		"NAME" : "Digestion",
+		"DESCRIPTIONS": [
+			"After taking damage #b",
+			" times, ",
+			" is returned to your hand. NL NL At the end of your turn ",
+			" is #Exhausted."
+		]
+	}
+}

@@ -1,7 +1,11 @@
 package theAct.monsters;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.unique.ApplyStasisAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -19,8 +23,9 @@ public class Phrog extends AbstractMonster {
 	public static final String ID = TheActMod.makeID("Phrog");
 	private static final MonsterStrings STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
 
-	private int maxHP = 87;
-	private int minHP = 73;
+	private int maxHP = 113;
+	private int minHP = 97;
+	private int tackleDamage = 25;
 
 	AbstractCard heldCard;
 
@@ -34,17 +39,24 @@ public class Phrog extends AbstractMonster {
 				this.minHP += 5;
 				this.maxHP += 5;
 			case 2:
-				//two damage increase
+				this.tackleDamage += 2;
 		}
+
+		this.damage.add(new DamageInfo(this, tackleDamage));
 
 		this.setHp(minHP, maxHP);
 	}
 
 	@Override
 	public void takeTurn() {
+		AbstractPlayer p = AbstractDungeon.player;
+
 		switch(this.nextMove) {
 			case 0:
 				AbstractDungeon.actionManager.addToBottom(new PhrogLickAction(this, 3));
+				break;
+			case 1:
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(p, damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 				break;
 		}
 	}
