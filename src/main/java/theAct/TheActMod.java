@@ -28,6 +28,7 @@ import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import theAct.dungeons.Jungle;
+import theAct.events.FauxPas;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
 import theAct.patches.GetDungeonPatches;
@@ -71,6 +72,7 @@ public class TheActMod implements
         // Add events here
         BaseMod.addEvent(River.ID, River.class, Jungle.ID);
         BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
+        BaseMod.addEvent(FauxPas.ID, FauxPas.class, Jungle.ID);
 
         // Add monsters here
 
