@@ -76,19 +76,19 @@ public class KidnappersEvent extends AbstractImageEvent {
                         AbstractDungeon.effectList.add(new FlashAtkImgEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, AbstractGameAction.AttackEffect.FIRE));
                         removeCard();
                         imageEventText.updateBodyText(DESCRIPTIONS[2]);
-                        imageEventText.setDialogOption(OPTIONS[8]);
+                        imageEventText.updateDialogOption(0, OPTIONS[8]);
                         imageEventText.clearRemainingOptions();
                         screenNum = 3;
                         break;
                     case 1:
-                        imageEventText.setDialogOption(OPTIONS[9]);
+                        imageEventText.updateDialogOption(0, OPTIONS[9]);
                         imageEventText.updateBodyText(DESCRIPTIONS[3]);
                         screenNum = 2;
                         break;
                     case 2:
                         AbstractDungeon.player.loseGold(GOLD_AMT);
                         imageEventText.updateBodyText(DESCRIPTIONS[4]);
-                        imageEventText.setDialogOption(OPTIONS[8]);
+                        imageEventText.updateDialogOption(0, OPTIONS[8]);
                         imageEventText.clearRemainingOptions();
                         screenNum = 3;
                         break;
