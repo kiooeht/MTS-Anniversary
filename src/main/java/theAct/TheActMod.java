@@ -25,6 +25,7 @@ import theAct.dungeons.Jungle;
 import theAct.events.FauxPas;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
+import theAct.events.GremlinQuiz;
 import theAct.monsters.Phrog;
 import theAct.monsters.SlimyTreeVines;
 import theAct.monsters.TotemBoss.TotemBoss;
@@ -75,6 +76,7 @@ public class TheActMod implements
         BaseMod.addEvent(River.ID, River.class, Jungle.ID);
         BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
         BaseMod.addEvent(FauxPas.ID, FauxPas.class, Jungle.ID);
+        BaseMod.addEvent(GremlinQuiz.ID, GremlinQuiz.class, Jungle.ID);
 
         // Add monsters here
         BaseMod.addMonster(Phrog.ID, Phrog::new);
@@ -136,7 +138,11 @@ public class TheActMod implements
 
     @Override
     public void onLoad(Boolean loadedBoolean) {
-        wentToTheJungle = loadedBoolean;
+        if (loadedBoolean != null) {
+            wentToTheJungle = loadedBoolean;
+        } else {
+            wentToTheJungle = false;
+        }
         logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
     }
 }
