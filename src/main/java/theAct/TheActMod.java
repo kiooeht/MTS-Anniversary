@@ -6,7 +6,6 @@ import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -18,6 +17,7 @@ import org.apache.logging.log4j.Logger;
 
 import basemod.BaseMod;
 import basemod.ModPanel;
+import basemod.abstracts.CustomSavable;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
@@ -30,9 +30,16 @@ import theAct.patches.GetDungeonPatches;
 public class TheActMod implements
         PostInitializeSubscriber,
         EditKeywordsSubscriber,
-        EditStringsSubscriber
+        EditStringsSubscriber,
+        CustomSavable<Boolean>
 {
+	
+	
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
+
+    public static boolean wentToTheJungle = false;
+    
+    
 
     public static void initialize()
     {
@@ -96,5 +103,17 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));
         BaseMod.loadCustomStringsFile(UIStrings.class, assetPath(path + "ui.json"));
         BaseMod.loadCustomStringsFile(CardStrings.class, assetPath(path + "cards.json"));
+    }
+
+    @Override
+    public Boolean onSave() {
+        logger.info("Saving wentToTheJungle boolean: " + wentToTheJungle);
+        return wentToTheJungle;
+    }
+
+    @Override
+    public void onLoad(Boolean loadedBoolean) {
+        wentToTheJungle = loadedBoolean;
+        logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
     }
 }
