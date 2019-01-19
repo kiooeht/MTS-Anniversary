@@ -105,7 +105,7 @@ public class SilentTribesmen extends AbstractMonster {
                 break;
             case 1:
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0)));
-                AbstractDungeon.actionManager.addToTop(new VFXAction(new CleaveEffect(true)));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new CleaveEffect(true)));
                 break;
             case 2:
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new DexterityPower(AbstractDungeon.player, -dexLossAmt), -dexLossAmt));
@@ -113,7 +113,7 @@ public class SilentTribesmen extends AbstractMonster {
             case 3:
                 for (int i = 0; i < bigAtkAmt; i++) {
                     AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(1)));
-                    AbstractDungeon.actionManager.addToTop(new VFXAction(new ThrowDaggerEffect(AbstractDungeon.player.drawX,AbstractDungeon.player.drawY)));
+                    AbstractDungeon.actionManager.addToBottom(new VFXAction(new ThrowDaggerEffect(AbstractDungeon.player.drawX,AbstractDungeon.player.drawY)));
                 }
                 break;
             case 4:
