@@ -13,6 +13,8 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theAct.dungeons.Jungle;
@@ -21,8 +23,8 @@ import theAct.events.River;
 import theAct.events.SneckoCultEvent;
 import theAct.monsters.FunGuy;
 import theAct.monsters.Phrog;
-import theAct.monsters.SwingingAxe;
 import theAct.monsters.SlimyTreeVines;
+import theAct.monsters.SwingingAxe;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
 
@@ -73,11 +75,15 @@ public class TheActMod implements
         BaseMod.addEvent(KidnappersEvent.ID, KidnappersEvent.class, Jungle.ID);
 
         // Add monsters here
-        BaseMod.addMonster(Phrog.ID, Phrog::new);
+        BaseMod.addMonster(Phrog.ID,() -> new MonsterGroup(
+            new AbstractMonster[] {
+                new Phrog(-175,0, false),
+                new Phrog(175, 0, true)
+            }));
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
         BaseMod.addMonster(SwingingAxe.ID, () -> {return new SwingingAxe();});
-        BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
+        BaseMod.addMonster(SlimyTreeVines.ID, SlimyTreeVines::new);
 
         // Add Encounters here
 
