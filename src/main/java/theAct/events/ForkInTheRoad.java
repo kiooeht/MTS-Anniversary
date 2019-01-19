@@ -12,7 +12,7 @@ import theAct.patches.GoToNextDungeonPatch;
 
 public class ForkInTheRoad extends AbstractImageEvent
 {
-    public static final String ID = "theAct:ForkInTheRoad";
+    public static final String ID = TheActMod.makeID("ForkInTheRoad");
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
     private static final String NAME = eventStrings.NAME;
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
