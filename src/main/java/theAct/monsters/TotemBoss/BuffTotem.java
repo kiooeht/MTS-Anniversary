@@ -14,10 +14,15 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FrailPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theAct.TheActMod;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class BuffTotem extends AbstractTotemSpawn {
     public static final String ID = TheActMod.makeID("BuffTotem");
@@ -59,22 +64,19 @@ public class BuffTotem extends AbstractTotemSpawn {
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.25F));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.NONE));
 
-                Integer randomizer = AbstractDungeon.cardRng.random(2);
+                ArrayList<AbstractMonster> targets = new ArrayList<>();
+                targets.addAll(AbstractDungeon.getMonsters().monsters);
 
-                switch (randomizer){
-                    case 0:
-                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WeakPower(AbstractDungeon.player, 2, true), 2));
-                        break;
+                targets.remove(owner);
 
-                    case 1:
-                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new FrailPower(AbstractDungeon.player, 2, true), 2));
-                        break;
+                AbstractMonster m = targets.get(AbstractDungeon.cardRng.random(targets.size() - 1));
 
-                    case 2:
-                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new VulnerablePower(AbstractDungeon.player, 2, true), 2));
-                        break;
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new StrengthPower(m, this.secondaryEffect), this.secondaryEffect));
 
-            }
+
+
+
+
 
 
 

@@ -33,21 +33,26 @@ public class DebuffTotem extends AbstractTotemSpawn {
     public static final String[] MOVES;
     public static final String[] DIALOG;
 
-    public Integer secondaryEffect = 2;
+    public Integer attackDmg;
+    public Integer secondaryEffect;
 
 
     public DebuffTotem(TotemBoss boss) {
         super(NAME, ID, boss);
 
         if (AbstractDungeon.ascensionLevel >= 19) {
-            this.secondaryEffect = 10;
+            this.attackDmg = 4;
+            this.secondaryEffect = 3;
         } else if (AbstractDungeon.ascensionLevel >= 4) {
-            this.secondaryEffect = 8;
+            this.attackDmg = 3;
+            this.secondaryEffect = 2;
         } else {
-            this.secondaryEffect = 8;
+            this.attackDmg = 3;
+            this.secondaryEffect = 2;
         }
+        this.damage.add(new DamageInfo(this, this.attackDmg));
 
-        this.intentType = Intent.DEFEND;
+        this.intentType = Intent.ATTACK_DEBUFF;
 
     }
 
@@ -60,6 +65,8 @@ public class DebuffTotem extends AbstractTotemSpawn {
             case 1:
                 // AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.25F));
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.NONE));
+
                 Integer randomizer = AbstractDungeon.cardRng.random(2);
 
                 switch (randomizer){
@@ -86,7 +93,7 @@ public class DebuffTotem extends AbstractTotemSpawn {
 
     protected void getMove(int num)
     {
-        this.setMove((byte)1, intentType);
+        this.setMove((byte)1, intentType, this.attackDmg);
     }
     static {
         monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);

@@ -24,9 +24,9 @@ public class DoubleStrikeTotem extends AbstractTotemSpawn {
     public static final String NAME;
     public static final String[] MOVES;
     public static final String[] DIALOG;
-    public Integer attackDmg = 6;
+    public Integer attackDmg;
 
-    public Integer secondaryEffect = 2;
+    public Integer secondaryEffect;
 
     public DoubleStrikeTotem(TotemBoss boss) {
         super(NAME, ID, boss);
@@ -60,6 +60,8 @@ public class DoubleStrikeTotem extends AbstractTotemSpawn {
                // AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(new GoldenSlashEffect(AbstractDungeon.player.hb.cX - 60.0F * Settings.scale, AbstractDungeon.player.hb.cY, false), vfxSpeed));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new GoldenSlashEffect(AbstractDungeon.player.hb.cX - 60.0F * Settings.scale, AbstractDungeon.player.hb.cY, false), vfxSpeed));
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AttackEffect.NONE));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AttackEffect.NONE));
                 break;
         }

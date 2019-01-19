@@ -1,34 +1,36 @@
 package theAct;
 
-import java.nio.charset.StandardCharsets;
-
-import com.badlogic.gdx.Gdx;
-import com.evacipated.cardcrawl.mod.stslib.Keyword;
-import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
-import com.google.gson.Gson;
-import com.megacrit.cardcrawl.dungeons.TheBeyond;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.localization.UIStrings;
-
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.MonsterGroup;
-import com.megacrit.cardcrawl.monsters.MonsterInfo;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.abstracts.CustomSavable;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
+import com.badlogic.gdx.Gdx;
+import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.google.gson.Gson;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.monsters.MonsterInfo;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import theAct.dungeons.Jungle;
+import theAct.events.KidnappersEvent;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
 import theAct.monsters.Flameango;
+import theAct.monsters.FunGuy;
+import theAct.monsters.Phrog;
+import theAct.monsters.SwingingAxe;
+import theAct.monsters.SlimyTreeVines;
+import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
+
+import java.nio.charset.StandardCharsets;
 
 @SpireInitializer
 public class TheActMod implements
@@ -72,6 +74,7 @@ public class TheActMod implements
         // Add events here
         BaseMod.addEvent(River.ID, River.class, Jungle.ID);
         BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
+        BaseMod.addEvent(KidnappersEvent.ID, KidnappersEvent.class, Jungle.ID);
 
         // Add monsters here
         BaseMod.addMonster(makeID("3_Flameangoes"), () -> new MonsterGroup(new AbstractMonster[] {
@@ -79,6 +82,13 @@ public class TheActMod implements
                 new Flameango(),
                 new Flameango()
         }));
+        BaseMod.addMonster(Phrog.ID, Phrog::new);
+        BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
+        BaseMod.addMonster(FunGuy.ID, FunGuy::new);
+        BaseMod.addMonster(SwingingAxe.ID, () -> {return new SwingingAxe();});
+        BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
+
+        // Add Encounters here
         BaseMod.addMonsterEncounter(Jungle.ID, new MonsterInfo(makeID("3_Flameangoes"), 2));
 
         // Add dungeon
@@ -116,6 +126,8 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));
         BaseMod.loadCustomStringsFile(UIStrings.class, assetPath(path + "ui.json"));
         BaseMod.loadCustomStringsFile(CardStrings.class, assetPath(path + "cards.json"));
+        BaseMod.loadCustomStringsFile(MonsterStrings.class, assetPath(path + "monsters.json"));
+        BaseMod.loadCustomStringsFile(PowerStrings.class, assetPath(path + "powers.json"));
     }
 
     @Override

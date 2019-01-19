@@ -1,0 +1,69 @@
+
+PhrogPremultiplied.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+leg-front-behind
+  rotate: false
+  xy: 118, 211
+  size: 104, 67
+  orig: 104, 67
+  offset: 0, 0
+  index: -1
+eye2
+  rotate: false
+  xy: 38, 296
+  size: 34, 35
+  orig: 34, 35
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 1, 1
+  size: 224, 128
+  orig: 224, 128
+  offset: 0, 0
+  index: -1
+chest
+  rotate: false
+  xy: 1, 217
+  size: 83, 77
+  orig: 83, 77
+  offset: 0, 0
+  index: -1
+eye1
+  rotate: false
+  xy: 1, 296
+  size: 35, 35
+  orig: 35, 35
+  offset: 0, 0
+  index: -1
+leg-front
+  rotate: false
+  xy: 180, 280
+  size: 57, 52
+  orig: 57, 52
+  offset: 0, 0
+  index: -1
+foot-front
+  rotate: false
+  xy: 118, 131
+  size: 110, 78
+  orig: 110, 78
+  offset: 0, 0
+  index: -1
+leg-back
+  rotate: false
+  xy: 86, 280
+  size: 92, 43
+  orig: 92, 43
+  offset: 0, 0
+  index: -1
+foot-back
+  rotate: false
+  xy: 1, 131
+  size: 115, 84
+  orig: 115, 84
+  offset: 0, 0
+  index: -1
