@@ -42,5 +42,14 @@
 			" damage.",
 			"#gRESETTING NL This trap is harmless while #gResetting."
 		]
+	},
+	"theJungle:CautiousPower": {
+		"NAME" : "Cautious",
+		"DESCRIPTIONS": [
+			"u gotta hit this dude #b",
+			" more time, darn lmao",
+			" more times, darn lmao",
+			"This dude stunned for a turn lmao gottem."
+		]
 	}
 }

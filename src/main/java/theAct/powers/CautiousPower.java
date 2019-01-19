@@ -29,7 +29,16 @@ public class CautiousPower extends Power {
     }
 
     public void updateDescription() {
+        if (this.amount == 1){
         this.description = powerStrings.DESCRIPTIONS[0] + this.amount + powerStrings.DESCRIPTIONS[1];
+    }
+    else if (this.amount == 0){
+            this.description = powerStrings.DESCRIPTIONS[0] + this.amount + powerStrings.DESCRIPTIONS[2];
+
+        }
+    else{
+            this.description = powerStrings.DESCRIPTIONS[3];
+        }
     }
 
     public void atStartOfTurn() {
