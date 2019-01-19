@@ -109,7 +109,7 @@ public class VictoryOrDeathScreenCreateGameOverStatsPatch {
                     Field localizedStringField = DeathScreen.class.getDeclaredField("BEYOND_ELITE");
                     localizedStringField.setAccessible(true);
                     String localizedString = ((ScoreBonusStrings)localizedStringField.get(null)).NAME;
-                    __instance.stats.add(new GameOverStat(localizedString + " (" + CardCrawlGame.elites2Slain + ")", null, elite3Points));
+                    __instance.stats.add(new GameOverStat(localizedString + " (" + CardCrawlGame.elites3Slain + ")", null, elite3Points));
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
