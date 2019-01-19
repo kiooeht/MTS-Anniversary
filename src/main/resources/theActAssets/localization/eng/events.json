@@ -35,7 +35,9 @@
       "How many tentacles does the Spire Growth have?",
       "",
       "Match this card art with its beta art.",
-      "theActAssets/images/events/quiz/card2.png"
+      "theActAssets/images/events/quiz/card2.png",
+      "What power is this?",
+      "theActAssets/images/events/quiz/power1.png"
     ],
     "OPTIONS": [
       "[Begin Quiz]",
@@ -91,7 +93,12 @@
       "img:images/1024PortraitsBeta/green/skill/backflip.png",
       "img:images/1024PortraitsBeta/green/skill/outmaneuver.png",
       "img:images/1024PortraitsBeta/green/skill/blur.png",
-      ">img:images/1024PortraitsBeta/green/skill/acrobatics.png"
+      ">img:images/1024PortraitsBeta/green/skill/acrobatics.png",
+
+      ">Enrage",
+      "Choke",
+      "Panache",
+      "Lock-On"
     ]
   }
 }
