@@ -128,7 +128,11 @@ public class TheActMod implements
 
     @Override
     public void onLoad(Boolean loadedBoolean) {
-        wentToTheJungle = loadedBoolean;
+        if (loadedBoolean != null) {
+            wentToTheJungle = loadedBoolean;
+        } else {
+            wentToTheJungle = false;
+        }
         logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
     }
 }
