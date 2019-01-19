@@ -19,9 +19,13 @@ public class SilentTribesmen extends AbstractMonster {
     private static final int ASC_HP_MODIFIER = 5;
     private static final int START_BLOCK_AMT = 10;
     private static final int START_BLOCK_ASC_MODIFIER = 5;
+    private static final int BLOCK_MOVE_AMT = 15;
+    private static final int BLOCK_MOVE_ASC_MODIFIER = 5;
     private int blockAmt;
+    private int blockMoveAmt;
     public static final String STUNNED = "STUNNED";
     public static final String NOTSTUNNED = "NOTSTUNNED";
+    private boolean isFirstTurn = false;
 
     public SilentTribesmen(float x, float y) {
         super(NAME, ID, MAX_HP, 0.0F, 10.0F, 280.0F, 280.0F, null, x, y);
@@ -36,11 +40,16 @@ public class SilentTribesmen extends AbstractMonster {
         } else {
             blockAmt = START_BLOCK_AMT;
         }
+        if (AbstractDungeon.ascensionLevel >= 17) {
+            blockMoveAmt = BLOCK_MOVE_AMT + BLOCK_MOVE_ASC_MODIFIER;
+        } else {
+            blockMoveAmt = BLOCK_MOVE_AMT;
+        }
     }
 
     @Override
     public void changeState(String state) {
-        switch(state) {
+        switch (state) {
             case NOTSTUNNED:
                 break;
             case STUNNED:
@@ -58,11 +67,16 @@ public class SilentTribesmen extends AbstractMonster {
 
     @Override
     public void takeTurn() {
-
+        switch (nextMove) {
+            case 0:
+                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, blockMoveAmt));
+        }
     }
 
     @Override
     protected void getMove(int i) {
-
+        if (isFirstTurn) {
+            setMove((byte)0, Intent.DEFEND);
+        }
     }
 }
