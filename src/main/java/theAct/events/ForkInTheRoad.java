@@ -17,10 +17,11 @@ public class ForkInTheRoad extends AbstractImageEvent
     private static final String NAME = eventStrings.NAME;
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
+    private static final String BASE_IMG = TheActMod.assetPath("images/events/ForkInTheRoad.png");
 
     public ForkInTheRoad()
     {
-        super(NAME, DESCRIPTIONS[0], null);
+        super(NAME, DESCRIPTIONS[0], BASE_IMG);
         imageEventText.setDialogOption(OPTIONS[1] + TheCity.NAME + OPTIONS[0]);
         imageEventText.setDialogOption(OPTIONS[2] + Jungle.NAME + OPTIONS[0]);
     }
