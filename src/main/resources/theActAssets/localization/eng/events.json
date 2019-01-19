@@ -13,9 +13,10 @@
   "theJungle:SneckoCultEvent": {
     "NAME": "Cult of The Snecko",
     "DESCRIPTIONS": [
+      "Jonas didnt write a description 0 wtf blame him",
       "You walk straight to the altar in the center. NL NL Something about this sphere irritates you... NL The priest turns to you, singing loudly with a high pitch: #g~\"Aall~ #g~hai-iil~ #g~to~ #g~Snecko\"!~ NL You realize that the sphere in his hands is actually an exceptionally large eye. It gazes at you with an immense power, pulling your mind in. ~It~ ~is~ ~hard~ ~to~ ~resist...~ NL #g~\"Aaall~ #g~hai-iiiil~ #g~to~ #g~Snecko\"!~ NL No, this was not you who just sang along, right? ",
       "One of the children almost discovered you by searching for a hideout. You suggest to the tribal children that you could play #phide-and-seek with them. NL \"Deal, and you will win a prize if you find all of us!\" NL NL Well, you are a bit older than them, but you don't know this place as well as they do... After a while of searching, the priest hints you to a stone plate. There you find all of them giggling together. The oldest one hands you a small animal as prize.",
-      "You hear children playing on a clearing. Lurking behind two trees, you catch a sight that leaves you puzzled: You see #bchildren of the local tribe playing with small green toy reptils. They are running around a rounded stone altar where a #masked #bpriest is preparing some kind a ritual involving a big white sphere. NL It seems like nobody here would harm you, with these children running around... NL Where should you go?"
+      "You hear children playing on a clearing. Lurking behind two trees, you catch a sight that leaves you puzzled: You see #bchildren of the local tribe playing with small green toy reptils. They are running around a rounded stone altar where a #bmasked #bpriest is preparing some kind a ritual involving a big white sphere. NL It seems like nobody here would harm you, with these children running around... NL Where should you go?"
     ],
     "OPTIONS": [
       "[Priest] #bRandomize #bthe #bcost #bof #ba #bcard #bin #byour #bdeck #bpermanently.",

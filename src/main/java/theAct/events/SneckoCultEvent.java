@@ -23,7 +23,7 @@ public class SneckoCultEvent extends AbstractImageEvent {
     public SneckoCultEvent() {
         super(NAME, DESCRIPTIONS[0], "theActAssets/images/SneckoCultEvent.png");
         imageEventText.setDialogOption(OPTIONS[0]);
-        imageEventText.setDialogOption(OPTIONS[1]);
+        imageEventText.setDialogOption(OPTIONS[1], new PetSnecko());
         imageEventText.setDialogOption(OPTIONS[2]);
     }
 
@@ -35,16 +35,16 @@ public class SneckoCultEvent extends AbstractImageEvent {
                     case 0:
                         imageEventText.updateBodyText(DESCRIPTIONS[1]);
                         randomizeCost();
-                        screenNum = 1;
                         imageEventText.updateDialogOption(0, OPTIONS[3]);
                         imageEventText.clearRemainingOptions();
+                        screenNum = 1;
                         break;
                     case 1:
                         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new PetSnecko(), Settings.WIDTH / 2F, Settings.HEIGHT / 2F));
                         imageEventText.updateBodyText(DESCRIPTIONS[2]);
-                        screenNum = 1;
                         imageEventText.updateDialogOption(0, OPTIONS[3]);
                         imageEventText.clearRemainingOptions();
+                        screenNum = 1;
                         break;
                     case 2:
                         imageEventText.updateBodyText(DESCRIPTIONS[3]);
@@ -52,7 +52,10 @@ public class SneckoCultEvent extends AbstractImageEvent {
                         imageEventText.updateDialogOption(0, OPTIONS[3]);
                         imageEventText.clearRemainingOptions();
                         break;
+                    default:
+                        screenNum = 1;
             }
+            break;
             case 1:
                 openMap();
         }
@@ -70,6 +73,7 @@ public class SneckoCultEvent extends AbstractImageEvent {
             c.upgradedCost = true;
             c.isCostModified = true;
             AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy()));
+            AbstractDungeon.gridSelectScreen.selectedCards.clear();
         }
     }
 

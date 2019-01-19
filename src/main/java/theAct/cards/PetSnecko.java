@@ -15,6 +15,7 @@ public class PetSnecko extends CustomCard {
     private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = null;
     private static final int COST = 0;
     private static final CardRarity rarity = CardRarity.SPECIAL;
@@ -34,6 +35,8 @@ public class PetSnecko extends CustomCard {
         if (upgraded) {
             upgradeName();
             upgradeMagicNumber(DRAW_UPGRADE);
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 
