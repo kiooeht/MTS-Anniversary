@@ -2,13 +2,15 @@ package theAct;
 
 import java.nio.charset.StandardCharsets;
 
-import basemod.helpers.BaseModCardTags;
+import basemod.abstracts.CustomSavableRaw;
 import basemod.helpers.RelicType;
 import basemod.interfaces.EditRelicsSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonPrimitive;
 import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -36,9 +38,11 @@ public class TheActMod implements
         PostInitializeSubscriber,
         EditRelicsSubscriber,
         EditKeywordsSubscriber,
-        EditStringsSubscriber
+        EditStringsSubscriber,
+        CustomSavableRaw
 {
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
+    public static boolean wentToTheJungle = false;
 
     public static void initialize()
     {
@@ -73,6 +77,9 @@ public class TheActMod implements
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
         GetDungeonPatches.addNextDungeon(Jungle.ID, TheBeyond.ID);
+
+        //savable boolean
+        BaseMod.addSaveField("wentToTheJungle", this);
     }
 
     @Override
@@ -109,5 +116,17 @@ public class TheActMod implements
     public void receiveEditRelics()
     {
         BaseMod.addRelic(new SpiritDisease(), RelicType.SHARED);
+    }
+
+    @Override
+    public JsonElement onSaveRaw() {
+        logger.info("Saving wentToTheJungle boolean: " + wentToTheJungle);
+        return new JsonPrimitive(wentToTheJungle);
+    }
+
+    @Override
+    public void onLoadRaw(JsonElement loadedBoolean) {
+        wentToTheJungle = loadedBoolean.getAsBoolean();
+        logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
     }
 }
