@@ -20,6 +20,7 @@ import theAct.events.KidnappersEvent;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
 import theAct.monsters.Phrog;
+import theAct.monsters.SwingingAxe;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
 
@@ -72,6 +73,7 @@ public class TheActMod implements
         // Add monsters here
         BaseMod.addMonster(Phrog.ID, Phrog::new);
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
+        BaseMod.addMonster(SwingingAxe.ID, () -> {return new SwingingAxe();});
 
         // Add Encounters here
 
