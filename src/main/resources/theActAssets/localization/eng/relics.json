@@ -1,7 +1,10 @@
 {
   "theJungle:PaperFaux": {
     "NAME": "Paper Faux",
-    "DESCRIPTIONS": ["TODO"],
+    "DESCRIPTIONS": [
+      "Whenever you apply #yWeak or #yVulnerable, apply an additional #b",
+      " #yWeak or #yVulnerable."
+    ],
     "FLAVOR": "A silent effigy you found in the forest clearing. It seems to be watching you."
   },
   "theJungle:SpiritDisease": {
