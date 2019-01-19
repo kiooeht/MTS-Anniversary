@@ -1,5 +1,6 @@
 package theAct.monsters;
 
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -14,6 +15,9 @@ public class SilentTribesmen extends AbstractMonster {
     private static final int MIN_HP = 30;
     private static final int MAX_HP = 37;
     private static final int ASC_HP_MODIFIER = 5;
+    private static final int START_BLOCK_AMT = 10;
+    private static final int START_BLOCK_ASC_MODIFIER = 5;
+    private int blockAmt;
 
     public SilentTribesmen(float x, float y) {
         super(NAME, ID, MAX_HP, 0.0F, 10.0F, 280.0F, 280.0F, null, x, y);
@@ -23,5 +27,25 @@ public class SilentTribesmen extends AbstractMonster {
         } else {
             this.setHp(MIN_HP, MAX_HP);
         }
+        if (AbstractDungeon.ascensionLevel >= 17) {
+            blockAmt = START_BLOCK_AMT + START_BLOCK_ASC_MODIFIER;
+        } else {
+            blockAmt = START_BLOCK_AMT;
+        }
+    }
+
+    @Override
+    public void usePreBattleAction() {
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, blockAmt));
+    }
+
+    @Override
+    public void takeTurn() {
+
+    }
+
+    @Override
+    protected void getMove(int i) {
+
     }
 }
