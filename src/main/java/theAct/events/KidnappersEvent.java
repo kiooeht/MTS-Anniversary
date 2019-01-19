@@ -9,10 +9,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.relics.*;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import theAct.TheActMod;
+
+import java.util.ArrayList;
 
 public class KidnappersEvent extends AbstractImageEvent {
     public static final String ID = TheActMod.makeID("Kidnappers");
@@ -24,6 +27,7 @@ public class KidnappersEvent extends AbstractImageEvent {
     private int HEALTH_LOSS;
     private boolean cardSelected = false;
     private static int GOLD_AMT;
+    private ArrayList<AbstractRelic> silentRelics = new ArrayList<>();
 
     public KidnappersEvent() {
         super(NAME, DESCRIPTIONS[0], TheActMod.assetPath("images/events/KidnappersEvent.png"));
@@ -38,6 +42,11 @@ public class KidnappersEvent extends AbstractImageEvent {
         } else {
             GOLD_AMT = 50;
         }
+        silentRelics.add(new Kunai());
+        silentRelics.add(new Shuriken());
+        silentRelics.add(new OrnamentalFan());
+        silentRelics.add(new NinjaScroll());
+        silentRelics.add(new Nunchaku());
     }
 
     @Override
@@ -74,13 +83,29 @@ public class KidnappersEvent extends AbstractImageEvent {
                     case 1:
                         AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter("KidnapperSilents");
                         enterCombatFromImage();
-                        AbstractDungeon.lastCombatMetricKey = "Colosseum Nobs";
+                        int rng = AbstractDungeon.miscRng.random(silentRelics.size() - 1);
+                        AbstractRelic r = silentRelics.get(rng);
+                        AbstractDungeon.getCurrRoom().addRelicToRewards(r);
+                        switch(r.tier) {
+                            case COMMON:
+                                AbstractDungeon.commonRelicPool.removeIf(id ->  id.equals(r.relicId));
+                                break;
+                            case UNCOMMON:
+                                AbstractDungeon.uncommonRelicPool.removeIf(id ->  id.equals(r.relicId));
+                                break;
+                            case RARE:
+                                AbstractDungeon.rareRelicPool.removeIf(id ->  id.equals(r.relicId));
+                                break;
+                        }
+                        AbstractDungeon.lastCombatMetricKey = "KidnapperSilents";
+                        break;
                     case 2:
                         AbstractDungeon.player.loseGold(GOLD_AMT);
                         imageEventText.updateBodyText(DESCRIPTIONS[2]);
                         imageEventText.setDialogOption(OPTIONS[9]);
                         imageEventText.clearRemainingOptions();
                         screenNum = 2;
+                        break;
                 }
                 break;
             case 2:
