@@ -29,6 +29,8 @@
       "What card is this?",
       "theActAssets/images/events/quiz/card1.png",
       "Which of these enemies can make you weak?",
+      "",
+      "Which of these enemies holds their weapon in their left hand?",
       ""
     ],
     "OPTIONS": [
@@ -70,7 +72,12 @@
       "Spike Slime",
       "Red Louse",
       "Mad Gremlin",
-      ">Blue Slaver"
+      ">Blue Slaver",
+
+      "The Collector",
+      "The Time Eater",
+      "The Mystic",
+      ">The Centurion"
     ]
   }
 }
