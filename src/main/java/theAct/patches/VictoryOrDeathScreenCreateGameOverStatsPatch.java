@@ -93,7 +93,7 @@ public class VictoryOrDeathScreenCreateGameOverStatsPatch {
             }
             if (CardCrawlGame.dungeon instanceof Jungle || TheActMod.wentToTheJungle) {
                 try {
-                    Field elite2PointsField = DeathScreen.class.getDeclaredField("elite3Points");
+                    Field elite2PointsField = DeathScreen.class.getDeclaredField("elite2Points");
                     elite2PointsField.setAccessible(true);
                     String elite2Points = Integer.toString((int) elite2PointsField.get(null));
                     __instance.stats.add(new GameOverStat(/*Jungle Elite localized String + */"PLACEHOLDER ELITES: (" + CardCrawlGame.elites2Slain + ")", null, elite2Points)); //TODO: JUNGLE_ELITE localization
