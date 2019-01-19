@@ -33,7 +33,9 @@
       "Which of these enemies holds their weapon in their left hand?",
       "",
       "How many tentacles does the Spire Growth have?",
-      ""
+      "",
+      "Match this card art with its beta art.",
+      "theActAssets/images/events/quiz/card2.png"
     ],
     "OPTIONS": [
       "[Begin Quiz]",
@@ -84,7 +86,12 @@
       "One",
       "Two",
       ">Three",
-      "Four"
+      "Four",
+
+      "img:images/1024PortraitsBeta/green/skill/backflip.png",
+      "img:images/1024PortraitsBeta/green/skill/outmaneuver.png",
+      "img:images/1024PortraitsBeta/green/skill/blur.png",
+      ">img:images/1024PortraitsBeta/green/skill/acrobatics.png"
     ]
   }
 }
