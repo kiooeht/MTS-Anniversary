@@ -26,23 +26,26 @@
       "Pick a card to randomize"
     ]
   },
-  "theJungle:KidnappersEvent": {
+  "theJungle:Kidnappers": {
     "NAME": "Misty Forest",
     "DESCRIPTIONS": [
       "As you're traversing through the ~foggy jungle~, a rope suddenly tightens around your ankle. You've been caught in a trap!",
-      "A number of tribesmen surround you. They are wearing green robes and animal skulls for masks. You can't help but feel ~malice~ coming from them. NL \"We caught one!\" NL \"~Hey, this one don't look like a cultist...?~ \"You never know with those guys, let's get 'em...\" NL You may have time to escape in the confusion.",
-      "You make it clear that you are ~NOT~ a cultist, nor an enemy, and have no qualms with their clan. They let you go, for a small price.",
+      "A number of tribesmen surround you. They are wearing #ggreen robes and #ranimal #rskulls #rfor #rmasks. You can't help but feel #r~malice~ coming from them. NL \"We caught one!\" NL \"~Hey, this one don't look like a cultist...?~ \"You never know with those guys, @let's get 'em...@\" NL You may have time to escape in the confusion.",
+      "You make it clear that you are ~NOT~ a cultist, nor an enemy, and have no qualms with their clan. NL Negotiating is a bit #rpainful, but they let you go, for a small price.",
       "You struggle hard, but manage to use your weapon and break through the rope while they approach. NL They give chase, while more tribesmen surround you!",
-      "Seeing as you are not a cultist or an animal, you manage to bribe them with gold. NL They untie you and let you leave in piece, but you can't shake the feeling that they keep watching you.."
+      "Seeing as you are not a cultist or an animal, you manage to bribe them with gold. NL They untie you and let you leave in piece, ~but you can't shake the feeling that someone keeps watching you...~"
     ],
     "OPTIONS": [
+      "[Proceed.]",
       "[Negotiate] #g(Lose ",
       " #gHP #gand #gremove #g1 #gcard #gfrom #gyour #gdeck.)",
       "[Cut the Rope] #r(Enter #ra #rfight!)",
       "[Bribe] #g(Lose",
       " #gold.)",
       "[Locked] (Requires: ",
-      " gold.)"
+      " gold.)",
+      "[Leave.]",
+      "[#rFight!]"
     ]
   }
 }

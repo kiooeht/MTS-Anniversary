@@ -88,7 +88,7 @@ public class KidnappersEvent extends AbstractImageEvent {
                     case 2:
                         AbstractDungeon.player.loseGold(GOLD_AMT);
                         imageEventText.updateBodyText(DESCRIPTIONS[4]);
-                        imageEventText.setDialogOption(OPTIONS[10]);
+                        imageEventText.setDialogOption(OPTIONS[8]);
                         imageEventText.clearRemainingOptions();
                         screenNum = 3;
                         break;
