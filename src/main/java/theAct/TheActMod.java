@@ -26,6 +26,7 @@ import basemod.interfaces.PostInitializeSubscriber;
 import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
+import theAct.monsters.FunGuy;
 import theAct.monsters.Phrog;
 import theAct.monsters.SlimyTreeVines;
 import theAct.monsters.TotemBoss.TotemBoss;
@@ -77,6 +78,7 @@ public class TheActMod implements
         // Add monsters here
         BaseMod.addMonster(Phrog.ID, Phrog::new);
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
+        BaseMod.addMonster(FunGuy.ID, FunGuy::new);
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
 
         // Add dungeon
