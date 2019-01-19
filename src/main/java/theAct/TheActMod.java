@@ -2,6 +2,7 @@ package theAct;
 
 import java.nio.charset.StandardCharsets;
 
+import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -31,9 +32,11 @@ import theAct.patches.GetDungeonPatches;
 public class TheActMod implements
         PostInitializeSubscriber,
         EditKeywordsSubscriber,
-        EditStringsSubscriber
+        EditStringsSubscriber,
+        CustomSavable<Boolean>
 {
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
+    public static boolean wentToTheJungle = false;
 
     public static void initialize() {
         BaseMod.subscribe(new TheActMod());
@@ -102,5 +105,15 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(UIStrings.class, assetPath(path + "ui.json"));
         BaseMod.loadCustomStringsFile(MonsterStrings.class, assetPath(path + "monsters.json"));
         BaseMod.loadCustomStringsFile(PowerStrings.class, assetPath(path + "powers.json"));
+    }
+
+    @Override
+    public Boolean onSave() {
+        return wentToTheJungle;
+    }
+
+    @Override
+    public void onLoad(Boolean loadedBoolean) {
+        wentToTheJungle = loadedBoolean;
     }
 }
