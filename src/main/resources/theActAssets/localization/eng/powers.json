@@ -7,5 +7,29 @@
 			" is returned to your hand. NL NL At the end of your turn ",
 			" is #Exhausted."
 		]
+	},
+	"theJungle:TotemStrengthPower": {
+		"NAME" : "Totemic Rage",
+		"DESCRIPTIONS": [
+			"When a Totem is destroyed, remaining Totems gain 1 Strength."
+		]
+	},
+	"theJungle:BlockFromStrengthPower": {
+		"NAME" : "Defensive",
+		"DESCRIPTIONS": [
+			"Strength increases the amount of Block this enemy provides."
+		]
+	},
+	"theJungle:TotemFleePower": {
+		"NAME" : "Cowardice",
+		"DESCRIPTIONS": [
+			"When all Totems are destroyed, this enemy will flee."
+		]
+	},
+	"theJungle:ImmunityPower": {
+		"NAME" : "Immunity",
+		"DESCRIPTIONS": [
+			"This enemy cannot be damaged."
+		]
 	}
 }
