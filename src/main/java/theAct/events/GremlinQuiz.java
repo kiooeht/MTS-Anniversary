@@ -26,7 +26,7 @@ public class GremlinQuiz extends AbstractImageEvent
     private static final int PRIZE_GOLD = 50;
     private static final float PRIZE_DAMAGE = 0.07f;
     private static final float A_PRIZE_DAMAGE = 0.10f;
-    private static final String BASE_IMG = "images/events/spinTheWheel.jpg";
+    private static final String BASE_IMG = TheActMod.assetPath("images/events/GremlinQuiz.png");
 
     private static final int START_QUESTION_INDEX = 5;
     private static final int START_ABCD_INDEX = 5;
