@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BarricadePower;
 import theAct.TheActMod;
+import theAct.powers.CautiousPower;
 
 public class SilentTribesmen extends AbstractMonster {
     public static final String ID = TheActMod.makeID("SilentTribesmen");
@@ -21,8 +22,11 @@ public class SilentTribesmen extends AbstractMonster {
     private static final int START_BLOCK_ASC_MODIFIER = 5;
     private static final int BLOCK_MOVE_AMT = 15;
     private static final int BLOCK_MOVE_ASC_MODIFIER = 5;
+    private static final int STUN_AMT = 4;
+    private static final int STUN_AMT_ASC_MODIFIER = 1;
     private int blockAmt;
     private int blockMoveAmt;
+    private int stunAmt;
     public static final String STUNNED = "STUNNED";
     public static final String NOTSTUNNED = "NOTSTUNNED";
     private boolean isFirstTurn = false;
@@ -45,6 +49,11 @@ public class SilentTribesmen extends AbstractMonster {
         } else {
             blockMoveAmt = BLOCK_MOVE_AMT;
         }
+        if (AbstractDungeon.ascensionLevel >= 17) {
+            stunAmt = STUN_AMT + STUN_AMT_ASC_MODIFIER;
+        } else {
+            stunAmt = STUN_AMT;
+        }
     }
 
     @Override
@@ -63,6 +72,7 @@ public class SilentTribesmen extends AbstractMonster {
     public void usePreBattleAction() {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, blockAmt));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new BarricadePower(this)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new CautiousPower(this, stunAmt)));
     }
 
     @Override
