@@ -120,7 +120,6 @@ public class Jungle extends AbstractDungeon
         generateElites(10);
     }
 
-    @Override
     protected void generateWeakEnemies(int count)
     {
         // TODO: This is copied from TheCity
@@ -134,7 +133,6 @@ public class Jungle extends AbstractDungeon
         populateMonsterList(monsters, count, false);
     }
 
-    @Override
     protected void generateStrongEnemies(int count)
     {
         // TODO: This is copied from TheCity
@@ -152,7 +150,6 @@ public class Jungle extends AbstractDungeon
         populateMonsterList(monsters, count, false);
     }
 
-    @Override
     protected void generateElites(int count)
     {
         // TODO: This is copied from TheCity
