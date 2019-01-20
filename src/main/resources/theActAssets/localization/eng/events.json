@@ -19,7 +19,7 @@
     ],
     "OPTIONS": [
       "[Drink] #gRemove #g",
-      " #gcards #gfrom #gyour #gdeck. #rAdd #ra #rSpirit #rDisease #rto #ryour #rdeck.",
+      " #gcards #gfrom #gyour #gdeck. #rObtain #rSpirit #rDisease.",
       "[Leave]",
       "Select ",
       " Cards to Remove.",
