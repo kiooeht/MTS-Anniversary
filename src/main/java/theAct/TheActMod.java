@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
+import com.megacrit.cardcrawl.monsters.city.Snecko;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,6 +25,7 @@ import basemod.interfaces.PostInitializeSubscriber;
 import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
+import theAct.events.SneckoIdol;
 import theAct.patches.GetDungeonPatches;
 
 @SpireInitializer
@@ -68,6 +70,7 @@ public class TheActMod implements
         // Add events here
         BaseMod.addEvent(River.ID, River.class, Jungle.ID);
         BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
+        BaseMod.addEvent(SneckoIdol.ID, SneckoIdol.class, Jungle.ID);
 
         // Add monsters here
 
