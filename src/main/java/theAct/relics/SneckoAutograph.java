@@ -33,6 +33,9 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     private static RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
     public static final String NAME = relicStrings.NAME;
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
+    private static final String IMG_PATH = TheActMod.assetPath("images/relics/SneckoAutograph.png");
+    private static final String OUTLINE_PATH = TheActMod.assetPath("images/relics/SneckoAutographOutline.png");
+
     float shopBubbleX = MathUtils.random(660.0F, 1260.0F) * Settings.scale;
     float shopBubbleY = Settings.HEIGHT - 380.0F * Settings.scale;
     private static ArrayList<StoreRelic> relics = new ArrayList<>();
@@ -40,7 +43,7 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     private static int rng;
 
     public SneckoAutograph() {
-        super(ID, ImageMaster.loadImage(TheActMod.assetPath("images/relics/SneckoAutograph.png")), RelicTier.SPECIAL, LandingSound.FLAT);
+        super(ID, ImageMaster.loadImage(IMG_PATH), ImageMaster.loadImage(OUTLINE_PATH), RelicTier.SPECIAL, LandingSound.FLAT);
         counter = -4;
         getUpdatedDescription();
     }
