@@ -26,6 +26,7 @@ import theAct.events.SneckoIdol;
 import theAct.monsters.MUSHROOMPOWER.MushroomGenki;
 import theAct.monsters.MUSHROOMPOWER.MushroomKuudere;
 import theAct.monsters.MUSHROOMPOWER.MushroomYandere;
+import theAct.monsters.SpyderBoss.SpyderBoss;
 import theAct.patches.GetDungeonPatches;
 import theAct.relics.SneckoAutograph;
 import theAct.events.*;
