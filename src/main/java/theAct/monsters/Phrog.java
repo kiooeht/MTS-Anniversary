@@ -26,9 +26,12 @@ public class Phrog extends AbstractMonster {
 	public static final String ID = TheActMod.makeID("Phrog");
 	private static final MonsterStrings STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
 
-	private int maxHP = 113;
-	private int minHP = 97;
-	private int tackleDamage = 25;
+	private static final int MAX_HP = 113;
+	private static final int MIN_HP = 97;
+	private static final int TACKLE_DAMAGE = 25;
+	private static final int ASC_HP_MODIFIER = 5;
+	private static final int ASC_DMG_MODIFIER = 2;
+
 	private boolean offsetTurn;
 
 	private AbstractCard card;
@@ -37,19 +40,18 @@ public class Phrog extends AbstractMonster {
 		super(STRINGS.NAME, ID, 75, 0, 0, 300, 300, null, 0 + xOffset, 0f + yOffset);
 
 		//this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
+		if (AbstractDungeon.ascensionLevel >= 7) {
+			this.setHp(MIN_HP + ASC_HP_MODIFIER, MAX_HP + ASC_HP_MODIFIER);
+		} else {
+			this.setHp(MIN_HP, MAX_HP);
+		}
+		if (AbstractDungeon.ascensionLevel >= 2) {
+			this.damage.add(new DamageInfo(this, TACKLE_DAMAGE + ASC_DMG_MODIFIER));
+		} else {
+			this.damage.add(new DamageInfo(this, TACKLE_DAMAGE));
+		}
 		this.offsetTurn = offsetTurn;
 
-		switch(AbstractDungeon.ascensionLevel){
-			case 7:
-				this.minHP += 5;
-				this.maxHP += 5;
-			case 2:
-				this.tackleDamage += 2;
-		}
-
-		this.damage.add(new DamageInfo(this, tackleDamage));
-
-		this.setHp(minHP, maxHP);
 
 		this.animY += 25f;
 

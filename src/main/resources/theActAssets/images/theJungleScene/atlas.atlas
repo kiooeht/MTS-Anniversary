@@ -83,18 +83,18 @@ size: 1737, 488
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-mod/campfireKindling
+campfireKindling
   rotate: false
   xy: 2, 2
   size: 1029, 487
   orig: 1737, 488
-  offset: 869, 0
+  offset: 0,0
   index: -1
-mod/campfireGlow
+campfireGlow
   rotate: false
   xy: 1034, 2
   size: 701, 242
-  orig: 244, 0
+  orig: 1737, 488
   offset: 0,0
   index: -1
 
