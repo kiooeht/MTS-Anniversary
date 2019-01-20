@@ -19,6 +19,8 @@ import com.megacrit.cardcrawl.powers.FlameBarrierPower;
 import com.megacrit.cardcrawl.relics.Mango;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.SpeechBubble;
+import com.megacrit.cardcrawl.vfx.combat.FireballEffect;
+import com.megacrit.cardcrawl.vfx.combat.RedFireballEffect;
 import theAct.TheActMod;
 import java.util.Random;
 
@@ -31,12 +33,12 @@ public class Flameango extends AbstractMonster
     private static final String FLAME_ARMOR_NAME = MONSTER_STRINGS.MOVES[1];
     private static final String FLAVOR_TOWN = MONSTER_STRINGS.DIALOG[0];
 
-    private static final int minHP = 65;
-    private static final int maxHP = 70;
+    private static final int minHP = 85;
+    private static final int maxHP = 90;
 
     private static final int BURNS = 1;
-    private static final int ARMOR = 3;
-    private static final int FLAME_DAMAGE = 8;
+    private static final int ARMOR = 4;
+    private static final int FLAME_DAMAGE = 10;
     private static final int PECK_DAMAGE = 4;
     private static final int PECK_HITS = 3;
 
@@ -132,12 +134,21 @@ public class Flameango extends AbstractMonster
     @Override
     protected void getMove(int i)
     {
-        if(i < 20)
-            setMove((byte)0, AbstractMonster.Intent.ATTACK, this.damage.get(0).base, this.peckHits, true);
-        else if(i < 60)
-            setMove(FIRE_BREATH_NAME, (byte)1, Intent.ATTACK_DEBUFF, this.damage.get(1).base);
-        else
-            setMove(FLAME_ARMOR_NAME, (byte)2, Intent.BUFF);
+        if(nextMove == 2)
+        {
+            if(i < 50)
+                setMove((byte)0, AbstractMonster.Intent.ATTACK, this.damage.get(0).base, this.peckHits, true);
+            else
+                setMove(FIRE_BREATH_NAME, (byte)1, Intent.ATTACK_DEBUFF, this.damage.get(1).base);
+        }
+        else {
+            if (i < 20)
+                setMove((byte) 0, AbstractMonster.Intent.ATTACK, this.damage.get(0).base, this.peckHits, true);
+            else if (i < 60)
+                setMove(FIRE_BREATH_NAME, (byte) 1, Intent.ATTACK_DEBUFF, this.damage.get(1).base);
+            else
+                setMove(FLAME_ARMOR_NAME, (byte) 2, Intent.BUFF);
+        }
     }
 
     @Override
