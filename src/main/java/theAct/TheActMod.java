@@ -114,6 +114,13 @@ public class TheActMod implements
                         new MushroomKuudere(-133.0F, 0.0F),
                         new MushroomGenki(125.0F, -30.0F)
                 }));
+        BaseMod.addMonster(makeID("Silent_and_trap"), () -> new MonsterGroup(
+                new AbstractMonster[]{
+                		new SwingingAxe(-350.0F, 100.0F),
+                		new SneakySpyder(-223.0F, 330.0F),
+                        new WebberSpyder(-179.0F, -10.0F, true),
+                        new SilentTribesmen(90.0F, 0.0F)
+                }));
         BaseMod.addMonster(makeID("6_Spyders"), () -> new MonsterGroup(
                 new AbstractMonster[]{
                 		new SneakySpyder(-849.0F, 360.0F),
@@ -123,15 +130,20 @@ public class TheActMod implements
                         new WebberSpyder(-199.0F, -10.0F, false),
                         new WebberSpyder(39.0F, 10.0F, true)
                 }));
-        BaseMod.addMonster(TheActMod.makeID("Flameango_and_Byrd"), () -> new MonsterGroup(
+        BaseMod.addMonster(makeID("Flameango_and_Byrd"), () -> new MonsterGroup(
                 new AbstractMonster[] {
                         new Flameango(50),
                         new Byrd(-175.0F, 150.0F)
                     }));
-        BaseMod.addMonster(TheActMod.makeID("2_Flameangoes"), () -> new MonsterGroup(
+        BaseMod.addMonster(makeID("2_Flameangoes"), () -> new MonsterGroup(
                 new AbstractMonster[] {
-                        new Flameango(-80),
-                        new Flameango(200)
+                        new Flameango(80),
+                        new Flameango(-200)
+                    }));
+        BaseMod.addMonster(makeID("2_Snecko_Cultists"), () -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new SneckoCultist(80, 20),
+                        new SneckoCultist(-200, -20)
                     }));
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
