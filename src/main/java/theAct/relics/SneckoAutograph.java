@@ -52,7 +52,7 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     @Override
     public void onRightClick() {
         if (AbstractDungeon.getCurrRoom() instanceof ShopRoom && counter > 0) {
-            AbstractDungeon.topLevelEffectsQueue.add(new ShopSpeechBubble(shopBubbleX, shopBubbleX, DESCRIPTIONS[3], true));
+            AbstractDungeon.topLevelEffectsQueue.add(new ShopSpeechBubble(shopBubbleX, shopBubbleY, DESCRIPTIONS[3], true));
             counter = -2;
             ShopScreen shop = AbstractDungeon.shopScreen;
             coloredCards = (ArrayList<AbstractCard>)ReflectionHacks.getPrivate(shop, ShopScreen.class, "coloredCards");
