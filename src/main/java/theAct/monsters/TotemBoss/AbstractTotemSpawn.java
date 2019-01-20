@@ -35,8 +35,8 @@ import java.util.Iterator;
 public class AbstractTotemSpawn extends AbstractMonster {
     public TotemBoss owner;
 
-    public Integer baseHP = 30;
-    public Integer HPAscBuffed = 5;
+    public Integer baseHP = 50;
+    public Integer HPAscBuffed = 10;
     private Method refrenderIntentVfxBehind;
     private Method refrenderIntent;
     private Method refrenderIntentVfxAfter;
@@ -54,10 +54,10 @@ public class AbstractTotemSpawn extends AbstractMonster {
     private Method refupdateIntent;
 
     public static Float beamOffsetX = 25F * Settings.scale;
-    public static Float beamOffsetY = 40F * Settings.scale;
+    public static Float beamOffsetY = 20F * Settings.scale;
 
     public static Float beamOffsetX2 = -35F * Settings.scale;
-    public static Float beamOffsetY2 = 40F * Settings.scale;
+    public static Float beamOffsetY2 = 20F * Settings.scale;
 
 
 
@@ -65,7 +65,7 @@ public class AbstractTotemSpawn extends AbstractMonster {
 
 
     public AbstractTotemSpawn(String name, String ID, TotemBoss boss, String imgPath) {
-        super(name, ID, 420, 0.0F, 0F, 150.0F, 250.0F, imgPath, -90.0F, 30.0F);
+        super(name, ID, 420, 0.0F, 0F, 150.0F, 250.0F, null, -90.0F, 30.0F);
 
 
         ReflectionHacks.setPrivate(this, AbstractCreature.class,"HB_Y_OFFSET_DIST",-200F);
@@ -178,7 +178,7 @@ public class AbstractTotemSpawn extends AbstractMonster {
             if (this.drawY > Y) {
                 //  TheActMod.logger.info(this.id + " difference: " + (this.drawY - Y));
 
-                if (this.drawY - Y > 255F * Settings.scale) {
+                if (this.drawY - Y > 220F * Settings.scale) {
                     shouldFall = true;
                 }
             }
@@ -203,7 +203,7 @@ public class AbstractTotemSpawn extends AbstractMonster {
         this.updateAnimations();
         try {
             refupdateDeathAnimation.invoke(this);
-            this.intentHb.move(this.hb.cX - 140F * Settings.scale,this.drawY + 180F * Settings.scale);
+            this.intentHb.move(this.hb.cX - 120F * Settings.scale,this.drawY + 160F * Settings.scale);
 
             refupdateIntent.invoke(this);
         } catch (InvocationTargetException | IllegalAccessException e) {
@@ -214,33 +214,6 @@ public class AbstractTotemSpawn extends AbstractMonster {
     }
 
 
-    /*
-    public void changeState(String key) {
-        byte var3 = -1;
-        switch(key.hashCode()) {
-            case 1941037640:
-                if (key.equals("ATTACK")) {
-                    var3 = 0;
-                }
-            default:
-                switch(var3) {
-                    case 0:
-                        this.state.setAnimation(0, "Attack", false);
-                        this.state.addAnimation(0, "Idle", true, 0.0F);
-                    default:
-                }
-        }
-    }
-
-    public void damage(DamageInfo info) {
-        super.damage(info);
-        if (info.owner != null && info.type != DamageType.THORNS && info.output > 0) {
-            this.state.setAnimation(0, "Hit", false);
-            this.state.addAnimation(0, "Idle", true, 0.0F);
-        }
-
-    }
-    */
 
 
     protected void getMove(int num) {

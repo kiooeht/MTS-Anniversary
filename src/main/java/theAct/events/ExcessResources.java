@@ -20,6 +20,7 @@ public class ExcessResources extends AbstractImageEvent {
     private State state;
     private int chosen_option = 0;
     private static final int HEAL_AMOUNT = 2;
+    private static final int A_15_HEAL_AMOUNT = 1;
 
     public enum State{
         CHOOSING,
@@ -31,7 +32,7 @@ public class ExcessResources extends AbstractImageEvent {
         super(NAME, DESCRIPTIONS[0], "theActAssets/images/events/ER/start.jpg");
 
         imageEventText.setDialogOption(OPTIONS[0]);
-        imageEventText.setDialogOption(OPTIONS[1]);
+        imageEventText.setDialogOption(String.format(OPTIONS[1], AbstractDungeon.ascensionLevel >= 15 ? A_15_HEAL_AMOUNT : HEAL_AMOUNT));
 
         state = State.CHOOSING;
     }
@@ -48,11 +49,7 @@ public class ExcessResources extends AbstractImageEvent {
                     //Refuse
                     case 1:
                         chosen_option = 2;
-                        if (AbstractDungeon.ascensionLevel >= 15) {
-                            AbstractDungeon.player.heal((HEAL_AMOUNT-1), true);
-                        } else {
-                            AbstractDungeon.player.heal(HEAL_AMOUNT, true);
-                        }
+                        AbstractDungeon.player.heal(AbstractDungeon.ascensionLevel >= 15 ? A_15_HEAL_AMOUNT : HEAL_AMOUNT, true);
                         state = State.LEAVING;
                         break;
                 }

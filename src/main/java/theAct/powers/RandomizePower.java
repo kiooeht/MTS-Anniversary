@@ -18,8 +18,8 @@ public class RandomizePower extends Power implements OnCardDrawPower {
     public static final String powerID = TheActMod.makeID("RandomizePower");
     private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(powerID);
 
-    public RandomizePower(int stackAmount) {
-        this.owner = AbstractDungeon.player;
+    public RandomizePower(AbstractCreature p, int stackAmount) {
+        this.owner = p;
         this.type = PowerType.DEBUFF;
         this.name = strings.NAME;
         this.setImage("digestPower84.png", "digestPower32.png");
@@ -64,6 +64,6 @@ public class RandomizePower extends Power implements OnCardDrawPower {
 
     public void updateDescription(){
         this.description =
-                strings.DESCRIPTIONS[0] + amount + strings.DESCRIPTIONS[1];
+                strings.DESCRIPTIONS[0] + strings.DESCRIPTIONS[1];
     }
 }

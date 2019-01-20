@@ -16,7 +16,7 @@ public class TotemShadowParticle extends com.megacrit.cardcrawl.vfx.AbstractGame
     private Texture img;
     public TotemBoss p;
     private static int xOffset = -500;
-    private static int yOffset = -158;
+    private static int yOffset = -148;
 
 
     public TotemShadowParticle(TotemBoss p) {

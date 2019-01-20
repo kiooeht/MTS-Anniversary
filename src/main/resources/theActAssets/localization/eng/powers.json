@@ -5,104 +5,54 @@
 			"After taking damage #b",
 			" times, ",
 			" is returned to your hand. NL NL At the end of your turn ",
-			" is #rdigested."
+			" is #Exhausted."
 		]
 	},
-	"theJungle:SlothfulPower": {
-		"NAME": "Slothful",
+    "Squad": {
+		"NAME" : "Squad",
 		"DESCRIPTIONS": [
-			"Negates #b",
-			" buff.",
-			" buffs."
+			"Has #b1 #yStrength for every #rSpyder."
 		]
 	},
-	"theJungle:TotemStrengthPower": {
-		"NAME" : "Totemic Rage",
+    "InfiniteFlight": {
+		"NAME" : "Flying",
 		"DESCRIPTIONS": [
-			"When a Totem is destroyed, remaining Totems gain 1 Strength."
+			"Takes #b50% less #yAttack Damage."
 		]
 	},
-	"theJungle:BlockFromStrengthPower": {
-		"NAME" : "Defensive",
+    "Shy": {
+		"NAME" : "Shy",
 		"DESCRIPTIONS": [
-			"Strength increases the amount of Block this enemy provides."
+			"Has #b2 #yDexterity and #r-2 #yStrength for every #rSpyder."
 		]
 	},
-	"theJungle:ImmunityPower": {
-		"NAME" : "Totemic Might",
+    "Webbed": {
+		"NAME" : "Webbed",
 		"DESCRIPTIONS": [
-			"This enemy cannot be damaged until the Totems have been destroyed."
+			"Increase the #yCost of a random card in your hand by [E] .",
+			"Increase the #yCost of a random card in your hand by [E] #b",
+			" times."
 		]
 	},
-	"theJungle:SwingingTrapPower": {
-		"NAME": "Pendulum Trap",
+    "FragileEggs": {
+		"NAME" : "Fragile Eggs",
 		"DESCRIPTIONS": [
-			"NL NL Changes position each time you play a card. NL Cycles between #rIncoming, #rMidswing, and #gResetting.",
-			"#yPOSITION: ",
-			"#rINCOMING NL Ending your turn while this trap is #rIncoming will cause it to deal damage to you.", 
-			"#rMIDSWING NL Playing an #yAttack card while this trap is in #rMidswing will cause you to take #b", 
-			" damage.",
-			"#gRESETTING NL This trap is harmless while #gResetting."
+			"Every time this monster takes #b",
+			" #yUnblocked #yDamage, it spawns a big #rSpyder. NL #b",
+			" #yDamage left."
 		]
 	},
-	"theJungle:FungalInfectionPower": {
-		"NAME": "Fungal Infection",
+    "Formation": {
+		"NAME" : "Formation",
 		"DESCRIPTIONS": [
-			"Place a random #rSpore #rStatus on top of your deck each turn. NL Lasts #b",
-			" more turns."
+			"Is #gIntangible, when there is at least #b6 #rSpyders."
 		]
 	},
-	"theJungle:RegenerativeSlime": {
-		"NAME": "Regenerative Slime",
+    "Hatching": {
+		"NAME" : "Hatching",
 		"DESCRIPTIONS": [
-			"Whenever you play a non-Attack card, this heals #b",
-			" HP."
-		]
-	},
-	"theJungle:RandomizePower": {
-		"NAME": "Selective Confusion",
-		"DESCRIPTIONS": [
-			"At the start of your turn, randomizes the cost of #b",
-			" cards."
-		]
-	},
-	"theJungle:CautiousPower": {
-		"NAME" : "Cautious",
-		"DESCRIPTIONS": [
-			"u gotta hit this dude #b",
-			" more time, darn lmao",
-			" more times, darn lmao",
-			"This dude stunned for a turn lmao gottem."
-		]
-	},
-	"theJungle:Pride": {
-      "NAME": "Pride",
-      "DESCRIPTIONS": [
-        "Whenever you play a card, ",
-        " gains #b",
-        " #Strength for this turn only."
-      ]
-    },
-	"theJungle:ObsessionPower": {
-		"NAME": "Obsessive",
-		"DESCRIPTIONS": [
-			"Whenever you play an attack that does not ONLY target this monster, take #b",
-			" damage."
-		]
-	},
-	"theJungle:ProtectionPower": {
-		"NAME": "Protective",
-		"DESCRIPTIONS": [
-			"Whenever you play an attack that does not ONLY target this monster, all OTHER enemies gain #b",
-			" #yBlock."
-		]
-	},
-	"theJungle:EnergeticPower": {
-		"NAME": "Energetic",
-		"DESCRIPTIONS": [
-			"Whenever you play an attack that does not ONLY target this monster, all OTHER enemies gain #b",
-			" #yStrength."
+			"When this monster dies, it spawns #b",
+            " small #rSpyders."
 		]
 	}
-
 }

@@ -41,9 +41,9 @@ public class SneckoCultist extends AbstractMonster {
 
 
 
-    public SneckoCultist()
+    public SneckoCultist(int xOffset, int yOffset)
     {
-        super(MONSTER_STRINGS.NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, TheActMod.assetPath("/images/monsters/sneckoCultist/placeholder.png"), 0, -50f);
+        super(MONSTER_STRINGS.NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, TheActMod.assetPath("/images/monsters/sneckoCultist/placeholder.png"), 0 + xOffset, 0f + yOffset);
         this.type = EnemyType.NORMAL;
 
         this.damage.add(new DamageInfo(this, WHIP_DAMAGE));
@@ -65,14 +65,14 @@ public class SneckoCultist extends AbstractMonster {
             case MoveBytes.CONFUSE_START:
             {
                 //TODO - Animation once art is in
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(3),3));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(player,3),3));
                 break;
             }
             case MoveBytes.TACKLE:
             {
                 //TODO - Animation once art is in
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(player, damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(1),1));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(player,1),1));
             }
 
         }

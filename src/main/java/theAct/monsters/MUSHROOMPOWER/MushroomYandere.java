@@ -22,7 +22,7 @@ public class MushroomYandere extends AbstractMonster {
     private static final int MIN_HP = 18;
     private static final int MAX_HP = 21;
     private static final int ASC_HP_MODIFIER = 5;
-    private static final int DAMAGE_AMT = 7;
+    private static final int DAMAGE_AMT = 6;
     private static final int DAMAGE_AMT_ASC_MODIFIER = 2;
     private static final int OBSESSION_AMT = 2;
     private static final int OBSESSION_AMT_ASC_MODIFIER = 1;

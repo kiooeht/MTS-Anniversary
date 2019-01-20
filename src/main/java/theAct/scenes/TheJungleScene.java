@@ -27,17 +27,19 @@ public class TheJungleScene extends AbstractScene {
 	private TextureAtlas.AtlasRegion fgGlow;
 	private TextureAtlas.AtlasRegion floor;
 	private TextureAtlas.AtlasRegion mg1;
-	private TextureAtlas.AtlasRegion campfirebg;
+	private Texture campfirebg;
 	private Texture campfire;
 	private Texture fire;
 	private ArrayList<FireFlyEffect> fireflies;
 	private ArrayList<Tree> trees;
 	private static Texture treeTexture;
+	private static Texture topBar;
 
 	public TheJungleScene() {
 		super(TheActMod.assetPath("images/theJungleScene/atlas.atlas"));
 		if(treeTexture == null){
 			treeTexture = ImageMaster.loadImage(TheActMod.assetPath("/images/theJungleScene/tree.png"));
+			topBar = ImageMaster.loadImage(TheActMod.assetPath("/images/theJungleScene/topbar.png"));
 		}
 
 		this.fireflies = new ArrayList<>();
@@ -135,6 +137,9 @@ public class TheJungleScene extends AbstractScene {
 			}
 		}
 		sb.setColor(Color.WHITE.cpy());
+		sb.draw(topBar, 0, Settings.HEIGHT - (topBar.getHeight() * Settings.scale), 0, 0, Settings.WIDTH, topBar.getHeight(), 1.0f, Settings.scale, 0, 0, 0, topBar.getWidth(), topBar.getHeight(), false, false);
+
+		sb.setColor(Color.WHITE.cpy());
 		this.renderAtlasRegionIf(sb, this.fg, true);
 		sb.setBlendFunction(Gdx.gl20.GL_SRC_ALPHA, Gdx.gl20.GL_ONE);
 		this.renderAtlasRegionIf(sb, this.fgGlow, true);
@@ -162,6 +167,5 @@ public class TheJungleScene extends AbstractScene {
 			this.y = y;
 			flip = MathUtils.randomBoolean();
 		}
-
 	}
 }
