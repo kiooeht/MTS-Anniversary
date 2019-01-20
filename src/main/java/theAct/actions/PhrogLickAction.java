@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.ShowCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theAct.monsters.Phrog;
@@ -60,6 +61,7 @@ public class PhrogLickAction extends AbstractGameAction {
 		}
 		this.tickDuration();
 		if(this.isDone && this.card != null){
+			owner.setCard(card);
 			AbstractDungeon.actionManager.addToBottom(new ShowCardAction(this.card));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner, new DigestPower(owner, card, hits), hits));
 		}

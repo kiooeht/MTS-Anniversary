@@ -11,11 +11,11 @@ import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import com.megacrit.cardcrawl.rooms.EmptyRoom;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
-import com.megacrit.cardcrawl.scenes.TheCityScene;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-
 import theAct.TheActMod;
+import theAct.monsters.Phrog;
 import theAct.patches.GetDungeonPatches;
+import theAct.scenes.TheJungleScene;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,8 +36,10 @@ public class Jungle extends AbstractDungeon
         if (scene != null) {
             scene.dispose();
         }
-        scene = new TheCityScene(); // TODO
+        scene = new TheJungleScene(); // TODO
         fadeColor = Color.valueOf("1e0f0aff"); // TODO ?
+
+
 
         initializeLevelSpecificChances();
         mapRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + AbstractDungeon.actNum * 100);
@@ -56,7 +58,7 @@ public class Jungle extends AbstractDungeon
         if (scene != null) {
             scene.dispose();
         }
-        scene = new TheCityScene(); // TODO
+        scene = new TheJungleScene(); // TODO
         fadeColor = Color.valueOf("1e0f0aff"); // TODO ?
 
         initializeLevelSpecificChances();
@@ -156,7 +158,7 @@ public class Jungle extends AbstractDungeon
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
         monsters.add(new MonsterInfo("Gremlin Leader", 1.0F));
         monsters.add(new MonsterInfo("Slavers", 1.0F));
-        monsters.add(new MonsterInfo("Book of Stabbing", 1.0F));
+        monsters.add(new MonsterInfo(Phrog.ID, 1.0f));
         MonsterInfo.normalizeWeights(monsters);
         populateMonsterList(monsters, count, true);
     }

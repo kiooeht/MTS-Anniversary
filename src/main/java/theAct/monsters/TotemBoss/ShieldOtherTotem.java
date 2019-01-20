@@ -5,6 +5,8 @@
 
 package theAct.monsters.TotemBoss;
 
+import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
@@ -12,7 +14,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import theAct.TheActMod;
+import theAct.powers.BlockFromStrengthPower;
+import theAct.powers.ImmunityPower;
+import theAct.vfx.TotemBeamEffect;
 
 import java.util.Iterator;
 
@@ -23,11 +30,11 @@ public class ShieldOtherTotem extends AbstractTotemSpawn {
     public static final String[] MOVES;
     public static final String[] DIALOG;
 
-    public Integer secondaryEffect = 2;
+    public Integer secondaryEffect;
 
 
     public ShieldOtherTotem(TotemBoss boss) {
-        super(NAME, ID, boss);
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemcyan.png"));
 
         if (AbstractDungeon.ascensionLevel >= 19) {
             this.secondaryEffect = 10;
@@ -38,6 +45,8 @@ public class ShieldOtherTotem extends AbstractTotemSpawn {
         }
 
         this.intentType = Intent.DEFEND;
+        this.powers.add(new BlockFromStrengthPower(this));
+
 
     }
 
@@ -50,13 +59,18 @@ public class ShieldOtherTotem extends AbstractTotemSpawn {
             case 1:
                 // AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.25F));
-                Iterator var1 = AbstractDungeon.getMonsters().monsters.iterator();
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.CYAN)));
 
+                Integer blockBonus = 0;
+                if (this.hasPower(StrengthPower.POWER_ID)){
+                    blockBonus = this.getPower(StrengthPower.POWER_ID).amount;
+                }
+                for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
 
-                    AbstractMonster m = (AbstractMonster) var1.next();
                     if (!m.isDying && !(m instanceof TotemBoss)) {
-                        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, this, this.secondaryEffect));
+                        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, this, this.secondaryEffect + blockBonus));
                     }
+                }
 
 
                 AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
