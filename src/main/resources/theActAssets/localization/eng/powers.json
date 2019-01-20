@@ -61,5 +61,9 @@
 	"theJungle:RegenerativeSlime": {
 		"NAME": "Regenerative Slime",
 		"DESCRIPTIONS": ["Whenever you play a non-Attack card, this heals #b"," HP."]
+	},
+	"theJungle:Pride": {
+		"NAME": "Pride",
+		"DESCRIPTIONS": ["Whenever you play a card, "," gains #b"," #Strength for this turn only."]
 	}
 }

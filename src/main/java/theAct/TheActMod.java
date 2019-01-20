@@ -26,6 +26,7 @@ import theAct.events.River;
 import theAct.events.SneckoCultEvent;
 import theAct.events.GremlinQuiz;
 import theAct.events.LostInTheJungle;
+import theAct.monsters.Lyon;
 import theAct.monsters.Phrog;
 import theAct.monsters.SlimyTreeVines;
 import theAct.monsters.TotemBoss.TotemBoss;
@@ -88,6 +89,7 @@ public class TheActMod implements
         BaseMod.addMonster(Phrog.ID, Phrog::new);
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
+        BaseMod.addMonster(Lyon.ID, Lyon::new);
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());

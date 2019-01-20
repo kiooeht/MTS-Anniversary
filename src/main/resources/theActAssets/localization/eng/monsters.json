@@ -112,5 +112,10 @@
 		"NAME": "Slimy Jungle Vines",
 		"MOVES": ["Tangle","Split"],
 		"DIALOG": ["Jungle Vines"]
+	},
+	"theJungle:Lyon": {
+		"NAME": "Lyon",
+		"MOVES": ["Roar","Pounce"],
+		"DIALOG": ["ROOAAR!"]
 	}
 }
