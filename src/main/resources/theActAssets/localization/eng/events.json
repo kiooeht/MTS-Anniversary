@@ -48,7 +48,17 @@
   "theJungle:SneckoIdol": {
     "NAME": "Snecko Live!?",
     "DESCRIPTIONS": [
-      "#g~SNECKO~ #g~SNECKO~ #g~SNECKO~ NL @Thunderous@ applause breaks out as a girl in a Snecko onesie finishes a song and dance on stage. NL \"That was 'You Confuse My Heart'\"! NL #g~ENCORE~ #g~ENCORE~ #g~ENCORE~ NL Maybe it wouldn't be such a bad thing to stick around?"
+      "#g~SNECKO~ #g~SNECKO~ #g~SNECKO~ NL @Thunderous@ applause breaks out as a girl in a Snecko onesie finishes a song and dance on stage. NL \"That was 'You Confuse My Heart'\"! NL #g~ENCORE~ #g~ENCORE~ #g~ENCORE~ NL Maybe it wouldn't be such a bad thing to stick around?",
+      "You decide to stay for the #g~jammin'~ tunes. The energetic concert @flows@ into your veins and you can't help but stay around to gather your newfound obsession's autograph. NL \" #g@Hey!@\", the girl in the Snecko Onesie beams at you. \"Here's my autograph!\" NL You take it and walk off knowing you just spent time #robsessing over an idol.",
+      "Overcome with #r@rage@ from seeing another Snecko, you draw your weapon and charge towards the stage. The #r@HORDE@ of idol fanatics push you back and don't let you pass. NL On the bright side, they dropped some Snecko merch you pawn off to fans who couldn't get into the audience.",
+      "Deciding this was not worth your time, you leave the concert alone."
+    ],
+    "OPTIONS": [
+      "[Stay] #gObtain #gSnecko #gAutograph. #rBecome #rCursed #r- #rShame.",
+      "[Attack] #gObtain #g",
+      " #gGold. #rTake #r",
+      " #rdamage.",
+      "[Leave]"
     ]
   }
 }

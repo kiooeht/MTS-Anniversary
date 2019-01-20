@@ -3,6 +3,7 @@ package theAct.events;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.curses.Regret;
+import com.megacrit.cardcrawl.cards.curses.Shame;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -49,14 +50,14 @@ public class SneckoIdol extends AbstractImageEvent {
             case 0:
                 switch(i) {
                     case 0:
-                        imageEventText.updateDialogOption(0, OPTIONS[5]);
+                        imageEventText.updateDialogOption(0, OPTIONS[4]);
                         imageEventText.updateBodyText(DESCRIPTIONS[1]);
-                        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(CardLibrary.getCopy(Regret.ID), Settings.WIDTH / 2F, Settings.HEIGHT / 2F));
+                        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(CardLibrary.getCopy(Shame.ID), Settings.WIDTH / 2F, Settings.HEIGHT / 2F));
                         AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F, new SneckoAutograph());
                         imageEventText.clearRemainingOptions();
                         break;
                     case 1:
-                        imageEventText.updateDialogOption(0, OPTIONS[5]);
+                        imageEventText.updateDialogOption(0, OPTIONS[4]);
                         imageEventText.updateBodyText(DESCRIPTIONS[2]);
                         AbstractDungeon.player.damage(new DamageInfo(AbstractDungeon.player, damage));
                         AbstractDungeon.effectList.add(new FlashAtkImgEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, AbstractGameAction.AttackEffect.FIRE));
@@ -64,7 +65,7 @@ public class SneckoIdol extends AbstractImageEvent {
                         imageEventText.clearRemainingOptions();
                         break;
                     case 2:
-                        imageEventText.updateDialogOption(0, OPTIONS[5]);
+                        imageEventText.updateDialogOption(0, OPTIONS[4]);
                         imageEventText.updateBodyText(DESCRIPTIONS[3]);
                         imageEventText.clearRemainingOptions();
                         break;
