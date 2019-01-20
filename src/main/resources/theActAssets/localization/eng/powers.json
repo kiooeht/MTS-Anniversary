@@ -86,21 +86,21 @@
 	"theJungle:ObsessionPower": {
 		"NAME": "Obsessive",
 		"DESCRIPTIONS": [
-			"Whenever you play an attack that does not ONLY target this monster, take #b",
+			"Whenever you play an attack that does not target #rONLY this monster, take #b",
 			" damage."
 		]
 	},
 	"theJungle:ProtectionPower": {
 		"NAME": "Protective",
 		"DESCRIPTIONS": [
-			"Whenever you play an attack that does not ONLY target this monster, all OTHER enemies gain #b",
+			"Whenever you play an attack that does not target #rONLY this monster, all OTHER enemies gain #b",
 			" #yBlock."
 		]
 	},
 	"theJungle:EnergeticPower": {
 		"NAME": "Energetic",
 		"DESCRIPTIONS": [
-			"Whenever you play an attack that does not ONLY target this monster, all OTHER enemies gain #b",
+			"Whenever you play an attack that does not target #rONLY this monster, all OTHER enemies gain #b",
 			" #yStrength."
 		]
 	}
