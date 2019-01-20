@@ -84,6 +84,7 @@ public class KidnappersEvent extends AbstractImageEvent {
                     case 1:
                         imageEventText.updateDialogOption(0, OPTIONS[9]);
                         imageEventText.updateBodyText(DESCRIPTIONS[3]);
+                        imageEventText.clearRemainingOptions();
                         screenNum = 2;
                         break;
                     case 2:

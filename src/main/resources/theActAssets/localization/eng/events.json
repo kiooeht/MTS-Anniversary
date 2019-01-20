@@ -55,7 +55,7 @@
       "Seeing as you are not a cultist or an animal, you manage to bribe them with #ysome #ygold. NL They untie you and let you leave in piece, #r~but~ #r~you~ #r~can't~ #r~shake~ #r~the~ #r~feeling~ #r~that~ #r~someone~ #r~keeps~ #r~watching~ #r~you...~"
     ],
     "OPTIONS": [
-      "[Proceed.]",
+      "[Proceed]",
       "[Negotiate] #gLose #r",
       " #rHP . #gremove #g1 #gcard #gfrom #gyour #gdeck.",
       "[Cut the Rope] #rEnter #ra #rfight!",
@@ -64,7 +64,7 @@
       "[Locked] Requires: ",
       " gold.",
       "[Leave.]",
-      "[#rFight!]",
+      "[Fight!] #rGet #rInto #rA #rScuffle.",
       "Remove a card from your deck."
     ]
   }
