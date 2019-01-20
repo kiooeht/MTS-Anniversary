@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -52,14 +53,17 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     @Override
     public void onRightClick() {
         if (AbstractDungeon.getCurrRoom() instanceof ShopRoom && counter == -4) {
-            AbstractDungeon.topLevelEffectsQueue.add(new ShopSpeechBubble(shopBubbleX, shopBubbleY, DESCRIPTIONS[3], true));
+            AbstractDungeon.topLevelEffectsQueue.add(new ShopSpeechBubble(shopBubbleX, shopBubbleY, DESCRIPTIONS[3], false));
             counter = -2;
+            description = DESCRIPTIONS[2];
+            tips.clear();
+            tips.add(new PowerTip(name, description));
+            initializeTips();
             ShopScreen shop = AbstractDungeon.shopScreen;
             relics = (ArrayList<StoreRelic>)ReflectionHacks.getPrivate(shop, ShopScreen.class, "relics");
             rng = AbstractDungeon.miscRng.random(relics.size() - 1);
             relicStuff = true;
         }
-        getUpdatedDescription();
     }
 
 
@@ -72,10 +76,9 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     public String getUpdatedDescription()
     {
         if (counter == -2) {
-            return DESCRIPTIONS[2];
-        } else {
-            return DESCRIPTIONS[0] + DESCRIPTIONS[1];
+            return DESCRIPTIONS[3];
         }
+        return DESCRIPTIONS[0] + DESCRIPTIONS[1];
     }
 
     public static void iHatePostUpdate() {
