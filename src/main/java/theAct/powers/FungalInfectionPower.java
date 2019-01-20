@@ -17,6 +17,7 @@ import theAct.cards.fungalobungalofunguyfuntimes.SS_Bright;
 import theAct.cards.fungalobungalofunguyfuntimes.SS_Clouding;
 import theAct.cards.fungalobungalofunguyfuntimes.SS_Clumping;
 import theAct.cards.fungalobungalofunguyfuntimes.SS_Leeching;
+import theAct.cards.fungalobungalofunguyfuntimes.SS_Sloth;
 import theAct.cards.fungalobungalofunguyfuntimes.SS_Toxin;
 import theAct.powers.abstracts.Power;
 
@@ -43,25 +44,29 @@ public class FungalInfectionPower extends Power {
 	@Override
 	public void atEndOfRound() {
 		AbstractCard c;
-		switch (AbstractDungeon.miscRng.random(5)) {
-		case 0:
-			c = new SS_Clouding();
-			break;
-		case 1:
-			c = new SS_Bright();
-			break;
-		case 2:
-			c = new SS_Clumping();
-			break;
-		case 3:
-			c = new SS_Leeching();
-			break;
-		default:
-			c = new SS_Toxin();//this one is slightly more common
-			break;
+		for (int i=0; i < Math.min(this.amount, 3); i++) {
+			switch (AbstractDungeon.miscRng.random(6)) {
+			case 0:
+				c = new SS_Clouding();
+				break;
+			case 1:
+				c = new SS_Bright();
+				break;
+			case 2:
+				c = new SS_Clumping();
+				break;
+			case 3:
+				c = new SS_Leeching();
+				break;
+			case 4:
+				c = new SS_Sloth();
+				break;
+			default:
+				c = new SS_Toxin();//this one is slightly more common
+				break;
+			}
+			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(c, 1, false, false));
 		}
-		
-		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(c, 1, false, false));
 		if (this.amount == 0) {
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this.powerID));
         }
