@@ -23,6 +23,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theAct.dungeons.Jungle;
 import theAct.events.River;
+import theAct.events.KidnappersEvent;
 import theAct.events.SneckoCultEvent;
 import theAct.monsters.SilentTribesmen;
 import theAct.monsters.Phrog;
@@ -73,6 +74,7 @@ public class TheActMod implements
         // Add events here
         BaseMod.addEvent(River.ID, River.class, Jungle.ID);
         BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
+        BaseMod.addEvent(KidnappersEvent.ID, KidnappersEvent.class, Jungle.ID);
 
         // Add monsters here
 
