@@ -1,9 +1,10 @@
 package theAct;
 
-import java.nio.charset.StandardCharsets;
-
+import basemod.BaseMod;
+import basemod.ModPanel;
+import basemod.abstracts.CustomSavable;
 import basemod.helpers.RelicType;
-import basemod.interfaces.EditRelicsSubscriber;
+import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -11,35 +12,24 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import basemod.BaseMod;
-import basemod.ModPanel;
-import basemod.abstracts.CustomSavable;
-import basemod.interfaces.EditKeywordsSubscriber;
-import basemod.interfaces.EditStringsSubscriber;
-import basemod.interfaces.PostInitializeSubscriber;
+import theAct.cards.curses.EternalShame;
 import theAct.dungeons.Jungle;
-import theAct.events.ExcessResources;
-import theAct.events.FauxPas;
-import theAct.events.River;
-import theAct.events.SneckoCultEvent;
-import theAct.events.GremlinQuiz;
+import theAct.events.*;
 import theAct.monsters.Phrog;
 import theAct.monsters.SlimyTreeVines;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
-import theAct.relics.WildMango;
-import theAct.relics.WildPear;
-import theAct.relics.WildStrawberry;
-import theAct.relics.PaperFaux;
+import theAct.relics.*;
+
+import java.nio.charset.StandardCharsets;
 
 @SpireInitializer
 public class TheActMod implements
         PostInitializeSubscriber,
         EditKeywordsSubscriber,
+        EditCardsSubscriber,
         EditStringsSubscriber,
         EditRelicsSubscriber,
         CustomSavable<Boolean>
@@ -82,6 +72,7 @@ public class TheActMod implements
         BaseMod.addEvent(FauxPas.ID, FauxPas.class, Jungle.ID);
         BaseMod.addEvent(GremlinQuiz.ID, GremlinQuiz.class, Jungle.ID);
         BaseMod.addEvent(ExcessResources.ID, ExcessResources.class, Jungle.ID);
+        BaseMod.addEvent(HappyBirthday.ID, HappyBirthday.class, Jungle.ID);
 
         // Add monsters here
         BaseMod.addMonster(Phrog.ID, Phrog::new);
@@ -97,6 +88,12 @@ public class TheActMod implements
     }
 
     @Override
+    public void receiveEditCards()
+    {
+        BaseMod.addCard(new EternalShame());
+    }
+
+    @Override
     public void receiveEditRelics()
     {
         //event relics
@@ -104,6 +101,8 @@ public class TheActMod implements
         BaseMod.addRelic(new WildMango(), RelicType.SHARED);
         BaseMod.addRelic(new WildStrawberry(), RelicType.SHARED);
         BaseMod.addRelic(new WildPear(), RelicType.SHARED);
+        BaseMod.addRelic(new BirthdayCakeSlice(),  RelicType.SHARED);
+        BaseMod.addRelic(new BirthdayCake(),  RelicType.SHARED);
     }
 
     @Override

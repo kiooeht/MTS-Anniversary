@@ -35,5 +35,20 @@
       "Raise your Max HP by #b",
       " but gain #b1 #ySlothful at the start of each combat."
     ]
+  },
+  "theJungle:BirthdayCakeSlice": {
+    "NAME": "Slice of Birthday Cake",
+    "FLAVOR": "A nice slice of birthday cake to celebrate.",
+    "DESCRIPTIONS": [
+      "Upon pickup, raise your Max HP by #b"
+    ]
+  },
+  "theJungle:BirthdayCake": {
+    "NAME": "Birthday Cake of Shame",
+    "FLAVOR": "It's tasty, but you feel only shame from eating it.",
+    "DESCRIPTIONS": [
+      "Upon pickup, raise your Max HP by #b",
+      " and obtain a special #rCurse."
+    ]
   }
 }

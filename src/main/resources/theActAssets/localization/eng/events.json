@@ -239,5 +239,18 @@
       "[Run] #yGain #y150 #yGold. #rBecome #rCursed #r- #rNormality",
       "[Continue]"
     ]
+  },
+  "theJungle:HappyBirthday" : {
+    "NAME": "Happy Birthday",
+    "DESCRIPTIONS": [
+      "While wandering the jungle, you come across... NL ...a birthday cake? NL NL A small note sits next to the cake. It reads: NL NL #b\"Happy #bBirthday #bMTS! NL #b(Please #bonly #btake #bone #bslice) NL #b- #bkio\"",
+      "You only take a single slice, just as the note asked. NL NL It's quite delicious.",
+      "Looking around, you see nothing stopping you from taking the whole cake. NL NL #gIt #gis #gextremely #gtasty, but soon you are overcome by a #r~sense~ #r~of~ #r~shame~ at the horror you have done."
+    ],
+    "OPTIONS": [
+      "[Take a Slice] #gGain #g%d #gMax #gHP.",
+      "[Steal Cake] #gGain #g%d #gMax #gHP. #rEternal #rShame.",
+      "[Leave]"
+    ]
   }
 }
