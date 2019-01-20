@@ -33,7 +33,7 @@ public class MushroomKuudere extends AbstractMonster {
 
     public MushroomKuudere(float x, float y) {
         super(NAME, ID, MAX_HP, 0.0F, 10.0F, 280.0F, 280.0F, null, x, y);
-        loadAnimation(TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Kuudere.atlas"), TheActMod.assetPath("images/Kuudere.json"), 1.0F);
+        loadAnimation(TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Kuudere.atlas"), TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Kuudere.json"), 1.0F);
         state.setAnimation(0, "Idle", true);
         stateData.setMix("Idle", "Kyuuuuu", 0.2F);
         if (AbstractDungeon.ascensionLevel >= 17) {
