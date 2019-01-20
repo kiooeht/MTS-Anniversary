@@ -36,9 +36,9 @@ public class BashTotem extends AbstractTotemSpawn {
 
 
         if (AbstractDungeon.ascensionLevel >= 19) {
-            this.attackDmg = 8;
+            this.attackDmg = 12;
         } else if (AbstractDungeon.ascensionLevel >= 4) {
-            this.attackDmg = 7;
+            this.attackDmg = 10;
         } else {
             this.attackDmg = 8;
         }

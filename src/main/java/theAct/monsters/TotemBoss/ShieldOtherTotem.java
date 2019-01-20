@@ -37,9 +37,9 @@ public class ShieldOtherTotem extends AbstractTotemSpawn {
         super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemcyan.png"));
 
         if (AbstractDungeon.ascensionLevel >= 19) {
-            this.secondaryEffect = 10;
+            this.secondaryEffect = 12;
         } else if (AbstractDungeon.ascensionLevel >= 4) {
-            this.secondaryEffect = 8;
+            this.secondaryEffect = 10;
         } else {
             this.secondaryEffect = 8;
         }

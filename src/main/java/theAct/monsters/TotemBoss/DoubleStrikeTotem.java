@@ -39,7 +39,7 @@ public class DoubleStrikeTotem extends AbstractTotemSpawn {
             this.attackDmg = 4;
             this.secondaryEffect = 3;
         } else if (AbstractDungeon.ascensionLevel >= 4) {
-            this.attackDmg = 3;
+            this.attackDmg = 4;
             this.secondaryEffect = 2;
         } else {
             this.attackDmg = 3;

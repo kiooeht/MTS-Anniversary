@@ -43,13 +43,13 @@ public class BuffTotem extends AbstractTotemSpawn {
         super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemgreen.png"));
 
         if (AbstractDungeon.ascensionLevel >= 19) {
-            this.attackDmg = 4;
+            this.attackDmg = 5;
             this.secondaryEffect = 2;
         } else if (AbstractDungeon.ascensionLevel >= 4) {
-            this.attackDmg = 3;
+            this.attackDmg = 5;
             this.secondaryEffect = 1;
         } else {
-            this.attackDmg = 3;
+            this.attackDmg = 4;
             this.secondaryEffect = 1;
         }
         this.damage.add(new DamageInfo(this, this.attackDmg));

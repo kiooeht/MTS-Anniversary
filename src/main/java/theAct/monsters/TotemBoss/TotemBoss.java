@@ -186,8 +186,13 @@ public class TotemBoss extends AbstractMonster {
         switch(this.nextMove) {
             case 0:
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
-                AbstractDungeon.actionManager.addToBottom(new WaitAction(0.3F));
-                AbstractDungeon.actionManager.addToBottom(new HealAction((livingTotems.get(AbstractDungeon.cardRng.random(livingTotems.size() - 1))), this, this.healAmt));
+
+                if (livingTotems.size() > 0) {
+                    AbstractMonster m = livingTotems.get(AbstractDungeon.cardRng.random(livingTotems.size() - 1));
+
+                    AbstractDungeon.actionManager.addToBottom(new WaitAction(0.3F));
+                    AbstractDungeon.actionManager.addToBottom(new HealAction((livingTotems.get(AbstractDungeon.cardRng.random(livingTotems.size() - 1))), this, this.healAmt));
+                }
         }
 
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));

@@ -42,14 +42,14 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
 
 
         if (AbstractDungeon.ascensionLevel >= 19) {
+            this.attackDmg = 5;
+            this.secondaryEffect = 4;
+        } else if (AbstractDungeon.ascensionLevel >= 4) {
+            this.attackDmg = 5;
+            this.secondaryEffect = 3;
+        } else {
             this.attackDmg = 4;
             this.secondaryEffect = 3;
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
-            this.attackDmg = 3;
-            this.secondaryEffect = 2;
-        } else {
-            this.attackDmg = 3;
-            this.secondaryEffect = 2;
         }
 
         this.damage.add(new DamageInfo(this, this.attackDmg));
