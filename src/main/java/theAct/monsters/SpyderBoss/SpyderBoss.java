@@ -76,7 +76,7 @@ public class SpyderBoss extends AbstractMonster {
 
 public void spawnBigSpyder() {
     
-	if(isDying || bigSpyderAmt >= bigSpyders.length)
+	if(isDying || bigSpyderAmt >= bigSpyders.length || bigChoice.size() == 0)
 		return;
 	
 	int i = 0;
@@ -86,7 +86,7 @@ public void spawnBigSpyder() {
 		i++;
 	}
 		
-		int r = AbstractDungeon.monsterRng.random(bigChoice.size());
+		int r = AbstractDungeon.monsterRng.random(bigChoice.size() - 1);
     	int chosen = bigChoice.get(r);
     	bigChoice.remove(r);
     	AbstractMonster m = null;
