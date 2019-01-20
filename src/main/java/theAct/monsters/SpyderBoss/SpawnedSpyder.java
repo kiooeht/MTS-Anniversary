@@ -44,6 +44,7 @@ public class SpawnedSpyder extends AbstractMonster {
     
     public boolean small = true;
     public int slot;
+    public int strength;
 
     public SpawnedSpyder(String name, String ID, boolean small, int baseHP, SpyderBoss boss, int slot, int strength) {
         super(name, ID, 420, 0.0F, 0F, small?80.0F:130F, small?60.0F:100F, TheActMod.assetPath("images/monsters/spyders/" + name + ".png"), 
@@ -54,6 +55,7 @@ public class SpawnedSpyder extends AbstractMonster {
         this.dialogY = 0;
         this.owner = boss;
         this.slot = slot;
+        this.strength = strength;
         this.small = small;
                 
         baseHP += AbstractDungeon.monsterHpRng.random(baseHP / 5);
@@ -65,8 +67,6 @@ public class SpawnedSpyder extends AbstractMonster {
         }
         
                 
-        if(strength != 0)
-        	AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this, this, new StrengthPower(this, strength), strength));      
         
         	
         
@@ -96,8 +96,13 @@ public class SpawnedSpyder extends AbstractMonster {
         if (AbstractDungeon.ascensionLevel >= 2) strength++;
         if (AbstractDungeon.ascensionLevel >= 17) strength++;
         
-        if(strength > 0)
-        	AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this, this, new StrengthPower(this, strength), strength));
+        this.strength = strength;
+    }
+    
+    public void usePreBattleAction() {
+    	if(strength != 0)
+        	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, strength), strength));     
+        
     }
 
 

@@ -116,24 +116,24 @@ public class TheActMod implements
                 }));
         BaseMod.addMonster(makeID("Silent_and_trap"), () -> new MonsterGroup(
                 new AbstractMonster[]{
-                		new SwingingAxe(-350.0F, 100.0F),
+                		new SwingingAxe(-450.0F, 100.0F),
                 		new SneakySpyder(-223.0F, 330.0F),
-                        new WebberSpyder(-179.0F, -10.0F, true),
-                        new SilentTribesmen(90.0F, 0.0F)
+                        new WebberSpyder(-159.0F, -10.0F, false),
+                        new SilentTribesmen(120.0F, 0.0F)
                 }));
         BaseMod.addMonster(makeID("6_Spyders"), () -> new MonsterGroup(
                 new AbstractMonster[]{
-                		new SneakySpyder(-849.0F, 360.0F),
+                		new SneakySpyder(-749.0F, 360.0F),
                 		new SneakySpyder(-473.0F, 420.0F),
-                		new FatSpyder(-72.0F, 288.0F),
-                		new FatSpyder(72.0F, 328.0F),
+                		new FatSpyder(-372.0F, 238.0F),
+                		new FatSpyder(-62.0F, 288.0F),
                         new WebberSpyder(-199.0F, -10.0F, false),
                         new WebberSpyder(39.0F, 10.0F, true)
                 }));
         BaseMod.addMonster(makeID("Flameango_and_Byrd"), () -> new MonsterGroup(
                 new AbstractMonster[] {
                         new Flameango(50),
-                        new Byrd(-175.0F, 150.0F)
+                        new Byrd(-305.0F, 110.0F)
                     }));
         BaseMod.addMonster(makeID("2_Flameangoes"), () -> new MonsterGroup(
                 new AbstractMonster[] {
