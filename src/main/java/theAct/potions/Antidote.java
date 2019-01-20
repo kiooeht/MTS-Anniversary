@@ -2,13 +2,11 @@ package theAct.potions;
 
 /*
 This is an event-exclusive potion.
-When used, the player gains 5 Strength and 5 Poison.
+When used, the player heals equal to the Poison/Venom it removes.
  */
 
 import basemod.abstracts.CustomPotion;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.HealAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -23,6 +21,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theAct.TheActMod;
+import theAct.patches.PotionRarityEnum;
 
 //BaseMod.addPotion(JungleJuice.class, Color.GREEN, Color.GRAY, Color.BLACK, JungleJuice.POTION_ID);
 public class Antidote extends CustomPotion
@@ -36,10 +35,10 @@ public class Antidote extends CustomPotion
 
     public Antidote() {
 
-        super(NAME, POTION_ID, PotionRarity.UNCOMMON, PotionSize.S, PotionColor.STRENGTH);
+        super(NAME, POTION_ID, PotionRarityEnum.JUNGLE, PotionSize.S, PotionColor.STRENGTH);
 
         this.potency = getPotency();
-        this.description = (DESCRIPTIONS[0] + this.potency + DESCRIPTIONS[1] + this.potency + DESCRIPTIONS[2]);
+        this.description = (DESCRIPTIONS[0]);
         this.isThrown = false;
         this.targetRequired = false;
         this.tips.add(new PowerTip(this.name, this.description));
@@ -48,15 +47,22 @@ public class Antidote extends CustomPotion
 
     public void use(final AbstractCreature target) {
 
-        AbstractDungeon.actionManager.addToBottom(new HealAction(AbstractDungeon.player, AbstractDungeon.player, this.potency));
+           int healAmount = 0;
 
         try {
-            if (AbstractDungeon.player.hasPower("PoisonPower"))
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, "PoisonPower"));
+            if (AbstractDungeon.player.hasPower("Poison")) {
+                healAmount += AbstractDungeon.player.getPower("Poison").amount;
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, "Poison"));
+                AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.potency));
+            }
+            //TODO: ADD VENOM CHECK IN HERE WHEN IT'S OPEN
         }
         catch(Exception e) {
             logger.info("Something went wrong :O");
         }
+
+        if(healAmount != 0)
+            AbstractDungeon.actionManager.addToBottom(new HealAction(AbstractDungeon.player, AbstractDungeon.player, healAmount));
 
        }
 

@@ -7,7 +7,10 @@ When used, the player gains 5 Strength and 5 Poison.
 
 import basemod.abstracts.CustomPotion;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.unique.DiscoveryAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.status.Slimed;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -19,21 +22,21 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import theAct.patches.PotionRarityEnum;
 
 //BaseMod.addPotion(JungleJuice.class, Color.GREEN, Color.GRAY, Color.BLACK, JungleJuice.POTION_ID);
-public class JungleJuice extends CustomPotion
+public class HauntedGourd extends CustomPotion
 {
-    public static final String POTION_ID = "JungleJuicePotion";
+    public static final String POTION_ID = "HauntedGourdPotion";
 
 
     private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
     public static final String NAME = potionStrings.NAME;
     public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
 
-    public JungleJuice() {
+    public HauntedGourd() {
 
-        super(NAME, POTION_ID, PotionRarityEnum.JUNGLE, PotionSize.S, PotionColor.STRENGTH);
+        super(NAME, POTION_ID, PotionRarityEnum.JUNGLE, PotionSize.CARD, PotionColor.FIRE);
 
         this.potency = getPotency();
-        this.description = (DESCRIPTIONS[0] + this.potency + DESCRIPTIONS[1] + this.potency + DESCRIPTIONS[2]);
+        this.description = (DESCRIPTIONS[0]);
         this.isThrown = false;
         this.targetRequired = false;
         this.tips.add(new PowerTip(this.name, this.description));
@@ -41,18 +44,23 @@ public class JungleJuice extends CustomPotion
 
 
     public void use(final AbstractCreature target) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, this.potency), this.potency));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, null, new PoisonPower(AbstractDungeon.player, null, this.getPotency()), this.getPotency()));
-        //AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction());
 
-        //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, AbstractDungeon.player, new StrengthPower(target, this.potency), this.potency)); give enemy 5 Str
+        AbstractDungeon.actionManager.addToBottom(new DiscoveryAction(AbstractCard.CardType.ATTACK));
+        AbstractDungeon.actionManager.addToBottom(new DiscoveryAction(AbstractCard.CardType.SKILL));
+        AbstractDungeon.actionManager.addToBottom(new DiscoveryAction(AbstractCard.CardType.POWER));
+      //ADD CURSE TO HAND
+        AbstractCard c = AbstractDungeon.returnRandomCurse().makeCopy();
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, 1));
+        AbstractCard d = new Slimed();
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(d, 1));
+
     }
 
     //com.megacrit.cardcrawl.potions.AbstractPotion.PotionRarity
 
     @Override
     public AbstractPotion makeCopy() {
-        return new JungleJuice();
+        return new HauntedGourd();
     }
 
     @Override

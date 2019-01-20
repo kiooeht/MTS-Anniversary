@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
+import com.megacrit.cardcrawl.monsters.city.Snecko;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -64,6 +65,10 @@ public class TheActMod implements
 
         //Potions
         BaseMod.addPotion(JungleJuice.class, Color.GREEN, Color.GRAY, Color.BLACK, JungleJuice.POTION_ID);
+        BaseMod.addPotion(Antidote.class, Color.TAN, Color.WHITE, Color.GOLDENROD, Antidote.POTION_ID);
+        BaseMod.addPotion(TwistedElixir.class, Color.OLIVE, Color.NAVY, Color.BLACK, TwistedElixir.POTION_ID);
+        BaseMod.addPotion(HauntedGourd.class, Color.ORANGE, Color.GREEN, Color.WHITE, HauntedGourd.POTION_ID);
+        BaseMod.addPotion(SneckoExtract.class, Color.BLACK, Color.BLACK, Color.BLACK, SneckoExtract.POTION_ID);
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
