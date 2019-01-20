@@ -25,7 +25,7 @@ public class MushroomKuudere extends AbstractMonster {
     private static final int PROTECTION_AMT_ASC_MODIFIER = 2;
     private static final int HEAL_AMT = 3;
     private static final int HEAL_AMT_ASC_MODIFIER = 2;
-    private static final int HEADBUTT_DMG = 6;
+    private static final int HEADBUTT_DMG = 3;
     private static final int HEADBUTT_DMG_ASC_MODIFIER = 2;
     private int headbuttDmg;
     private int protectionAmt;
