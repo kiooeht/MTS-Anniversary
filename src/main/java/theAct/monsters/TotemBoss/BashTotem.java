@@ -6,6 +6,8 @@
 package theAct.monsters.TotemBoss;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -33,12 +35,15 @@ public class BashTotem extends AbstractTotemSpawn {
 
     public BashTotem(TotemBoss boss) {
         super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemred.png"));
+        this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/red/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/red/Totem.json"), 1.0F);
 
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
 
         if (AbstractDungeon.ascensionLevel >= 19) {
-            this.attackDmg = 8;
+            this.attackDmg = 10;
         } else if (AbstractDungeon.ascensionLevel >= 4) {
-            this.attackDmg = 7;
+            this.attackDmg = 9;
         } else {
             this.attackDmg = 8;
         }

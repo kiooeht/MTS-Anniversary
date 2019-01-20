@@ -6,6 +6,8 @@
 package theAct.monsters.TotemBoss;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -34,15 +36,19 @@ public class DoubleStrikeTotem extends AbstractTotemSpawn {
 
     public DoubleStrikeTotem(TotemBoss boss) {
         super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemorange.png"));
+        this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/yellow/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/yellow/Totem.json"), 1.0F);
+
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
 
         if (AbstractDungeon.ascensionLevel >= 19) {
-            this.attackDmg = 4;
+            this.attackDmg = 3;
             this.secondaryEffect = 3;
         } else if (AbstractDungeon.ascensionLevel >= 4) {
             this.attackDmg = 3;
             this.secondaryEffect = 2;
         } else {
-            this.attackDmg = 3;
+            this.attackDmg = 2;
             this.secondaryEffect = 2;
         }
 
@@ -65,7 +71,7 @@ public class DoubleStrikeTotem extends AbstractTotemSpawn {
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.ORANGE)));
                 AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new TotemBeamEffect(this.hb.cX + beamOffsetX, this.hb.cY + beamOffsetY, AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, Color.ORANGE.cpy(), this.hb.cX + beamOffsetX2, this.hb.cY + beamOffsetY2), 0.1F));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new TotemBeamEffect(this.hb.cX + beamOffsetX, this.hb.cY + beamOffsetY, AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, Color.YELLOW.cpy(), this.hb.cX + beamOffsetX2, this.hb.cY + beamOffsetY2), 0.1F));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AttackEffect.NONE));
                 AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(new TotemBeamEffect(this.hb.cX + beamOffsetX, this.hb.cY + beamOffsetY, AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, Color.ORANGE.cpy(), this.hb.cX + beamOffsetX2, this.hb.cY + beamOffsetY2), 0.1F));

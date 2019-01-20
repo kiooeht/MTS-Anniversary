@@ -6,6 +6,8 @@
 package theAct.monsters.TotemBoss;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -38,18 +40,21 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
     public Integer secondaryEffect;
 
     public AttackAndShieldTotem(TotemBoss boss) {
-        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totempurple.png"));
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemorange.png"));
+        this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/white/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/white/Totem.json"), 1.0F);
 
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
 
         if (AbstractDungeon.ascensionLevel >= 19) {
+            this.attackDmg = 5;
+            this.secondaryEffect = 4;
+        } else if (AbstractDungeon.ascensionLevel >= 4) {
+            this.attackDmg = 5;
+            this.secondaryEffect = 3;
+        } else {
             this.attackDmg = 4;
             this.secondaryEffect = 3;
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
-            this.attackDmg = 3;
-            this.secondaryEffect = 2;
-        } else {
-            this.attackDmg = 3;
-            this.secondaryEffect = 2;
         }
 
         this.damage.add(new DamageInfo(this, this.attackDmg));
@@ -69,9 +74,9 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
             case 1:
                // AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F)); AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.PURPLE)));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.WHITE)));
                 AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new TotemBeamEffect(this.hb.cX + beamOffsetX, this.hb.cY + beamOffsetY, AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, Color.PURPLE.cpy(), this.hb.cX + beamOffsetX2, this.hb.cY + beamOffsetY2), 0.1F));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new TotemBeamEffect(this.hb.cX + beamOffsetX, this.hb.cY + beamOffsetY, AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, Color.WHITE.cpy(), this.hb.cX + beamOffsetX2, this.hb.cY + beamOffsetY2), 0.1F));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AttackEffect.FIRE));
 
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {

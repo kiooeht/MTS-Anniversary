@@ -24,7 +24,7 @@ public class BlockFromStrengthPower extends Power {
 		this.owner = owner;
 		this.type = PowerType.BUFF;
 		this.name = strings.NAME;
-		this.setImage("digestPower84.png", "digestPower32.png");
+		this.setImage("blockFromStrengthPower84.png", "blockFromStrengthPower32.png");
 		this.ID = powerID;
 		this.updateDescription();
 	}
