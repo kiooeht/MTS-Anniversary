@@ -32,7 +32,7 @@ public class SneakySpyder extends SpawnedSpyder{
 	}
     
     public SneakySpyder(float x, float y) {	
-		super(NAME, ID, SMALL, BASEHP*3/2, x, y);
+		super(NAME, ID, SMALL, BASEHP*4/3, x, y);
 		damage.add(new DamageInfo(this, 3));
 		damage.add(new DamageInfo(this, 4));
 	}
