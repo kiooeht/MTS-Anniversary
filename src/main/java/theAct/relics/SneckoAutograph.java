@@ -29,7 +29,7 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     public static final String ID = TheActMod.makeID("SneckoAutograph");
     private static RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
     public static final String NAME = relicStrings.NAME;
-    public static final String [] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
+    public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
     float shopBubbleX = MathUtils.random(660.0F, 1260.0F) * Settings.scale;
     float shopBubbleY = Settings.HEIGHT - 380.0F * Settings.scale;
     private ArrayList<AbstractCard> coloredCards = new ArrayList<>();
@@ -124,7 +124,7 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     public String getUpdatedDescription()
     {
         if (counter > 0) {
-            return CLICKABLE_DESCRIPTIONS()[0] + DESCRIPTIONS[0] + counter + DESCRIPTIONS[1];
+            return DESCRIPTIONS[0] + DESCRIPTIONS[1];
         } else {
             return DESCRIPTIONS[2];
         }
