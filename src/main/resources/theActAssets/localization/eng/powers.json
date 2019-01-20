@@ -74,5 +74,13 @@
 			" more times, darn lmao",
 			"This dude stunned for a turn lmao gottem."
 		]
-	}
+	},
+	"theJungle:Pride": {
+      "NAME": "Pride",
+      "DESCRIPTIONS": [
+        "Whenever you play a card, ",
+        " gains #b",
+        " #Strength for this turn only."
+      ]
+    }
 }

@@ -95,6 +95,7 @@ public class TheActMod implements
                 new Phrog(-175,0, false),
                 new Phrog(175, 0, true)
             }));
+        BaseMod.addMonster(Lyon.ID, Lyon::new);
 
         // Add Encounters here
 

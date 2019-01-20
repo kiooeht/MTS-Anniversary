@@ -143,9 +143,14 @@
 			"CONFUSE",
 			"Tackle"
 		],
-		"NAME":  "Snecko Cultist",
-		"DIALOG":  [
+		"NAME": "Snecko Cultist",
+		"DIALOG": [
 			""
 		]
+	},
+	"theJungle:Lyon": {
+		"NAME": "Lyon",
+		"MOVES": ["Roar","Pounce"],
+		"DIALOG": ["ROOAAR!"]
 	}
 }
