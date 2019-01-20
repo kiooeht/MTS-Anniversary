@@ -14,45 +14,26 @@ import theAct.TheActMod;
 import theAct.powers.abstracts.Power;
 import theAct.vfx.ImmunityShieldEffect;
 
-public class ImmunityPower extends Power implements HealthBarRenderPower {
+public class TotemHealthLinkPower extends Power {
 
-	public static final String powerID = TheActMod.makeID("ImmunityPower");
+	public static final String powerID = TheActMod.makeID("TotemHealthLinkPower");
 	private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(powerID);
 
 
-	public ImmunityPower(AbstractCreature owner) {
+	public TotemHealthLinkPower(AbstractCreature owner, int stackCount) {
 		this.owner = owner;
 		this.type = PowerType.BUFF;
 		this.name = strings.NAME;
+		this.amount = stackCount;
 		this.setImage("immunityPower84.png", "immunityPower32.png");
 		this.ID = powerID;
 		this.updateDescription();
 	}
 
-	public int onLoseHp(int damageAmount) {
-		AbstractDungeon.actionManager.addToBottom(new VFXAction(new ImmunityShieldEffect(this.owner.hb.cX,this.owner.hb.cY)));
-		flashWithoutSound();
-		return 0;
-	}
-
-	public int onAttacked(DamageInfo info, int damageAmount) {
-		AbstractDungeon.actionManager.addToBottom(new VFXAction(new ImmunityShieldEffect(this.owner.hb.cX,this.owner.hb.cY)));
-		flashWithoutSound();
-		return super.onAttacked(info, 0);
-	}
-
 	public void updateDescription() {
 		this.description =
-			strings.DESCRIPTIONS[0];
+			strings.DESCRIPTIONS[0] + this.amount + strings.DESCRIPTIONS[1];
 	}
 
-	@Override
-	public int getHealthBarAmount() {
-		return this.owner.currentHealth;
-	}
 
-	@Override
-	public Color getColor() {
-		return Color.ORANGE;
-	}
 }

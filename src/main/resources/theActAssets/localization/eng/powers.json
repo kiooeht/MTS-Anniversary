@@ -28,10 +28,11 @@
 			"Strength increases the amount of Block this enemy provides."
 		]
 	},
-	"theJungle:ImmunityPower": {
+	"theJungle:TotemHealthLinkPower": {
 		"NAME" : "Totemic Might",
 		"DESCRIPTIONS": [
-			"This enemy cannot be damaged until the Totems have been destroyed."
+			"This enemy loses ",
+			" HP whenever a Totem is destroyed."
 		]
 	},
 	"theJungle:SwingingTrapPower": {
