@@ -12,6 +12,16 @@
     "DESCRIPTIONS": ["The next non-boss chest will have its relic replaced by a spirit poop."],
     "FLAVOR": "A strange plague from drinking strange water... You don't feel too well.."
   },
+  "theJungle:SneckoAutograph": {
+    "NAME": "Snecko Autograph",
+    "DESCRIPTIONS": [
+      "[#2aecd7]Right [#2aecd7]click [#2aecd7]in [#2aecd7]a [#2aecd7]shop [#2aecd7]to [#2aecd7]activate.[] NL",
+      " Randomly obtain one of the relics.",
+      "Who knew the Merchant was such a big fan of Snecko?",
+      "I LOVE SNECKO GIRL!!"
+    ],
+    "FLAVOR": "To Snecko's #0-3 fan."
+  },
   "theJungle:WildMango": {
     "NAME": "Wild Mango",
     "FLAVOR": "A succulent fruit grown within the spire, not meant to be consumed by the untainted.",

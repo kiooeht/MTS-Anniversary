@@ -1,5 +1,5 @@
 {
-  "theJungle:ForkInTheRoad" : {
+  "theJungle:ForkInTheRoad": {
     "NAME": "Fork in the Road",
     "DESCRIPTIONS": [
       "You continue on your journey through the spire.\n NL After a long trek, you come upon a fork in the road.\n\n NL NL There is a signpost, but you can't make out the writing.\n\n NL  NL To your left you spot the outline of #btall #bbuildings in the distance, while the path to the right shows #ggrass and #gtrees."
@@ -10,16 +10,14 @@
       "[Go Right] Go to "
     ]
   },
-  "theJungle:River" : {
+  "theJungle:River": {
     "NAME": "Spirit River",
-
-    "DESCRIPTIONS" : [
+    "DESCRIPTIONS": [
       "Lost and thirsty, you are pleasantly surprised by a river running across your path. However, a cautious taste of the water reveals a suspicious taste...",
       "Drinking the water, you initially feel ~refreshed~ , however, you soon feel ~unwell~ from drinking the tainted water.",
       "Not wanting to take a risk, you ford the river and move on."
     ],
-
-    "OPTIONS" : [
+    "OPTIONS": [
       "[Drink] #gRemove #g",
       " #gcards #gfrom #gyour #gdeck. #rAdd #ra #rSpirit #rDisease #rto #ryour #rdeck.",
       "[Leave]",
@@ -44,6 +42,22 @@
       "Pick a card to randomize"
     ]
   },
+  "theJungle:SneckoIdol": {
+    "NAME": "Snecko Live!?",
+    "DESCRIPTIONS": [
+      "#g~SNECKO~ #g~SNECKO~ #g~SNECKO~ NL @Thunderous@ applause breaks out as a girl in a Snecko onesie finishes a song and dance on stage. NL \"That was 'You Confuse My Heart'\"! NL #g~ENCORE~ #g~ENCORE~ #g~ENCORE~ NL Maybe it wouldn't be such a bad thing to stick around?",
+      "You decide to stay for the #g~jammin'~ tunes. The energetic concert @flows@ into your veins and you can't help but stay around to gather your newfound obsession's autograph. NL \" #g@Hey!@\", the girl in the Snecko Onesie beams at you. \"Here's my autograph!\" NL You take it and walk off knowing you just spent time #robsessing over an idol.",
+      "Overcome with #r@rage@ from seeing another Snecko, you draw your weapon and charge towards the stage. The #r@HORDE@ of idol fanatics push you back and don't let you pass. NL On the bright side, they dropped some Snecko merch you pawn off to fans who couldn't get into the audience.",
+      "Deciding this was not worth your time, you leave the concert alone."
+    ],
+    "OPTIONS": [
+      "[Stay] #gObtain #gSnecko #gAutograph. #rBecome #rCursed #r- #rShame.",
+      "[Attack] #gObtain #g",
+      " #gGold. #rTake #r",
+      " #rdamage.",
+      "[Leave]"
+    ]
+  },
   "theJungle:ExcessResources": {
     "NAME": "Nature's Temptation",
     "DESCRIPTIONS": [
@@ -63,7 +77,7 @@
       "[Devour] #gObtain: #yWild #yMango"
     ]
   },
-  "theJungle:GremlinQuiz" : {
+  "theJungle:GremlinQuiz": {
     "NAME": "Gremlin Quiz Show",
     "DESCRIPTIONS": [
       "\" LIGHTS. CAMERA. #p@ACTION!@ \" NL NL A gremlin with a wide smile approaches you. NL NL \" It's time again for the Spire-Famous Gremlin Quiz Show! I've got questions for you, here's your chance to win some #gfabulous #gprizes! NL Are you ~R~ ~E~ ~A~ ~D~ ~Y~ ~?~ Of course you are! \"",
@@ -120,104 +134,85 @@
       "[Bπ] ",
       "[Cπ] ",
       "[Dπ] ",
-
       "Sweeping Beam",
       ">Hyper Beam",
       "Hyper Blast",
       "Disintegrate",
-
       ">Chosen, Snecko, Darkling",
       "Fungi Beast, Chosen, Spike Slime",
       "Snecko, Acid Slime, Cultist",
       "Awakened One, Louse, Snake Plant",
-
       ">The Maw, Hexaghost, The Transient",
       "Donu, Spire Growth, The Maw",
       "Jaw Worm, Donu, The Guardian",
       "Writhing Mass, Fungi Beast, Shelled Parasite",
-
       ">Pointy, Romeo, Bear",
       "Bear, Pointy, Romeo",
       "Romeo, Pointy, Bear",
       "Pointy, Bear, Romeo",
-
       ">Blade Storm",
       "Dodge and Roll",
       "Doppelganger",
       "Riddle with Holes",
-
       "Boot Sequence",
       ">Recursion",
       "Machine Learning",
       "Reinforced Body",
-
       "Spike Slime",
       "Red Louse",
       "Mad Gremlin",
       ">Blue Slaver",
-
       "The Collector",
       "The Time Eater",
       "The Mystic",
       ">The Centurion",
-
       "One",
       "Two",
       ">Three",
       "Four",
-
       "img:images/1024PortraitsBeta/green/skill/backflip.png",
       "img:images/1024PortraitsBeta/green/skill/outmaneuver.png",
       "img:images/1024PortraitsBeta/green/skill/blur.png",
       ">img:images/1024PortraitsBeta/green/skill/acrobatics.png",
-
       ">Enrage",
       "Choke",
       "Panache",
       "Lock-On",
-
       ">Metalicize",
       "Dexterity",
       "Barricade",
       "Plated Armor",
-
       ">A bomb",
       "A flask",
       "A blade",
       "A syringe",
-
       ">31",
       "34",
       "29",
       "26",
-
       ">Shame and Writhe",
       "Regret and Pain",
       "Shame and Injury",
       "Pride and Regret",
-
       ">Shops are more costly",
       "Unfavorable Events",
       "Bosses are tougher",
       "Upgraded cards appear less often",
-
       ">Common",
       "Uncommon",
       "Rare",
       "Shop",
-
       "Common",
       "Uncommon",
       ">Rare",
       "Shop",
-
       "Common",
       "Uncommon",
       "Rare",
       ">Shop"
     ]
   },
-  "theJungle:FauxPas" : {
+  "theJungle:FauxPas": {
     "NAME": "Faux Pas",
     "DESCRIPTIONS": [
       "As you walk through a #gdense #gportion of the Jungle, walls of trees seem to ~bend~ ~and~ ~twist~ into a narrow passageway. You catch a flash of light reflecting off several pairs of eyes, #y~skulking~ in the #pshadows near the tunnel of trees, watching your approach.",

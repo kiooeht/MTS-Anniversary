@@ -1,5 +1,8 @@
 package theAct;
 
+import java.nio.charset.StandardCharsets;
+import basemod.helpers.RelicType;
+import basemod.interfaces.EditRelicsSubscriber;
 import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.abstracts.CustomSavable;
@@ -9,8 +12,13 @@ import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.monsters.city.Snecko;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
@@ -19,6 +27,11 @@ import org.apache.logging.log4j.Logger;
 import theAct.cards.PetSnecko;
 import theAct.cards.curses.EternalShame;
 import theAct.dungeons.Jungle;
+import theAct.events.River;
+import theAct.events.SneckoCultEvent;
+import theAct.events.SneckoIdol;
+import theAct.patches.GetDungeonPatches;
+import theAct.relics.SneckoAutograph;
 import theAct.events.*;
 import theAct.monsters.*;
 import theAct.events.River;
@@ -39,7 +52,8 @@ public class TheActMod implements
         EditCardsSubscriber,
         EditStringsSubscriber,
         EditRelicsSubscriber,
-        CustomSavable<Boolean>
+        CustomSavable<Boolean>,
+        PostUpdateSubscriber
 {
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
 
@@ -72,6 +86,7 @@ public class TheActMod implements
         // Add events here
         BaseMod.addEvent(River.ID, River.class, Jungle.ID);
         BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
+        BaseMod.addEvent(SneckoIdol.ID, SneckoIdol.class, Jungle.ID);
         BaseMod.addEvent(FauxPas.ID, FauxPas.class, Jungle.ID);
         BaseMod.addEvent(GremlinQuiz.ID, GremlinQuiz.class, Jungle.ID);
         BaseMod.addEvent(ExcessResources.ID, ExcessResources.class, Jungle.ID);
@@ -125,6 +140,7 @@ public class TheActMod implements
         BaseMod.addRelic(new WildPear(), RelicType.SHARED);
         BaseMod.addRelic(new BirthdayCakeSlice(),  RelicType.SHARED);
         BaseMod.addRelic(new BirthdayCake(),  RelicType.SHARED);
+        BaseMod.addRelic(new SneckoAutograph(), RelicType.SHARED);
     }
 
     @Override
@@ -173,5 +189,15 @@ public class TheActMod implements
             wentToTheJungle = false;
         }
         logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
+    }
+
+    @Override
+    public void receivePostUpdate() {
+        if (AbstractDungeon.player == null) {
+            return;
+        }
+        if (AbstractDungeon.player.hasRelic(SneckoAutograph.ID)) {
+            SneckoAutograph.iHatePostUpdate();
+        }
     }
 }
