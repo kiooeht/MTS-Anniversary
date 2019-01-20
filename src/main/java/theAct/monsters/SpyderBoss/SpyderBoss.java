@@ -118,6 +118,7 @@ public void spawnBigSpyder(int str) {
 			if(n instanceof SpawnedSpyder && n.hasPower(FormationPower.powerID))
 				AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) n.getPower(FormationPower.powerID))));
     	}
+        AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) getPower(FormationPower.powerID))));
     }
 
 public void spawnSmallSpyder(int str) {
@@ -154,6 +155,7 @@ public void spawnSmallSpyder(int str) {
 		if(n instanceof SpawnedSpyder && n.hasPower(FormationPower.powerID))
 			AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) n.getPower(FormationPower.powerID))));
 	}
+	AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) getPower(FormationPower.powerID))));
 }
 
     public void resolveSpyderDeath(SpawnedSpyder m){

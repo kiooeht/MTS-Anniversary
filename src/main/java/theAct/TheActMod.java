@@ -149,8 +149,8 @@ public class TheActMod implements
                     }));
         BaseMod.addMonster(makeID("2_Snecko_Cultists"), () -> new MonsterGroup(
                 new AbstractMonster[] {
-                        new SneckoCultist(80, 20),
-                        new SneckoCultist(-250, -20)
+                        new SneckoCultist(-250, -20),
+                        new SneckoCultist(80, 20, true)
                     }));
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
@@ -190,6 +190,8 @@ public class TheActMod implements
 
         // Add sounds
         addSound(makeID("totemSmash"), assetPath("audio/sounds/totemSmash.ogg"));
+        addSound(makeID("sneckoCultist1"), assetPath("audio/sounds/sneckoCultist1.ogg"));
+        addSound(makeID("sneckoCultist2"), assetPath("audio/sounds/sneckoCultist2.ogg"));
 
         //savable boolean
         BaseMod.addSaveField("wentToTheJungle", this);

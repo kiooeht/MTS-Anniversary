@@ -160,7 +160,8 @@
 		],
 		"NAME": "Snecko Cultist",
 		"DIALOG": [
-			""
+			"@ALL@ @HAIL@ @LORD@ NL @SNECKO!@",
+			"@...sssssssssss...@"
 		]
 	},
 	"theJungle:Lyon": {
@@ -182,7 +183,7 @@
 			"Egg Throw",
             "Hatch"
 		],
-		"NAME": "Spyder Nest",
+		"NAME": "Spyder Queen",
 		"DIALOG": [
 			""
 		]
