@@ -116,7 +116,6 @@ public class FunGuy extends AbstractMonster {
 		if (infection > 0) {
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new InfectiousSporesPower(m, infection)));
 		}
-		AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(m, true));
 	}
 	
 	@Override
