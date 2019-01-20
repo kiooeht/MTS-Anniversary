@@ -29,13 +29,15 @@ public class Phrog extends AbstractMonster {
 	private int maxHP = 113;
 	private int minHP = 97;
 	private int tackleDamage = 25;
+	private boolean offsetTurn;
 
 	private AbstractCard card;
 
-	public Phrog() {
-		super(STRINGS.NAME, ID, 75, 0, 0, 300, 300, null, 0, 0f);
+	public Phrog(float xOffset, float yOffset, boolean offsetTurn) {
+		super(STRINGS.NAME, ID, 75, 0, 0, 300, 300, null, 0 + xOffset, 0f + yOffset);
 
 		//this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
+		this.offsetTurn = offsetTurn;
 
 		switch(AbstractDungeon.ascensionLevel){
 			case 7:
@@ -114,6 +116,11 @@ public class Phrog extends AbstractMonster {
 
 	@Override
 	protected void getMove(int roll) {
+		if(offsetTurn) {
+			this.setMove(STRINGS.MOVES[1], MoveBytes.JUMP, Intent.STRONG_DEBUFF);
+			offsetTurn = false;
+			return;
+		}
 		if(!this.lastMove(MoveBytes.LICK)) {
 			this.setMove(STRINGS.MOVES[0], MoveBytes.LICK, Intent.MAGIC);
 			return;

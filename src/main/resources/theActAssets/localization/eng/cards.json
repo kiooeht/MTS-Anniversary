@@ -23,5 +23,9 @@
   "theJungle:SS_Toxin": {
     "NAME": "Toxin Spores",
     "DESCRIPTION": "Draw 1 card. NL Take !M! damage. NL Exhaust. NL Ethereal."
+  },
+  "theJungle:EternalShame": {
+    "NAME": "Eternal Shame",
+    "DESCRIPTION": "Unplayable. NL At the end of your turn, gain 1 Frail. NL Soulbound."
   }
 }
