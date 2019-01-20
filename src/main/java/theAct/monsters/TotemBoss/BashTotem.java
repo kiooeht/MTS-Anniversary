@@ -41,9 +41,9 @@ public class BashTotem extends AbstractTotemSpawn {
         e.setTime(e.getEndTime() * MathUtils.random());
 
         if (AbstractDungeon.ascensionLevel >= 19) {
-            this.attackDmg = 12;
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
             this.attackDmg = 10;
+        } else if (AbstractDungeon.ascensionLevel >= 4) {
+            this.attackDmg = 9;
         } else {
             this.attackDmg = 8;
         }

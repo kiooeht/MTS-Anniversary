@@ -54,10 +54,10 @@ public class AbstractTotemSpawn extends AbstractMonster {
     private Method refupdateIntent;
 
     public static Float beamOffsetX = 25F * Settings.scale;
-    public static Float beamOffsetY = 20F * Settings.scale;
+    public static Float beamOffsetY = 10F * Settings.scale;
 
     public static Float beamOffsetX2 = -35F * Settings.scale;
-    public static Float beamOffsetY2 = 20F * Settings.scale;
+    public static Float beamOffsetY2 = 10F * Settings.scale;
 
 
 

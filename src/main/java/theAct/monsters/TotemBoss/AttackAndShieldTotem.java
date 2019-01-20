@@ -40,8 +40,8 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
     public Integer secondaryEffect;
 
     public AttackAndShieldTotem(TotemBoss boss) {
-        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totempurple.png"));
-        this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/purple/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/purple/Totem.json"), 1.0F);
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemorange.png"));
+        this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/white/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/white/Totem.json"), 1.0F);
 
         AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
@@ -74,9 +74,9 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
             case 1:
                // AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F)); AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.PURPLE)));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.WHITE)));
                 AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new TotemBeamEffect(this.hb.cX + beamOffsetX, this.hb.cY + beamOffsetY, AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, Color.PURPLE.cpy(), this.hb.cX + beamOffsetX2, this.hb.cY + beamOffsetY2), 0.1F));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new TotemBeamEffect(this.hb.cX + beamOffsetX, this.hb.cY + beamOffsetY, AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, Color.WHITE.cpy(), this.hb.cX + beamOffsetX2, this.hb.cY + beamOffsetY2), 0.1F));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AttackEffect.FIRE));
 
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
