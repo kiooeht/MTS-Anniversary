@@ -161,11 +161,7 @@ public class TheActMod implements
                 new Phrog(-175,0, false),
                 new Phrog(175, 0, true)
             }));
-        BaseMod.addMonster(SneckoCultist.ID,() -> new MonsterGroup(
-                new AbstractMonster[] {
-                        new SneckoCultist(-175,15),
-                        new SneckoCultist(175, -15)
-                }));
+
         //Bosses
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
         BaseMod.addBoss(Jungle.ID, TotemBoss.ID, assetPath("images/map/totemBoss.png"), assetPath("images/map/totemBossOutline.png"));
