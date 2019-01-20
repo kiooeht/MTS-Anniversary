@@ -10,20 +10,15 @@ import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.MonsterGroup;
-import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theAct.dungeons.Jungle;
 import theAct.events.KidnappersEvent;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
-import theAct.monsters.Flameango;
 import theAct.monsters.*;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
@@ -82,6 +77,7 @@ public class TheActMod implements
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
         BaseMod.addMonster(SwingingAxe.ID, () -> {return new SwingingAxe();});
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
+        BaseMod.addMonster(SneckoCultist.ID, SneckoCultist::new);
 
         // Add Encounters here
 
@@ -136,4 +132,6 @@ public class TheActMod implements
         wentToTheJungle = loadedBoolean;
         logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
     }
+
+
 }

@@ -47,5 +47,9 @@
 	"theJungle:RegenerativeSlime": {
 		"NAME": "Regenerative Slime",
 		"DESCRIPTIONS": ["Whenever you play a non-Attack card, this heals #b"," HP."]
+	},
+	"theJungle:RandomizePower": {
+		"NAME": "Selective Confusion",
+		"DESCRIPTIONS": ["At the start of your turn, randomizes the cost of #b", " cards."]
 	}
 }

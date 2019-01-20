@@ -127,5 +127,16 @@
 		"NAME": "Slimy Jungle Vines",
 		"MOVES": ["Tangle","Split"],
 		"DIALOG": ["Jungle Vines"]
+	},
+	"theJungle:SneckoCultist": {
+		"MOVES": [
+			"Whip",
+			"CONFUSE",
+			"Tackle"
+		],
+		"NAME":  "Snecko Cultist",
+		"DIALOG":  [
+			""
+		]
 	}
 }
