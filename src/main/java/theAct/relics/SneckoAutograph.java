@@ -19,7 +19,9 @@ import com.megacrit.cardcrawl.rooms.ShopRoom;
 import com.megacrit.cardcrawl.shop.ShopScreen;
 import com.megacrit.cardcrawl.shop.StorePotion;
 import com.megacrit.cardcrawl.shop.StoreRelic;
+import com.megacrit.cardcrawl.ui.DialogWord;
 import com.megacrit.cardcrawl.vfx.ShopSpeechBubble;
+import com.megacrit.cardcrawl.vfx.SpeechTextEffect;
 import theAct.TheActMod;
 
 import java.lang.reflect.InvocationTargetException;
@@ -53,7 +55,8 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     @Override
     public void onRightClick() {
         if (AbstractDungeon.getCurrRoom() instanceof ShopRoom && counter == -4) {
-            AbstractDungeon.topLevelEffectsQueue.add(new ShopSpeechBubble(shopBubbleX, shopBubbleY, DESCRIPTIONS[3], false));
+            AbstractDungeon.topLevelEffectsQueue.add(new ShopSpeechBubble(shopBubbleX, shopBubbleY, 4.0f, DESCRIPTIONS[3], false));
+            AbstractDungeon.topLevelEffectsQueue.add(new SpeechTextEffect(shopBubbleX + -166.0F * Settings.scale, shopBubbleY + 126.0F * Settings.scale, 4.0F, DESCRIPTIONS[3], DialogWord.AppearEffect.BUMP_IN));
             counter = -2;
             description = DESCRIPTIONS[2];
             tips.clear();
