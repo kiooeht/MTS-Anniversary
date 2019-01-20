@@ -3,10 +3,8 @@ package theAct.monsters;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.ShoutAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -96,6 +94,8 @@ public class Cassacara extends AbstractMonster {
         this.state.setAnimation(0, "idleLeaves", true);
         this.state.setAnimation(1, "idleLick", true);
         this.state.setAnimation(2, "IdleChomp", true);
+        this.stateData.setMix("Lick", "idleLick", 0.1f);
+        this.stateData.setMix("Chomp", "IdleChomp", 0.1f);
     }
 
     public Cassacara() {
@@ -106,7 +106,6 @@ public class Cassacara extends AbstractMonster {
         switch (this.nextMove) {
             case BIG_BITE: {
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "CHOMP"));
-                AbstractDungeon.actionManager.addToBottom(new WaitAction(0.5f));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(new BiteEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, Color.CHARTREUSE.cpy()), 0.3F));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.NONE));
                 for (AbstractMonster m : this.carcassSacks) {
@@ -120,7 +119,6 @@ public class Cassacara extends AbstractMonster {
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "LICK"));
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "CHOMP"));
                 for (int i = 0; i < chewHitAmount; i++) {
-                    AbstractDungeon.actionManager.addToBottom(new WaitAction(0.5f));
                     AbstractDungeon.actionManager.addToBottom(new VFXAction(new BiteEffect(AbstractDungeon.player.hb.cX + MathUtils.random(-50.0f, 50.0f) * Settings.scale, AbstractDungeon.player.hb.cY + MathUtils.random(-50.0f, 50.0f) * Settings.scale, Color.CHARTREUSE.cpy()), 0.2F));
                     AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(1), AbstractGameAction.AttackEffect.NONE));
                 }
@@ -129,12 +127,12 @@ public class Cassacara extends AbstractMonster {
             case BOTTOMLESS_STOMACH: {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, this.bottomlessStomachStrengthAmount), this.bottomlessStomachStrengthAmount));
                 if (this.carcassSacks[0] == null || this.carcassSacks[0].isDeadOrEscaped()) {
-                    CarcassSack sackToSpawn = new CarcassSack(-300.0f, 15.0f);
+                    CarcassSack sackToSpawn = new CarcassSack(-425.0f, -65.0f);
                     this.carcassSacks[0] = sackToSpawn;
                     AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(sackToSpawn, true, 0));
                 }
                 if (this.carcassSacks[1] == null || this.carcassSacks[1].isDeadOrEscaped()) {
-                    CarcassSack sackToSpawn = new CarcassSack(-100.0f, 0.0f);
+                    CarcassSack sackToSpawn = new CarcassSack(-250.0f, -90.0f);
                     this.carcassSacks[1] = sackToSpawn;
                     AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(sackToSpawn, true, 0));
                 }
@@ -148,10 +146,12 @@ public class Cassacara extends AbstractMonster {
         switch (key) {
             case "LICK": {
                 this.state.setAnimation(1, "Lick", false);
+                this.state.addAnimation(1, "idleLick", true, 0.0F);
                 break;
             }
             case "CHOMP": {
                 this.state.setAnimation(2, "Chomp", false);
+                this.state.addAnimation(2, "IdleChomp", true, 0.0F);
             }
         }
     }
