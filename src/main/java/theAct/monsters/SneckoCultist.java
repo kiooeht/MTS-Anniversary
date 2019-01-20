@@ -21,9 +21,8 @@ public class SneckoCultist extends AbstractMonster {
     public static final String[] MOVES = MONSTER_STRINGS.MOVES;
 
     private static final String WHIP_NAME = MOVES[0];
-    private static final String CONFUSE_NAME = MOVES[1];
-    private static final String CONFUSE_START_NAME = MOVES[2];
-    private static final String TACKLE_NAME = MOVES[3];
+    private static final String CONFUSE_START_NAME = MOVES[1];
+    private static final String TACKLE_NAME = MOVES[2];
 
     private static final int HP_MIN = 50;
     private static final int HP_MAX = 56;
@@ -66,19 +65,14 @@ public class SneckoCultist extends AbstractMonster {
             case MoveBytes.CONFUSE_START:
             {
                 //TODO - Animation once art is in
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(3),1));
-                break;
-            }
-            case MoveBytes.CONFUSE:
-            {
-                //TODO - Animation once art is in
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(1),1));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(3),3));
                 break;
             }
             case MoveBytes.TACKLE:
             {
                 //TODO - Animation once art is in
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(player, damage.get(1), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(player, damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(1),1));
             }
 
         }
@@ -98,24 +92,22 @@ public class SneckoCultist extends AbstractMonster {
         }
         else
         {
-            if(lastMove(MoveBytes.CONFUSE_START)) {
+            if(lastMove(MoveBytes.CONFUSE_START) || lastMove(MoveBytes.TACKLE)) {
                 this.setMove(WHIP_NAME, MoveBytes.WHIP, Intent.ATTACK, this.damage.get(0).base);
             }
-            else if(lastMove(MoveBytes.CONFUSE))
+            else if(lastMove(MoveBytes.TACKLE))
             {
                 this.setMove(WHIP_NAME, MoveBytes.WHIP, Intent.ATTACK, this.damage.get(0).base);
             }
             else if(lastMove(MoveBytes.WHIP)){
-                this.setMove(TACKLE_NAME, MoveBytes.TACKLE, Intent.ATTACK, this.damage.get(1).base);
-                this.setMove(CONFUSE_NAME, MoveBytes.CONFUSE, Intent.MAGIC);
+                this.setMove(TACKLE_NAME, MoveBytes.TACKLE, Intent.ATTACK_DEBUFF, this.damage.get(1).base);
             }
         }
     }
 
     public static class MoveBytes {
         public static final byte WHIP = 0;
-        public static final byte CONFUSE = 1;
-        public static final byte CONFUSE_START = 2;
-        public static final byte TACKLE = 3;
+        public static final byte CONFUSE_START = 1;
+        public static final byte TACKLE = 2;
     }
 }

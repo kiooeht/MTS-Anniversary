@@ -15,6 +15,8 @@ public class RandomizePower extends Power {
     public static final String powerID = TheActMod.makeID("RandomizePower");
     private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(powerID);
 
+    private boolean removePower = false;
+
 
     public RandomizePower(int numOfCards) {
         this.owner = AbstractDungeon.player;
@@ -30,20 +32,37 @@ public class RandomizePower extends Power {
     @Override
     public void atStartOfTurnPostDraw()
     {
-        AbstractDungeon.actionManager.addToBottom(new EnemyRandomizeCost(AbstractDungeon.player, amount));
+        int turnHandSize = AbstractDungeon.player.hand.size();
+        if(turnHandSize > amount)
+        {
+            AbstractDungeon.actionManager.addToBottom(new EnemyRandomizeCost(AbstractDungeon.player, turnHandSize));
+        }
+        else {
+            AbstractDungeon.actionManager.addToBottom(new EnemyRandomizeCost(AbstractDungeon.player, amount));
+        }
     }
 
     @Override
     public void atEndOfTurn(boolean isPlayer)
     {
-        if(isPlayer)
+        if(isPlayer && removePower == true)
         {
             flash();
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner, "theJungle:RandomizePower"));
         }
     }
 
-    public void updateDescription() {
+    @Override
+    public void reducePower(int stackAmount) {
+        this.fontScale = 8.0F;
+        this.amount -= stackAmount;
+        if (this.amount <= 0) {
+            this.amount = 0;
+            removePower = true;
+        }
+    }
+
+    public void updateDescription(){
         this.description =
                 strings.DESCRIPTIONS[0] + amount + strings.DESCRIPTIONS[1];
     }

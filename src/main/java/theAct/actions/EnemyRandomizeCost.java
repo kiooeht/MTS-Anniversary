@@ -2,11 +2,13 @@ package theAct.actions;
 
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.random.Random;
+import theAct.TheActMod;
 //import sneckomod.SneckoMod;
 
 public class EnemyRandomizeCost
@@ -31,28 +33,28 @@ public class EnemyRandomizeCost
 
     public void update()
     {
+
         sizeOfHand = p.hand.group.size();
         AbstractCard card;
 
+
         //Randomly selects a certain number of cards within the players hand and changes their cost
         for(int i = 0; i < numOfCards; i++) {
-            if(p.hand.size() != 0) {
-            int checkCard = 0;
-            if(i != 0) {
-                do {
-                    checkCard = R.random(0, sizeOfHand-1);
-                } while (contains(checkCard, i));
+            if (p.hand.size() != 0) {
+                int checkCard = 0;
+                if (i != 0) {
+                    do {
+                        checkCard = R.random(0, sizeOfHand - 1);
+                    } while (contains(checkCard, i));
 
-            }
-            else
-            {
-                checkCard = R.random(0, sizeOfHand-1);
-            }
+                } else {
+                    checkCard = R.random(0, sizeOfHand - 1);
+                }
 
-            cardsSelected[i] = checkCard;
+                cardsSelected[i] = checkCard;
 
 
-            this.c = p.hand.group.get(checkCard);
+                this.c = p.hand.group.get(checkCard);
 
 
                 //this.c = p.hand.getRandomCard(R);
@@ -64,13 +66,13 @@ public class EnemyRandomizeCost
                     if (this.c.cost != newCost) {
                         this.c.cost = newCost;
                         this.c.costForTurn = this.c.cost;
-                        this.c.isCostModified = true;
+                        //this.c.isCostModified = true;
                         this.c.superFlash(Color.LIME.cpy());
                     }
                 }
             }
         }
-
+        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(AbstractDungeon.player, AbstractDungeon.player, TheActMod.makeID("RandomizePower"), numOfCards));
         this.isDone = true;
     }
 
