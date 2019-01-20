@@ -39,7 +39,7 @@ public class Flameango extends AbstractMonster
     private static final int BURNS = 1;
     private static final int ARMOR = 4;
     private static final int FLAME_DAMAGE = 10;
-    private static final int PECK_DAMAGE = 4;
+    private static final int PECK_DAMAGE = 5;
     private static final int PECK_HITS = 3;
 
     private static final int ASC_ARMOR = 1;
@@ -72,14 +72,20 @@ public class Flameango extends AbstractMonster
         this.peckHits = PECK_HITS;
         if (AbstractDungeon.ascensionLevel >= 2)
         {
-            this.flameArmor += ASC_ARMOR;
-            this.burnAmount += ASC_BURNS;
             this.peckDamage += ASC_DAMAGE;
+            this.flameDamage += ASC_DAMAGE;
         }
 
         setHp(minHP, maxHP);
+
         if(AbstractDungeon.ascensionLevel >= 7)
             this.maxHealth += ASC_HEALTH;
+
+        if(AbstractDungeon.ascensionLevel >= 17)
+        {
+            this.burnAmount += ASC_BURNS;
+            this.flameArmor += ASC_ARMOR;
+        }
 
         this.damage.add(new DamageInfo(this, peckDamage));
         this.damage.add(new DamageInfo(this, flameDamage));
