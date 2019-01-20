@@ -87,7 +87,7 @@ public class MushroomKuudere extends AbstractMonster {
     protected void getMove(int i) {
         if (lastMove((byte)1)) {
             setMove((byte)0, Intent.ATTACK, damage.get(0).base);
-            return
+            return;
         }
         setMove((byte)1, Intent.BUFF);
     }
