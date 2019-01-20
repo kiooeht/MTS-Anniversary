@@ -33,7 +33,9 @@ public class MushroomKuudere extends AbstractMonster {
 
     public MushroomKuudere(float x, float y) {
         super(NAME, ID, MAX_HP, 0.0F, 10.0F, 280.0F, 280.0F, null, x, y);
-        this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
+        loadAnimation(TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Kuudere.atlas"), TheActMod.assetPath("images/Kuudere.json"), 1.0F);
+        state.setAnimation(0, "Idle", true);
+        stateData.setMix("Idle", "Kyuuuuu", 0.2F);
         if (AbstractDungeon.ascensionLevel >= 17) {
             protectionAmt = PROTECTION_AMT + PROTECTION_AMT_ASC_MODIFIER;
             healAmt = HEAL_AMT + HEAL_AMT_ASC_MODIFIER;
@@ -69,6 +71,8 @@ public class MushroomKuudere extends AbstractMonster {
             case 1:
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                     if (m != this) {
+                        state.setAnimation(0, "Kyuuuuu", false);
+                        state.addAnimation(0, "Idle", true, 0.0F);
                         AbstractDungeon.actionManager.addToBottom(new HealAction(m, this, healAmt));
                     }
                 }
