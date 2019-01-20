@@ -97,6 +97,7 @@ public class TheActMod implements
         BaseMod.addEvent(LostInTheJungle.ID, LostInTheJungle.class, Jungle.ID);
         BaseMod.addEvent(KidnappersEvent.ID, KidnappersEvent.class, Jungle.ID);
         BaseMod.addEvent(HappyBirthday.ID, HappyBirthday.class, Jungle.ID);
+        BaseMod.addEvent(ShamanCauldron.ID, ShamanCauldron.class, Jungle.ID);
 
         // Add monsters here
 
