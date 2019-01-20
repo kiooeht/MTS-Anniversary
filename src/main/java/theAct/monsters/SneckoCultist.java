@@ -65,14 +65,14 @@ public class SneckoCultist extends AbstractMonster {
             case MoveBytes.CONFUSE_START:
             {
                 //TODO - Animation once art is in
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(3),3));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(player,3),3));
                 break;
             }
             case MoveBytes.TACKLE:
             {
                 //TODO - Animation once art is in
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(player, damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(1),1));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(player,1),1));
             }
 
         }
