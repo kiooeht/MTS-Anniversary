@@ -3,7 +3,7 @@ package theAct;
 import java.nio.charset.StandardCharsets;
 
 import basemod.helpers.RelicType;
-import basemod.interfaces.EditRelicsSubscriber;
+import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -18,9 +18,7 @@ import org.apache.logging.log4j.Logger;
 import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.abstracts.CustomSavable;
-import basemod.interfaces.EditKeywordsSubscriber;
-import basemod.interfaces.EditStringsSubscriber;
-import basemod.interfaces.PostInitializeSubscriber;
+import theAct.cards.PetSnecko;
 import theAct.dungeons.Jungle;
 import theAct.events.ExcessResources;
 import theAct.events.FauxPas;
@@ -42,7 +40,8 @@ public class TheActMod implements
         EditKeywordsSubscriber,
         EditStringsSubscriber,
         EditRelicsSubscriber,
-        CustomSavable<Boolean>
+        CustomSavable<Boolean>,
+        EditCardsSubscriber
 {
 
 
@@ -152,5 +151,10 @@ public class TheActMod implements
             wentToTheJungle = false;
         }
         logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
+    }
+
+    @Override
+    public void receiveEditCards() {
+        BaseMod.addCard(new PetSnecko());
     }
 }
