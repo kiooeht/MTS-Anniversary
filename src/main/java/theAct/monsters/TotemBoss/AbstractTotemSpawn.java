@@ -54,10 +54,10 @@ public class AbstractTotemSpawn extends AbstractMonster {
     private Method refupdateIntent;
 
     public static Float beamOffsetX = 25F * Settings.scale;
-    public static Float beamOffsetY = 40F * Settings.scale;
+    public static Float beamOffsetY = 20F * Settings.scale;
 
     public static Float beamOffsetX2 = -35F * Settings.scale;
-    public static Float beamOffsetY2 = 40F * Settings.scale;
+    public static Float beamOffsetY2 = 20F * Settings.scale;
 
 
 
@@ -178,7 +178,7 @@ public class AbstractTotemSpawn extends AbstractMonster {
             if (this.drawY > Y) {
                 //  TheActMod.logger.info(this.id + " difference: " + (this.drawY - Y));
 
-                if (this.drawY - Y > 255F * Settings.scale) {
+                if (this.drawY - Y > 220F * Settings.scale) {
                     shouldFall = true;
                 }
             }
@@ -203,7 +203,7 @@ public class AbstractTotemSpawn extends AbstractMonster {
         this.updateAnimations();
         try {
             refupdateDeathAnimation.invoke(this);
-            this.intentHb.move(this.hb.cX - 140F * Settings.scale,this.drawY + 180F * Settings.scale);
+            this.intentHb.move(this.hb.cX - 120F * Settings.scale,this.drawY + 160F * Settings.scale);
 
             refupdateIntent.invoke(this);
         } catch (InvocationTargetException | IllegalAccessException e) {
