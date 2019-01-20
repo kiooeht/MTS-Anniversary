@@ -53,13 +53,19 @@ public class AbstractTotemSpawn extends AbstractMonster {
     private Method refupdateDeathAnimation;
     private Method refupdateIntent;
 
+    public static Float beamOffsetX = 25F * Settings.scale;
+    public static Float beamOffsetY = 40F * Settings.scale;
+
+    public static Float beamOffsetX2 = -35F * Settings.scale;
+    public static Float beamOffsetY2 = 40F * Settings.scale;
+
 
 
     public Intent intentType = Intent.BUFF;
 
 
-    public AbstractTotemSpawn(String name, String ID, TotemBoss boss) {
-        super(name, ID, 420, 0.0F, 0F, 150.0F, 250.0F, TheActMod.assetPath("images/monsters/phtotem.png"), -90.0F, 30.0F);
+    public AbstractTotemSpawn(String name, String ID, TotemBoss boss, String imgPath) {
+        super(name, ID, 420, 0.0F, 0F, 150.0F, 250.0F, imgPath, -90.0F, 30.0F);
 
 
         ReflectionHacks.setPrivate(this, AbstractCreature.class,"HB_Y_OFFSET_DIST",-200F);
@@ -197,7 +203,7 @@ public class AbstractTotemSpawn extends AbstractMonster {
         this.updateAnimations();
         try {
             refupdateDeathAnimation.invoke(this);
-            this.intentHb.move(this.hb.cX,this.drawY + 180F * Settings.scale);
+            this.intentHb.move(this.hb.cX - 140F * Settings.scale,this.drawY + 180F * Settings.scale);
 
             refupdateIntent.invoke(this);
         } catch (InvocationTargetException | IllegalAccessException e) {

@@ -3,9 +3,8 @@ package theAct;
 import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.abstracts.CustomSavable;
-import basemod.interfaces.EditKeywordsSubscriber;
-import basemod.interfaces.EditStringsSubscriber;
-import basemod.interfaces.PostInitializeSubscriber;
+import basemod.helpers.RelicType;
+import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -17,16 +16,16 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theAct.cards.PetSnecko;
 import theAct.dungeons.Jungle;
-import theAct.events.KidnappersEvent;
-import theAct.events.River;
-import theAct.events.SneckoCultEvent;
-import theAct.monsters.FunGuy;
-import theAct.monsters.Phrog;
-import theAct.monsters.SlimyTreeVines;
-import theAct.monsters.SwingingAxe;
+import theAct.events.*;
+import theAct.monsters.*;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
+import theAct.relics.PaperFaux;
+import theAct.relics.WildMango;
+import theAct.relics.WildPear;
+import theAct.relics.WildStrawberry;
 
 import java.nio.charset.StandardCharsets;
 
@@ -35,15 +34,17 @@ public class TheActMod implements
         PostInitializeSubscriber,
         EditKeywordsSubscriber,
         EditStringsSubscriber,
-        CustomSavable<Boolean>
+        EditRelicsSubscriber,
+        CustomSavable<Boolean>,
+        EditCardsSubscriber
 {
-	
-	
+
+
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
 
     public static boolean wentToTheJungle = false;
-    
-    
+
+
 
     public static void initialize()
     {
@@ -72,6 +73,10 @@ public class TheActMod implements
         // Add events here
         BaseMod.addEvent(River.ID, River.class, Jungle.ID);
         BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
+        BaseMod.addEvent(FauxPas.ID, FauxPas.class, Jungle.ID);
+        BaseMod.addEvent(GremlinQuiz.ID, GremlinQuiz.class, Jungle.ID);
+        BaseMod.addEvent(ExcessResources.ID, ExcessResources.class, Jungle.ID);
+        BaseMod.addEvent(LostInTheJungle.ID, LostInTheJungle.class, Jungle.ID);
         BaseMod.addEvent(KidnappersEvent.ID, KidnappersEvent.class, Jungle.ID);
 
         // Add monsters here
@@ -80,13 +85,19 @@ public class TheActMod implements
                 new Phrog(-175,0, false),
                 new Phrog(175, 0, true)
             }));
+        BaseMod.addMonster(SilentTribesmen.ENCOUNTER_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
+                new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F), new SilentTribesmen(125.0F, -30.0F)}));
+
+        BaseMod.addMonster(Flameango.ID, () -> new Flameango(0));
+        BaseMod.addMonster(Cassacara.ID, () -> new Cassacara());
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
         BaseMod.addMonster(SwingingAxe.ID, () -> {return new SwingingAxe();});
+        BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
+        BaseMod.addMonster(SneckoCultist.ID, SneckoCultist::new);
         BaseMod.addMonster(SlimyTreeVines.ID, SlimyTreeVines::new);
 
         // Add Encounters here
-
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
@@ -94,6 +105,21 @@ public class TheActMod implements
 
         //savable boolean
         BaseMod.addSaveField("wentToTheJungle", this);
+    }
+
+    @Override
+    public void receiveEditCards() {
+        BaseMod.addCard(new PetSnecko());
+    }
+
+    @Override
+    public void receiveEditRelics()
+    {
+        //event relics
+        BaseMod.addRelic(new PaperFaux(), RelicType.SHARED);
+        BaseMod.addRelic(new WildMango(), RelicType.SHARED);
+        BaseMod.addRelic(new WildStrawberry(), RelicType.SHARED);
+        BaseMod.addRelic(new WildPear(), RelicType.SHARED);
     }
 
     @Override
@@ -125,6 +151,7 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(CardStrings.class, assetPath(path + "cards.json"));
         BaseMod.loadCustomStringsFile(MonsterStrings.class, assetPath(path + "monsters.json"));
         BaseMod.loadCustomStringsFile(PowerStrings.class, assetPath(path + "powers.json"));
+        BaseMod.loadCustomStringsFile(RelicStrings.class, assetPath(path + "relics.json"));
     }
 
     @Override
@@ -135,7 +162,11 @@ public class TheActMod implements
 
     @Override
     public void onLoad(Boolean loadedBoolean) {
-        wentToTheJungle = loadedBoolean;
+        if (loadedBoolean != null) {
+            wentToTheJungle = loadedBoolean;
+        } else {
+            wentToTheJungle = false;
+        }
         logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
     }
 }

@@ -8,6 +8,14 @@
 			" is #rdigested."
 		]
 	},
+	"theJungle:SlothfulPower": {
+		"NAME": "Slothful",
+		"DESCRIPTIONS": [
+			"Negates #b",
+			" buff.",
+			" buffs."
+		]
+	},
 	"theJungle:TotemStrengthPower": {
 		"NAME" : "Totemic Rage",
 		"DESCRIPTIONS": [
@@ -20,16 +28,10 @@
 			"Strength increases the amount of Block this enemy provides."
 		]
 	},
-	"theJungle:TotemFleePower": {
-		"NAME" : "Cowardice",
-		"DESCRIPTIONS": [
-			"When all Totems are destroyed, this enemy will flee."
-		]
-	},
 	"theJungle:ImmunityPower": {
-		"NAME" : "Immunity",
+		"NAME" : "Totemic Might",
 		"DESCRIPTIONS": [
-			"This enemy cannot be damaged."
+			"This enemy cannot be damaged until the Totems have been destroyed."
 		]
 	},
 	"theJungle:SwingingTrapPower": {
@@ -52,6 +54,25 @@
 	},
 	"theJungle:RegenerativeSlime": {
 		"NAME": "Regenerative Slime",
-		"DESCRIPTIONS": ["Whenever you play a non-Attack card, this heals #b"," HP."]
+		"DESCRIPTIONS": [
+			"Whenever you play a non-Attack card, this heals #b",
+			" HP."
+		]
+	},
+	"theJungle:RandomizePower": {
+		"NAME": "Selective Confusion",
+		"DESCRIPTIONS": [
+			"At the start of your turn, randomizes the cost of #b",
+			" cards."
+		]
+	},
+	"theJungle:CautiousPower": {
+		"NAME" : "Cautious",
+		"DESCRIPTIONS": [
+			"u gotta hit this dude #b",
+			" more time, darn lmao",
+			" more times, darn lmao",
+			"This dude stunned for a turn lmao gottem."
+		]
 	}
 }
