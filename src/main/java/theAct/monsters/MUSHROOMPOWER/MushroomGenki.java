@@ -80,6 +80,7 @@ public class MushroomGenki extends AbstractMonster {
     protected void getMove(int i) {
         if (lastMove((byte)0)) {
             setMove((byte)1, Intent.BUFF);
+            return;
         }
         setMove((byte)0, Intent.ATTACK, damage.get(0).base);
     }
