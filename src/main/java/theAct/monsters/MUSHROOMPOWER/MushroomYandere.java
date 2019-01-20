@@ -31,7 +31,9 @@ public class MushroomYandere extends AbstractMonster {
 
     public MushroomYandere(float x, float y) {
         super(NAME, ID, MAX_HP, 0.0F, 10.0F, 280.0F, 280.0F, null, x, y);
-        this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
+        loadAnimation(TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Yandere.atlas"), TheActMod.assetPath("images/Yandere.json"), 1.0F);
+        state.setAnimation(0, "Idle", true);
+        stateData.setMix("Idle", "Rawr", 0.2F);
         if (AbstractDungeon.ascensionLevel >= 17) {
             obsessionAmt = OBSESSION_AMT + OBSESSION_AMT_ASC_MODIFIER;
         } else {
@@ -60,6 +62,8 @@ public class MushroomYandere extends AbstractMonster {
     public void takeTurn() {
         switch (nextMove) {
             case 0:
+                state.setAnimation(0, "Rawr", false);
+                state.addAnimation(0, "Idle", true, 0.0F);
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0)));
                 break;
         }
