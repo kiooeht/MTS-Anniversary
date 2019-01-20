@@ -41,9 +41,9 @@ public class SneckoCultist extends AbstractMonster {
 
 
 
-    public SneckoCultist()
+    public SneckoCultist(int xOffset, int yOffset)
     {
-        super(MONSTER_STRINGS.NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, TheActMod.assetPath("/images/monsters/sneckoCultist/placeholder.png"), 0, -50f);
+        super(MONSTER_STRINGS.NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, TheActMod.assetPath("/images/monsters/sneckoCultist/placeholder.png"), 0 + xOffset, 0f + yOffset);
         this.type = EnemyType.NORMAL;
 
         this.damage.add(new DamageInfo(this, WHIP_DAMAGE));
