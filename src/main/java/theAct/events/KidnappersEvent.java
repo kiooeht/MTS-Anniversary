@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import theAct.TheActMod;
+import theAct.monsters.SilentTribesmen;
 
 import java.util.ArrayList;
 
@@ -97,7 +98,7 @@ public class KidnappersEvent extends AbstractImageEvent {
             case 2:
                 switch(i) {
                     case 0:
-                        AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter("KidnapperSilents");
+                        AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter(SilentTribesmen.EVENT_ID);
                         enterCombatFromImage();
                         int rng = AbstractDungeon.miscRng.random(silentRelics.size() - 1);
                         AbstractRelic r = silentRelics.get(rng);

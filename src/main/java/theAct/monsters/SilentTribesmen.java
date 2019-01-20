@@ -21,6 +21,7 @@ import theAct.powers.CautiousPower;
 public class SilentTribesmen extends AbstractMonster {
     public static final String ID = TheActMod.makeID("SilentTribesmen");
     public static final String ENCOUNTER_ID = TheActMod.makeID("SilentTribesmenEncounter");
+    public static final String EVENT_ID = TheActMod.makeID("KidnapperSilents");
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     private static final int MIN_HP = 30;
