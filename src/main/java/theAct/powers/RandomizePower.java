@@ -64,6 +64,6 @@ public class RandomizePower extends Power implements OnCardDrawPower {
 
     public void updateDescription(){
         this.description =
-                strings.DESCRIPTIONS[0] + strings.DESCRIPTIONS[1];
+                strings.DESCRIPTIONS[0] + amount + strings.DESCRIPTIONS[1];
     }
 }
