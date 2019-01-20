@@ -34,6 +34,8 @@ import theAct.cards.curses.EternalShame;
 import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
+import theAct.monsters.*;
+import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.events.SneckoIdol;
 import theAct.monsters.MUSHROOMPOWER.MushroomGenki;
 import theAct.monsters.MUSHROOMPOWER.MushroomKuudere;
@@ -161,6 +163,7 @@ public class TheActMod implements
                 new Phrog(-175,0, false),
                 new Phrog(175, 0, true)
             }));
+        BaseMod.addMonster(MamaSnecko.ID,() -> new MamaSnecko());
         //Bosses
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
         BaseMod.addBoss(Jungle.ID, TotemBoss.ID, assetPath("images/map/totemBoss.png"), assetPath("images/map/totemBossOutline.png"));
