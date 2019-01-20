@@ -74,7 +74,6 @@ public class TotemBoss extends AbstractMonster {
         this.stateData.setMix("Attack", "Idle", 0.1F);
         e.setTime(e.getEndTime() * MathUtils.random());
 
-        this.powers.add(new TotemFleePower(this));
         this.powers.add(new TotemStrengthPower(this));
         this.powers.add(new ImmunityPower(this));
 
@@ -157,23 +156,29 @@ public class TotemBoss extends AbstractMonster {
         for (AbstractMonster m2 : livingTotems) {
 
             if (!m2.isDying) {
+                //Buff living totems before spawning new ones
+                this.getPower(TotemStrengthPower.powerID).flashWithoutSound();
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m2, this, new StrengthPower(m2, 1), 1));
             }
         }
 
 
         if (remainingTotems.size() == 0 && livingTotems.size() == 0){
-            die();
-        } else if (remainingTotems.size() > 0) {
+            //Totems are all dead - remove immunity and the totem shadow
+            this.totemShadow.isDone = true;
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this,this,ImmunityPower.powerID));
 
+        } else if (remainingTotems.size() > 0) {
+            //Spawn a new totem above if there are still any left in the array to kill
             spawnNewTotem();
 
-
         }
+        //Wait for a bit (even on fast mode) so the previous totem's death animation finishes before they all fall, and gives time for the new one's visuals to be drawn in above the screen
         AbstractDungeon.actionManager.addToBottom(new WaitAction(0.1F));
         AbstractDungeon.actionManager.addToBottom(new WaitAction(0.1F));
         AbstractDungeon.actionManager.addToBottom(new WaitAction(0.1F));
         AbstractDungeon.actionManager.addToBottom(new TotemFallWaitAction(this));
+
     }
 
 
@@ -198,7 +203,6 @@ public class TotemBoss extends AbstractMonster {
     }
 
     public void die() {
-        this.totemShadow.isDone = true;
         this.useFastShakeAnimation(5.0F);
         CardCrawlGame.screenShake.rumble(4.0F);
         super.die();

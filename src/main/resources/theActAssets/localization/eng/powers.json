@@ -20,16 +20,10 @@
 			"Strength increases the amount of Block this enemy provides."
 		]
 	},
-	"theJungle:TotemFleePower": {
-		"NAME" : "Cowardice",
-		"DESCRIPTIONS": [
-			"When all Totems are destroyed, this enemy will flee."
-		]
-	},
 	"theJungle:ImmunityPower": {
-		"NAME" : "Immunity",
+		"NAME" : "Totemic Might",
 		"DESCRIPTIONS": [
-			"This enemy cannot be damaged."
+			"This enemy cannot be damaged until the Totems have been destroyed."
 		]
 	},
 	"theJungle:SwingingTrapPower": {

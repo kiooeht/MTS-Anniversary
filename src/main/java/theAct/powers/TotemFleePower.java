@@ -17,7 +17,7 @@ public class TotemFleePower extends Power {
 		this.owner = owner;
 		this.type = PowerType.BUFF;
 		this.name = strings.NAME;
-		this.setImage("digestPower84.png", "digestPower32.png");
+		this.setImage("fleePower84.png", "fleePower32.png");
 		this.ID = powerID;
 
 		this.updateDescription();
