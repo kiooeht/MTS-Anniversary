@@ -48,7 +48,7 @@
 	"theJungle:FungalInfectionPower": {
 		"NAME": "Fungal Infection",
 		"DESCRIPTIONS": [
-			"Each turn, place random #rSpore #rStatus cards on top of your equal to #yFungal #yInfection's remaining duration (up to #b3 maximum). NL Lasts #b",
+			"Each turn, place random #rSpore #rStatus cards on top of your draw pile equal to #yFungal #yInfection's remaining duration (up to #b3 maximum). NL Lasts #b",
 			" more turns."
 		]
 	},
