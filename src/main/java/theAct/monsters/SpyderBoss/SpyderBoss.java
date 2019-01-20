@@ -115,10 +115,10 @@ public void spawnBigSpyder(int str) {
         for(AbstractMonster n : AbstractDungeon.getMonsters().monsters) {
     		if(n instanceof SpawnedSpyder && n.hasPower(SquadPower.powerID))
     			((SquadPower) n.getPower(SquadPower.powerID)).spyderSpawn();
-			if(n instanceof SpawnedSpyder && n.hasPower(FormationPower.powerID))
-				AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) n.getPower(FormationPower.powerID))));
+			if(n instanceof SpawnedSpyder && n.hasPower(FormationPower.POWER_ID))
+				AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) n.getPower(FormationPower.POWER_ID))));
     	}
-        AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) getPower(FormationPower.powerID))));
+        AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) getPower(FormationPower.POWER_ID))));
     }
 
 public void spawnSmallSpyder(int str) {
@@ -152,10 +152,10 @@ public void spawnSmallSpyder(int str) {
     for(AbstractMonster n : AbstractDungeon.getMonsters().monsters) {
 		if(n instanceof SpawnedSpyder && n.hasPower(SquadPower.powerID))
 			((SquadPower) n.getPower(SquadPower.powerID)).spyderSpawn();
-		if(n instanceof SpawnedSpyder && n.hasPower(FormationPower.powerID))
-			AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) n.getPower(FormationPower.powerID))));
+		if(n instanceof SpawnedSpyder && n.hasPower(FormationPower.POWER_ID))
+			AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) n.getPower(FormationPower.POWER_ID))));
 	}
-	AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) getPower(FormationPower.powerID))));
+	AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) getPower(FormationPower.POWER_ID))));
 }
 
     public void resolveSpyderDeath(SpawnedSpyder m){

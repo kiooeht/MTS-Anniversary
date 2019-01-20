@@ -134,7 +134,7 @@
 			" #yDamage left."
 		]
 	},
-    "Formation": {
+    "theJungle:Formation": {
 		"NAME" : "Formation",
 		"DESCRIPTIONS": [
 			"Is #gIntangible, when there is at least #b6 #rSpyders."
