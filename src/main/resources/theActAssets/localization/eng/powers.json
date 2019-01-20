@@ -48,8 +48,15 @@
 	"theJungle:FungalInfectionPower": {
 		"NAME": "Fungal Infection",
 		"DESCRIPTIONS": [
-			"Place a random #rSpore #rStatus on top of your deck each turn. NL Lasts #b",
+			"Each turn, place random #rSpore #rStatus cards on top of your equal to #yFungal #yInfection's remaining duration (up to #b3 maximum). NL Lasts #b",
 			" more turns."
+		]
+	},
+	"theJungle:InfectiousSporesPower": {
+		"NAME": "Infectious Spores",
+		"DESCRIPTIONS": [
+			"When killed, applies #b",
+			" #rFungal #rInfection."
 		]
 	},
 	"theJungle:RegenerativeSlime": {
