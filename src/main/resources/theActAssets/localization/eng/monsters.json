@@ -6,9 +6,7 @@
 			"Bottomless Stomach"
 		],
 		"NAME": "Cassacara",
-		"DIALOG": [
-			"@RrraahrRGHhh!!@"
-		]
+		"DIALOG": []
 	},
 	"theJungle:CarcassSack": {
 		"MOVES": [],
