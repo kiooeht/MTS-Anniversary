@@ -6,6 +6,8 @@
 package theAct.monsters.TotemBoss;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
@@ -35,6 +37,10 @@ public class ShieldOtherTotem extends AbstractTotemSpawn {
 
     public ShieldOtherTotem(TotemBoss boss) {
         super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemcyan.png"));
+        this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/cyan/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/cyan/Totem.json"), 1.0F);
+
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
 
         if (AbstractDungeon.ascensionLevel >= 19) {
             this.secondaryEffect = 12;

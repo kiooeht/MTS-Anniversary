@@ -6,6 +6,8 @@
 package theAct.monsters.TotemBoss;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -34,6 +36,10 @@ public class DoubleStrikeTotem extends AbstractTotemSpawn {
 
     public DoubleStrikeTotem(TotemBoss boss) {
         super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemorange.png"));
+        this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/orange/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/orange/Totem.json"), 1.0F);
+
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
 
         if (AbstractDungeon.ascensionLevel >= 19) {
             this.attackDmg = 4;

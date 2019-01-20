@@ -65,7 +65,7 @@ public class AbstractTotemSpawn extends AbstractMonster {
 
 
     public AbstractTotemSpawn(String name, String ID, TotemBoss boss, String imgPath) {
-        super(name, ID, 420, 0.0F, 0F, 150.0F, 250.0F, imgPath, -90.0F, 30.0F);
+        super(name, ID, 420, 0.0F, 0F, 150.0F, 250.0F, null, -90.0F, 30.0F);
 
 
         ReflectionHacks.setPrivate(this, AbstractCreature.class,"HB_Y_OFFSET_DIST",-200F);
@@ -214,33 +214,6 @@ public class AbstractTotemSpawn extends AbstractMonster {
     }
 
 
-    /*
-    public void changeState(String key) {
-        byte var3 = -1;
-        switch(key.hashCode()) {
-            case 1941037640:
-                if (key.equals("ATTACK")) {
-                    var3 = 0;
-                }
-            default:
-                switch(var3) {
-                    case 0:
-                        this.state.setAnimation(0, "Attack", false);
-                        this.state.addAnimation(0, "Idle", true, 0.0F);
-                    default:
-                }
-        }
-    }
-
-    public void damage(DamageInfo info) {
-        super.damage(info);
-        if (info.owner != null && info.type != DamageType.THORNS && info.output > 0) {
-            this.state.setAnimation(0, "Hit", false);
-            this.state.addAnimation(0, "Idle", true, 0.0F);
-        }
-
-    }
-    */
 
 
     protected void getMove(int num) {
