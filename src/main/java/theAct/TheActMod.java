@@ -173,6 +173,7 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(MonsterStrings.class, assetPath(path + "monsters.json"));
         BaseMod.loadCustomStringsFile(PowerStrings.class, assetPath(path + "powers.json"));
         BaseMod.loadCustomStringsFile(RelicStrings.class, assetPath(path + "relics.json"));
+        BaseMod.loadCustomStringsFile(ScoreBonusStrings.class, assetPath(path + "score_bonuses.json"));
     }
 
     @Override
