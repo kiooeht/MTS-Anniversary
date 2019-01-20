@@ -1,0 +1,263 @@
+{
+	"theJungle:Cassacara": {
+		"MOVES": [
+			"Big Bite",
+			"Chew",
+			"Bottomless Stomach"
+		],
+		"NAME": "Cassacara",
+		"DIALOG": [
+			"@RrraahrRGHhh!!@"
+		]
+	},
+	"theJungle:CarcassSack": {
+		"MOVES": [],
+		"NAME": "Carcass Sack",
+		"DIALOG": []
+	},
+	"theJungle:Phrog": {
+		"MOVES": [
+			"Lick",
+			"Jump",
+			"Croak",
+			""
+		],
+		"NAME": "Phrog",
+		"DIALOG": [
+			"riiiiibbit!"
+		]
+	},
+	"theJungle:Flameango": {
+		"MOVES": [
+			"Flame Breath",
+			"Incendiary Down"
+		],
+		"NAME": "Flameango",
+		"DIALOG": [
+			"Welcome to flavor town motherfucker."
+		]
+	},
+	"theJungle:TotemBoss": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "Totem Speaker",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:BashTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "Menacing Totem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:BuffTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "Enriching Totem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:DebuffTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "Debilitating Totem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:ShieldOtherTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "Protecting Totem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:DoubleStrikeTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "Eviscerating Totem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:AttackAndShieldTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "Encouraging Totem",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:SilentTribesmen": {
+		"MOVES": [
+			"Backflip",
+			"Neutralize",
+			"Sneaky Strike",
+			"Blade Dance"
+		],
+		"NAME": "Silent Clansman"
+	},
+	"theJungle:SwingingAxe": {
+		"MOVES": [
+			"Reboot"
+		],
+		"NAME": "Swinging Axe Trap",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:FunGuy": {
+		"MOVES": [
+			"Chomp",
+			"Infection",
+			"Spread Spores",
+			"Sporeburst",
+			"Growth",
+			"Assimilate"
+		],
+		"NAME": "Fungi Core",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:SlimyTreeVines": {
+		"NAME": "Slimy Jungle Vines",
+		"MOVES": ["Tangle","Split"],
+		"DIALOG": ["Jungle Vines"]
+	},
+	"theJungle:SneckoCultist": {
+		"MOVES": [
+			"Whip",
+			"CONFUSE",
+			"Tackle"
+		],
+		"NAME": "Snecko Cultist",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:Lyon": {
+		"NAME": "Lyon",
+		"MOVES": ["Roar","Pounce"],
+		"DIALOG": ["ROOAAR!"]
+	},
+	"theJungle:MushroomYandere": {
+		"NAME": "Pointy Mushroom"
+	},
+	"theJungle:MushroomKuudere": {
+		"NAME": "Shy Mushroom"
+	},
+	"theJungle:MushroomGenki": {
+		"NAME": "Energetic Mushroom"
+	},
+	"theJungle:SpyderNest": {
+		"MOVES": [
+			"Egg Throw",
+            "Hatch"
+		],
+		"NAME": "Spyder Nest",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:SneakySpyder": {
+		"MOVES": [
+			"Whirlwind",
+            "Double Tap",
+            "Hide"
+		],
+		"NAME": "Sneaky Spyder",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:FatSpyder": {
+		"MOVES": [
+			"Smash",
+            "Weaken",
+            "Defend"
+		],
+		"NAME": "Fat Spyder",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:ShySpyder": {
+		"MOVES": [
+			"Shove",
+            "Shove",
+            "Shove"
+		],
+		"NAME": "Shy Spyder",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:PoisonedFlye": {
+		"MOVES": [
+			"Get Sucked"
+		],
+		"NAME": "Poisoned Flye",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:BasherSpyder": {
+		"MOVES": [
+			"Bash",
+            "Bonk",
+            "Break"
+		],
+		"NAME": "Spyder Basher",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:WebberSpyder": {
+		"MOVES": [
+			"Wrap",
+            "Defend",
+            "Entangle",
+            "Defend"
+		],
+		"NAME": "Spyder Webber",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:DefenderSpyder": {
+		"MOVES": [
+			"DEfend",
+            "DeFend",
+            "Clang"
+		],
+		"NAME": "Spyder Defender",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:EggSpyder": {
+		"MOVES": [
+			"b",
+            "u",
+            "f",
+            "f"
+		],
+		"NAME": "Spyder Egg",
+		"DIALOG": [
+			""
+		]
+	}
+}

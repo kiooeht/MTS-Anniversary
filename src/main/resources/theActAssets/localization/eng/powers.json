@@ -1,0 +1,154 @@
+{
+	"theJungle:DigestPower": {
+		"NAME" : "Digestion",
+		"DESCRIPTIONS": [
+			"After taking damage #b",
+			" times, ",
+			" is returned to your hand. NL NL At the end of your turn ",
+			" is #rexhausted."
+		]
+	},
+	"theJungle:SlothfulPower": {
+		"NAME": "Slothful",
+		"DESCRIPTIONS": [
+			"Negates #b",
+			" buff.",
+			" buffs."
+		]
+	},
+	"theJungle:TotemStrengthPower": {
+		"NAME" : "Totemic Rage",
+		"DESCRIPTIONS": [
+			"When a Totem is destroyed, remaining Totems gain 1 Strength."
+		]
+	},
+	"theJungle:BlockFromStrengthPower": {
+		"NAME" : "Defensive",
+		"DESCRIPTIONS": [
+			"Strength increases the amount of Block this enemy provides."
+		]
+	},
+	"theJungle:ImmunityPower": {
+		"NAME" : "Totemic Might",
+		"DESCRIPTIONS": [
+			"This enemy cannot be damaged until the Totems have been destroyed."
+		]
+	},
+	"theJungle:SwingingTrapPower": {
+		"NAME": "Pendulum Trap",
+		"DESCRIPTIONS": [
+			"NL NL Changes position each time you play a card. NL Cycles between #rIncoming, #rMidswing, and #gResetting.",
+			"#yPOSITION: ",
+			"#rINCOMING NL Ending your turn while this trap is #rIncoming will cause it to deal damage to you.", 
+			"#rMIDSWING NL Playing an #yAttack card while this trap is in #rMidswing will cause you to take #b", 
+			" damage.",
+			"#gRESETTING NL This trap is harmless while #gResetting."
+		]
+	},
+	"theJungle:FungalInfectionPower": {
+		"NAME": "Fungal Infection",
+		"DESCRIPTIONS": [
+			"Place a random #rSpore #rStatus on top of your deck each turn. NL Lasts #b",
+			" more turns."
+		]
+	},
+	"theJungle:RegenerativeSlime": {
+		"NAME": "Regenerative Slime",
+		"DESCRIPTIONS": [
+			"Whenever you play a non-Attack card, this heals #b",
+			" HP."
+		]
+	},
+	"theJungle:RandomizePower": {
+		"NAME": "Selective Confusion",
+		"DESCRIPTIONS": [
+			"At the start of your turn, randomizes the cost of a number of cards in your hand equal to how much is stacked. ",
+			"If your hand has less cards than the number of stacks, the remaining stacks will hold over until your next turn."
+		]
+	},
+	"theJungle:CautiousPower": {
+		"NAME" : "Cautious",
+		"DESCRIPTIONS": [
+			"u gotta hit this dude #b",
+			" more time, darn lmao",
+			" more times, darn lmao",
+			"This dude stunned for a turn lmao gottem."
+		]
+	},
+	"theJungle:Pride": {
+      "NAME": "Pride",
+      "DESCRIPTIONS": [
+        "Whenever you play a card, ",
+        " gains #b",
+        " #Strength for this turn only."
+      ]
+    },
+	"theJungle:ObsessionPower": {
+		"NAME": "Obsessive",
+		"DESCRIPTIONS": [
+			"Whenever you play an attack that does not target #rONLY this monster, take #b",
+			" damage."
+		]
+	},
+	"theJungle:ProtectionPower": {
+		"NAME": "Protective",
+		"DESCRIPTIONS": [
+			"Whenever you play an attack that does not target #rONLY this monster, all OTHER enemies gain #b",
+			" #yBlock."
+		]
+	},
+	"theJungle:EnergeticPower": {
+		"NAME": "Energetic",
+		"DESCRIPTIONS": [
+			"Whenever you play an attack that does not target #rONLY this monster, all OTHER enemies gain #b",
+			" #yStrength."
+		]
+	},
+    "Squad": {
+		"NAME" : "Squad",
+		"DESCRIPTIONS": [
+			"Has #b1 #yStrength for every #rSpyder."
+		]
+	},
+    "InfiniteFlight": {
+		"NAME" : "Flying",
+		"DESCRIPTIONS": [
+			"Takes #b50% less #yAttack Damage."
+		]
+	},
+    "Shy": {
+		"NAME" : "Shy",
+		"DESCRIPTIONS": [
+			"Has #b2 #yDexterity and #r-2 #yStrength for every #rSpyder."
+		]
+	},
+    "Webbed": {
+		"NAME" : "Webbed",
+		"DESCRIPTIONS": [
+			"Increase the #yCost of a random card in your hand by [E] .",
+			"Increase the #yCost of a random card in your hand by [E] #b",
+			" times."
+		]
+	},
+    "FragileEggs": {
+		"NAME" : "Fragile Eggs",
+		"DESCRIPTIONS": [
+			"Every time this monster takes #b",
+			" #yUnblocked #yDamage, it spawns a big #rSpyder. NL #b",
+			" #yDamage left."
+		]
+	},
+    "Formation": {
+		"NAME" : "Formation",
+		"DESCRIPTIONS": [
+			"Is #gIntangible, when there is at least #b6 #rSpyders."
+		]
+	},
+    "Hatching": {
+		"NAME" : "Hatching",
+		"DESCRIPTIONS": [
+			"When this monster dies, it spawns #b",
+            " small #rSpyders."
+		]
+	}
+}

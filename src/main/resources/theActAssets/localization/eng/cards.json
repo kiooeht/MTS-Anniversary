@@ -3,5 +3,29 @@
     "NAME": "Pet Snecko",
     "DESCRIPTION": "Draw !M! card. Randomize every card in your hand's cost this turn.",
     "UPGRADE_DESCRIPTION": "Draw !M! cards. Randomize every card in your hand's cost this turn."
+  },
+  "theJungle:SS_Clouding": {
+    "NAME": "Clouding Spores",
+    "DESCRIPTION": "Draw 1 card. NL Gain !M! Vulnerable. NL Exhaust. NL Ethereal."
+  },
+  "theJungle:SS_Bright": {
+    "NAME": "Bright Spores",
+    "DESCRIPTION": "Draw 1 card. NL Add !M! Dazed to your discard pile. NL Exhaust. NL Ethereal."
+  },
+  "theJungle:SS_Clumping": {
+    "NAME": "Clumping Spores",
+    "DESCRIPTION": "Draw 1 card. NL Exhaust. NL Ethereal."
+  },
+  "theJungle:SS_Leeching": {
+    "NAME": "Leeching Spores",
+    "DESCRIPTION": "Draw 1 card. NL Heal ALL enemies for !M! HP. NL Exhaust. NL Ethereal."
+  },
+  "theJungle:SS_Toxin": {
+    "NAME": "Toxin Spores",
+    "DESCRIPTION": "Draw 1 card. NL Take !M! damage. NL Exhaust. NL Ethereal."
+  },
+  "theJungle:EternalShame": {
+    "NAME": "Eternal Shame",
+    "DESCRIPTION": "Unplayable. NL At the end of your turn, gain 1 Frail. NL Soulbound."
   }
 }
