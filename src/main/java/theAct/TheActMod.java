@@ -25,6 +25,7 @@ import theAct.events.FauxPas;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
 import theAct.events.GremlinQuiz;
+import theAct.events.LostInTheJungle;
 import theAct.monsters.Phrog;
 import theAct.monsters.SlimyTreeVines;
 import theAct.monsters.TotemBoss.TotemBoss;
@@ -81,6 +82,7 @@ public class TheActMod implements
         BaseMod.addEvent(FauxPas.ID, FauxPas.class, Jungle.ID);
         BaseMod.addEvent(GremlinQuiz.ID, GremlinQuiz.class, Jungle.ID);
         BaseMod.addEvent(ExcessResources.ID, ExcessResources.class, Jungle.ID);
+        BaseMod.addEvent(LostInTheJungle.ID, LostInTheJungle.class, Jungle.ID);
 
         // Add monsters here
         BaseMod.addMonster(Phrog.ID, Phrog::new);
