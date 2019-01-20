@@ -35,7 +35,6 @@ import java.util.Random;
 @SpireInitializer
 public class TheActMod implements
         PostInitializeSubscriber,
-        PostDrawSubscriber,
         EditKeywordsSubscriber,
         EditStringsSubscriber,
         CustomSavable<Boolean>
@@ -139,23 +138,5 @@ public class TheActMod implements
         logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
     }
 
-    @Override
-    public void receivePostDraw(AbstractCard c){
-        if (AbstractDungeon.player.hasPower(RandomizePower.powerID)) {
-            if (AbstractDungeon.player.getPower(RandomizePower.powerID).amount > 0) {
-                if ((c.cost >= 0)) {
 
-                    int newCost = AbstractDungeon.cardRandomRng.random(3);
-                    c.superFlash(Color.LIME.cpy());
-
-                    if (c.cost != newCost) {
-                        c.costForTurn = newCost;
-                        c.isCostModifiedForTurn = true;
-
-                    }
-                    AbstractDungeon.player.getPower(RandomizePower.powerID).reducePower(1);
-                }
-            }
-        }
-    }
 }
