@@ -28,10 +28,11 @@
 			"Strength increases the amount of Block this enemy provides."
 		]
 	},
-	"theJungle:ImmunityPower": {
+	"theJungle:TotemHealthLinkPower": {
 		"NAME" : "Totemic Might",
 		"DESCRIPTIONS": [
-			"This enemy cannot be damaged until the Totems have been destroyed."
+			"This enemy loses ",
+			" HP whenever a Totem is destroyed."
 		]
 	},
 	"theJungle:SwingingTrapPower": {
@@ -117,18 +118,6 @@
 			"Has #b1 #yStrength for every #rSpyder."
 		]
 	},
-    "InfiniteFlight": {
-		"NAME" : "Flying",
-		"DESCRIPTIONS": [
-			"Takes #b50% less #yAttack Damage."
-		]
-	},
-    "Shy": {
-		"NAME" : "Shy",
-		"DESCRIPTIONS": [
-			"Has #b2 #yDexterity and #r-2 #yStrength for every #rSpyder."
-		]
-	},
     "Webbed": {
 		"NAME" : "Webbed",
 		"DESCRIPTIONS": [
@@ -149,13 +138,6 @@
 		"NAME" : "Formation",
 		"DESCRIPTIONS": [
 			"Is #gIntangible, when there is at least #b6 #rSpyders."
-		]
-	},
-    "Hatching": {
-		"NAME" : "Hatching",
-		"DESCRIPTIONS": [
-			"When this monster dies, it spawns #b",
-            " small #rSpyders."
 		]
 	},
     "Intangible": {

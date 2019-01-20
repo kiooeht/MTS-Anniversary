@@ -20,10 +20,6 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import theAct.TheActMod;
 import theAct.powers.BlockFromStrengthPower;
-import theAct.powers.ImmunityPower;
-import theAct.vfx.TotemBeamEffect;
-
-import java.util.Iterator;
 
 public class ShieldOtherTotem extends AbstractTotemSpawn {
     public static final String ID = TheActMod.makeID("ShieldOtherTotem");

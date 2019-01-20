@@ -209,26 +209,6 @@
 			""
 		]
 	},
-	"theJungle:ShySpyder": {
-		"MOVES": [
-			"Shove",
-            "Shove",
-            "Shove"
-		],
-		"NAME": "Shy Spyder",
-		"DIALOG": [
-			""
-		]
-	},
-	"theJungle:PoisonedFlye": {
-		"MOVES": [
-			"Get Sucked"
-		],
-		"NAME": "Poisoned Flye",
-		"DIALOG": [
-			""
-		]
-	},
 	"theJungle:BasherSpyder": {
 		"MOVES": [
 			"Bash",
@@ -259,18 +239,6 @@
             "Clang"
 		],
 		"NAME": "Spyder Defender",
-		"DIALOG": [
-			""
-		]
-	},
-	"theJungle:EggSpyder": {
-		"MOVES": [
-			"b",
-            "u",
-            "f",
-            "f"
-		],
-		"NAME": "Spyder Egg",
 		"DIALOG": [
 			""
 		]
