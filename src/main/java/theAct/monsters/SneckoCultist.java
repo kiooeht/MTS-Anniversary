@@ -1,7 +1,10 @@
 package theAct.monsters;
 
+import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -45,9 +48,15 @@ public class SneckoCultist extends AbstractMonster {
     {
         super(MONSTER_STRINGS.NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, TheActMod.assetPath("/images/monsters/sneckoCultist/placeholder.png"), 0 + xOffset, 0f + yOffset);
         this.type = EnemyType.NORMAL;
+        this.loadAnimation(TheActMod.assetPath("images/monsters/sneckoCultist/SneckoCultist.atlas"), TheActMod.assetPath("images/monsters/sneckoCultist/SneckoCultist.json"), 1.0F);
 
         this.damage.add(new DamageInfo(this, WHIP_DAMAGE));
         this.damage.add(new DamageInfo(this,TACKLE_DAMAGE));
+
+        this.setHp(HP_MIN, HP_MAX);
+
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
     }
 
     @Override
@@ -58,19 +67,22 @@ public class SneckoCultist extends AbstractMonster {
         {
             case MoveBytes.WHIP:
             {
-              //TODO - Animation once art is in
+                //TODO - Animation once art is in
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(player, damage.get(0), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
                 break;
             }
             case MoveBytes.CONFUSE_START:
             {
                 //TODO - Animation once art is in
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(player,3),3));
                 break;
             }
             case MoveBytes.TACKLE:
             {
                 //TODO - Animation once art is in
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(player, damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(player,1),1));
             }
@@ -79,6 +91,15 @@ public class SneckoCultist extends AbstractMonster {
 
 
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
+    }
+
+    public void changeState(String key){
+        switch (key) {
+            case "ATTACK":
+                this.state.setAnimation(1, "whip", false);
+                this.state.addAnimation(1, "whip", false,0.0f);
+                break;
+        }
     }
 
     @Override
