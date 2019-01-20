@@ -12,7 +12,7 @@
     <properties>
         <SlayTheSpire.version>01-10-2019</SlayTheSpire.version>
         <ModTheSpire.version>3.7.0</ModTheSpire.version>
-        <alt.build.dir>C:\Program Files (x86)\Steam\SteamApps\common\SlayTheSpire\mods</alt.build.dir>
+        <alt.build.dir>../_ModTheSpire/</alt.build.dir>
     </properties>
 
     <dependencies>
