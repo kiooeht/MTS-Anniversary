@@ -5,6 +5,7 @@
 
 package theAct.monsters.TotemBoss;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
@@ -18,6 +19,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
@@ -47,6 +49,7 @@ public class TotemBoss extends AbstractMonster {
 
     private int multiStrikeCount;
     public boolean stopTotemFall;
+    private float totemSfxTimer = 0.f;
     public int encounterSlotsUsed = 1;
     public ArrayList<Integer> remainingTotems = new ArrayList<>();
     public ArrayList<AbstractTotemSpawn> livingTotems = new ArrayList<>();
@@ -199,6 +202,19 @@ public class TotemBoss extends AbstractMonster {
 
     }
 
+    public void update() {
+        if (totemSfxTimer > 0) {
+            totemSfxTimer -= Gdx.graphics.getDeltaTime();
+        }
+    }
+
+    public void totemStoppedFalling() {
+        if (totemSfxTimer <= 0.f) { // Don't overlap effects
+            totemSfxTimer = 1.0f;
+            CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.MED, true);
+            CardCrawlGame.sound.playAV(TheActMod.makeID("totemSmash"), 0.1f, 2.0f);
+        }
+    }
 
     public void takeTurn() {
         switch(this.nextMove) {
