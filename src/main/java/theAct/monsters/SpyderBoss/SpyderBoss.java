@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import theAct.TheActMod;
+import theAct.powers.FormationPower;
 import theAct.powers.FragileEggsPower;
 import theAct.powers.ShyPower;
 import theAct.powers.SquadPower;
@@ -114,6 +115,8 @@ public void spawnBigSpyder() {
     			((SquadPower) n.getPower(SquadPower.powerID)).spyderSpawn();
     		if(n instanceof SpawnedSpyder && n.hasPower(ShyPower.powerID))
     			((ShyPower) n.getPower(ShyPower.powerID)).spyderSpawn();
+			if(m instanceof SpawnedSpyder && m.hasPower(FormationPower.powerID))
+				((FormationPower) m.getPower(FormationPower.powerID)).spyderSpawn();
     	}
 
         TheActMod.logger.info("Spawning Monster");
@@ -166,6 +169,8 @@ public void spawnSmallSpyder(int str) {
 			((SquadPower) n.getPower(SquadPower.powerID)).spyderSpawn();
 		if(n instanceof SpawnedSpyder && n.hasPower(ShyPower.powerID))
 			((ShyPower) n.getPower(ShyPower.powerID)).spyderSpawn();
+		if(m instanceof SpawnedSpyder && m.hasPower(FormationPower.powerID))
+			((FormationPower) m.getPower(FormationPower.powerID)).spyderSpawn();
 	}
     
     TheActMod.logger.info("Spawning Monster");
