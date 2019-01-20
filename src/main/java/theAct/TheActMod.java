@@ -12,6 +12,8 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theAct.cards.PetSnecko;
@@ -78,6 +80,9 @@ public class TheActMod implements
         BaseMod.addEvent(KidnappersEvent.ID, KidnappersEvent.class, Jungle.ID);
 
         // Add monsters here
+        BaseMod.addMonster(SilentTribesmen.ENCOUNTER_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
+                new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F), new SilentTribesmen(125.0F, -30.0F)}));
+
         BaseMod.addMonster(Flameango.ID, () -> new Flameango(0));
         BaseMod.addMonster(Phrog.ID, Phrog::new);
         BaseMod.addMonster(Cassacara.ID, () -> new Cassacara());
