@@ -143,12 +143,12 @@ public class TheActMod implements
         BaseMod.addMonster(makeID("2_Flameangoes"), () -> new MonsterGroup(
                 new AbstractMonster[] {
                         new Flameango(80),
-                        new Flameango(-200)
+                        new Flameango(-250)
                     }));
         BaseMod.addMonster(makeID("2_Snecko_Cultists"), () -> new MonsterGroup(
                 new AbstractMonster[] {
-                        new SneckoCultist(80, 20),
-                        new SneckoCultist(-200, -20)
+                        new SneckoCultist(-250, -20),
+                        new SneckoCultist(80, 20, true)
                     }));
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
@@ -161,11 +161,6 @@ public class TheActMod implements
                 new Phrog(-175,0, false),
                 new Phrog(175, 0, true)
             }));
-        BaseMod.addMonster(SneckoCultist.ID,() -> new MonsterGroup(
-                new AbstractMonster[] {
-                        new SneckoCultist(-175,15),
-                        new SneckoCultist(175, -15)
-                }));
         //Bosses
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
         BaseMod.addBoss(Jungle.ID, TotemBoss.ID, assetPath("images/map/totemBoss.png"), assetPath("images/map/totemBossOutline.png"));
@@ -190,6 +185,8 @@ public class TheActMod implements
 
         // Add sounds
         addSound(makeID("totemSmash"), assetPath("audio/sounds/totemSmash.ogg"));
+        addSound(makeID("sneckoCultist1"), assetPath("audio/sounds/sneckoCultist1.ogg"));
+        addSound(makeID("sneckoCultist2"), assetPath("audio/sounds/sneckoCultist2.ogg"));
 
         //savable boolean
         BaseMod.addSaveField("wentToTheJungle", this);

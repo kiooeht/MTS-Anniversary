@@ -21,13 +21,13 @@ public class FatSpyder extends SpawnedSpyder{
     public static final String[] MOVES;
     public static final String[] DIALOG;
     
-    private static final int BASEHP = 13;
+    private static final int BASEHP = 15;
     private static final boolean SMALL = true;
     
 	
     public FatSpyder(SpyderBoss boss, int slot, int strength) {	
 		super(NAME, ID, SMALL, BASEHP, boss, slot, strength);
-		damage.add(new DamageInfo(this, 5));
+		damage.add(new DamageInfo(this, 9));
 	}
     
     public FatSpyder(float x, float y) {	

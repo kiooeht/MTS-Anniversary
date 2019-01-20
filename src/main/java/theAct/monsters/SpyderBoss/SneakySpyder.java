@@ -21,18 +21,18 @@ public class SneakySpyder extends SpawnedSpyder{
     public static final String[] MOVES;
     public static final String[] DIALOG;
     
-    private static final int BASEHP = 8;
+    private static final int BASEHP = 11;
     private static final boolean SMALL = true;
     
 	
     public SneakySpyder(SpyderBoss boss, int slot, int strength) {	
 		super(NAME, ID, SMALL, BASEHP, boss, slot, strength);
-		damage.add(new DamageInfo(this, 2));
 		damage.add(new DamageInfo(this, 3));
+		damage.add(new DamageInfo(this, 4));
 	}
     
     public SneakySpyder(float x, float y) {	
-		super(NAME, ID, SMALL, BASEHP*4/3, x, y);
+		super(NAME, ID, SMALL, BASEHP, x, y);
 		damage.add(new DamageInfo(this, 3));
 		damage.add(new DamageInfo(this, 4));
 	}

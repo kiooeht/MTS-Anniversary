@@ -145,7 +145,8 @@
 		],
 		"NAME": "Snecko Cultist",
 		"DIALOG": [
-			""
+			"@ALL@ @HAIL@ @LORD@ NL @SNECKO!@",
+			"@...sssssssssss...@"
 		]
 	},
 	"theJungle:Lyon": {
@@ -167,7 +168,7 @@
 			"Egg Throw",
             "Hatch"
 		],
-		"NAME": "Spyder Nest",
+		"NAME": "Spyder Queen",
 		"DIALOG": [
 			""
 		]
@@ -190,26 +191,6 @@
             "Defend"
 		],
 		"NAME": "Fat Spyder",
-		"DIALOG": [
-			""
-		]
-	},
-	"theJungle:ShySpyder": {
-		"MOVES": [
-			"Shove",
-            "Shove",
-            "Shove"
-		],
-		"NAME": "Shy Spyder",
-		"DIALOG": [
-			""
-		]
-	},
-	"theJungle:PoisonedFlye": {
-		"MOVES": [
-			"Get Sucked"
-		],
-		"NAME": "Poisoned Flye",
 		"DIALOG": [
 			""
 		]
@@ -244,18 +225,6 @@
             "Clang"
 		],
 		"NAME": "Spyder Defender",
-		"DIALOG": [
-			""
-		]
-	},
-	"theJungle:EggSpyder": {
-		"MOVES": [
-			"b",
-            "u",
-            "f",
-            "f"
-		],
-		"NAME": "Spyder Eggs",
 		"DIALOG": [
 			""
 		]
