@@ -5,11 +5,11 @@ import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
-import com.megacrit.cardcrawl.powers.ExplosivePower;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import theAct.TheActMod;
+import theAct.powers.BetterExplosivePower;
 import theAct.powers.HatchingPower;
 
 public class EggSpyder extends SpawnedSpyder{
@@ -26,8 +26,8 @@ public class EggSpyder extends SpawnedSpyder{
 	
 	public EggSpyder(SpyderBoss boss, int slot, int strength) {	
 		super(NAME, ID, SMALL, BASEHP, boss, slot, strength);
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new PlatedArmorPower(this, 7), 7));
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ExplosivePower(this, 3), 3));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new PlatedArmorPower(this, 8), 8));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new BetterExplosivePower(this, 4, 8), 4));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new HatchingPower(this, 3), 3));
 	}
 	

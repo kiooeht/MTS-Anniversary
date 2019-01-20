@@ -26,13 +26,15 @@ import theAct.events.SneckoIdol;
 import theAct.monsters.MUSHROOMPOWER.MushroomGenki;
 import theAct.monsters.MUSHROOMPOWER.MushroomKuudere;
 import theAct.monsters.MUSHROOMPOWER.MushroomYandere;
+import theAct.monsters.SpyderBoss.FatSpyder;
+import theAct.monsters.SpyderBoss.SneakySpyder;
 import theAct.monsters.SpyderBoss.SpyderBoss;
+import theAct.monsters.SpyderBoss.WebberSpyder;
 import theAct.patches.GetDungeonPatches;
 import theAct.relics.SneckoAutograph;
 import theAct.events.*;
 import theAct.monsters.*;
 import theAct.monsters.TotemBoss.TotemBoss;
-import theAct.patches.GetDungeonPatches;
 import theAct.relics.*;
 
 import java.nio.charset.StandardCharsets;
@@ -90,11 +92,7 @@ public class TheActMod implements
 
         // Add monsters here
         
-        
-        BaseMod.addMonster(TheActMod.makeID("SpyderNest"), () -> new MonsterGroup(new AbstractMonster[]{
-                new SpyderBoss()
-        }));
-
+                
         //Normal Enemies
         BaseMod.addMonster(SilentTribesmen.ENCOUNTER_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
             new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F)}));
@@ -105,6 +103,12 @@ public class TheActMod implements
                         new MushroomYandere(-385.0F, -15.0F),
                         new MushroomKuudere(-133.0F, 0.0F),
                         new MushroomGenki(125.0F, -30.0F)
+                }));
+        BaseMod.addMonster(makeID("3_Spyders"), () -> new MonsterGroup(
+                new AbstractMonster[]{
+                        new SneakySpyder(-949.0F, 360.0F),
+                        new FatSpyder(-572.0F, 288.0F),
+                        new WebberSpyder(-351.0F, -10.0F)
                 }));
         BaseMod.addMonster(Flameango.ID, () -> new Flameango(0));
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
@@ -121,6 +125,9 @@ public class TheActMod implements
         //Bosses
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
         BaseMod.addBoss(Jungle.ID, TotemBoss.ID, assetPath("images/map/totemBoss.png"), assetPath("images/map/totemBossOutline.png"));
+        
+        BaseMod.addMonster(SpyderBoss.ID, SpyderBoss::new);
+        BaseMod.addBoss(Jungle.ID, SpyderBoss.ID, assetPath("images/map/totemBoss.png"), assetPath("images/map/totemBossOutline.png")); // A R T
 
         // Add Encounters here
 

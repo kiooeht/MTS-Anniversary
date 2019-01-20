@@ -134,24 +134,30 @@ public void spawnSmallSpyder(int str) {
 			break;
 	}
 	
-	int chosen = AbstractDungeon.monsterRng.random(3);
+	int chosen = AbstractDungeon.monsterRng.random(6);
 	AbstractMonster m = null;
 	switch(chosen) {
-    	case 0:
-    		m = new SneakySpyder(this, i, str);
-    		break;
-    	
-    	case 1:
-    		m = new FatSpyder(this, i, str);
-    		break;
-    	
-    	case 2:
-    		m = new PoisonedFlye(this, i, str);
-    		break;
-    	
-    	case 3:
-    		m = new ShySpyder(this, i, str);
-    		break;
+	case 0:
+		m = new SneakySpyder(this, i, str);
+		break;	
+	case 1:
+		m = new FatSpyder(this, i, str);
+		break;	
+	case 2:
+		m = new PoisonedFlye(this, i, str);
+		break;	
+	case 3:
+		m = new ShySpyder(this, i, str);
+		break;
+	case 4:
+		m = new SneakySpyder(this, i, str);
+		break;	
+	case 5:
+		m = new FatSpyder(this, i, str);
+		break;	
+	case 6:
+		m = new ShySpyder(this, i, str);
+		break;
     	
 	}
 	

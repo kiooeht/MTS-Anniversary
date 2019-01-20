@@ -33,8 +33,8 @@ public class SneakySpyder extends SpawnedSpyder{
     
     public SneakySpyder(float x, float y) {	
 		super(NAME, ID, SMALL, BASEHP, x, y);
-		damage.add(new DamageInfo(this, 1));
 		damage.add(new DamageInfo(this, 2));
+		damage.add(new DamageInfo(this, 3));
 	}
 	
 	static {
