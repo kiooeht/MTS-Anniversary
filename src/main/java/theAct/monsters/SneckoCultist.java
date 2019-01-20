@@ -27,16 +27,15 @@ public class SneckoCultist extends AbstractMonster {
     private static final String CONFUSE_START_NAME = MOVES[1];
     private static final String TACKLE_NAME = MOVES[2];
 
-    private static final int HP_MIN = 50;
-    private static final int HP_MAX = 56;
+    private int HP_MIN = 50;
+    private int  HP_MAX = 56;
     private static final float HB_X = 0F;
     private static final float HB_Y = 0F;
     private static final float HB_W = 320.0F;
     private static final float HB_H = 240.0F;
-    private static final int A_HP_MIN = 113;
-    private static final int A_HP_MAX = 117;
-    private static final int WHIP_DAMAGE = 17;
-    private static final int TACKLE_DAMAGE = 10;
+    private int WHIP_DAMAGE = 17;
+    private int TACKLE_DAMAGE = 10;
+    private int CARDS_CONFUSED = 1;
 
 
     private boolean firstTurn = true;
@@ -46,12 +45,27 @@ public class SneckoCultist extends AbstractMonster {
 
     public SneckoCultist(int xOffset, int yOffset)
     {
-        super(MONSTER_STRINGS.NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, TheActMod.assetPath("/images/monsters/sneckoCultist/placeholder.png"), 0 + xOffset, 0f + yOffset);
+        super(MONSTER_STRINGS.NAME, ID, 56, HB_X, HB_Y, HB_W, HB_H, TheActMod.assetPath("/images/monsters/sneckoCultist/placeholder.png"), 0 + xOffset, 0f + yOffset);
         this.type = EnemyType.NORMAL;
         this.loadAnimation(TheActMod.assetPath("images/monsters/sneckoCultist/SneckoCultist.atlas"), TheActMod.assetPath("images/monsters/sneckoCultist/SneckoCultist.json"), 1.0F);
 
         this.damage.add(new DamageInfo(this, WHIP_DAMAGE));
         this.damage.add(new DamageInfo(this,TACKLE_DAMAGE));
+
+        if(AbstractDungeon.ascensionLevel >= 19)
+        {
+            HP_MIN += 6;
+            HP_MAX += 6;
+            CARDS_CONFUSED = 3;
+            WHIP_DAMAGE = 20;
+
+        }else if(AbstractDungeon.ascensionLevel >= 4)
+        {
+            HP_MIN += 4;
+            HP_MAX += 4;
+            CARDS_CONFUSED = 1;
+            WHIP_DAMAGE = 20;
+        }
 
         this.setHp(HP_MIN, HP_MAX);
 
@@ -67,24 +81,21 @@ public class SneckoCultist extends AbstractMonster {
         {
             case MoveBytes.WHIP:
             {
-                //TODO - Animation once art is in
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(player, damage.get(0), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
                 break;
             }
             case MoveBytes.CONFUSE_START:
             {
-                //TODO - Animation once art is in
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(player,3),3));
                 break;
             }
             case MoveBytes.TACKLE:
             {
-                //TODO - Animation once art is in
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(player, damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(player,1),1));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(player,CARDS_CONFUSED),CARDS_CONFUSED));
             }
 
         }
