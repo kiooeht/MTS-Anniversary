@@ -64,10 +64,8 @@ public class SpawnedSpyder extends AbstractMonster {
             this.setHp(baseHP);
         }
         
-        if (AbstractDungeon.ascensionLevel >= 4) strength++;
-        if (AbstractDungeon.ascensionLevel >= 19) strength++;
-        
-        if(strength > 0)
+                
+        if(strength != 0)
         	AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this, this, new StrengthPower(this, strength), strength));      
         
         	
@@ -95,10 +93,8 @@ public class SpawnedSpyder extends AbstractMonster {
         
         
         int strength = 0;
-        if(small) {
-        	if (AbstractDungeon.ascensionLevel >= 2) strength++;
-        	if (AbstractDungeon.ascensionLevel >= 17) strength++;
-        }
+        if (AbstractDungeon.ascensionLevel >= 2) strength++;
+        if (AbstractDungeon.ascensionLevel >= 17) strength++;
         
         if(strength > 0)
         	AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this, this, new StrengthPower(this, strength), strength));
@@ -117,7 +113,8 @@ public class SpawnedSpyder extends AbstractMonster {
     public void die() {
         this.useFastShakeAnimation(0.5F);
         super.die();
-        this.owner.resolveSpyderDeath(this);
+        if(owner != null)
+        	this.owner.resolveSpyderDeath(this);
 
     }
 

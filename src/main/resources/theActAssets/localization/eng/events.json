@@ -293,5 +293,18 @@
       "[Steal Cake] #gGain #g%d #gMax #gHP. #rEternal #rShame.",
       "[Leave]"
     ]
+  },
+  "theJungle:JungleGarden" : {
+    "NAME": "Jungle Garden",
+    "DESCRIPTIONS": [
+      "Hidden deep in the jungle you find a lush garden, overflowing with fruits and vegetables. By some miracle, it seems to be untouched by the Spireblight.",
+      "You pick several gourds from the trees around the garden. They will prove useful for carrying around water, or blood. NL You can no longer fight as effectively while holding 5 gourds in your hands, but they are probably worth it.",
+      "It is delicious."
+    ],
+    "OPTIONS": [
+      "[Take Gourds] #gRemove #gall Defends. #gReceive #g5 Gourds.",
+      "[Eat A Mango] #gHeal #g"," #gHP.",
+      "[Leave]"
+    ]
   }
 }

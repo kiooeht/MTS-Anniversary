@@ -25,6 +25,7 @@ import com.megacrit.cardcrawl.monsters.city.Snecko;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theAct.cards.PetSnecko;
+import theAct.cards.colorless.Gourd;
 import theAct.cards.curses.EternalShame;
 import theAct.dungeons.Jungle;
 import theAct.events.River;
@@ -97,6 +98,7 @@ public class TheActMod implements
         BaseMod.addEvent(LostInTheJungle.ID, LostInTheJungle.class, Jungle.ID);
         BaseMod.addEvent(KidnappersEvent.ID, KidnappersEvent.class, Jungle.ID);
         BaseMod.addEvent(HappyBirthday.ID, HappyBirthday.class, Jungle.ID);
+        BaseMod.addEvent(JungleGarden.ID, JungleGarden.class, Jungle.ID);
 
         // Add monsters here
 
@@ -112,11 +114,14 @@ public class TheActMod implements
                         new MushroomKuudere(-133.0F, 0.0F),
                         new MushroomGenki(125.0F, -30.0F)
                 }));
-        BaseMod.addMonster(makeID("3_Spyders"), () -> new MonsterGroup(
+        BaseMod.addMonster(makeID("6_Spyders"), () -> new MonsterGroup(
                 new AbstractMonster[]{
-                        new SneakySpyder(-949.0F, 360.0F),
-                        new FatSpyder(-572.0F, 288.0F),
-                        new WebberSpyder(-351.0F, -10.0F)
+                		new SneakySpyder(-849.0F, 360.0F),
+                		new SneakySpyder(-473.0F, 420.0F),
+                		new FatSpyder(-72.0F, 288.0F),
+                		new FatSpyder(72.0F, 328.0F),
+                        new WebberSpyder(-199.0F, -10.0F, false),
+                        new WebberSpyder(39.0F, 10.0F, true)
                 }));
         BaseMod.addMonster(Flameango.ID, () -> new Flameango(0));
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
@@ -160,6 +165,7 @@ public class TheActMod implements
     public void receiveEditCards() {
         BaseMod.addCard(new PetSnecko());
         BaseMod.addCard(new EternalShame());
+        BaseMod.addCard(new Gourd());
     }
 
     @Override

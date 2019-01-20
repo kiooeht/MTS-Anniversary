@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.IntangiblePower;
 
 import theAct.TheActMod;
 import theAct.actions.FormationInitAction;
@@ -25,32 +24,23 @@ public class FormationPower extends Power {
 		this.name = strings.NAME;
 		this.setImage(NAME + "84.png", NAME + "32.png");
 		this.ID = powerID;
-		AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((SpawnedSpyder)owner).owner, this));
+		AbstractDungeon.actionManager.addToBottom(new FormationInitAction(this));
 		this.updateDescription();
 	}
 
 	public void updateDescription() {
 		this.description =	strings.DESCRIPTIONS[0];
 	}
-
-	public void spyderDeath() {
-		amount--;
-		if(amount == 5)
-			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, IntangiblePower.POWER_ID));
-		updateDescription();
-	}
 	
-	public void spyderSpawn() {
-		amount++;
-		if(amount == 6)
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner, new IntangiblePower(owner, 99), 99));
+	public void recalculateAmt() {
+		amount = ((SpawnedSpyder)owner).owner.smallSpyderAmt + ((SpawnedSpyder)owner).owner.bigSpyderAmt;
+		if(amount < 6 && owner.hasPower(InfiniteIntangiblePower.powerID)) {
+			flash();
+			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, InfiniteIntangiblePower.powerID));
+		} else if(amount >= 6 && !owner.hasPower(InfiniteIntangiblePower.powerID)) {
+			flash();
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner, new InfiniteIntangiblePower(owner)));
+		}
 		updateDescription();
-	}
-	
-	public void stackAmt(int amt) {
-		for(int i = 0; i < amt; i++)
-			spyderSpawn();
-		for(int i = 0; i > amt; i--)
-			spyderDeath();
 	}
 }

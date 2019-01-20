@@ -21,7 +21,7 @@ public class SneakySpyder extends SpawnedSpyder{
     public static final String[] MOVES;
     public static final String[] DIALOG;
     
-    private static final int BASEHP = 7;
+    private static final int BASEHP = 8;
     private static final boolean SMALL = true;
     
 	
@@ -32,9 +32,9 @@ public class SneakySpyder extends SpawnedSpyder{
 	}
     
     public SneakySpyder(float x, float y) {	
-		super(NAME, ID, SMALL, BASEHP, x, y);
-		damage.add(new DamageInfo(this, 2));
+		super(NAME, ID, SMALL, BASEHP*3/2, x, y);
 		damage.add(new DamageInfo(this, 3));
+		damage.add(new DamageInfo(this, 4));
 	}
 	
 	static {

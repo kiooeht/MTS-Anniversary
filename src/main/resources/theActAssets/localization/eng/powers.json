@@ -150,5 +150,11 @@
 			"When this monster dies, it spawns #b",
             " small #rSpyders."
 		]
+	},
+    "Intangible": {
+		"NAME" : "Intangible",
+		"DESCRIPTIONS": [
+			"Reduce ALL damage taken and HP loss to #b1."
+		]
 	}
 }

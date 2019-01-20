@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import theAct.TheActMod;
 import theAct.monsters.SpyderBoss.SpyderBoss;
@@ -38,7 +39,10 @@ public class FragileEggsPower extends Power {
         	this.amount -= damageAmount;
         while(this.amount <= 0) {
         	this.amount += reset;
-        	((SpyderBoss)owner).spawnBigSpyder();
+        	int str = 0;
+        	if(owner.hasPower(StrengthPower.POWER_ID))
+        		str = owner.getPower(StrengthPower.POWER_ID).amount;
+        	((SpyderBoss)owner).spawnBigSpyder(str);
         }
         updateDescription();
         return damageAmount;
