@@ -11,9 +11,9 @@ import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import com.megacrit.cardcrawl.rooms.EmptyRoom;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import theAct.TheActMod;
 import theAct.monsters.Phrog;
+import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
 import theAct.scenes.TheJungleScene;
 
@@ -189,7 +189,35 @@ public class Jungle extends AbstractDungeon
     {
         // TODO: This is copied from TheCity
         bossList.clear();
+        if (Settings.isDailyRun) {
+            bossList.add(TotemBoss.ID);
+            //bossList.add("Collector");
+            //bossList.add("Champ");
+            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
+       // } else if (!UnlockTracker.isBossSeen("CHAMP")) {
+        //    bossList.add("Champ");
+       // } else if (!UnlockTracker.isBossSeen("AUTOMATON")) {
+       //     bossList.add("Automaton");
+       // } else if (!UnlockTracker.isBossSeen("COLLECTOR")) {
+       //     bossList.add("Collector");
+        } else {
+            bossList.add(TotemBoss.ID);
+            //bossList.add("Collector");
+            //bossList.add("Champ");
+            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
+        }
 
+        if (bossList.size() == 1) {
+            bossList.add(bossList.get(0));
+        } else if (bossList.isEmpty()) {
+            logger.warn("Boss list was empty. How?");
+            bossList.add(TotemBoss.ID);
+            //bossList.add("Collector");
+            //bossList.add("Champ");
+            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
+        }
+
+        /*
         if (Settings.isDailyRun) {
             bossList.add("Automaton");
             bossList.add("Collector");
@@ -217,6 +245,7 @@ public class Jungle extends AbstractDungeon
             bossList.add("Champ");
             Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
         }
+        */
     }
 
     @Override
