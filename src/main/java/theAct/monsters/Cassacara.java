@@ -5,7 +5,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -25,8 +24,8 @@ public class Cassacara extends AbstractMonster {
     public static final String[] MOVES = MONSTER_STRINGS.MOVES;
     private static final float HB_X = 0.0F;
     private static final float HB_Y = 0.0F;
-    private static final float HB_W = 320.0F;
-    private static final float HB_H = 320.0F;
+    private static final float HB_W = 350.0F;
+    private static final float HB_H = 350.0F;
     private static final String ANIMATION_ATLAS = TheActMod.assetPath("images/monsters/cassacara/Cassacara.atlas");
     private static final String ANIMATION_JSON =TheActMod.assetPath("images/monsters/cassacara/Cassacara.json");
     private static final int HP_MIN = 147;
@@ -127,14 +126,14 @@ public class Cassacara extends AbstractMonster {
             case BOTTOMLESS_STOMACH: {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, this.bottomlessStomachStrengthAmount), this.bottomlessStomachStrengthAmount));
                 if (this.carcassSacks[0] == null || this.carcassSacks[0].isDeadOrEscaped()) {
-                    CarcassSack sackToSpawn = new CarcassSack(-425.0f, -65.0f);
+                    CarcassSack sackToSpawn = new CarcassSack(-475.0F, -20.0F);
                     this.carcassSacks[0] = sackToSpawn;
-                    AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(sackToSpawn, true, 0));
+                    AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(sackToSpawn, true, 1));
                 }
                 if (this.carcassSacks[1] == null || this.carcassSacks[1].isDeadOrEscaped()) {
-                    CarcassSack sackToSpawn = new CarcassSack(-250.0f, -90.0f);
+                    CarcassSack sackToSpawn = new CarcassSack(-300.0F, -45.0F);
                     this.carcassSacks[1] = sackToSpawn;
-                    AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(sackToSpawn, true, 0));
+                    AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(sackToSpawn, true, 1));
                 }
             }
         }

@@ -90,7 +90,7 @@ public class TheActMod implements
         BaseMod.addMonster(SwingingAxe.ID, () -> new SwingingAxe());
         BaseMod.addMonster(Lyon.ID, Lyon::new);
         //Elites
-        BaseMod.addMonster(Cassacara.ID, () -> new Cassacara());
+        BaseMod.addMonster(Cassacara.ID, () -> new Cassacara(50.0F, 0.0F));
         BaseMod.addMonster(Phrog.ID,() -> new MonsterGroup(
             new AbstractMonster[] {
                 new Phrog(-175,0, false),
