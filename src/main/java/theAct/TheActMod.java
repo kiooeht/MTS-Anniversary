@@ -12,6 +12,7 @@ import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -48,7 +49,8 @@ public class TheActMod implements
         EditStringsSubscriber,
         EditRelicsSubscriber,
         CustomSavable<Boolean>,
-        EditCardsSubscriber
+        EditCardsSubscriber,
+        PostUpdateSubscriber
 {
 
 
@@ -181,5 +183,12 @@ public class TheActMod implements
             wentToTheJungle = false;
         }
         logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
+    }
+
+    @Override
+    public void receivePostUpdate() {
+        if (AbstractDungeon.player.hasRelic(SneckoAutograph.ID)) {
+            SneckoAutograph.iHatePostUpdate();
+        }
     }
 }

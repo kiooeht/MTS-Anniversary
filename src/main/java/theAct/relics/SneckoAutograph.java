@@ -32,14 +32,14 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
     float shopBubbleX = MathUtils.random(660.0F, 1260.0F) * Settings.scale;
     float shopBubbleY = Settings.HEIGHT - 380.0F * Settings.scale;
-    private ArrayList<AbstractCard> coloredCards = new ArrayList<>();
-    private ArrayList<AbstractCard> colorlessCards = new ArrayList<>();
-    private ArrayList<StorePotion> potions = new ArrayList<>();
-    private ArrayList<StoreRelic> relics = new ArrayList<>();
+    private static ArrayList<StoreRelic> relics = new ArrayList<>();
+    private static boolean removeRelic = false;
+    private static int rng;
 
     public SneckoAutograph() {
         super(ID, ImageMaster.loadImage(TheActMod.assetPath("images/relics/SneckoAutograph.png")), RelicTier.SPECIAL, LandingSound.FLAT);
-        counter = 1;
+        counter = -4;
+        getUpdatedDescription();
     }
 
     @Override
@@ -51,69 +51,18 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
 
     @Override
     public void onRightClick() {
-        if (AbstractDungeon.getCurrRoom() instanceof ShopRoom && counter > 0) {
+        if (AbstractDungeon.getCurrRoom() instanceof ShopRoom && counter == -4) {
             AbstractDungeon.topLevelEffectsQueue.add(new ShopSpeechBubble(shopBubbleX, shopBubbleY, DESCRIPTIONS[3], true));
             counter = -2;
             ShopScreen shop = AbstractDungeon.shopScreen;
-            coloredCards = (ArrayList<AbstractCard>)ReflectionHacks.getPrivate(shop, ShopScreen.class, "coloredCards");
-            colorlessCards = (ArrayList<AbstractCard>)ReflectionHacks.getPrivate(shop, ShopScreen.class, "colorlessCards");
-            potions = (ArrayList<StorePotion>) ReflectionHacks.getPrivate(shop, ShopScreen.class, "potions");
             relics = (ArrayList<StoreRelic>)ReflectionHacks.getPrivate(shop, ShopScreen.class, "relics");
-            for (AbstractCard c : coloredCards) {
-                c.price = 0;
-            }
-            for (AbstractCard c: colorlessCards) {
-                c.price = 0;
-            }
-            for (StorePotion p : potions) {
-                p.price = 0;
-            }
-            for (StoreRelic r : relics) {
-                r.price = 0;
-            }
+            rng = AbstractDungeon.miscRng.random(relics.size() - 1);
+            removeRelic = true;
+            relics.get(rng).relic.instantObtain(AbstractDungeon.player, AbstractDungeon.player.relics.size(), true);
         }
-    }
-
-    @Override
-    public void onSpendGold() {
-        if (!coloredCards.isEmpty()) {
-            for (AbstractCard c : coloredCards) {
-                try {
-                    Method setPrice = ShopScreen.class.getDeclaredMethod("setPrice", AbstractCard.class);
-                    setPrice.setAccessible(true);
-                    setPrice.invoke(AbstractDungeon.shopScreen, c);
-                } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        if (!colorlessCards.isEmpty()) {
-            for (AbstractCard c : colorlessCards) {
-                try {
-                    Method setPrice = ShopScreen.class.getDeclaredMethod("setPrice", AbstractCard.class);
-                    setPrice.setAccessible(true);
-                    setPrice.invoke(AbstractDungeon.shopScreen, c);
-                } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        if (!potions.isEmpty()) {
-            for (StorePotion p : potions) {
-                p.price = p.potion.getPrice();
-            }
-        }
-        if (!relics.isEmpty()) {
-            for (StoreRelic r : relics) {
-                r.price = r.relic.getPrice();
-            }
-        }
-        colorlessCards.clear();
-        coloredCards.clear();
-        potions.clear();
-        relics.clear();
         getUpdatedDescription();
     }
+
 
     @Override
     public AbstractRelic makeCopy() {
@@ -123,10 +72,17 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     @Override
     public String getUpdatedDescription()
     {
-        if (counter > 0) {
-            return DESCRIPTIONS[0] + DESCRIPTIONS[1];
-        } else {
+        if (counter == -2) {
             return DESCRIPTIONS[2];
+        } else {
+            return DESCRIPTIONS[0] + DESCRIPTIONS[1];
+        }
+    }
+
+    public static void iHatePostUpdate() {
+        if (removeRelic) {
+            relics.get(rng).isPurchased = true;
+            removeRelic = false;
         }
     }
 }
