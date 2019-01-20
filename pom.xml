@@ -54,6 +54,11 @@
                 <filtering>false</filtering>
                 <excludes>
                     <exclude>ModTheSpire.json</exclude>
+                    <exclude>**/*.xcf</exclude>
+                    <exclude>**/*.psd</exclude>
+                    <exclude>**/*.dbproj</exclude>
+                    <exclude>theActAssets/images/monsters/*/library/**/*</exclude>
+                    <exclude>theActAssets/images/monsters/*/images/**/*</exclude>
                 </excludes>
             </resource>
             <resource>

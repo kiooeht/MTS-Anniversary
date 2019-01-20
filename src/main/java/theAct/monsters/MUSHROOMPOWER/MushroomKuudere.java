@@ -1,5 +1,6 @@
 package theAct.monsters.MUSHROOMPOWER;
 
+import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
@@ -21,8 +22,8 @@ public class MushroomKuudere extends AbstractMonster {
     private static final int MIN_HP = 16;
     private static final int MAX_HP = 20;
     private static final int ASC_HP_MODIFIER = 3;
-    private static final int PROTECTION_AMT = 3;
-    private static final int PROTECTION_AMT_ASC_MODIFIER = 2;
+    private static final int PROTECTION_AMT = 2;
+    private static final int PROTECTION_AMT_ASC_MODIFIER = 1;
     private static final int HEAL_AMT = 3;
     private static final int HEAL_AMT_ASC_MODIFIER = 2;
     private static final int HEADBUTT_DMG = 3;
@@ -32,8 +33,10 @@ public class MushroomKuudere extends AbstractMonster {
     private int healAmt;
 
     public MushroomKuudere(float x, float y) {
-        super(NAME, ID, MAX_HP, 0.0F, 10.0F, 280.0F, 280.0F, null, x, y);
-        this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
+        super(NAME, ID, MAX_HP, 0.0F, 10.0F, 160.0F, 165.0F, null, x, y);
+        loadAnimation(TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Genki.atlas"), TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Genki.json"), 1.0F);
+        state.setAnimation(0, "Idle", true);
+        stateData.setMix("Idle", "Floop", 0.2F);
         if (AbstractDungeon.ascensionLevel >= 17) {
             protectionAmt = PROTECTION_AMT + PROTECTION_AMT_ASC_MODIFIER;
             healAmt = HEAL_AMT + HEAL_AMT_ASC_MODIFIER;
@@ -64,11 +67,14 @@ public class MushroomKuudere extends AbstractMonster {
     public void takeTurn() {
         switch (nextMove) {
             case 0:
+                AbstractDungeon.actionManager.addToBottom(new AnimateSlowAttackAction(this));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0)));
                 break;
             case 1:
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                     if (m != this) {
+                        state.setAnimation(0, "Floop", false);
+                        state.addAnimation(0, "Idle", true, 0.0F);
                         AbstractDungeon.actionManager.addToBottom(new HealAction(m, this, healAmt));
                     }
                 }
@@ -81,6 +87,7 @@ public class MushroomKuudere extends AbstractMonster {
     protected void getMove(int i) {
         if (lastMove((byte)1)) {
             setMove((byte)0, Intent.ATTACK, damage.get(0).base);
+            return;
         }
         setMove((byte)1, Intent.BUFF);
     }
