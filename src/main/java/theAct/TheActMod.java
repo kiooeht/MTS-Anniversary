@@ -21,6 +21,11 @@ import theAct.cards.curses.EternalShame;
 import theAct.dungeons.Jungle;
 import theAct.events.*;
 import theAct.monsters.*;
+import theAct.events.River;
+import theAct.events.KidnappersEvent;
+import theAct.events.SneckoCultEvent;
+import theAct.monsters.SilentTribesmen;
+import theAct.monsters.Phrog;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
 import theAct.relics.*;
@@ -76,6 +81,8 @@ public class TheActMod implements
 
         // Add monsters here
         BaseMod.addMonster(SilentTribesmen.ENCOUNTER_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
+                new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F)}));
+        BaseMod.addMonster(SilentTribesmen.EVENT_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
                 new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F), new SilentTribesmen(125.0F, -30.0F)}));
 
         BaseMod.addMonster(Flameango.ID, () -> new Flameango(0));
