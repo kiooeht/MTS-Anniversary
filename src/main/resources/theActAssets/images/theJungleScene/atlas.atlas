@@ -1,0 +1,112 @@
+scene.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mod/bg1
+  rotate: false
+  xy: 2, 1200
+  size: 1920, 501
+  orig: 1920, 1136
+  offset: 0, 445
+  index: -1
+mod/ceiling
+  rotate: false
+  xy: 2, 994
+  size: 1920, 204
+  orig: 1920, 1136
+  offset: 0, 932
+  index: -1
+mod/fg
+  rotate: false
+  xy: 2, 344
+  size: 1920, 648
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+mod/fgGlow
+  rotate: false
+  xy: 2, 2
+  size: 1920, 340
+  orig: 1920, 1080
+  offset: 0, 64
+  index: -1
+  
+scene2.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mod/floor
+  rotate: false
+  xy: 2, 937
+  size: 1920, 460
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+mod/mg1
+  rotate: false
+  xy: 2, 2
+  size: 1920, 933
+  orig: 1920, 1136
+  offset: 0, 147
+  index: -1
+  
+scene2.jpg
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campfire
+  rotate: false
+  xy: 2, 2
+  size: 1920, 1136
+  orig: 1920, 1136
+  offset: 0, 0
+  index: -1
+  
+scene3.jpg
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+event
+  rotate: false
+  xy: 2, 2
+  size: 1920, 1136
+  orig: 1920, 1136
+  offset: 0, 0
+  index: -1
+  
+fire.png
+size: 1737, 488
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+mod/campfireKindling
+  rotate: false
+  xy: 2, 2
+  size: 1029, 487
+  orig: 1737, 488
+  offset: 869, 0
+  index: -1
+mod/campfireGlow
+  rotate: false
+  xy: 1034, 2
+  size: 701, 242
+  orig: 244, 0
+  offset: 0,0
+  index: -1
+
+scene.jpg
+size: 2048,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+bg
+  rotate: false
+  xy: 2, 2
+  size: 1920, 1016
+  orig: 1920, 1016
+  offset: 0, 0
+  index: -1

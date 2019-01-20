@@ -17,7 +17,7 @@ public class TotemStrengthPower extends Power {
 		this.owner = owner;
 		this.type = PowerType.BUFF;
 		this.name = strings.NAME;
-		this.setImage("digestPower84.png", "digestPower32.png");
+		this.setImage("totemRevengePower84.png", "totemRevengePower32.png");
 		this.ID = powerID;
 		this.updateDescription();
 	}

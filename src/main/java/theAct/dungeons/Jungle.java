@@ -11,11 +11,12 @@ import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import com.megacrit.cardcrawl.rooms.EmptyRoom;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
-import com.megacrit.cardcrawl.scenes.TheCityScene;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
-
 import theAct.TheActMod;
+import theAct.monsters.*;
+import theAct.monsters.MUSHROOMPOWER.MushroomYandere;
+import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
+import theAct.scenes.TheJungleScene;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,8 +37,10 @@ public class Jungle extends AbstractDungeon
         if (scene != null) {
             scene.dispose();
         }
-        scene = new TheCityScene(); // TODO
+        scene = new TheJungleScene(); // TODO
         fadeColor = Color.valueOf("1e0f0aff"); // TODO ?
+
+
 
         initializeLevelSpecificChances();
         mapRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + AbstractDungeon.actNum * 100);
@@ -56,7 +59,7 @@ public class Jungle extends AbstractDungeon
         if (scene != null) {
             scene.dispose();
         }
-        scene = new TheCityScene(); // TODO
+        scene = new TheJungleScene(); // TODO
         fadeColor = Color.valueOf("1e0f0aff"); // TODO ?
 
         initializeLevelSpecificChances();
@@ -122,11 +125,11 @@ public class Jungle extends AbstractDungeon
     {
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo("Spheric Guardian", 2.0F));
-        monsters.add(new MonsterInfo("Chosen", 2.0F));
         monsters.add(new MonsterInfo("Shell Parasite", 2.0F));
-        monsters.add(new MonsterInfo("3 Byrds", 2.0F));
-        monsters.add(new MonsterInfo("2 Thieves", 2.0F));
+        //monsters.add(new MonsterInfo(GIANT WRAT HERE, 3.0f));
+        monsters.add(new MonsterInfo(TheActMod.makeID("Flameango_and_Byrd"), 2.0F));
+        monsters.add(new MonsterInfo(TheActMod.makeID("6_Spyders"), 3.0f));
+        monsters.add(new MonsterInfo(MushroomYandere.ENCOUNTER_ID, 3.0f));
         MonsterInfo.normalizeWeights(monsters);
         populateMonsterList(monsters, count, false);
     }
@@ -136,14 +139,14 @@ public class Jungle extends AbstractDungeon
     {
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo("Chosen and Byrds", 2.0F));
-        monsters.add(new MonsterInfo("Sentry and Sphere", 2.0F));
-        monsters.add(new MonsterInfo("Snake Plant", 6.0F));
-        monsters.add(new MonsterInfo("Snecko", 4.0F));
-        monsters.add(new MonsterInfo("Centurion and Healer", 6.0F));
-        monsters.add(new MonsterInfo("Cultist and Chosen", 3.0F));
-        monsters.add(new MonsterInfo("3 Cultists", 3.0F));
-        monsters.add(new MonsterInfo("Shelled Parasite and Fungi", 3.0F));
+        monsters.add(new MonsterInfo(SlimyTreeVines.ENCOUNTER_NAME, 3.0F));
+        monsters.add(new MonsterInfo(SilentTribesmen.ENCOUNTER_ID, 3.0f));
+        monsters.add(new MonsterInfo("Snake Plant", 2.0F));
+        monsters.add(new MonsterInfo(Lyon.ID, 3.0f));
+        monsters.add(new MonsterInfo(TheActMod.makeID("2_Flameangoes"), 2.0F));
+        monsters.add(new MonsterInfo(TheActMod.makeID("2_Snecko_Cultists"), 3.0F));
+        monsters.add(new MonsterInfo(TheActMod.makeID("Silent_and_trap"), 2.0F));
+
         MonsterInfo.normalizeWeights(monsters);
         populateFirstStrongEnemy(monsters, generateExclusions());
         populateMonsterList(monsters, count, false);
@@ -155,8 +158,8 @@ public class Jungle extends AbstractDungeon
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
         monsters.add(new MonsterInfo("Gremlin Leader", 1.0F));
-        monsters.add(new MonsterInfo("Slavers", 1.0F));
-        monsters.add(new MonsterInfo("Book of Stabbing", 1.0F));
+        monsters.add(new MonsterInfo(Cassacara.ID, 1.0F));
+        monsters.add(new MonsterInfo(Phrog.ID, 1.0f));
         MonsterInfo.normalizeWeights(monsters);
         populateMonsterList(monsters, count, true);
     }
@@ -185,55 +188,14 @@ public class Jungle extends AbstractDungeon
     @Override
     protected void initializeBoss()
     {
-        // TODO: This is copied from TheCity
         bossList.clear();
-
-        if (Settings.isDailyRun) {
-            bossList.add("Automaton");
-            bossList.add("Collector");
-            bossList.add("Champ");
-            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
-        } else if (!UnlockTracker.isBossSeen("CHAMP")) {
-            bossList.add("Champ");
-        } else if (!UnlockTracker.isBossSeen("AUTOMATON")) {
-            bossList.add("Automaton");
-        } else if (!UnlockTracker.isBossSeen("COLLECTOR")) {
-            bossList.add("Collector");
-        } else {
-            bossList.add("Automaton");
-            bossList.add("Collector");
-            bossList.add("Champ");
-            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
-        }
-
-        if (bossList.size() == 1) {
-            bossList.add(bossList.get(0));
-        } else if (bossList.isEmpty()) {
-            logger.warn("Boss list was empty. How?");
-            bossList.add("Automaton");
-            bossList.add("Collector");
-            bossList.add("Champ");
-            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
-        }
+        // Bosses are added via BaseMod in TheActMod.receivePostInitialize()
     }
 
     @Override
     protected void initializeEventList()
     {
-        // TODO: This is copied from TheCity
-        eventList.add("Addict");
-        eventList.add("Back to Basics");
-        eventList.add("Beggar");
-        eventList.add("Colosseum");
-        eventList.add("Cursed Tome");
-        eventList.add("Drug Dealer");
-        eventList.add("Forgotten Altar");
-        eventList.add("Ghosts");
-        eventList.add("Masked Bandits");
-        eventList.add("Nest");
-        eventList.add("The Library");
-        eventList.add("The Mausoleum");
-        eventList.add("Vampires");
+        // Events are added via BaseMod in TheActMod.receivePostInitialize()
     }
 
     @Override
