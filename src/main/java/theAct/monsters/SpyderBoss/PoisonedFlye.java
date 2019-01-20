@@ -48,7 +48,7 @@ public class PoisonedFlye extends SpawnedSpyder{
         case 0:
             AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                if (m instanceof SpawnedSpyder && !(m instanceof PoisonedFlye) && !m.isDying && !m.isEscaping) {
+                if (m instanceof SpawnedSpyder && !(m instanceof PoisonedFlye) && !m.isDying && !m.isEscaping && m.currentHealth < m.maxHealth) {
                     AbstractDungeon.actionManager.addToTop(new HealAction(m, this, AbstractDungeon.ascensionLevel >= 19?3:2));
                 }
             }

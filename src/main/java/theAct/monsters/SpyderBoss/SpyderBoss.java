@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import theAct.TheActMod;
+import theAct.powers.FormationPower;
 import theAct.powers.FragileEggsPower;
 import theAct.powers.ShyPower;
 import theAct.powers.SquadPower;
@@ -76,7 +77,7 @@ public class SpyderBoss extends AbstractMonster {
 
 public void spawnBigSpyder() {
     
-	if(isDying || bigSpyderAmt >= bigSpyders.length)
+	if(isDying || bigSpyderAmt >= bigSpyders.length || bigChoice.size() == 0)
 		return;
 	
 	int i = 0;
@@ -86,7 +87,7 @@ public void spawnBigSpyder() {
 		i++;
 	}
 		
-		int r = AbstractDungeon.monsterRng.random(bigChoice.size());
+		int r = AbstractDungeon.monsterRng.random(bigChoice.size() - 1);
     	int chosen = bigChoice.get(r);
     	bigChoice.remove(r);
     	AbstractMonster m = null;
@@ -114,6 +115,8 @@ public void spawnBigSpyder() {
     			((SquadPower) n.getPower(SquadPower.powerID)).spyderSpawn();
     		if(n instanceof SpawnedSpyder && n.hasPower(ShyPower.powerID))
     			((ShyPower) n.getPower(ShyPower.powerID)).spyderSpawn();
+			if(m instanceof SpawnedSpyder && m.hasPower(FormationPower.powerID))
+				((FormationPower) m.getPower(FormationPower.powerID)).spyderSpawn();
     	}
 
         TheActMod.logger.info("Spawning Monster");
@@ -134,24 +137,30 @@ public void spawnSmallSpyder(int str) {
 			break;
 	}
 	
-	int chosen = AbstractDungeon.monsterRng.random(3);
+	int chosen = AbstractDungeon.monsterRng.random(6);
 	AbstractMonster m = null;
 	switch(chosen) {
-    	case 0:
-    		m = new SneakySpyder(this, i, str);
-    		break;
-    	
-    	case 1:
-    		m = new FatSpyder(this, i, str);
-    		break;
-    	
-    	case 2:
-    		m = new PoisonedFlye(this, i, str);
-    		break;
-    	
-    	case 3:
-    		m = new ShySpyder(this, i, str);
-    		break;
+	case 0:
+		m = new SneakySpyder(this, i, str);
+		break;	
+	case 1:
+		m = new FatSpyder(this, i, str);
+		break;	
+	case 2:
+		m = new PoisonedFlye(this, i, str);
+		break;	
+	case 3:
+		m = new ShySpyder(this, i, str);
+		break;
+	case 4:
+		m = new SneakySpyder(this, i, str);
+		break;	
+	case 5:
+		m = new FatSpyder(this, i, str);
+		break;	
+	case 6:
+		m = new ShySpyder(this, i, str);
+		break;
     	
 	}
 	
@@ -160,6 +169,8 @@ public void spawnSmallSpyder(int str) {
 			((SquadPower) n.getPower(SquadPower.powerID)).spyderSpawn();
 		if(n instanceof SpawnedSpyder && n.hasPower(ShyPower.powerID))
 			((ShyPower) n.getPower(ShyPower.powerID)).spyderSpawn();
+		if(m instanceof SpawnedSpyder && m.hasPower(FormationPower.powerID))
+			((FormationPower) m.getPower(FormationPower.powerID)).spyderSpawn();
 	}
     
     TheActMod.logger.info("Spawning Monster");

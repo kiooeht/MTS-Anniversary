@@ -46,7 +46,7 @@ public class SpawnedSpyder extends AbstractMonster {
     public int slot;
 
     public SpawnedSpyder(String name, String ID, boolean small, int baseHP, SpyderBoss boss, int slot, int strength) {
-        super(name, ID, 420, 0.0F, 0F, small?80.0F:130F, small?60.0F:100F, TheActMod.assetPath("images/monsters/spyders/test.png"), 
+        super(name, ID, 420, 0.0F, 0F, small?80.0F:130F, small?60.0F:100F, TheActMod.assetPath("images/monsters/spyders/" + name + ".png"), 
         		slotPos[(small?16:0) + slot*2] *1.3F + AbstractDungeon.miscRng.random(-20, 20), slotPos[(small?16:0) + slot*2 + 1] *1.2F + AbstractDungeon.miscRng.random(-10, 10));
         
         this.type = EnemyType.NORMAL;
@@ -77,7 +77,7 @@ public class SpawnedSpyder extends AbstractMonster {
     }
     
     public SpawnedSpyder(String name, String ID, boolean small, int baseHP, float x, float y) {
-        super(name, ID, 420, 0.0F, 0F, small?80.0F:130F, small?60.0F:100F, TheActMod.assetPath("images/monsters/spyders/test.png"), 
+        super(name, ID, 420, 0.0F, 0F, small?80.0F:130F, small?60.0F:100F, TheActMod.assetPath("images/monsters/spyders/" + name + ".png"), 
         		x, y);
         
         this.type = EnemyType.NORMAL;
@@ -87,15 +87,18 @@ public class SpawnedSpyder extends AbstractMonster {
                 
         baseHP += AbstractDungeon.monsterHpRng.random(baseHP / 5);
 
-        if (AbstractDungeon.ascensionLevel >= 9) {
+        if (AbstractDungeon.ascensionLevel >= 7) {
             this.setHp((baseHP * 12) / 10);
         } else {
             this.setHp(baseHP);
         }
         
+        
         int strength = 0;
-        if (AbstractDungeon.ascensionLevel >= 4) strength++;
-        if (AbstractDungeon.ascensionLevel >= 19) strength++;
+        if(small) {
+        	if (AbstractDungeon.ascensionLevel >= 2) strength++;
+        	if (AbstractDungeon.ascensionLevel >= 17) strength++;
+        }
         
         if(strength > 0)
         	AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this, this, new StrengthPower(this, strength), strength));
