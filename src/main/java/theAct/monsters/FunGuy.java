@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.common.SetMoveAction;
 import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
@@ -43,8 +44,8 @@ public class FunGuy extends AbstractMonster {
 	private static final MonsterStrings STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
 	
 
-	public static final int CHMP_DMG = 15;
-	public static final int A_CHMP_DMG = 18;
+	public static final int CHMP_DMG = 12;
+	public static final int A_CHMP_DMG = 15;
 	public static final int BURST_DMG = 2;
 	public static final int A_BURST_DMG = 3;
 	public static final int BURST_AMT = 2;
@@ -129,6 +130,9 @@ public class FunGuy extends AbstractMonster {
 			for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
 				if (m != null && m != this && !m.isDeadOrEscaped()) {
 					AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4f));
+					if (m.hasPower(SporeCloudPower.POWER_ID)) {
+						AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(m, this, SporeCloudPower.POWER_ID));
+					}
 					AbstractDungeon.actionManager.addToBottom(new VampireDamageAction(m, this.damage.get(3), AbstractGameAction.AttackEffect.POISON));
 					AbstractDungeon.actionManager.addToBottom(new SuicideAction(m));
 				}

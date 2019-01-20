@@ -80,8 +80,9 @@ public class TheActMod implements
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
 
         // Add Encounters here
-
-
+        
+        BaseMod.addBoss(Jungle.ID, FunGuy.ID, "theActAssets/images/monsters/placeholderBossIcon.png", "theActAssets/images/monsters/placeholderBossOutline.png");
+        
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
         GetDungeonPatches.addNextDungeon(Jungle.ID, TheBeyond.ID);
