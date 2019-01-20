@@ -87,7 +87,7 @@
       "DESCRIPTIONS": [
         "Whenever you play a card, ",
         " gains #b",
-        " #Strength for this turn only."
+        " #yStrength for this turn only."
       ]
     },
 	"theJungle:ObsessionPower": {

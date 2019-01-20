@@ -20,7 +20,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
-
+import com.megacrit.cardcrawl.monsters.city.Byrd;
 import com.megacrit.cardcrawl.monsters.city.Snecko;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -123,7 +123,16 @@ public class TheActMod implements
                         new WebberSpyder(-199.0F, -10.0F, false),
                         new WebberSpyder(39.0F, 10.0F, true)
                 }));
-        BaseMod.addMonster(Flameango.ID, () -> new Flameango(0));
+        BaseMod.addMonster(TheActMod.makeID("Flameango_and_Byrd"), () -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new Flameango(50),
+                        new Byrd(-175.0F, 150.0F)
+                    }));
+        BaseMod.addMonster(TheActMod.makeID("2_Flameangoes"), () -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new Flameango(-80),
+                        new Flameango(200)
+                    }));
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
         BaseMod.addMonster(SwingingAxe.ID, () -> new SwingingAxe());

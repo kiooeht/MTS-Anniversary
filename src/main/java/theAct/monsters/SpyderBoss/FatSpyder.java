@@ -31,7 +31,7 @@ public class FatSpyder extends SpawnedSpyder{
 	}
     
     public FatSpyder(float x, float y) {	
-		super(NAME, ID, SMALL, BASEHP*4/3, x, y);
+		super(NAME, ID, SMALL, BASEHP, x, y);
 		damage.add(new DamageInfo(this, 9));
 	}
 	

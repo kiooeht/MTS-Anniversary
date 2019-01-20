@@ -126,10 +126,10 @@ public class Jungle extends AbstractDungeon
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
         monsters.add(new MonsterInfo("Shell Parasite", 2.0F));
-        monsters.add(new MonsterInfo("3 Byrds", 2.0f));
-        monsters.add(new MonsterInfo(Flameango.ID, 2.0F));
-        monsters.add(new MonsterInfo(SilentTribesmen.ENCOUNTER_ID, 1.0f));
-        monsters.add(new MonsterInfo(MushroomYandere.ENCOUNTER_ID, 2.0f));
+        //monsters.add(new MonsterInfo(GIANT WRAT HERE, 3.0f));
+        monsters.add(new MonsterInfo(TheActMod.makeID("Flameango_and_Byrd"), 2.0F));
+        monsters.add(new MonsterInfo(TheActMod.makeID("6_Spyders"), 3.0f));
+        monsters.add(new MonsterInfo(MushroomYandere.ENCOUNTER_ID, 3.0f));
         MonsterInfo.normalizeWeights(monsters);
         populateMonsterList(monsters, count, false);
     }
@@ -139,10 +139,11 @@ public class Jungle extends AbstractDungeon
     {
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo(SlimyTreeVines.ENCOUNTER_NAME, 2.0F));
-        monsters.add(new MonsterInfo(SilentTribesmen.ENCOUNTER_ID, 1.0f));
-        monsters.add(new MonsterInfo("Snake Plant", 1.0F));
-        monsters.add(new MonsterInfo(Lyon.ID, 2.0f));
+        monsters.add(new MonsterInfo(SlimyTreeVines.ENCOUNTER_NAME, 3.0F));
+        monsters.add(new MonsterInfo(SilentTribesmen.ENCOUNTER_ID, 3.0f));
+        monsters.add(new MonsterInfo("Snake Plant", 2.0F));
+        monsters.add(new MonsterInfo(Lyon.ID, 3.0f));
+        monsters.add(new MonsterInfo(TheActMod.makeID("2_Flameangoes"), 2.0F));
 
         MonsterInfo.normalizeWeights(monsters);
         populateFirstStrongEnemy(monsters, generateExclusions());
