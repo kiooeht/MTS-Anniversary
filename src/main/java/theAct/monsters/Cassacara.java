@@ -3,8 +3,10 @@ package theAct.monsters;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.ShoutAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -23,10 +25,12 @@ public class Cassacara extends AbstractMonster {
     private static final MonsterStrings MONSTER_STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = MONSTER_STRINGS.NAME;
     public static final String[] MOVES = MONSTER_STRINGS.MOVES;
-    private static final float HB_X = 8.0F;
-    private static final float HB_Y = 136.0F;
+    private static final float HB_X = 0.0F;
+    private static final float HB_Y = 0.0F;
     private static final float HB_W = 320.0F;
-    private static final float HB_H = 240.0F;
+    private static final float HB_H = 320.0F;
+    private static final String ANIMATION_ATLAS = TheActMod.assetPath("images/monsters/cassacara/Cassacara.atlas");
+    private static final String ANIMATION_JSON =TheActMod.assetPath("images/monsters/cassacara/Cassacara.json");
     private static final int HP_MIN = 147;
     private static final int HP_MAX = 151;
     private static final int ASC_HP_MIN = 153;
@@ -54,7 +58,7 @@ public class Cassacara extends AbstractMonster {
     private AbstractMonster[] carcassSacks;
 
     public Cassacara(float x, float y) {
-        super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, TheActMod.assetPath("/images/monsters/cassacara/placeholder.png"), x, y);
+        super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, x, y);
         this.type = EnemyType.ELITE;
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(ASC_HP_MIN, ASC_HP_MAX);
@@ -87,6 +91,11 @@ public class Cassacara extends AbstractMonster {
         this.damage.add(new DamageInfo(this, bigBiteDamage));
         this.damage.add(new DamageInfo(this, chewDamage));
         this.carcassSacks = new AbstractMonster[2];
+
+        this.loadAnimation(ANIMATION_ATLAS, ANIMATION_JSON, 1.0F);
+        this.state.setAnimation(0, "idleLeaves", true);
+        this.state.setAnimation(1, "idleLick", true);
+        this.state.setAnimation(2, "IdleChomp", true);
     }
 
     public Cassacara() {
@@ -96,7 +105,7 @@ public class Cassacara extends AbstractMonster {
     public void takeTurn() {
         switch (this.nextMove) {
             case BIG_BITE: {
-                // TODO: Add animations when art is in
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "CHOMP"));
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.5f));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(new BiteEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, Color.CHARTREUSE.cpy()), 0.3F));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.NONE));
@@ -108,7 +117,8 @@ public class Cassacara extends AbstractMonster {
                 break;
             }
             case CHEW: {
-                // TODO: Add animations when art is in
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "LICK"));
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "CHOMP"));
                 for (int i = 0; i < chewHitAmount; i++) {
                     AbstractDungeon.actionManager.addToBottom(new WaitAction(0.5f));
                     AbstractDungeon.actionManager.addToBottom(new VFXAction(new BiteEffect(AbstractDungeon.player.hb.cX + MathUtils.random(-50.0f, 50.0f) * Settings.scale, AbstractDungeon.player.hb.cY + MathUtils.random(-50.0f, 50.0f) * Settings.scale, Color.CHARTREUSE.cpy()), 0.2F));
@@ -131,6 +141,19 @@ public class Cassacara extends AbstractMonster {
             }
         }
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
+    }
+
+    @Override
+    public void changeState(String key){
+        switch (key) {
+            case "LICK": {
+                this.state.setAnimation(1, "Lick", false);
+                break;
+            }
+            case "CHOMP": {
+                this.state.setAnimation(2, "Chomp", false);
+            }
+        }
     }
 
     public void getMove(int num) {
