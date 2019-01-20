@@ -122,13 +122,14 @@ public class SpawnedSpyder extends AbstractMonster {
         this.useFastShakeAnimation(0.5F);
         super.die();
         if(owner != null) {
-        	this.owner.resolveSpyderDeath(this);
+        	this.owner.resolveSpyderDeath(this);        	
         	for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
     			if(m instanceof SpawnedSpyder && m.hasPower(SquadPower.powerID))
     				((SquadPower) m.getPower(SquadPower.powerID)).spyderDeath();
     			if(m instanceof SpawnedSpyder && m.hasPower(FormationPower.powerID))
     				AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) m.getPower(FormationPower.powerID))));
     		}
+        	AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) this.owner.getPower(FormationPower.powerID))));
         }
 
     }
