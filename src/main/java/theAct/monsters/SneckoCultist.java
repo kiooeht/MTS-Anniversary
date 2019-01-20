@@ -3,13 +3,16 @@ package theAct.monsters;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -22,6 +25,7 @@ public class SneckoCultist extends AbstractMonster {
     private static final MonsterStrings MONSTER_STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = MONSTER_STRINGS.NAME;
     public static final String[] MOVES = MONSTER_STRINGS.MOVES;
+    public static final String[] DIALOG = MONSTER_STRINGS.DIALOG;
 
     private static final String WHIP_NAME = MOVES[0];
     private static final String CONFUSE_START_NAME = MOVES[1];
@@ -39,15 +43,24 @@ public class SneckoCultist extends AbstractMonster {
 
 
     private boolean firstTurn = true;
+    private boolean talky;
     //private int numOfCards = 3;
 
 
 
-    public SneckoCultist(int xOffset, int yOffset)
+    public SneckoCultist(int xOffset, int yOffset) {
+        this(xOffset, yOffset, false);
+    }
+
+    public SneckoCultist(int xOffset, int yOffset, boolean talk)
     {
         super(MONSTER_STRINGS.NAME, ID, 56, HB_X, HB_Y, HB_W, HB_H, TheActMod.assetPath("/images/monsters/sneckoCultist/placeholder.png"), 0 + xOffset, 0f + yOffset);
         this.type = EnemyType.NORMAL;
         this.loadAnimation(TheActMod.assetPath("images/monsters/sneckoCultist/SneckoCultist.atlas"), TheActMod.assetPath("images/monsters/sneckoCultist/SneckoCultist.json"), 1.0F);
+
+        this.talky = talk;
+        this.dialogX = -50.0f * Settings.scale;
+        this.dialogY = 50.0f * Settings.scale;
 
         this.damage.add(new DamageInfo(this, WHIP_DAMAGE));
         this.damage.add(new DamageInfo(this,TACKLE_DAMAGE));
@@ -89,6 +102,20 @@ public class SneckoCultist extends AbstractMonster {
             {
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(player,3),3));
+                if (this.talky) {
+                    int r = MathUtils.random(1);
+                    if (r == 0) {
+                        AbstractDungeon.actionManager.addToBottom(new SFXAction(TheActMod.makeID("sneckoCultist1"),0.1f));
+                    } else {
+                        AbstractDungeon.actionManager.addToBottom(new SFXAction(TheActMod.makeID("sneckoCultist2"),0.1f));
+                    }
+                    r = MathUtils.random(1);
+                    if (r == 0) {
+                        AbstractDungeon.actionManager.addToBottom(new TalkAction(this, DIALOG[0], 1.0f, 2.0f));
+                    } else {
+                        AbstractDungeon.actionManager.addToBottom(new TalkAction(this, DIALOG[1], 1.0f, 2.0f));
+                    }
+                }
                 break;
             }
             case MoveBytes.TACKLE:
