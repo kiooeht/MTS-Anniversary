@@ -14,7 +14,7 @@ import theAct.powers.EnergeticPower;
 import theAct.powers.ProtectionPower;
 
 public class MushroomGenki extends AbstractMonster {
-    public static final String ID = TheActMod.makeID("MushroomYandere");
+    public static final String ID = TheActMod.makeID("MushroomGenki");
     public static final String ENCOUNTER_ID = TheActMod.makeID("MUSHROOMGANG");
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;

@@ -14,7 +14,7 @@ import theAct.powers.ObsessionPower;
 import theAct.powers.ProtectionPower;
 
 public class MushroomKuudere extends AbstractMonster {
-    public static final String ID = TheActMod.makeID("MushroomYandere");
+    public static final String ID = TheActMod.makeID("MushroomKuudere");
     public static final String ENCOUNTER_ID = TheActMod.makeID("MUSHROOMGANG");
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
