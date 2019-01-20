@@ -149,7 +149,7 @@
 	"theJungle:Incubation": {
 		"NAME" : "Incubation",
 		"DESCRIPTIONS": [
-			"Next turn, this will hatch into a #yBaby #ySnecko.",
+			"On this enemy's turn, it will hatch into a #yBaby #ySnecko.",
 			"In #b",
 			" turns, this will hatch into a #yBaby #ySnecko."
 		]

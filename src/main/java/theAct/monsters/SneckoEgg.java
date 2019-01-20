@@ -55,8 +55,10 @@ public class SneckoEgg extends AbstractMonster {
 
 		this.animY += 25f;
 
+		int r = MathUtils.random(1,3);
+
 		this.loadAnimation(
-				TheActMod.assetPath("images/monsters/SneckoEgg/SneckoEgg.atlas"),
+				TheActMod.assetPath("images/monsters/SneckoEgg/SneckoEgg" + (r>1?r:"") + ".atlas"),
 				TheActMod.assetPath("images/monsters/SneckoEgg/SneckoEgg.json"),
 				2f);
 
@@ -93,7 +95,7 @@ public class SneckoEgg extends AbstractMonster {
 		}
 		AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(this));
 		AbstractDungeon.actionManager.addToTop(new SuicideAction(this));
-		AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new BabySnecko(snekX,snekY,posIndex),true));
+		AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new BabySnecko(snekX,snekY,posIndex),true,AbstractDungeon.getMonsters().monsters.indexOf(this)));
 	}
 
 	@Override

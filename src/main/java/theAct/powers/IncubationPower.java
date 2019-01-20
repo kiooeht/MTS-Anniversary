@@ -24,7 +24,7 @@ public class IncubationPower extends Power {
         this.isTurnBased = true;
         this.name = strings.NAME;
         this.region48 = new TextureAtlas.AtlasRegion(new Texture(TheActMod.assetPath("images/powers/incubationPower32.png")), 0, 0, 32, 32);
-        this.region128 = new TextureAtlas.AtlasRegion(new Texture(TheActMod.assetPath("images/powers/incubationPower84.png")), 0, 0, 128, 128);
+        this.region128 = new TextureAtlas.AtlasRegion(new Texture(TheActMod.assetPath("images/powers/incubationPower84.png")), 0, 0, 84, 84);
         this.ID = powerID;
         this.updateDescription();
     }

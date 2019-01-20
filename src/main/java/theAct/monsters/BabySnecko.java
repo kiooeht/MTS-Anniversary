@@ -32,7 +32,7 @@ public class BabySnecko extends AbstractMonster {
     public static final String[] MOVES = MONSTER_STRINGS.MOVES;
     private static final float HB_X = -30.0F;
     private static final float HB_Y = -20.0F;
-    private static final float HB_W = 200.0f;
+    private static final float HB_W = 150.0f;
     private static final float HB_H = 200.0f;
     private static final int HP_MIN = 25;
     private static final int HP_MAX = 30;
@@ -53,9 +53,11 @@ public class BabySnecko extends AbstractMonster {
 
     public BabySnecko(final float x, final float y, final int posIndex) {
         super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, x, y);
-        this.loadAnimation("images/monsters/theCity/reptile/skeleton.atlas", "images/monsters/theCity/reptile/skeleton.json", 1.5f);
-        AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
+        this.loadAnimation("images/monsters/theCity/reptile/skeleton.atlas", "images/monsters/theCity/reptile/skeleton.json", 1.7f);
+        final AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
+        this.stateData.setMix("Hit", "Idle", 0.1f);
+        e.setTimeScale(0.8f);
         this.type = EnemyType.NORMAL;
         this.posIndex = posIndex;
         if (AbstractDungeon.ascensionLevel >= 7) {
@@ -73,6 +75,22 @@ public class BabySnecko extends AbstractMonster {
             this.biteDamage = ASC_BITE_DAMAGE;
         }
         this.damage.add(new DamageInfo(this, biteDamage));
+    }
+
+    @Override
+    public void changeState(final String stateName) {
+        switch (stateName) {
+            case "ATTACK": {
+                this.state.setAnimation(0, "Attack", false);
+                this.state.addAnimation(0, "Idle", true, 0.0f);
+                break;
+            }
+            case "ATTACK_2": {
+                this.state.setAnimation(0, "Attack_2", false);
+                this.state.addAnimation(0, "Idle", true, 0.0f);
+                break;
+            }
+        }
     }
 
     public void takeTurn() {

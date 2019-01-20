@@ -72,13 +72,15 @@ public class MamaSnecko extends AbstractMonster {
     public boolean firstTurn = true;
 
     public MamaSnecko() {
-        super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, 0, 0);
+        super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, 175, 0);
         this.loadAnimation(
                 TheActMod.assetPath("images/monsters/MamaSnecko/skeleton.atlas"),
                 TheActMod.assetPath("images/monsters/MamaSnecko/skeleton.json"),
                 0.7f);
-        AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
+        final AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
+        this.stateData.setMix("Hit", "Idle", 0.1f);
+        e.setTimeScale(0.8f);
         this.type = EnemyType.ELITE;
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(ASC_HP_MIN, ASC_HP_MAX);
@@ -116,21 +118,21 @@ public class MamaSnecko extends AbstractMonster {
                 break;
             }
             case BITE: {
-                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK_2"));
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "Attack_2"));
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.3f));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(new BiteEffect(AbstractDungeon.player.hb.cX + MathUtils.random(-50.0f, 50.0f) * Settings.scale, AbstractDungeon.player.hb.cY + MathUtils.random(-50.0f, 50.0f) * Settings.scale, Color.CHARTREUSE.cpy()), 0.3f));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(1), AbstractGameAction.AttackEffect.NONE));
                 break;
             }
             case FURY: {
-                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK_2"));
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "Attack_2"));
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.3f));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(new BiteEffect(AbstractDungeon.player.hb.cX + MathUtils.random(-50.0f, 50.0f) * Settings.scale, AbstractDungeon.player.hb.cY + MathUtils.random(-50.0f, 50.0f) * Settings.scale, Color.CHARTREUSE.cpy()), 0.3f));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(2), AbstractGameAction.AttackEffect.NONE));
                 break;
             }
             case GLARE: {
-                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "Attack"));
                 AbstractDungeon.actionManager.addToBottom(new SFXAction("MONSTER_SNECKO_GLARE"));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new IntimidateEffect(this.hb.cX, this.hb.cY), 0.5f));
                 AbstractDungeon.actionManager.addToBottom(new FastShakeAction(AbstractDungeon.player, 1.0f, 1.0f));
@@ -146,16 +148,32 @@ public class MamaSnecko extends AbstractMonster {
                         if (m instanceof BabySnecko) posToAvoid = ((BabySnecko) m).posIndex;
                     }
                 }
-                if (posToAvoid != 0) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(250.0f, 0.0f, 0),true));
-                if (posToAvoid != 1) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-300.0f, 0.0f, 1),true));
-                if (posToAvoid != 2) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-550.0f, 0.0f, 2),true));
-                if (posToAvoid != 3 && posToAvoid >= 0) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-425.0f, 50.0f, 3),true));
+                if (posToAvoid != 0) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-160.0f, -20.0f, 4),true, -4));
+                if (posToAvoid != 1) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-320.0f, 30.0f, 3),true, -3));
+                if (posToAvoid != 2) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-480.0f, -20.0f, 2),true,-2 ));
+                if (posToAvoid != 3 && posToAvoid >= 0) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-640.0f, 30.0f, 1),true, -1));
             //AbstractDungeon.actionManager.addToBottom(new SummonGremlinAction(this.gremlins));
                // AbstractDungeon.actionManager.addToBottom(new SummonGremlinAction(this.gremlins));
                 break;
             }
         }
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
+    }
+
+    @Override
+    public void changeState(final String stateName) {
+        switch (stateName) {
+            case "Attack": {
+                this.state.setAnimation(0, "Attack", false);
+                this.state.addAnimation(0, "Idle", true, 0.0f);
+                break;
+            }
+            case "Attack_2": {
+                this.state.setAnimation(0, "Attack_2", false);
+                this.state.addAnimation(0, "Idle", true, 0.0f);
+                break;
+            }
+        }
     }
 
     public void getMove(int num) {
@@ -166,7 +184,7 @@ public class MamaSnecko extends AbstractMonster {
             this.randomAction = true;
             this.waitingForEggs = false;
             AbstractDungeon.actionManager.addToBottom(new TextAboveCreatureAction(this,"Enraged!"));
-            AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
+            AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "Attack"));
             this.setMove(FURY_NAME,FURY,Intent.ATTACK,this.damage.get(2).base);
         }
         else if (randomAction){
@@ -205,6 +223,15 @@ public class MamaSnecko extends AbstractMonster {
     }
 
     @Override
+    public void damage(final DamageInfo info) {
+        super.damage(info);
+        if (info.owner != null && info.type != DamageInfo.DamageType.THORNS && info.output > 0) {
+            this.state.setAnimation(0, "Hit", false);
+            this.state.addAnimation(0, "Idle", true, 0.0f);
+        }
+    }
+
+    @Override
     public void die() {
         super.die();
         for (final AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
@@ -218,6 +245,7 @@ public class MamaSnecko extends AbstractMonster {
                 }
             }
         }
+        CardCrawlGame.sound.play("SNECKO_DEATH");
     }
 
     private int numAliveMinions() {
