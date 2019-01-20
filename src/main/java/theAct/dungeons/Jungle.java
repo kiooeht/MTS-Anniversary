@@ -11,12 +11,11 @@ import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import com.megacrit.cardcrawl.rooms.EmptyRoom;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
-import com.megacrit.cardcrawl.scenes.TheCityScene;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-
 import theAct.TheActMod;
 import theAct.monsters.Phrog;
 import theAct.patches.GetDungeonPatches;
+import theAct.scenes.TheJungleScene;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,8 +36,10 @@ public class Jungle extends AbstractDungeon
         if (scene != null) {
             scene.dispose();
         }
-        scene = new TheCityScene(); // TODO
+        scene = new TheJungleScene(); // TODO
         fadeColor = Color.valueOf("1e0f0aff"); // TODO ?
+
+
 
         initializeLevelSpecificChances();
         mapRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + AbstractDungeon.actNum * 100);
@@ -57,7 +58,7 @@ public class Jungle extends AbstractDungeon
         if (scene != null) {
             scene.dispose();
         }
-        scene = new TheCityScene(); // TODO
+        scene = new TheJungleScene(); // TODO
         fadeColor = Color.valueOf("1e0f0aff"); // TODO ?
 
         initializeLevelSpecificChances();
