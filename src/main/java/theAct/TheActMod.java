@@ -154,8 +154,6 @@ public class TheActMod implements
                     }));
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
-        BaseMod.addMonster(SwingingAxe.ID, () -> {return new SwingingAxe();});
-        BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
         BaseMod.addMonster(SwingingAxe.ID, () -> new SwingingAxe());
         BaseMod.addMonster(Lyon.ID, Lyon::new);
         //Elites
