@@ -115,8 +115,8 @@ public void spawnBigSpyder() {
     			((SquadPower) n.getPower(SquadPower.powerID)).spyderSpawn();
     		if(n instanceof SpawnedSpyder && n.hasPower(ShyPower.powerID))
     			((ShyPower) n.getPower(ShyPower.powerID)).spyderSpawn();
-			if(m instanceof SpawnedSpyder && m.hasPower(FormationPower.powerID))
-				((FormationPower) m.getPower(FormationPower.powerID)).spyderSpawn();
+			if(n instanceof SpawnedSpyder && n.hasPower(FormationPower.powerID))
+				((FormationPower) n.getPower(FormationPower.powerID)).spyderSpawn();
     	}
 
         TheActMod.logger.info("Spawning Monster");
@@ -169,8 +169,8 @@ public void spawnSmallSpyder(int str) {
 			((SquadPower) n.getPower(SquadPower.powerID)).spyderSpawn();
 		if(n instanceof SpawnedSpyder && n.hasPower(ShyPower.powerID))
 			((ShyPower) n.getPower(ShyPower.powerID)).spyderSpawn();
-		if(m instanceof SpawnedSpyder && m.hasPower(FormationPower.powerID))
-			((FormationPower) m.getPower(FormationPower.powerID)).spyderSpawn();
+		if(n instanceof SpawnedSpyder && n.hasPower(FormationPower.powerID))
+			((FormationPower) n.getPower(FormationPower.powerID)).spyderSpawn();
 	}
     
     TheActMod.logger.info("Spawning Monster");
