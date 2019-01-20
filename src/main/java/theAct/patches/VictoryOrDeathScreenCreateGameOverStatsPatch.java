@@ -41,10 +41,11 @@ public class VictoryOrDeathScreenCreateGameOverStatsPatch {
             }
             if (CardCrawlGame.dungeon instanceof Jungle || TheActMod.wentToTheJungle) {
                 try {
+                    String localizedString = CardCrawlGame.languagePack.getScoreString(TheActMod.makeID("ElitesKilled")).NAME;
                     Field elite2PointsField = VictoryScreen.class.getDeclaredField("elite2Points");
                     elite2PointsField.setAccessible(true);
                     String elite2Points = Integer.toString((int) elite2PointsField.get(null));
-                    __instance.stats.add(new GameOverStat(/*Jungle Elite localized String + */"The Jungle: (" + CardCrawlGame.elites2Slain + ")", null, elite2Points)); //TODO: JUNGLE_ELITE localization
+                    __instance.stats.add(new GameOverStat(localizedString + " (" + CardCrawlGame.elites2Slain + ")", null, elite2Points));
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
@@ -93,10 +94,11 @@ public class VictoryOrDeathScreenCreateGameOverStatsPatch {
             }
             if (CardCrawlGame.dungeon instanceof Jungle || TheActMod.wentToTheJungle) {
                 try {
+                    String localizedString = CardCrawlGame.languagePack.getScoreString(TheActMod.makeID("ElitesKilled")).NAME;
                     Field elite2PointsField = DeathScreen.class.getDeclaredField("elite2Points");
                     elite2PointsField.setAccessible(true);
                     String elite2Points = Integer.toString((int) elite2PointsField.get(null));
-                    __instance.stats.add(new GameOverStat(/*Jungle Elite localized String + */"PLACEHOLDER ELITES: (" + CardCrawlGame.elites2Slain + ")", null, elite2Points)); //TODO: JUNGLE_ELITE localization
+                    __instance.stats.add(new GameOverStat(localizedString + " (" + CardCrawlGame.elites2Slain + ")", null, elite2Points));
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
                 }

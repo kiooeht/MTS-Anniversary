@@ -80,7 +80,7 @@
       "DESCRIPTIONS": [
         "Whenever you play a card, ",
         " gains #b",
-        " #Strength for this turn only."
+        " #yStrength for this turn only."
       ]
     },
 	"theJungle:ObsessionPower": {
@@ -103,6 +103,58 @@
 			"Whenever you play an attack that does not target #rONLY this monster, all OTHER enemies gain #b",
 			" #yStrength."
 		]
+	},
+    "Squad": {
+		"NAME" : "Squad",
+		"DESCRIPTIONS": [
+			"Has #b1 #yStrength for every #rSpyder."
+		]
+	},
+    "InfiniteFlight": {
+		"NAME" : "Flying",
+		"DESCRIPTIONS": [
+			"Takes #b50% less #yAttack Damage."
+		]
+	},
+    "Shy": {
+		"NAME" : "Shy",
+		"DESCRIPTIONS": [
+			"Has #b2 #yDexterity and #r-2 #yStrength for every #rSpyder."
+		]
+	},
+    "Webbed": {
+		"NAME" : "Webbed",
+		"DESCRIPTIONS": [
+			"Increase the #yCost of a random card in your hand by [E] .",
+			"Increase the #yCost of a random card in your hand by [E] #b",
+			" times."
+		]
+	},
+    "FragileEggs": {
+		"NAME" : "Fragile Eggs",
+		"DESCRIPTIONS": [
+			"Every time this monster takes #b",
+			" #yUnblocked #yDamage, it spawns a big #rSpyder. NL #b",
+			" #yDamage left."
+		]
+	},
+    "Formation": {
+		"NAME" : "Formation",
+		"DESCRIPTIONS": [
+			"Is #gIntangible, when there is at least #b6 #rSpyders."
+		]
+	},
+    "Hatching": {
+		"NAME" : "Hatching",
+		"DESCRIPTIONS": [
+			"When this monster dies, it spawns #b",
+            " small #rSpyders."
+		]
+	},
+    "Intangible": {
+		"NAME" : "Intangible",
+		"DESCRIPTIONS": [
+			"Reduce ALL damage taken and HP loss to #b1."
+		]
 	}
-
 }
