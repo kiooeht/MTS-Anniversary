@@ -62,8 +62,8 @@
 	"theJungle:RandomizePower": {
 		"NAME": "Selective Confusion",
 		"DESCRIPTIONS": [
-			"At the start of your turn, randomizes the cost of #b",
-			" cards."
+			"At the start of your turn, randomizes the cost of a number of cards in your hand equal to how much is stacked. ",
+			"If your hand has less cards than the number of stacks, the remaining stacks will hold over until your next turn."
 		]
 	},
 	"theJungle:CautiousPower": {

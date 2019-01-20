@@ -11,9 +11,9 @@ import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import com.megacrit.cardcrawl.rooms.EmptyRoom;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import theAct.TheActMod;
-import theAct.monsters.Phrog;
+import theAct.monsters.*;
+import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
 import theAct.scenes.TheJungleScene;
 
@@ -124,11 +124,11 @@ public class Jungle extends AbstractDungeon
     {
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo("Spheric Guardian", 2.0F));
-        monsters.add(new MonsterInfo("Chosen", 2.0F));
         monsters.add(new MonsterInfo("Shell Parasite", 2.0F));
-        monsters.add(new MonsterInfo("3 Byrds", 2.0F));
-        monsters.add(new MonsterInfo("2 Thieves", 2.0F));
+        monsters.add(new MonsterInfo("3 Byrds", 2.0f));
+        monsters.add(new MonsterInfo(Flameango.ID, 2.0F));
+        monsters.add(new MonsterInfo(FunGuy.ID,2.0f));
+        monsters.add(new MonsterInfo(SilentTribesmen.ENCOUNTER_ID, 1.0f));
         MonsterInfo.normalizeWeights(monsters);
         populateMonsterList(monsters, count, false);
     }
@@ -138,14 +138,12 @@ public class Jungle extends AbstractDungeon
     {
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo("Chosen and Byrds", 2.0F));
-        monsters.add(new MonsterInfo("Sentry and Sphere", 2.0F));
-        monsters.add(new MonsterInfo("Snake Plant", 6.0F));
-        monsters.add(new MonsterInfo("Snecko", 4.0F));
-        monsters.add(new MonsterInfo("Centurion and Healer", 6.0F));
-        monsters.add(new MonsterInfo("Cultist and Chosen", 3.0F));
-        monsters.add(new MonsterInfo("3 Cultists", 3.0F));
-        monsters.add(new MonsterInfo("Shelled Parasite and Fungi", 3.0F));
+        monsters.add(new MonsterInfo(Flameango.ID, 2.0F));
+        monsters.add(new MonsterInfo(FunGuy.ID,2.0f));
+        monsters.add(new MonsterInfo(SilentTribesmen.ENCOUNTER_ID, 1.0f));
+        monsters.add(new MonsterInfo("Snake Plant", 1.0F));
+        monsters.add(new MonsterInfo(Lyon.ID, 2.0f));
+
         MonsterInfo.normalizeWeights(monsters);
         populateFirstStrongEnemy(monsters, generateExclusions());
         populateMonsterList(monsters, count, false);
@@ -157,7 +155,7 @@ public class Jungle extends AbstractDungeon
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
         monsters.add(new MonsterInfo("Gremlin Leader", 1.0F));
-        monsters.add(new MonsterInfo("Slavers", 1.0F));
+        monsters.add(new MonsterInfo(Cassacara.ID, 1.0F));
         monsters.add(new MonsterInfo(Phrog.ID, 1.0f));
         MonsterInfo.normalizeWeights(monsters);
         populateMonsterList(monsters, count, true);
@@ -189,7 +187,35 @@ public class Jungle extends AbstractDungeon
     {
         // TODO: This is copied from TheCity
         bossList.clear();
+        if (Settings.isDailyRun) {
+            bossList.add(TotemBoss.ID);
+            //bossList.add("Collector");
+            //bossList.add("Champ");
+            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
+       // } else if (!UnlockTracker.isBossSeen("CHAMP")) {
+        //    bossList.add("Champ");
+       // } else if (!UnlockTracker.isBossSeen("AUTOMATON")) {
+       //     bossList.add("Automaton");
+       // } else if (!UnlockTracker.isBossSeen("COLLECTOR")) {
+       //     bossList.add("Collector");
+        } else {
+            bossList.add(TotemBoss.ID);
+            //bossList.add("Collector");
+            //bossList.add("Champ");
+            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
+        }
 
+        if (bossList.size() == 1) {
+            bossList.add(bossList.get(0));
+        } else if (bossList.isEmpty()) {
+            logger.warn("Boss list was empty. How?");
+            bossList.add(TotemBoss.ID);
+            //bossList.add("Collector");
+            //bossList.add("Champ");
+            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
+        }
+
+        /*
         if (Settings.isDailyRun) {
             bossList.add("Automaton");
             bossList.add("Collector");
@@ -217,6 +243,7 @@ public class Jungle extends AbstractDungeon
             bossList.add("Champ");
             Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
         }
+        */
     }
 
     @Override
