@@ -203,6 +203,7 @@ public class TotemBoss extends AbstractMonster {
     }
 
     public void update() {
+        super.update();
         if (totemSfxTimer > 0) {
             totemSfxTimer -= Gdx.graphics.getDeltaTime();
         }
