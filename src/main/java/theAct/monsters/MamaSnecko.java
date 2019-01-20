@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
 import com.megacrit.cardcrawl.actions.animations.FastShakeAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
@@ -195,9 +196,25 @@ public class MamaSnecko extends AbstractMonster {
                 if (this.lastMove(EGGS)){
                     this.setMove(GLARE_NAME,GLARE,Intent.DEBUFF);
                 }
-                if (this.lastMove(GLARE)){
+                else if (this.lastMove(GLARE)){
                     this.randomAction = true;
                     this.setMove(TAIL_NAME,TAIL,Intent.ATTACK_DEBUFF,this.damage.get(0).base);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void die() {
+        super.die();
+        for (final AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            if (!m.isDead && !m.isDying) {
+                if (m instanceof SneckoEgg) {
+                    AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(m));
+                    AbstractDungeon.actionManager.addToTop(new SuicideAction(m));
+                }
+                else{
+                    AbstractDungeon.actionManager.addToTop(new EscapeAction(m));
                 }
             }
         }

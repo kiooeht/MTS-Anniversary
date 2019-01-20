@@ -15,6 +15,7 @@ import theAct.powers.abstracts.Power;
 public class IncubationPower extends Power {
     public static final String powerID = TheActMod.makeID("Incubation");
     private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(powerID);
+    public static final String[] DESCRIPTIONS = strings.DESCRIPTIONS;
 
     public IncubationPower(AbstractCreature owner, int amount) {
         this.owner = owner;
@@ -22,7 +23,7 @@ public class IncubationPower extends Power {
         this.type = PowerType.BUFF;
         this.isTurnBased = true;
         this.name = strings.NAME;
-        this.region48 = new TextureAtlas.AtlasRegion(new Texture(TheActMod.assetPath("images/powers/incubationPower32.png")), 0, 0, 48, 48);
+        this.region48 = new TextureAtlas.AtlasRegion(new Texture(TheActMod.assetPath("images/powers/incubationPower32.png")), 0, 0, 32, 32);
         this.region128 = new TextureAtlas.AtlasRegion(new Texture(TheActMod.assetPath("images/powers/incubationPower84.png")), 0, 0, 128, 128);
         this.ID = powerID;
         this.updateDescription();

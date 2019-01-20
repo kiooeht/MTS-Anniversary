@@ -5,6 +5,7 @@ import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -90,13 +91,14 @@ public class SneckoEgg extends AbstractMonster {
 				((MamaSnecko) m).waitingForEggs = false;
 			}
 		}
-		AbstractDungeon.actionManager.addToBottom(new SuicideAction(this));
+		AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(this));
+		AbstractDungeon.actionManager.addToTop(new SuicideAction(this));
 		AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new BabySnecko(snekX,snekY,posIndex),true));
 	}
 
 	@Override
 	protected void getMove(int roll) {
-		if (this.hasPower(IncubationPower.powerID) && this.getPower(IncubationPower.powerID).amount == 1){
+		if (this.hasPower(IncubationPower.powerID) && this.getPower(IncubationPower.powerID).amount <= 2 && this.lastMove(CRACK)){
 			this.setMove(HATCH_NAME,HATCH,Intent.BUFF);
 		}
 		else{
