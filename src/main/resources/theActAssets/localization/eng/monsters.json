@@ -27,6 +27,16 @@
 			"riiiiibbit!"
 		]
 	},
+	"theJungle:Flameango": {
+		"MOVES": [
+			"Flame Breath",
+			"Incendiary Down"
+		],
+		"NAME": "Flameango",
+		"DIALOG": [
+			"Welcome to flavor town motherfucker."
+		]
+	},
 	"theJungle:TotemBoss": {
 		"MOVES": [
 			"Totem Smash"
