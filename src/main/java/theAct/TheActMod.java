@@ -102,17 +102,24 @@ public class TheActMod implements
 
         BaseMod.addMonster(Flameango.ID, () -> new Flameango(0));
         BaseMod.addMonster(Cassacara.ID, () -> new Cassacara());
-        BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
         BaseMod.addMonster(SwingingAxe.ID, () -> new SwingingAxe());
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
-        BaseMod.addMonster(SneckoCultist.ID, SneckoCultist::new);
+        BaseMod.addMonster(Lyon.ID, Lyon::new);
         BaseMod.addMonster(Phrog.ID,() -> new MonsterGroup(
             new AbstractMonster[] {
                 new Phrog(-175,0, false),
                 new Phrog(175, 0, true)
             }));
-        BaseMod.addMonster(Lyon.ID, Lyon::new);
+        BaseMod.addMonster(SneckoCultist.ID,() -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new SneckoCultist(-175,15),
+                        new SneckoCultist(175, -15)
+                }));
+        BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
+
+
+        BaseMod.addBoss(Jungle.ID, TotemBoss.ID, assetPath("images/map/totemBoss.png"), assetPath("images/map/totemBossOutline.png"));
 
         // Add Encounters here
 
