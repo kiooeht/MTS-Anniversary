@@ -269,14 +269,14 @@
     ],
     "OPTIONS": [
       "[Proceed]",
-      "[Negotiate] #gLose #r",
-      " #rHP . #gremove #g1 #gcard #gfrom #gyour #gdeck.",
+      "[Negotiate] #rLose #r",
+      " #rHP. #gRemove #ga #gcard #gfrom #gyour #gdeck.",
       "[Cut the Rope] #rEnter #ra #rfight!",
-      "[Bribe] #rLose #y",
-      " #ygold.",
+      "[Bribe] #rLose #r",
+      " #rGold.",
       "[Locked] Requires: ",
-      " gold.",
-      "[Leave.]",
+      " Gold.",
+      "[Leave]",
       "[Fight!] #rGet #rInto #rA #rScuffle.",
       "Remove a card from your deck."
     ]
