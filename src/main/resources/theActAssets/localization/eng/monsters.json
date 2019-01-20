@@ -10,6 +10,11 @@
 			"@RrraahrRGHhh!!@"
 		]
 	},
+	"theJungle:CarcassSack": {
+		"MOVES": [],
+		"NAME": "Carcass Sack",
+		"DIALOG": []
+	},
 	"theJungle:Phrog": {
 		"MOVES": [
 			"Lick",
