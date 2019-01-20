@@ -5,6 +5,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import theAct.actions.FormationInitAction;
 import theAct.monsters.SpyderBoss.SpawnedSpyder;
 import theAct.powers.FormationPower;
 import theAct.powers.ShyPower;
@@ -21,7 +22,7 @@ public class MonsterDeathUpdateSquadPatch {
 			if(m instanceof SpawnedSpyder && m.hasPower(ShyPower.powerID))
 				((ShyPower) m.getPower(ShyPower.powerID)).spyderDeath();
 			if(m instanceof SpawnedSpyder && m.hasPower(FormationPower.powerID))
-				((FormationPower) m.getPower(FormationPower.powerID)).spyderDeath();
+				AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) m.getPower(FormationPower.powerID))));
 		}		
 	}
 	

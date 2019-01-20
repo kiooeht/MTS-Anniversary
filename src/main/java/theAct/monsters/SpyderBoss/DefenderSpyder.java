@@ -23,7 +23,7 @@ public class DefenderSpyder extends SpawnedSpyder{
     public static final String[] MOVES;
     public static final String[] DIALOG;
     
-    private static final int BASEHP = 23;
+    private static final int BASEHP = 22;
     private static final boolean SMALL = false;
     
 	
@@ -46,13 +46,13 @@ public class DefenderSpyder extends SpawnedSpyder{
 		switch(this.nextMove) {
         case 0:
             for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-            	AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, this, 4));
+            	AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, this, 4, true));
             }
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new BlurPower(this, 1), 1));
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this, this, new BlurPower(this, 1), 1, true));
             break;
         case 1:
         	AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, 15));
-        	AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.getRandomMonster(), this, 15));
+        	AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.getRandomMonster(), this, 15, true));
         	break;
         case 2:
         	AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));

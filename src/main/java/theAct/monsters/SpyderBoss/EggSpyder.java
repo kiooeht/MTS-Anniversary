@@ -43,27 +43,22 @@ public class EggSpyder extends SpawnedSpyder{
 	public void takeTurn(){
 		switch(this.nextMove) {
         case 0:
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 2), 2));
             break;
         case 1:
-        	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 2), 2));
-            break;
-        case 2:
-        	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 2), 2));
-            break;    	
+        	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
+            break;	
 		}
 
 		AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
 	}
 	
 	@Override
-	public void getMove(int num){		
-		if(this.lastMove((byte)0))
+	public void getMove(int num){	
+		if(this.hasPower(BetterExplosivePower.powerID) && this.getPower(BetterExplosivePower.powerID).amount <= 2)
+			this.setMove((byte)2, Intent.UNKNOWN);
+		else if(this.lastMove((byte)0) || this.lastMove((byte)1))
 			this.setMove((byte)1, Intent.BUFF);
-		else if(this.lastMove((byte)1))
-			this.setMove((byte)2, Intent.BUFF);
-		else if(this.lastMove((byte)2))
-			this.setMove((byte)3, Intent.UNKNOWN);
 		else
 			this.setMove((byte)0, Intent.BUFF);
 	}
