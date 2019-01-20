@@ -84,13 +84,17 @@ public class TheActMod implements
                 new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F), new SilentTribesmen(125.0F, -30.0F)}));
 
         BaseMod.addMonster(Flameango.ID, () -> new Flameango(0));
-        BaseMod.addMonster(Phrog.ID, Phrog::new);
         BaseMod.addMonster(Cassacara.ID, () -> new Cassacara());
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
-        BaseMod.addMonster(SwingingAxe.ID, () -> {return new SwingingAxe();});
+        BaseMod.addMonster(SwingingAxe.ID, () -> new SwingingAxe());
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
         BaseMod.addMonster(SneckoCultist.ID, SneckoCultist::new);
+        BaseMod.addMonster(Phrog.ID,() -> new MonsterGroup(
+            new AbstractMonster[] {
+                new Phrog(-175,0, false),
+                new Phrog(175, 0, true)
+            }));
 
         // Add Encounters here
 
