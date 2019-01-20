@@ -33,7 +33,8 @@ public class CarcassSack extends AbstractMonster {
             setHp(HP_MIN, HP_MAX);
         }
         this.loadAnimation(ANIMATION_ATLAS, ANIMATION_JSON, 1.0F);
-        this.state.setAnimation(0, "TinyBulb", true);
+        this.state.setAnimation(0, "idleLeaves", true);
+        this.state.setAnimation(1, "TinyBulb", true);
     }
 
     public void takeTurn() {
