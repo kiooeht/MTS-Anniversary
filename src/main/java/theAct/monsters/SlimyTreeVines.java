@@ -34,8 +34,8 @@ public class SlimyTreeVines extends AbstractMonster {
     public static final String[] DIALOG = monsterStrings.DIALOG;
     // location
     private static final float HB_X = 0.0f;
-    private static final float HB_Y = 240.0f;
-    private static final float HB_W = 320.0f;
+    private static final float HB_Y = 220.0f;
+    private static final float HB_W = 330.0f;
     private static final float HB_H = 320.0f;
     // stats
     private static final int HP_MIN = 115;
@@ -58,12 +58,10 @@ public class SlimyTreeVines extends AbstractMonster {
     private boolean doneSplit = false;
 
     public SlimyTreeVines() {
-        super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, "theActAssets/images/monsters/SlimyTreeVines/vines2.png", 0, 0);
-        /*
+        super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, 0, 0);
         this.loadAnimation("theActAssets/images/monsters/SlimyTreeVines/skeleton.atlas", "theActAssets/images/monsters/SlimyTreeVines/skeleton.json", 1.0f);
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
-        */
         if (AbstractDungeon.ascensionLevel >= 7) {
             this.setHp(HP_MIN_A, HP_MAX_A);
         } else {
