@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAct.TheActMod;
 import theAct.powers.ObsessionPower;
+import theAct.powers.ProtectionPower;
 
 public class MushroomKuudere extends AbstractMonster {
     public static final String ID = TheActMod.makeID("MushroomYandere");
