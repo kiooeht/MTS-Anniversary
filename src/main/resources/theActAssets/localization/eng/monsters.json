@@ -91,5 +91,93 @@
 		"DIALOG": [
 			""
 		]
+	},
+	"theJungle:SneakySpyder": {
+		"MOVES": [
+			"Whirlwind",
+            "Double Tap",
+            "Hide"
+		],
+		"NAME": "Sneaky Spyder",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:FatSpyder": {
+		"MOVES": [
+			"Smash",
+            "Weaken",
+            "Defend"
+		],
+		"NAME": "Fat Spyder",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:ShySpyder": {
+		"MOVES": [
+			"Shove",
+            "Shove",
+            "Shove"
+		],
+		"NAME": "Shy Spyder",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:PoisonedFlye": {
+		"MOVES": [
+			"Get Sucked"
+		],
+		"NAME": "Poisoned Flye",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:BasherSpyder": {
+		"MOVES": [
+			"Bash",
+            "Bonk",
+            "Break"
+		],
+		"NAME": "Spyder Basher",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:WebberSpyder": {
+		"MOVES": [
+			"Wrap",
+            "Defend",
+            "Entangle",
+            "Defend"
+		],
+		"NAME": "Spyder Webber",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:DefenderSpyder": {
+		"MOVES": [
+			"DEfend",
+            "DeFend",
+            "Clang"
+		],
+		"NAME": "Spyder Defender",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:EggSpyder": {
+		"MOVES": [
+			"b",
+            "u",
+            "f",
+            "f"
+		],
+		"NAME": "Spyder Egg",
+		"DIALOG": [
+			""
+		]
 	}
 }
