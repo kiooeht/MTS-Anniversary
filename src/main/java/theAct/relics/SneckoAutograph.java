@@ -33,7 +33,7 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     float shopBubbleX = MathUtils.random(660.0F, 1260.0F) * Settings.scale;
     float shopBubbleY = Settings.HEIGHT - 380.0F * Settings.scale;
     private static ArrayList<StoreRelic> relics = new ArrayList<>();
-    private static boolean removeRelic = false;
+    private static boolean relicStuff = false;
     private static int rng;
 
     public SneckoAutograph() {
@@ -57,8 +57,7 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
             ShopScreen shop = AbstractDungeon.shopScreen;
             relics = (ArrayList<StoreRelic>)ReflectionHacks.getPrivate(shop, ShopScreen.class, "relics");
             rng = AbstractDungeon.miscRng.random(relics.size() - 1);
-            removeRelic = true;
-            relics.get(rng).relic.instantObtain(AbstractDungeon.player, AbstractDungeon.player.relics.size(), true);
+            relicStuff = true;
         }
         getUpdatedDescription();
     }
@@ -80,9 +79,10 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     }
 
     public static void iHatePostUpdate() {
-        if (removeRelic) {
+        if (relicStuff) {
             relics.get(rng).isPurchased = true;
-            removeRelic = false;
+            relics.get(rng).relic.makeCopy().instantObtain(AbstractDungeon.player, AbstractDungeon.player.relics.size(), true);
+            relicStuff = false;
         }
     }
 }

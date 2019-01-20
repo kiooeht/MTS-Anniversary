@@ -187,6 +187,9 @@ public class TheActMod implements
 
     @Override
     public void receivePostUpdate() {
+        if (AbstractDungeon.player == null) {
+            return;
+        }
         if (AbstractDungeon.player.hasRelic(SneckoAutograph.ID)) {
             SneckoAutograph.iHatePostUpdate();
         }
