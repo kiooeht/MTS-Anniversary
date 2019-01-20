@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.rooms.EmptyRoom;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import theAct.TheActMod;
 import theAct.monsters.*;
+import theAct.monsters.MUSHROOMPOWER.MushroomYandere;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
 import theAct.scenes.TheJungleScene;
@@ -127,8 +128,8 @@ public class Jungle extends AbstractDungeon
         monsters.add(new MonsterInfo("Shell Parasite", 2.0F));
         monsters.add(new MonsterInfo("3 Byrds", 2.0f));
         monsters.add(new MonsterInfo(Flameango.ID, 2.0F));
-        monsters.add(new MonsterInfo(FunGuy.ID,2.0f));
         monsters.add(new MonsterInfo(SilentTribesmen.ENCOUNTER_ID, 1.0f));
+        monsters.add(new MonsterInfo(MushroomYandere.ENCOUNTER_ID, 2.0f));
         MonsterInfo.normalizeWeights(monsters);
         populateMonsterList(monsters, count, false);
     }
@@ -138,8 +139,7 @@ public class Jungle extends AbstractDungeon
     {
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo(Flameango.ID, 2.0F));
-        monsters.add(new MonsterInfo(FunGuy.ID,2.0f));
+        monsters.add(new MonsterInfo(SlimyTreeVines.ENCOUNTER_NAME, 2.0F));
         monsters.add(new MonsterInfo(SilentTribesmen.ENCOUNTER_ID, 1.0f));
         monsters.add(new MonsterInfo("Snake Plant", 1.0F));
         monsters.add(new MonsterInfo(Lyon.ID, 2.0f));
