@@ -151,7 +151,6 @@ public class TheActMod implements
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
         BaseMod.addMonster(SwingingAxe.ID, () -> {return new SwingingAxe();});
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
-        BaseMod.addMonster(MamaSnecko.ID,() -> new MamaSnecko());
         BaseMod.addMonster(SwingingAxe.ID, () -> new SwingingAxe());
         BaseMod.addMonster(Lyon.ID, Lyon::new);
         //Elites
@@ -161,6 +160,7 @@ public class TheActMod implements
                 new Phrog(-175,0, false),
                 new Phrog(175, 0, true)
             }));
+        BaseMod.addMonster(MamaSnecko.ID,() -> new MamaSnecko());
         BaseMod.addMonster(SneckoCultist.ID,() -> new MonsterGroup(
                 new AbstractMonster[] {
                         new SneckoCultist(-175,15),

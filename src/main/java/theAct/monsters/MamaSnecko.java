@@ -2,6 +2,7 @@ package theAct.monsters;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
 import com.megacrit.cardcrawl.actions.animations.FastShakeAction;
@@ -23,6 +24,7 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import com.megacrit.cardcrawl.vfx.combat.IntimidateEffect;
 import theAct.TheActMod;
+import theAct.powers.RandomizePower;
 
 public class MamaSnecko extends AbstractMonster {
 
@@ -70,7 +72,12 @@ public class MamaSnecko extends AbstractMonster {
 
     public MamaSnecko() {
         super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, 0, 0);
-        this.loadAnimation("images/monsters/theCity/reptile/skeleton.atlas", "images/monsters/theCity/reptile/skeleton.json", 0.7f);
+        this.loadAnimation(
+                TheActMod.assetPath("images/monsters/MamaSnecko/skeleton.atlas"),
+                TheActMod.assetPath("images/monsters/MamaSnecko/skeleton.json"),
+                0.7f);
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
         this.type = EnemyType.ELITE;
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(ASC_HP_MIN, ASC_HP_MAX);
@@ -126,7 +133,7 @@ public class MamaSnecko extends AbstractMonster {
                 AbstractDungeon.actionManager.addToBottom(new SFXAction("MONSTER_SNECKO_GLARE"));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new IntimidateEffect(this.hb.cX, this.hb.cY), 0.5f));
                 AbstractDungeon.actionManager.addToBottom(new FastShakeAction(AbstractDungeon.player, 1.0f, 1.0f));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new ConfusionPower(AbstractDungeon.player)));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new RandomizePower(AbstractDungeon.player,this.confuseAmount),this.confuseAmount));
                 break;
             }
             case EGGS:{
@@ -158,6 +165,7 @@ public class MamaSnecko extends AbstractMonster {
             this.randomAction = true;
             this.waitingForEggs = false;
             AbstractDungeon.actionManager.addToBottom(new TextAboveCreatureAction(this,"Enraged!"));
+            AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
             this.setMove(FURY_NAME,FURY,Intent.ATTACK,this.damage.get(2).base);
         }
         else if (randomAction){

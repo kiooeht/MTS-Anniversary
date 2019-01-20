@@ -163,5 +163,13 @@
 		"DESCRIPTIONS": [
 			"Reduce ALL damage taken and HP loss to #b1."
 		]
+	},
+	"theJungle:Incubation": {
+		"NAME" : "Incubation",
+		"DESCRIPTIONS": [
+			"Next turn, this will hatch into a #yBaby #ySnecko.",
+			"In #b",
+			" turns, this will hatch into a #yBaby #ySnecko."
+		]
 	}
 }

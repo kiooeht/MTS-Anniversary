@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theAct.TheActMod;
 import theAct.actions.PhrogLickAction;
+import theAct.powers.IncubationPower;
 
 public class SneckoEgg extends AbstractMonster {
 	public static final String ID = TheActMod.makeID("SneckoEgg");
@@ -54,12 +55,15 @@ public class SneckoEgg extends AbstractMonster {
 		this.animY += 25f;
 
 		this.loadAnimation(
-			TheActMod.assetPath("images/monsters/phrog/Phrog.atlas"),
-			TheActMod.assetPath("images/monsters/phrog/Phrog.json"),
-			1.5f);
+				TheActMod.assetPath("images/monsters/SneckoEgg/SneckoEgg.atlas"),
+				TheActMod.assetPath("images/monsters/SneckoEgg/SneckoEgg.json"),
+				2f);
 
-		AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
+
+		AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
 		e.setTime(e.getEndTime() * MathUtils.random());
+
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this,this,new IncubationPower(this,2),2));
 	}
 
 	@Override
@@ -71,14 +75,6 @@ public class SneckoEgg extends AbstractMonster {
 				break;
 
 			case HATCH:
-				for (AbstractMonster m : AbstractDungeon.getMonsters().monsters){
-					if (m instanceof MamaSnecko){
-						// eggs are hatching, no longer get angry when no eggs exist
-						((MamaSnecko) m).waitingForEggs = false;
-					}
-				}
-				AbstractDungeon.actionManager.addToBottom(new LoseHPAction(this, this, this.currentHealth));
-				AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new BabySnecko(snekX,snekY,posIndex),true));
 				break;
 		}
 
@@ -87,13 +83,24 @@ public class SneckoEgg extends AbstractMonster {
 		AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
 	}
 
+	public void hatch(){
+		for (AbstractMonster m : AbstractDungeon.getMonsters().monsters){
+			if (m instanceof MamaSnecko){
+				// eggs are hatching, no longer get angry when no eggs exist
+				((MamaSnecko) m).waitingForEggs = false;
+			}
+		}
+		AbstractDungeon.actionManager.addToBottom(new SuicideAction(this));
+		AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new BabySnecko(snekX,snekY,posIndex),true));
+	}
+
 	@Override
 	protected void getMove(int roll) {
-		if (this.lastMove(CRACK)){
+		if (this.hasPower(IncubationPower.powerID) && this.getPower(IncubationPower.powerID).amount == 1){
 			this.setMove(HATCH_NAME,HATCH,Intent.BUFF);
 		}
 		else{
-			this.setMove(CRACK_NAME,CRACK,Intent.UNKNOWN);
+			this.setMove(CRACK_NAME,CRACK,Intent.STUN);
 		}
 	}
 }
