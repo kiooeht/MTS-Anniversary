@@ -33,7 +33,7 @@ public class MushroomKuudere extends AbstractMonster {
     private int healAmt;
 
     public MushroomKuudere(float x, float y) {
-        super(NAME, ID, MAX_HP, 0.0F, 10.0F, 160.0F, 180.0F, null, x, y);
+        super(NAME, ID, MAX_HP, 0.0F, 10.0F, 160.0F, 165.0F, null, x, y);
         loadAnimation(TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Kuudere.atlas"), TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Kuudere.json"), 1.0F);
         state.setAnimation(0, "Idle", true);
         stateData.setMix("Idle", "Kyuuuuu", 0.2F);

@@ -63,7 +63,9 @@ public class MushroomYandere extends AbstractMonster {
         switch (nextMove) {
             case 0:
                 state.setAnimation(0, "Rawr", false);
+                state.setTimeScale(1.6F);
                 state.addAnimation(0, "Idle", true, 0.0F);
+                state.setTimeScale(1.0F);
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0)));
                 break;
         }
