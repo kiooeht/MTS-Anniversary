@@ -2,6 +2,8 @@ package theAct;
 
 import java.nio.charset.StandardCharsets;
 
+import basemod.helpers.RelicType;
+import basemod.interfaces.EditRelicsSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -27,13 +29,15 @@ import theAct.events.River;
 import theAct.events.SneckoCultEvent;
 import theAct.events.SneckoIdol;
 import theAct.patches.GetDungeonPatches;
+import theAct.relics.SneckoAutograph;
 
 @SpireInitializer
 public class TheActMod implements
         PostInitializeSubscriber,
         EditKeywordsSubscriber,
         EditStringsSubscriber,
-        CustomSavable<Boolean>
+        CustomSavable<Boolean>,
+        EditRelicsSubscriber
 {
 	
 	
@@ -121,5 +125,10 @@ public class TheActMod implements
     public void onLoad(Boolean loadedBoolean) {
         wentToTheJungle = loadedBoolean;
         logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
+    }
+
+    @Override
+    public void receiveEditRelics() {
+        BaseMod.addRelic(new SneckoAutograph(), RelicType.SHARED);
     }
 }

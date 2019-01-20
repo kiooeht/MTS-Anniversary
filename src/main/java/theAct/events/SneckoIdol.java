@@ -40,7 +40,7 @@ public class SneckoIdol extends AbstractImageEvent {
             gold = GOLD_AMT;
         }
         imageEventText.setDialogOption(OPTIONS[0]);
-        imageEventText.setDialogOption(OPTIONS[1] + damage + OPTIONS[2] + gold + OPTIONS[3]);
+        imageEventText.setDialogOption(OPTIONS[1] + gold + OPTIONS[2] + damage + OPTIONS[3]);
         imageEventText.setDialogOption(OPTIONS[4]);
     }
 
