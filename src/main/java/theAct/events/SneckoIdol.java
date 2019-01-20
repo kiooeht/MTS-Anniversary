@@ -55,6 +55,7 @@ public class SneckoIdol extends AbstractImageEvent {
                         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(CardLibrary.getCopy(Shame.ID), Settings.WIDTH / 2F, Settings.HEIGHT / 2F));
                         AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F, new SneckoAutograph());
                         imageEventText.clearRemainingOptions();
+                        screenNum = 1;
                         break;
                     case 1:
                         imageEventText.updateDialogOption(0, OPTIONS[4]);
@@ -63,11 +64,13 @@ public class SneckoIdol extends AbstractImageEvent {
                         AbstractDungeon.effectList.add(new FlashAtkImgEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, AbstractGameAction.AttackEffect.FIRE));
                         AbstractDungeon.player.gainGold(gold);
                         imageEventText.clearRemainingOptions();
+                        screenNum = 1;
                         break;
                     case 2:
                         imageEventText.updateDialogOption(0, OPTIONS[4]);
                         imageEventText.updateBodyText(DESCRIPTIONS[3]);
                         imageEventText.clearRemainingOptions();
+                        screenNum = 1;
                         break;
                 }
                 break;
