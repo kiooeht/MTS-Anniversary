@@ -39,7 +39,7 @@
   "AntidotePotion": {
     "NAME": "Antidote",
     "DESCRIPTIONS": [
-      "Remove all #yPoison #bFrail #bWeakness and #b Vulnerable and heal for each point removed."
+      "Remove all #bPoison #bFrail #bWeakness and #bVulnerable and heal for each point removed."
     ]
   }
 
