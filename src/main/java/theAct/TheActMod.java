@@ -1,8 +1,5 @@
 package theAct;
 
-import java.nio.charset.StandardCharsets;
-import basemod.helpers.RelicType;
-import basemod.interfaces.EditRelicsSubscriber;
 import basemod.BaseMod;
 import basemod.ModPanel;
 import basemod.abstracts.CustomSavable;
@@ -15,10 +12,6 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.localization.UIStrings;
-import com.megacrit.cardcrawl.monsters.city.Snecko;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
@@ -30,15 +23,13 @@ import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
 import theAct.events.SneckoIdol;
+import theAct.monsters.MUSHROOMPOWER.MushroomGenki;
+import theAct.monsters.MUSHROOMPOWER.MushroomKuudere;
+import theAct.monsters.MUSHROOMPOWER.MushroomYandere;
 import theAct.patches.GetDungeonPatches;
 import theAct.relics.SneckoAutograph;
 import theAct.events.*;
 import theAct.monsters.*;
-import theAct.events.River;
-import theAct.events.KidnappersEvent;
-import theAct.events.SneckoCultEvent;
-import theAct.monsters.SilentTribesmen;
-import theAct.monsters.Phrog;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
 import theAct.relics.*;
@@ -95,30 +86,32 @@ public class TheActMod implements
         BaseMod.addEvent(HappyBirthday.ID, HappyBirthday.class, Jungle.ID);
 
         // Add monsters here
+
+        //Normal Enemies
         BaseMod.addMonster(SilentTribesmen.ENCOUNTER_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
-                new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F)}));
+            new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F)}));
         BaseMod.addMonster(SilentTribesmen.EVENT_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
                 new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F), new SilentTribesmen(125.0F, -30.0F)}));
-
+        BaseMod.addMonster(MushroomYandere.ENCOUNTER_ID, () -> new MonsterGroup(
+                new AbstractMonster[]{
+                        new MushroomYandere(-385.0F, -15.0F),
+                        new MushroomKuudere(-133.0F, 0.0F),
+                        new MushroomGenki(125.0F, -30.0F)
+                }));
         BaseMod.addMonster(Flameango.ID, () -> new Flameango(0));
-        BaseMod.addMonster(Cassacara.ID, () -> new Cassacara());
+        BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
         BaseMod.addMonster(SwingingAxe.ID, () -> new SwingingAxe());
-        BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
         BaseMod.addMonster(Lyon.ID, Lyon::new);
+        //Elites
+        BaseMod.addMonster(Cassacara.ID, () -> new Cassacara());
         BaseMod.addMonster(Phrog.ID,() -> new MonsterGroup(
             new AbstractMonster[] {
                 new Phrog(-175,0, false),
                 new Phrog(175, 0, true)
             }));
-        BaseMod.addMonster(SneckoCultist.ID,() -> new MonsterGroup(
-                new AbstractMonster[] {
-                        new SneckoCultist(-175,15),
-                        new SneckoCultist(175, -15)
-                }));
+        //Bosses
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
-
-
         BaseMod.addBoss(Jungle.ID, TotemBoss.ID, assetPath("images/map/totemBoss.png"), assetPath("images/map/totemBossOutline.png"));
 
         // Add Encounters here

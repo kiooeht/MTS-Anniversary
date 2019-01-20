@@ -152,5 +152,14 @@
 		"NAME": "Lyon",
 		"MOVES": ["Roar","Pounce"],
 		"DIALOG": ["ROOAAR!"]
+	},
+	"theJungle:MushroomYandere": {
+		"NAME": "Pointy Mushroom"
+	},
+	"theJungle:MushroomKuudere": {
+		"NAME": "Shy Mushroom"
+	},
+	"theJungle:MushroomGenki": {
+		"NAME": "Energetic Mushroom"
 	}
 }
