@@ -19,8 +19,8 @@ public class MushroomYandere extends AbstractMonster {
     public static final String ENCOUNTER_ID = TheActMod.makeID("MUSHROOMGANG");
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
-    private static final int MIN_HP = 20;
-    private static final int MAX_HP = 26;
+    private static final int MIN_HP = 18;
+    private static final int MAX_HP = 21;
     private static final int ASC_HP_MODIFIER = 5;
     private static final int DAMAGE_AMT = 9;
     private static final int DAMAGE_AMT_ASC_MODIFIER = 2;
