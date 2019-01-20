@@ -57,7 +57,7 @@ public class TotemBoss extends AbstractMonster {
     public TotemBoss() {
         super(NAME, "Reptomancer", 10, 0.0F, -30.0F, 220.0F, 320.0F, (String)null, -20.0F, 10.0F);
         this.type = EnemyType.ELITE;
-        this.loadAnimation("images/monsters/theForest/mage/skeleton.atlas", "images/monsters/theForest/mage/skeleton.json", 1.0F);
+        this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/skeleton.atlas"), TheActMod.assetPath("images/monsters/totemboss/skeleton.json"), 1.0F);
 
         if (AbstractDungeon.ascensionLevel >= 19) {
             this.healAmt = 3;
