@@ -14,19 +14,16 @@ import theAct.TheActMod;
 public class EnemyRandomizeCost
         extends AbstractGameAction
 {
-    public AbstractCard c;
+
     public AbstractPlayer p;
     public int numOfCards;
-
-    private int sizeOfHand;
-    private Random R = new Random();
-    private int[] cardsSelected; //Holds the card's positions in the player's hand
 
     public EnemyRandomizeCost(AbstractPlayer p, int numOfCards)
     {
         this.p = p;
         this.numOfCards = numOfCards;
-        cardsSelected = new int [this.numOfCards];
+        TheActMod.logger.info("Randomizing " + this.numOfCards + "cards");
+
     }
 
 
@@ -34,58 +31,32 @@ public class EnemyRandomizeCost
     public void update()
     {
 
-        sizeOfHand = p.hand.group.size();
-        AbstractCard card;
-
-
+        Integer cardsRandomized = 0;
         //Randomly selects a certain number of cards within the players hand and changes their cost
-        for(int i = 0; i < numOfCards; i++) {
-            if (p.hand.size() != 0) {
-                int checkCard = 0;
-                if (i != 0) {
-                    do {
-                        checkCard = R.random(0, sizeOfHand - 1);
-                    } while (contains(checkCard, i));
+        for(AbstractCard c : p.hand.group) {
 
-                } else {
-                    checkCard = R.random(0, sizeOfHand - 1);
-                }
+                if ((c.cost >= 0)) {
 
-                cardsSelected[i] = checkCard;
-
-
-                this.c = p.hand.group.get(checkCard);
-
-
-                //this.c = p.hand.getRandomCard(R);
-
-                if ((this.c.cost >= 0) /*&& (!this.c.hasTag(SneckoMod.SNEKPROOF))*/) {
                     int newCost = AbstractDungeon.cardRandomRng.random(3);
+                    c.superFlash(Color.LIME.cpy());
 
+                    if (c.cost != newCost) {
+                       c.costForTurn = newCost;
+                       c.isCostModifiedForTurn = true;
 
-                    if (this.c.cost != newCost) {
-                        this.c.cost = newCost;
-                        this.c.costForTurn = this.c.cost;
-                        //this.c.isCostModified = true;
-                        this.c.superFlash(Color.LIME.cpy());
                     }
+                    cardsRandomized++;
+                    if (cardsRandomized == this.numOfCards){
+                        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(AbstractDungeon.player, AbstractDungeon.player, TheActMod.makeID("RandomizePower"), cardsRandomized));
+                        this.isDone = true;
+                        return;
+                    }
+
                 }
             }
-        }
-        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(AbstractDungeon.player, AbstractDungeon.player, TheActMod.makeID("RandomizePower"), numOfCards));
+
+        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(AbstractDungeon.player, AbstractDungeon.player, TheActMod.makeID("RandomizePower"), cardsRandomized));
         this.isDone = true;
     }
 
-    //Checks if a card has been previously selected
-    public boolean contains(int value, int searchMax)
-    {
-        for(int i = 0; i < searchMax; i++)
-        {
-
-           if(value == cardsSelected[i])
-               return true;
-        }
-
-        return false;
-    }
 }

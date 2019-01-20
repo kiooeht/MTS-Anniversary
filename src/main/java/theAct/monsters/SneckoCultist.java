@@ -95,10 +95,6 @@ public class SneckoCultist extends AbstractMonster {
             if(lastMove(MoveBytes.CONFUSE_START) || lastMove(MoveBytes.TACKLE)) {
                 this.setMove(WHIP_NAME, MoveBytes.WHIP, Intent.ATTACK, this.damage.get(0).base);
             }
-            else if(lastMove(MoveBytes.TACKLE))
-            {
-                this.setMove(WHIP_NAME, MoveBytes.WHIP, Intent.ATTACK, this.damage.get(0).base);
-            }
             else if(lastMove(MoveBytes.WHIP)){
                 this.setMove(TACKLE_NAME, MoveBytes.TACKLE, Intent.ATTACK_DEBUFF, this.damage.get(1).base);
             }

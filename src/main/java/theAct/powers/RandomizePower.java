@@ -15,51 +15,30 @@ public class RandomizePower extends Power {
     public static final String powerID = TheActMod.makeID("RandomizePower");
     private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(powerID);
 
-    private boolean removePower = false;
-
-
-    public RandomizePower(int numOfCards) {
+    public RandomizePower(int stackAmount) {
         this.owner = AbstractDungeon.player;
         this.type = PowerType.DEBUFF;
         this.name = strings.NAME;
         this.setImage("digestPower84.png", "digestPower32.png");
         this.ID = powerID;
-        this.amount = numOfCards;
+        this.amount = stackAmount;
         this.updateDescription();
         this.isTurnBased = true;
     }
 
-    @Override
-    public void atStartOfTurnPostDraw()
-    {
-        int turnHandSize = AbstractDungeon.player.hand.size();
-        if(turnHandSize > amount)
-        {
-            AbstractDungeon.actionManager.addToBottom(new EnemyRandomizeCost(AbstractDungeon.player, turnHandSize));
-        }
-        else {
-            AbstractDungeon.actionManager.addToBottom(new EnemyRandomizeCost(AbstractDungeon.player, amount));
-        }
-    }
-
-    @Override
-    public void atEndOfTurn(boolean isPlayer)
-    {
-        if(isPlayer && removePower == true)
-        {
-            flash();
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner, "theJungle:RandomizePower"));
-        }
-    }
 
     @Override
     public void reducePower(int stackAmount) {
-        this.fontScale = 8.0F;
-        this.amount -= stackAmount;
-        if (this.amount <= 0) {
+        if (this.amount - stackAmount <= 0) {
+            this.fontScale = 8.0F;
             this.amount = 0;
-            removePower = true;
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner, "theJungle:RandomizePower"));
+
+        } else {
+            this.fontScale = 8.0F;
+            this.amount -= stackAmount;
         }
+
     }
 
     public void updateDescription(){

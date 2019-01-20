@@ -5,11 +5,16 @@ import basemod.ModPanel;
 import basemod.abstracts.CustomSavable;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
+import basemod.interfaces.PostDrawSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
@@ -22,12 +27,15 @@ import theAct.events.SneckoCultEvent;
 import theAct.monsters.*;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
+import theAct.powers.RandomizePower;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Random;
 
 @SpireInitializer
 public class TheActMod implements
         PostInitializeSubscriber,
+        PostDrawSubscriber,
         EditKeywordsSubscriber,
         EditStringsSubscriber,
         CustomSavable<Boolean>
@@ -129,5 +137,25 @@ public class TheActMod implements
     public void onLoad(Boolean loadedBoolean) {
         wentToTheJungle = loadedBoolean;
         logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
+    }
+
+    @Override
+    public void receivePostDraw(AbstractCard c){
+        if (AbstractDungeon.player.hasPower(RandomizePower.powerID)) {
+            if (AbstractDungeon.player.getPower(RandomizePower.powerID).amount > 0) {
+                if ((c.cost >= 0)) {
+
+                    int newCost = AbstractDungeon.cardRandomRng.random(3);
+                    c.superFlash(Color.LIME.cpy());
+
+                    if (c.cost != newCost) {
+                        c.costForTurn = newCost;
+                        c.isCostModifiedForTurn = true;
+
+                    }
+                    AbstractDungeon.player.getPower(RandomizePower.powerID).reducePower(1);
+                }
+            }
+        }
     }
 }
