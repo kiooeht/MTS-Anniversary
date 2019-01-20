@@ -30,6 +30,9 @@ import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
 import theAct.events.SneckoIdol;
+import theAct.monsters.MUSHROOMPOWER.MushroomGenki;
+import theAct.monsters.MUSHROOMPOWER.MushroomKuudere;
+import theAct.monsters.MUSHROOMPOWER.MushroomYandere;
 import theAct.patches.GetDungeonPatches;
 import theAct.relics.SneckoAutograph;
 import theAct.events.*;
@@ -99,7 +102,13 @@ public class TheActMod implements
                 new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F)}));
         BaseMod.addMonster(SilentTribesmen.EVENT_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
                 new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F), new SilentTribesmen(125.0F, -30.0F)}));
-
+        BaseMod.addMonster(MushroomYandere.ENCOUNTER_ID, () -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new MushroomYandere(-385.0F, -15.0F),
+                        new MushroomKuudere(-133.0F, 0.0F),
+                        new MushroomGenki(125.0F, -30.0F)
+                }
+        ));
         BaseMod.addMonster(Flameango.ID, () -> new Flameango(0));
         BaseMod.addMonster(Cassacara.ID, () -> new Cassacara());
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
