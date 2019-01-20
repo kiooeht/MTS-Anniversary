@@ -1,0 +1,13 @@
+
+SneckoEgg3.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+SneckoEgg0001
+  rotate: false
+  xy: 1, 1
+  size: 175, 213
+  orig: 175, 213
+  offset: 0, 0
+  index: -1

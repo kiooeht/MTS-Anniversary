@@ -25,7 +25,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.GoldenSlashEffect;
-import theAct.TheActMod;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -54,14 +53,15 @@ public class AbstractTotemSpawn extends AbstractMonster {
     private Method refupdateIntent;
 
     public static Float beamOffsetX = 25F * Settings.scale;
-    public static Float beamOffsetY = 20F * Settings.scale;
+    public static Float beamOffsetY = 10F * Settings.scale;
 
     public static Float beamOffsetX2 = -35F * Settings.scale;
-    public static Float beamOffsetY2 = 20F * Settings.scale;
+    public static Float beamOffsetY2 = 10F * Settings.scale;
 
 
 
     public Intent intentType = Intent.BUFF;
+    private boolean wasFalling = false;
 
 
     public AbstractTotemSpawn(String name, String ID, TotemBoss boss, String imgPath) {
@@ -189,6 +189,10 @@ public class AbstractTotemSpawn extends AbstractMonster {
         if (shouldFall && !this.owner.stopTotemFall) {
             // TheActMod.logger.info(this.id + "is falling");
             this.drawY = this.drawY - 30 * Settings.scale;
+            this.wasFalling = true;
+        } else if (wasFalling) {
+            this.owner.totemStoppedFalling();
+            this.wasFalling = false;
         }
 
         Iterator var1 = this.powers.iterator();

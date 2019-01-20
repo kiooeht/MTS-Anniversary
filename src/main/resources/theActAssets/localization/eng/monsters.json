@@ -137,6 +137,21 @@
 		"MOVES": ["Tangle","Split"],
 		"DIALOG": ["Jungle Vines"]
 	},
+	"theJungle:MamaSnecko": {
+		"NAME": "Mama Snecko",
+		"MOVES": ["Lay Eggs","Glare","Tail Whip","Bite","Furious Attack"],
+		"DIALOG": ["~Hissssss...~"]
+	},
+	"theJungle:SneckoEgg": {
+		"NAME": "Snecko Egg",
+		"MOVES": ["","Hatch"],
+		"DIALOG": [""]
+	},
+	"theJungle:BabySnecko": {
+		"NAME": "Baby Snecko",
+		"MOVES": ["Bite","Glare"],
+		"DIALOG": [""]
+	},
 	"theJungle:SneckoCultist": {
 		"MOVES": [
 			"Whip",
@@ -145,7 +160,8 @@
 		],
 		"NAME": "Snecko Cultist",
 		"DIALOG": [
-			""
+			"@ALL@ @HAIL@ @LORD@ NL @SNECKO!@",
+			"@...sssssssssss...@"
 		]
 	},
 	"theJungle:Lyon": {
@@ -167,7 +183,7 @@
 			"Egg Throw",
             "Hatch"
 		],
-		"NAME": "Spyder Nest",
+		"NAME": "Spyder Queen",
 		"DIALOG": [
 			""
 		]
@@ -190,26 +206,6 @@
             "Defend"
 		],
 		"NAME": "Fat Spyder",
-		"DIALOG": [
-			""
-		]
-	},
-	"theJungle:ShySpyder": {
-		"MOVES": [
-			"Shove",
-            "Shove",
-            "Shove"
-		],
-		"NAME": "Shy Spyder",
-		"DIALOG": [
-			""
-		]
-	},
-	"theJungle:PoisonedFlye": {
-		"MOVES": [
-			"Get Sucked"
-		],
-		"NAME": "Poisoned Flye",
 		"DIALOG": [
 			""
 		]
@@ -244,18 +240,6 @@
             "Clang"
 		],
 		"NAME": "Spyder Defender",
-		"DIALOG": [
-			""
-		]
-	},
-	"theJungle:EggSpyder": {
-		"MOVES": [
-			"b",
-            "u",
-            "f",
-            "f"
-		],
-		"NAME": "Spyder Egg",
 		"DIALOG": [
 			""
 		]

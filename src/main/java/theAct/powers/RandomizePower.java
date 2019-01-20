@@ -22,7 +22,7 @@ public class RandomizePower extends Power implements OnCardDrawPower {
         this.owner = p;
         this.type = PowerType.DEBUFF;
         this.name = strings.NAME;
-        this.setImage("digestPower84.png", "digestPower32.png");
+        this.setImage("stackingConfusePower84.png", "stackingConfusePower32.png");
         this.ID = powerID;
         this.amount = stackAmount;
         this.updateDescription();
@@ -64,6 +64,6 @@ public class RandomizePower extends Power implements OnCardDrawPower {
 
     public void updateDescription(){
         this.description =
-                strings.DESCRIPTIONS[0] + strings.DESCRIPTIONS[1];
+                strings.DESCRIPTIONS[0] + amount + strings.DESCRIPTIONS[1];
     }
 }

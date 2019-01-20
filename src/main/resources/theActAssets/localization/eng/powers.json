@@ -28,10 +28,11 @@
 			"Strength increases the amount of Block this enemy provides."
 		]
 	},
-	"theJungle:ImmunityPower": {
+	"theJungle:TotemHealthLinkPower": {
 		"NAME" : "Totemic Might",
 		"DESCRIPTIONS": [
-			"This enemy cannot be damaged until the Totems have been destroyed."
+			"This enemy loses ",
+			" HP whenever a Totem is destroyed."
 		]
 	},
 	"theJungle:SwingingTrapPower": {
@@ -69,8 +70,8 @@
 	"theJungle:RandomizePower": {
 		"NAME": "Selective Confusion",
 		"DESCRIPTIONS": [
-			"At the start of your turn, randomizes the cost of a number of cards in your hand equal to how much is stacked. ",
-			"If your hand has less cards than the number of stacks, the remaining stacks will hold over until your next turn."
+			"At the start of your turn, randomizes the cost of #g",
+			" cards in your hand. If your hand has less cards than the number of stacks, the remaining stacks will hold over until your next turn."
 		]
 	},
 	"theJungle:CautiousPower": {
@@ -117,18 +118,6 @@
 			"Has #b1 #yStrength for every #rSpyder."
 		]
 	},
-    "InfiniteFlight": {
-		"NAME" : "Flying",
-		"DESCRIPTIONS": [
-			"Takes #b50% less #yAttack Damage."
-		]
-	},
-    "Shy": {
-		"NAME" : "Shy",
-		"DESCRIPTIONS": [
-			"Has #b2 #yDexterity and #r-2 #yStrength for every #rSpyder."
-		]
-	},
     "Webbed": {
 		"NAME" : "Webbed",
 		"DESCRIPTIONS": [
@@ -151,17 +140,18 @@
 			"Is #gIntangible, when there is at least #b6 #rSpyders."
 		]
 	},
-    "Hatching": {
-		"NAME" : "Hatching",
-		"DESCRIPTIONS": [
-			"When this monster dies, it spawns #b",
-            " small #rSpyders."
-		]
-	},
     "Intangible": {
 		"NAME" : "Intangible",
 		"DESCRIPTIONS": [
 			"Reduce ALL damage taken and HP loss to #b1."
+		]
+	},
+	"theJungle:Incubation": {
+		"NAME" : "Incubation",
+		"DESCRIPTIONS": [
+			"On this enemy's turn, it will hatch into a #yBaby #ySnecko.",
+			"In #b",
+			" turns, this will hatch into a #yBaby #ySnecko."
 		]
 	}
 }

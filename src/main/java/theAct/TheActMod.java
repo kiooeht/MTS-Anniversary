@@ -2,6 +2,7 @@ package theAct;
 
 import basemod.BaseMod;
 import basemod.ModPanel;
+import basemod.ReflectionHacks;
 import basemod.abstracts.CustomSavable;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
@@ -10,6 +11,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.audio.Sfx;
+import com.megacrit.cardcrawl.audio.SoundMaster;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -30,6 +34,8 @@ import theAct.cards.curses.EternalShame;
 import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
+import theAct.monsters.*;
+import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.events.SneckoIdol;
 import theAct.monsters.MUSHROOMPOWER.MushroomGenki;
 import theAct.monsters.MUSHROOMPOWER.MushroomKuudere;
@@ -47,6 +53,7 @@ import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.relics.*;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 
 @SpireInitializer
 public class TheActMod implements
@@ -114,24 +121,36 @@ public class TheActMod implements
                         new MushroomKuudere(-133.0F, 0.0F),
                         new MushroomGenki(125.0F, -30.0F)
                 }));
+        BaseMod.addMonster(makeID("Silent_and_trap"), () -> new MonsterGroup(
+                new AbstractMonster[]{
+                		new SwingingAxe(-450.0F, 100.0F),
+                		new SneakySpyder(-223.0F, 330.0F),
+                        new WebberSpyder(-159.0F, -10.0F, false),
+                        new SilentTribesmen(120.0F, 0.0F)
+                }));
         BaseMod.addMonster(makeID("6_Spyders"), () -> new MonsterGroup(
                 new AbstractMonster[]{
-                		new SneakySpyder(-849.0F, 360.0F),
+                		new SneakySpyder(-749.0F, 360.0F),
                 		new SneakySpyder(-473.0F, 420.0F),
-                		new FatSpyder(-72.0F, 288.0F),
-                		new FatSpyder(72.0F, 328.0F),
+                		new FatSpyder(-372.0F, 238.0F),
+                		new FatSpyder(-62.0F, 288.0F),
                         new WebberSpyder(-199.0F, -10.0F, false),
                         new WebberSpyder(39.0F, 10.0F, true)
                 }));
-        BaseMod.addMonster(TheActMod.makeID("Flameango_and_Byrd"), () -> new MonsterGroup(
+        BaseMod.addMonster(makeID("Flameango_and_Byrd"), () -> new MonsterGroup(
                 new AbstractMonster[] {
                         new Flameango(50),
-                        new Byrd(-175.0F, 150.0F)
+                        new Byrd(-305.0F, 110.0F)
                     }));
-        BaseMod.addMonster(TheActMod.makeID("2_Flameangoes"), () -> new MonsterGroup(
+        BaseMod.addMonster(makeID("2_Flameangoes"), () -> new MonsterGroup(
                 new AbstractMonster[] {
-                        new Flameango(-80),
-                        new Flameango(200)
+                        new Flameango(80),
+                        new Flameango(-250)
+                    }));
+        BaseMod.addMonster(makeID("2_Snecko_Cultists"), () -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new SneckoCultist(-250, -20),
+                        new SneckoCultist(80, 20, true)
                     }));
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
@@ -144,12 +163,13 @@ public class TheActMod implements
                 new Phrog(-175,0, false),
                 new Phrog(175, 0, true)
             }));
+        BaseMod.addMonster(MamaSnecko.ID,() -> new MamaSnecko());
         //Bosses
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
         BaseMod.addBoss(Jungle.ID, TotemBoss.ID, assetPath("images/map/totemBoss.png"), assetPath("images/map/totemBossOutline.png"));
 
         BaseMod.addMonster(SpyderBoss.ID, SpyderBoss::new);
-        BaseMod.addBoss(Jungle.ID, SpyderBoss.ID, assetPath("images/map/totemBoss.png"), assetPath("images/map/totemBossOutline.png")); // A R T
+        BaseMod.addBoss(Jungle.ID, SpyderBoss.ID, assetPath("images/map/spiderBoss.png"), assetPath("images/map/spiderBossOutline.png")); // A R T
 
         //Potions
         BaseMod.addPotion(JungleJuice.class, Color.GREEN, Color.GRAY, Color.BLACK, JungleJuice.POTION_ID);
@@ -160,11 +180,16 @@ public class TheActMod implements
         BaseMod.addPotion(SpyderVenom.class, Color.LIME, Color.GREEN, Color.YELLOW, SpyderVenom.POTION_ID);
 
         // Add Encounters here
-        BaseMod.addBoss(Jungle.ID, FunGuy.ID, "theActAssets/images/monsters/placeholderBossIcon.png", "theActAssets/images/monsters/placeholderBossOutline.png");
+        BaseMod.addBoss(Jungle.ID, FunGuy.ID, assetPath("images/map/mushroomBoss.png"), assetPath("images/map/mushroomBossOutline.png"));
         
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
         GetDungeonPatches.addNextDungeon(Jungle.ID, TheBeyond.ID);
+
+        // Add sounds
+        addSound(makeID("totemSmash"), assetPath("audio/sounds/totemSmash.ogg"));
+        addSound(makeID("sneckoCultist1"), assetPath("audio/sounds/sneckoCultist1.ogg"));
+        addSound(makeID("sneckoCultist2"), assetPath("audio/sounds/sneckoCultist2.ogg"));
 
         //savable boolean
         BaseMod.addSaveField("wentToTheJungle", this);
@@ -225,6 +250,12 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(ScoreBonusStrings.class, assetPath(path + "score_bonuses.json"));
     }
 
+    private static void addSound(String id, String path) {
+        @SuppressWarnings("unchecked")
+        HashMap<String,Sfx> map = (HashMap<String,Sfx>) ReflectionHacks.getPrivate(CardCrawlGame.sound, SoundMaster.class, "map");
+        map.put(id, new Sfx(path, false));
+    }
+
     @Override
     public Boolean onSave() {
         logger.info("Saving wentToTheJungle boolean: " + wentToTheJungle);
@@ -250,4 +281,8 @@ public class TheActMod implements
             SneckoAutograph.iHatePostUpdate();
         }
     }
+
+	public static String makeId() {
+		return null;
+	}
 }
