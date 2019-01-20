@@ -32,9 +32,6 @@ public class SneckoIdol extends AbstractImageEvent {
 
     public SneckoIdol() {
         super(NAME, DESCRIPTIONS[0], TheActMod.assetPath("images/events/SneckoIdol.png"));
-        imageEventText.setDialogOption(OPTIONS[0]);
-        imageEventText.setDialogOption(OPTIONS[1] + damage + OPTIONS[2] + gold + OPTIONS[3]);
-        imageEventText.setDialogOption(OPTIONS[4]);
         if (AbstractDungeon.ascensionLevel >= 15) {
             damage = (int)(AbstractDungeon.player.maxHealth * DAMAGE_AMT_ASC);
             gold = GOLD_AMT_ASC;
@@ -42,6 +39,9 @@ public class SneckoIdol extends AbstractImageEvent {
             damage = (int)(AbstractDungeon.player.maxHealth * DAMAGE_AMT);
             gold = GOLD_AMT;
         }
+        imageEventText.setDialogOption(OPTIONS[0]);
+        imageEventText.setDialogOption(OPTIONS[1] + damage + OPTIONS[2] + gold + OPTIONS[3]);
+        imageEventText.setDialogOption(OPTIONS[4]);
     }
 
     @Override
