@@ -2,6 +2,7 @@ package theAct;
 
 import basemod.BaseMod;
 import basemod.ModPanel;
+import basemod.ReflectionHacks;
 import basemod.abstracts.CustomSavable;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
@@ -10,6 +11,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.audio.Sfx;
+import com.megacrit.cardcrawl.audio.SoundMaster;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -47,6 +51,7 @@ import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.relics.*;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 
 @SpireInitializer
 public class TheActMod implements
@@ -183,6 +188,9 @@ public class TheActMod implements
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
         GetDungeonPatches.addNextDungeon(Jungle.ID, TheBeyond.ID);
 
+        // Add sounds
+        addSound(makeID("totemSmash"), assetPath("audio/sounds/totemSmash.ogg"));
+
         //savable boolean
         BaseMod.addSaveField("wentToTheJungle", this);
     }
@@ -242,6 +250,12 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(ScoreBonusStrings.class, assetPath(path + "score_bonuses.json"));
     }
 
+    private static void addSound(String id, String path) {
+        @SuppressWarnings("unchecked")
+        HashMap<String,Sfx> map = (HashMap<String,Sfx>) ReflectionHacks.getPrivate(CardCrawlGame.sound, SoundMaster.class, "map");
+        map.put(id, new Sfx(path, false));
+    }
+
     @Override
     public Boolean onSave() {
         logger.info("Saving wentToTheJungle boolean: " + wentToTheJungle);
@@ -267,4 +281,8 @@ public class TheActMod implements
             SneckoAutograph.iHatePostUpdate();
         }
     }
+
+	public static String makeId() {
+		return null;
+	}
 }
