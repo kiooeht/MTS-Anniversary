@@ -36,13 +36,13 @@ public class SpyderBoss extends AbstractMonster {
     public int turnAmt = 0;
 
     public SpyderBoss() {
-        super(NAME, ID, AbstractDungeon.monsterHpRng.random(165, 179), 0.0F, -30.0F, 220.0F, 320.0F, (String)null, 240.0F, 20.0F);
+        super(NAME, ID, AbstractDungeon.monsterHpRng.random(135, 149), 0.0F, -30.0F, 220.0F, 320.0F, (String)null, 240.0F, 20.0F);
         this.type = EnemyType.BOSS;
         this.loadAnimation("images/monsters/theForest/mage/skeleton.atlas", "images/monsters/theForest/mage/skeleton.json", 1.0F); //NOT DONE
         if (AbstractDungeon.ascensionLevel >= 8) {
-            this.setHp(185, 205);
+            this.setHp(155, 170);
         } else {
-            this.setHp(165, 179);
+            this.setHp(135, 149);
         }      
         
         if (AbstractDungeon.ascensionLevel >= 4) {
@@ -65,10 +65,10 @@ public class SpyderBoss extends AbstractMonster {
         AbstractDungeon.scene.fadeOutAmbiance();
         AbstractDungeon.getCurrRoom().playBgmInstantly("BOSS_CITY");
         
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new FragileEggsPower(this, 30), 30));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new FormationPower(this)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new FragileEggsPower(this, 25), 25));
         
-        if (AbstractDungeon.ascensionLevel >= 4) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
-        if (AbstractDungeon.ascensionLevel >= 19) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
+        if (AbstractDungeon.ascensionLevel >= 4) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));        
         
         spawnBigSpyder(0);
         if(AbstractDungeon.ascensionLevel >= 19)
@@ -180,6 +180,8 @@ public void spawnSmallSpyder(int str) {
             		str = getPower(StrengthPower.POWER_ID).amount;
             	spawnSmallSpyder(str);
             	spawnSmallSpyder(str);
+            	if (AbstractDungeon.ascensionLevel >= 19)
+                	spawnSmallSpyder(str);
             	break;
         }
 
