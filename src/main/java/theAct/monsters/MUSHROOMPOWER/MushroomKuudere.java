@@ -1,5 +1,6 @@
 package theAct.monsters.MUSHROOMPOWER;
 
+import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
@@ -66,6 +67,7 @@ public class MushroomKuudere extends AbstractMonster {
     public void takeTurn() {
         switch (nextMove) {
             case 0:
+                AbstractDungeon.actionManager.addToBottom(new AnimateSlowAttackAction(this));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0)));
                 break;
             case 1:
