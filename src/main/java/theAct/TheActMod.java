@@ -130,8 +130,13 @@ public class TheActMod implements
                     }));
         BaseMod.addMonster(TheActMod.makeID("2_Flameangoes"), () -> new MonsterGroup(
                 new AbstractMonster[] {
-                        new Flameango(-80),
-                        new Flameango(200)
+                        new Flameango(80),
+                        new Flameango(-200)
+                    }));
+        BaseMod.addMonster(TheActMod.makeID("2_Snecko_Cultists"), () -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new SneckoCultist(80, 20),
+                        new SneckoCultist(-200, -20)
                     }));
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);

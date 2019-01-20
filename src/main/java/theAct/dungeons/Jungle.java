@@ -144,6 +144,7 @@ public class Jungle extends AbstractDungeon
         monsters.add(new MonsterInfo("Snake Plant", 2.0F));
         monsters.add(new MonsterInfo(Lyon.ID, 3.0f));
         monsters.add(new MonsterInfo(TheActMod.makeID("2_Flameangoes"), 2.0F));
+        monsters.add(new MonsterInfo(TheActMod.makeID("2_Snecko_Cultists"), 3.0F));
 
         MonsterInfo.normalizeWeights(monsters);
         populateFirstStrongEnemy(monsters, generateExclusions());
