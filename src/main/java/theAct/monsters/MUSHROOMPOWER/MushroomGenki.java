@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theAct.TheActMod;
+import theAct.powers.EnergeticPower;
 import theAct.powers.ProtectionPower;
 
 public class MushroomGenki extends AbstractMonster {
@@ -51,7 +52,7 @@ public class MushroomGenki extends AbstractMonster {
 
     @Override
     public void usePreBattleAction() {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new EnergeticPower(this, protectionAmt)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new EnergeticPower(this, strAmt)));
     }
 
     @Override
