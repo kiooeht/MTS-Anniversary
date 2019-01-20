@@ -1,0 +1,7 @@
+{
+  "theJungle:PetSnecko": {
+    "NAME": "Pet Snecko",
+    "DESCRIPTION": "Draw !M! card. Randomize every card in your hand's cost this turn.",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards. Randomize every card in your hand's cost this turn."
+  }
+}

@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
@@ -24,6 +25,7 @@ import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import theAct.dungeons.Jungle;
+import theAct.events.SneckoCultEvent;
 import theAct.patches.GetDungeonPatches;
 import theAct.potions.*;
 
@@ -60,6 +62,7 @@ public class TheActMod implements
         BaseMod.registerModBadge(ImageMaster.loadImage(assetPath("modBadge.png")), "MTS Anniversary Act", "Everyone", "TODO", settingsPanel);
 
         // Add events here
+        BaseMod.addEvent(SneckoCultEvent.ID, SneckoCultEvent.class, Jungle.ID);
 
         // Add monsters here
 
@@ -105,5 +108,6 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));
         BaseMod.loadCustomStringsFile(UIStrings.class, assetPath(path + "ui.json"));
         BaseMod.loadCustomStringsFile(PotionStrings.class, assetPath(path + "potions.json"));
+        BaseMod.loadCustomStringsFile(CardStrings.class, assetPath(path + "cards.json"));
     }
 }
