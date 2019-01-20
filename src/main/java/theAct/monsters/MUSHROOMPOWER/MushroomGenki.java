@@ -30,7 +30,7 @@ public class MushroomGenki extends AbstractMonster {
     private int strAmt;
 
     public MushroomGenki(float x, float y) {
-        super(NAME, ID, MAX_HP, 0.0F, 10.0F, 280.0F, 280.0F, null, x, y);
+        super(NAME, ID, MAX_HP, 0.0F, 10.0F, 160.0F, 180.0F, null, x, y);
         loadAnimation(TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Genki.atlas"), TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Genki.json"), 1.0F);
         state.setAnimation(0, "Idle", true);
         stateData.setMix("Idle", "Floop", 0.2F);

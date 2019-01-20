@@ -30,7 +30,7 @@ public class MushroomYandere extends AbstractMonster {
     private int stabDmg;
 
     public MushroomYandere(float x, float y) {
-        super(NAME, ID, MAX_HP, 0.0F, 10.0F, 280.0F, 280.0F, null, x, y);
+        super(NAME, ID, MAX_HP, 0.0F, 10.0F, 160.0F, 180.0F, null, x, y);
         loadAnimation(TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Yandere.atlas"), TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Yandere.json"), 1.0F);
         state.setAnimation(0, "Idle", true);
         stateData.setMix("Idle", "Rawr", 0.2F);
