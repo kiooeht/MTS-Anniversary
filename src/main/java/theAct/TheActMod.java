@@ -17,15 +17,13 @@ import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theAct.cards.PetSnecko;
+import theAct.cards.curses.EternalShame;
 import theAct.dungeons.Jungle;
 import theAct.events.*;
 import theAct.monsters.*;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
-import theAct.relics.PaperFaux;
-import theAct.relics.WildMango;
-import theAct.relics.WildPear;
-import theAct.relics.WildStrawberry;
+import theAct.relics.*;
 
 import java.nio.charset.StandardCharsets;
 
@@ -33,18 +31,14 @@ import java.nio.charset.StandardCharsets;
 public class TheActMod implements
         PostInitializeSubscriber,
         EditKeywordsSubscriber,
+        EditCardsSubscriber,
         EditStringsSubscriber,
         EditRelicsSubscriber,
-        CustomSavable<Boolean>,
-        EditCardsSubscriber
+        CustomSavable<Boolean>
 {
-
-
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
 
     public static boolean wentToTheJungle = false;
-
-
 
     public static void initialize()
     {
@@ -78,6 +72,7 @@ public class TheActMod implements
         BaseMod.addEvent(ExcessResources.ID, ExcessResources.class, Jungle.ID);
         BaseMod.addEvent(LostInTheJungle.ID, LostInTheJungle.class, Jungle.ID);
         BaseMod.addEvent(KidnappersEvent.ID, KidnappersEvent.class, Jungle.ID);
+        BaseMod.addEvent(HappyBirthday.ID, HappyBirthday.class, Jungle.ID);
 
         // Add monsters here
         BaseMod.addMonster(SilentTribesmen.ENCOUNTER_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
@@ -110,6 +105,7 @@ public class TheActMod implements
     @Override
     public void receiveEditCards() {
         BaseMod.addCard(new PetSnecko());
+        BaseMod.addCard(new EternalShame());
     }
 
     @Override
@@ -120,6 +116,8 @@ public class TheActMod implements
         BaseMod.addRelic(new WildMango(), RelicType.SHARED);
         BaseMod.addRelic(new WildStrawberry(), RelicType.SHARED);
         BaseMod.addRelic(new WildPear(), RelicType.SHARED);
+        BaseMod.addRelic(new BirthdayCakeSlice(),  RelicType.SHARED);
+        BaseMod.addRelic(new BirthdayCake(),  RelicType.SHARED);
     }
 
     @Override
