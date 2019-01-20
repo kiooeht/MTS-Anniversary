@@ -44,5 +44,11 @@
       "[Leave]",
       "Pick a card to randomize"
     ]
+  },
+  "theJungle:SneckoIdol": {
+    "NAME": "Snecko Live!?",
+    "DESCRIPTIONS": [
+      "#g~SNECKO~ #g~SNECKO~ #g~SNECKO~ NL @Thunderous@ applause breaks out as a girl in a Snecko onesie finishes a song and dance on stage. NL \"That was 'You Confuse My Heart'\"! NL #g~ENCORE~ #g~ENCORE~ #g~ENCORE~ NL Maybe it wouldn't be such a bad thing to stick around?"
+    ]
   }
 }
