@@ -1,0 +1,26 @@
+{
+  "cards": {},
+  "relics": {},
+  "events": {},
+  "charSelect": {},
+  "creatures": {
+    "IRONCLAD": [
+      {
+        "bone": "Eye",
+        "x": 2.1300638,
+        "y": 3.8424337,
+        "size": 10.553174
+      }
+    ],
+    "theJungle:Flameango": [
+      {
+        "bone": "Top_Beak",
+        "x": -3.621659,
+        "y": 1.6243851,
+        "size": 4.1805944
+      }
+    ]
+  },
+  "creaturesStatic": {},
+  "orbs": {}
+}

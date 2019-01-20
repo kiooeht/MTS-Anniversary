@@ -70,7 +70,7 @@ public class FunGuy extends AbstractMonster {
 	private AbstractCard card;
 
 	public FunGuy() {
-		super(STRINGS.NAME, ID, (AbstractDungeon.ascensionLevel >= 9) ? 282 : 300, 0, 0, 300, 300, null, 0, 0f);
+		super(STRINGS.NAME, ID, (AbstractDungeon.ascensionLevel >= 9) ? 282 : 300, 0, 0, 300, 300, null, 150f, -50f);
 		this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/funguy/placeholder.png"));
 		this.type = AbstractMonster.EnemyType.BOSS;
 		if (AbstractDungeon.ascensionLevel >= 4){

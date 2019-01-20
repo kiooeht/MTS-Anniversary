@@ -1,7 +1,8 @@
 package theAct;
 
-import java.nio.charset.StandardCharsets;
-
+import basemod.BaseMod;
+import basemod.ModPanel;
+import basemod.abstracts.CustomSavable;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -11,29 +12,20 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import basemod.BaseMod;
-import basemod.ModPanel;
-import basemod.abstracts.CustomSavable;
 import theAct.cards.PetSnecko;
 import theAct.dungeons.Jungle;
-import theAct.events.ExcessResources;
-import theAct.events.FauxPas;
-import theAct.events.River;
-import theAct.events.SneckoCultEvent;
-import theAct.events.GremlinQuiz;
-import theAct.events.LostInTheJungle;
-import theAct.monsters.Phrog;
-import theAct.monsters.SlimyTreeVines;
+import theAct.events.*;
+import theAct.monsters.*;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
+import theAct.relics.PaperFaux;
 import theAct.relics.WildMango;
 import theAct.relics.WildPear;
 import theAct.relics.WildStrawberry;
-import theAct.relics.PaperFaux;
+
+import java.nio.charset.StandardCharsets;
 
 @SpireInitializer
 public class TheActMod implements
@@ -83,11 +75,19 @@ public class TheActMod implements
         BaseMod.addEvent(GremlinQuiz.ID, GremlinQuiz.class, Jungle.ID);
         BaseMod.addEvent(ExcessResources.ID, ExcessResources.class, Jungle.ID);
         BaseMod.addEvent(LostInTheJungle.ID, LostInTheJungle.class, Jungle.ID);
+        BaseMod.addEvent(KidnappersEvent.ID, KidnappersEvent.class, Jungle.ID);
 
         // Add monsters here
+        BaseMod.addMonster(Flameango.ID, () -> new Flameango(0));
         BaseMod.addMonster(Phrog.ID, Phrog::new);
+        BaseMod.addMonster(Cassacara.ID, () -> new Cassacara());
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
+        BaseMod.addMonster(FunGuy.ID, FunGuy::new);
+        BaseMod.addMonster(SwingingAxe.ID, () -> {return new SwingingAxe();});
         BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
+        BaseMod.addMonster(SneckoCultist.ID, SneckoCultist::new);
+
+        // Add Encounters here
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
@@ -95,6 +95,11 @@ public class TheActMod implements
 
         //savable boolean
         BaseMod.addSaveField("wentToTheJungle", this);
+    }
+
+    @Override
+    public void receiveEditCards() {
+        BaseMod.addCard(new PetSnecko());
     }
 
     @Override
@@ -153,10 +158,5 @@ public class TheActMod implements
             wentToTheJungle = false;
         }
         logger.info("Loading wentToTheJungle boolean: " + wentToTheJungle);
-    }
-
-    @Override
-    public void receiveEditCards() {
-        BaseMod.addCard(new PetSnecko());
     }
 }

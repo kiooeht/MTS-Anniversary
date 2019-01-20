@@ -28,19 +28,13 @@
 			"Strength increases the amount of Block this enemy provides."
 		]
 	},
-	"theJungle:TotemFleePower": {
-		"NAME" : "Cowardice",
-		"DESCRIPTIONS": [
-			"When all Totems are destroyed, this enemy will flee."
-		]
-	},
 	"theJungle:ImmunityPower": {
-		"NAME" : "Immunity",
+		"NAME" : "Totemic Might",
 		"DESCRIPTIONS": [
-			"This enemy cannot be damaged."
+			"This enemy cannot be damaged until the Totems have been destroyed."
 		]
 	},
-	"theJungle:Swinging Trap": {
+	"theJungle:SwingingTrapPower": {
 		"NAME": "Pendulum Trap",
 		"DESCRIPTIONS": [
 			"NL NL Changes position each time you play a card. NL Cycles between #rIncoming, #rMidswing, and #gResetting.",
@@ -61,5 +55,9 @@
 	"theJungle:RegenerativeSlime": {
 		"NAME": "Regenerative Slime",
 		"DESCRIPTIONS": ["Whenever you play a non-Attack card, this heals #b"," HP."]
+	},
+	"theJungle:RandomizePower": {
+		"NAME": "Selective Confusion",
+		"DESCRIPTIONS": ["At the start of your turn, randomizes the cost of #b", " cards."]
 	}
 }

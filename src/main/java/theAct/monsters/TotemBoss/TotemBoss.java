@@ -32,6 +32,7 @@ import theAct.actions.TotemFallWaitAction;
 import theAct.powers.ImmunityPower;
 import theAct.powers.TotemFleePower;
 import theAct.powers.TotemStrengthPower;
+import theAct.vfx.TotemShadowParticle;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,7 +45,7 @@ public class TotemBoss extends AbstractMonster {
     public static final String[] MOVES;
     public static final String[] DIALOG;
 
-
+    private TotemShadowParticle totemShadow;
     private int healAmt;
     public boolean stopTotemFall;
     public int encounterSlotsUsed = 1;
@@ -56,7 +57,7 @@ public class TotemBoss extends AbstractMonster {
     public TotemBoss() {
         super(NAME, "Reptomancer", 10, 0.0F, -30.0F, 220.0F, 320.0F, (String)null, -20.0F, 10.0F);
         this.type = EnemyType.ELITE;
-        this.loadAnimation("images/monsters/theForest/mage/skeleton.atlas", "images/monsters/theForest/mage/skeleton.json", 1.0F);
+        this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/skeleton.atlas"), TheActMod.assetPath("images/monsters/totemboss/skeleton.json"), 1.0F);
 
         if (AbstractDungeon.ascensionLevel >= 19) {
             this.healAmt = 3;
@@ -73,9 +74,10 @@ public class TotemBoss extends AbstractMonster {
         this.stateData.setMix("Attack", "Idle", 0.1F);
         e.setTime(e.getEndTime() * MathUtils.random());
 
-        this.powers.add(new TotemFleePower(this));
         this.powers.add(new TotemStrengthPower(this));
         this.powers.add(new ImmunityPower(this));
+
+
     }
 
     public void usePreBattleAction() {
@@ -95,6 +97,10 @@ public class TotemBoss extends AbstractMonster {
         spawnNewTotem();
         spawnNewTotem();
         spawnNewTotem();
+
+        this.totemShadow = new TotemShadowParticle(this);
+
+        AbstractDungeon.effectList.add(this.totemShadow);
 
     }
 
@@ -150,23 +156,29 @@ public class TotemBoss extends AbstractMonster {
         for (AbstractMonster m2 : livingTotems) {
 
             if (!m2.isDying) {
+                //Buff living totems before spawning new ones
+                this.getPower(TotemStrengthPower.powerID).flashWithoutSound();
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m2, this, new StrengthPower(m2, 1), 1));
             }
         }
 
 
         if (remainingTotems.size() == 0 && livingTotems.size() == 0){
-            die();
-        } else if (remainingTotems.size() > 0) {
+            //Totems are all dead - remove immunity and the totem shadow
+            this.totemShadow.isDone = true;
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this,this,ImmunityPower.powerID));
 
+        } else if (remainingTotems.size() > 0) {
+            //Spawn a new totem above if there are still any left in the array to kill
             spawnNewTotem();
 
-
         }
+        //Wait for a bit (even on fast mode) so the previous totem's death animation finishes before they all fall, and gives time for the new one's visuals to be drawn in above the screen
         AbstractDungeon.actionManager.addToBottom(new WaitAction(0.1F));
         AbstractDungeon.actionManager.addToBottom(new WaitAction(0.1F));
         AbstractDungeon.actionManager.addToBottom(new WaitAction(0.1F));
         AbstractDungeon.actionManager.addToBottom(new TotemFallWaitAction(this));
+
     }
 
 

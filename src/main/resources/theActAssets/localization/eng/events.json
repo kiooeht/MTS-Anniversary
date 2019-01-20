@@ -246,11 +246,13 @@
       "You have lost your orientation, and the way ahead is blocked by rubble. You cannot move further. NL NL Where should you turn to climb higher?",
       "You climb a nearby vine, the weight of your relics dragging you down as the vine's thorns dig into your hands. NL NL As you reach the canopy, you spot a clearing nearby.",
       "You reach a clearing in the jungle. It looks like someone has been digging here recently.",
-      "You use your shovel to dig up the ground. NL NL Very quicly you hit a chest, which is filled with #y"," #ygold! NL NL Unfortunately, you are still lost.",
+      "You use your shovel to dig up the ground. NL NL Very quicly you hit a chest, which is filled with #y",
+      " #ygold! NL NL Unfortunately, you are still lost.",
       "You look around, and spot an abandoned shovel. This will prove useful later on. NL NL Unfortunately, you are still lost."
     ],
     "OPTIONS": [
-      "[Climb a thorny vine] #rTake #r"," #rdamage. Find something.",
+      "[Climb a thorny vine] #rTake #r",
+      " #rdamage. Find something.",
       "[Squeeze through] #rBecome #rCursed #r- #rWrithe. Find something.",
       "[Turn back] Leave.",
       "[Go to the clearing]",
@@ -259,6 +261,29 @@
       "[Look around]",
       "[Locked]",
       "[Leave]"
+    ]
+  },
+  "theJungle:Kidnappers": {
+    "NAME": "Misty Forest",
+    "DESCRIPTIONS": [
+      "As you're traversing through the ~foggy~ ~jungle~ , a rope suddenly tightens around your ankle. NL #r@You've@ #r@been@ #r@caught@ #r@in@ #r@a@ #r@trap!@",
+      "A number of tribesmen surround you. They are wearing #g~green~ robes and #r@animal@ #r@skulls@ #r@for@ #r@masks@ . You can't help but feel #r~malice~ coming from them. NL \"We caught one!\" NL ~\"Hey,~ ~this~ ~one~ ~doesn't~ ~look~ ~like~ ~a~ ~cultist...?\"~ NL \"You never know with those guys, #r@let's@ #r@get@ #r@'em...@ \" NL You may have time to escape in the confusion.",
+      "You make it clear that you are #r~NOT~ a cultist, nor an enemy, and have no qualms with their clan. NL Negotiating is a bit #r@painful@ , but they let you go, for a small price.",
+      "You struggle hard, but manage to use your weapon and break through the rope while they approach. NL They give chase, while more tribesmen surround you!",
+      "Seeing as you are not a cultist or an animal, you manage to bribe them with #ysome #ygold. NL They untie you and let you leave in piece, #r~but~ #r~you~ #r~can't~ #r~shake~ #r~the~ #r~feeling~ #r~that~ #r~someone~ #r~keeps~ #r~watching~ #r~you...~"
+    ],
+    "OPTIONS": [
+      "[Proceed.]",
+      "[Negotiate] #gLose #r",
+      " #rHP . #gremove #g1 #gcard #gfrom #gyour #gdeck.",
+      "[Cut the Rope] #rEnter #ra #rfight!",
+      "[Bribe] #rLose #y",
+      " #ygold.",
+      "[Locked] Requires: ",
+      " gold.",
+      "[Leave.]",
+      "[#rFight!]",
+      "Remove a card from your deck."
     ]
   }
 }
