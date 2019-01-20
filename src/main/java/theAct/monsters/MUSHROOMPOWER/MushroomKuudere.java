@@ -52,7 +52,8 @@ public class MushroomKuudere extends AbstractMonster {
         } else {
             headbuttDmg = HEADBUTT_DMG;
             damage.add(new DamageInfo(this, headbuttDmg));
-        }}
+        }
+    }
 
     @Override
     public void usePreBattleAction() {
