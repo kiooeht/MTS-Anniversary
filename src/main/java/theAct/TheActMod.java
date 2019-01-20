@@ -25,6 +25,7 @@ import com.megacrit.cardcrawl.monsters.city.Snecko;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theAct.cards.PetSnecko;
+import theAct.cards.colorless.Gourd;
 import theAct.cards.curses.EternalShame;
 import theAct.dungeons.Jungle;
 import theAct.events.River;
@@ -97,6 +98,7 @@ public class TheActMod implements
         BaseMod.addEvent(LostInTheJungle.ID, LostInTheJungle.class, Jungle.ID);
         BaseMod.addEvent(KidnappersEvent.ID, KidnappersEvent.class, Jungle.ID);
         BaseMod.addEvent(HappyBirthday.ID, HappyBirthday.class, Jungle.ID);
+        BaseMod.addEvent(JungleGarden.ID, JungleGarden.class, Jungle.ID);
 
         // Add monsters here
 
@@ -159,6 +161,7 @@ public class TheActMod implements
     public void receiveEditCards() {
         BaseMod.addCard(new PetSnecko());
         BaseMod.addCard(new EternalShame());
+        BaseMod.addCard(new Gourd());
     }
 
     @Override
