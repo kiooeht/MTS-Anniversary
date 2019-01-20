@@ -28,7 +28,7 @@ public class BasherSpyder extends SpawnedSpyder{
 	
 	public BasherSpyder(SpyderBoss boss, int slot, int strength) {	
 		super(NAME, ID, SMALL, BASEHP, boss, slot, strength);
-		damage.add(new DamageInfo(this, 8));
+		damage.add(new DamageInfo(this, 9));
 		damage.add(new DamageInfo(this, 3));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new SquadPower(this)));
 	}

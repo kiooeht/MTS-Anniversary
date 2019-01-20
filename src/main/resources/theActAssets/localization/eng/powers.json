@@ -118,18 +118,6 @@
 			"Has #b1 #yStrength for every #rSpyder."
 		]
 	},
-    "InfiniteFlight": {
-		"NAME" : "Flying",
-		"DESCRIPTIONS": [
-			"Takes #b50% less #yAttack Damage."
-		]
-	},
-    "Shy": {
-		"NAME" : "Shy",
-		"DESCRIPTIONS": [
-			"Has #b2 #yDexterity and #r-2 #yStrength for every #rSpyder."
-		]
-	},
     "Webbed": {
 		"NAME" : "Webbed",
 		"DESCRIPTIONS": [
@@ -150,13 +138,6 @@
 		"NAME" : "Formation",
 		"DESCRIPTIONS": [
 			"Is #gIntangible, when there is at least #b6 #rSpyders."
-		]
-	},
-    "Hatching": {
-		"NAME" : "Hatching",
-		"DESCRIPTIONS": [
-			"When this monster dies, it spawns #b",
-            " small #rSpyders."
 		]
 	},
     "Intangible": {

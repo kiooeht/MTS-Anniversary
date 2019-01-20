@@ -23,13 +23,13 @@ public class DefenderSpyder extends SpawnedSpyder{
     public static final String[] MOVES;
     public static final String[] DIALOG;
     
-    private static final int BASEHP = 22;
+    private static final int BASEHP = 20;
     private static final boolean SMALL = false;
     
 	
 	public DefenderSpyder(SpyderBoss boss, int slot, int strength) {	
 		super(NAME, ID, SMALL, BASEHP, boss, slot, strength);
-		damage.add(new DamageInfo(this, 4));
+		damage.add(new DamageInfo(this, 7));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new FormationPower(this)));
 	}
 	
