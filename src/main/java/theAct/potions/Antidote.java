@@ -55,7 +55,21 @@ public class Antidote extends CustomPotion
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, "Poison"));
                 AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.potency));
             }
-            //TODO: ADD VENOM CHECK IN HERE WHEN IT'S OPEN
+            if (AbstractDungeon.player.hasPower("Vulnerable")) {
+                healAmount += AbstractDungeon.player.getPower("Vulnerable").amount;
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, "Vulnerable"));
+                AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.potency));
+            }
+            if (AbstractDungeon.player.hasPower("Weakened")) {
+                healAmount += AbstractDungeon.player.getPower("Weakened").amount;
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, "Weakened"));
+                AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.potency));
+            }
+            if (AbstractDungeon.player.hasPower("Frail")) {
+                healAmount += AbstractDungeon.player.getPower("Frail").amount;
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, "Frail"));
+                AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.potency));
+            }
         }
         catch(Exception e) {
             logger.info("Something went wrong :O");

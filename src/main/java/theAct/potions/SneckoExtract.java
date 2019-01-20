@@ -118,7 +118,7 @@ public class SneckoExtract extends CustomPotion
             }
             //Damage
             if (random100() < 10) {
-                newPotency = potencyModify(8 * potency);
+                newPotency = potencyModify(4 * potency);
                 AbstractDungeon.actionManager.addToBottom(new LoseHPAction(AbstractDungeon.player, AbstractDungeon.player, newPotency));
             }
             //GainBlock

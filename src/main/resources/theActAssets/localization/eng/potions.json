@@ -11,28 +11,35 @@
   "TwistedElixir": {
     "NAME": "Twisted Elixir",
     "DESCRIPTIONS": [
-      "Make an enemy stronger, but gain increased rewards based on its current health when thrown."
+      "Make an enemy stronger and gain special #yrewards based on the size of its health when this is thrown."
     ]
   },
 
   "HauntedGourdPotion": {
     "NAME": "Haunted Gourd",
     "DESCRIPTIONS": [
-      "Discover a #ySkill, #yPower, #yAttack which cost 0 this turn. Add a random #bCurse and #bSlimed to your hand."
+      "Discover a #ySkill #yPower and #yAttack which cost 0 this turn. Add a random #bCurse and #bSlimed to your hand."
     ]
   },
 
   "SneckoExtractPotion": {
     "NAME": "Snecko Extract",
     "DESCRIPTIONS": [
-      "Drink this and something extremely random will happen."
+      "Drink this and something #yextremely random will happen."
+    ]
+  },
+
+  "SpyderVenomPotion": {
+    "NAME": "Spyder Venom",
+    "DESCRIPTIONS": [
+      "Gain #b1 #yEnvenom."
     ]
   },
 
   "AntidotePotion": {
     "NAME": "Antidote",
     "DESCRIPTIONS": [
-      "Remove all #yPoison and #yVenom and heal for each point removed."
+      "Remove all #yPoison #bFrail #bWeakness and #b Vulnerable and heal for each point removed."
     ]
   }
 
