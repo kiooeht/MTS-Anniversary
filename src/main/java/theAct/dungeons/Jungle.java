@@ -185,84 +185,14 @@ public class Jungle extends AbstractDungeon
     @Override
     protected void initializeBoss()
     {
-        // TODO: This is copied from TheCity
         bossList.clear();
-        if (Settings.isDailyRun) {
-            bossList.add(TotemBoss.ID);
-            //bossList.add("Collector");
-            //bossList.add("Champ");
-            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
-       // } else if (!UnlockTracker.isBossSeen("CHAMP")) {
-        //    bossList.add("Champ");
-       // } else if (!UnlockTracker.isBossSeen("AUTOMATON")) {
-       //     bossList.add("Automaton");
-       // } else if (!UnlockTracker.isBossSeen("COLLECTOR")) {
-       //     bossList.add("Collector");
-        } else {
-            bossList.add(TotemBoss.ID);
-            //bossList.add("Collector");
-            //bossList.add("Champ");
-            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
-        }
-
-        if (bossList.size() == 1) {
-            bossList.add(bossList.get(0));
-        } else if (bossList.isEmpty()) {
-            logger.warn("Boss list was empty. How?");
-            bossList.add(TotemBoss.ID);
-            //bossList.add("Collector");
-            //bossList.add("Champ");
-            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
-        }
-
-        /*
-        if (Settings.isDailyRun) {
-            bossList.add("Automaton");
-            bossList.add("Collector");
-            bossList.add("Champ");
-            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
-        } else if (!UnlockTracker.isBossSeen("CHAMP")) {
-            bossList.add("Champ");
-        } else if (!UnlockTracker.isBossSeen("AUTOMATON")) {
-            bossList.add("Automaton");
-        } else if (!UnlockTracker.isBossSeen("COLLECTOR")) {
-            bossList.add("Collector");
-        } else {
-            bossList.add("Automaton");
-            bossList.add("Collector");
-            bossList.add("Champ");
-            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
-        }
-
-        if (bossList.size() == 1) {
-            bossList.add(bossList.get(0));
-        } else if (bossList.isEmpty()) {
-            logger.warn("Boss list was empty. How?");
-            bossList.add("Automaton");
-            bossList.add("Collector");
-            bossList.add("Champ");
-            Collections.shuffle(bossList, new java.util.Random(monsterRng.randomLong()));
-        }
-        */
+        // Bosses are added via BaseMod in TheActMod.receivePostInitialize()
     }
 
     @Override
     protected void initializeEventList()
     {
-        // TODO: This is copied from TheCity
-        eventList.add("Addict");
-        eventList.add("Back to Basics");
-        eventList.add("Beggar");
-        eventList.add("Colosseum");
-        eventList.add("Cursed Tome");
-        eventList.add("Drug Dealer");
-        eventList.add("Forgotten Altar");
-        eventList.add("Ghosts");
-        eventList.add("Masked Bandits");
-        eventList.add("Nest");
-        eventList.add("The Library");
-        eventList.add("The Mausoleum");
-        eventList.add("Vampires");
+        // Events are added via BaseMod in TheActMod.receivePostInitialize()
     }
 
     @Override
