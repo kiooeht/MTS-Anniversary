@@ -1,6 +1,7 @@
 package theAct.events;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -65,25 +66,39 @@ public class SneckoCultEvent extends AbstractImageEvent {
     public void update() {
         super.update();
         if (!cardSelected && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-            int rng = AbstractDungeon.miscRng.random(3);
-            cardSelected = true;
-            AbstractCard c = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
-            c.cost = rng;
-            c.costForTurn = rng;
-            c.upgradedCost = true;
-            c.isCostModified = true;
-            AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy()));
-            AbstractDungeon.gridSelectScreen.selectedCards.clear();
+            actuallyRandomizeCost();
         }
     }
 
+    private void actuallyRandomizeCost() {
+        int rng = AbstractDungeon.miscRng.random(3);
+        cardSelected = true;
+        AbstractCard c = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
+        if (rng == c.cost) {
+            actuallyRandomizeCost();
+            return;
+        }
+        c.cost = rng;
+        c.costForTurn = rng;
+        c.upgradedCost = true;
+        c.isCostModified = true;
+        AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy()));
+        AbstractDungeon.gridSelectScreen.selectedCards.clear();
+    }
+
     private void randomizeCost() {
+        CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
+            if (c.cost >= 0) {
+                tmp.addToBottom(c);
+            }
+        }
         if (!AbstractDungeon.isScreenUp) {
-            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[4], false, false, false, false);
+            AbstractDungeon.gridSelectScreen.open(tmp, 1, OPTIONS[4], false, false, false, false);
         } else {
             AbstractDungeon.dynamicBanner.hide();
             AbstractDungeon.previousScreen = AbstractDungeon.screen;
-            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[4], false, false, false, false);
+            AbstractDungeon.gridSelectScreen.open(tmp, 1, OPTIONS[4], false, false, false, false);
         }
     }
 }

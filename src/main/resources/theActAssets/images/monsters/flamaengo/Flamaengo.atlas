@@ -1,0 +1,97 @@
+
+Flamaengo.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+flamaengo/Shadow
+  rotate: false
+  xy: 1, 441
+  size: 175, 29
+  orig: 175, 29
+  offset: 0, 0
+  index: -1
+flamaengo/Right_foot
+  rotate: false
+  xy: 364, 276
+  size: 33, 163
+  orig: 33, 163
+  offset: 0, 0
+  index: -1
+flamaengo/Left_foot
+  rotate: false
+  xy: 178, 268
+  size: 38, 91
+  orig: 38, 91
+  offset: 0, 0
+  index: -1
+flamaengo/Lower_Left_foot
+  rotate: false
+  xy: 218, 351
+  size: 39, 54
+  orig: 39, 54
+  offset: 0, 0
+  index: -1
+flamaengo/Back_wing
+  rotate: false
+  xy: 281, 1
+  size: 196, 180
+  orig: 196, 180
+  offset: 0, 0
+  index: -1
+flamaengo/Body
+  rotate: false
+  xy: 1, 140
+  size: 243, 126
+  orig: 243, 126
+  offset: 0, 0
+  index: -1
+flamaengo/Under_Beak
+  rotate: false
+  xy: 246, 140
+  size: 27, 39
+  orig: 27, 39
+  offset: 0, 0
+  index: -1
+flamaengo/Top_Beak
+  rotate: false
+  xy: 479, 73
+  size: 30, 54
+  orig: 30, 54
+  offset: 0, 0
+  index: -1
+flamaengo/Neck
+  rotate: false
+  xy: 246, 183
+  size: 116, 166
+  orig: 116, 166
+  offset: 0, 0
+  index: -1
+flamaengo/Crest
+  rotate: false
+  xy: 479, 1
+  size: 32, 70
+  orig: 32, 70
+  offset: 0, 0
+  index: -1
+flamaengo/MangoBody
+  rotate: false
+  xy: 364, 183
+  size: 119, 91
+  orig: 119, 91
+  offset: 0, 0
+  index: -1
+flamaengo/Eye
+  rotate: false
+  xy: 479, 129
+  size: 6, 7
+  orig: 6, 7
+  offset: 0, 0
+  index: -1
+flamaengo/Front_wing
+  rotate: false
+  xy: 1, 1
+  size: 278, 137
+  orig: 278, 137
+  offset: 0, 0
+  index: -1

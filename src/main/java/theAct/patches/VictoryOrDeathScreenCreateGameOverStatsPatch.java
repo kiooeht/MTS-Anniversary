@@ -3,16 +3,23 @@ package theAct.patches;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
+import com.megacrit.cardcrawl.dungeons.TheCity;
+import com.megacrit.cardcrawl.dungeons.TheEnding;
+import com.megacrit.cardcrawl.localization.ScoreBonusStrings;
 import com.megacrit.cardcrawl.screens.DeathScreen;
 import com.megacrit.cardcrawl.screens.GameOverStat;
 import com.megacrit.cardcrawl.screens.VictoryScreen;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
+import theAct.TheActMod;
 import theAct.dungeons.Jungle;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class VictoryOrDeathScreenCreateGameOverStatsPatch { //TODO: victory/death screen will still score as "the city" if you die in a later act after going through jungle
+public class VictoryOrDeathScreenCreateGameOverStatsPatch {
 
     @SpirePatch(
             clz = VictoryScreen.class,
@@ -24,21 +31,45 @@ public class VictoryOrDeathScreenCreateGameOverStatsPatch { //TODO: victory/deat
                 locator = Locator.class
         )
         public static void Insert(VictoryScreen __instance) {
-            if (CardCrawlGame.dungeon instanceof Jungle/* || WentThroughJungleBoolean*/) {
-//                try {
-//                    String elite2Points = Integer.toString((int) VictoryScreen.class.getDeclaredField("elite2Points").get(null));
-//                    __instance.stats.add(new GameOverStat(VictoryScreen.JUNGLE_ELITE.NAME + " (" + CardCrawlGame.elites2Slain + ")", null, elite2Points)); //TODO: JUNGLE_ELITE localization
-//                } catch (NoSuchFieldException | IllegalAccessException E) {
-//                    E.printStackTrace();
-//                }
+            boolean act3OrHigher = CardCrawlGame.dungeon instanceof TheBeyond || CardCrawlGame.dungeon instanceof TheEnding;
+            if (CardCrawlGame.dungeon instanceof Exordium || CardCrawlGame.dungeon instanceof TheCity || (act3OrHigher && !TheActMod.wentToTheJungle)) {
+                return;
+            }
+            if (act3OrHigher) {
+                __instance.stats.remove(4);
+                __instance.stats.remove(3);
+            }
+            if (CardCrawlGame.dungeon instanceof Jungle || TheActMod.wentToTheJungle) {
+                try {
+                    String localizedString = CardCrawlGame.languagePack.getScoreString(TheActMod.makeID("ElitesKilled")).NAME;
+                    Field elite2PointsField = VictoryScreen.class.getDeclaredField("elite2Points");
+                    elite2PointsField.setAccessible(true);
+                    String elite2Points = Integer.toString((int) elite2PointsField.get(null));
+                    __instance.stats.add(new GameOverStat(localizedString + " (" + CardCrawlGame.elites2Slain + ")", null, elite2Points));
+                } catch (NoSuchFieldException | IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (act3OrHigher) {
+                try {
+                    Field elite3PointsField = VictoryScreen.class.getDeclaredField("elite3Points");
+                    elite3PointsField.setAccessible(true);
+                    String elite3Points = Integer.toString((int) elite3PointsField.get(null));
+                    Field localizedStringField = VictoryScreen.class.getDeclaredField("BEYOND_ELITE");
+                    localizedStringField.setAccessible(true);
+                    String localizedString = ((ScoreBonusStrings)localizedStringField.get(null)).NAME;
+                    __instance.stats.add(new GameOverStat(localizedString + " (" + CardCrawlGame.elites2Slain + ")", null, elite3Points));
+                } catch (NoSuchFieldException | IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
         public static class Locator extends SpireInsertLocator {
             public int[] Locate(CtBehavior ctMethodToPatch) throws CannotCompileException, PatchingException {
-                Matcher finalMatcher = new Matcher.FieldAccessMatcher(CardCrawlGame.class, "dungeon");
+                Matcher finalMatcher = new Matcher.MethodCallMatcher(ArrayList.class, "add");
 
-                return LineFinder.findInOrder(ctMethodToPatch, new ArrayList<>(), finalMatcher);
+                return new int[] {LineFinder.findAllInOrder(ctMethodToPatch, new ArrayList<>(), finalMatcher)[5]};
             }
         }
     }
@@ -53,21 +84,45 @@ public class VictoryOrDeathScreenCreateGameOverStatsPatch { //TODO: victory/deat
                 locator = Locator.class
         )
         public static void Insert(DeathScreen __instance) {
-            if (CardCrawlGame.dungeon instanceof Jungle/* || WentThroughJungleBoolean*/) {
-                /*try {
-                    //String elite2Points = Integer.toString((int) DeathScreen.class.getDeclaredField("elite2Points").get(null));
-                    //__instance.stats.add(new GameOverStat(DeathScreen.JUNGLE_ELITE.NAME + " (" + CardCrawlGame.elites2Slain + ")", null, elite2Points)); //TODO: JUNGLE_ELITE localization
-                } catch (NoSuchFieldException | IllegalAccessException E) {
-                    E.printStackTrace();
-                }*/
+            boolean act3OrHigher = CardCrawlGame.dungeon instanceof TheBeyond || CardCrawlGame.dungeon instanceof TheEnding;
+            if (CardCrawlGame.dungeon instanceof Exordium || CardCrawlGame.dungeon instanceof TheCity || (act3OrHigher && !TheActMod.wentToTheJungle)) {
+                return;
+            }
+            if (act3OrHigher) {
+                __instance.stats.remove(4);
+                __instance.stats.remove(3);
+            }
+            if (CardCrawlGame.dungeon instanceof Jungle || TheActMod.wentToTheJungle) {
+                try {
+                    String localizedString = CardCrawlGame.languagePack.getScoreString(TheActMod.makeID("ElitesKilled")).NAME;
+                    Field elite2PointsField = DeathScreen.class.getDeclaredField("elite2Points");
+                    elite2PointsField.setAccessible(true);
+                    String elite2Points = Integer.toString((int) elite2PointsField.get(null));
+                    __instance.stats.add(new GameOverStat(localizedString + " (" + CardCrawlGame.elites2Slain + ")", null, elite2Points));
+                } catch (NoSuchFieldException | IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (act3OrHigher) {
+                try {
+                    Field elite3PointsField = DeathScreen.class.getDeclaredField("elite3Points");
+                    elite3PointsField.setAccessible(true);
+                    String elite3Points = Integer.toString((int) elite3PointsField.get(null));
+                    Field localizedStringField = DeathScreen.class.getDeclaredField("BEYOND_ELITE");
+                    localizedStringField.setAccessible(true);
+                    String localizedString = ((ScoreBonusStrings)localizedStringField.get(null)).NAME;
+                    __instance.stats.add(new GameOverStat(localizedString + " (" + CardCrawlGame.elites3Slain + ")", null, elite3Points));
+                } catch (NoSuchFieldException | IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
         public static class Locator extends SpireInsertLocator {
             public int[] Locate(CtBehavior ctMethodToPatch) throws CannotCompileException, PatchingException {
-                Matcher finalMatcher = new Matcher.FieldAccessMatcher(CardCrawlGame.class, "dungeon");
+                Matcher finalMatcher = new Matcher.MethodCallMatcher(ArrayList.class, "add");
 
-                return LineFinder.findInOrder(ctMethodToPatch, new ArrayList<>(), finalMatcher);
+                return new int[] {LineFinder.findAllInOrder(ctMethodToPatch, new ArrayList<>(), finalMatcher)[5]};
             }
         }
     }

@@ -1,28 +1,25 @@
 {
-  "theAct:ForkInTheRoad" : {
+  "theJungle:ForkInTheRoad": {
     "NAME": "Fork in the Road",
     "DESCRIPTIONS": [
-      "TODO: Somebody with writing skill please write this."
+      "You continue on your journey through the spire.\n NL After a long trek, you come upon a fork in the road.\n\n NL NL There is a signpost, but you can't make out the writing.\n\n NL  NL To your left you spot the outline of #btall #bbuildings in the distance, while the path to the right shows #ggrass and #gtrees."
     ],
     "OPTIONS": [
       ".",
-      "[Go Left] Enter ",
-      "[Go Right] Enter "
+      "[Go Left] Go to ",
+      "[Go Right] Go to "
     ]
   },
-
-  "theJungle:River" : {
+  "theJungle:River": {
     "NAME": "Spirit River",
-
-    "DESCRIPTIONS" : [
+    "DESCRIPTIONS": [
       "Lost and thirsty, you are pleasantly surprised by a river running across your path. However, a cautious taste of the water reveals a suspicious taste...",
       "Drinking the water, you initially feel ~refreshed~ , however, you soon feel ~unwell~ from drinking the tainted water.",
       "Not wanting to take a risk, you ford the river and move on."
     ],
-
-    "OPTIONS" : [
+    "OPTIONS": [
       "[Drink] #gRemove #g",
-      " #gcards #gfrom #gyour #gdeck. #rAdd #ra #rSpirit #rDisease #rto #ryour #rdeck.",
+      " #gcards #gfrom #gyour #gdeck. #rObtain #rSpirit #rDisease.",
       "[Leave]",
       "Select ",
       " Cards to Remove.",
@@ -43,6 +40,258 @@
       "[Leave]",
       "[Leave]",
       "Pick a card to randomize"
+    ]
+  },
+  "theJungle:SneckoIdol": {
+    "NAME": "Snecko Live!?",
+    "DESCRIPTIONS": [
+      "#g~SNECKO~ #g~SNECKO~ #g~SNECKO~ NL @Thunderous@ applause breaks out as a girl in a Snecko onesie finishes a song and dance on stage. NL \"That was 'You Confuse My Heart'\"! NL #g~ENCORE~ #g~ENCORE~ #g~ENCORE~ NL Maybe it wouldn't be such a bad thing to stick around?",
+      "You decide to stay for the #g~jammin'~ tunes. The energetic concert @flows@ into your veins and you can't help but stay around to gather your newfound obsession's autograph. NL \" #g@Hey!@ \", the girl in the Snecko Onesie beams at you. \"Here's my autograph!\" NL You take it and walk off knowing you just spent time #robsessing over an idol.",
+      "Overcome with #r@rage@ from seeing another Snecko, you draw your weapon and charge towards the stage. The #r@HORDE@ of idol fanatics push you back and don't let you pass. NL On the bright side, they dropped some Snecko merch you pawn off to fans who couldn't get into the audience.",
+      "Deciding this was not worth your time, you leave the concert alone."
+    ],
+    "OPTIONS": [
+      "[Stay] #gObtain #gSnecko #gAutograph. #rBecome #rCursed #r- #rShame.",
+      "[Attack] #gObtain #g",
+      " #gGold. #rTake #r",
+      " #rdamage.",
+      "[Leave]"
+    ]
+  },
+  "theJungle:ExcessResources": {
+    "NAME": "Nature's Temptation",
+    "DESCRIPTIONS": [
+      "After wandering through the jungle for what feels like an eternity, you come across a clearing with #pfruits neatly arrayed in the middle. NL NL You are #r@hungry@ from stumbling through this blasted place and would #p~love~ to eat some despite how bad of an idea that would be.",
+      "You #p@MUST@ have some. You eat one, then another and when you've had your fill, just one more is all you need. NL Only 3 fruits remain: NL NL A somewhat tainted #rStrawberry looking like it would #rhurt to eat. NL A ~juicy~ #gPear that makes you #ywant #yto #ytake #ya #ybreak just looking at it. NL A #yMango which is so big that it would #ySlow you down.",
+      "It would be foolish to partake in this obvious trap. A lone #rberry lies in a corner, it will suffice.",
+      "You take that last #ydelectable #ytreat and put it in your mouth. It #r@sizzles@ and #r~burns~ on its way down.",
+      "Nobody could deny such a #p@gift@ in your circumstances. With each bite, you feel your motivation being #y~sapped~ .",
+      "Where do you even start? The fruit seems to bear more of its #r~delicious~ #r~flesh~ every time you look at it. NL NL ~...~ NL NL When you finally finish, you feel stuffed and #yslow ."
+    ],
+    "OPTIONS": [
+      "[Give in] Give in to your desires.",
+      "[Resist] A little berry will suffice. #gHeal #g%d #gHP.",
+      "Continue on with your adventure.",
+      "[Eat] #gObtain: #rWild #rStrawberry",
+      "[Consume] #gObtain: #gWild #gPear",
+      "[Devour] #gObtain: #yWild #yMango"
+    ]
+  },
+  "theJungle:GremlinQuiz": {
+    "NAME": "Gremlin Quiz Show",
+    "DESCRIPTIONS": [
+      "\" LIGHTS. CAMERA. #p@ACTION!@ \" NL NL A gremlin with a wide smile approaches you. NL NL \" It's time again for the Spire-Famous Gremlin Quiz Show! I've got questions for you, here's your chance to win some #gfabulous #gprizes! NL Are you ~R~ ~E~ ~A~ ~D~ ~Y~ ~?~ Of course you are! \"",
+      "\" Please wait while we tally your score... NL NL You got #b%d #bout #bof #b%d questions right! NL ",
+      "#gYou #gdid #ggreat! NL Here is your prize. \"",
+      "#rHow #rdisappointing... \"",
+      "Do better next time. \"",
+      "What is the name of the Bronze Automaton's biggest attack?",
+      "",
+      "Identify the enemies in this picture.",
+      "theActAssets/images/events/quiz/identify1.png",
+      "Identify the enemies in this picture.",
+      "theActAssets/images/events/quiz/identify2.png",
+      "In what order (from left to right) do the Red Mask Bandits appear?",
+      "images/events/redMaskTomb.jpg",
+      "What is NOT a card for The Silent?",
+      "",
+      "What card is this?",
+      "theActAssets/images/events/quiz/card1.png",
+      "Which of these enemies can make you weak?",
+      "",
+      "Which of these enemies holds their weapon in their left hand?",
+      "",
+      "How many tentacles does the Spire Growth have?",
+      "",
+      "Match this card art with its beta art.",
+      "theActAssets/images/events/quiz/card2.png",
+      "What power is this?",
+      "theActAssets/images/events/quiz/power1.png",
+      "What power is this?",
+      "theActAssets/images/events/quiz/power2.png",
+      "What is missing in this image?",
+      "theActAssets/images/events/quiz/card3.png",
+      "By how much does your max HP increase if you get all three fruits?",
+      "",
+      "Name two curses that are shown in this image.",
+      "theActAssets/images/events/quiz/curses1.png",
+      "What effect does Ascension 16 have?",
+      "",
+      "What is the rarity of the relic in this picture?",
+      "theActAssets/images/events/quiz/relic1.png",
+      "What is the rarity of the relic in this picture?",
+      "theActAssets/images/events/quiz/relic1.png",
+      "What is the rarity of the relic in this picture?",
+      "theActAssets/images/events/quiz/relic1.png"
+    ],
+    "OPTIONS": [
+      "[Begin Quiz]",
+      "[Claim Prize] ",
+      " #gGain #g%d #gGold.",
+      " #rLose #r%d #rHP.",
+      "[Leave]",
+      "[Aπ] ",
+      "[Bπ] ",
+      "[Cπ] ",
+      "[Dπ] ",
+      "Sweeping Beam",
+      ">Hyper Beam",
+      "Hyper Blast",
+      "Disintegrate",
+      ">Chosen, Snecko, Darkling",
+      "Fungi Beast, Chosen, Spike Slime",
+      "Snecko, Acid Slime, Cultist",
+      "Awakened One, Louse, Snake Plant",
+      ">The Maw, Hexaghost, The Transient",
+      "Donu, Spire Growth, The Maw",
+      "Jaw Worm, Donu, The Guardian",
+      "Writhing Mass, Fungi Beast, Shelled Parasite",
+      ">Pointy, Romeo, Bear",
+      "Bear, Pointy, Romeo",
+      "Romeo, Pointy, Bear",
+      "Pointy, Bear, Romeo",
+      ">Blade Storm",
+      "Dodge and Roll",
+      "Doppelganger",
+      "Riddle with Holes",
+      "Boot Sequence",
+      ">Recursion",
+      "Machine Learning",
+      "Reinforced Body",
+      "Spike Slime",
+      "Red Louse",
+      "Mad Gremlin",
+      ">Blue Slaver",
+      "The Collector",
+      "The Time Eater",
+      "The Mystic",
+      ">The Centurion",
+      "One",
+      "Two",
+      ">Three",
+      "Four",
+      "img:images/1024PortraitsBeta/green/skill/backflip.png",
+      "img:images/1024PortraitsBeta/green/skill/outmaneuver.png",
+      "img:images/1024PortraitsBeta/green/skill/blur.png",
+      ">img:images/1024PortraitsBeta/green/skill/acrobatics.png",
+      ">Enrage",
+      "Choke",
+      "Panache",
+      "Lock-On",
+      ">Metalicize",
+      "Dexterity",
+      "Barricade",
+      "Plated Armor",
+      ">A bomb",
+      "A flask",
+      "A blade",
+      "A syringe",
+      ">31",
+      "34",
+      "29",
+      "26",
+      ">Shame and Writhe",
+      "Regret and Pain",
+      "Shame and Injury",
+      "Pride and Regret",
+      ">Shops are more costly",
+      "Unfavorable Events",
+      "Bosses are tougher",
+      "Upgraded cards appear less often",
+      ">Common",
+      "Uncommon",
+      "Rare",
+      "Shop",
+      "Common",
+      "Uncommon",
+      ">Rare",
+      "Shop",
+      "Common",
+      "Uncommon",
+      "Rare",
+      ">Shop"
+    ]
+  },
+  "theJungle:FauxPas": {
+    "NAME": "Faux Pas",
+    "DESCRIPTIONS": [
+      "As you walk through a #gdense #gportion of the Jungle, walls of trees seem to ~bend~ ~and~ ~twist~ into a narrow passageway. You catch a flash of light reflecting off several pairs of eyes, #y~skulking~ in the #pshadows near the tunnel of trees, watching your approach.",
+      "You decide to explore the strange formation of trees. As you walk the path, you are constantly surrounded by the ~rustling~ ~of~ #g~leaves,~ hushed whispers, and @muffled@ @laughter.@ Eventually, you find yourself approaching a clearing in the dense trees, with a #ystrange #yeffigy located on a stump right in the center. Just when you think you're walking right into an ambush, a #ysmall #yorange #yfaux ~leaps~ from behind a tree and sits at the entrance to the clearing in front of you, eyeing you curiously.",
+      "You decide, this time, that discretion is the better part of valor and make your way around the cluster of trees.",
+      "Something about the #yplayful #yfauxes captures a rare part of your imagination. You decide to humor the #yfaux and, before you know it, you find yourself caught up in their various games. NL NL Some time later you find yourself back at the entrance of the trees, out of breath but with a #rrenewed #rvigor for your quest.",
+      "A #p~hushed~ #p~silence~ falls over the clearing, and you could swear you see the faux's expression change to one of #p~deep~ #p~sadness.~ You turn to look at a quiet @sniffle@ you hear to your right, but there is nothing. When you look back, the faux's leader is gone. NL NL All that's left is the #ystrange #yobject on the stump, which you decide to take back with you, along with a deep #psense #pof #pshame for having disappointed the forest's critters.",
+      "You can only assume this is a trap. You decide to turn and flee. NL NL The fauxes begin crying excitedly. #b\"A #brace?\" #g~\"I~ #g~love~ #g~races!\"~ #p\"I'll #p@definitely@ #pwin #pthis #ptime!\" #r\"Wow, #rthis #rone #ris #rfast!\" NL NL The voices close in, but you stay just ahead of them. Just when you think your lungs might give out, you burst out into the open, outside of the maw of the forest. Your pursuers stop, and silence falls. NL NL After you catch your breath, you notice a small sack lying on the ground, #yfilled #ywith #ygold. Attached is a note simply saying #p\"winner!\" NL NL What strange creatures.",
+      "Before you can react, he speaks. #y\"Are #yyou #your #ynew #yfriend?\" NL NL Chattering voices suddenly fill the forest around you. #g\"I #glove #gnew #gfriends!\" #b\"Do #byou #bthink #bthis #bone #bwill #bstay #ba #bwhile?\" #p\"Oh #pit's #pbeen #p~so~ #p~long!\"~ #r\"I'm #rso #rexcited #rto #rplay #rwith #ryou!\" NL NL The faux speaks again. #y\"It's #ygoing #yto #ybe #y@so@ #y@much@ #y@fun!@ #yDon't #yyou #yagree?\" NL NL Do you agree?"
+    ],
+    "OPTIONS": [
+      "[Enter] Explore the passageway.",
+      "[Leave] Turn back.",
+      "[Agree] #gGain #g5 #gMaximum #gHP. #rLose #r10 #rHP.",
+      "[Disagree] #gObtain #ga #gspecial #gRelic. #rBecome #rCursed #r- #rShame.",
+      "[Run] #yGain #y200 #yGold. #rBecome #rCursed #r- #rNormality",
+      "[Leave]",
+      "[Agree] #gGain #g5 #gMaximum #gHP. #rLose #r15 #rHP.",
+      "[Run] #yGain #y150 #yGold. #rBecome #rCursed #r- #rNormality",
+      "[Continue]"
+    ]
+  },
+  "theJungle:LostInTheJungle": {
+    "NAME": "Lost in the Jungle",
+    "DESCRIPTIONS": [
+      "You have lost your orientation, and the way ahead is blocked by rubble. You cannot move further. NL NL Where should you turn to climb higher?",
+      "You climb a nearby vine, the weight of your relics dragging you down as the vine's thorns dig into your hands. NL NL As you reach the canopy, you spot a clearing nearby.",
+      "You reach a clearing in the jungle. It looks like someone has been digging here recently.",
+      "You use your shovel to dig up the ground. NL NL Very quicly you hit a chest, which is filled with #y",
+      " #ygold! NL NL Unfortunately, you are still lost.",
+      "You look around, and spot an abandoned shovel. This will prove useful later on. NL NL Unfortunately, you are still lost."
+    ],
+    "OPTIONS": [
+      "[Climb a thorny vine] #rTake #r",
+      " #rdamage. Find something.",
+      "[Squeeze through] #rBecome #rCursed #r- #rWrithe. Find something.",
+      "[Turn back] Leave.",
+      "[Go to the clearing]",
+      "[Dig]",
+      "[Locked] Requires: Shovel",
+      "[Look around]",
+      "[Locked]",
+      "[Leave]"
+    ]
+  },
+  "theJungle:Kidnappers": {
+    "NAME": "Misty Forest",
+    "DESCRIPTIONS": [
+      "As you're traversing through the ~foggy~ ~jungle~ , a rope suddenly tightens around your ankle. NL #r@You've@ #r@been@ #r@caught@ #r@in@ #r@a@ #r@trap!@",
+      "A number of tribesmen surround you. They are wearing #g~green~ robes and #r@animal@ #r@skulls@ #r@for@ #r@masks@ . You can't help but feel #r~malice~ coming from them. NL \"We caught one!\" NL ~\"Hey,~ ~this~ ~one~ ~doesn't~ ~look~ ~like~ ~a~ ~cultist...?\"~ NL \"You never know with those guys, #r@let's@ #r@get@ #r@'em...@ \" NL You may have time to escape in the confusion.",
+      "You make it clear that you are #r~NOT~ a cultist, nor an enemy, and have no qualms with their clan. NL Negotiating is a bit #r@painful@ , but they let you go, for a small price.",
+      "You struggle hard, but manage to use your weapon and break through the rope while they approach. NL They give chase, while more tribesmen surround you!",
+      "Seeing as you are not a cultist or an animal, you manage to bribe them with #ysome #ygold. NL They untie you and let you leave in piece, #r~but~ #r~you~ #r~can't~ #r~shake~ #r~the~ #r~feeling~ #r~that~ #r~someone~ #r~keeps~ #r~watching~ #r~you...~"
+    ],
+    "OPTIONS": [
+      "[Proceed]",
+      "[Negotiate] #rLose #r",
+      " #rHP. #gRemove #ga #gcard #gfrom #gyour #gdeck.",
+      "[Cut the Rope] #rEnter #ra #rfight!",
+      "[Bribe] #rLose #r",
+      " #rGold.",
+      "[Locked] Requires: ",
+      " Gold.",
+      "[Leave]",
+      "[Fight!] #rGet #rInto #rA #rScuffle.",
+      "Remove a card from your deck."
+    ]
+  },
+  "theJungle:HappyBirthday" : {
+    "NAME": "Happy Birthday",
+    "DESCRIPTIONS": [
+      "While wandering the jungle, you come across... NL ...a birthday cake? NL NL A small note sits next to the cake. It reads: NL NL #b\"Happy #bBirthday #bMTS! NL #b(Please #bonly #btake #bone #bslice) NL #b- #bkio\"",
+      "You only take a single slice, just as the note asked. NL NL It's quite delicious.",
+      "Looking around, you see nothing stopping you from taking the whole cake. NL NL #gIt #gis #gextremely #gtasty, but soon you are overcome by a #r~sense~ #r~of~ #r~shame~ at the atrocity you have committed."
+    ],
+    "OPTIONS": [
+      "[Take a Slice] #gGain #g%d #gMax #gHP.",
+      "[Steal Cake] #gGain #g%d #gMax #gHP. #rEternal #rShame.",
+      "[Leave]"
     ]
   }
 }
