@@ -112,5 +112,20 @@
 		"NAME": "Slimy Jungle Vines",
 		"MOVES": ["Tangle","Split"],
 		"DIALOG": ["Jungle Vines"]
+	},
+	"theJungle:MamaSnecko": {
+		"NAME": "Mama Snecko",
+		"MOVES": ["Lay Eggs","Glare","Tail Whip","Bite","Furious Attack"],
+		"DIALOG": ["~Hissssss...~"]
+	},
+	"theJungle:SneckoEgg": {
+		"NAME": "Snecko Egg",
+		"MOVES": ["","Hatch"],
+		"DIALOG": [""]
+	},
+	"theJungle:BabySnecko": {
+		"NAME": "Baby Snecko",
+		"MOVES": ["Bite","Glare"],
+		"DIALOG": [""]
 	}
 }
