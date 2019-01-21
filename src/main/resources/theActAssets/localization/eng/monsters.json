@@ -109,14 +109,14 @@
 			""
 		]
 	},
-	"theJungle:SilentTribesmen": {
+	"theJungle:JungleHunters": {
 		"MOVES": [
 			"Backflip",
 			"Neutralize",
 			"Sneaky Strike",
-			"Blade Dance"
+			"Spear Dance"
 		],
-		"NAME": "Silent Clansman"
+		"NAME": "Jungle Hunter"
 	},
 	"theJungle:SwingingAxe": {
 		"MOVES": [

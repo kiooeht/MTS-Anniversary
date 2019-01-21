@@ -34,6 +34,8 @@ import theAct.cards.curses.EternalShame;
 import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
+import theAct.monsters.JungleHunters;
+import theAct.monsters.Phrog;
 import theAct.monsters.*;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.events.SneckoIdol;
@@ -108,12 +110,13 @@ public class TheActMod implements
 
         // Add monsters here
 
+        BaseMod.addMonster(JungleHunters.ENCOUNTER_ID, JungleHunters.NAME, () -> new MonsterGroup(
+                new AbstractMonster[] { new JungleHunters(-385.0F, -15.0F), new JungleHunters(-133.0F, 10.0F)}));
+
+        BaseMod.addMonster(JungleHunters.EVENT_ID, JungleHunters.NAME, () -> new MonsterGroup(
+                new AbstractMonster[] { new JungleHunters(-385.0F, -15.0F), new JungleHunters(-133.0F, 10.0F), new JungleHunters(150.0F, -30.0F)}));
 
         //Normal Enemies
-        BaseMod.addMonster(SilentTribesmen.ENCOUNTER_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
-            new AbstractMonster[] { new SilentTribesmen(-385.0F, 0.0F), new SilentTribesmen(90.0F, 0.0F)}));
-        BaseMod.addMonster(SilentTribesmen.EVENT_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
-                new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F), new SilentTribesmen(125.0F, -30.0F)}));
         BaseMod.addMonster(MushroomYandere.ENCOUNTER_ID, () -> new MonsterGroup(
                 new AbstractMonster[]{
                         new MushroomYandere(-385.0F, -15.0F),

@@ -1,5 +1,7 @@
 package theAct.monsters;
 
+import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
@@ -18,22 +20,22 @@ import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 import theAct.TheActMod;
 import theAct.powers.CautiousPower;
 
-public class SilentTribesmen extends AbstractMonster {
-    public static final String ID = TheActMod.makeID("SilentTribesmen");
-    public static final String ENCOUNTER_ID = TheActMod.makeID("SilentTribesmenEncounter");
-    public static final String EVENT_ID = TheActMod.makeID("KidnapperSilents");
+public class JungleHunters extends AbstractMonster {
+    public static final String ID = TheActMod.makeID("JungleHunters");
+    public static final String ENCOUNTER_ID = TheActMod.makeID("JungleHuntersEncounter");
+    public static final String EVENT_ID = TheActMod.makeID("JungleHuntersEvent");
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
-    private static final int MIN_HP = 30;
-    private static final int MAX_HP = 37;
+    private static final int MIN_HP = 45;
+    private static final int MAX_HP = 52;
     private static final int ASC_HP_MODIFIER = 5;
-    private static final int START_BLOCK_AMT = 10;
+    private static final int START_BLOCK_AMT = 11;
     private static final int START_BLOCK_ASC_MODIFIER = 5;
-    private static final int BLOCK_MOVE_AMT = 15;
+    private static final int BLOCK_MOVE_AMT = 16;
     private static final int BLOCK_MOVE_ASC_MODIFIER = 5;
     private static final int STUN_AMT = 4;
     private static final int STUN_AMT_ASC_MODIFIER = 1;
-    private static final int MED_ATK_DMG = 9;
+    private static final int MED_ATK_DMG = 10;
     private static final int MED_ATK_DMG_ASC_MODIFIER = 2;
     private static final int BIG_ATK_DMG = 3;
     private static final int BIG_ATK_DMG_TIMES = 5;
@@ -50,9 +52,11 @@ public class SilentTribesmen extends AbstractMonster {
     private boolean isFirstTurn = true;
     private boolean doBigAttack = false;
 
-    public SilentTribesmen(float x, float y) {
+    public JungleHunters(float x, float y) {
         super(NAME, ID, MAX_HP, 0.0F, 10.0F, 280.0F, 280.0F, null, x, y);
-        this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
+
+        //this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
+
         if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(MIN_HP + ASC_HP_MODIFIER, MAX_HP + ASC_HP_MODIFIER);
         } else {
@@ -78,6 +82,16 @@ public class SilentTribesmen extends AbstractMonster {
         }
         damage.add(new DamageInfo(this, BIG_ATK_DMG));
 
+        this.animY += 25f;
+
+        this.loadAnimation(
+                TheActMod.assetPath("images/monsters/hunters/JungleHunter.atlas"),
+                TheActMod.assetPath("images/monsters/hunters/JungleHunter.json"),
+                0.75f);
+
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
+
     }
 
     @Override
@@ -88,6 +102,9 @@ public class SilentTribesmen extends AbstractMonster {
             case STUNNED:
                 setMove((byte)4, Intent.STUN);
                 createIntent();
+                break;
+            case "ATTACK":
+                this.state.setAnimation(1, "Attack", false);
                 break;
         }
     }
