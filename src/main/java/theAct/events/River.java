@@ -28,7 +28,7 @@ public class River extends AbstractImageEvent
 
     public River()
     {
-        super(NAME, DESCRIPTIONS[0], null);
+        super(NAME, DESCRIPTIONS[0], TheActMod.assetPath("images/events/spiritRiver.png"));
         if(AbstractDungeon.player.masterDeck.group.size() < REMOVE_CARDS)
             cardsToRemove = AbstractDungeon.player.masterDeck.group.size();
         imageEventText.setDialogOption(OPTIONS[0] + cardsToRemove + OPTIONS[1]);

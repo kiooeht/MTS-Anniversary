@@ -1,8 +1,11 @@
 package theAct.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FlameBarrierPower;
 
 @SpirePatch(
@@ -11,8 +14,12 @@ import com.megacrit.cardcrawl.powers.FlameBarrierPower;
 )
 public class FlameBarrierPatch
 {
-    public static void Replace(FlameBarrierPower __instance)
+    public static SpireReturn Prefix(FlameBarrierPower __instance)
     {
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(__instance.owner, __instance.owner, "Flame Barrier"));
+        if (!(__instance.owner instanceof AbstractPlayer)) {
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(__instance.owner, __instance.owner, FlameBarrierPower.POWER_ID));
+            return SpireReturn.Return(null);
+        }
+        return SpireReturn.Continue();
     }
 }

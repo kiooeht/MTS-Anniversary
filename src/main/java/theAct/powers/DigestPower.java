@@ -61,16 +61,18 @@ public class DigestPower extends Power implements NonStackablePower
 
 	@Override
 	public int onAttacked(DamageInfo info, int damageAmount) {
-		amount--;
-		if (amount == 0) {
-			if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
-				AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card.makeSameInstanceOf()));
-			} else {
-				AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(card.makeSameInstanceOf(), 1));
+		if (info.type == DamageInfo.DamageType.NORMAL) {
+			amount--;
+			if (amount == 0) {
+				if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
+					AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card.makeSameInstanceOf()));
+				} else {
+					AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(card.makeSameInstanceOf(), 1));
+				}
+				AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, this));
 			}
-			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, this));
+			updateDescription();
 		}
-		updateDescription();
 		return super.onAttacked(info, damageAmount);
 	}
 
