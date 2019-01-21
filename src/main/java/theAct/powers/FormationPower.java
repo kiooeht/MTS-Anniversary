@@ -34,10 +34,10 @@ public class FormationPower extends Power {
 	
 	public void recalculateAmt() {
 		amount = ((SpawnedSpyder)owner).owner.smallSpyderAmt + ((SpawnedSpyder)owner).owner.bigSpyderAmt;
-		if (amount < 6 && owner.hasPower(InfiniteIntangiblePower.powerID)) {
+		if (amount < 6 && owner.hasPower(InfiniteIntangiblePower.POWER_ID)) {
 			flash();
-			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, InfiniteIntangiblePower.powerID));
-		} else if (amount >= 6 && !owner.hasPower(InfiniteIntangiblePower.powerID)) {
+			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, InfiniteIntangiblePower.POWER_ID));
+		} else if (amount >= 6 && !owner.hasPower(InfiniteIntangiblePower.POWER_ID)) {
 			flash();
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner, new InfiniteIntangiblePower(owner)));
 		}

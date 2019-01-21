@@ -9,17 +9,17 @@ import theAct.TheActMod;
 import theAct.powers.abstracts.Power;
 
 public class InfiniteIntangiblePower extends Power {
-	public static final String NAME = "Intangible";
-	public static final String powerID = TheActMod.makeID(NAME);
-	private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(NAME);
+	public static final String POWER_ID = TheActMod.makeID("InfiniteIntangible");
+	private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+    public static final String NAME = strings.NAME;
 	
 	public InfiniteIntangiblePower(AbstractCreature owner) {
+        this.ID = POWER_ID;
+        this.name = strings.NAME;
 		this.owner = owner;
 		this.amount = -1;
 		this.type = PowerType.BUFF;
-		this.name = strings.NAME;
 		this.setImage(NAME + "84.png", NAME + "32.png");
-		this.ID = powerID;
         this.priority = 99;
 		this.updateDescription();
 	}

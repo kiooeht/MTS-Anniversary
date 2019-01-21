@@ -140,7 +140,7 @@
 			"Is #gIntangible, when there is at least #b6 #rSpyders."
 		]
 	},
-    "Intangible": {
+    "theJungle:InfiniteIntangible": {
 		"NAME" : "Intangible",
 		"DESCRIPTIONS": [
 			"Reduce ALL damage taken and HP loss to #b1."
