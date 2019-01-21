@@ -91,9 +91,9 @@
 	"theJungle:CautiousPower": {
 		"NAME" : "Cautious",
 		"DESCRIPTIONS": [
-			"Will get stunned after being hit #b",
-			" more time this turn.",
-			" more time this turn.",
+			"After being attacked #b",
+			" more time this turn, become Stunned.",
+			" more times this turn, become Stunned.",
 			"This enemy's caution is broken."
 		]
 	},

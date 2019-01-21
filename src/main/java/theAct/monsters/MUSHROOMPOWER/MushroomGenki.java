@@ -19,8 +19,8 @@ public class MushroomGenki extends AbstractMonster {
     public static final String ENCOUNTER_ID = TheActMod.makeID("MUSHROOMGANG");
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
-    private static final int MIN_HP = 16;
-    private static final int MAX_HP = 19;
+    private static final int MIN_HP = 30;
+    private static final int MAX_HP = 37;
     private static final int ASC_HP_MODIFIER = 4;
     private static final int STR_AMT = 1;
     private static final int STR_AMT_ASC_MODIFIER = 1;

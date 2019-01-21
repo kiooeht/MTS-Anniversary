@@ -1,6 +1,7 @@
 package theAct.powers;
 
 import basemod.BaseMod;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -15,7 +16,8 @@ import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import theAct.TheActMod;
 import theAct.powers.abstracts.Power;
 
-public class DigestPower extends Power {
+public class DigestPower extends Power implements NonStackablePower
+{
 
 	public static final String powerID = TheActMod.makeID("DigestPower");
 	private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(powerID);
