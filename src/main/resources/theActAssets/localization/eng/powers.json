@@ -70,17 +70,22 @@
 	"theJungle:RandomizePower": {
 		"NAME": "Selective Confusion",
 		"DESCRIPTIONS": [
-			"At the start of your turn, randomizes the cost of #g",
-			" cards in your hand. If your hand has less cards than the number of stacks, the remaining stacks will hold over until your next turn."
+			"Randomizes the cost of the next cards you draw.",
+			"Randomize the cost of the next card you draw.",
+			"Randomize the cost of the next #b",
+			" cards you draw.",
+			" NL Has randomized #b",
+			" card this turn.",
+			" cards this turn."
 		]
 	},
 	"theJungle:CautiousPower": {
 		"NAME" : "Cautious",
 		"DESCRIPTIONS": [
-			"u gotta hit this dude #b",
-			" more time, darn lmao",
-			" more times, darn lmao",
-			"This dude stunned for a turn lmao gottem."
+			"Will get stunned after being hit #b",
+			" more time this turn.",
+			" more time this turn.",
+			"This enemy's caution is broken."
 		]
 	},
 	"theJungle:Pride": {

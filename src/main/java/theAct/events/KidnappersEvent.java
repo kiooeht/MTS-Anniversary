@@ -11,10 +11,9 @@ import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.*;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import theAct.TheActMod;
-import theAct.monsters.SilentTribesmen;
+import theAct.monsters.JungleHunters;
 
 import java.util.ArrayList;
 
@@ -31,7 +30,7 @@ public class KidnappersEvent extends AbstractImageEvent {
     private ArrayList<AbstractRelic> silentRelics = new ArrayList<>();
 
     public KidnappersEvent() {
-        super(NAME, DESCRIPTIONS[0], TheActMod.assetPath("images/events/KidnappersEvent.png"));
+        super(NAME, DESCRIPTIONS[0], TheActMod.assetPath("images/events/huntersForest.png"));
         imageEventText.setDialogOption(OPTIONS[0]);
         if (AbstractDungeon.ascensionLevel >= 15) {
             HEALTH_LOSS = 15;
@@ -56,7 +55,7 @@ public class KidnappersEvent extends AbstractImageEvent {
             case 0:
                 switch(i) {
                     case 0:
-                        imageEventText.loadImage(TheActMod.assetPath("images/events/KidnappersEventTwo.png"));
+                        imageEventText.loadImage(TheActMod.assetPath("images/events/huntersForestOhNo.png"));
                         imageEventText.updateBodyText(DESCRIPTIONS[1]);
                         imageEventText.updateDialogOption(0, OPTIONS[1] + HEALTH_LOSS + OPTIONS[2]);
                         imageEventText.setDialogOption(OPTIONS[3]);
@@ -99,7 +98,7 @@ public class KidnappersEvent extends AbstractImageEvent {
             case 2:
                 switch(i) {
                     case 0:
-                        AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter(SilentTribesmen.EVENT_ID);
+                        AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter(JungleHunters.EVENT_ID);
                         enterCombatFromImage();
                         int rng = AbstractDungeon.miscRng.random(silentRelics.size() - 1);
                         AbstractRelic r = silentRelics.get(rng);
@@ -115,7 +114,7 @@ public class KidnappersEvent extends AbstractImageEvent {
                                 AbstractDungeon.rareRelicPool.removeIf(id ->  id.equals(r.relicId));
                                 break;
                         }
-                        AbstractDungeon.lastCombatMetricKey = "KidnapperSilents";
+                        AbstractDungeon.lastCombatMetricKey = "JungleHuntersEvent";
                         break;
                 }
                 break;
@@ -139,11 +138,11 @@ public class KidnappersEvent extends AbstractImageEvent {
 
     private void removeCard() {
         if (!AbstractDungeon.isScreenUp) {
-            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[10], false, false, false, false);
+            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck.getPurgeableCards(), 1, OPTIONS[10], false, false, false, true);
         } else {
             AbstractDungeon.dynamicBanner.hide();
             AbstractDungeon.previousScreen = AbstractDungeon.screen;
-            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, OPTIONS[10], false, false, false, false);
+            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck.getPurgeableCards(), 1, OPTIONS[10], false, false, false, true);
         }
     }
 }

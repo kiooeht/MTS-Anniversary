@@ -36,6 +36,10 @@ public class PhrogLickAction extends AbstractGameAction {
 				this.group = AbstractDungeon.player.hand;
 			}
 		}
+		if (group.isEmpty()) {
+			isDone = true;
+			return;
+		}
 		if(this.duration == this.startingDuration){
 			this.card = group.getRandomCard(false, AbstractCard.CardRarity.RARE);
 			if(this.card == null) {

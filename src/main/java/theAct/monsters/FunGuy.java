@@ -37,6 +37,7 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import theAct.TheActMod;
+import theAct.monsters.TotemBoss.AbstractTotemSpawn;
 import theAct.powers.FungalInfectionPower;
 import theAct.powers.InfectiousSporesPower;
 
@@ -122,7 +123,7 @@ public class FunGuy extends AbstractMonster {
     public void usePreBattleAction() {
 		CardCrawlGame.music.unsilenceBGM();
 		AbstractDungeon.scene.fadeOutAmbiance();
-		AbstractDungeon.getCurrRoom().playBgmInstantly("BOSS_CITY");
+		AbstractDungeon.getCurrRoom().playBgmInstantly("BOSSTOTEM");
         UnlockTracker.markBossAsSeen(ID);
         
 		this.spawnTheBeasts(AbstractDungeon.ascensionLevel >= 4 ? 2 : 1, AbstractDungeon.ascensionLevel >= 19 ? 2 : 0);
@@ -250,6 +251,16 @@ public class FunGuy extends AbstractMonster {
 			}
 		}
 	}
-	
+
+	public void die() {
+
+		this.useFastShakeAnimation(5.0F);
+		CardCrawlGame.screenShake.rumble(4.0F);
+		super.die();
+
+		AbstractDungeon.scene.fadeInAmbiance();
+		this.onBossVictoryLogic();
+
+	}
 	
 }

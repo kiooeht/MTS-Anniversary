@@ -101,7 +101,7 @@ public class TotemBoss extends AbstractMonster {
     public void usePreBattleAction() {
         CardCrawlGame.music.unsilenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
-        AbstractDungeon.getCurrRoom().playBgmInstantly("BOSS_CITY");
+        AbstractDungeon.getCurrRoom().playBgmInstantly("BOSSTOTEM");
 
         remainingTotems.add(1);
         remainingTotems.add(2);

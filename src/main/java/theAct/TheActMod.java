@@ -34,6 +34,8 @@ import theAct.cards.curses.EternalShame;
 import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
+import theAct.monsters.JungleHunters;
+import theAct.monsters.Phrog;
 import theAct.monsters.*;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.events.SneckoIdol;
@@ -65,8 +67,6 @@ public class TheActMod implements
         CustomSavable<Boolean>,
         PostUpdateSubscriber
 {
-
-
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
 
     public static boolean wentToTheJungle = false;
@@ -110,24 +110,25 @@ public class TheActMod implements
 
         // Add monsters here
 
+        BaseMod.addMonster(JungleHunters.ENCOUNTER_ID, JungleHunters.NAME, () -> new MonsterGroup(
+                new AbstractMonster[] { new JungleHunters(-385.0F, -15.0F), new JungleHunters(-133.0F, 10.0F)}));
+
+        BaseMod.addMonster(JungleHunters.EVENT_ID, JungleHunters.NAME, () -> new MonsterGroup(
+                new AbstractMonster[] { new JungleHunters(-385.0F, -15.0F), new JungleHunters(-133.0F, 10.0F), new JungleHunters(150.0F, -30.0F)}));
 
         //Normal Enemies
-        BaseMod.addMonster(SilentTribesmen.ENCOUNTER_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
-            new AbstractMonster[] { new SilentTribesmen(-385.0F, 0.0F), new SilentTribesmen(90.0F, 0.0F)}));
-        BaseMod.addMonster(SilentTribesmen.EVENT_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
-                new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F), new SilentTribesmen(125.0F, -30.0F)}));
         BaseMod.addMonster(MushroomYandere.ENCOUNTER_ID, () -> new MonsterGroup(
                 new AbstractMonster[]{
                         new MushroomYandere(-385.0F, -15.0F),
                         new MushroomKuudere(-133.0F, 0.0F),
                         new MushroomGenki(125.0F, -30.0F)
                 }));
-        BaseMod.addMonster(makeID("Silent_and_trap"), () -> new MonsterGroup(
+        BaseMod.addMonster(makeID("Snecko_Cultist_and_trap"), () -> new MonsterGroup(
                 new AbstractMonster[]{
                 		new SwingingAxe(-450.0F, 100.0F),
                 		new SneakySpyder(-223.0F, 330.0F),
                         new WebberSpyder(-159.0F, -10.0F),
-                        new SilentTribesmen(120.0F, 0.0F)
+                        new SneckoCultist(120, 0)
                 }));
         BaseMod.addMonster(makeID("6_Spyders"), () -> new MonsterGroup(
                 new AbstractMonster[]{
@@ -145,8 +146,8 @@ public class TheActMod implements
                     }));
         BaseMod.addMonster(makeID("2_Flameangoes"), () -> new MonsterGroup(
                 new AbstractMonster[] {
-                        new Flameango(80),
-                        new Flameango(-250)
+                        new Flameango(-250),
+                        new Flameango(80)
                     }));
         BaseMod.addMonster(makeID("2_Snecko_Cultists"), () -> new MonsterGroup(
                 new AbstractMonster[] {
@@ -157,6 +158,8 @@ public class TheActMod implements
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
         BaseMod.addMonster(SwingingAxe.ID, () -> new SwingingAxe());
         BaseMod.addMonster(Lyon.ID, Lyon::new);
+        BaseMod.addMonster(GiantWrat.ID, () -> new MonsterGroup(
+                new AbstractMonster[] { new GiantWrat(-85.0F, -15.0F)}));
         //Elites
         BaseMod.addMonster(Cassacara.ID, () -> new Cassacara(50.0F, 0.0F));
         BaseMod.addMonster(Phrog.ID,() -> new MonsterGroup(
@@ -197,7 +200,8 @@ public class TheActMod implements
     }
 
     @Override
-    public void receiveEditCards() {
+    public void receiveEditCards()
+    {
         BaseMod.addCard(new PetSnecko());
         BaseMod.addCard(new EternalShame());
         BaseMod.addCard(new Gourd());
@@ -218,7 +222,7 @@ public class TheActMod implements
         BaseMod.addRelic(new Flamango(), RelicType.SHARED);
         BaseMod.addRelic(new ShellPeas(), RelicType.SHARED);
         BaseMod.addRelic(new Creamberry(), RelicType.SHARED);
-
+        BaseMod.addRelic(new SpiritDisease(), RelicType.SHARED);
     }
 
     @Override
@@ -255,20 +259,23 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(ScoreBonusStrings.class, assetPath(path + "score_bonuses.json"));
     }
 
-    private static void addSound(String id, String path) {
+    private static void addSound(String id, String path)
+    {
         @SuppressWarnings("unchecked")
         HashMap<String,Sfx> map = (HashMap<String,Sfx>) ReflectionHacks.getPrivate(CardCrawlGame.sound, SoundMaster.class, "map");
         map.put(id, new Sfx(path, false));
     }
 
     @Override
-    public Boolean onSave() {
+    public Boolean onSave()
+    {
         logger.info("Saving wentToTheJungle boolean: " + wentToTheJungle);
         return wentToTheJungle;
     }
 
     @Override
-    public void onLoad(Boolean loadedBoolean) {
+    public void onLoad(Boolean loadedBoolean)
+    {
         if (loadedBoolean != null) {
             wentToTheJungle = loadedBoolean;
         } else {
@@ -278,7 +285,8 @@ public class TheActMod implements
     }
 
     @Override
-    public void receivePostUpdate() {
+    public void receivePostUpdate()
+    {
         if (AbstractDungeon.player == null) {
             return;
         }
@@ -286,8 +294,4 @@ public class TheActMod implements
             SneckoAutograph.iHatePostUpdate();
         }
     }
-
-	public static String makeId() {
-		return null;
-	}
 }
