@@ -25,8 +25,10 @@ public class ShellPeas extends CustomRelic {
     }
 
     public int onAttacked(DamageInfo info, int damageAmount) {
-        flash();
-        AbstractDungeon.actionManager.addToTop(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, TEMPORARY_HP_PER_HIT));
+        if (info.type == DamageInfo.DamageType.NORMAL) {
+            flash();
+            AbstractDungeon.actionManager.addToTop(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, TEMPORARY_HP_PER_HIT));
+        }
         return damageAmount;
     }
 
