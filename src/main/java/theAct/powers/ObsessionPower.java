@@ -43,8 +43,8 @@ public class ObsessionPower extends Power {
             }
             if (aliveCount >= 2) {
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, new DamageInfo(owner, amount)));
-                return;
             }
+            return;
         }
         if (c.type == AbstractCard.CardType.ATTACK && a.target != owner) {
             AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, new DamageInfo(owner, amount)));
