@@ -46,9 +46,9 @@
 	"theJungle:CautiousPower": {
 		"NAME" : "Cautious",
 		"DESCRIPTIONS": [
-			"u gotta hit this dude #b",
-			" more time, darn lmao",
-			" more times, darn lmao",
+			"Will get stunned after being hit #b",
+			" more time this turn.",
+			" more time this turn.",
 			"This dude stunned for a turn lmao gottem."
 		]
 	}

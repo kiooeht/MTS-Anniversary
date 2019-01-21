@@ -11,10 +11,9 @@ import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.*;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import theAct.TheActMod;
-import theAct.monsters.SilentTribesmen;
+import theAct.monsters.JungleHunters;
 
 import java.util.ArrayList;
 
@@ -99,7 +98,7 @@ public class KidnappersEvent extends AbstractImageEvent {
             case 2:
                 switch(i) {
                     case 0:
-                        AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter(SilentTribesmen.EVENT_ID);
+                        AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter(JungleHunters.EVENT_ID);
                         enterCombatFromImage();
                         int rng = AbstractDungeon.miscRng.random(silentRelics.size() - 1);
                         AbstractRelic r = silentRelics.get(rng);
@@ -115,7 +114,7 @@ public class KidnappersEvent extends AbstractImageEvent {
                                 AbstractDungeon.rareRelicPool.removeIf(id ->  id.equals(r.relicId));
                                 break;
                         }
-                        AbstractDungeon.lastCombatMetricKey = "KidnapperSilents";
+                        AbstractDungeon.lastCombatMetricKey = "JungleHuntersEvent";
                         break;
                 }
                 break;
