@@ -139,7 +139,8 @@
 			"Increase the #yCost of the first #b",
 			" cards you draw by [E] for the rest of the combat.",
             " NL This has affacted #b",
-            " cards this turn."
+            " cards this turn.",
+            " card this turn."
 		]
 	},
 	"theJungle:Incubation": {

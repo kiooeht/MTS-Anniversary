@@ -1,6 +1,5 @@
 package theAct.monsters.SpyderBoss;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -11,7 +10,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.AbstractMonster.Intent;
 import com.megacrit.cardcrawl.powers.BlurPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
@@ -20,11 +18,12 @@ import theAct.TheActMod;
 
 public class DefenderSpyder extends Spyder{
 	
-	public static final String ID = TheActMod.makeID("DefenderSpyder");
+	public static final String ID_WITHOUT_PREFIX = "DefenderSpyder";
+	public static final String ID = TheActMod.makeID(ID_WITHOUT_PREFIX);
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     
-    public static final int HP = 30;
+    public static final int HP = 40;
     
     public DefenderSpyder(float x, float y, int slot) {
     	this(x, y, slot, 0, true);
@@ -35,7 +34,7 @@ public class DefenderSpyder extends Spyder{
     }
     
 	public DefenderSpyder(float x, float y, int slot, int strength, boolean normal) {	
-		super(NAME, ID, x, y, slot, strength);
+		super(NAME, ID_WITHOUT_PREFIX, x, y, slot, strength);
 		
 		this.stronger = AbstractDungeon.ascensionLevel >= (normal?17:19);
 		
@@ -72,12 +71,12 @@ public class DefenderSpyder extends Spyder{
             break;
 		case 2:
             for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-            	AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, this, stronger?6:4, true));
+            	AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, this, stronger?8:6, true));
             	if(stronger)
-            		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new BlurPower(m, 1), 1, true));
+            		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new BlurPower(m, 2), 2, true));
             }
             if(!stronger)
-            	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new BlurPower(this, 1), 1, true));
+            	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new BlurPower(this, 2), 2, true));
             break;
 		case 3:
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WeakPower(AbstractDungeon.player, 1, true), 1, true));

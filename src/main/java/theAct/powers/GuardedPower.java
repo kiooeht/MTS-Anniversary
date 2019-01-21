@@ -29,6 +29,11 @@ public class GuardedPower extends Power {
     public void playApplyPowerSfx() {
         CardCrawlGame.sound.play("POWER_INTANGIBLE", 0.05f);
     }
+	@Override
+	public void onRemove() {
+		CardCrawlGame.sound.play("POWER_FOCUS", 0.1f);
+		CardCrawlGame.sound.play("BLOCK_BREAK", 0.05f);
+	}
     
     @Override
     public float atDamageReceive(float damage, final DamageInfo.DamageType type) {

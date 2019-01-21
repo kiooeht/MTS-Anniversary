@@ -17,7 +17,7 @@ public class Spyder extends AbstractMonster {
     public boolean stronger;
 
     public Spyder(String name, String ID, float x, float y, int slot, int strength) {
-        super(name, ID, 1, 0.0F, 0F, slot==-1? 240F: 160F, slot==-1? 240F: 160F, TheActMod.assetPath("images/monsters/spyders/" + name + ".png"), 
+        super(name, TheActMod.makeID(ID), 1, 0.0F, 0F, slot==-1? 240F: 160F, slot==-1? 240F: 160F, TheActMod.assetPath("images/monsters/spyders/" + ID + ".png"), 
         		x + AbstractDungeon.miscRng.random(-20, 20), y + AbstractDungeon.miscRng.random(-20, 20));
         
         this.type = EnemyType.NORMAL;
@@ -27,10 +27,15 @@ public class Spyder extends AbstractMonster {
         this.strength = strength;
     }    
    
-    
+    @Override    
     public void usePreBattleAction() {
+    	startPowers();
+    }
+    	
+    public void startPowers() {
     	if(strength != 0)
-        	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, strength), strength));   
+        	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, strength), strength));
+    	
     	if(slot != 0)
     		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new GuardedPower(this)));
     	
@@ -49,7 +54,7 @@ public class Spyder extends AbstractMonster {
     }
  
  	public void breakGuard() {
-     
+ 		
  	}
 
     protected void getMove(int num) {

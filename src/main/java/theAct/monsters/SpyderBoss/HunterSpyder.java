@@ -1,22 +1,15 @@
 package theAct.monsters.SpyderBoss;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.AbstractMonster.Intent;
-import com.megacrit.cardcrawl.powers.BlurPower;
-import com.megacrit.cardcrawl.powers.FrailPower;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.WebEffect;
 
 import theAct.TheActMod;
@@ -24,11 +17,12 @@ import theAct.powers.WebbedPower;
 
 public class HunterSpyder extends Spyder{
 	
-	public static final String ID = TheActMod.makeID("HunterSpyder");
+	public static final String ID_WITHOUT_PREFIX = "HunterSpyder";
+	public static final String ID = TheActMod.makeID(ID_WITHOUT_PREFIX);
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     
-    public static final int HP = 36;
+    public static final int HP = 47;
     
     public HunterSpyder(float x, float y, int slot) {
     	this(x, y, slot, 0, true);
@@ -39,7 +33,7 @@ public class HunterSpyder extends Spyder{
     }
     
     public HunterSpyder(float x, float y, int slot, int strength, boolean normal) {	
-		super(NAME, ID, x, y, slot, strength);
+		super(NAME, ID_WITHOUT_PREFIX, x, y, slot, strength);
 
 		this.stronger = AbstractDungeon.ascensionLevel >= (normal?17:19);
 		
@@ -50,16 +44,16 @@ public class HunterSpyder extends Spyder{
         }      
         
         if (stronger) {
-        	this.damage.add(new DamageInfo(this, 6));
-        	this.damage.add(new DamageInfo(this, 21));
+        	this.damage.add(new DamageInfo(this, 7));
+        	this.damage.add(new DamageInfo(this, 23));
         	
         } else if (AbstractDungeon.ascensionLevel >= (normal?2:4)){
-        	this.damage.add(new DamageInfo(this, 8));
-        	this.damage.add(new DamageInfo(this, 17)); 
+        	this.damage.add(new DamageInfo(this, 9));
+        	this.damage.add(new DamageInfo(this, 19)); 
         	
         } else {
-        	this.damage.add(new DamageInfo(this, 7));
-        	this.damage.add(new DamageInfo(this, 16));
+        	this.damage.add(new DamageInfo(this, 8));
+        	this.damage.add(new DamageInfo(this, 18));
         }
 	}
 	
@@ -95,7 +89,7 @@ public class HunterSpyder extends Spyder{
 			}
 		}
 		if(l == -1)
-			l = (byte)(slot/2);
+			l = (byte)(slot%3);
 		switch(l) {
 		case 0:
 			setMove((byte) 1, Intent.ATTACK, damage.get(0).base, (stronger?3:2), true);	
