@@ -30,7 +30,7 @@ public class KidnappersEvent extends AbstractImageEvent {
     private ArrayList<AbstractRelic> silentRelics = new ArrayList<>();
 
     public KidnappersEvent() {
-        super(NAME, DESCRIPTIONS[0], TheActMod.assetPath("images/events/KidnappersEvent.png"));
+        super(NAME, DESCRIPTIONS[0], TheActMod.assetPath("images/events/huntersForest.png"));
         imageEventText.setDialogOption(OPTIONS[0]);
         if (AbstractDungeon.ascensionLevel >= 15) {
             HEALTH_LOSS = 15;
@@ -55,7 +55,7 @@ public class KidnappersEvent extends AbstractImageEvent {
             case 0:
                 switch(i) {
                     case 0:
-                        imageEventText.loadImage(TheActMod.assetPath("images/events/KidnappersEventTwo.png"));
+                        imageEventText.loadImage(TheActMod.assetPath("images/events/huntersForestOhNo.png"));
                         imageEventText.updateBodyText(DESCRIPTIONS[1]);
                         imageEventText.updateDialogOption(0, OPTIONS[1] + HEALTH_LOSS + OPTIONS[2]);
                         imageEventText.setDialogOption(OPTIONS[3]);
