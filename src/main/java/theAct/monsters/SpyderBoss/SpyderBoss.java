@@ -36,9 +36,9 @@ public class SpyderBoss extends AbstractMonster {
     public int turnAmt = 0;
 
     public SpyderBoss() {
-        super(NAME, ID, AbstractDungeon.monsterHpRng.random(135, 149), 0.0F, -30.0F, 220.0F, 320.0F, (String)null, 240.0F, 20.0F);
+        super(NAME, ID, AbstractDungeon.monsterHpRng.random(135, 149), 0.0F, 330.0F, 220.0F, 320.0F, TheActMod.assetPath("images/monsters/spyders/SpyderBoss.png"), 140.0F, -220.0F);
         this.type = EnemyType.BOSS;
-        this.loadAnimation("images/monsters/theForest/mage/skeleton.atlas", "images/monsters/theForest/mage/skeleton.json", 1.0F); //NOT DONE
+       // this.loadAnimation("images/monsters/theForest/mage/skeleton.atlas", "images/monsters/theForest/mage/skeleton.json", 1.0F); //NOT DONE
         if (AbstractDungeon.ascensionLevel >= 8) {
             this.setHp(155, 170);
         } else {
@@ -50,7 +50,8 @@ public class SpyderBoss extends AbstractMonster {
         } else {
             this.damage.add(new DamageInfo(this, 9));
         }        
-        
+
+        /*
         TrackEntry e = this.state.setAnimation(0, "Idle", true);
         this.stateData.setMix("Idle", "Sumon", 0.1F);
         this.stateData.setMix("Sumon", "Idle", 0.1F);
@@ -58,6 +59,7 @@ public class SpyderBoss extends AbstractMonster {
         this.stateData.setMix("Idle", "Hurt", 0.1F);
         this.stateData.setMix("Attack", "Idle", 0.1F);
         e.setTime(e.getEndTime() * MathUtils.random());
+        */
     }
 
     public void usePreBattleAction() {
@@ -71,13 +73,15 @@ public class SpyderBoss extends AbstractMonster {
         
         if (AbstractDungeon.ascensionLevel >= 4)
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
-        
+
+
         spawnBigSpyder(0, formation);
         if (AbstractDungeon.ascensionLevel >= 19)
         	spawnBigSpyder(0, formation);
         
         for (int i = 0; i < 3; i++)
         	spawnSmallSpyder(0, formation);
+
         
     }
 
