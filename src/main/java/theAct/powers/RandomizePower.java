@@ -15,7 +15,6 @@ public class RandomizePower extends Power implements OnCardDrawPower {
 
     public static final String powerID = TheActMod.makeID("RandomizePower");
     private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(powerID);
-    private int cardsRandomizedThisTurn = 0;
     private String[] DESCRIPTIONS = strings.DESCRIPTIONS;
 
     public RandomizePower(AbstractCreature p, int stackAmount) {
@@ -32,16 +31,10 @@ public class RandomizePower extends Power implements OnCardDrawPower {
     @Override
     public void updateDescription(){
         if (this.amount == 1) {
-            this.description = DESCRIPTIONS[1];
+            this.description = DESCRIPTIONS[0];
         }
         else {
-            this.description = DESCRIPTIONS[2] + this.amount + DESCRIPTIONS[3];
-        }
-        if (this.cardsRandomizedThisTurn == 1) {
-            this.description += DESCRIPTIONS[4] + this.cardsRandomizedThisTurn + DESCRIPTIONS[5];
-        }
-        else if (cardsRandomizedThisTurn > 1) {
-            this.description += DESCRIPTIONS[4] + this.cardsRandomizedThisTurn + DESCRIPTIONS[6];
+            this.description = DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2];
         }
     }
 
@@ -49,7 +42,6 @@ public class RandomizePower extends Power implements OnCardDrawPower {
     public void onCardDraw(AbstractCard c){
         if (amount > 0 && c.cost >= 0) {
             int newCost = AbstractDungeon.cardRandomRng.random(3);
-            this.cardsRandomizedThisTurn++;
             c.superFlash(Color.LIME.cpy());
             if (c.cost != newCost) {
                 c.costForTurn = newCost;
@@ -63,7 +55,8 @@ public class RandomizePower extends Power implements OnCardDrawPower {
     public void reducePower(int stackAmount) {
         if (this.amount - stackAmount <= 0) {
             this.fontScale = 8.0F;
-            this.amount = 0;
+            this.amount=0;
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
 
         } else {
             this.fontScale = 8.0F;
@@ -72,12 +65,5 @@ public class RandomizePower extends Power implements OnCardDrawPower {
         updateDescription();
     }
 
-    @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        if (this.amount == 0) {
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-        }
-        cardsRandomizedThisTurn = 0;
-        updateDescription();
-    }
+
 }
