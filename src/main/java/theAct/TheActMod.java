@@ -107,6 +107,7 @@ public class TheActMod implements
         BaseMod.addEvent(HappyBirthday.ID, HappyBirthday.class, Jungle.ID);
         BaseMod.addEvent(JungleGarden.ID, JungleGarden.class, Jungle.ID);
         BaseMod.addEvent(StalkMarket.ID, StalkMarket.class, Jungle.ID);
+        BaseMod.addEvent(ShamanCauldron.ID, ShamanCauldron.class, Jungle.ID);
 
         // Add monsters here
 
@@ -185,7 +186,7 @@ public class TheActMod implements
 
         // Add Encounters here
         BaseMod.addBoss(Jungle.ID, FunGuy.ID, assetPath("images/map/mushroomBoss.png"), assetPath("images/map/mushroomBossOutline.png"));
-        
+
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
         GetDungeonPatches.addNextDungeon(Jungle.ID, TheBeyond.ID);
