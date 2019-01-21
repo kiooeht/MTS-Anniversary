@@ -156,10 +156,10 @@ public class MamaSnecko extends AbstractMonster {
                         if (m instanceof BabySnecko) posToAvoid = ((BabySnecko) m).posIndex;
                     }
                 }
-                if (posToAvoid != 0) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-160.0f, -20.0f, 4),true, -4));
-                if (posToAvoid != 1) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-320.0f, 30.0f, 3),true, -3));
-                if (posToAvoid != 2) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-480.0f, -20.0f, 2),true,-2 ));
-                if (posToAvoid != 3 && posToAvoid >= 0) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-640.0f, 30.0f, 1),true, -1));
+                if (posToAvoid != 0) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-160.0f, 0.0f, 4),true, -4));
+                if (posToAvoid != 1) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-320.0f, 50.0f, 3),true, -3));
+                if (posToAvoid != 2) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-480.0f, 0.0f, 2),true,-2 ));
+                if (posToAvoid != 3 && posToAvoid >= 0) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-640.0f, 50.0f, 1),true, -1));
             //AbstractDungeon.actionManager.addToBottom(new SummonGremlinAction(this.gremlins));
                // AbstractDungeon.actionManager.addToBottom(new SummonGremlinAction(this.gremlins));
                 break;
