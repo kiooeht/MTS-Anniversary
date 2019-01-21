@@ -306,5 +306,31 @@
       "[Eat A Mango] #gHeal #g"," #gHP.",
       "[Leave]"
     ]
+  },
+  "theJungle:StalkMarket" : {
+    "NAME": "Stalk Market",
+    "DESCRIPTIONS": [
+      "A lush greenfield greets you with a curved and flowered log arch as the entrance. Etched on it reads #g\"STALK #gMARKET\". As you explore this curiously peaceful area populated with varying denizens of the Jungle, you understand what this place is about. It's the largest gathering center for exotic #gplants and #ycrops with each creature holding harvest yields with #ystalk #ycertificates.",
+      "Scattered around are many plots and gardens where everything grows. You enter one and are greeted by a dapper-looking, ecstatic gremlin. NL NL \"I've never seen your face here, you must be new to the #gStalk #gMarket! Would you like to buy a stalk from this plot? We have special #rfruits and #gvegetables no other plot has!\"",
+      "\"Oh, I understand... But we have plenty of harvests for adventurers on the go as well!\" NL NL The gremlin gives you a personal tour through the field. She wasn't kidding; you don't recognize any of these plants, not even from before the #pSpireblight. NL NL \"...and over here, we have #rflamangos, sweet and spicy! And my personal favorite just right here, the #rcreamberry! They're so rich in flavor inside!\"",
+      "\"So, interested? Also, please note we are only allowed to sell #bone harvest per visitor.\"",
+      "#g\"Par #gsnip, a #ysimple but #ghealthy choice! Many of the stalk holders for this feed this to their kids! Still great for grown-ups!\" NL NL After rinsing with water, you take a bite out of your farm-fresh #gpar #gsnip. You feel #yinvigorated!",
+      "#r\"Flamango, #rspicier than you think! Almost as spicy as the notorious #papparition #ppeppers!\" NL NL After rinsing with water, you slice your farm-fresh #rflamango into chunks. #r@Hot,@ #r@Hot,@ #r@Hot!@",
+      "#g\"Shell #gpeas, they have quite the #ytexture! Just crunch the big pea and chew on the tiny ones!\" NL NL After rinsing with water, you try out your farm-fresh #gshell #gpeas. You feel #ytough!",
+      "#r\"Creamberry, the #babsolute #bdelicacy! Whoever created this really knows what #bmouth-watering is like!\" NL NL After rinsing with water, you soak your farm-fresh #rcreamberry into your mouth. The #babsolute #bdelicacy indeed!",
+      "\"I'm sorry, perhaps this plot isn't too interesting to you. Come back if you change your mind though!\" NL NL You feel a little bad for not buying something given how much she seems to like her job, but so it goes.",
+      "Scattered around are many plots and gardens where everything grows. You enter one and are greeted by a #r@dapper-looking,@ ecstatic gremlin. NL NL \"I've never seen your face here, you must be new to the Stalk Market! Would you like to buy a stalk from this plot? We have special fruits and vegetables no other plot has!\""
+    ],
+    "OPTIONS": [
+      "[Continue]",
+      "[Just a Visitor]",
+      "[Par Snip] #rLose #r",
+      "[Flamango] #rLose #r",
+      "[Shell Peas] #rLose #r",
+      "[Creamberry] #rLose #r",
+      " #rGold. #gObtain #ga #gspecial #gRelic.",
+      "[Nothing]",
+      "[Leave]"
+    ]
   }
 }

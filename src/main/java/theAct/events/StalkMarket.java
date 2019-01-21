@@ -29,8 +29,7 @@ public class StalkMarket extends AbstractImageEvent {
     }
 
     public StalkMarket(){
-        // TODO: Add image
-        super(EVENT_STRINGS.NAME, DESCRIPTIONS[0], null);
+        super(EVENT_STRINGS.NAME, DESCRIPTIONS[0], TheActMod.assetPath("images/events/StalkMarket.png"));
         this.screen = CurScreen.INTRO_1;
         this.imageEventText.setDialogOption(OPTIONS[0]);
     }
@@ -47,7 +46,12 @@ public class StalkMarket extends AbstractImageEvent {
     protected void buttonEffect(int buttonPressed) {
         switch (this.screen) {
             case INTRO_1: {
-                this.imageEventText.updateBodyText(DESCRIPTIONS[1]);
+                if (CardCrawlGame.playerName.equals("gameshark")) {
+                    this.imageEventText.updateBodyText(DESCRIPTIONS[9]);
+                }
+                else {
+                    this.imageEventText.updateBodyText(DESCRIPTIONS[1]);
+                }
                 this.screen = CurScreen.INTRO_2;
                 this.imageEventText.clearAllDialogs();
                 this.imageEventText.setDialogOption(OPTIONS[1]);
@@ -58,6 +62,7 @@ public class StalkMarket extends AbstractImageEvent {
                 this.screen = CurScreen.INTRO_3;
                 this.imageEventText.clearAllDialogs();
                 this.imageEventText.setDialogOption(OPTIONS[0]);
+                break;
             }
             case INTRO_3: {
                 this.imageEventText.updateBodyText(DESCRIPTIONS[3]);
@@ -68,6 +73,7 @@ public class StalkMarket extends AbstractImageEvent {
                 this.imageEventText.setDialogOption(OPTIONS[4] + SHELL_PEAS_COST + OPTIONS[6], AbstractDungeon.player.gold < SHELL_PEAS_COST);
                 this.imageEventText.setDialogOption(OPTIONS[5] + BUSTED_BERRY_COST + OPTIONS[6], AbstractDungeon.player.gold < BUSTED_BERRY_COST);
                 this.imageEventText.setDialogOption(OPTIONS[7]);
+                break;
             }
             case INTRO_4: {
                 switch (buttonPressed) {
@@ -80,13 +86,13 @@ public class StalkMarket extends AbstractImageEvent {
                     case 1: {
                         AbstractDungeon.player.loseGold(FLAMANGO_COST);
                         AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F,  RelicLibrary.getRelic(Flamango.ID).makeCopy());
-                        this.imageEventText.updateBodyText(DESCRIPTIONS[6]);
+                        this.imageEventText.updateBodyText(DESCRIPTIONS[5]);
                         break;
                     }
                     case 2: {
                         AbstractDungeon.player.loseGold(SHELL_PEAS_COST);
                         AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F,  RelicLibrary.getRelic(ShellPeas.ID).makeCopy());
-                        this.imageEventText.updateBodyText(DESCRIPTIONS[5]);
+                        this.imageEventText.updateBodyText(DESCRIPTIONS[6]);
                         break;
                     }
                     case 3: {
@@ -103,6 +109,7 @@ public class StalkMarket extends AbstractImageEvent {
                 this.screen = CurScreen.END;
                 this.imageEventText.clearAllDialogs();
                 this.imageEventText.setDialogOption(OPTIONS[8]);
+                break;
             }
             case END: {
                 this.openMap();

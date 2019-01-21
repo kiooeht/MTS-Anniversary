@@ -5,16 +5,16 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theAct.TheActMod;
 
 public class ShellPeas extends CustomRelic {
 
     public static final String ID = TheActMod.makeID("ShellPeas");
-    // TODO: Add images
-    public static final Texture IMAGE_PATH = null;
-    public static final Texture IMAGE_OUTLINE_PATH = null;
-    private int TEMPORARY_HP_PER_HIT = 2;
+    public static final Texture IMAGE_PATH = ImageMaster.loadImage(TheActMod.assetPath("images/relics/Peas.png"));
+    public static final Texture IMAGE_OUTLINE_PATH = ImageMaster.loadImage(TheActMod.assetPath("images/relics/PeasOutline.png"));
+    private static final int TEMPORARY_HP_PER_HIT = 2;
 
     public ShellPeas() {
         super(ID, IMAGE_PATH, IMAGE_OUTLINE_PATH, RelicTier.SPECIAL, AbstractRelic.LandingSound.FLAT);

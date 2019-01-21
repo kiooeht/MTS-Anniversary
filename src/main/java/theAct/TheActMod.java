@@ -106,6 +106,7 @@ public class TheActMod implements
         BaseMod.addEvent(KidnappersEvent.ID, KidnappersEvent.class, Jungle.ID);
         BaseMod.addEvent(HappyBirthday.ID, HappyBirthday.class, Jungle.ID);
         BaseMod.addEvent(JungleGarden.ID, JungleGarden.class, Jungle.ID);
+        BaseMod.addEvent(StalkMarket.ID, StalkMarket.class, Jungle.ID);
 
         // Add monsters here
 
@@ -213,6 +214,10 @@ public class TheActMod implements
         BaseMod.addRelic(new BirthdayCakeSlice(),  RelicType.SHARED);
         BaseMod.addRelic(new BirthdayCake(),  RelicType.SHARED);
         BaseMod.addRelic(new SneckoAutograph(), RelicType.SHARED);
+        BaseMod.addRelic(new ParSnip(), RelicType.SHARED);
+        BaseMod.addRelic(new Flamango(), RelicType.SHARED);
+        BaseMod.addRelic(new ShellPeas(), RelicType.SHARED);
+        BaseMod.addRelic(new Creamberry(), RelicType.SHARED);
 
     }
 
