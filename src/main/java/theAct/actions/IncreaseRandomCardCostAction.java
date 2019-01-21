@@ -33,7 +33,7 @@ public class IncreaseRandomCardCostAction extends AbstractGameAction {
 		        final AbstractCard c = changeable.getRandomCard(true);
 		        c.modifyCostForCombat(1);
 		        c.superFlash();
-		        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(AbstractDungeon.player, null, WebbedPower.powerID, 1));
+		        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(AbstractDungeon.player, null, WebbedPower.POWER_ID, 1));
 	        }
         }
     }

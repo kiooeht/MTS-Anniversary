@@ -118,7 +118,7 @@
 			"Has #b1 #yStrength for every #rSpyder."
 		]
 	},
-    "Webbed": {
+    "theJungle:Webbed": {
 		"NAME" : "Webbed",
 		"DESCRIPTIONS": [
 			"Increase the #yCost of a random card in your hand by [E] .",
