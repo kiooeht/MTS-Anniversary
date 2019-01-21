@@ -102,7 +102,7 @@ public class Flameango extends AbstractMonster
     {
         if(this.firstTurn)
         {
-            if(AbstractDungeon.player.hasRelic(Mango.ID) || AbstractDungeon.player.hasRelic(WildMango.ID) || AbstractDungeon.player.hasBlight(Flamango.ID))
+            if(AbstractDungeon.player.hasRelic(Mango.ID) || AbstractDungeon.player.hasRelic(WildMango.ID) || AbstractDungeon.player.hasRelic(Flamango.ID))
             {
                 AbstractDungeon.actionManager.addToBottom(new TalkAction(this, FLAVOR_TOWN, 0.5f, 2.0f));
             }
