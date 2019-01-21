@@ -122,12 +122,12 @@ public class TheActMod implements
                         new MushroomKuudere(-133.0F, 0.0F),
                         new MushroomGenki(125.0F, -30.0F)
                 }));
-        BaseMod.addMonster(makeID("Silent_and_trap"), () -> new MonsterGroup(
+        BaseMod.addMonster(makeID("Snecko_Cultist_and_trap"), () -> new MonsterGroup(
                 new AbstractMonster[]{
                 		new SwingingAxe(-450.0F, 100.0F),
                 		new SneakySpyder(-223.0F, 330.0F),
                         new WebberSpyder(-159.0F, -10.0F),
-                        new SilentTribesmen(120.0F, 0.0F)
+                        new SneckoCultist(120, 0)
                 }));
         BaseMod.addMonster(makeID("6_Spyders"), () -> new MonsterGroup(
                 new AbstractMonster[]{
@@ -157,7 +157,8 @@ public class TheActMod implements
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
         BaseMod.addMonster(SwingingAxe.ID, () -> new SwingingAxe());
         BaseMod.addMonster(Lyon.ID, Lyon::new);
-        BaseMod.addMonster(GiantWrat.ID, () -> new GiantWrat());
+        BaseMod.addMonster(GiantWrat.ID, () -> new MonsterGroup(
+                new AbstractMonster[] { new GiantWrat(-85.0F, -15.0F)}));
         //Elites
         BaseMod.addMonster(Cassacara.ID, () -> new Cassacara(50.0F, 0.0F));
         BaseMod.addMonster(Phrog.ID,() -> new MonsterGroup(
