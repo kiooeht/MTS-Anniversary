@@ -14,6 +14,7 @@ public class FragileEggsPower extends Power {
 	public static final String POWER_ID = TheActMod.makeID("FragileEggs");
 	private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = strings.NAME;
+	private static final String IMG = POWER_ID.substring(POWER_ID.indexOf(":")+1);
 	
 	private int reset = 0;
 
@@ -24,7 +25,7 @@ public class FragileEggsPower extends Power {
 		this.amount = amount;
 		this.reset = amount;
 		this.type = PowerType.BUFF;
-		this.setImage(NAME + "84.png", NAME + "32.png");
+		this.setImage(IMG + "84.png", IMG + "32.png");
 		this.updateDescription();
 	}
 
