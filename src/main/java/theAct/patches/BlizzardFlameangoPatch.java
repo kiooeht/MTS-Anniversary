@@ -22,7 +22,7 @@ public class BlizzardFlameangoPatch
         for(int i = 0; i < monsters; i++) {
             AbstractMonster mon = currRoom.monsters.monsters.get(i);
             if(mon.isDying || mon.isEscaping || mon.currentHealth > 0) {
-                if (mon.id == Flameango.ID) {
+                if (mon.id.equals(Flameango.ID)) {
                     AbstractDungeon.actionManager.addToBottom(new StunMonsterAction(mon, p));
                 }
             }
