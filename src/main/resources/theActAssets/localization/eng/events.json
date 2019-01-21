@@ -246,11 +246,11 @@
     "OPTIONS": [
       "[Enter] Explore the passageway.",
       "[Leave] Turn back.",
-      "[Agree] #gGain #g5 #gMaximum #gHP. #rLose #r10 #rHP.",
+      "[Agree] #gGain #g5 #gMax #gHP. #rLose #r10 #rHP.",
       "[Disagree] #gObtain #ga #gspecial #gRelic. #rBecome #rCursed #r- #rShame.",
       "[Run] #yGain #y200 #yGold. #rBecome #rCursed #r- #rNormality",
       "[Leave]",
-      "[Agree] #gGain #g5 #gMaximum #gHP. #rLose #r15 #rHP.",
+      "[Agree] #gGain #g5 #gMax #gHP. #rLose #r15 #rHP.",
       "[Run] #yGain #y150 #yGold. #rBecome #rCursed #r- #rNormality",
       "[Continue]"
     ]
