@@ -95,10 +95,20 @@ public class Cassacara extends AbstractMonster {
         this.state.setAnimation(2, "IdleChomp", true);
         this.stateData.setMix("Lick", "idleLick", 0.1f);
         this.stateData.setMix("Chomp", "IdleChomp", 0.1f);
+
+
     }
 
     public Cassacara() {
         this(0.0F, 0.0F);
+    }
+
+    public void usePreBattleAction() {
+
+        CardCrawlGame.music.unsilenceBGM();
+        AbstractDungeon.scene.fadeOutAmbiance();
+        AbstractDungeon.getCurrRoom().playBgmInstantly("JUNGLEELITE");
+
     }
 
     public void takeTurn() {

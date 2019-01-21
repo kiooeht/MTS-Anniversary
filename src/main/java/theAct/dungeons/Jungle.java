@@ -46,7 +46,7 @@ public class Jungle extends AbstractDungeon
         mapRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + AbstractDungeon.actNum * 100);
         generateMap();
 
-        CardCrawlGame.music.changeBGM(id);
+        CardCrawlGame.music.changeBGM("JUNGLEMAIN");
         AbstractDungeon.currMapNode = new MapRoomNode(0, -1);
         AbstractDungeon.currMapNode.room = new EmptyRoom();
     }
@@ -64,7 +64,7 @@ public class Jungle extends AbstractDungeon
 
         initializeLevelSpecificChances();
         miscRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + saveFile.floor_num);
-        CardCrawlGame.music.changeBGM(id);
+        CardCrawlGame.music.changeBGM("JUNGLEMAIN");
         mapRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + saveFile.act_num * 100);
         generateMap();
         firstRoomChosen = true;

@@ -60,6 +60,15 @@ public class Phrog extends AbstractMonster {
 
 		AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
 		e.setTime(e.getEndTime() * MathUtils.random());
+
+	}
+
+	public void usePreBattleAction() {
+
+		CardCrawlGame.music.unsilenceBGM();
+		AbstractDungeon.scene.fadeOutAmbiance();
+		AbstractDungeon.getCurrRoom().playBgmInstantly("JUNGLEELITE");
+
 	}
 
 	@Override
