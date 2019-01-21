@@ -1,6 +1,7 @@
 package theAct.monsters;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
@@ -23,14 +24,14 @@ public class GiantWrat extends AbstractMonster {
     public static final String NAME = MONSTER_STRINGS.NAME;
     public static final String CRAPPIEST_NAME = MONSTER_STRINGS.DIALOG[0];
     public static final String[] MOVES = MONSTER_STRINGS.MOVES;
-    private static final float HB_X = 8.0F;
-    private static final float HB_Y = 136.0F;
+    private static final float HB_X = -75.0F;
+    private static final float HB_Y = 0.0F;
     private static final float HB_W = 320.0F;
     private static final float HB_H = 240.0F;
-    private static final int HP_MIN = 111;
-    private static final int HP_MAX = 116;
-    private static final int ASC_HP_MIN = 117;
-    private static final int ASC_HP_MAX = 122;
+    private static final int HP_MIN = 91;
+    private static final int HP_MAX = 96;
+    private static final int ASC_HP_MIN = 94;
+    private static final int ASC_HP_MAX = 99;
     private static final byte FAT_BURNER = 1;
     private static final byte SLAM = 2;
     private static final byte FLAIL = 3;
@@ -43,7 +44,7 @@ public class GiantWrat extends AbstractMonster {
     private static final int FAT_BURNER_BLOCK_AMOUNT = 15;
     private static final int ASC2_FAT_BURNER_BLOCK_AMOUNT = 20;
     private static final int SLAM_DAMAGE = 12;
-    private static final int ASC_SLAM_DAMAGE = 14;
+    private static final int ASC_SLAM_DAMAGE = 13;
     private static final int SLAM_BLOCK_AMOUNT = 10;
     private static final int FLAIL_DAMAGE = 7;
     private static final int ASC_FLAIL_DAMAGE = 8;
@@ -58,7 +59,6 @@ public class GiantWrat extends AbstractMonster {
     private int flailSelfVulnerableAmount;
 
     public GiantWrat(float x, float y) {
-        // TODO: Add Giant Wrat art
         super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, TheActMod.assetPath("/images/monsters/cassacara/placeholder.png"), x, y);
         if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(ASC_HP_MIN, ASC_HP_MAX);
@@ -100,6 +100,17 @@ public class GiantWrat extends AbstractMonster {
             this.flailSelfVulnerableAmount = FLAIL_SELF_VULNERABLE_AMOUNT;
 
         }
+        this.loadAnimation(
+            TheActMod.assetPath("images/monsters/Wrat/Wrat.atlas"),
+            TheActMod.assetPath("images/monsters/Wrat/Wrat.json"),
+            1);
+
+        AnimationState.TrackEntry e =this.state.setAnimation(0, "idle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
+        e = this.state.setAnimation(1, "footidle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
+        e = this.state.setAnimation(2, "tailidle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
         this.damage.add(new DamageInfo(this, slamDamage));
         this.damage.add(new DamageInfo(this, flailDamage));
     }
@@ -108,22 +119,31 @@ public class GiantWrat extends AbstractMonster {
         this(0.0F, 0.0F);
     }
 
+    public void changeState(String key) {
+        switch (key) {
+            case "ATTACK": {
+                this.state.setAnimation(1, "attack", false);
+                break;
+            }
+        }
+    }
+
     public void takeTurn() {
         switch (this.nextMove) {
             case FAT_BURNER: {
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new InflameEffect(this), 1.0f));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new InflameEffect(this), 0.5F));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, this.fatBurnerStrengthGainAmount), this.fatBurnerStrengthGainAmount));
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, fatBurnerBlockAmount));
                 break;
             }
             case SLAM: {
-                AbstractDungeon.actionManager.addToBottom(new AnimateSlowAttackAction(this));
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, slamBlockAmount));
                 break;
             }
             case FLAIL: {
-                AbstractDungeon.actionManager.addToBottom(new AnimateFastAttackAction(this));
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 for (int i = 0; i < this.flailHitAmount; i++) {
                     AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(1), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 }
