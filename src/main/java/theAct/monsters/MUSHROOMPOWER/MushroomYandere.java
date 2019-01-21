@@ -19,8 +19,8 @@ public class MushroomYandere extends AbstractMonster {
     public static final String ENCOUNTER_ID = TheActMod.makeID("MUSHROOMGANG");
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
-    private static final int MIN_HP = 18;
-    private static final int MAX_HP = 21;
+    private static final int MIN_HP = 28;
+    private static final int MAX_HP = 32;
     private static final int ASC_HP_MODIFIER = 5;
     private static final int DAMAGE_AMT = 6;
     private static final int DAMAGE_AMT_ASC_MODIFIER = 2;
@@ -30,8 +30,10 @@ public class MushroomYandere extends AbstractMonster {
     private int stabDmg;
 
     public MushroomYandere(float x, float y) {
-        super(NAME, ID, MAX_HP, 0.0F, 10.0F, 280.0F, 280.0F, null, x, y);
-        this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
+        super(NAME, ID, MAX_HP, 0.0F, 10.0F, 160.0F, 180.0F, null, x, y);
+        loadAnimation(TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Yandere.atlas"), TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Yandere.json"), 1.0F);
+        state.setAnimation(0, "Idle", true);
+        stateData.setMix("Idle", "Rawr", 0.2F);
         if (AbstractDungeon.ascensionLevel >= 17) {
             obsessionAmt = OBSESSION_AMT + OBSESSION_AMT_ASC_MODIFIER;
         } else {
@@ -60,6 +62,10 @@ public class MushroomYandere extends AbstractMonster {
     public void takeTurn() {
         switch (nextMove) {
             case 0:
+                state.setAnimation(0, "Rawr", false);
+                state.setTimeScale(1.6F);
+                state.addAnimation(0, "Idle", true, 0.0F);
+                state.setTimeScale(1.0F);
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0)));
                 break;
         }

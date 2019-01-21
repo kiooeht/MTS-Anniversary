@@ -1,0 +1,69 @@
+
+Wrat.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Wrat/Shadow
+  rotate: false
+  xy: 1, 1
+  size: 522, 176
+  orig: 522, 176
+  offset: 0, 0
+  index: -1
+Wrat/Back_Right_foot
+  rotate: false
+  xy: 288, 179
+  size: 62, 50
+  orig: 62, 50
+  offset: 0, 0
+  index: -1
+Wrat/Back_Left_foot
+  rotate: false
+  xy: 352, 179
+  size: 53, 50
+  orig: 53, 50
+  offset: 0, 0
+  index: -1
+Wrat/Front_Left_foot
+  rotate: false
+  xy: 454, 179
+  size: 61, 28
+  orig: 61, 28
+  offset: 0, 0
+  index: -1
+Wrat/Front_Right_foot
+  rotate: false
+  xy: 407, 179
+  size: 45, 50
+  orig: 45, 50
+  offset: 0, 0
+  index: -1
+Wrat/Tail
+  rotate: false
+  xy: 1, 179
+  size: 285, 68
+  orig: 285, 68
+  offset: 0, 0
+  index: -1
+Wrat/Body
+  rotate: false
+  xy: 525, 1
+  size: 335, 199
+  orig: 335, 199
+  offset: 0, 0
+  index: -1
+Wrat/Head
+  rotate: false
+  xy: 862, 1
+  size: 105, 104
+  orig: 105, 104
+  offset: 0, 0
+  index: -1
+Wrat/Eye
+  rotate: false
+  xy: 969, 1
+  size: 10, 10
+  orig: 10, 10
+  offset: 0, 0
+  index: -1

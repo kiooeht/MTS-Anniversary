@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAct.TheActMod;
-import theAct.monsters.SilentTribesmen;
+import theAct.monsters.JungleHunters;
 import theAct.powers.abstracts.Power;
 
 public class CautiousPower extends Power {
@@ -40,14 +40,17 @@ public class CautiousPower extends Power {
 
     public void atStartOfTurn() {
         amount = startAmt;
+        updateDescription();
     }
 
     @Override
     public int onAttacked(DamageInfo info, int damage) {
-        amount--;
-        this.updateDescription();
-        if (amount == 0 && owner instanceof SilentTribesmen) {
-            AbstractDungeon.actionManager.addToBottom(new ChangeStateAction((AbstractMonster) owner, SilentTribesmen.STUNNED));
+        if (info.type == DamageInfo.DamageType.NORMAL) {
+            amount--;
+            this.updateDescription();
+            if (amount == 0 && owner instanceof JungleHunters) {
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction((AbstractMonster) owner, JungleHunters.STUNNED));
+            }
         }
         return damage;
     }

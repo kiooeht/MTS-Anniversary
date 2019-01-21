@@ -16,8 +16,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import theAct.TheActMod;
+import theAct.actions.FormationInitAction;
+import theAct.powers.FormationPower;
 import theAct.powers.FragileEggsPower;
-import theAct.powers.ShyPower;
 import theAct.powers.SquadPower;
 
 public class SpyderBoss extends AbstractMonster {
@@ -31,7 +32,8 @@ public class SpyderBoss extends AbstractMonster {
     public int bigSpyderAmt = 0;
     public AbstractMonster[] smallSpyders = new AbstractMonster[18];
     public AbstractMonster[] bigSpyders = new AbstractMonster[8];
-    private ArrayList<Integer> bigChoice = new ArrayList<Integer>(Arrays.asList(0,0,0,1,1,2,2,2,3,3));
+    private ArrayList<Integer> bigChoice = new ArrayList<Integer>(Arrays.asList(0,0,0,0,1,1,1,1,2,2,2,2));
+    public int turnAmt = 0;
 
     public SpyderBoss() {
         super(NAME, ID, AbstractDungeon.monsterHpRng.random(135, 149), 0.0F, -30.0F, 220.0F, 320.0F, (String)null, 240.0F, 20.0F);
@@ -44,9 +46,9 @@ public class SpyderBoss extends AbstractMonster {
         }      
         
         if (AbstractDungeon.ascensionLevel >= 4) {
-            this.damage.add(new DamageInfo(this, 18));
+            this.damage.add(new DamageInfo(this, 12));
         } else {
-            this.damage.add(new DamageInfo(this, 14));
+            this.damage.add(new DamageInfo(this, 9));
         }        
         
         TrackEntry e = this.state.setAnimation(0, "Idle", true);
@@ -61,118 +63,118 @@ public class SpyderBoss extends AbstractMonster {
     public void usePreBattleAction() {
         CardCrawlGame.music.unsilenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
-        AbstractDungeon.getCurrRoom().playBgmInstantly("BOSS_CITY");
-        
+        AbstractDungeon.getCurrRoom().playBgmInstantly("BOSSSPIDER");
+
+        FormationPower formation = new FormationPower(this);
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, formation));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new FragileEggsPower(this, 25), 25));
         
-        spawnBigSpyder();
-        if(AbstractDungeon.ascensionLevel >= 19)
-        	spawnBigSpyder();
+        if (AbstractDungeon.ascensionLevel >= 4)
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
+        
+        spawnBigSpyder(0, formation);
+        if (AbstractDungeon.ascensionLevel >= 19)
+        	spawnBigSpyder(0, formation);
         
         for (int i = 0; i < 3; i++)
-        	spawnSmallSpyder(0);
+        	spawnSmallSpyder(0, formation);
         
     }
 
-public void spawnBigSpyder() {
-    
-	if(isDying || bigSpyderAmt >= bigSpyders.length)
-		return;
-	
-	int i = 0;
-	while(i < bigSpyders.length) {
-		if(bigSpyders[i] == null)
-			break;
-		i++;
-	}
+    public void spawnBigSpyder(int str) {
+        spawnBigSpyder(str, null);
+    }
+
+    public void spawnBigSpyder(int str, FormationPower formationPower) {
+
+        if(isDying || bigSpyderAmt >= bigSpyders.length || bigChoice.size() == 0)
+            return;
+
+        int i = 0;
+        while(i < bigSpyders.length) {
+            if(bigSpyders[i] == null)
+                break;
+            i++;
+        }
 		
-		int r = AbstractDungeon.monsterRng.random(bigChoice.size());
+		int r = AbstractDungeon.monsterRng.random(bigChoice.size() - 1);
     	int chosen = bigChoice.get(r);
     	bigChoice.remove(r);
     	AbstractMonster m = null;
     	switch(chosen) {
 	    	case 0:
-	    		m = new BasherSpyder(this, i, 0);
-	    		break;
-	    	
+	    		m = new BasherSpyder(this, i, str);
+	    		break;	    	
 	    	case 1:
-	    		m = new WebberSpyder(this, i, 0);
-	    		break;
-	    	
+	    		m = new WebberSpyder(this, i, str);
+	    		break;	    	
 	    	case 2:
-	    		m = new DefenderSpyder(this, i, 0);
-	    		break;
-	    	
-	    	case 3:
-	    		m = new EggSpyder(this, i, 0);
-	    		break;
-	    	
-    	}
-    	
-    	for(AbstractMonster n : AbstractDungeon.getMonsters().monsters) {
-    		if(n instanceof SpawnedSpyder && n.hasPower(SquadPower.powerID))
-    			((SquadPower) n.getPower(SquadPower.powerID)).spyderSpawn();
-    		if(n instanceof SpawnedSpyder && n.hasPower(ShyPower.powerID))
-    			((ShyPower) n.getPower(ShyPower.powerID)).spyderSpawn();
-    	}
+	    		m = new DefenderSpyder(this, i, str);
+	    		break;	    	
+    	}    	
 
         TheActMod.logger.info("Spawning Monster");
         bigSpyderAmt++;
         bigSpyders[i] = m;
-        AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(m, true));        
+        AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(m, true));
+
+        for(AbstractMonster n : AbstractDungeon.getMonsters().monsters) {
+    		if(n instanceof SpawnedSpyder && n.hasPower(SquadPower.POWER_ID))
+    			((SquadPower) n.getPower(SquadPower.POWER_ID)).spyderSpawn();
+			if(n instanceof SpawnedSpyder && n.hasPower(FormationPower.POWER_ID))
+				AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) n.getPower(FormationPower.POWER_ID))));
+    	}
+
+        if (formationPower == null) {
+            formationPower = (FormationPower) getPower(FormationPower.POWER_ID);
+        }
+        AbstractDungeon.actionManager.addToBottom(new FormationInitAction(formationPower));
     }
 
-public void spawnSmallSpyder(int str) {
-	
-	if(isDying || smallSpyderAmt >= smallSpyders.length)
-		return;
-	
-	int i = -1;
-	while(true) {
-		i = AbstractDungeon.miscRng.random(smallSpyderAmt + 4);
-		if(i < smallSpyders.length && smallSpyders[i] == null)
-			break;
-	}
-	
-	int chosen = AbstractDungeon.monsterRng.random(6);
-	AbstractMonster m = null;
-	switch(chosen) {
-	case 0:
-		m = new SneakySpyder(this, i, str);
-		break;	
-	case 1:
-		m = new FatSpyder(this, i, str);
-		break;	
-	case 2:
-		m = new PoisonedFlye(this, i, str);
-		break;	
-	case 3:
-		m = new ShySpyder(this, i, str);
-		break;
-	case 4:
-		m = new SneakySpyder(this, i, str);
-		break;	
-	case 5:
-		m = new FatSpyder(this, i, str);
-		break;	
-	case 6:
-		m = new ShySpyder(this, i, str);
-		break;
-    	
-	}
-	
-	for(AbstractMonster n : AbstractDungeon.getMonsters().monsters) {
-		if(n instanceof SpawnedSpyder && n.hasPower(SquadPower.powerID))
-			((SquadPower) n.getPower(SquadPower.powerID)).spyderSpawn();
-		if(n instanceof SpawnedSpyder && n.hasPower(ShyPower.powerID))
-			((ShyPower) n.getPower(ShyPower.powerID)).spyderSpawn();
-	}
-    
-    TheActMod.logger.info("Spawning Monster");
-    smallSpyderAmt++;
-    smallSpyders[i] = m;
-    AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(m,true));        
-}
+    public void spawnSmallSpyder(int str) {
+        spawnSmallSpyder(str, null);
+    }
+
+    public void spawnSmallSpyder(int str, FormationPower formationPower) {
+
+        if(isDying || smallSpyderAmt >= smallSpyders.length)
+            return;
+
+        int i = -1;
+        while(true) {
+            i = AbstractDungeon.miscRng.random(smallSpyderAmt + 4);
+            if(i < smallSpyders.length && smallSpyders[i] == null)
+                break;
+        }
+
+        int chosen = AbstractDungeon.monsterRng.random(1);
+        AbstractMonster m = null;
+        switch(chosen) {
+        case 0:
+            m = new SneakySpyder(this, i, str);
+            break;
+        case 1:
+            m = new FatSpyder(this, i, str);
+            break;
+        }
+
+        TheActMod.logger.info("Spawning Monster");
+        smallSpyderAmt++;
+        smallSpyders[i] = m;
+        AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(m,true));
+
+        for(AbstractMonster n : AbstractDungeon.getMonsters().monsters) {
+            if(n instanceof SpawnedSpyder && n.hasPower(SquadPower.POWER_ID))
+                ((SquadPower) n.getPower(SquadPower.POWER_ID)).spyderSpawn();
+            if(n instanceof SpawnedSpyder && n.hasPower(FormationPower.POWER_ID))
+                AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) n.getPower(FormationPower.POWER_ID))));
+        }
+
+        if (formationPower == null) {
+            formationPower = (FormationPower) getPower(FormationPower.POWER_ID);
+        }
+        AbstractDungeon.actionManager.addToBottom(new FormationInitAction(formationPower));
+    }
 
     public void resolveSpyderDeath(SpawnedSpyder m){
     	if(m.small) {
@@ -188,14 +190,18 @@ public void spawnSmallSpyder(int str) {
     public void takeTurn() {
         switch(this.nextMove) {
             case 0:
-            	AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-            	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this,  AbstractDungeon.ascensionLevel >= 19? 4: 3), AbstractDungeon.ascensionLevel >= 19? 5: 3));
+            	AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+            	AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+            	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
                 break;
             case 1:
-            	spawnSmallSpyder(0);
-            	spawnSmallSpyder(0);
-            	if	(AbstractDungeon.ascensionLevel >= 19)
-                    	spawnSmallSpyder(0);
+            	int str = 0;
+            	if(hasPower(StrengthPower.POWER_ID))
+            		str = getPower(StrengthPower.POWER_ID).amount;
+            	spawnSmallSpyder(str);
+            	spawnSmallSpyder(str);
+            	if (AbstractDungeon.ascensionLevel >= 19)
+                	spawnSmallSpyder(str);
             	break;
         }
 
@@ -234,10 +240,16 @@ public void spawnSmallSpyder(int str) {
     }
 
     protected void getMove(int num) {
-    	if(smallSpyderAmt < 12)
-    		this.setMove((byte)1, Intent.UNKNOWN);
-    	else
-    		this.setMove((byte) 0, Intent.ATTACK_BUFF, this.damage.get(0).base);
+    	turnAmt++;
+    	if(turnAmt >= 4) {
+    		turnAmt -= 4;
+    		this.setMove((byte) 0, Intent.ATTACK_BUFF, this.damage.get(0).base, 2, true);
+    	}else {
+    		if(smallSpyderAmt < 12)
+    			this.setMove((byte)1, Intent.UNKNOWN);
+    		else
+    			this.setMove((byte) 0, Intent.ATTACK_BUFF, this.damage.get(0).base, 2, true);
+    	}
     }
 
     static {

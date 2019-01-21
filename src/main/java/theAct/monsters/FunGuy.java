@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.common.SetMoveAction;
 import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
@@ -36,21 +37,23 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import theAct.TheActMod;
+import theAct.monsters.TotemBoss.AbstractTotemSpawn;
 import theAct.powers.FungalInfectionPower;
+import theAct.powers.InfectiousSporesPower;
 
 public class FunGuy extends AbstractMonster {
 	public static final String ID = TheActMod.makeID("FunGuy");
 	private static final MonsterStrings STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
 	
 
-	public static final int CHMP_DMG = 15;
-	public static final int A_CHMP_DMG = 18;
+	public static final int CHMP_DMG = 12;
+	public static final int A_CHMP_DMG = 15;
 	public static final int BURST_DMG = 2;
 	public static final int A_BURST_DMG = 3;
 	public static final int BURST_AMT = 2;
 	public static final int A_BURST_AMT = 2;
-	public static final int ASS_DMG = 6;
-	public static final int A_ASS_DMG = 7;
+	public static final int ASS_DMG = 8;
+	public static final int A_ASS_DMG = 10;
 	public static final int INF_AMT = 3;
 	public static final int A_INF_AMT = 4;
 
@@ -94,16 +97,36 @@ public class FunGuy extends AbstractMonster {
 		this.damage.add(new DamageInfo(this, chompDamage));
 		this.damage.add(new DamageInfo(this, burstDamage));
 		this.damage.add(new DamageInfo(this, assymDamage));
+		this.damage.add(new DamageInfo(this, assymDamage+(AbstractDungeon.ascensionLevel >= 9 ? 2 : 0)));
+	}
+	
+	private void spawnTheBeasts(int cloud, int infection) {
+		AbstractMonster m = new FungiBeast(-300, 0);
+		AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(m, true));
+		if (cloud > 0) {
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new SporeCloudPower(m, cloud)));
+		}
+		if (infection > 0) {
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new InfectiousSporesPower(m, infection)));
+		}
+		m = new FungiBeast(-550, 0);
+		AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(m, true));
+		if (cloud > 0) {
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new SporeCloudPower(m, cloud)));
+		}
+		if (infection > 0) {
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new InfectiousSporesPower(m, infection)));
+		}
 	}
 	
 	@Override
     public void usePreBattleAction() {
 		CardCrawlGame.music.unsilenceBGM();
 		AbstractDungeon.scene.fadeOutAmbiance();
-		AbstractDungeon.getCurrRoom().playBgmInstantly("BOSS_CITY");
+		AbstractDungeon.getCurrRoom().playBgmInstantly("BOSSTOTEM");
         UnlockTracker.markBossAsSeen(ID);
-		AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new FungiBeast(-300, 0), true));
-		AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new FungiBeast(-500, 0), true));
+        
+		this.spawnTheBeasts(AbstractDungeon.ascensionLevel >= 4 ? 2 : 1, AbstractDungeon.ascensionLevel >= 19 ? 2 : 0);
 	}
 
 	@Override
@@ -122,13 +145,21 @@ public class FunGuy extends AbstractMonster {
 				AbstractDungeon.actionManager.addToBottom(new DamageAction(p, damage.get(1), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
 			}
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new FrailPower(AbstractDungeon.player, 1, true), 1));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WeakPower(AbstractDungeon.player, 1, true), 1));
+			this.burstAmount++;
 			break;
 		case ASS:
 			AbstractDungeon.actionManager.addToBottom(new VampireDamageAction(AbstractDungeon.player, this.damage.get(2), AbstractGameAction.AttackEffect.POISON));
 			for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
 				if (m != null && m != this && !m.isDeadOrEscaped()) {
 					AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4f));
-					AbstractDungeon.actionManager.addToBottom(new VampireDamageAction(m, this.damage.get(2), AbstractGameAction.AttackEffect.POISON));
+					if (m.hasPower(SporeCloudPower.POWER_ID)) {
+						AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(m, this, SporeCloudPower.POWER_ID));
+					}
+					if (m.hasPower(InfectiousSporesPower.powerID)) {
+						AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(m, this, InfectiousSporesPower.powerID));
+					}
+					AbstractDungeon.actionManager.addToBottom(new VampireDamageAction(m, this.damage.get(3), AbstractGameAction.AttackEffect.POISON));
 					AbstractDungeon.actionManager.addToBottom(new SuicideAction(m));
 				}
 			}
@@ -144,8 +175,7 @@ public class FunGuy extends AbstractMonster {
 			}
 			break;
 		case SPREAD:
-			AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new FungiBeast(-300, 0), true));
-			AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new FungiBeast(-500, 0), true));
+			this.spawnTheBeasts(1, AbstractDungeon.ascensionLevel >= 19 ? 2 : 1);
 			break;
 		}
 
@@ -221,6 +251,16 @@ public class FunGuy extends AbstractMonster {
 			}
 		}
 	}
-	
+
+	public void die() {
+
+		this.useFastShakeAnimation(5.0F);
+		CardCrawlGame.screenShake.rumble(4.0F);
+		super.die();
+
+		AbstractDungeon.scene.fadeInAmbiance();
+		this.onBossVictoryLogic();
+
+	}
 	
 }

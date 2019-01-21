@@ -1,5 +1,6 @@
 package theAct.monsters.MUSHROOMPOWER;
 
+import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -18,8 +19,8 @@ public class MushroomGenki extends AbstractMonster {
     public static final String ENCOUNTER_ID = TheActMod.makeID("MUSHROOMGANG");
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
-    private static final int MIN_HP = 18;
-    private static final int MAX_HP = 23;
+    private static final int MIN_HP = 30;
+    private static final int MAX_HP = 37;
     private static final int ASC_HP_MODIFIER = 4;
     private static final int STR_AMT = 1;
     private static final int STR_AMT_ASC_MODIFIER = 1;
@@ -29,8 +30,10 @@ public class MushroomGenki extends AbstractMonster {
     private int strAmt;
 
     public MushroomGenki(float x, float y) {
-        super(NAME, ID, MAX_HP, 0.0F, 10.0F, 280.0F, 280.0F, null, x, y);
-        this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
+        super(NAME, ID, MAX_HP, 0.0F, 10.0F, 160.0F, 155.0F, null, x, y);
+        loadAnimation(TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Kuudere.atlas"), TheActMod.assetPath("images/monsters/MUSHROOMPOWER/Kuudere.json"), 1.0F);
+        state.setAnimation(0, "Idle", true);
+        stateData.setMix("Idle", "Kyuuuuu", 0.2F);
         if (AbstractDungeon.ascensionLevel >= 17) {
             strAmt = STR_AMT + STR_AMT_ASC_MODIFIER;
         } else {
@@ -52,6 +55,10 @@ public class MushroomGenki extends AbstractMonster {
 
     @Override
     public void usePreBattleAction() {
+        CardCrawlGame.music.unsilenceBGM();
+        AbstractDungeon.scene.fadeOutAmbiance();
+        AbstractDungeon.getCurrRoom().playBgmInstantly("MUSHROOMGANG");
+
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new EnergeticPower(this, strAmt)));
     }
 
@@ -59,11 +66,14 @@ public class MushroomGenki extends AbstractMonster {
     public void takeTurn() {
         switch (nextMove) {
             case 0:
+                AbstractDungeon.actionManager.addToBottom(new AnimateSlowAttackAction(this));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0)));
                 break;
             case 1:
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                     if (m != this) {
+                        state.setAnimation(0, "Kyuuuuu", false);
+                        state.addAnimation(0, "Idle", true, 0.0F);
                         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new StrengthPower(m, strAmt), strAmt));
                     }
                 }
@@ -76,6 +86,7 @@ public class MushroomGenki extends AbstractMonster {
     protected void getMove(int i) {
         if (lastMove((byte)0)) {
             setMove((byte)1, Intent.BUFF);
+            return;
         }
         setMove((byte)0, Intent.ATTACK, damage.get(0).base);
     }

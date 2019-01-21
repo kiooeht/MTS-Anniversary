@@ -22,6 +22,9 @@ import com.megacrit.cardcrawl.vfx.SpeechBubble;
 import com.megacrit.cardcrawl.vfx.combat.FireballEffect;
 import com.megacrit.cardcrawl.vfx.combat.RedFireballEffect;
 import theAct.TheActMod;
+import theAct.relics.Flamango;
+import theAct.relics.WildMango;
+
 import java.util.Random;
 
 public class Flameango extends AbstractMonster
@@ -39,14 +42,14 @@ public class Flameango extends AbstractMonster
     private static final int BURNS = 1;
     private static final int ARMOR = 4;
     private static final int FLAME_DAMAGE = 10;
-    private static final int PECK_DAMAGE = 4;
+    private static final int PECK_DAMAGE = 5;
     private static final int PECK_HITS = 3;
 
-    private static final int ASC_ARMOR = 1;
+    private static final int ASC_ARMOR = 2;
     private static final int ASC_DAMAGE = 1;
     private static final int ASC_BURNS = 1;
 
-    private static final int ASC_HEALTH = 5;
+    private static final int ASC_HEALTH = 7;
 
     private int burnAmount; private int flameArmor; private int flameDamage;
     private int peckDamage; private int peckHits;
@@ -72,14 +75,24 @@ public class Flameango extends AbstractMonster
         this.peckHits = PECK_HITS;
         if (AbstractDungeon.ascensionLevel >= 2)
         {
-            this.flameArmor += ASC_ARMOR;
-            this.burnAmount += ASC_BURNS;
             this.peckDamage += ASC_DAMAGE;
+            this.flameDamage += ASC_DAMAGE;
         }
 
-        setHp(minHP, maxHP);
+
         if(AbstractDungeon.ascensionLevel >= 7)
-            this.maxHealth += ASC_HEALTH;
+            setHp(minHP + ASC_HEALTH, maxHP + ASC_HEALTH);
+        else
+            setHp(minHP, maxHP);
+
+
+        if(AbstractDungeon.ascensionLevel >= 17)
+        {
+            this.burnAmount += ASC_BURNS;
+            this.flameArmor += ASC_ARMOR;
+            this.peckDamage += ASC_DAMAGE;
+            this.flameDamage += ASC_DAMAGE;
+        }
 
         this.damage.add(new DamageInfo(this, peckDamage));
         this.damage.add(new DamageInfo(this, flameDamage));
@@ -93,7 +106,7 @@ public class Flameango extends AbstractMonster
     {
         if(this.firstTurn)
         {
-            if(AbstractDungeon.player.hasRelic(Mango.ID))
+            if(AbstractDungeon.player.hasRelic(Mango.ID) || AbstractDungeon.player.hasRelic(WildMango.ID) || AbstractDungeon.player.hasRelic(Flamango.ID))
             {
                 AbstractDungeon.actionManager.addToBottom(new TalkAction(this, FLAVOR_TOWN, 0.5f, 2.0f));
             }

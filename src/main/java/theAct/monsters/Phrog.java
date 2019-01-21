@@ -25,10 +25,13 @@ import theAct.actions.PhrogLickAction;
 public class Phrog extends AbstractMonster {
 	public static final String ID = TheActMod.makeID("Phrog");
 	private static final MonsterStrings STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
-
+	private static final int LICK_DAMAGE = 3;
+	private static final int LICK_DAMAGE_ASC_MODIFIER = 1;
+	private static final int LICK_DAMAGE_ASC_MODIFIER_AGAIN = 1;
 	private int maxHP = 113;
 	private int minHP = 97;
 	private int tackleDamage = 25;
+	private int lickDmg;
 	private boolean offsetTurn;
 
 	private AbstractCard card;
@@ -38,16 +41,22 @@ public class Phrog extends AbstractMonster {
 
 		//this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
 		this.offsetTurn = offsetTurn;
-
-		switch(AbstractDungeon.ascensionLevel){
-			case 7:
-				this.minHP += 5;
-				this.maxHP += 5;
-			case 2:
-				this.tackleDamage += 2;
+		if (AbstractDungeon.ascensionLevel >= 7) {
+			minHP += 5;
+			maxHP += 5;
 		}
-
+		if (AbstractDungeon.ascensionLevel >= 2) {
+			tackleDamage += 2;
+			lickDmg = LICK_DAMAGE + LICK_DAMAGE_ASC_MODIFIER;
+		}
+		if (AbstractDungeon.ascensionLevel >= 17) {
+			lickDmg = LICK_DAMAGE + LICK_DAMAGE_ASC_MODIFIER + LICK_DAMAGE_ASC_MODIFIER_AGAIN;
+		}
+		if (AbstractDungeon.ascensionLevel < 2) {
+			lickDmg = LICK_DAMAGE;
+		}
 		this.damage.add(new DamageInfo(this, tackleDamage));
+		damage.add(new DamageInfo(this, lickDmg));
 
 		this.setHp(minHP, maxHP);
 
@@ -60,6 +69,18 @@ public class Phrog extends AbstractMonster {
 
 		AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
 		e.setTime(e.getEndTime() * MathUtils.random());
+
+	}
+
+	public void usePreBattleAction() {
+
+		//Only play if this is the slot 0 elite - prevents doubling up on music from each elite triggering it.
+		if (AbstractDungeon.getMonsters().monsters.get(0) == this) {
+			CardCrawlGame.music.unsilenceBGM();
+			AbstractDungeon.scene.fadeOutAmbiance();
+			AbstractDungeon.getCurrRoom().playBgmInstantly("JUNGLEELITE");
+		}
+
 	}
 
 	@Override
@@ -70,6 +91,7 @@ public class Phrog extends AbstractMonster {
 			case MoveBytes.LICK:
 				AbstractDungeon.actionManager.addToBottom(new TalkAction(this, STRINGS.DIALOG[0], 1.0f, 2.0f));
 				AbstractDungeon.actionManager.addToBottom(new PhrogLickAction(this, 3));
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(1)));
 				break;
 			case MoveBytes.TACKLE:
 				AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
@@ -122,24 +144,28 @@ public class Phrog extends AbstractMonster {
 			return;
 		}
 		if(!this.lastMove(MoveBytes.LICK)) {
-			this.setMove(STRINGS.MOVES[0], MoveBytes.LICK, Intent.MAGIC);
+			this.setMove(STRINGS.MOVES[0], MoveBytes.LICK, Intent.ATTACK_DEBUFF, damage.get(1).base);
 			return;
 		}
-		switch(card.type){
-			case ATTACK:
-				this.setMove(MoveBytes.TACKLE, Intent.ATTACK, damage.get(0).base);
-				break;
-			case SKILL:
-				// 2 frail/weak
-				this.setMove(STRINGS.MOVES[1], MoveBytes.JUMP, Intent.STRONG_DEBUFF);
-				break;
-			case POWER:
-				this.setMove(STRINGS.MOVES[2], MoveBytes.CROAK, Intent.BUFF);
-				break;
-			case STATUS:
-			case CURSE:
-				this.setMove(MoveBytes.STUNNED, Intent.STUN);
-				break;
+		if (card != null) {
+			switch (card.type) {
+				case ATTACK:
+					this.setMove(MoveBytes.TACKLE, Intent.ATTACK, damage.get(0).base);
+					break;
+				case SKILL:
+					// 2 frail/weak
+					this.setMove(STRINGS.MOVES[1], MoveBytes.JUMP, Intent.STRONG_DEBUFF);
+					break;
+				case POWER:
+					this.setMove(STRINGS.MOVES[2], MoveBytes.CROAK, Intent.BUFF);
+					break;
+				case STATUS:
+				case CURSE:
+					this.setMove(MoveBytes.STUNNED, Intent.STUN);
+					break;
+			}
+		} else {
+			this.setMove(MoveBytes.TACKLE, Intent.ATTACK, damage.get(0).base);
 		}
 	}
 

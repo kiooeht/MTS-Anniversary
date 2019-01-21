@@ -1,0 +1,76 @@
+
+JungleHunter.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MaskFace/Arm
+  rotate: false
+  xy: 178, 124
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: -1
+MaskFace/Spear
+  rotate: false
+  xy: 1, 196
+  size: 235, 105
+  orig: 235, 105
+  offset: 0, 0
+  index: -1
+MaskFace/Spear_Tassle
+  rotate: false
+  xy: 223, 1
+  size: 17, 47
+  orig: 17, 47
+  offset: 0, 0
+  index: -1
+MaskFace/Robe
+  rotate: false
+  xy: 1, 1
+  size: 175, 193
+  orig: 175, 193
+  offset: 0, 0
+  index: -1
+MaskFace/Gremlin_Scarf
+  rotate: false
+  xy: 143, 303
+  size: 102, 41
+  orig: 102, 41
+  offset: 0, 0
+  index: -1
+MaskFace/Thumb
+  rotate: false
+  xy: 223, 149
+  size: 12, 21
+  orig: 12, 21
+  offset: 0, 0
+  index: -1
+MaskFace/Neck
+  rotate: false
+  xy: 178, 1
+  size: 43, 66
+  orig: 43, 66
+  offset: 0, 0
+  index: -1
+MaskFace/Face
+  rotate: false
+  xy: 223, 124
+  size: 29, 23
+  orig: 29, 23
+  offset: 0, 0
+  index: -1
+MaskFace/Robe_2
+  rotate: false
+  xy: 1, 303
+  size: 140, 166
+  orig: 140, 166
+  offset: 0, 0
+  index: -1
+MaskFace/Dark_Gremlin
+  rotate: false
+  xy: 178, 69
+  size: 45, 53
+  orig: 45, 53
+  offset: 0, 0
+  index: -1

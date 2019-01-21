@@ -30,7 +30,7 @@ public class SlimyTreeVines extends AbstractMonster {
     private static final float HB_X = 0.0f;
     private static final float HB_Y = 220.0f;
     private static final float HB_W = 330.0f;
-    private static final float HB_H = 320.0f;
+    private static final float HB_H = 290.0f;
     // stats
     private static final int HP_MIN = 115;
     private static final int HP_MAX = 120;
@@ -52,7 +52,7 @@ public class SlimyTreeVines extends AbstractMonster {
     private boolean doneSplit = false;
 
     public SlimyTreeVines() {
-        super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, 0, 0);
+        super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, 0, -40);
         this.loadAnimation("theActAssets/images/monsters/SlimyTreeVines/skeleton.atlas", "theActAssets/images/monsters/SlimyTreeVines/skeleton.json", 1.0f);
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());

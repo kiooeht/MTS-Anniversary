@@ -60,5 +60,35 @@
       "Upon pickup, raise your Max HP by #b",
       " and obtain a special #rCurse."
     ]
+  },
+  "theJungle:ParSnip": {
+    "NAME": "Par Snip",
+    "FLAVOR": "Definitely more than your average vegetable, despite the name. Rich in vitamins!",
+    "DESCRIPTIONS": [
+      "Upon pickup, #yUpgrade all #yBasic cards."
+    ]
+  },
+  "theJungle:ShellPeas": {
+    "NAME": "Shell Peas",
+    "FLAVOR": "These huge peas actually contain normal-sized peas inside. It has an interesting texture as you chew.",
+    "DESCRIPTIONS": [
+      "Whenever you are attacked, gain #b",
+      " #yTemporary_HP."
+    ]
+  },
+  "theJungle:Flamango": {
+    "NAME": "Flamango",
+    "FLAVOR": "A mango concentrated with a forgotten firepower. Spicy!",
+    "DESCRIPTIONS": [
+      "Whenever you play an #yAttack, deal #b",
+      " damage to ALL enemies at the end of your turn."
+    ]
+  },
+  "theJungle:Creamberry": {
+    "NAME": "Creamberry",
+    "FLAVOR": "A strawberry filled with natural vanilla cream. Delicious!",
+    "DESCRIPTIONS": [
+      "#yUncommon and #yRare cards in future card rewards are #yupgraded."
+    ]
   }
 }

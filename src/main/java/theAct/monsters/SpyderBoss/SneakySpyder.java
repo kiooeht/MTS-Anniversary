@@ -21,7 +21,7 @@ public class SneakySpyder extends SpawnedSpyder{
     public static final String[] MOVES;
     public static final String[] DIALOG;
     
-    private static final int BASEHP = 7;
+    private static final int BASEHP = 11;
     private static final boolean SMALL = true;
     
 	

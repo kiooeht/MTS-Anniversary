@@ -35,14 +35,14 @@ public class SnakeMissileEffect extends AbstractGameEffect {
 
     public SnakeMissileEffect(float originX, float originY, float targetX, float targetY, SnakeMissileAction parentAction, Color effectColor) {
         this.img = ImageMaster.WOBBLY_LINE;
-        this.rotation = MathUtils.random(180.0f) - 90.0f;
+        this.rotation = MathUtils.random(180.0f) + 90.0f;
         this.initialRotation = this.rotation;
         this.x = originX - this.img.packedWidth / 2.0f;
         this.y = originY - this.img.packedHeight / 2.0f;
         this.targetX = targetX - this.img.packedWidth / 2.0f;
         this.targetY = targetY - this.img.packedHeight / 2.0f;
         this.duration = EFFECT_DUR;
-        this.speed = 900.0f * Settings.scale;
+        this.speed = 1200.0f * Settings.scale;
         this.parentAction = parentAction;
         this.effectColor = effectColor;
     }

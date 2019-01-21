@@ -2,6 +2,7 @@ package theAct;
 
 import basemod.BaseMod;
 import basemod.ModPanel;
+import basemod.ReflectionHacks;
 import basemod.abstracts.CustomSavable;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
@@ -10,6 +11,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.audio.Sfx;
+import com.megacrit.cardcrawl.audio.SoundMaster;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -20,15 +24,20 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
-
+import com.megacrit.cardcrawl.monsters.city.Byrd;
 import com.megacrit.cardcrawl.monsters.city.Snecko;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theAct.cards.PetSnecko;
+import theAct.cards.colorless.Gourd;
 import theAct.cards.curses.EternalShame;
 import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
+import theAct.monsters.JungleHunters;
+import theAct.monsters.Phrog;
+import theAct.monsters.*;
+import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.events.SneckoIdol;
 import theAct.monsters.MUSHROOMPOWER.MushroomGenki;
 import theAct.monsters.MUSHROOMPOWER.MushroomKuudere;
@@ -46,6 +55,7 @@ import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.relics.*;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 
 @SpireInitializer
 public class TheActMod implements
@@ -57,8 +67,6 @@ public class TheActMod implements
         CustomSavable<Boolean>,
         PostUpdateSubscriber
 {
-
-
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
 
     public static boolean wentToTheJungle = false;
@@ -97,46 +105,76 @@ public class TheActMod implements
         BaseMod.addEvent(LostInTheJungle.ID, LostInTheJungle.class, Jungle.ID);
         BaseMod.addEvent(KidnappersEvent.ID, KidnappersEvent.class, Jungle.ID);
         BaseMod.addEvent(HappyBirthday.ID, HappyBirthday.class, Jungle.ID);
+        BaseMod.addEvent(JungleGarden.ID, JungleGarden.class, Jungle.ID);
+        BaseMod.addEvent(StalkMarket.ID, StalkMarket.class, Jungle.ID);
         BaseMod.addEvent(ShamanCauldron.ID, ShamanCauldron.class, Jungle.ID);
 
         // Add monsters here
 
+        BaseMod.addMonster(JungleHunters.ENCOUNTER_ID, JungleHunters.NAME, () -> new MonsterGroup(
+                new AbstractMonster[] { new JungleHunters(-385.0F, -15.0F), new JungleHunters(150.0F, -30.0F)}));
+
+        BaseMod.addMonster(JungleHunters.EVENT_ID, JungleHunters.NAME, () -> new MonsterGroup(
+                new AbstractMonster[] { new JungleHunters(-385.0F, -15.0F), new JungleHunters(-100.0F, 10.0F), new JungleHunters(150.0F, -30.0F)}));
 
         //Normal Enemies
-        BaseMod.addMonster(SilentTribesmen.ENCOUNTER_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
-            new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F)}));
-        BaseMod.addMonster(SilentTribesmen.EVENT_ID, SilentTribesmen.NAME, () -> new MonsterGroup(
-                new AbstractMonster[] { new SilentTribesmen(-385.0F, -15.0F), new SilentTribesmen(-133.0F, 0.0F), new SilentTribesmen(125.0F, -30.0F)}));
         BaseMod.addMonster(MushroomYandere.ENCOUNTER_ID, () -> new MonsterGroup(
                 new AbstractMonster[]{
                         new MushroomYandere(-385.0F, -15.0F),
                         new MushroomKuudere(-133.0F, 0.0F),
                         new MushroomGenki(125.0F, -30.0F)
                 }));
-        BaseMod.addMonster(makeID("3_Spyders"), () -> new MonsterGroup(
+        BaseMod.addMonster(makeID("Snecko_Cultist_and_trap"), () -> new MonsterGroup(
                 new AbstractMonster[]{
-                        new SneakySpyder(-949.0F, 360.0F),
-                        new FatSpyder(-572.0F, 288.0F),
-                        new WebberSpyder(-351.0F, -10.0F)
+                		new SwingingAxe(-450.0F, 100.0F),
+                		new SneakySpyder(-223.0F, 330.0F),
+                        new WebberSpyder(-159.0F, -10.0F),
+                        new SneckoCultist(120, 0)
                 }));
-        BaseMod.addMonster(Flameango.ID, () -> new Flameango(0));
-        BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
+        BaseMod.addMonster(makeID("6_Spyders"), () -> new MonsterGroup(
+                new AbstractMonster[]{
+                		new SneakySpyder(-749.0F, 360.0F),
+                		new SneakySpyder(-473.0F, 420.0F),
+                		new FatSpyder(-372.0F, 238.0F),
+                		new FatSpyder(-62.0F, 288.0F),
+                        new WebberSpyder(-199.0F, -10.0F),
+                        new WebberSpyder(39.0F, 10.0F)
+                }));
+        BaseMod.addMonster(makeID("Flameango_and_Byrd"), () -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new Flameango(50),
+                        new Byrd(-305.0F, 110.0F)
+                    }));
+        BaseMod.addMonster(makeID("2_Flameangoes"), () -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new Flameango(-250),
+                        new Flameango(80)
+                    }));
+        BaseMod.addMonster(makeID("2_Snecko_Cultists"), () -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new SneckoCultist(-250, -20),
+                        new SneckoCultist(80, 20, true)
+                    }));
+        BaseMod.addMonster(SlimyTreeVines.ID, SlimyTreeVines::new);
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
-        BaseMod.addMonster(SwingingAxe.ID, () -> new SwingingAxe());
+        BaseMod.addMonster(SwingingAxe.ID, (BaseMod.GetMonster) SwingingAxe::new);
         BaseMod.addMonster(Lyon.ID, Lyon::new);
+        BaseMod.addMonster(GiantWrat.ID, () -> new MonsterGroup(
+                new AbstractMonster[] { new GiantWrat(-85.0F, -15.0F)}));
         //Elites
-        BaseMod.addMonster(Cassacara.ID, () -> new Cassacara());
+        BaseMod.addMonster(Cassacara.ID, () -> new Cassacara(50.0F, 0.0F));
         BaseMod.addMonster(Phrog.ID,() -> new MonsterGroup(
             new AbstractMonster[] {
                 new Phrog(-175,0, false),
                 new Phrog(175, 0, true)
             }));
+        BaseMod.addMonster(MamaSnecko.ID, MamaSnecko::new);
         //Bosses
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
         BaseMod.addBoss(Jungle.ID, TotemBoss.ID, assetPath("images/map/totemBoss.png"), assetPath("images/map/totemBossOutline.png"));
 
         BaseMod.addMonster(SpyderBoss.ID, SpyderBoss::new);
-        BaseMod.addBoss(Jungle.ID, SpyderBoss.ID, assetPath("images/map/totemBoss.png"), assetPath("images/map/totemBossOutline.png")); // A R T
+        BaseMod.addBoss(Jungle.ID, SpyderBoss.ID, assetPath("images/map/spiderBoss.png"), assetPath("images/map/spiderBossOutline.png")); // A R T
 
         //Potions
         BaseMod.addPotion(JungleJuice.class, Color.GREEN, Color.GRAY, Color.BLACK, JungleJuice.POTION_ID);
@@ -147,19 +185,27 @@ public class TheActMod implements
         BaseMod.addPotion(SpyderVenom.class, Color.LIME, Color.GREEN, Color.YELLOW, SpyderVenom.POTION_ID);
 
         // Add Encounters here
+        BaseMod.addBoss(Jungle.ID, FunGuy.ID, assetPath("images/map/mushroomBoss.png"), assetPath("images/map/mushroomBossOutline.png"));
 
         // Add dungeon
         GetDungeonPatches.addDungeon(Jungle.ID, Jungle.builder());
         GetDungeonPatches.addNextDungeon(Jungle.ID, TheBeyond.ID);
+
+        // Add sounds
+        addSound(makeID("totemSmash"), assetPath("audio/sounds/totemSmash.ogg"));
+        addSound(makeID("sneckoCultist1"), assetPath("audio/sounds/sneckoCultist1.ogg"));
+        addSound(makeID("sneckoCultist2"), assetPath("audio/sounds/sneckoCultist2.ogg"));
 
         //savable boolean
         BaseMod.addSaveField("wentToTheJungle", this);
     }
 
     @Override
-    public void receiveEditCards() {
+    public void receiveEditCards()
+    {
         BaseMod.addCard(new PetSnecko());
         BaseMod.addCard(new EternalShame());
+        BaseMod.addCard(new Gourd());
     }
 
     @Override
@@ -173,7 +219,11 @@ public class TheActMod implements
         BaseMod.addRelic(new BirthdayCakeSlice(),  RelicType.SHARED);
         BaseMod.addRelic(new BirthdayCake(),  RelicType.SHARED);
         BaseMod.addRelic(new SneckoAutograph(), RelicType.SHARED);
-
+        BaseMod.addRelic(new ParSnip(), RelicType.SHARED);
+        BaseMod.addRelic(new Flamango(), RelicType.SHARED);
+        BaseMod.addRelic(new ShellPeas(), RelicType.SHARED);
+        BaseMod.addRelic(new Creamberry(), RelicType.SHARED);
+        BaseMod.addRelic(new SpiritDisease(), RelicType.SHARED);
     }
 
     @Override
@@ -210,14 +260,23 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(ScoreBonusStrings.class, assetPath(path + "score_bonuses.json"));
     }
 
+    private static void addSound(String id, String path)
+    {
+        @SuppressWarnings("unchecked")
+        HashMap<String,Sfx> map = (HashMap<String,Sfx>) ReflectionHacks.getPrivate(CardCrawlGame.sound, SoundMaster.class, "map");
+        map.put(id, new Sfx(path, false));
+    }
+
     @Override
-    public Boolean onSave() {
+    public Boolean onSave()
+    {
         logger.info("Saving wentToTheJungle boolean: " + wentToTheJungle);
         return wentToTheJungle;
     }
 
     @Override
-    public void onLoad(Boolean loadedBoolean) {
+    public void onLoad(Boolean loadedBoolean)
+    {
         if (loadedBoolean != null) {
             wentToTheJungle = loadedBoolean;
         } else {
@@ -227,7 +286,8 @@ public class TheActMod implements
     }
 
     @Override
-    public void receivePostUpdate() {
+    public void receivePostUpdate()
+    {
         if (AbstractDungeon.player == null) {
             return;
         }

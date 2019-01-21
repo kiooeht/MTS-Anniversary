@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.rooms.EmptyRoom;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import theAct.TheActMod;
 import theAct.monsters.*;
+import theAct.monsters.MUSHROOMPOWER.MushroomYandere;
 import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.patches.GetDungeonPatches;
 import theAct.scenes.TheJungleScene;
@@ -37,7 +38,7 @@ public class Jungle extends AbstractDungeon
             scene.dispose();
         }
         scene = new TheJungleScene(); // TODO
-        fadeColor = Color.valueOf("1e0f0aff"); // TODO ?
+        fadeColor = Color.valueOf("0f220aff");
 
 
 
@@ -45,7 +46,7 @@ public class Jungle extends AbstractDungeon
         mapRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + AbstractDungeon.actNum * 100);
         generateMap();
 
-        CardCrawlGame.music.changeBGM(id);
+        CardCrawlGame.music.changeBGM("JUNGLEMAIN");
         AbstractDungeon.currMapNode = new MapRoomNode(0, -1);
         AbstractDungeon.currMapNode.room = new EmptyRoom();
     }
@@ -59,11 +60,11 @@ public class Jungle extends AbstractDungeon
             scene.dispose();
         }
         scene = new TheJungleScene(); // TODO
-        fadeColor = Color.valueOf("1e0f0aff"); // TODO ?
+        fadeColor = Color.valueOf("0f220aff");
 
         initializeLevelSpecificChances();
         miscRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + saveFile.floor_num);
-        CardCrawlGame.music.changeBGM(id);
+        CardCrawlGame.music.changeBGM("JUNGLEMAIN");
         mapRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + saveFile.act_num * 100);
         generateMap();
         firstRoomChosen = true;
@@ -119,42 +120,41 @@ public class Jungle extends AbstractDungeon
         generateElites(10);
     }
 
-    @Override
     protected void generateWeakEnemies(int count)
     {
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
         monsters.add(new MonsterInfo("Shell Parasite", 2.0F));
-        monsters.add(new MonsterInfo("3 Byrds", 2.0f));
-        monsters.add(new MonsterInfo(Flameango.ID, 2.0F));
-        monsters.add(new MonsterInfo(FunGuy.ID,2.0f));
-        monsters.add(new MonsterInfo(SilentTribesmen.ENCOUNTER_ID, 1.0f));
+        monsters.add(new MonsterInfo(GiantWrat.ID, 3.0f));
+        monsters.add(new MonsterInfo(TheActMod.makeID("Flameango_and_Byrd"), 2.0F));
+        monsters.add(new MonsterInfo(TheActMod.makeID("6_Spyders"), 2.0f));
+        monsters.add(new MonsterInfo(MushroomYandere.ENCOUNTER_ID, 3.0f));
         MonsterInfo.normalizeWeights(monsters);
         populateMonsterList(monsters, count, false);
     }
 
-    @Override
     protected void generateStrongEnemies(int count)
     {
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo(Flameango.ID, 2.0F));
-        monsters.add(new MonsterInfo(FunGuy.ID,2.0f));
-        monsters.add(new MonsterInfo(SilentTribesmen.ENCOUNTER_ID, 1.0f));
-        monsters.add(new MonsterInfo("Snake Plant", 1.0F));
-        monsters.add(new MonsterInfo(Lyon.ID, 2.0f));
+        monsters.add(new MonsterInfo(SlimyTreeVines.ENCOUNTER_NAME, 3.0F));
+        monsters.add(new MonsterInfo(JungleHunters.ENCOUNTER_ID, 3.0f));
+        monsters.add(new MonsterInfo("Snake Plant", 2.0F));
+        monsters.add(new MonsterInfo(Lyon.ID, 3.0f));
+        monsters.add(new MonsterInfo(TheActMod.makeID("2_Flameangoes"), 2.0F));
+        monsters.add(new MonsterInfo(TheActMod.makeID("2_Snecko_Cultists"), 3.0F));
+        monsters.add(new MonsterInfo(TheActMod.makeID("Snecko_Cultist_and_trap"), 2.0F));
 
         MonsterInfo.normalizeWeights(monsters);
         populateFirstStrongEnemy(monsters, generateExclusions());
         populateMonsterList(monsters, count, false);
     }
 
-    @Override
     protected void generateElites(int count)
     {
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo("Gremlin Leader", 1.0F));
+        monsters.add(new MonsterInfo(MamaSnecko.ID, 1.0F));
         monsters.add(new MonsterInfo(Cassacara.ID, 1.0F));
         monsters.add(new MonsterInfo(Phrog.ID, 1.0f));
         MonsterInfo.normalizeWeights(monsters);

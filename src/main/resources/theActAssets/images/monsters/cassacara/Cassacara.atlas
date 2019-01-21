@@ -1,0 +1,174 @@
+
+Cassacara.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Cassacara/Shadow
+  rotate: false
+  xy: 1, 1
+  size: 273, 80
+  orig: 273, 80
+  offset: 0, 0
+  index: -1
+Cassacara/Bulb_Shadow
+  rotate: false
+  xy: 112, 468
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+Cassacara/Chomp_Shadow
+  rotate: false
+  xy: 151, 332
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+Cassacara/Tongue
+  rotate: false
+  xy: 227, 244
+  size: 117, 20
+  orig: 117, 20
+  offset: 0, 0
+  index: -1
+Cassacara/Bulb
+  rotate: false
+  xy: 1, 136
+  size: 153, 124
+  orig: 153, 124
+  offset: 0, 0
+  index: -1
+Cassacara/Bulb_Root
+  rotate: false
+  xy: 335, 136
+  size: 25, 33
+  orig: 25, 33
+  offset: 0, 0
+  index: -1
+Cassacara/Flexible_stem
+  rotate: false
+  xy: 1, 83
+  size: 386, 51
+  orig: 386, 51
+  offset: 0, 0
+  index: -1
+Cassacara/Chomp_Back
+  rotate: false
+  xy: 1, 262
+  size: 148, 112
+  orig: 148, 112
+  offset: 0, 0
+  index: -1
+Cassacara/Chomp_Mouth
+  rotate: false
+  xy: 276, 1
+  size: 100, 65
+  orig: 100, 65
+  offset: 0, 0
+  index: -1
+Cassacara/Chomp_Lower_Jaw
+  rotate: false
+  xy: 1, 376
+  size: 112, 50
+  orig: 112, 50
+  offset: 0, 0
+  index: -1
+Cassacara/Chomp_Upper_Jaw
+  rotate: false
+  xy: 1, 428
+  size: 109, 47
+  orig: 109, 47
+  offset: 0, 0
+  index: -1
+Cassacara/Chomp_Lower_Rivet
+  rotate: false
+  xy: 276, 68
+  size: 17, 10
+  orig: 17, 10
+  offset: 0, 0
+  index: -1
+Cassacara/Chomp_Upper_Rivet
+  rotate: false
+  xy: 199, 244
+  size: 19, 11
+  orig: 19, 11
+  offset: 0, 0
+  index: -1
+Cassacara/Back_Tiny_Leaf
+  rotate: false
+  xy: 213, 136
+  size: 73, 52
+  orig: 73, 52
+  offset: 0, 0
+  index: -1
+Cassacara/BackRoot
+  rotate: false
+  xy: 156, 220
+  size: 41, 36
+  orig: 41, 36
+  offset: 0, 0
+  index: -1
+Cassacara/Centre_Bottom_Leaf
+  rotate: false
+  xy: 288, 210
+  size: 45, 25
+  orig: 45, 25
+  offset: 0, 0
+  index: -1
+Cassacara/Leaft_Ground_Leaf
+  rotate: false
+  xy: 213, 190
+  size: 73, 52
+  orig: 73, 52
+  offset: 0, 0
+  index: -1
+Cassacara/Right_Ground_Leaf
+  rotate: false
+  xy: 1, 477
+  size: 97, 25
+  orig: 97, 25
+  offset: 0, 0
+  index: -1
+Cassacara/Left_Upper_Leaf
+  rotate: false
+  xy: 156, 136
+  size: 55, 82
+  orig: 55, 82
+  offset: 0, 0
+  index: -1
+Cassacara/Right_Leaf
+  rotate: false
+  xy: 151, 262
+  size: 74, 68
+  orig: 74, 68
+  offset: 0, 0
+  index: -1
+Cassacara/Jewel
+  rotate: false
+  xy: 389, 1
+  size: 121, 94
+  orig: 121, 94
+  offset: 0, 0
+  index: -1
+Cassacara/Wiggly
+  rotate: false
+  xy: 460, 97
+  size: 34, 86
+  orig: 34, 86
+  offset: 0, 0
+  index: -1
+Cassacara/Leaf_Front_2
+  rotate: false
+  xy: 389, 97
+  size: 69, 111
+  orig: 69, 111
+  offset: 0, 0
+  index: -1
+Cassacara/Leaf_Front
+  rotate: false
+  xy: 115, 376
+  size: 61, 90
+  orig: 61, 90
+  offset: 0, 0
+  index: -1
