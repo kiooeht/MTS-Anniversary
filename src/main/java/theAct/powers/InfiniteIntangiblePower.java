@@ -12,6 +12,7 @@ public class InfiniteIntangiblePower extends Power {
 	public static final String POWER_ID = TheActMod.makeID("InfiniteIntangible");
 	private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = strings.NAME;
+    private static final String IMG = POWER_ID.substring(POWER_ID.indexOf(":")+1);
 	
 	public InfiniteIntangiblePower(AbstractCreature owner) {
         this.ID = POWER_ID;
@@ -19,7 +20,7 @@ public class InfiniteIntangiblePower extends Power {
 		this.owner = owner;
 		this.amount = -1;
 		this.type = PowerType.BUFF;
-		this.setImage(NAME + "84.png", NAME + "32.png");
+		this.setImage(IMG + "84.png", IMG + "32.png");
         this.priority = 99;
 		this.updateDescription();
 	}
