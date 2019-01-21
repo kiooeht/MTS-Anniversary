@@ -146,8 +146,8 @@ public class TheActMod implements
                     }));
         BaseMod.addMonster(makeID("2_Flameangoes"), () -> new MonsterGroup(
                 new AbstractMonster[] {
-                        new Flameango(80),
-                        new Flameango(-250)
+                        new Flameango(-250),
+                        new Flameango(80)
                     }));
         BaseMod.addMonster(makeID("2_Snecko_Cultists"), () -> new MonsterGroup(
                 new AbstractMonster[] {
