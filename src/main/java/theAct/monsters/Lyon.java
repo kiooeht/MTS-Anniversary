@@ -46,6 +46,12 @@ public class Lyon extends AbstractMonster {
     private int attackDmg, attackDmg2;
     private int debuffAmt;
     private static final int ATTACK_TIMES = 2;
+    private static final int DEBUFF_AMT = 3;
+    private static final int DEBUFF_AMT_ASC_MODIFIER = 2;
+    private static final int ATTACK_DMG = 10;
+    private static final int ATTACK_DMG_ASC_MODIFIER = 2;
+    private static final int POUNCE_DMG = 5;
+    private static final int POUNCE_DMG_ASC_MODIFIER = 1;
     // moves
     private static final byte ROAR = 1;
     private static final byte ATTACK = 2;
@@ -65,16 +71,16 @@ public class Lyon extends AbstractMonster {
             this.setHp(HP_MIN, HP_MAX);
         }
         if (AbstractDungeon.ascensionLevel >= 2) {
-            this.attackDmg = 12;
-            this.attackDmg2 = 6;
+            attackDmg = ATTACK_DMG + ATTACK_DMG_ASC_MODIFIER;
+            attackDmg2 = POUNCE_DMG + POUNCE_DMG_ASC_MODIFIER;
         } else {
-            this.attackDmg = 10;
-            this.attackDmg2 = 5;
+            attackDmg = ATTACK_DMG;
+            attackDmg2 = POUNCE_DMG;
         }
         if (AbstractDungeon.ascensionLevel >= 17) {
-            this.debuffAmt = 5;
+            debuffAmt = DEBUFF_AMT + DEBUFF_AMT_ASC_MODIFIER;
         } else {
-            this.debuffAmt = 3;
+            debuffAmt = DEBUFF_AMT;
         }
         this.damage.add(new DamageInfo(this, attackDmg));
         this.damage.add(new DamageInfo(this, attackDmg2));
