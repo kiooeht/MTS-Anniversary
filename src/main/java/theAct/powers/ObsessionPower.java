@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAct.TheActMod;
 import theAct.powers.abstracts.Power;
 
@@ -35,6 +36,17 @@ public class ObsessionPower extends Power {
     public void onUseCard(AbstractCard c, UseCardAction a) {
         if (c.type == AbstractCard.CardType.ATTACK && a.target != owner) {
             AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, new DamageInfo(owner, amount)));
+        }
+        if (c.type == AbstractCard.CardType.ATTACK && c.target == null) {
+            int aliveCount = 0;
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                if (!m.isDying && !m.isEscaping) {
+                    aliveCount++;
+                }
+            }
+            if (aliveCount < 2) {
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, new DamageInfo(owner, amount)));
+            }
         }
     }
 }
