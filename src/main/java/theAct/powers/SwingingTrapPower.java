@@ -53,6 +53,17 @@ public class SwingingTrapPower extends AbstractPower {
 		if (this.phase > 2) {
 			this.phase = 0;
 		}
+		switch (this.phase) {
+			case 0:
+				this.owner.state.setAnimation(0, "Incoming", true);
+			case 1:
+				this.owner.state.setAnimation(0, "Swinging", true);
+			case 2:
+				this.owner.state.setAnimation(0, "Reseting", true);
+			default: 
+				this.owner.state.setAnimation(0, "Incoming", true);
+		}
+
 		this.amount = (this.phase == 1) ? this.thornsAmt : 0;
 		this.updateDescription();
 		((AbstractMonster)this.owner).applyPowers();
