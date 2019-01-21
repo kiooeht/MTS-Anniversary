@@ -154,7 +154,7 @@ public class Jungle extends AbstractDungeon
     {
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo("Gremlin Leader", 1.0F));
+        monsters.add(new MonsterInfo(MamaSnecko.ID, 1.0F));
         monsters.add(new MonsterInfo(Cassacara.ID, 1.0F));
         monsters.add(new MonsterInfo(Phrog.ID, 1.0f));
         MonsterInfo.normalizeWeights(monsters);
