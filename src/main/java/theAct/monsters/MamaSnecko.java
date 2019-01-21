@@ -18,10 +18,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ConfusionPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import com.megacrit.cardcrawl.vfx.combat.IntimidateEffect;
 import theAct.TheActMod;
@@ -104,7 +101,18 @@ public class MamaSnecko extends AbstractMonster {
         this.damage.add(new DamageInfo(this, tailDamage));
         this.damage.add(new DamageInfo(this, biteDamage));
         this.damage.add(new DamageInfo(this, furyDamage));
+
+
     }
+
+    public void usePreBattleAction() {
+
+            CardCrawlGame.music.unsilenceBGM();
+            AbstractDungeon.scene.fadeOutAmbiance();
+            AbstractDungeon.getCurrRoom().playBgmInstantly("JUNGLEELITE");
+
+    }
+
 
     public void takeTurn() {
         switch (this.nextMove) {

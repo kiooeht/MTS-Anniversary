@@ -55,6 +55,10 @@ public class MushroomGenki extends AbstractMonster {
 
     @Override
     public void usePreBattleAction() {
+        CardCrawlGame.music.unsilenceBGM();
+        AbstractDungeon.scene.fadeOutAmbiance();
+        AbstractDungeon.getCurrRoom().playBgmInstantly("MUSHROOMGANG");
+
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new EnergeticPower(this, strAmt)));
     }
 
