@@ -27,7 +27,7 @@ public class WildStrawberry extends CustomRelic {
 
     @Override
     public String getUpdatedDescription(){
-        return DESCRIPTIONS[0] + HP_MANIPULATOR + DESCRIPTIONS[1];
+        return DESCRIPTIONS[0] + HP_MANIPULATOR + DESCRIPTIONS[1] + HP_LOSS_AMT + DESCRIPTIONS[2];
     }
 
     @Override
