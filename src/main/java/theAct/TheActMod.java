@@ -157,6 +157,7 @@ public class TheActMod implements
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
         BaseMod.addMonster(SwingingAxe.ID, () -> new SwingingAxe());
         BaseMod.addMonster(Lyon.ID, Lyon::new);
+        BaseMod.addMonster(GiantWrat.ID, () -> new GiantWrat());
         //Elites
         BaseMod.addMonster(Cassacara.ID, () -> new Cassacara(50.0F, 0.0F));
         BaseMod.addMonster(Phrog.ID,() -> new MonsterGroup(
