@@ -38,7 +38,7 @@ public class Jungle extends AbstractDungeon
             scene.dispose();
         }
         scene = new TheJungleScene(); // TODO
-        fadeColor = Color.valueOf("1e0f0aff"); // TODO ?
+        fadeColor = Color.valueOf("0f220aff");
 
 
 
@@ -60,7 +60,7 @@ public class Jungle extends AbstractDungeon
             scene.dispose();
         }
         scene = new TheJungleScene(); // TODO
-        fadeColor = Color.valueOf("1e0f0aff"); // TODO ?
+        fadeColor = Color.valueOf("0f220aff");
 
         initializeLevelSpecificChances();
         miscRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + saveFile.floor_num);
@@ -125,9 +125,9 @@ public class Jungle extends AbstractDungeon
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
         monsters.add(new MonsterInfo("Shell Parasite", 2.0F));
-        //monsters.add(new MonsterInfo(GIANT WRAT HERE, 3.0f));
+        monsters.add(new MonsterInfo(GiantWrat.ID, 3.0f));
         monsters.add(new MonsterInfo(TheActMod.makeID("Flameango_and_Byrd"), 2.0F));
-        monsters.add(new MonsterInfo(TheActMod.makeID("6_Spyders"), 3.0f));
+        monsters.add(new MonsterInfo(TheActMod.makeID("6_Spyders"), 2.0f));
         monsters.add(new MonsterInfo(MushroomYandere.ENCOUNTER_ID, 3.0f));
         MonsterInfo.normalizeWeights(monsters);
         populateMonsterList(monsters, count, false);
@@ -143,7 +143,7 @@ public class Jungle extends AbstractDungeon
         monsters.add(new MonsterInfo(Lyon.ID, 3.0f));
         monsters.add(new MonsterInfo(TheActMod.makeID("2_Flameangoes"), 2.0F));
         monsters.add(new MonsterInfo(TheActMod.makeID("2_Snecko_Cultists"), 3.0F));
-        monsters.add(new MonsterInfo(TheActMod.makeID("Silent_and_trap"), 2.0F));
+        monsters.add(new MonsterInfo(TheActMod.makeID("Snecko_Cultist_and_trap"), 2.0F));
 
         MonsterInfo.normalizeWeights(monsters);
         populateFirstStrongEnemy(monsters, generateExclusions());
@@ -154,7 +154,7 @@ public class Jungle extends AbstractDungeon
     {
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo("Gremlin Leader", 1.0F));
+        monsters.add(new MonsterInfo(MamaSnecko.ID, 1.0F));
         monsters.add(new MonsterInfo(Cassacara.ID, 1.0F));
         monsters.add(new MonsterInfo(Phrog.ID, 1.0f));
         MonsterInfo.normalizeWeights(monsters);

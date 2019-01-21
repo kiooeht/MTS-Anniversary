@@ -27,14 +27,14 @@ public class SneakySpyder extends SpawnedSpyder{
 	
     public SneakySpyder(SpyderBoss boss, int slot, int strength) {	
 		super(NAME, ID, SMALL, BASEHP, boss, slot, strength);
+		damage.add(new DamageInfo(this, 2));
 		damage.add(new DamageInfo(this, 3));
-		damage.add(new DamageInfo(this, 4));
 	}
     
     public SneakySpyder(float x, float y) {	
 		super(NAME, ID, SMALL, BASEHP, x, y);
+		damage.add(new DamageInfo(this, 2));
 		damage.add(new DamageInfo(this, 3));
-		damage.add(new DamageInfo(this, 4));
 	}
 	
 	static {
