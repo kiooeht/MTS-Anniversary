@@ -146,17 +146,17 @@ public class TheActMod implements
                     }));
         BaseMod.addMonster(makeID("2_Flameangoes"), () -> new MonsterGroup(
                 new AbstractMonster[] {
-                        new Flameango(80),
-                        new Flameango(-250)
+                        new Flameango(-250),
+                        new Flameango(80)
                     }));
         BaseMod.addMonster(makeID("2_Snecko_Cultists"), () -> new MonsterGroup(
                 new AbstractMonster[] {
                         new SneckoCultist(-250, -20),
                         new SneckoCultist(80, 20, true)
                     }));
-        BaseMod.addMonster(SlimyTreeVines.ID, () -> new SlimyTreeVines());
+        BaseMod.addMonster(SlimyTreeVines.ID, SlimyTreeVines::new);
         BaseMod.addMonster(FunGuy.ID, FunGuy::new);
-        BaseMod.addMonster(SwingingAxe.ID, () -> new SwingingAxe());
+        BaseMod.addMonster(SwingingAxe.ID, (BaseMod.GetMonster) SwingingAxe::new);
         BaseMod.addMonster(Lyon.ID, Lyon::new);
         BaseMod.addMonster(GiantWrat.ID, () -> new MonsterGroup(
                 new AbstractMonster[] { new GiantWrat(-85.0F, -15.0F)}));
@@ -167,7 +167,7 @@ public class TheActMod implements
                 new Phrog(-175,0, false),
                 new Phrog(175, 0, true)
             }));
-        BaseMod.addMonster(MamaSnecko.ID,() -> new MamaSnecko());
+        BaseMod.addMonster(MamaSnecko.ID, MamaSnecko::new);
         //Bosses
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
         BaseMod.addBoss(Jungle.ID, TotemBoss.ID, assetPath("images/map/totemBoss.png"), assetPath("images/map/totemBossOutline.png"));
