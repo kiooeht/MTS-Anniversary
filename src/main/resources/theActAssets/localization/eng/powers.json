@@ -38,7 +38,7 @@
 	"theJungle:TotemBossImmunityPower": {
 		"NAME" : "Totemic Might",
 		"DESCRIPTIONS": [
-			"This enemy cannot be damaged until all Totems have been destroyed."
+			"This enemy is immune to damage and debuffs until all Totems have been destroyed."
 		]
 	},
 	"theJungle:SwingingTrapPower": {

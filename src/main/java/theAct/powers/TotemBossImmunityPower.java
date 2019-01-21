@@ -2,12 +2,16 @@ package theAct.powers;
 
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import theAct.TheActMod;
+import theAct.monsters.TotemBoss.AbstractTotemSpawn;
 import theAct.powers.abstracts.Power;
+import theAct.vfx.ImmunityShieldEffect;
 
 public class TotemBossImmunityPower extends Power implements HealthBarRenderPower {
 
@@ -26,11 +30,13 @@ public class TotemBossImmunityPower extends Power implements HealthBarRenderPowe
 
 	@Override
 	public int onLoseHp(int damageAmount) {
+		AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new ImmunityShieldEffect(this.owner.hb.cX,this.owner.hb.cY),0.15F));
 		return 0;
 	}
 
 	@Override
 	public int onAttacked(DamageInfo info, int damageAmount) {
+		AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new ImmunityShieldEffect(this.owner.hb.cX,this.owner.hb.cY),0.15F));
 		return super.onAttacked(info, 0);
 	}
 
@@ -41,7 +47,7 @@ public class TotemBossImmunityPower extends Power implements HealthBarRenderPowe
 
 	@Override
 	public int getHealthBarAmount() {
-		return this.amount;
+		return this.owner.currentHealth;
 	}
 
 	@Override

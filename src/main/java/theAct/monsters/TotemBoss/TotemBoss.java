@@ -49,7 +49,7 @@ public class TotemBoss extends AbstractMonster {
     private int strikeAmt;;
     private int superAmt;
 
-    private int multiStrikeCount;
+    private int multiStrikeCount = 6;
     public boolean stopTotemFall;
     private float totemSfxTimer = 0.f;
     public int encounterSlotsUsed = 1;
@@ -65,17 +65,17 @@ public class TotemBoss extends AbstractMonster {
 
         if (AbstractDungeon.ascensionLevel >= 19) {
             this.strikeAmt = 9;
-            this.superAmt = 3;
+            this.superAmt = 2;
             this.healAmt = 12;
             this.debuffAmt = 3;
         } else if (AbstractDungeon.ascensionLevel >= 4) {
             this.strikeAmt = 9;
-            this.superAmt = 3;
+            this.superAmt = 2;
             this.healAmt = 10;
             this.debuffAmt = 2;
         } else {
             this.strikeAmt = 8;
-            this.superAmt = 2;
+            this.superAmt = 1;
             this.healAmt = 10;
             this.debuffAmt = 2;
         }
@@ -121,6 +121,8 @@ public class TotemBoss extends AbstractMonster {
         this.totemShadow = new TotemShadowParticle(this);
 
         AbstractDungeon.effectList.add(this.totemShadow);
+
+        //this.halfDead = true;
 
     }
 
@@ -186,6 +188,7 @@ public class TotemBoss extends AbstractMonster {
         if (remainingTotems.size() == 0 && livingTotems.size() == 0){
             //Totems are all dead - remove immunity and the totem shadow
             this.totemShadow.isDone = true;
+            this.halfDead = false;
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this,this, TotemBossImmunityPower.powerID));
 
         } else if (remainingTotems.size() > 0) {
@@ -209,13 +212,6 @@ public class TotemBoss extends AbstractMonster {
         }
     }
 
-    @Override
-    public boolean isDeadOrEscaped() {
-        if (livingTotems.size() > 0){
-            return true;
-        }
-        return super.isDeadOrEscaped();
-    }
 
     public void totemStoppedFalling() {
         if (totemSfxTimer <= 0.f) { // Don't overlap effects
@@ -325,9 +321,15 @@ public class TotemBoss extends AbstractMonster {
                 this.setMove(MoveBytes.DEBUFF, Intent.STRONG_DEBUFF);
             }
             else if(lastMove(MoveBytes.DEBUFF)){
-                this.multiStrikeCount = 1 + livingTotems.size() + remainingTotems.size();
                 this.setMove(MoveBytes.SUPERATTACK, Intent.ATTACK, this.damage.get(1).base, this.multiStrikeCount, true);
             }
+
+            //SAFEGUARD in case something causes the immunity to not wear off, try again every turn
+            if (remainingTotems.size() == 0 && livingTotems.size() == 0) {
+                //Totems are all dead - remove immunity and the totem shadow
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this,this, TotemBossImmunityPower.powerID));
+            }
+
         }
     }
 
