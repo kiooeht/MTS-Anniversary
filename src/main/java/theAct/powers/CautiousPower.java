@@ -45,10 +45,12 @@ public class CautiousPower extends Power {
 
     @Override
     public int onAttacked(DamageInfo info, int damage) {
-        amount--;
-        this.updateDescription();
-        if (amount == 0 && owner instanceof JungleHunters) {
-            AbstractDungeon.actionManager.addToBottom(new ChangeStateAction((AbstractMonster) owner, JungleHunters.STUNNED));
+        if (info.type == DamageInfo.DamageType.NORMAL) {
+            amount--;
+            this.updateDescription();
+            if (amount == 0 && owner instanceof JungleHunters) {
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction((AbstractMonster) owner, JungleHunters.STUNNED));
+            }
         }
         return damage;
     }
