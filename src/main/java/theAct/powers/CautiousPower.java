@@ -40,6 +40,7 @@ public class CautiousPower extends Power {
 
     public void atStartOfTurn() {
         amount = startAmt;
+        updateDescription();
     }
 
     @Override
