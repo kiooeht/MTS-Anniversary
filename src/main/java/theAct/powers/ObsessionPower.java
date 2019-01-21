@@ -37,7 +37,7 @@ public class ObsessionPower extends Power {
         if (c.type == AbstractCard.CardType.ATTACK && a.target != owner) {
             AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, new DamageInfo(owner, amount)));
         }
-        if (c.type == AbstractCard.CardType.ATTACK && c.target == null) {
+        if (c.type == AbstractCard.CardType.ATTACK && a.target == null) {
             int aliveCount = 0;
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                 if (!m.isDying && !m.isEscaping) {
