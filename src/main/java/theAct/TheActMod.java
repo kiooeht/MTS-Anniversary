@@ -65,8 +65,6 @@ public class TheActMod implements
         CustomSavable<Boolean>,
         PostUpdateSubscriber
 {
-
-
     public static final Logger logger = LogManager.getLogger(TheActMod.class.getSimpleName());
 
     public static boolean wentToTheJungle = false;
@@ -199,7 +197,8 @@ public class TheActMod implements
     }
 
     @Override
-    public void receiveEditCards() {
+    public void receiveEditCards()
+    {
         BaseMod.addCard(new PetSnecko());
         BaseMod.addCard(new EternalShame());
         BaseMod.addCard(new Gourd());
@@ -220,7 +219,7 @@ public class TheActMod implements
         BaseMod.addRelic(new Flamango(), RelicType.SHARED);
         BaseMod.addRelic(new ShellPeas(), RelicType.SHARED);
         BaseMod.addRelic(new Creamberry(), RelicType.SHARED);
-
+        BaseMod.addRelic(new SpiritDisease(), RelicType.SHARED);
     }
 
     @Override
@@ -257,20 +256,23 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(ScoreBonusStrings.class, assetPath(path + "score_bonuses.json"));
     }
 
-    private static void addSound(String id, String path) {
+    private static void addSound(String id, String path)
+    {
         @SuppressWarnings("unchecked")
         HashMap<String,Sfx> map = (HashMap<String,Sfx>) ReflectionHacks.getPrivate(CardCrawlGame.sound, SoundMaster.class, "map");
         map.put(id, new Sfx(path, false));
     }
 
     @Override
-    public Boolean onSave() {
+    public Boolean onSave()
+    {
         logger.info("Saving wentToTheJungle boolean: " + wentToTheJungle);
         return wentToTheJungle;
     }
 
     @Override
-    public void onLoad(Boolean loadedBoolean) {
+    public void onLoad(Boolean loadedBoolean)
+    {
         if (loadedBoolean != null) {
             wentToTheJungle = loadedBoolean;
         } else {
@@ -280,7 +282,8 @@ public class TheActMod implements
     }
 
     @Override
-    public void receivePostUpdate() {
+    public void receivePostUpdate()
+    {
         if (AbstractDungeon.player == null) {
             return;
         }
@@ -288,8 +291,4 @@ public class TheActMod implements
             SneckoAutograph.iHatePostUpdate();
         }
     }
-
-	public static String makeId() {
-		return null;
-	}
 }
