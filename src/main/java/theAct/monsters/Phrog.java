@@ -144,21 +144,25 @@ public class Phrog extends AbstractMonster {
 			this.setMove(STRINGS.MOVES[0], MoveBytes.LICK, Intent.ATTACK_DEBUFF, damage.get(1).base);
 			return;
 		}
-		switch(card.type){
-			case ATTACK:
-				this.setMove(MoveBytes.TACKLE, Intent.ATTACK, damage.get(0).base);
-				break;
-			case SKILL:
-				// 2 frail/weak
-				this.setMove(STRINGS.MOVES[1], MoveBytes.JUMP, Intent.STRONG_DEBUFF);
-				break;
-			case POWER:
-				this.setMove(STRINGS.MOVES[2], MoveBytes.CROAK, Intent.BUFF);
-				break;
-			case STATUS:
-			case CURSE:
-				this.setMove(MoveBytes.STUNNED, Intent.STUN);
-				break;
+		if (card != null) {
+			switch (card.type) {
+				case ATTACK:
+					this.setMove(MoveBytes.TACKLE, Intent.ATTACK, damage.get(0).base);
+					break;
+				case SKILL:
+					// 2 frail/weak
+					this.setMove(STRINGS.MOVES[1], MoveBytes.JUMP, Intent.STRONG_DEBUFF);
+					break;
+				case POWER:
+					this.setMove(STRINGS.MOVES[2], MoveBytes.CROAK, Intent.BUFF);
+					break;
+				case STATUS:
+				case CURSE:
+					this.setMove(MoveBytes.STUNNED, Intent.STUN);
+					break;
+			}
+		} else {
+			this.setMove(MoveBytes.TACKLE, Intent.ATTACK, damage.get(0).base);
 		}
 	}
 
