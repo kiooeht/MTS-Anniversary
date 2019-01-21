@@ -1,9 +1,11 @@
 package theAct.powers;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -39,6 +41,21 @@ public class EnergeticPower extends Power {
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                 if (m != owner) {
                     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, owner, new StrengthPower(m, amount), amount));
+                }
+            }
+        }
+        if (c.type == AbstractCard.CardType.ATTACK && c.target == null) {
+            int aliveCount = 0;
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                if (!m.isDying && !m.isEscaping) {
+                    aliveCount++;
+                }
+            }
+            if (aliveCount < 2) {
+                for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                    if (m != owner) {
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, owner, new StrengthPower(m, amount), amount));
+                    }
                 }
             }
         }
