@@ -124,8 +124,8 @@ public class SpawnedSpyder extends AbstractMonster {
         if(owner != null) {
         	this.owner.resolveSpyderDeath(this);        	
         	for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-    			if(m instanceof SpawnedSpyder && m.hasPower(SquadPower.powerID))
-    				((SquadPower) m.getPower(SquadPower.powerID)).spyderDeath();
+    			if(m instanceof SpawnedSpyder && m.hasPower(SquadPower.POWER_ID))
+    				((SquadPower) m.getPower(SquadPower.POWER_ID)).spyderDeath();
     			if(m instanceof SpawnedSpyder && m.hasPower(FormationPower.POWER_ID))
     				AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) m.getPower(FormationPower.POWER_ID))));
     		}

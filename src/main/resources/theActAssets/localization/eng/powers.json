@@ -112,7 +112,7 @@
 			" #yStrength."
 		]
 	},
-    "Squad": {
+    "theJungle:Squad": {
 		"NAME" : "Squad",
 		"DESCRIPTIONS": [
 			"Has #b1 #yStrength for every #rSpyder."
