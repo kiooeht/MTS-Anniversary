@@ -31,10 +31,7 @@ public class RandomizePower extends Power implements OnCardDrawPower {
 
     @Override
     public void updateDescription(){
-        if (this.amount == 0) {
-            this.description = DESCRIPTIONS[0];
-        }
-        else if (this.amount == 1) {
+        if (this.amount == 1) {
             this.description = DESCRIPTIONS[1];
         }
         else {
@@ -72,7 +69,7 @@ public class RandomizePower extends Power implements OnCardDrawPower {
             this.fontScale = 8.0F;
             this.amount -= stackAmount;
         }
-
+        updateDescription();
     }
 
     @Override
@@ -80,5 +77,7 @@ public class RandomizePower extends Power implements OnCardDrawPower {
         if (this.amount == 0) {
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }
+        cardsRandomizedThisTurn = 0;
+        updateDescription();
     }
 }
