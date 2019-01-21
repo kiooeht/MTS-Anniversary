@@ -51,7 +51,7 @@
 	"theJungle:SwingingTrapPower": {
 		"NAME": "Pendulum Trap",
 		"DESCRIPTIONS": [
-			"NL NL Changes position each time you play a card. NL Cycles between #rIncoming, #rMidswing, and #gResetting.",
+			" NL NL Changes position each time you play a card. NL Cycles between #rIncoming, #rMidswing, and #gResetting.",
 			"#yPOSITION: ",
 			"#rINCOMING NL Ending your turn while this trap is #rIncoming will cause it to deal damage to you.", 
 			"#rMIDSWING NL Playing an #yAttack card while this trap is in #rMidswing will cause you to take #b", 

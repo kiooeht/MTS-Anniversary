@@ -44,15 +44,27 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
 
     public SneckoAutograph() {
         super(ID, ImageMaster.loadImage(IMG_PATH), ImageMaster.loadImage(OUTLINE_PATH), RelicTier.SPECIAL, LandingSound.FLAT);
-        counter = -4;
         getUpdatedDescription();
     }
 
     @Override
+    public void onEquip() {
+        setCounter(-4);
+    }
+
+    @Override
     public void onEnterRoom(AbstractRoom r) {
-        if (r instanceof ShopRoom) {
+        if (r instanceof ShopRoom && counter == -4) {
             flash();
         }
+    }
+
+    @Override
+    public void setCounter(int i) {
+        super.setCounter(i);
+        description = DESCRIPTIONS[2];
+        tips.clear();
+        tips.add(new PowerTip(name, description));
     }
 
     @Override
@@ -60,7 +72,7 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
         if (AbstractDungeon.getCurrRoom() instanceof ShopRoom && counter == -4) {
             AbstractDungeon.topLevelEffectsQueue.add(new ShopSpeechBubble(shopBubbleX, shopBubbleY, 4.0f, DESCRIPTIONS[3], false));
             AbstractDungeon.topLevelEffectsQueue.add(new SpeechTextEffect(shopBubbleX + -166.0F * Settings.scale, shopBubbleY + 126.0F * Settings.scale, 4.0F, DESCRIPTIONS[3], DialogWord.AppearEffect.BUMP_IN));
-            counter = -2;
+            setCounter(-2);
             description = DESCRIPTIONS[2];
             tips.clear();
             tips.add(new PowerTip(name, description));
@@ -82,7 +94,7 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     public String getUpdatedDescription()
     {
         if (counter == -2) {
-            return DESCRIPTIONS[3];
+            return DESCRIPTIONS[2];
         }
         return DESCRIPTIONS[0] + DESCRIPTIONS[1];
     }
