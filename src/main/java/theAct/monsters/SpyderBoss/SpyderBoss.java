@@ -63,7 +63,7 @@ public class SpyderBoss extends AbstractMonster {
     public void usePreBattleAction() {
         CardCrawlGame.music.unsilenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
-        AbstractDungeon.getCurrRoom().playBgmInstantly("BOSS_CITY");
+        AbstractDungeon.getCurrRoom().playBgmInstantly("BOSSSPIDER");
 
         FormationPower formation = new FormationPower(this);
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, formation));
