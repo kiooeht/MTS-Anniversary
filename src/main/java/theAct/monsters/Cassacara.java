@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -164,6 +165,17 @@ public class Cassacara extends AbstractMonster {
         }
         else {
             this.setMove(BOTTOMLESS_STOMACH_NAME, BOTTOMLESS_STOMACH, Intent.BUFF);
+        }
+    }
+
+    @Override
+    public void die() {
+        super.die();
+        for (final AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            if (!m.isDead && !m.isDying) {
+                AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(m));
+                AbstractDungeon.actionManager.addToTop(new SuicideAction(m));
+            }
         }
     }
 }
