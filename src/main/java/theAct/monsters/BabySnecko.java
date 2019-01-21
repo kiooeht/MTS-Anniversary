@@ -32,7 +32,7 @@ public class BabySnecko extends AbstractMonster {
     public static final String[] MOVES = MONSTER_STRINGS.MOVES;
     private static final float HB_X = -30.0F;
     private static final float HB_Y = -20.0F;
-    private static final float HB_W = 150.0f;
+    private static final float HB_W = 135.0f;
     private static final float HB_H = 200.0f;
     private static final int HP_MIN = 25;
     private static final int HP_MAX = 30;
@@ -53,11 +53,11 @@ public class BabySnecko extends AbstractMonster {
 
     public BabySnecko(final float x, final float y, final int posIndex) {
         super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, x, y);
-        this.loadAnimation("images/monsters/theCity/reptile/skeleton.atlas", "images/monsters/theCity/reptile/skeleton.json", 1.7f);
-        final AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
+        this.loadAnimation(
+                TheActMod.assetPath("images/monsters/BabySnecko/BabySnecko.atlas"),
+                TheActMod.assetPath("images/monsters/BabySnecko/BabySnecko.json"), 1f);
+        final AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
-        this.stateData.setMix("Hit", "Idle", 0.1f);
-        e.setTimeScale(0.8f);
         this.type = EnemyType.NORMAL;
         this.posIndex = posIndex;
         if (AbstractDungeon.ascensionLevel >= 7) {
@@ -81,13 +81,8 @@ public class BabySnecko extends AbstractMonster {
     public void changeState(final String stateName) {
         switch (stateName) {
             case "ATTACK": {
-                this.state.setAnimation(0, "Attack", false);
-                this.state.addAnimation(0, "Idle", true, 0.0f);
-                break;
-            }
-            case "ATTACK_2": {
-                this.state.setAnimation(0, "Attack_2", false);
-                this.state.addAnimation(0, "Idle", true, 0.0f);
+                this.state.setAnimation(0, "boop", false);
+                this.state.addAnimation(0, "idle", true, 0.0f);
                 break;
             }
         }
@@ -96,8 +91,7 @@ public class BabySnecko extends AbstractMonster {
     public void takeTurn() {
         switch (this.nextMove) {
             case BITE: {
-                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK_2"));
-                AbstractDungeon.actionManager.addToBottom(new WaitAction(0.3f));
+                AbstractDungeon.actionManager.addToBottom(new AnimateFastAttackAction(this));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(new BiteEffect(AbstractDungeon.player.hb.cX + MathUtils.random(-50.0f, 50.0f) * Settings.scale, AbstractDungeon.player.hb.cY + MathUtils.random(-50.0f, 50.0f) * Settings.scale, Color.CHARTREUSE.cpy()), 0.3f));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.NONE));
                 break;
