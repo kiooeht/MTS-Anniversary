@@ -28,10 +28,10 @@ public class GiantWrat extends AbstractMonster {
     private static final float HB_Y = 0.0F;
     private static final float HB_W = 320.0F;
     private static final float HB_H = 240.0F;
-    private static final int HP_MIN = 111;
-    private static final int HP_MAX = 116;
-    private static final int ASC_HP_MIN = 117;
-    private static final int ASC_HP_MAX = 122;
+    private static final int HP_MIN = 91;
+    private static final int HP_MAX = 96;
+    private static final int ASC_HP_MIN = 94;
+    private static final int ASC_HP_MAX = 99;
     private static final byte FAT_BURNER = 1;
     private static final byte SLAM = 2;
     private static final byte FLAIL = 3;
@@ -44,7 +44,7 @@ public class GiantWrat extends AbstractMonster {
     private static final int FAT_BURNER_BLOCK_AMOUNT = 15;
     private static final int ASC2_FAT_BURNER_BLOCK_AMOUNT = 20;
     private static final int SLAM_DAMAGE = 12;
-    private static final int ASC_SLAM_DAMAGE = 14;
+    private static final int ASC_SLAM_DAMAGE = 13;
     private static final int SLAM_BLOCK_AMOUNT = 10;
     private static final int FLAIL_DAMAGE = 7;
     private static final int ASC_FLAIL_DAMAGE = 8;
@@ -119,19 +119,19 @@ public class GiantWrat extends AbstractMonster {
         this(0.0F, 0.0F);
     }
 
-    public void changeState(String key)
-    {
+    public void changeState(String key) {
         switch (key) {
-        case "ATTACK":
-            this.state.setAnimation(1, "attack", false);
-            break;
+            case "ATTACK": {
+                this.state.setAnimation(1, "attack", false);
+                break;
+            }
         }
     }
 
     public void takeTurn() {
         switch (this.nextMove) {
             case FAT_BURNER: {
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new InflameEffect(this), 1.0f));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new InflameEffect(this), 0.5F));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, this.fatBurnerStrengthGainAmount), this.fatBurnerStrengthGainAmount));
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, fatBurnerBlockAmount));
                 break;
@@ -143,8 +143,8 @@ public class GiantWrat extends AbstractMonster {
                 break;
             }
             case FLAIL: {
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 for (int i = 0; i < this.flailHitAmount; i++) {
-                    AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                     AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(1), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 }
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new VulnerablePower(this, this.flailSelfVulnerableAmount, true), this.flailSelfVulnerableAmount));
