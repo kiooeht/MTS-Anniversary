@@ -27,12 +27,12 @@ public class FatSpyder extends SpawnedSpyder{
 	
     public FatSpyder(SpyderBoss boss, int slot, int strength) {	
 		super(NAME, ID, SMALL, BASEHP, boss, slot, strength);
-		damage.add(new DamageInfo(this, 9));
+		damage.add(new DamageInfo(this, 6));
 	}
     
     public FatSpyder(float x, float y) {	
 		super(NAME, ID, SMALL, BASEHP, x, y);
-		damage.add(new DamageInfo(this, 9));
+		damage.add(new DamageInfo(this, 6));
 	}
 	
 	static {

@@ -121,9 +121,11 @@
     "theJungle:Webbed": {
 		"NAME" : "Webbed",
 		"DESCRIPTIONS": [
-			"Increase the #yCost of a random card in your hand by [E] .",
-			"Increase the #yCost of a random card in your hand by [E] #b",
-			" times."
+			"Increase the #yCost of the first card you draw by [E] for the rest of the combat.",
+			"Increase the #yCost of the first #b",
+			" cards you draw by [E] for the rest of the combat.",
+            " NL This has affacted #b",
+            " cards this turn."
 		]
 	},
     "theJungle:FragileEggs": {

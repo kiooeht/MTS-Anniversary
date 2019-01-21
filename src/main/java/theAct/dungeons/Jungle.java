@@ -38,7 +38,7 @@ public class Jungle extends AbstractDungeon
             scene.dispose();
         }
         scene = new TheJungleScene(); // TODO
-        fadeColor = Color.valueOf("1e0f0aff"); // TODO ?
+        fadeColor = Color.valueOf("0f220aff");
 
 
 
@@ -60,7 +60,7 @@ public class Jungle extends AbstractDungeon
             scene.dispose();
         }
         scene = new TheJungleScene(); // TODO
-        fadeColor = Color.valueOf("1e0f0aff"); // TODO ?
+        fadeColor = Color.valueOf("0f220aff");
 
         initializeLevelSpecificChances();
         miscRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + saveFile.floor_num);
