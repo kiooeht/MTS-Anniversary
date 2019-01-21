@@ -17,18 +17,16 @@ public class CassacaraSacrificeAction extends AbstractGameAction {
 
     private AbstractMonster cassacara;
     private AbstractMonster carcassSack;
-    private float percentageHPPerStrength;
+    private int strengthGain;
 
-    public CassacaraSacrificeAction(AbstractMonster cassacara, AbstractMonster carcassSack, float percentageHPPerStrength) {
+    public CassacaraSacrificeAction(AbstractMonster cassacara, AbstractMonster carcassSack, int strengthGain) {
         this.cassacara = cassacara;
         this.carcassSack = carcassSack;
-        this.percentageHPPerStrength = percentageHPPerStrength;
+        this.strengthGain = strengthGain;
     }
 
     public void update() {
-        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.cassacara, this.cassacara,
-                new StrengthPower(this.cassacara, MathUtils.roundPositive(((float) this.carcassSack.currentHealth / (float) this.carcassSack.maxHealth) / this.percentageHPPerStrength)),
-                MathUtils.roundPositive(((float) this.carcassSack.currentHealth / (float) this.carcassSack.maxHealth) / this.percentageHPPerStrength)));
+        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.cassacara, this.cassacara, new StrengthPower(this.cassacara, this.strengthGain), this.strengthGain));
         AbstractDungeon.actionManager.addToTop(new HealAction(this.cassacara, this.cassacara, this.carcassSack.currentHealth));
         AbstractDungeon.actionManager.addToTop(new WaitAction(1.0F));
         AbstractDungeon.actionManager.addToTop(new SuicideAction(this.carcassSack, true));

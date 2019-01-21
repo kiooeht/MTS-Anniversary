@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import theAct.TheActMod;
 import theAct.actions.CassacaraSacrificeAction;
+import theAct.powers.CassacaraInfoPower;
 
 public class Cassacara extends AbstractMonster {
 
@@ -40,16 +41,16 @@ public class Cassacara extends AbstractMonster {
     private static final String CHEW_NAME = MOVES[1];
     private static final String BOTTOMLESS_STOMACH_NAME = MOVES[2];
     private static final int BIG_BITE_DAMAGE = 10;
-    private static final float BIG_BITE_PERCENTAGE_HP_PER_STRENGTH = 0.5F;
+    private static final int BIG_BITE_STRENGTH_GAIN_PER_SACK = 3;
     private static final int ASC_BIG_BITE_DAMAGE = 12;
-    private static final float ASC2_BIG_BITE_PERCENTAGE_HP_PER_STRENGTH = 0.25F;
-    private static final int CHEW_DAMAGE = 6;
+    private static final int ASC2_BIG_BITE_STRENGTH_GAIN_PER_SACK = 4;
+    private static final int CHEW_DAMAGE = 7;
     private static final int CHEW_HIT_AMOUNT = 2;
-    private static final int ASC_CHEW_DAMAGE = 7;
+    private static final int ASC_CHEW_DAMAGE = 8;
     private static final int BOTTOMLESS_STOMACH_STRENGTH_GAIN_AMOUNT = 2;
     private static final int ASC2_BOTTOMLESS_STOMACH_STRENGTH_GAIN_AMOUNT = 3;
     private int bigBiteDamage;
-    private float bigBitePercentageHPPerStrength;
+    private int bigBiteStrengthGainPerSack;
     private int chewDamage;
     private int chewHitAmount;
     private int bottomlessStomachStrengthAmount;
@@ -66,21 +67,21 @@ public class Cassacara extends AbstractMonster {
         }
         if (AbstractDungeon.ascensionLevel >= 18) {
             this.bigBiteDamage = ASC_BIG_BITE_DAMAGE;
-            this.bigBitePercentageHPPerStrength = ASC2_BIG_BITE_PERCENTAGE_HP_PER_STRENGTH;
+            this.bigBiteStrengthGainPerSack = ASC2_BIG_BITE_STRENGTH_GAIN_PER_SACK;
             this.chewDamage = ASC_CHEW_DAMAGE;
             this.chewHitAmount = CHEW_HIT_AMOUNT;
             this.bottomlessStomachStrengthAmount = ASC2_BOTTOMLESS_STOMACH_STRENGTH_GAIN_AMOUNT;
         }
         else if (AbstractDungeon.ascensionLevel >= 3) {
             this.bigBiteDamage = ASC_BIG_BITE_DAMAGE;
-            this.bigBitePercentageHPPerStrength = BIG_BITE_PERCENTAGE_HP_PER_STRENGTH;
+            this.bigBiteStrengthGainPerSack = BIG_BITE_STRENGTH_GAIN_PER_SACK;
             this.chewDamage = ASC_CHEW_DAMAGE;
             this.chewHitAmount = CHEW_HIT_AMOUNT;
             this.bottomlessStomachStrengthAmount = BOTTOMLESS_STOMACH_STRENGTH_GAIN_AMOUNT;
         }
         else {
             this.bigBiteDamage = BIG_BITE_DAMAGE;
-            this.bigBitePercentageHPPerStrength = BIG_BITE_PERCENTAGE_HP_PER_STRENGTH;
+            this.bigBiteStrengthGainPerSack = BIG_BITE_STRENGTH_GAIN_PER_SACK;
             this.chewDamage = CHEW_DAMAGE;
             this.chewHitAmount = CHEW_HIT_AMOUNT;
             this.bottomlessStomachStrengthAmount = BOTTOMLESS_STOMACH_STRENGTH_GAIN_AMOUNT;
@@ -96,22 +97,21 @@ public class Cassacara extends AbstractMonster {
         this.state.setAnimation(2, "IdleChomp", true);
         this.stateData.setMix("Lick", "idleLick", 0.1f);
         this.stateData.setMix("Chomp", "IdleChomp", 0.1f);
-
-
     }
 
     public Cassacara() {
         this(0.0F, 0.0F);
     }
 
+    @Override
     public void usePreBattleAction() {
-
         CardCrawlGame.music.unsilenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
         AbstractDungeon.getCurrRoom().playBgmInstantly("JUNGLEELITE");
-
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new CassacaraInfoPower(this, this.bigBiteStrengthGainPerSack), this.bottomlessStomachStrengthAmount));
     }
 
+    @Override
     public void takeTurn() {
         switch (this.nextMove) {
             case BIG_BITE: {
@@ -120,7 +120,7 @@ public class Cassacara extends AbstractMonster {
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.NONE));
                 for (AbstractMonster m : this.carcassSacks) {
                     if (!m.isDeadOrEscaped()) {
-                        AbstractDungeon.actionManager.addToBottom(new CassacaraSacrificeAction(this, m, this.bigBitePercentageHPPerStrength));
+                        AbstractDungeon.actionManager.addToBottom(new CassacaraSacrificeAction(this, m, this.bigBiteStrengthGainPerSack));
                     }
                 }
                 break;
@@ -168,10 +168,10 @@ public class Cassacara extends AbstractMonster {
 
     public void getMove(int num) {
         if (lastMove(BOTTOMLESS_STOMACH)) {
-            this.setMove(BIG_BITE_NAME, BIG_BITE, Intent.ATTACK_BUFF, this.damage.get(0).base);
-        }
-        else if (lastMove(BIG_BITE)) {
             this.setMove(CHEW_NAME, CHEW, Intent.ATTACK, this.damage.get(1).base, this.chewHitAmount, true);
+        }
+        else if (lastMove(CHEW)) {
+            this.setMove(BIG_BITE_NAME, BIG_BITE, Intent.ATTACK_BUFF, this.damage.get(0).base);
         }
         else {
             this.setMove(BOTTOMLESS_STOMACH_NAME, BOTTOMLESS_STOMACH, Intent.BUFF);

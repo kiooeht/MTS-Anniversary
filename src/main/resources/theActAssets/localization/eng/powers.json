@@ -1,4 +1,11 @@
 {
+	"theJungle:CassacaraInfoPower": {
+		"NAME": "Carnivorous",
+		"DESCRIPTIONS": [
+			"Consumes #yCarcass #ySacks, healing HP equal to their HP and gaining #b",
+			" Strength for each #yCarcass #ySack."
+		]
+	},
 	"theJungle:DigestPower": {
 		"NAME" : "Digestion",
 		"DESCRIPTIONS": [
