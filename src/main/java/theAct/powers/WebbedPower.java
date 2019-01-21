@@ -13,6 +13,7 @@ public class WebbedPower extends Power {
 	public static final String POWER_ID = TheActMod.makeID("Webbed");
 	private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = strings.NAME;
+	private static final String IMG = POWER_ID.substring(POWER_ID.indexOf(":")+1);
 
 	public WebbedPower(AbstractCreature owner, int amount) {
 		this.ID = POWER_ID;
@@ -21,7 +22,7 @@ public class WebbedPower extends Power {
 		this.amount = amount;
 		this.type = PowerType.DEBUFF;
 		this.isTurnBased = true;
-		this.setImage(NAME + "84.png", NAME + "32.png");
+		this.setImage(IMG + "84.png", IMG + "32.png");
 		this.updateDescription();
 	}
 
