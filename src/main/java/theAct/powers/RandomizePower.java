@@ -16,6 +16,7 @@ public class RandomizePower extends Power implements OnCardDrawPower {
     public static final String powerID = TheActMod.makeID("RandomizePower");
     private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(powerID);
     private int cardsRandomizedThisTurn = 0;
+    private String[] DESCRIPTIONS = strings.DESCRIPTIONS;
 
     public RandomizePower(AbstractCreature p, int stackAmount) {
         this.owner = p;
