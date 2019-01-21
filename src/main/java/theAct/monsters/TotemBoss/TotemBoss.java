@@ -112,7 +112,7 @@ public class TotemBoss extends AbstractMonster {
         remainingTotems.add(5);
         remainingTotems.add(6);
 
-        Collections.shuffle(remainingTotems);
+        Collections.shuffle(remainingTotems,AbstractDungeon.cardRng.random);
 
         spawnNewTotem();
         spawnNewTotem();
