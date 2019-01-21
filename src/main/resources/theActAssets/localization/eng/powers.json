@@ -83,13 +83,9 @@
 	"theJungle:RandomizePower": {
 		"NAME": "Selective Confusion",
 		"DESCRIPTIONS": [
-			"Randomizes the cost of the next cards you draw.",
 			"Randomize the cost of the next card you draw.",
-			"Randomize the cost of the next #b",
-			" cards you draw.",
-			" NL Has randomized #b",
-			" card this turn.",
-			" cards this turn."
+			"Randomizes the cost of the next ",
+			" cards you draw."
 		]
 	},
 	"theJungle:CautiousPower": {
