@@ -146,7 +146,6 @@ public class GremlinQuiz extends AbstractImageEvent
                 screenNum = 3;
                 imageEventText.updateDialogOption(0, OPTIONS[4]);
                 imageEventText.clearRemainingOptions();
-                openMap();
                 break;
             case 3: // Done
                 openMap();
