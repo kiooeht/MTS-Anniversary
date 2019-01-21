@@ -9,6 +9,8 @@ import theAct.TheActMod;
 import theAct.actions.FormationInitAction;
 import theAct.powers.FormationPower;
 import theAct.powers.SquadPower;
+import theAct.vfx.SpyderWebParticle;
+import theAct.vfx.TotemShadowParticle;
 
 
 public class SpawnedSpyder extends AbstractMonster {
@@ -48,6 +50,8 @@ public class SpawnedSpyder extends AbstractMonster {
     public boolean small = true;
     public int slot;
     public int strength;
+
+    private SpyderWebParticle web;
 
     public SpawnedSpyder(String name, String ID, boolean small, int baseHP, SpyderBoss boss, int slot, int strength) {
         super(name, ID, 420, 0.0F, 0F, small?80.0F:130F, small?60.0F:100F, TheActMod.assetPath("images/monsters/spyders/" + name + ".png"), 
@@ -100,9 +104,15 @@ public class SpawnedSpyder extends AbstractMonster {
         if (AbstractDungeon.ascensionLevel >= 17) strength++;
         
         this.strength = strength;
+
+
     }
     
     public void usePreBattleAction() {
+        this.web = new SpyderWebParticle(this);
+
+        AbstractDungeon.effectList.add(this.web);
+
     	if(strength != 0)
         	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, strength), strength));     
         
@@ -119,6 +129,7 @@ public class SpawnedSpyder extends AbstractMonster {
     }
     
     public void die() {
+        this.web.finish();
         this.useFastShakeAnimation(0.5F);
         super.die();
         if(owner != null) {
