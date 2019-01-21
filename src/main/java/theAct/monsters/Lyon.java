@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
+import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.IntimidateEffect;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
@@ -43,7 +44,7 @@ public class Lyon extends AbstractMonster {
     private static final int HP_MIN_A = HP_MIN + 6;
     private static final int HP_MAX_A = HP_MAX + 6;
     private int attackDmg, attackDmg2;
-    private int weakAmt;
+    private int debuffAmt;
     private static final int ATTACK_TIMES = 2;
     // moves
     private static final byte ROAR = 1;
@@ -71,9 +72,9 @@ public class Lyon extends AbstractMonster {
             this.attackDmg2 = 5;
         }
         if (AbstractDungeon.ascensionLevel >= 17) {
-            this.weakAmt = 5;
+            this.debuffAmt = 5;
         } else {
-            this.weakAmt = 3;
+            this.debuffAmt = 3;
         }
         this.damage.add(new DamageInfo(this, attackDmg));
         this.damage.add(new DamageInfo(this, attackDmg2));
@@ -92,7 +93,8 @@ public class Lyon extends AbstractMonster {
                 AbstractDungeon.actionManager.addToBottom(new SFXAction("INTIMIDATE"));
                 AbstractDungeon.actionManager.addToBottom(new ShoutAction(this, DIALOG[0], 1.0f, 2.0f));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new ShockWaveEffect(this.hb.cX, this.hb.cY, Color.YELLOW, ShockWaveEffect.ShockWaveType.CHAOTIC), 1.25f));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WeakPower(AbstractDungeon.player, weakAmt, true), weakAmt));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WeakPower(AbstractDungeon.player, debuffAmt, true), debuffAmt));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new FrailPower(AbstractDungeon.player, debuffAmt, true)));
                 break;
             }
             case POUNCE: {
