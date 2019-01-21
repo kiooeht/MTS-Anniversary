@@ -44,8 +44,8 @@ public class BabySnecko extends AbstractMonster {
     private static final String GLARE_NAME = MOVES[1];
     private static final int CONFUSE_AMOUNT = 3;
     private static final int ASC_CONFUSE_AMOUNT = 4;
-    private static final int BITE_DAMAGE = 7;
-    private static final int ASC_BITE_DAMAGE = 10;
+    private static final int BITE_DAMAGE = 12;
+    private static final int ASC_BITE_DAMAGE = 15;
     private int biteDamage;
     private int confuseAmount;
 
