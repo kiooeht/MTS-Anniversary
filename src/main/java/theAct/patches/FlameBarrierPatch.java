@@ -17,7 +17,7 @@ public class FlameBarrierPatch
     public static SpireReturn Prefix(FlameBarrierPower __instance)
     {
         if (!(__instance.owner instanceof AbstractPlayer)) {
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(__instance.owner, __instance.owner, "Flame Barrier"));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(__instance.owner, __instance.owner, FlameBarrierPower.POWER_ID));
             return SpireReturn.Return(null);
         }
         return SpireReturn.Continue();
