@@ -85,11 +85,11 @@ public class JungleHunters extends AbstractMonster {
         this.animY += 25f;
 
         this.loadAnimation(
-                TheActMod.assetPath("images/monsters/hunters/JungleHunters.atlas"),
-                TheActMod.assetPath("images/monsters/hunters/JungleHunters.json"),
+                TheActMod.assetPath("images/monsters/hunters/JungleHunter.atlas"),
+                TheActMod.assetPath("images/monsters/hunters/JungleHunter.json"),
                 0.75f);
 
-        AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
 
     }
@@ -97,17 +97,14 @@ public class JungleHunters extends AbstractMonster {
     @Override
     public void changeState(String state) {
         switch (state) {
-            case "ATTACK":
-                this.state.setAnimation(1, "attack", false);
-                break;
-        }
-
-        switch (state) {
             case NOTSTUNNED:
                 break;
             case STUNNED:
                 setMove((byte)4, Intent.STUN);
                 createIntent();
+                break;
+            case "ATTACK":
+                this.state.setAnimation(1, "Attack", false);
                 break;
         }
     }
