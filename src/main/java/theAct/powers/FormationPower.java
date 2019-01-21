@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import theAct.TheActMod;
 import theAct.actions.FormationInitAction;
 import theAct.monsters.SpyderBoss.SpawnedSpyder;
+import theAct.monsters.SpyderBoss.SpyderBoss;
 import theAct.powers.abstracts.Power;
 
 public class FormationPower extends Power {
@@ -34,14 +35,16 @@ public class FormationPower extends Power {
 	}
 	
 	public void recalculateAmt() {
-		amount = ((SpawnedSpyder)owner).owner.smallSpyderAmt + ((SpawnedSpyder)owner).owner.bigSpyderAmt;
-		if (amount < 6 && owner.hasPower(InfiniteIntangiblePower.POWER_ID)) {
-			flash();
-			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, InfiniteIntangiblePower.POWER_ID));
-		} else if (amount >= 6 && !owner.hasPower(InfiniteIntangiblePower.POWER_ID)) {
-			flash();
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner, new InfiniteIntangiblePower(owner)));
+		if (owner instanceof SpyderBoss) {
+			amount = ((SpyderBoss) owner).smallSpyderAmt + ((SpyderBoss) owner).bigSpyderAmt;
+			if (amount < 6 && owner.hasPower(InfiniteIntangiblePower.POWER_ID)) {
+				flash();
+				AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, InfiniteIntangiblePower.POWER_ID));
+			} else if (amount >= 6 && !owner.hasPower(InfiniteIntangiblePower.POWER_ID)) {
+				flash();
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner, new InfiniteIntangiblePower(owner)));
+			}
+			updateDescription();
 		}
-		updateDescription();
 	}
 }

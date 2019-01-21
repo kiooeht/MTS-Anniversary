@@ -64,32 +64,38 @@ public class SpyderBoss extends AbstractMonster {
         CardCrawlGame.music.unsilenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
         AbstractDungeon.getCurrRoom().playBgmInstantly("BOSS_CITY");
-        
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new FormationPower(this)));
+
+        FormationPower formation = new FormationPower(this);
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, formation));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new FragileEggsPower(this, 25), 25));
         
-        if (AbstractDungeon.ascensionLevel >= 4) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));        
+        if (AbstractDungeon.ascensionLevel >= 4)
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
         
-        spawnBigSpyder(0);
-        if(AbstractDungeon.ascensionLevel >= 19)
-        	spawnBigSpyder(0);
+        spawnBigSpyder(0, formation);
+        if (AbstractDungeon.ascensionLevel >= 19)
+        	spawnBigSpyder(0, formation);
         
         for (int i = 0; i < 3; i++)
-        	spawnSmallSpyder(0);
+        	spawnSmallSpyder(0, formation);
         
     }
 
-public void spawnBigSpyder(int str) {
-    
-	if(isDying || bigSpyderAmt >= bigSpyders.length || bigChoice.size() == 0)
-		return;
-	
-	int i = 0;
-	while(i < bigSpyders.length) {
-		if(bigSpyders[i] == null)
-			break;
-		i++;
-	}
+    public void spawnBigSpyder(int str) {
+        spawnBigSpyder(str, null);
+    }
+
+    public void spawnBigSpyder(int str, FormationPower formationPower) {
+
+        if(isDying || bigSpyderAmt >= bigSpyders.length || bigChoice.size() == 0)
+            return;
+
+        int i = 0;
+        while(i < bigSpyders.length) {
+            if(bigSpyders[i] == null)
+                break;
+            i++;
+        }
 		
 		int r = AbstractDungeon.monsterRng.random(bigChoice.size() - 1);
     	int chosen = bigChoice.get(r);
@@ -110,53 +116,65 @@ public void spawnBigSpyder(int str) {
         TheActMod.logger.info("Spawning Monster");
         bigSpyderAmt++;
         bigSpyders[i] = m;
-        AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(m, true)); 
-        
+        AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(m, true));
+
         for(AbstractMonster n : AbstractDungeon.getMonsters().monsters) {
     		if(n instanceof SpawnedSpyder && n.hasPower(SquadPower.POWER_ID))
     			((SquadPower) n.getPower(SquadPower.POWER_ID)).spyderSpawn();
 			if(n instanceof SpawnedSpyder && n.hasPower(FormationPower.POWER_ID))
 				AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) n.getPower(FormationPower.POWER_ID))));
     	}
-        AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) getPower(FormationPower.POWER_ID))));
+
+        if (formationPower == null) {
+            formationPower = (FormationPower) getPower(FormationPower.POWER_ID);
+        }
+        AbstractDungeon.actionManager.addToBottom(new FormationInitAction(formationPower));
     }
 
-public void spawnSmallSpyder(int str) {
-	
-	if(isDying || smallSpyderAmt >= smallSpyders.length)
-		return;
-	
-	int i = -1;
-	while(true) {
-		i = AbstractDungeon.miscRng.random(smallSpyderAmt + 4);
-		if(i < smallSpyders.length && smallSpyders[i] == null)
-			break;
-	}
-	
-	int chosen = AbstractDungeon.monsterRng.random(1);
-	AbstractMonster m = null;
-	switch(chosen) {
-	case 0:
-		m = new SneakySpyder(this, i, str);
-		break;	
-	case 1:
-		m = new FatSpyder(this, i, str);
-		break;   	
-	}	
-    
-    TheActMod.logger.info("Spawning Monster");
-    smallSpyderAmt++;
-    smallSpyders[i] = m;
-    AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(m,true));
-    
-    for(AbstractMonster n : AbstractDungeon.getMonsters().monsters) {
-		if(n instanceof SpawnedSpyder && n.hasPower(SquadPower.POWER_ID))
-			((SquadPower) n.getPower(SquadPower.POWER_ID)).spyderSpawn();
-		if(n instanceof SpawnedSpyder && n.hasPower(FormationPower.POWER_ID))
-			AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) n.getPower(FormationPower.POWER_ID))));
-	}
-	AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) getPower(FormationPower.POWER_ID))));
-}
+    public void spawnSmallSpyder(int str) {
+        spawnSmallSpyder(str, null);
+    }
+
+    public void spawnSmallSpyder(int str, FormationPower formationPower) {
+
+        if(isDying || smallSpyderAmt >= smallSpyders.length)
+            return;
+
+        int i = -1;
+        while(true) {
+            i = AbstractDungeon.miscRng.random(smallSpyderAmt + 4);
+            if(i < smallSpyders.length && smallSpyders[i] == null)
+                break;
+        }
+
+        int chosen = AbstractDungeon.monsterRng.random(1);
+        AbstractMonster m = null;
+        switch(chosen) {
+        case 0:
+            m = new SneakySpyder(this, i, str);
+            break;
+        case 1:
+            m = new FatSpyder(this, i, str);
+            break;
+        }
+
+        TheActMod.logger.info("Spawning Monster");
+        smallSpyderAmt++;
+        smallSpyders[i] = m;
+        AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(m,true));
+
+        for(AbstractMonster n : AbstractDungeon.getMonsters().monsters) {
+            if(n instanceof SpawnedSpyder && n.hasPower(SquadPower.POWER_ID))
+                ((SquadPower) n.getPower(SquadPower.POWER_ID)).spyderSpawn();
+            if(n instanceof SpawnedSpyder && n.hasPower(FormationPower.POWER_ID))
+                AbstractDungeon.actionManager.addToBottom(new FormationInitAction(((FormationPower) n.getPower(FormationPower.POWER_ID))));
+        }
+
+        if (formationPower == null) {
+            formationPower = (FormationPower) getPower(FormationPower.POWER_ID);
+        }
+        AbstractDungeon.actionManager.addToBottom(new FormationInitAction(formationPower));
+    }
 
     public void resolveSpyderDeath(SpawnedSpyder m){
     	if(m.small) {
