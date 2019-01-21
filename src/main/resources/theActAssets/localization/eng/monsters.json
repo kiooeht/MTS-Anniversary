@@ -187,69 +187,13 @@
 	"theJungle:MushroomGenki": {
 		"NAME": "Energetic Mushroom"
 	},
-	"theJungle:SpyderNest": {
-		"MOVES": [
-			"Egg Throw",
-            "Hatch"
-		],
-		"NAME": "Spyder Queen",
-		"DIALOG": [
-			""
-		]
+	"theJungle:QueenSpyder": {
+		"NAME": "Spyder Queen"
 	},
-	"theJungle:SneakySpyder": {
-		"MOVES": [
-			"Whirlwind",
-            "Double Tap",
-            "Hide"
-		],
-		"NAME": "Sneaky Spyder",
-		"DIALOG": [
-			""
-		]
-	},
-	"theJungle:FatSpyder": {
-		"MOVES": [
-			"Smash",
-            "Weaken",
-            "Defend"
-		],
-		"NAME": "Fat Spyder",
-		"DIALOG": [
-			""
-		]
-	},
-	"theJungle:BasherSpyder": {
-		"MOVES": [
-			"Bash",
-            "Bonk",
-            "Break"
-		],
-		"NAME": "Spyder Basher",
-		"DIALOG": [
-			""
-		]
-	},
-	"theJungle:WebberSpyder": {
-		"MOVES": [
-			"Wrap",
-            "Whip",
-            "What"
-		],
-		"NAME": "Spyder Webber",
-		"DIALOG": [
-			""
-		]
+	"theJungle:HunterSpyder": {
+		"NAME": "Spyder Hunter"
 	},
 	"theJungle:DefenderSpyder": {
-		"MOVES": [
-			"DEfend",
-            "DeFend",
-            "Clang"
-		],
-		"NAME": "Spyder Defender",
-		"DIALOG": [
-			""
-		]
+		"NAME": "Spyder Defender"
 	}
 }

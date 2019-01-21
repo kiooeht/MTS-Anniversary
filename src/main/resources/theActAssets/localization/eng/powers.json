@@ -126,10 +126,10 @@
 			" #yStrength."
 		]
 	},
-    "theJungle:Squad": {
-		"NAME" : "Squad",
+    "theJungle:Guarded": {
+		"NAME" : "Guarded",
 		"DESCRIPTIONS": [
-			"Has #b1 #yStrength for every #rSpyder."
+			"Reduce Attack damage taken to #b10% while there is another Spyder in front of this one."
 		]
 	},
     "theJungle:Webbed": {
@@ -140,26 +140,6 @@
 			" cards you draw by [E] for the rest of the combat.",
             " NL This has affacted #b",
             " cards this turn."
-		]
-	},
-    "theJungle:FragileEggs": {
-		"NAME" : "Fragile Eggs",
-		"DESCRIPTIONS": [
-			"Every time this monster takes #b",
-			" #yUnblocked #yDamage, it spawns a big #rSpyder. NL #b",
-			" #yDamage left."
-		]
-	},
-    "theJungle:Formation": {
-		"NAME" : "Formation",
-		"DESCRIPTIONS": [
-			"Is #gIntangible, when there is at least #b6 #rSpyders."
-		]
-	},
-    "theJungle:InfiniteIntangible": {
-		"NAME" : "Intangible",
-		"DESCRIPTIONS": [
-			"Reduce ALL damage taken and HP loss to #b1."
 		]
 	},
 	"theJungle:Incubation": {
