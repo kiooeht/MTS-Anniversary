@@ -60,7 +60,7 @@ public class DigestPower extends Power {
 	@Override
 	public int onAttacked(DamageInfo info, int damageAmount) {
 		amount--;
-		if (amount <= 0) {
+		if (amount == 0) {
 			if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
 				AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card.makeSameInstanceOf()));
 			} else {
