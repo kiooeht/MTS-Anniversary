@@ -42,6 +42,12 @@
 			" HP whenever a Totem is destroyed."
 		]
 	},
+	"theJungle:TotemBossImmunityPower": {
+		"NAME" : "Totemic Might",
+		"DESCRIPTIONS": [
+			"This enemy is immune to damage and debuffs until all Totems have been destroyed."
+		]
+	},
 	"theJungle:SwingingTrapPower": {
 		"NAME": "Pendulum Trap",
 		"DESCRIPTIONS": [
