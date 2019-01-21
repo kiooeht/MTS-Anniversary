@@ -19,7 +19,7 @@ public class CampfireBurningEffectPatch {
 
     public static void Postfix(CampfireBurningEffect __instance) {
         if (CardCrawlGame.dungeon instanceof Jungle) {
-            TheActMod.logger.info("CampfireBurningEffect patch reached for Jungle");
+            //TheActMod.logger.info("CampfireBurningEffect patch reached for Jungle");
             try {
                 Field colorField = AbstractGameEffect.class.getDeclaredField("color");
                 colorField.setAccessible(true);
