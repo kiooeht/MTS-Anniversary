@@ -126,7 +126,7 @@
 			" times."
 		]
 	},
-    "FragileEggs": {
+    "theJungle:FragileEggs": {
 		"NAME" : "Fragile Eggs",
 		"DESCRIPTIONS": [
 			"Every time this monster takes #b",
