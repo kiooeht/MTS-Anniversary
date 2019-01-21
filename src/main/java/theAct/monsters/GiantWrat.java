@@ -43,8 +43,8 @@ public class GiantWrat extends AbstractMonster {
     private static final int ASC2_FAT_BURNER_STRENGTH_GAIN_AMOUNT = 5;
     private static final int FAT_BURNER_BLOCK_AMOUNT = 15;
     private static final int ASC2_FAT_BURNER_BLOCK_AMOUNT = 20;
-    private static final int SLAM_DAMAGE = 12;
-    private static final int ASC_SLAM_DAMAGE = 13;
+    private static final int SLAM_DAMAGE = 13;
+    private static final int ASC_SLAM_DAMAGE = 14;
     private static final int SLAM_BLOCK_AMOUNT = 10;
     private static final int FLAIL_DAMAGE = 7;
     private static final int ASC_FLAIL_DAMAGE = 8;
@@ -59,7 +59,7 @@ public class GiantWrat extends AbstractMonster {
     private int flailSelfVulnerableAmount;
 
     public GiantWrat(float x, float y) {
-        super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, TheActMod.assetPath("/images/monsters/cassacara/placeholder.png"), x, y);
+        super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, x, y);
         if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(ASC_HP_MIN, ASC_HP_MAX);
             if (this.maxHealth == ASC_HP_MAX && MathUtils.randomBoolean(0.05F)) {
@@ -158,7 +158,12 @@ public class GiantWrat extends AbstractMonster {
             this.setMove(SLAM_NAME, SLAM, Intent.ATTACK_DEFEND, this.damage.get(0).base);
         }
         else if (lastMove(SLAM)) {
-            this.setMove(FLAIL_NAME, FLAIL, Intent.ATTACK, this.damage.get(1).base, this.flailHitAmount, true);
+            if (num < 50) {
+                this.setMove(FLAIL_NAME, FLAIL, Intent.ATTACK, this.damage.get(1).base, this.flailHitAmount, true);
+            }
+            else {
+                this.setMove(FAT_BURNER_NAME, FAT_BURNER, Intent.DEFEND_BUFF);
+            }
         }
         else {
             this.setMove(FAT_BURNER_NAME, FAT_BURNER, Intent.DEFEND_BUFF);
