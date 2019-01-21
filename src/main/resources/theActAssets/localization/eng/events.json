@@ -29,15 +29,15 @@
   "theJungle:ShamanCauldron": {
     "NAME": "A Mysterious Cauldron",
     "DESCRIPTIONS": [
-      "As you trudge through the jungle you spot a cave with faint green smoke pouring out.\n When you enter, you spot a lone figure wearing traditional shaman's attire crouching on the floor beside a bubbling cauldron.\n Rocking back and forth, he looks up at you, letting you catch a glimpse of green skin.\n \"#g@KIKIKIKIKI~@ you MUST try my latest brew, I've made a delicious potion for you!\n I'm missing #bone #bkey #bingredient you see, either your #gpotions or your #rblood... what will it be?\"",
-      "You cautiously extend your arm and the shaman eagerly grabs it and holds it over the cauldron. \n #r@SLICE@ \n The shaman cackles as the liquid turns into a murky brown color, stirring it quickly.\n The figure leans forward and his tongue, long and pink, slithers out and tastes it.\n He shudders. \"#g@PEEEEEERFECT~~~~@",
-      "You walk forward and pour your potions into the cauldron. \n The shaman cackles as the liquid turns into a murky brown color, stirring it quickly.\n The figure leans forward and his tongue, long and pink, slithers out and tastes it.\n He shudders. \"#g@PEEEEEERFECT~~~~@",
+      "As you trudge through the jungle you spot a cave with faint green smoke pouring out.\n When you enter, you spot a lone figure wearing traditional shaman's attire crouching on the floor beside a bubbling cauldron.\n Rocking back and forth, he looks up at you, letting you catch a glimpse of green skin.\n NL \" #y@KIKIKIKIKI@ you MUST try my latest brew, I've made a delicious potion for you!\n NL I'm missing #bone #bkey #bingredient you see, either your #gpotions or your #rblood... what will it be?\"",
+      "You cautiously extend your arm and the shaman eagerly grabs it and holds it over the cauldron. \n NL NL #r@SLICE@ NL NL \n The shaman cackles as the brew turns into a murky brown color.\n The figure leans forward and his long tongue slithers out and tastes it.\n He shudders. NL NL \" #y@PEEEEEERFECT@ \"",
+      "You walk forward and dump your potions into the cauldron. \n The shaman cackles as the liquid turns into a murky brown color, stirring it quickly.\n The figure leans forward and his tongue, long and pink, ~slithers~ out and tastes it.\n He @shudders@. NL NL \" #y@PEEEEEERFECT@ \"",
       "You turn around and walk away. He's clearly too obsessed with potions.",
       "You fill up your potion slots. Hopefully you made the right choice."
     ],
     "OPTIONS": [
-      "[Give arm] #rLose #r8 #rHP and #gfill #gyour #gempty #gpotion #gslots",
-      "[Give potions] #bLose #ball #bpotions and #gfill #gyour #gpotion #gslots",
+      "[Extend arm] #rLose #r8 #rHP and #gfill #gyour #gempty #gpotion #gslots",
+      "[Give potions] #rLose #rall #rpotions and #gfill #gall #gpotion #gslots",
       "[Leave]",
       "[Fill potion slots]",
       "[Continue]"
