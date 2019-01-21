@@ -41,9 +41,6 @@ public class Phrog extends AbstractMonster {
 
 		//this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
 		this.offsetTurn = offsetTurn;
-		if (AbstractDungeon.ascensionLevel >= 17) {
-			lickDmg = LICK_DAMAGE + LICK_DAMAGE_ASC_MODIFIER + LICK_DAMAGE_ASC_MODIFIER_AGAIN;
-		}
 		if (AbstractDungeon.ascensionLevel >= 7) {
 			minHP += 5;
 			maxHP += 5;
@@ -51,6 +48,9 @@ public class Phrog extends AbstractMonster {
 		if (AbstractDungeon.ascensionLevel >= 2) {
 			tackleDamage += 2;
 			lickDmg = LICK_DAMAGE + LICK_DAMAGE_ASC_MODIFIER;
+		}
+		if (AbstractDungeon.ascensionLevel >= 17) {
+			lickDmg = LICK_DAMAGE + LICK_DAMAGE_ASC_MODIFIER + LICK_DAMAGE_ASC_MODIFIER_AGAIN;
 		}
 		if (AbstractDungeon.ascensionLevel < 2) {
 			lickDmg = LICK_DAMAGE;
