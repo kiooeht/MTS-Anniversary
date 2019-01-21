@@ -48,7 +48,7 @@ public class Lyon extends AbstractMonster {
     private static final int ATTACK_TIMES = 2;
     private static final int DEBUFF_AMT = 3;
     private static final int DEBUFF_AMT_ASC_MODIFIER = 2;
-    private static final int ATTACK_DMG = 10;
+    private static final int ATTACK_DMG = 18;
     private static final int ATTACK_DMG_ASC_MODIFIER = 2;
     private static final int POUNCE_DMG = 5;
     private static final int POUNCE_DMG_ASC_MODIFIER = 1;
