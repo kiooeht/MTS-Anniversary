@@ -138,7 +138,7 @@ public class Jungle extends AbstractDungeon
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
         monsters.add(new MonsterInfo(SlimyTreeVines.ENCOUNTER_NAME, 3.0F));
-        monsters.add(new MonsterInfo(SilentTribesmen.ENCOUNTER_ID, 3.0f));
+        monsters.add(new MonsterInfo(JungleHunters.ENCOUNTER_ID, 3.0f));
         monsters.add(new MonsterInfo("Snake Plant", 2.0F));
         monsters.add(new MonsterInfo(Lyon.ID, 3.0f));
         monsters.add(new MonsterInfo(TheActMod.makeID("2_Flameangoes"), 2.0F));
