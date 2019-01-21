@@ -1,6 +1,8 @@
 package theAct.monsters;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
@@ -50,12 +52,10 @@ public class Lyon extends AbstractMonster {
     private boolean doneRoar = false;
 
     public Lyon() {
-        super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, "theActAssets/images/monsters/lyon/Lyon.png", 0, 0);
-        /*
-        this.loadAnimation("theActAssets/images/monsters/Lyon/skeleton.atlas", "theActAssets/images/monsters/Lyon/skeleton.json", 1.0f);
+        super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, 0, 0);
+        this.loadAnimation("theActAssets/images/monsters/lyon/Lyon.atlas", "theActAssets/images/monsters/lyon/Lyon.json", 1.25f);
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
-        */
         this.dialogX = -160.0f * Settings.scale;
         this.dialogY = 40.0f * Settings.scale;
         if (AbstractDungeon.ascensionLevel >= 7) {
