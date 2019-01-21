@@ -42,6 +42,10 @@ public class SneckoIdol extends AbstractImageEvent {
         imageEventText.setDialogOption(OPTIONS[0]);
         imageEventText.setDialogOption(OPTIONS[1] + gold + OPTIONS[2] + damage + OPTIONS[3]);
         imageEventText.setDialogOption(OPTIONS[4]);
+
+        CardCrawlGame.music.unsilenceBGM();
+        AbstractDungeon.scene.fadeOutAmbiance();
+        AbstractDungeon.getCurrRoom().playBgmInstantly("SNECKOIDOL");
     }
 
     @Override

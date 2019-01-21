@@ -23,8 +23,11 @@ public class JungleMusicPatchTemp {
             case "BOSSSPIDER": {
                 return SpireReturn.Return(MainMusic.newMusic(TheActMod.assetPath("audio/music/boss_spider.ogg")));
             }
-            case "BOSSMUSHROOM": {
+            case "MUSHROOMGANG": {
                 return SpireReturn.Return(MainMusic.newMusic(TheActMod.assetPath("audio/music/boss_mushroom.ogg")));
+            }
+            case "SNECKOIDOL": {
+                return SpireReturn.Return(MainMusic.newMusic(TheActMod.assetPath("audio/music/snecko_idol.ogg")));
             }
             default: {
                 return SpireReturn.Continue();
