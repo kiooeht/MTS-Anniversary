@@ -220,7 +220,7 @@ public class TheActMod implements
         BaseMod.addRelic(new Flamango(), RelicType.SHARED);
         BaseMod.addRelic(new ShellPeas(), RelicType.SHARED);
         BaseMod.addRelic(new Creamberry(), RelicType.SHARED);
-
+        BaseMod.addRelic(new SpiritDisease(), RelicType.SHARED);
     }
 
     @Override
