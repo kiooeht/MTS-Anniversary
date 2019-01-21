@@ -42,6 +42,6 @@ public class CarcassSack extends AbstractMonster {
     }
 
     public void getMove(int num) {
-        this.setMove(ITS_DINNER_TIME, Intent.UNKNOWN);
+        this.setMove(ITS_DINNER_TIME, Intent.STUN);
     }
 }

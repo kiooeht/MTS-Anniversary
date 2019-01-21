@@ -24,6 +24,9 @@ import com.megacrit.cardcrawl.vfx.combat.IntimidateEffect;
 import theAct.TheActMod;
 import theAct.powers.RandomizePower;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class MamaSnecko extends AbstractMonster {
 
     public static final String ID = TheActMod.makeID("MamaSnecko");
@@ -149,19 +152,29 @@ public class MamaSnecko extends AbstractMonster {
             }
             case EGGS:{
                 this.waitingForEggs = true;
-                int posToAvoid = -1;
+                Set<Integer> posToAvoid = new HashSet<>();
                 for (final AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                     if (m != null && !m.isDying) {
-                        if (m instanceof SneckoEgg) posToAvoid = ((SneckoEgg) m).posIndex;
-                        if (m instanceof BabySnecko) posToAvoid = ((BabySnecko) m).posIndex;
+                        if (m instanceof SneckoEgg) {
+                            posToAvoid.add(((SneckoEgg) m).posIndex);
+                        }
+                        if (m instanceof BabySnecko) {
+                            posToAvoid.add(((BabySnecko) m).posIndex);
+                        }
                     }
                 }
-                if (posToAvoid != 0) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-160.0f, -20.0f, 4),true, -4));
-                if (posToAvoid != 1) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-320.0f, 30.0f, 3),true, -3));
-                if (posToAvoid != 2) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-480.0f, -20.0f, 2),true,-2 ));
-                if (posToAvoid != 3 && posToAvoid >= 0) AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-640.0f, 30.0f, 1),true, -1));
-            //AbstractDungeon.actionManager.addToBottom(new SummonGremlinAction(this.gremlins));
-               // AbstractDungeon.actionManager.addToBottom(new SummonGremlinAction(this.gremlins));
+                if (!posToAvoid.contains(4)) {
+                    AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-160.0f, 0.0f, 4),true, -4));
+                }
+                if (!posToAvoid.contains(3)) {
+                    AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-320.0f, 50.0f, 3),true, -3));
+                }
+                if (!posToAvoid.contains(2)) {
+                    AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-480.0f, 0.0f, 2),true,-2 ));
+                }
+                if (!posToAvoid.contains(1) && !posToAvoid.isEmpty()) {
+                    AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-640.0f, 50.0f, 1),true, -1));
+                }
                 break;
             }
         }

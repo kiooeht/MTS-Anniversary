@@ -77,6 +77,7 @@ public class StalkMarket extends AbstractImageEvent {
             }
             case INTRO_4: {
                 switch (buttonPressed) {
+                    // TODO: Add relic previews for these
                     case 0: {
                         AbstractDungeon.player.loseGold(PAR_SNIP_COST);
                         AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F,  RelicLibrary.getRelic(ParSnip.ID).makeCopy());
