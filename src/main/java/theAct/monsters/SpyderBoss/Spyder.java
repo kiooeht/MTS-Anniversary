@@ -8,22 +8,28 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import theAct.TheActMod;
 import theAct.powers.GuardedPower;
+import theAct.vfx.SpyderWebParticle;
 
 
 public class Spyder extends AbstractMonster {
 	
+	public boolean queen = false;
     public int slot;
     public int strength;
     public boolean stronger;
+	private SpyderWebParticle web;
 
     public Spyder(String name, String ID, float x, float y, int slot, int strength) {
         super(name, TheActMod.makeID(ID), 1, 0.0F, 0F, slot==-1? 240F: 160F, slot==-1? 240F: 160F, TheActMod.assetPath("images/monsters/spyders/" + ID + ".png"), 
         		x + AbstractDungeon.miscRng.random(-20, 20), y + AbstractDungeon.miscRng.random(-20, 20));
         
+        if(slot == -1)
+        	queen = true;
+        
         this.type = EnemyType.NORMAL;
         this.dialogX = 0;
         this.dialogY = 0;
-        this.slot = slot==-1? 3: slot;
+        this.slot = queen? 3: slot;
         this.strength = strength;
     }    
    
@@ -33,6 +39,12 @@ public class Spyder extends AbstractMonster {
     }
     	
     public void startPowers() {
+    	
+    	if(!queen) {
+    		this.web = new SpyderWebParticle(this);
+    		AbstractDungeon.effectList.add(this.web);
+        }
+    	
     	if(strength != 0)
         	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, strength), strength));
     	

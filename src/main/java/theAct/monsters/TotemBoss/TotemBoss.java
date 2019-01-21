@@ -175,6 +175,8 @@ public class TotemBoss extends AbstractMonster {
     public void resolveTotemDeath(AbstractTotemSpawn m){
         this.stopTotemFall = true;
         livingTotems.remove(m);
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
+
         for (AbstractMonster m2 : livingTotems) {
 
             if (!m2.isDying) {
@@ -248,9 +250,8 @@ public class TotemBoss extends AbstractMonster {
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AttackEffect.SLASH_HORIZONTAL));
                 for (AbstractTotemSpawn t : livingTotems){
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(t, this, new StrengthPower(t, 1), 1));
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(t, this, new StrengthPower(t, 2), 2));
                 }
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
 
                 break;
 
