@@ -58,9 +58,9 @@ public class JungleHunters extends AbstractMonster {
         //this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
 
         if (AbstractDungeon.ascensionLevel >= 7) {
-            this.setHp(MIN_HP + ASC_HP_MODIFIER, MAX_HP + ASC_HP_MODIFIER);
+            setHp(MIN_HP + ASC_HP_MODIFIER, MAX_HP + ASC_HP_MODIFIER);
         } else {
-            this.setHp(MIN_HP, MAX_HP);
+            setHp(MIN_HP, MAX_HP);
         }
         if (AbstractDungeon.ascensionLevel >= 17) {
             blockAmt = START_BLOCK_AMT + START_BLOCK_ASC_MODIFIER;

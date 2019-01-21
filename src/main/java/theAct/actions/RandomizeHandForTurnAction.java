@@ -19,7 +19,7 @@ public class RandomizeHandForTurnAction extends AbstractGameAction {
                 int rng = AbstractDungeon.cardRng.random(3);
                 c.setCostForTurn(rng);
             }
-            tickDuration();
         }
+        tickDuration();
     }
 }

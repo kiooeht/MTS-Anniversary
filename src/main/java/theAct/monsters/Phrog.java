@@ -8,14 +8,12 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
-import com.megacrit.cardcrawl.actions.unique.ApplyStasisAction;
 import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FrailPower;
@@ -23,37 +21,44 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theAct.TheActMod;
 import theAct.actions.PhrogLickAction;
-import theAct.powers.DigestPower;
-import theAct.powers.abstracts.Power;
-
-import javax.smartcardio.Card;
 
 public class Phrog extends AbstractMonster {
 	public static final String ID = TheActMod.makeID("Phrog");
 	private static final MonsterStrings STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
-
-	private static final int MAX_HP = 113;
-	private static final int MIN_HP = 97;
-	private static final int TACKLE_DAMAGE = 25;
-	private static final int ASC_HP_MODIFIER = 5;
-	private static final int ASC_DMG_MODIFIER = 2;
+	private static final int LICK_DAMAGE = 3;
+	private static final int LICK_DAMAGE_ASC_MODIFIER = 1;
+	private static final int LICK_DAMAGE_ASC_MODIFIER_AGAIN = 1;
+	private int maxHP = 113;
+	private int minHP = 97;
+	private int tackleDamage = 25;
+	private int lickDmg;
+	private boolean offsetTurn;
 
 	private AbstractCard card;
 
-	public Phrog() {
-		super(STRINGS.NAME, ID, 75, 0, 0, 300, 300, null, 0, 0f);
+	public Phrog(float xOffset, float yOffset, boolean offsetTurn) {
+		super(STRINGS.NAME, ID, 75, 0, 0, 300, 300, null, 0 + xOffset, 0f + yOffset);
 
 		//this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/phrog/temp.png"));
+		this.offsetTurn = offsetTurn;
+		if (AbstractDungeon.ascensionLevel >= 17) {
+			lickDmg = LICK_DAMAGE + LICK_DAMAGE_ASC_MODIFIER + LICK_DAMAGE_ASC_MODIFIER_AGAIN;
+		}
 		if (AbstractDungeon.ascensionLevel >= 7) {
-			this.setHp(MIN_HP + ASC_HP_MODIFIER, MAX_HP + ASC_HP_MODIFIER);
-		} else {
-			this.setHp(MIN_HP, MAX_HP);
+			minHP += 5;
+			maxHP += 5;
 		}
 		if (AbstractDungeon.ascensionLevel >= 2) {
-			this.damage.add(new DamageInfo(this, TACKLE_DAMAGE + ASC_DMG_MODIFIER));
-		} else {
-			this.damage.add(new DamageInfo(this, TACKLE_DAMAGE));
+			tackleDamage += 2;
+			lickDmg = LICK_DAMAGE + LICK_DAMAGE_ASC_MODIFIER;
 		}
+		if (AbstractDungeon.ascensionLevel < 2) {
+			lickDmg = LICK_DAMAGE;
+		}
+		this.damage.add(new DamageInfo(this, tackleDamage));
+		damage.add(new DamageInfo(this, lickDmg));
+
+		this.setHp(minHP, maxHP);
 
 		this.animY += 25f;
 
@@ -64,6 +69,15 @@ public class Phrog extends AbstractMonster {
 
 		AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
 		e.setTime(e.getEndTime() * MathUtils.random());
+
+	}
+
+	public void usePreBattleAction() {
+
+		CardCrawlGame.music.unsilenceBGM();
+		AbstractDungeon.scene.fadeOutAmbiance();
+		AbstractDungeon.getCurrRoom().playBgmInstantly("JUNGLEELITE");
+
 	}
 
 	@Override
@@ -74,6 +88,7 @@ public class Phrog extends AbstractMonster {
 			case MoveBytes.LICK:
 				AbstractDungeon.actionManager.addToBottom(new TalkAction(this, STRINGS.DIALOG[0], 1.0f, 2.0f));
 				AbstractDungeon.actionManager.addToBottom(new PhrogLickAction(this, 3));
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(1)));
 				break;
 			case MoveBytes.TACKLE:
 				AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
@@ -120,8 +135,13 @@ public class Phrog extends AbstractMonster {
 
 	@Override
 	protected void getMove(int roll) {
+		if(offsetTurn) {
+			this.setMove(STRINGS.MOVES[1], MoveBytes.JUMP, Intent.STRONG_DEBUFF);
+			offsetTurn = false;
+			return;
+		}
 		if(!this.lastMove(MoveBytes.LICK)) {
-			this.setMove(STRINGS.MOVES[0], MoveBytes.LICK, Intent.MAGIC);
+			this.setMove(STRINGS.MOVES[0], MoveBytes.LICK, Intent.ATTACK_DEBUFF, damage.get(1).base);
 			return;
 		}
 		switch(card.type){

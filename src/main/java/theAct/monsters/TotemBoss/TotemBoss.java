@@ -5,37 +5,34 @@
 
 package theAct.monsters.TotemBoss;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState.TrackEntry;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
-import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.actions.unique.SpawnDaggerAction;
-import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.AbstractMonster.EnemyType;
-import com.megacrit.cardcrawl.monsters.AbstractMonster.Intent;
 import com.megacrit.cardcrawl.powers.*;
-import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
-import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
+import com.megacrit.cardcrawl.vfx.combat.IntimidateEffect;
 import theAct.TheActMod;
+import theAct.actions.SnakeMissileAction;
 import theAct.actions.TotemFallWaitAction;
-import theAct.powers.ImmunityPower;
-import theAct.powers.TotemFleePower;
+import theAct.powers.TotemHealthLinkPower;
 import theAct.powers.TotemStrengthPower;
+import theAct.vfx.TotemShadowParticle;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 
 public class TotemBoss extends AbstractMonster {
     public static final String ID = TheActMod.makeID("TotemBoss");
@@ -44,25 +41,47 @@ public class TotemBoss extends AbstractMonster {
     public static final String[] MOVES;
     public static final String[] DIALOG;
 
-
+    private TotemShadowParticle totemShadow;
     private int healAmt;
+    private int debuffAmt;
+    private int strikeAmt;;
+    private int superAmt;
+
+    private int multiStrikeCount;
     public boolean stopTotemFall;
+    private float totemSfxTimer = 0.f;
     public int encounterSlotsUsed = 1;
     public ArrayList<Integer> remainingTotems = new ArrayList<>();
     public ArrayList<AbstractTotemSpawn> livingTotems = new ArrayList<>();
 
-
+    private boolean firstTurn = true;
 
     public TotemBoss() {
-        super(NAME, "Reptomancer", 10, 0.0F, -30.0F, 220.0F, 320.0F, (String)null, -20.0F, 10.0F);
-        this.type = EnemyType.ELITE;
-        this.loadAnimation("images/monsters/theForest/mage/skeleton.atlas", "images/monsters/theForest/mage/skeleton.json", 1.0F);
+        super(NAME, "Reptomancer", 1250, 0.0F, -30.0F, 220.0F, 320.0F, (String)null, -20.0F, 10.0F);
+        this.type = EnemyType.BOSS;
+        this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/skeleton.atlas"), TheActMod.assetPath("images/monsters/totemboss/skeleton.json"), 1.0F);
 
         if (AbstractDungeon.ascensionLevel >= 19) {
-            this.healAmt = 3;
+            this.strikeAmt = 9;
+            this.superAmt = 5;
+            this.healAmt = 12;
+            this.debuffAmt = 3;
+        } else if (AbstractDungeon.ascensionLevel >= 4) {
+            this.strikeAmt = 9;
+            this.superAmt = 5;
+            this.healAmt = 10;
+            this.debuffAmt = 2;
         } else {
-            this.healAmt = 2;
+            this.strikeAmt = 8;
+            this.superAmt = 4;
+            this.healAmt = 10;
+            this.debuffAmt = 2;
         }
+
+
+            this.damage.add(new DamageInfo(this, this.strikeAmt));
+            this.damage.add(new DamageInfo(this, this.superAmt));
+
 
 
         TrackEntry e = this.state.setAnimation(0, "Idle", true);
@@ -73,15 +92,16 @@ public class TotemBoss extends AbstractMonster {
         this.stateData.setMix("Attack", "Idle", 0.1F);
         e.setTime(e.getEndTime() * MathUtils.random());
 
-        this.powers.add(new TotemFleePower(this));
         this.powers.add(new TotemStrengthPower(this));
-        this.powers.add(new ImmunityPower(this));
+        this.powers.add(new TotemHealthLinkPower(this, 200));
+
+
     }
 
     public void usePreBattleAction() {
         CardCrawlGame.music.unsilenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
-        AbstractDungeon.getCurrRoom().playBgmInstantly("BOSS_CITY");
+        AbstractDungeon.getCurrRoom().playBgmInstantly("BOSSTOTEM");
 
         remainingTotems.add(1);
         remainingTotems.add(2);
@@ -95,6 +115,10 @@ public class TotemBoss extends AbstractMonster {
         spawnNewTotem();
         spawnNewTotem();
         spawnNewTotem();
+
+        this.totemShadow = new TotemShadowParticle(this);
+
+        AbstractDungeon.effectList.add(this.totemShadow);
 
     }
 
@@ -147,35 +171,101 @@ public class TotemBoss extends AbstractMonster {
     public void resolveTotemDeath(AbstractTotemSpawn m){
         this.stopTotemFall = true;
         livingTotems.remove(m);
+        if (this.hasPower(TotemHealthLinkPower.powerID)){
+            AbstractDungeon.actionManager.addToBottom(new LoseHPAction(this,this,this.getPower(TotemHealthLinkPower.powerID).amount));
+        }
         for (AbstractMonster m2 : livingTotems) {
 
             if (!m2.isDying) {
+                //Buff living totems before spawning new ones
+                this.getPower(TotemStrengthPower.powerID).flashWithoutSound();
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m2, this, new StrengthPower(m2, 1), 1));
             }
         }
 
 
         if (remainingTotems.size() == 0 && livingTotems.size() == 0){
-            die();
-        } else if (remainingTotems.size() > 0) {
+            //Totems are all dead - remove immunity and the totem shadow
+            this.totemShadow.isDone = true;
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this,this, TotemHealthLinkPower.powerID));
 
+        } else if (remainingTotems.size() > 0) {
+            //Spawn a new totem above if there are still any left in the array to kill
             spawnNewTotem();
 
-
         }
+        //Wait for a bit (even on fast mode) so the previous totem's death animation finishes before they all fall, and gives time for the new one's visuals to be drawn in above the screen
         AbstractDungeon.actionManager.addToBottom(new WaitAction(0.1F));
         AbstractDungeon.actionManager.addToBottom(new WaitAction(0.1F));
         AbstractDungeon.actionManager.addToBottom(new WaitAction(0.1F));
         AbstractDungeon.actionManager.addToBottom(new TotemFallWaitAction(this));
+
     }
 
+    public void update() {
+        super.update();
+        if (totemSfxTimer > 0) {
+            totemSfxTimer -= Gdx.graphics.getDeltaTime();
+        }
+    }
+
+    public void totemStoppedFalling() {
+        if (totemSfxTimer <= 0.f) { // Don't overlap effects
+            totemSfxTimer = 1.0f;
+            CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.MED, true);
+            CardCrawlGame.sound.playAV(TheActMod.makeID("totemSmash"), 0.1f, 2.0f);
+        }
+    }
 
     public void takeTurn() {
         switch(this.nextMove) {
             case 0:
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "SUMMON"));
+
+                if (livingTotems.size() > 0) {
+                    if (livingTotems.size() > 0) {
+                        Integer lowestHealth = 0;
+                        AbstractMonster bestTarget = null;
+                        for (AbstractMonster m : livingTotems) {
+                            if (m.currentHealth > lowestHealth){
+                                lowestHealth = m.currentHealth;
+                                bestTarget = m;
+                            }
+                        }
+
+                        if (bestTarget != null) {
+                            AbstractDungeon.actionManager.addToBottom(new WaitAction(0.3F));
+                            AbstractDungeon.actionManager.addToBottom(new HealAction(bestTarget, this, this.healAmt));
+                        }
+                    }
+                }
+                break;
+            case 1:
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
-                AbstractDungeon.actionManager.addToBottom(new WaitAction(0.3F));
-                AbstractDungeon.actionManager.addToBottom(new HealAction((livingTotems.get(AbstractDungeon.cardRng.random(livingTotems.size() - 1))), this, this.healAmt));
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AttackEffect.SLASH_HORIZONTAL));
+                for (AbstractTotemSpawn t : livingTotems){
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(t, this, new StrengthPower(t, 1), 1));
+                }
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
+
+                break;
+
+            case 2:
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "SUMMON"));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new VulnerablePower(AbstractDungeon.player, this.debuffAmt, true), this.debuffAmt));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WeakPower(AbstractDungeon.player, this.debuffAmt, true), this.debuffAmt));
+                AbstractDungeon.actionManager.addToBottom(new SFXAction("MONSTER_SNECKO_GLARE"));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new IntimidateEffect(this.hb.cX, this.hb.cY), 0.5F));
+
+                break;
+
+            case 3:
+                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
+                float projectileDelay = Interpolation.linear.apply(1.0F/3.0F, 0.05F, Math.min(((float)this.multiStrikeCount)/100.0F, 1.0F));
+                AbstractDungeon.actionManager.addToBottom(new SnakeMissileAction(AbstractDungeon.player,this, this.damage.get(1), this.multiStrikeCount, projectileDelay, Color.GREEN.cpy()));
+
+                break;
+
         }
 
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
@@ -191,19 +281,48 @@ public class TotemBoss extends AbstractMonster {
     }
 
     public void die() {
+        this.remainingTotems.clear();
+        for (AbstractTotemSpawn t:livingTotems) {
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(t, new DamageInfo(t,999), AttackEffect.FIRE));
+        }
         this.useFastShakeAnimation(5.0F);
         CardCrawlGame.screenShake.rumble(4.0F);
         super.die();
+
 
         AbstractDungeon.scene.fadeInAmbiance();
         this.onBossVictoryLogic();
 
     }
 
-    protected void getMove(int num) {
-        this.setMove((byte) 0, Intent.BUFF);
 
+    @Override
+    public void getMove(int roll)
+    {
+        if(firstTurn)
+        {
+            firstTurn = false;
+            this.setMove(MoveBytes.HEALTOTEM, Intent.BUFF);
+            return;
+        }
+        else
+        {
+            if(lastMove(MoveBytes.SUPERATTACK)) {
+                this.setMove(MoveBytes.HEALTOTEM, Intent.BUFF);
+            }
+            else if(lastMove(MoveBytes.HEALTOTEM)){
+                this.setMove(MoveBytes.DAMAGEANDBUFF, Intent.ATTACK_BUFF, this.damage.get(0).base);
+            }
+            else if(lastMove(MoveBytes.DAMAGEANDBUFF)){
+                this.setMove(MoveBytes.DEBUFF, Intent.STRONG_DEBUFF);
+            }
+            else if(lastMove(MoveBytes.DEBUFF)){
+                this.multiStrikeCount = 1 + livingTotems.size() + remainingTotems.size();
+                this.setMove(MoveBytes.SUPERATTACK, Intent.ATTACK, this.damage.get(1).base, this.multiStrikeCount, true);
+            }
+        }
     }
+
 
 
 
@@ -231,6 +350,13 @@ public class TotemBoss extends AbstractMonster {
                 this.state.addAnimation(0, "Idle", true, 0.0F);
         }
 
+    }
+
+    public static class MoveBytes {
+        public static final byte HEALTOTEM = 0;
+        public static final byte DAMAGEANDBUFF = 1;
+        public static final byte DEBUFF = 2;
+        public static final byte SUPERATTACK = 3;
     }
 
     static {

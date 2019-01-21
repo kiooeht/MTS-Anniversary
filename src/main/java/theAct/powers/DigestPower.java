@@ -1,8 +1,8 @@
 package theAct.powers;
 
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import theAct.TheActMod;
 import theAct.powers.abstracts.Power;
@@ -61,11 +60,25 @@ public class DigestPower extends Power {
 	@Override
 	public int onAttacked(DamageInfo info, int damageAmount) {
 		amount--;
-		if(amount <= 0) {
-			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(this.card.makeSameInstanceOf()));
+		if (amount == 0) {
+			if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
+				AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card.makeSameInstanceOf()));
+			} else {
+				AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(card.makeSameInstanceOf(), 1));
+			}
 			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, this));
 		}
 		updateDescription();
 		return super.onAttacked(info, damageAmount);
+	}
+
+	@Override
+	public void onDeath()
+	{
+		if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
+			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card.makeSameInstanceOf()));
+		} else {
+			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(card.makeSameInstanceOf(), 1));
+		}
 	}
 }

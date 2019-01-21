@@ -5,6 +5,10 @@
 
 package theAct.monsters.TotemBoss;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
@@ -13,11 +17,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import theAct.TheActMod;
 import theAct.powers.BlockFromStrengthPower;
-import theAct.powers.ImmunityPower;
-
-import java.util.Iterator;
 
 public class ShieldOtherTotem extends AbstractTotemSpawn {
     public static final String ID = TheActMod.makeID("ShieldOtherTotem");
@@ -30,12 +32,16 @@ public class ShieldOtherTotem extends AbstractTotemSpawn {
 
 
     public ShieldOtherTotem(TotemBoss boss) {
-        super(NAME, ID, boss);
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemcyan.png"));
+        this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/cyan/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/cyan/Totem.json"), 1.0F);
+
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
 
         if (AbstractDungeon.ascensionLevel >= 19) {
-            this.secondaryEffect = 10;
+            this.secondaryEffect = 12;
         } else if (AbstractDungeon.ascensionLevel >= 4) {
-            this.secondaryEffect = 8;
+            this.secondaryEffect = 10;
         } else {
             this.secondaryEffect = 8;
         }
@@ -55,6 +61,7 @@ public class ShieldOtherTotem extends AbstractTotemSpawn {
             case 1:
                 // AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.25F));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.CYAN)));
 
                 Integer blockBonus = 0;
                 if (this.hasPower(StrengthPower.POWER_ID)){
