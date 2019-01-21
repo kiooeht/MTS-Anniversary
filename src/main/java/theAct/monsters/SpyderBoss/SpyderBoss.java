@@ -32,7 +32,7 @@ public class SpyderBoss extends Spyder {
     public static final String NAME = monsterStrings.NAME;
 
     private ArrayList<Integer> choice = new ArrayList<Integer>(Arrays.asList(0,0,1,1));
-    private float[] pos = new float[] {-550.0F, 300.0F, -325.0F, 220.0F, -100.0F, 250.0F};
+    private float[] pos = new float[] {-650.0F, 300.0F, -425.0F, 220.0F, -200.0F, 250.0F};
 
     public SpyderBoss() {
         super(NAME, ID_WITHOUT_PREFIX, 0F, 0F, -1, 0,180.0F, -180.0F);
