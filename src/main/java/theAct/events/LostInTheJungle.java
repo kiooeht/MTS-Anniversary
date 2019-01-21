@@ -20,7 +20,7 @@ public class LostInTheJungle extends AbstractImageEvent {
     private static final String NAME = eventStrings.NAME;
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String IMAGE = null; // TheActMod.assetPath("images/events/LostInTheJungle.png"); // TODO
+    private static final String IMAGE = TheActMod.assetPath("images/events/LostInTheJungle.png");
 
     private int hpLoss;
     private int goldAmt = 300;
@@ -85,6 +85,7 @@ public class LostInTheJungle extends AbstractImageEvent {
 
     private void clearingScreen() {
         this.screen = Screen.CLEARING;
+        this.imageEventText.loadImage(TheActMod.assetPath("images/events/LostInTheJungle2.png"));
         this.imageEventText.updateBodyText(DESCRIPTIONS[2]);
         this.imageEventText.clearAllDialogs();
         if (AbstractDungeon.player.hasRelic(Shovel.ID)) {

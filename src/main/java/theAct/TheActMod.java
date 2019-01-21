@@ -42,16 +42,13 @@ import theAct.events.SneckoIdol;
 import theAct.monsters.MUSHROOMPOWER.MushroomGenki;
 import theAct.monsters.MUSHROOMPOWER.MushroomKuudere;
 import theAct.monsters.MUSHROOMPOWER.MushroomYandere;
-import theAct.monsters.SpyderBoss.FatSpyder;
-import theAct.monsters.SpyderBoss.SneakySpyder;
 import theAct.monsters.SpyderBoss.SpyderBoss;
-import theAct.monsters.SpyderBoss.WebberSpyder;
+import theAct.monsters.SpyderBoss.DefenderSpyder;
+import theAct.monsters.SpyderBoss.HunterSpyder;
 import theAct.patches.GetDungeonPatches;
 import theAct.potions.*;
 import theAct.relics.SneckoAutograph;
 import theAct.events.*;
-import theAct.monsters.*;
-import theAct.monsters.TotemBoss.TotemBoss;
 import theAct.relics.*;
 
 import java.nio.charset.StandardCharsets;
@@ -127,18 +124,15 @@ public class TheActMod implements
         BaseMod.addMonster(makeID("Snecko_Cultist_and_trap"), () -> new MonsterGroup(
                 new AbstractMonster[]{
                 		new SwingingAxe(-450.0F, 100.0F),
-                		new SneakySpyder(-223.0F, 330.0F),
-                        new WebberSpyder(-159.0F, -10.0F),
                         new SneckoCultist(120, 0)
                 }));
-        BaseMod.addMonster(makeID("6_Spyders"), () -> new MonsterGroup(
+        BaseMod.addMonster(makeID("5_Spyders"), () -> new MonsterGroup(
                 new AbstractMonster[]{
-                		new SneakySpyder(-749.0F, 360.0F),
-                		new SneakySpyder(-473.0F, 420.0F),
-                		new FatSpyder(-372.0F, 238.0F),
-                		new FatSpyder(-62.0F, 288.0F),
-                        new WebberSpyder(-199.0F, -10.0F),
-                        new WebberSpyder(39.0F, 10.0F)
+                		new HunterSpyder(-650.0F, 300.0F, 0),
+                		new DefenderSpyder(-425.0F, 250.0F, 1),
+                		new HunterSpyder(-200.0F, 220.0F, 2),
+                		new DefenderSpyder(25.0F, 340.0F, 3),
+                		new HunterSpyder(175.0F, 120.0F, 4)
                 }));
         BaseMod.addMonster(makeID("Flameango_and_Byrd"), () -> new MonsterGroup(
                 new AbstractMonster[] {
