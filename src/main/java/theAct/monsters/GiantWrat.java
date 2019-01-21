@@ -27,10 +27,10 @@ public class GiantWrat extends AbstractMonster {
     private static final float HB_Y = 136.0F;
     private static final float HB_W = 320.0F;
     private static final float HB_H = 240.0F;
-    private static final int HP_MIN = 111;
-    private static final int HP_MAX = 116;
-    private static final int ASC_HP_MIN = 117;
-    private static final int ASC_HP_MAX = 122;
+    private static final int HP_MIN = 91;
+    private static final int HP_MAX = 96;
+    private static final int ASC_HP_MIN = 94;
+    private static final int ASC_HP_MAX = 99;
     private static final byte FAT_BURNER = 1;
     private static final byte SLAM = 2;
     private static final byte FLAIL = 3;
@@ -43,7 +43,7 @@ public class GiantWrat extends AbstractMonster {
     private static final int FAT_BURNER_BLOCK_AMOUNT = 15;
     private static final int ASC2_FAT_BURNER_BLOCK_AMOUNT = 20;
     private static final int SLAM_DAMAGE = 12;
-    private static final int ASC_SLAM_DAMAGE = 14;
+    private static final int ASC_SLAM_DAMAGE = 13;
     private static final int SLAM_BLOCK_AMOUNT = 10;
     private static final int FLAIL_DAMAGE = 7;
     private static final int ASC_FLAIL_DAMAGE = 8;
