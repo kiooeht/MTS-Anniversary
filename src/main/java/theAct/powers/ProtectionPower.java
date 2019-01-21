@@ -42,20 +42,5 @@ public class ProtectionPower extends Power {
                 }
             }
         }
-        if (c.type == AbstractCard.CardType.ATTACK && a.target == null) {
-            int aliveCount = 0;
-            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                if (!m.isDying && !m.isEscaping) {
-                    aliveCount++;
-                }
-            }
-            if (aliveCount < 2) {
-                for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                    if (m != owner) {
-                        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, owner, amount));
-                    }
-                }
-            }
-        }
     }
 }
