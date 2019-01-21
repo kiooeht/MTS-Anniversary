@@ -17,7 +17,7 @@ public class ColdSnapFlameangoPatch
 {
     public static void Prefix(ColdSnap __instance, AbstractPlayer p, AbstractMonster m)
     {
-        if(m.id == Flameango.ID)
+        if(m.id.equals(Flameango.ID))
         {
             AbstractDungeon.actionManager.addToBottom(new StunMonsterAction(m, p));
         }
