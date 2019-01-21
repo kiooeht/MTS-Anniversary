@@ -65,9 +65,12 @@ public class Phrog extends AbstractMonster {
 
 	public void usePreBattleAction() {
 
-		CardCrawlGame.music.unsilenceBGM();
-		AbstractDungeon.scene.fadeOutAmbiance();
-		AbstractDungeon.getCurrRoom().playBgmInstantly("JUNGLEELITE");
+		//Only play if this is the slot 0 elite - prevents doubling up on music from each elite triggering it.
+		if (AbstractDungeon.getMonsters().monsters.get(0) == this) {
+			CardCrawlGame.music.unsilenceBGM();
+			AbstractDungeon.scene.fadeOutAmbiance();
+			AbstractDungeon.getCurrRoom().playBgmInstantly("JUNGLEELITE");
+		}
 
 	}
 
