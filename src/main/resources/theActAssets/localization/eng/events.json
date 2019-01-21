@@ -120,9 +120,9 @@
       "What is the rarity of the relic in this picture?",
       "theActAssets/images/events/quiz/relic1.png",
       "What is the rarity of the relic in this picture?",
-      "theActAssets/images/events/quiz/relic1.png",
+      "theActAssets/images/events/quiz/relic2.png",
       "What is the rarity of the relic in this picture?",
-      "theActAssets/images/events/quiz/relic1.png"
+      "theActAssets/images/events/quiz/relic3.png"
     ],
     "OPTIONS": [
       "[Begin Quiz]",
@@ -130,82 +130,102 @@
       " #gGain #g%d #gGold.",
       " #rLose #r%d #rHP.",
       "[Leave]",
+
       "[Aπ] ",
       "[Bπ] ",
       "[Cπ] ",
       "[Dπ] ",
+
       "Sweeping Beam",
       ">Hyper Beam",
       "Hyper Blast",
       "Disintegrate",
+
       ">Chosen, Snecko, Darkling",
       "Fungi Beast, Chosen, Spike Slime",
       "Snecko, Acid Slime, Cultist",
       "Awakened One, Louse, Snake Plant",
+
       ">The Maw, Hexaghost, The Transient",
       "Donu, Spire Growth, The Maw",
       "Jaw Worm, Donu, The Guardian",
       "Writhing Mass, Fungi Beast, Shelled Parasite",
+
       ">Pointy, Romeo, Bear",
       "Bear, Pointy, Romeo",
       "Romeo, Pointy, Bear",
       "Pointy, Bear, Romeo",
+
       ">Blade Storm",
       "Dodge and Roll",
       "Doppelganger",
       "Riddle with Holes",
+
       "Boot Sequence",
       ">Recursion",
       "Machine Learning",
       "Reinforced Body",
+
       "Spike Slime",
       "Red Louse",
       "Mad Gremlin",
       ">Blue Slaver",
+
       "The Collector",
       "The Time Eater",
       "The Mystic",
       ">The Centurion",
+
       "One",
       "Two",
       ">Three",
       "Four",
+
       "img:images/1024PortraitsBeta/green/skill/backflip.png",
       "img:images/1024PortraitsBeta/green/skill/outmaneuver.png",
       "img:images/1024PortraitsBeta/green/skill/blur.png",
       ">img:images/1024PortraitsBeta/green/skill/acrobatics.png",
+
       ">Enrage",
       "Choke",
       "Panache",
       "Lock-On",
+
       ">Metalicize",
       "Dexterity",
       "Barricade",
       "Plated Armor",
+
       ">A bomb",
       "A flask",
       "A blade",
       "A syringe",
+
       ">31",
       "34",
       "29",
       "26",
+
       ">Shame and Writhe",
       "Regret and Pain",
       "Shame and Injury",
       "Pride and Regret",
+
       ">Shops are more costly",
       "Unfavorable Events",
       "Bosses are tougher",
       "Upgraded cards appear less often",
+
       ">Common",
       "Uncommon",
       "Rare",
       "Shop",
+
       "Common",
       "Uncommon",
       ">Rare",
       "Shop",
+
       "Common",
       "Uncommon",
       "Rare",
@@ -310,15 +330,16 @@
   "theJungle:StalkMarket" : {
     "NAME": "Stalk Market",
     "DESCRIPTIONS": [
-      "A lush greenfield greets you with a curved and flowered log arch as the entrance. Etched on it reads #g\"STALK #gMARKET\". As you explore this curiously peaceful area populated with varying denizens of the Jungle, you understand what this place is about. It's the largest gathering center for exotic plants and crops with each creature holding harvest yields with stalk certificates.",
-      "Scattered around are many plots and gardens where everything grows. You enter one and are greeted by a flowery-looking, ecstatic gremlin. NL NL \"I've never seen your face here, you must be new to the Stalk Market! Would you like to buy a stalk from this plot? We have special fruits and vegetables no other plot has!\"",
-      "\"Oh, I understand... But we have plenty of harvests for adventurers on the go as well!\" NL NL The gremlin gives you a personal tour through the field. She wasn't kidding; you don't recognize any of these plants, not even from before the Spireblight. NL NL \"...and over here, we have flamangos, sweet and spicy! And my personal favorite just right here, the creamberry! They're so rich in flavor inside!\"",
-      "\"So, interested? Also, please note we are only allowed to sell one harvest per visitor.\"",
-      "\"#gPar #gsnip, a #ysimple but #ghealthy choice! Many of the stalk holders for this feed this to their kids! Still great for grown-ups!\" NL NL After rinsing with water, you take a bite out of your farm-fresh par snip. You feel #yinvigorated!",
-      "\"#yFlamango, spicier than you think! Almost as spicy as the notorious apparition peppers!\" NL NL After rinsing with water, you slice your farm-fresh flamango into chunks. #r@Hot,@ #r@Hot,@ #r@Hot!@",
-      "\"#gShell #gpeas, they have quite the texture! Just crunch the big pea in your mouth and feel the tiny ones!\" NL NL After rinsing with water, you try out your farm-fresh shell peas. You feel #ytough!",
-      "\"#gCreamberry, the absolute delicacy! Whoever created this really knows what mouth-watering is like!\" NL NL After rinsing with water, you soak your farm-fresh creamberry into your mouth. The absolute delicacy indeed!",
-      "\"I'm sorry, perhaps this plot isn't too interesting to you. Come back if you change your mind though!\" NL NL You feel a little bad for not buying something given how much she seems to like her job, but so it goes."
+      "A lush greenfield greets you with a curved and flowered log arch as the entrance. Etched on it reads #g\"STALK #gMARKET\". As you explore this curiously peaceful area populated with varying denizens of the Jungle, you understand what this place is about. It's the largest gathering center for exotic #gplants and #ycrops with each creature holding harvest yields with #ystalk #ycertificates.",
+      "Scattered around are many plots and gardens where everything grows. You enter one and are greeted by a dapper-looking, ecstatic gremlin. NL NL \"I've never seen your face here, you must be new to the #gStalk #gMarket! Would you like to buy a stalk from this plot? We have special #rfruits and #gvegetables no other plot has!\"",
+      "\"Oh, I understand... But we have plenty of harvests for adventurers on the go as well!\" NL NL The gremlin gives you a personal tour through the field. She wasn't kidding; you don't recognize any of these plants, not even from before the #pSpireblight. NL NL \"...and over here, we have #rflamangos, sweet and spicy! And my personal favorite just right here, the #rcreamberry! They're so rich in flavor inside!\"",
+      "\"So, interested? Also, please note we are only allowed to sell #bone harvest per visitor.\"",
+      "#g\"Par #gsnip, a #ysimple but #ghealthy choice! Many of the stalk holders for this feed this to their kids! Still great for grown-ups!\" NL NL After rinsing with water, you take a bite out of your farm-fresh #gpar #gsnip. You feel #yinvigorated!",
+      "#r\"Flamango, #rspicier than you think! Almost as spicy as the notorious #papparition #ppeppers!\" NL NL After rinsing with water, you slice your farm-fresh #rflamango into chunks. #r@Hot,@ #r@Hot,@ #r@Hot!@",
+      "#g\"Shell #gpeas, they have quite the #ytexture! Just crunch the big pea and chew on the tiny ones!\" NL NL After rinsing with water, you try out your farm-fresh #gshell #gpeas. You feel #ytough!",
+      "#r\"Creamberry, the #babsolute #bdelicacy! Whoever created this really knows what #bmouth-watering is like!\" NL NL After rinsing with water, you soak your farm-fresh #rcreamberry into your mouth. The #babsolute #bdelicacy indeed!",
+      "\"I'm sorry, perhaps this plot isn't too interesting to you. Come back if you change your mind though!\" NL NL You feel a little bad for not buying something given how much she seems to like her job, but so it goes.",
+      "Scattered around are many plots and gardens where everything grows. You enter one and are greeted by a #r@dapper-looking,@ ecstatic gremlin. NL NL \"I've never seen your face here, you must be new to the Stalk Market! Would you like to buy a stalk from this plot? We have special fruits and vegetables no other plot has!\""
     ],
     "OPTIONS": [
       "[Continue]",

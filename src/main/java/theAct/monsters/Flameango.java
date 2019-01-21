@@ -22,6 +22,7 @@ import com.megacrit.cardcrawl.vfx.SpeechBubble;
 import com.megacrit.cardcrawl.vfx.combat.FireballEffect;
 import com.megacrit.cardcrawl.vfx.combat.RedFireballEffect;
 import theAct.TheActMod;
+import theAct.relics.Flamango;
 import theAct.relics.WildMango;
 
 import java.util.Random;
@@ -101,7 +102,7 @@ public class Flameango extends AbstractMonster
     {
         if(this.firstTurn)
         {
-            if(AbstractDungeon.player.hasRelic(Mango.ID) || AbstractDungeon.player.hasRelic(WildMango.ID))
+            if(AbstractDungeon.player.hasRelic(Mango.ID) || AbstractDungeon.player.hasRelic(WildMango.ID) || AbstractDungeon.player.hasRelic(Flamango.ID))
             {
                 AbstractDungeon.actionManager.addToBottom(new TalkAction(this, FLAVOR_TOWN, 0.5f, 2.0f));
             }

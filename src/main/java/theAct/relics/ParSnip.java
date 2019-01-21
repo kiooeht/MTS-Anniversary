@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theAct.TheActMod;
@@ -13,9 +14,8 @@ import theAct.TheActMod;
 public class ParSnip extends CustomRelic {
 
     public static final String ID = TheActMod.makeID("ParSnip");
-    // TODO: Add images
-    public static final Texture IMAGE_PATH = null;
-    public static final Texture IMAGE_OUTLINE_PATH = null;
+    public static final Texture IMAGE_PATH = ImageMaster.loadImage(TheActMod.assetPath("images/relics/Parsnip.png"));
+    public static final Texture IMAGE_OUTLINE_PATH = ImageMaster.loadImage(TheActMod.assetPath("images/relics/ParsnipOutline.png"));
 
     public ParSnip() {
         super(ID, IMAGE_PATH, IMAGE_OUTLINE_PATH, RelicTier.SPECIAL, AbstractRelic.LandingSound.FLAT);

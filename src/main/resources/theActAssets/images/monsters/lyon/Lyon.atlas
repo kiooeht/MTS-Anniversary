@@ -1,0 +1,48 @@
+
+Lyon.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 2, 186
+  size: 443, 322
+  orig: 443, 322
+  offset: 0, 0
+  index: -1
+eye
+  rotate: false
+  xy: 181, 122
+  size: 29, 16
+  orig: 29, 16
+  offset: 0, 0
+  index: -1
+leg1
+  rotate: true
+  xy: 2, 2
+  size: 136, 177
+  orig: 136, 177
+  offset: 0, 0
+  index: -1
+leg2
+  rotate: true
+  xy: 274, 86
+  size: 98, 190
+  orig: 98, 190
+  offset: 0, 0
+  index: -1
+leg3
+  rotate: false
+  xy: 447, 439
+  size: 61, 69
+  orig: 61, 69
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: false
+  xy: 2, 140
+  size: 270, 44
+  orig: 270, 44
+  offset: 0, 0
+  index: -1

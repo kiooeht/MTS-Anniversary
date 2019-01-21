@@ -10,18 +10,19 @@ import theAct.actions.IncreaseRandomCardCostAction;
 import theAct.powers.abstracts.Power;
 
 public class WebbedPower extends Power {
-	public static final String NAME = "Webbed";
-	public static final String powerID = TheActMod.makeID(NAME);
-	private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(NAME);
+	public static final String POWER_ID = TheActMod.makeID("Webbed");
+	private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+	public static final String NAME = strings.NAME;
+	private static final String IMG = POWER_ID.substring(POWER_ID.indexOf(":")+1);
 
 	public WebbedPower(AbstractCreature owner, int amount) {
+		this.ID = POWER_ID;
+		this.name = strings.NAME;
 		this.owner = owner;
 		this.amount = amount;
 		this.type = PowerType.DEBUFF;
 		this.isTurnBased = true;
-		this.name = strings.NAME;
-		this.setImage(NAME + "84.png", NAME + "32.png");
-		this.ID = powerID;
+		this.setImage(IMG + "84.png", IMG + "32.png");
 		this.updateDescription();
 	}
 

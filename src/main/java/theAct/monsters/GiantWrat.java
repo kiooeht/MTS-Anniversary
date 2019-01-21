@@ -59,7 +59,6 @@ public class GiantWrat extends AbstractMonster {
     private int flailSelfVulnerableAmount;
 
     public GiantWrat(float x, float y) {
-        // TODO: Add Giant Wrat art
         super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, TheActMod.assetPath("/images/monsters/cassacara/placeholder.png"), x, y);
         if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(ASC_HP_MIN, ASC_HP_MAX);
