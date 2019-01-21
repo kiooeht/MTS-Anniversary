@@ -18,7 +18,7 @@ public class SS_Sloth extends CustomCard {
     private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG_PATH = null;
+    public static final String IMG_PATH = TheActMod.assetPath("images/cards/sporePurple.png");
     private static final int COST = 0;
 
     public SS_Sloth() {

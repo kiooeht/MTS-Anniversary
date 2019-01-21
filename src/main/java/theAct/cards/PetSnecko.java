@@ -16,7 +16,7 @@ public class PetSnecko extends CustomCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = null;
+    public static final String IMG_PATH = TheActMod.assetPath("images/cards/babySnecko.png");
     private static final int COST = 0;
     private static final CardRarity rarity = CardRarity.SPECIAL;
     private static final CardTarget target = CardTarget.SELF;
