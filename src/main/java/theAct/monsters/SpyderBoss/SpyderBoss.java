@@ -48,7 +48,7 @@ public class SpyderBoss extends Spyder {
         }      
         
         if (stronger) {
-        	this.damage.add(new DamageInfo(this, 6));
+        	this.damage.add(new DamageInfo(this, 5));
         	this.damage.add(new DamageInfo(this, 12));
             
         } else if (AbstractDungeon.ascensionLevel >= 4){

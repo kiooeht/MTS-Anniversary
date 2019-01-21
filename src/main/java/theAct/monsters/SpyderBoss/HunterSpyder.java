@@ -44,16 +44,16 @@ public class HunterSpyder extends Spyder{
         }      
         
         if (stronger) {
-        	this.damage.add(new DamageInfo(this, 7));
-        	this.damage.add(new DamageInfo(this, 23));
+        	this.damage.add(new DamageInfo(this, 6));
+        	this.damage.add(new DamageInfo(this, 21));
         	
         } else if (AbstractDungeon.ascensionLevel >= (normal?2:4)){
-        	this.damage.add(new DamageInfo(this, 9));
-        	this.damage.add(new DamageInfo(this, 19)); 
+        	this.damage.add(new DamageInfo(this, 8));
+        	this.damage.add(new DamageInfo(this, 17)); 
         	
         } else {
-        	this.damage.add(new DamageInfo(this, 8));
-        	this.damage.add(new DamageInfo(this, 18));
+        	this.damage.add(new DamageInfo(this, 7));
+        	this.damage.add(new DamageInfo(this, 15));
         }
 	}
 	
