@@ -19,9 +19,9 @@ public class Spyder extends AbstractMonster {
     public boolean stronger;
 	private SpyderWebParticle web;
 
-    public Spyder(String name, String ID, float x, float y, int slot, int strength) {
-        super(name, TheActMod.makeID(ID), 1, 0.0F, slot==-1?10.0F:30.0F, slot==-1? 240F: 160F, slot==-1? 240F: 140F, TheActMod.assetPath("images/monsters/spyders/" + ID + ".png"), 
-        		x + AbstractDungeon.miscRng.random(-20, 20), y + AbstractDungeon.miscRng.random(-20, 20));
+    public Spyder(String name, String ID, float x, float y, int slot, int strength, float offsetX, float offsetY) {
+        super(name, TheActMod.makeID(ID), 1, 0.0F, slot==-1?200.0F:30.0F, slot==-1? 240F: 160F, slot==-1? 240F: 140F, TheActMod.assetPath("images/monsters/spyders/" + ID + ".png"),
+        		offsetX, offsetY);
         
         if(slot == -1)
         	queen = true;

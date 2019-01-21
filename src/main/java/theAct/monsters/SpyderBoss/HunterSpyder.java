@@ -33,7 +33,7 @@ public class HunterSpyder extends Spyder{
     }
     
     public HunterSpyder(float x, float y, int slot, int strength, boolean normal) {	
-		super(NAME, ID_WITHOUT_PREFIX, x, y, slot, strength);
+		super(NAME, ID_WITHOUT_PREFIX, x, y, slot, strength,x + AbstractDungeon.miscRng.random(-20, 20), y + AbstractDungeon.miscRng.random(-20, 20));
 
 		this.stronger = AbstractDungeon.ascensionLevel >= (normal?17:19);
 		

@@ -35,9 +35,10 @@ public class SpyderBoss extends Spyder {
     private float[] pos = new float[] {-550.0F, 300.0F, -325.0F, 220.0F, -100.0F, 250.0F};
 
     public SpyderBoss() {
-        super(NAME, ID_WITHOUT_PREFIX, 150F, 0F, -1, 0);
+        super(NAME, ID_WITHOUT_PREFIX, 0F, 0F, -1, 0,180.0F, -180.0F);
+
         this.type = EnemyType.BOSS;
-        this.loadAnimation("images/monsters/theForest/mage/skeleton.atlas", "images/monsters/theForest/mage/skeleton.json", 1.0F); //NOT DONE
+       // this.loadAnimation("images/monsters/theForest/mage/skeleton.atlas", "images/monsters/theForest/mage/skeleton.json", 1.0F); //NOT DONE
         
         this.stronger = AbstractDungeon.ascensionLevel >= 19;
         
@@ -58,7 +59,8 @@ public class SpyderBoss extends Spyder {
         	this.damage.add(new DamageInfo(this, 4));
         	this.damage.add(new DamageInfo(this, 11));
         }
-        
+
+        /*
         TrackEntry e = this.state.setAnimation(0, "Idle", true);
         this.stateData.setMix("Idle", "Sumon", 0.1F);
         this.stateData.setMix("Sumon", "Idle", 0.1F);
@@ -66,14 +68,15 @@ public class SpyderBoss extends Spyder {
         this.stateData.setMix("Idle", "Hurt", 0.1F);
         this.stateData.setMix("Attack", "Idle", 0.1F);
         e.setTime(e.getEndTime() * MathUtils.random());
+        */
     }
 
     public void usePreBattleAction() {
-    	/*
+
         CardCrawlGame.music.unsilenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
         AbstractDungeon.getCurrRoom().playBgmInstantly("BOSSSPIDER");
-        */
+
                      
     	AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, stronger?24:20, true));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, 1), 1));
@@ -207,6 +210,7 @@ public class SpyderBoss extends Spyder {
     	AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this, this, ArtifactPower.POWER_ID));
     }
 
+    /*
     public void damage(DamageInfo info) {
         super.damage(info);
         if (info.owner != null && info.type != DamageType.THORNS && info.output > 0) {
@@ -215,6 +219,7 @@ public class SpyderBoss extends Spyder {
         }
 
     }
+    */
 
     public void die() {
         this.useFastShakeAnimation(5.0F);

@@ -16,7 +16,7 @@ public class SpyderWebParticle extends com.megacrit.cardcrawl.vfx.AbstractGameEf
     private int W;
     private Texture img;
     public Spyder p;
-    private static int xOffset = -578;
+    private static int xOffset = -478;
     private static int yOffset = 260;
     private static float yAnimation = 1000;
 
