@@ -152,9 +152,8 @@ public class JungleHunters extends AbstractMonster {
             isFirstTurn = false;
             return;
         }
-        if (doBigAttack) {
+        if (lastMove((byte)0) || lastMove((byte)2)) {
             setMove((byte)3, Intent.ATTACK, damage.get(1).base, bigAtkAmt, true);
-            doBigAttack = false;
             return;
         }
         if (!lastMove((byte)1)) {
@@ -162,10 +161,8 @@ public class JungleHunters extends AbstractMonster {
         } else {
             if (i < 50) {
                 setMove((byte)0, Intent.DEFEND);
-                doBigAttack = true;
             } else {
                 setMove((byte)2, Intent.DEBUFF);
-                doBigAttack = true;
             }
         }
     }
