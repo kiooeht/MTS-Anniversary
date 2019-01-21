@@ -6,14 +6,23 @@
 			"Bottomless Stomach"
 		],
 		"NAME": "Cassacara",
-		"DIALOG": [
-			"@RrraahrRGHhh!!@"
-		]
+		"DIALOG": []
 	},
 	"theJungle:CarcassSack": {
 		"MOVES": [],
 		"NAME": "Carcass Sack",
 		"DIALOG": []
+	},
+	"theJungle:GiantWrat": {
+		"MOVES": [
+			"Fat Burner",
+			"Slam",
+			"Flail"
+		],
+		"NAME": "Giant Wrat",
+		"DIALOG": [
+			"Absolute Unit"
+		]
 	},
 	"theJungle:Phrog": {
 		"MOVES": [

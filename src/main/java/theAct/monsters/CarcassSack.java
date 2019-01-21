@@ -1,6 +1,5 @@
 package theAct.monsters;
 
-import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
@@ -12,10 +11,12 @@ public class CarcassSack extends AbstractMonster {
     public static final String ID = TheActMod.makeID("CarcassSack");
     private static final MonsterStrings MONSTER_STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = MONSTER_STRINGS.NAME;
-    private static final float HB_X = 8.0F;
-    private static final float HB_Y = 136.0F;
-    private static final float HB_W = 320.0F;
-    private static final float HB_H = 240.0F;
+    private static final float HB_X = 0.0F;
+    private static final float HB_Y = 0.0F;
+    private static final float HB_W = 150.0F;
+    private static final float HB_H = 100.0F;
+    private static final String ANIMATION_ATLAS = TheActMod.assetPath("images/monsters/cassacara/Cassacara.atlas");
+    private static final String ANIMATION_JSON = TheActMod.assetPath("images/monsters/cassacara/Cassacara.json");
     private static final int HP_MIN = 18;
     private static final int HP_MAX = 20;
     private static final int ASC_HP_MIN = 20;
@@ -23,7 +24,7 @@ public class CarcassSack extends AbstractMonster {
     private static final byte ITS_DINNER_TIME = 1;
 
     public CarcassSack(float x, float y) {
-        super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, TheActMod.assetPath("/images/monsters/cassacara/placeholder.png"), x, y);
+        super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, x, y);
         this.type = EnemyType.ELITE;
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(ASC_HP_MIN, ASC_HP_MAX);
@@ -31,6 +32,9 @@ public class CarcassSack extends AbstractMonster {
         else {
             setHp(HP_MIN, HP_MAX);
         }
+        this.loadAnimation(ANIMATION_ATLAS, ANIMATION_JSON, 1.0F);
+        this.state.setAnimation(0, "idleLeaves", true);
+        this.state.setAnimation(1, "TinyBulb", true);
     }
 
     public void takeTurn() {
