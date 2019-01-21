@@ -65,10 +65,10 @@ public class AbstractTotemSpawn extends AbstractMonster {
 
 
     public AbstractTotemSpawn(String name, String ID, TotemBoss boss, String imgPath) {
-        super(name, ID, 420, 0.0F, 0F, 150.0F, 250.0F, null, -90.0F, 30.0F);
+        super(name, ID, 420, 0.0F, 0F, 160.0F, 220.0F, null, -50.0F, 15.0F);
 
 
-        ReflectionHacks.setPrivate(this, AbstractCreature.class,"HB_Y_OFFSET_DIST",-200F);
+        //ReflectionHacks.setPrivate(this, AbstractCreature.class,"HB_Y_OFFSET_DIST",-200F);
 
         try {
             refrenderIntentVfxBehind = AbstractMonster.class.getDeclaredMethod("renderIntentVfxBehind", SpriteBatch.class);
