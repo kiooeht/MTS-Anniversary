@@ -79,7 +79,7 @@ public class TheActMod implements
         // Add monsters here
 
         BaseMod.addMonster(JungleHunters.ENCOUNTER_ID, JungleHunters.NAME, () -> new MonsterGroup(
-                new AbstractMonster[] { new JungleHunters(-385.0F, -15.0F), new JungleHunters(-133.0F, 10.0F), new JungleHunters(150.0F, -30.0F)}));
+                new AbstractMonster[] { new JungleHunters(-385.0F, -15.0F), new JungleHunters(-133.0F, 10.0F)}));
 
         BaseMod.addMonster(JungleHunters.EVENT_ID, JungleHunters.NAME, () -> new MonsterGroup(
                 new AbstractMonster[] { new JungleHunters(-385.0F, -15.0F), new JungleHunters(-133.0F, 10.0F), new JungleHunters(150.0F, -30.0F)}));
