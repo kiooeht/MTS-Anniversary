@@ -87,11 +87,15 @@ public class SpyderBoss extends Spyder {
         ArrayList<Integer> c = (ArrayList<Integer>)choice.clone();
         
         for(int i = 0; i < 3; i++) {
-        	
+        	boolean space = true;
         	for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-        		if(m instanceof Spyder && ((Spyder) m).slot == i)
-        			continue;        		
+        		if(m instanceof Spyder && ((Spyder) m).slot == i && !m.isDeadOrEscaped()) {
+        			space = false;
+        			break;
+        		}
             }
+        	if(!space)
+        		continue;
         	
         	Spyder m = null;
         	int r = AbstractDungeon.monsterRng.random(c.size() - 1);
@@ -120,7 +124,7 @@ public class SpyderBoss extends Spyder {
     	int art = 99;
         switch(this.nextMove) {
         case 0:
-        	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WebbedPower(AbstractDungeon.player, stronger?3:2), stronger?3:2));
+        	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WebbedPower(AbstractDungeon.player, 1), 1));
             AbstractDungeon.actionManager.addToBottom(new VFXAction(new WebEffect(AbstractDungeon.player, this.hb.cX - 70.0f * Settings.scale, this.hb.cY - 100.0f * Settings.scale)));
             break;
 		case 1:
