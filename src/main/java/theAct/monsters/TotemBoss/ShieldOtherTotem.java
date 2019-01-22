@@ -55,27 +55,24 @@ public class ShieldOtherTotem extends AbstractTotemSpawn {
 
 
     public void takeTurn() {
-        breakp:
+        totemAttack();
+    }
 
-        switch (this.nextMove) {
-            case 1:
-                // AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
-                AbstractDungeon.actionManager.addToBottom(new WaitAction(0.25F));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.CYAN)));
+    @Override
+    public void totemAttack() {
+        // AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
+        AbstractDungeon.actionManager.addToBottom(new WaitAction(0.25F));
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.CYAN)));
 
-                Integer blockBonus = 0;
-                if (this.hasPower(StrengthPower.POWER_ID)){
-                    blockBonus = this.getPower(StrengthPower.POWER_ID).amount;
-                }
-                for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+        Integer blockBonus = 0;
+        if (this.hasPower(StrengthPower.POWER_ID)){
+            blockBonus = this.getPower(StrengthPower.POWER_ID).amount;
+        }
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
 
-                    if (!m.isDying && !(m instanceof TotemBoss)) {
-                        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, this, this.secondaryEffect + blockBonus));
-                    }
-                }
-
-
-                AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
+            if (!m.isDying && !(m instanceof TotemBoss)) {
+                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, this, this.secondaryEffect + blockBonus));
+            }
         }
     }
 

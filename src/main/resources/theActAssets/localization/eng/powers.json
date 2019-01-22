@@ -45,7 +45,7 @@
 	"theJungle:TotemBossImmunityPower": {
 		"NAME" : "Totemic Might",
 		"DESCRIPTIONS": [
-			"If Totems are still alive, is immune to damage and debuffs."
+			"If Totems are still alive, is immune to damage."
 		]
 	},
 	"theJungle:SwingingTrapPower": {
@@ -66,6 +66,12 @@
 			" more turns."
 		]
 	},
+	"theJungle:TotemRevengeAttackPower": {
+		"NAME": "Totem Counter",
+		"DESCRIPTIONS": [
+			"Instantly attacks whenever you play a card that targets ALL enemies."
+		]
+	},
 	"theJungle:InfectiousSporesPower": {
 		"NAME": "Infectious Spores",
 		"DESCRIPTIONS": [
@@ -83,8 +89,8 @@
 	"theJungle:RandomizePower": {
 		"NAME": "Selective Confusion",
 		"DESCRIPTIONS": [
-			"Randomize the cost this turn of the next card you draw.",
-			"Randomizes the cost this turn of the next ",
+			"Randomize the cost of the next card you draw.",
+			"Randomizes the cost of the next ",
 			" cards you draw."
 		]
 	},

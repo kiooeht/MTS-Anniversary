@@ -65,31 +65,24 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
 
 
     public void takeTurn() {
-        float vfxSpeed = 0.1F;
-        if (Settings.FAST_MODE) {
-            vfxSpeed = 0.0F;
+        totemAttack();
+
+    }
+
+    @Override
+    public void totemAttack() {
+        AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F)); AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.WHITE)));
+        AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new TotemBeamEffect(this.hb.cX + beamOffsetX, this.hb.cY + beamOffsetY, AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, Color.WHITE.cpy(), this.hb.cX + beamOffsetX2, this.hb.cY + beamOffsetY2), 0.1F));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AttackEffect.FIRE));
+
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+
+            if (!m.isDying && !(m instanceof TotemBoss)) {
+                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, this, this.secondaryEffect));
+            }
         }
-
-        switch(this.nextMove) {
-            case 1:
-               // AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
-                AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F)); AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.WHITE)));
-                AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new TotemBeamEffect(this.hb.cX + beamOffsetX, this.hb.cY + beamOffsetY, AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, Color.WHITE.cpy(), this.hb.cX + beamOffsetX2, this.hb.cY + beamOffsetY2), 0.1F));
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AttackEffect.FIRE));
-
-                for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-
-                    if (!m.isDying && !(m instanceof TotemBoss)) {
-                        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, this, this.secondaryEffect));
-                    }
-                }
-
-                break;
-        }
-
-        AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
     }
 
     protected void getMove(int num)
