@@ -23,7 +23,7 @@ public class DefenderSpyder extends Spyder{
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     
-    public static final int HP = 40;
+    public static final int HP = 25;
     
     public DefenderSpyder(float x, float y, int slot) {
     	this(x, y, slot, 0, true);
@@ -45,16 +45,16 @@ public class DefenderSpyder extends Spyder{
         }      
         
         if (stronger) {
-        	this.damage.add(new DamageInfo(this, 10));
-        	this.damage.add(new DamageInfo(this, 7));
+        	this.damage.add(new DamageInfo(this, 5));
+        	this.damage.add(new DamageInfo(this, 3));
             
         } else if (AbstractDungeon.ascensionLevel >= (normal?2:4)){
-            this.damage.add(new DamageInfo(this, 10));
-        	this.damage.add(new DamageInfo(this, 7));
+            this.damage.add(new DamageInfo(this, 5));
+        	this.damage.add(new DamageInfo(this, 3));
             
         } else {
-        	this.damage.add(new DamageInfo(this, 9));
-        	this.damage.add(new DamageInfo(this, 6));
+        	this.damage.add(new DamageInfo(this, 4));
+        	this.damage.add(new DamageInfo(this, 2));
         }
 	}
 	

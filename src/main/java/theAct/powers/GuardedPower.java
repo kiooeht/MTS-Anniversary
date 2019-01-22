@@ -1,6 +1,7 @@
 package theAct.powers;
 
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -37,7 +38,7 @@ public class GuardedPower extends Power {
     
     @Override
     public float atDamageReceive(float damage, final DamageInfo.DamageType type) {
-        if (damage > 1.0f) {
+        if (damage > 1.0f && type == DamageType.NORMAL) {
             damage = (float) Math.ceil(damage*0.1f);
         }
         return damage;
