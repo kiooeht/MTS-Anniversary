@@ -15,11 +15,11 @@ public class GuardedPower extends Power {
     public static final String NAME = strings.NAME;
     private static final String IMG = POWER_ID.substring(POWER_ID.indexOf(":")+1);
 	
-	public GuardedPower(AbstractCreature owner) {
+	public GuardedPower(AbstractCreature owner, int amount) {
         this.ID = POWER_ID;
         this.name = strings.NAME;
 		this.owner = owner;
-		this.amount = -1;
+		this.amount = amount;
 		this.type = PowerType.BUFF;
 		this.setImage(IMG + "84.png", IMG + "32.png");
         this.priority = 99;
@@ -30,6 +30,7 @@ public class GuardedPower extends Power {
     public void playApplyPowerSfx() {
         CardCrawlGame.sound.play("POWER_INTANGIBLE", 0.05f);
     }
+
 	@Override
 	public void onRemove() {
 		CardCrawlGame.sound.play("POWER_FOCUS", 0.1f);
@@ -38,10 +39,12 @@ public class GuardedPower extends Power {
     
     @Override
     public float atDamageReceive(float damage, final DamageInfo.DamageType type) {
-        if (damage > 1.0f && type == DamageType.NORMAL) {
-            damage = (float) Math.ceil(damage*0.1f);
+        if (type == DamageType.NORMAL) {
+            return Math.max(damage * (1.0F - this.amount * 0.25F), 0.0F);
         }
-        return damage;
+        else {
+            return damage;
+        }
     }
     
     @Override

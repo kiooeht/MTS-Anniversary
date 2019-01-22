@@ -9,7 +9,7 @@
 	"theJungle:DigestPower": {
 		"NAME" : "Digestion",
 		"DESCRIPTIONS": [
-			"After taking damage #b",
+			"After being attacked damage #b",
 			" times, ",
 			" is returned to your hand. NL NL At the end of your turn, ",
 			" is #rExhausted."
@@ -32,7 +32,7 @@
 	"theJungle:BlockFromStrengthPower": {
 		"NAME" : "Defensive",
 		"DESCRIPTIONS": [
-			"Strength increases the amount of Block this enemy provides."
+			"#yStrength increases the amount of #yBlock this enemy provides."
 		]
 	},
 	"theJungle:TotemHealthLinkPower": {
@@ -70,22 +70,22 @@
 		"NAME": "Infectious Spores",
 		"DESCRIPTIONS": [
 			"On death, applies #b",
-			" #rFungal #rInfection."
+			" #yFungal #yInfection."
 		]
 	},
 	"theJungle:RegenerativeSlime": {
 		"NAME": "Regenerative Slime",
 		"DESCRIPTIONS": [
-			"Whenever you play a non-Attack card, heals #b",
+			"Whenever you play a #ynon-Attack card, heals #b",
 			" HP."
 		]
 	},
 	"theJungle:RandomizePower": {
 		"NAME": "Selective Confusion",
 		"DESCRIPTIONS": [
-			"Randomize the cost of the next card you draw.",
+			"Randomize the cost of the next card you draw this turn.",
 			"Randomizes the cost of the next ",
-			" cards you draw."
+			" cards you draw this turn."
 		]
 	},
 	"theJungle:CautiousPower": {
@@ -100,44 +100,43 @@
 	"theJungle:Pride": {
 		"NAME": "Pride",
 		"DESCRIPTIONS": [
-			"Whenever you play a card, ",
-			" gains #b",
+			"Whenever you play a card, gains #b",
 			" #yStrength this turn."
 		]
     },
 	"theJungle:ObsessionPower": {
 		"NAME": "Obsessive",
 		"DESCRIPTIONS": [
-			"Whenever you play an attack that does not target #rONLY this monster, take #b",
+			"Whenever you play an #yAttack that does not target #rONLY this monster, take #b",
 			" damage."
 		]
 	},
 	"theJungle:ProtectionPower": {
 		"NAME": "Protective",
 		"DESCRIPTIONS": [
-			"Whenever you play an attack that does not target #rONLY this monster, all OTHER enemies gain #b",
+			"Whenever you play an #yAttack that does not target #rONLY this monster, ALL OTHER enemies gain #b",
 			" #yBlock."
 		]
 	},
 	"theJungle:EnergeticPower": {
 		"NAME": "Energetic",
 		"DESCRIPTIONS": [
-			"Whenever you play an attack that does not target #rONLY this monster, all OTHER enemies gain #b",
+			"Whenever you play an #yAttack that does not target #rONLY this monster, ALL OTHER enemies gain #b",
 			" #yStrength."
 		]
 	},
     "theJungle:Guarded": {
 		"NAME" : "Guarded",
 		"DESCRIPTIONS": [
-			"Receives #b90% less attack damage while there is a Spyder in front of this creature."
+			"Receives #b25% less attack damage for each Spyder in front of this creature."
 		]
 	},
     "theJungle:Webbed": {
 		"NAME" : "Webbed",
 		"DESCRIPTIONS": [
-			"Increase the cost of the first card you draw by #b1 for the rest of the combat.",
+			"Increase the cost of the first card you draw by #b1 this combat.",
 			"Increase the cost of the first #b",
-			" cards you draw by #b1 for the rest of the combat.",
+			" cards you draw by #b1 this combat.",
             " NL This has affected #b",
             " cards this turn.",
             " card this turn."

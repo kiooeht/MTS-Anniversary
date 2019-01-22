@@ -1,7 +1,7 @@
 package theAct.monsters.SpyderBoss;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import theAct.TheActMod;
 import theAct.powers.GuardedPower;
 import theAct.vfx.SpyderWebParticle;
-
 
 public class Spyder extends AbstractMonster {
 	
@@ -39,7 +38,6 @@ public class Spyder extends AbstractMonster {
     }
     	
     public void startPowers() {
-    	
     	if(!queen) {
     		this.web = new SpyderWebParticle(this);
     		AbstractDungeon.effectList.add(this.web);
@@ -49,14 +47,13 @@ public class Spyder extends AbstractMonster {
         	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, strength), strength));
     	
     	if(slot != 0)
-    		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new GuardedPower(this)));
+    		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new GuardedPower(this, 1)));
     	
     	for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
     		if(m instanceof Spyder && ((Spyder) m).slot == slot+1 && !m.hasPower(GuardedPower.POWER_ID))
-    			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new GuardedPower(m)));
+    			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new GuardedPower(m, 1)));
     		
         }
-        
     }
 
 
@@ -78,10 +75,9 @@ public class Spyder extends AbstractMonster {
         super.die();
         for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
     		if(m instanceof Spyder && ((Spyder) m).slot == slot+1) {
-    			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(m, m, GuardedPower.POWER_ID));
+    			AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(m, m, GuardedPower.POWER_ID, 1));
     			((Spyder) m).breakGuard();
     		}
         }
-
     }
 }
