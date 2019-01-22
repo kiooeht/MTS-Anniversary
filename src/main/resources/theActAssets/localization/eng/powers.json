@@ -9,7 +9,7 @@
 	"theJungle:DigestPower": {
 		"NAME" : "Digestion",
 		"DESCRIPTIONS": [
-			"After being attacked damage #b",
+			"On death or after being attacked #b",
 			" times, ",
 			" is returned to your hand. NL NL At the end of your turn, ",
 			" is #rExhausted."
