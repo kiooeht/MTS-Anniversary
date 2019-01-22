@@ -48,8 +48,6 @@ public class SlimyTreeVines extends AbstractMonster {
     private static final byte ATTACK_2 = 3;
     private static final byte ATTACK_3 = 4;
     private static final byte SPLIT = 5;
-    private boolean doneTangle = false;
-    private boolean doneSplit = false;
 
     public SlimyTreeVines() {
         super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, 0, -40);
@@ -86,7 +84,6 @@ public class SlimyTreeVines extends AbstractMonster {
     public void takeTurn() {
         switch (this.nextMove) {
             case TANGLE: {
-                doneTangle = true;
                 AbstractDungeon.actionManager.addToBottom(new AnimateSlowAttackAction(this));
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new Slimed(), this.slimedAmt));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new ConstrictedPower(AbstractDungeon.player, this, this.constrictDmg)));
@@ -110,7 +107,6 @@ public class SlimyTreeVines extends AbstractMonster {
                 break;
             }
             case SPLIT: {
-                doneSplit = true;
                 this.name = DIALOG[0];
                 AbstractDungeon.actionManager.addToBottom(new AnimateShakeAction(this, 1.0f, 0.1f));
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(1.0f));
@@ -133,11 +129,11 @@ public class SlimyTreeVines extends AbstractMonster {
 
     @Override
     protected void getMove(int num) {
-        if (!doneTangle && num < 75) {
+        if (!this.moveHistory.contains(TANGLE) && num < 75) {
             this.setMove(MOVES[0], TANGLE, Intent.STRONG_DEBUFF);
-        } else if (!doneSplit && this.currentHealth < splitThreshold) {
+        } else if (!this.moveHistory.contains(SPLIT) && this.currentHealth < splitThreshold) {
             this.setMove(MOVES[1], SPLIT, Intent.UNKNOWN);
-        } else if (doneSplit) {
+        } else if (this.moveHistory.contains(SPLIT)) {
             this.setMove(ATTACK_3, Intent.ATTACK, this.damage.get(2).base);
         } else if (num < 50 && !this.lastTwoMoves(ATTACK) || this.lastMove(ATTACK_2)) {
             this.setMove(ATTACK, Intent.ATTACK, this.damage.get(0).base);
