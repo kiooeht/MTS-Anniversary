@@ -45,14 +45,11 @@ public class Spyder extends AbstractMonster {
     	
     	if(strength != 0)
         	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, strength), strength));
-    	
-    	if(slot != 0)
-    		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new GuardedPower(this, 1), 1));
-    	
+
     	for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-    		if(m instanceof Spyder && ((Spyder) m).slot == slot+1 && !m.hasPower(GuardedPower.POWER_ID))
-    			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new GuardedPower(m, 1), 1));
-    		
+    		if(m instanceof Spyder && ((Spyder) m).slot > this.slot) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new GuardedPower(m, 1), 1));
+            }
         }
     }
 
@@ -74,7 +71,7 @@ public class Spyder extends AbstractMonster {
         this.useFastShakeAnimation(0.5F);
         super.die();
         for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-    		if(m instanceof Spyder && ((Spyder) m).slot == slot+1) {
+    		if(m instanceof Spyder && ((Spyder) m).slot > this.slot && m.hasPower(GuardedPower.POWER_ID)) {
     			AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(m, m, GuardedPower.POWER_ID, 1));
     			((Spyder) m).breakGuard();
     		}

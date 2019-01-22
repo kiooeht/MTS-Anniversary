@@ -157,7 +157,6 @@ public class SpyderBoss extends Spyder {
 			if(hasPower(StrengthPower.POWER_ID))
 				str += getPower(StrengthPower.POWER_ID).amount;
 			spawnSpyders(str);
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new GuardedPower(this, 1), 1));
 			if(hasPower(ArtifactPower.POWER_ID))
 				art -= getPower(ArtifactPower.POWER_ID).amount;
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, art), art, true));
