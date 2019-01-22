@@ -128,7 +128,7 @@
     "theJungle:Guarded": {
 		"NAME" : "Guarded",
 		"DESCRIPTIONS": [
-			"Receives #b25% less attack damage for each Spyder in front of this creature."
+			"Receives #b80% less #yAttack damage while there is a #rSpyder in front of this creature."
 		]
 	},
     "theJungle:Webbed": {

@@ -127,7 +127,7 @@ public class Jungle extends AbstractDungeon
         monsters.add(new MonsterInfo("Shell Parasite", 2.0F));
         monsters.add(new MonsterInfo(GiantWrat.ID, 3.0f));
         monsters.add(new MonsterInfo(TheActMod.makeID("Flameango_and_Byrd"), 2.0F));
-        monsters.add(new MonsterInfo(TheActMod.makeID("6_Spyders"), 2.0f));
+        monsters.add(new MonsterInfo(TheActMod.makeID("5_Spyders"), 2.0f));
         monsters.add(new MonsterInfo(MushroomYandere.ENCOUNTER_ID, 3.0f));
         MonsterInfo.normalizeWeights(monsters);
         populateMonsterList(monsters, count, false);

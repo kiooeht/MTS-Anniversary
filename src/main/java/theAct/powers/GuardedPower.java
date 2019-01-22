@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
 import theAct.TheActMod;
+import theAct.monsters.SpyderBoss.Spyder;
 import theAct.powers.abstracts.Power;
 
 public class GuardedPower extends Power {
@@ -15,11 +16,11 @@ public class GuardedPower extends Power {
     public static final String NAME = strings.NAME;
     private static final String IMG = POWER_ID.substring(POWER_ID.indexOf(":")+1);
 	
-	public GuardedPower(AbstractCreature owner, int amount) {
+	public GuardedPower(AbstractCreature owner) {
         this.ID = POWER_ID;
         this.name = strings.NAME;
 		this.owner = owner;
-		this.amount = amount;
+		this.amount = -1;
 		this.type = PowerType.BUFF;
 		this.setImage(IMG + "84.png", IMG + "32.png");
         this.priority = 99;
@@ -35,12 +36,13 @@ public class GuardedPower extends Power {
 	public void onRemove() {
 		CardCrawlGame.sound.play("POWER_FOCUS", 0.1f);
 		CardCrawlGame.sound.play("BLOCK_BREAK", 0.05f);
+		((Spyder) owner).breakGuard();
 	}
     
     @Override
     public float atDamageReceive(float damage, final DamageInfo.DamageType type) {
         if (type == DamageType.NORMAL) {
-            return Math.max(damage * (1.0F - this.amount * 0.25F), 0.0F);
+            return Math.max(damage * 0.2F, 0.0F);
         }
         else {
             return damage;
