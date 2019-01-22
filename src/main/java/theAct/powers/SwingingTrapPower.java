@@ -12,15 +12,12 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theAct.TheActMod;
-import theAct.powers.abstracts.Power;
 
-public class SwingingTrapPower extends Power {
+public class SwingingTrapPower extends AbstractPower {
 	public static final String powerID = TheActMod.makeID("SwingingTrapPower");
 	private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(powerID);
-	private static final String IMG = powerID.substring(powerID.indexOf(":")+1);
 	private int phase;
 	private int thornsAmt;
-	
 	public SwingingTrapPower(AbstractCreature owner, int thornsAmt, int phase) {
 		this.owner = owner;
 		this.amount = 0;
@@ -28,7 +25,6 @@ public class SwingingTrapPower extends Power {
 		this.thornsAmt = thornsAmt;
 		this.type = PowerType.BUFF;
 		this.name = strings.NAME;
-		this.setImage(IMG + "84.png", IMG + "32.png");
 		this.ID = powerID;
 		this.cyclePhase();
 		this.updateDescription();
