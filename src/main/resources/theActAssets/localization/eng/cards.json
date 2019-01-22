@@ -1,8 +1,8 @@
 {
   "theJungle:PetSnecko": {
     "NAME": "Pet Snecko",
-    "DESCRIPTION": "Draw !M! card. Randomize the cost of all cards in your hand this turn.",
-    "UPGRADE_DESCRIPTION": "Draw !M! cards. Randomize the cost of all cards in your hand this turn."
+    "DESCRIPTION": "Draw !M! card. NL Randomize the cost of all cards in your hand this turn.",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Randomize the cost of all cards in your hand this turn."
   },
   "theJungle:SS_Clouding": {
     "NAME": "Clouding Spores",
