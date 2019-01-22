@@ -1,32 +1,32 @@
 {
   "theJungle:PetSnecko": {
     "NAME": "Pet Snecko",
-    "DESCRIPTION": "Draw !M! card. Randomize every card in your hand's cost this turn.",
-    "UPGRADE_DESCRIPTION": "Draw !M! cards. Randomize every card in your hand's cost this turn."
+    "DESCRIPTION": "Draw !M! card. Randomize the cost of all cards in your hand this turn.",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards. Randomize the cost of all cards in your hand this turn."
   },
   "theJungle:SS_Clouding": {
     "NAME": "Clouding Spores",
-    "DESCRIPTION": "Draw 1 card. NL Gain !M! Vulnerable. NL Exhaust. NL Ethereal."
+    "DESCRIPTION": "Ethereal. NL Draw 1 card. NL Gain !M! Vulnerable. NL Exhaust."
   },
   "theJungle:SS_Bright": {
     "NAME": "Bright Spores",
-    "DESCRIPTION": "Draw 1 card. NL Add !M! Dazed to your discard pile. NL Exhaust. NL Ethereal."
+    "DESCRIPTION": "Ethereal. NL Draw 1 card. NL Add !M! Dazed into your discard pile. NL Exhaust."
   },
   "theJungle:SS_Clumping": {
     "NAME": "Clumping Spores",
-    "DESCRIPTION": "Draw 1 card. NL Exhaust. NL Ethereal."
+    "DESCRIPTION": "Ethereal. NL Draw 1 card. NL Exhaust."
   },
   "theJungle:SS_Leeching": {
     "NAME": "Leeching Spores",
-    "DESCRIPTION": "Draw 1 card. NL Heal ALL enemies for !M! HP. NL Exhaust. NL Ethereal."
+    "DESCRIPTION": "Ethereal. NL Draw 1 card. NL ALL enemies heal !M! HP. NL Exhaust."
   },
   "theJungle:SS_Toxin": {
     "NAME": "Toxin Spores",
-    "DESCRIPTION": "Draw 1 card. NL Take !M! damage. NL Exhaust. NL Ethereal."
+    "DESCRIPTION": "Ethereal. NL Draw 1 card. NL Take !M! damage. NL Exhaust."
   },
   "theJungle:SS_Sloth": {
     "NAME": "Sloth Spores",
-    "DESCRIPTION": "Draw 1 card. NL Gain !M! Slothful. NL Exhaust. NL Ethereal."
+    "DESCRIPTION": "Ethereal. NL Draw 1 card. NL Gain !M! Slothful. NL Exhaust."
   },
   "theJungle:EternalShame": {
     "NAME": "Eternal Shame",
