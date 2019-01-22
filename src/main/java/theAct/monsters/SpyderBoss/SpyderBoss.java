@@ -3,13 +3,10 @@ package theAct.monsters.SpyderBoss;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.AnimationState.TrackEntry;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -43,9 +40,9 @@ public class SpyderBoss extends Spyder {
         this.stronger = AbstractDungeon.ascensionLevel >= 19;
         
         if (AbstractDungeon.ascensionLevel >= 9) {
-            this.setHp(160, 165);
+            this.setHp(140, 145);
         } else {
-            this.setHp(155, 160);
+            this.setHp(135, 140);
         }      
         
         if (stronger) {
@@ -191,7 +188,7 @@ public class SpyderBoss extends Spyder {
 			setMove((byte) 4, Intent.DEFEND_BUFF);
             break;
 		case 4:
-			setMove((byte) 5, Intent.STUN);
+			setMove((byte) 1, Intent.ATTACK, damage.get(0).base, 3, true);
             break;
 		case 5:
 			setMove((byte) 6, Intent.BUFF);
