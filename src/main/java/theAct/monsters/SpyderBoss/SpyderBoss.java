@@ -3,13 +3,10 @@ package theAct.monsters.SpyderBoss;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.AnimationState.TrackEntry;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -43,9 +40,9 @@ public class SpyderBoss extends Spyder {
         this.stronger = AbstractDungeon.ascensionLevel >= 19;
         
         if (AbstractDungeon.ascensionLevel >= 9) {
-            this.setHp(160, 165);
+            this.setHp(140, 145);
         } else {
-            this.setHp(155, 160);
+            this.setHp(135, 140);
         }      
         
         if (stronger) {
@@ -90,11 +87,15 @@ public class SpyderBoss extends Spyder {
         ArrayList<Integer> c = (ArrayList<Integer>)choice.clone();
         
         for(int i = 0; i < 3; i++) {
-        	
+        	boolean space = true;
         	for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-        		if(m instanceof Spyder && ((Spyder) m).slot == i)
-        			continue;        		
+        		if(m instanceof Spyder && ((Spyder) m).slot == i && !m.isDeadOrEscaped()) {
+        			space = false;
+        			break;
+        		}
             }
+        	if(!space)
+        		continue;
         	
         	Spyder m = null;
         	int r = AbstractDungeon.monsterRng.random(c.size() - 1);
@@ -123,7 +124,7 @@ public class SpyderBoss extends Spyder {
     	int art = 99;
         switch(this.nextMove) {
         case 0:
-        	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WebbedPower(AbstractDungeon.player, stronger?3:2), stronger?3:2));
+        	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WebbedPower(AbstractDungeon.player, 1), 1));
             AbstractDungeon.actionManager.addToBottom(new VFXAction(new WebEffect(AbstractDungeon.player, this.hb.cX - 70.0f * Settings.scale, this.hb.cY - 100.0f * Settings.scale)));
             break;
 		case 1:
@@ -147,7 +148,7 @@ public class SpyderBoss extends Spyder {
 			if(hasPower(ArtifactPower.POWER_ID))
 				art -= getPower(ArtifactPower.POWER_ID).amount;
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, art), art, true));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, stronger?3:2), stronger?3:2, true));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1, true));
             break;
 		case 5:
 			break;
@@ -179,7 +180,7 @@ public class SpyderBoss extends Spyder {
 		}
 		switch(l) {
 		case 0:
-			setMove((byte) 1, Intent.ATTACK, damage.get(0).base, 3, true);	
+			setMove((byte) 1, Intent.ATTACK, damage.get(0).base, 2, true);	
             break;
 		case 1:
 			setMove((byte) 2, Intent.DEBUFF);	
@@ -191,7 +192,7 @@ public class SpyderBoss extends Spyder {
 			setMove((byte) 4, Intent.DEFEND_BUFF);
             break;
 		case 4:
-			setMove((byte) 5, Intent.STUN);
+			setMove((byte) 1, Intent.ATTACK, damage.get(0).base, 3, true);
             break;
 		case 5:
 			setMove((byte) 6, Intent.BUFF);

@@ -1,0 +1,27 @@
+
+Trap.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Trap/handle
+  rotate: false
+  xy: 308, 1
+  size: 60, 310
+  orig: 60, 310
+  offset: 0, 0
+  index: -1
+Trap/Head
+  rotate: false
+  xy: 1, 1
+  size: 305, 111
+  orig: 305, 111
+  offset: 0, 0
+  index: -1
+Trap/Mount
+  rotate: false
+  xy: 370, 1
+  size: 94, 103
+  orig: 94, 103
+  offset: 0, 0
+  index: -1

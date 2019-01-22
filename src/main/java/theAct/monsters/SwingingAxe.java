@@ -43,17 +43,17 @@ public class SwingingAxe extends AbstractMonster
         this.damage.add(new DamageInfo(this, this.dmg));
         
         //borrowing this until we have actual assets for this thing lol
-        this.loadAnimation("images/monsters/theCity/sphere/skeleton.atlas", "images/monsters/theCity/sphere/skeleton.json", 1.0f);
-        final AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
-        e.setTime(e.getEndTime() * MathUtils.random());
-        this.stateData.setMix("Hit", "Idle", 0.2f);
-        this.stateData.setMix("Idle", "Attack", 0.1f);
-        this.state.setTimeScale(0.8f);
+        this.loadAnimation(TheActMod.assetPath("images/monsters/Trap/Trap.atlas"), TheActMod.assetPath("images/monsters/Trap/Trap.json"), 1.0F);
+
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "Incoming", true);
+
+        this.stateData.setMix("Incoming", "Swinging", 0.1f);
+        this.stateData.setMix("Swinging", "Reseting", 0.6f);
+        this.stateData.setMix("Reseting", "Incoming", 0.4f);
     }
     
     @Override
     public void usePreBattleAction() {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new MinionPower(this)));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, 5)));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new SwingingTrapPower(this, (AbstractDungeon.ascensionLevel >= 17) ? 4 : 3, 0)));
     }
