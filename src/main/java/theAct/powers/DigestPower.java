@@ -87,6 +87,7 @@ public class DigestPower extends Power implements NonStackablePower
 			} else {
 				AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(card.makeSameInstanceOf(), 1));
 			}
+			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
 		}
 	}
 }
