@@ -69,7 +69,7 @@
     ],
     "OPTIONS": [
       "[Stay] #gObtain #gSnecko #gAutograph. #rBecome #rCursed #r- #rShame.",
-      "[Attack] #gObtain #g",
+      "[Attack] #gGain #g",
       " #gGold. #rTake #r",
       " #rdamage.",
       "[Leave]"
@@ -339,8 +339,8 @@
       "It is delicious."
     ],
     "OPTIONS": [
-      "[Take Gourds] #gRemove #gall Defends. #gReceive #g5 Gourds.",
-      "[Eat A Mango] #gHeal #g",
+      "[Take Gourds] #gRemove #gall #gDefends. #gObtain #g5 #gGourds.",
+      "[Eat a Mango] #gHeal #g",
       " #gHP.",
       "[Leave]"
     ]
