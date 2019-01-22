@@ -144,7 +144,7 @@ public class SpyderBoss extends Spyder {
 			if(hasPower(ArtifactPower.POWER_ID))
 				art -= getPower(ArtifactPower.POWER_ID).amount;
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, art), art, true));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, stronger?3:2), stronger?3:2, true));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1, true));
             break;
 		case 5:
 			break;
@@ -176,7 +176,7 @@ public class SpyderBoss extends Spyder {
 		}
 		switch(l) {
 		case 0:
-			setMove((byte) 1, Intent.ATTACK, damage.get(0).base, 3, true);	
+			setMove((byte) 1, Intent.ATTACK, damage.get(0).base, 2, true);	
             break;
 		case 1:
 			setMove((byte) 2, Intent.DEBUFF);	
