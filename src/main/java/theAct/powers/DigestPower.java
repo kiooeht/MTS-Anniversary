@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import theAct.TheActMod;
@@ -42,9 +43,9 @@ public class DigestPower extends Power implements NonStackablePower
 			strings.DESCRIPTIONS[0] +
 			amount +
 			strings.DESCRIPTIONS[1] +
-			card.name +
+					FontHelper.colorString(card.name, "y") +
 			strings.DESCRIPTIONS[2] +
-			card.name +
+					FontHelper.colorString(card.name, "y") +
 			strings.DESCRIPTIONS[3];
 	}
 
