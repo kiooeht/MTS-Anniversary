@@ -53,7 +53,6 @@ public class SwingingAxe extends AbstractMonster
     
     @Override
     public void usePreBattleAction() {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new MinionPower(this)));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, 5)));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new SwingingTrapPower(this, (AbstractDungeon.ascensionLevel >= 17) ? 4 : 3, 0)));
     }
