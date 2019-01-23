@@ -17,10 +17,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.exordium.AcidSlime_M;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
 import com.megacrit.cardcrawl.powers.RegenPower;
+import theAct.TheActMod;
 import theAct.powers.RegenerativeSlimePower;
 
 public class SlimyTreeVines extends AbstractMonster {
-    public static final String ID = "theJungle:SlimyTreeVines";
+    public static final String ID = TheActMod.makeID("SlimyTreeVines");
     public static final String ENCOUNTER_NAME = ID;
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
