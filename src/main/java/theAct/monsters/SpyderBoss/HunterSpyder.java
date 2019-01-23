@@ -22,7 +22,7 @@ public class HunterSpyder extends Spyder{
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     
-    public static final int HP = 12;
+    public static final int HP = 10;
     
     public HunterSpyder(float x, float y, int slot) {
     	this(x, y, slot, 0, true);
@@ -44,16 +44,16 @@ public class HunterSpyder extends Spyder{
         }      
         
         if (stronger) {
-        	this.damage.add(new DamageInfo(this, 3));
-        	this.damage.add(new DamageInfo(this, 11));
+        	this.damage.add(new DamageInfo(this, 2));
+        	this.damage.add(new DamageInfo(this, 7));
         	
         } else if (AbstractDungeon.ascensionLevel >= (normal?2:4)){
-        	this.damage.add(new DamageInfo(this, 4));
-        	this.damage.add(new DamageInfo(this, 9)); 
+        	this.damage.add(new DamageInfo(this, 3));
+        	this.damage.add(new DamageInfo(this, 7)); 
         	
         } else {
-        	this.damage.add(new DamageInfo(this, 3));
-        	this.damage.add(new DamageInfo(this, 7));
+        	this.damage.add(new DamageInfo(this, 2));
+        	this.damage.add(new DamageInfo(this, 5));
         }
 	}
 	
