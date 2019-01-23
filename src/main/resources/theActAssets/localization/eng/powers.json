@@ -66,6 +66,12 @@
 			" more turns."
 		]
 	},
+	"theJungle:MamaSneckoRevengePower": {
+		"NAME": "Enrage",
+		"DESCRIPTIONS": [
+			"Gains 1 Strength whenever a Minion is damaged.  Loses 2 Strength at the end of each turn."
+		]
+	},
 	"theJungle:TotemRevengeAttackPower": {
 		"NAME": "Totem Counter",
 		"DESCRIPTIONS": [
