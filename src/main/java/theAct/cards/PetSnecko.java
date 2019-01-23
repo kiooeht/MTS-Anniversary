@@ -32,7 +32,7 @@ public class PetSnecko extends CustomCard {
 
     @Override
     public void upgrade() {
-        if (upgraded) {
+        if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(DRAW_UPGRADE);
             this.rawDescription = UPGRADE_DESCRIPTION;
