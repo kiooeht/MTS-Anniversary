@@ -41,14 +41,16 @@ public class DigestPower extends Power implements NonStackablePower
 	}
 
 	public void updateDescription() {
-		this.description =
-			strings.DESCRIPTIONS[0] +
-			amount +
-			strings.DESCRIPTIONS[1] +
-					FontHelper.colorString(card.name, "y") +
-			strings.DESCRIPTIONS[2] +
-					FontHelper.colorString(card.name, "y") +
-			strings.DESCRIPTIONS[3];
+		if (this.amount == 1) {
+			this.description = strings.DESCRIPTIONS[0] + amount + strings.DESCRIPTIONS[1]
+					+ FontHelper.colorString(card.name, "y") + strings.DESCRIPTIONS[3]
+					+ FontHelper.colorString(card.name, "y") + strings.DESCRIPTIONS[4];
+		}
+		else {
+			this.description = strings.DESCRIPTIONS[0] + amount + strings.DESCRIPTIONS[2]
+					+ FontHelper.colorString(card.name, "y") + strings.DESCRIPTIONS[3]
+					+ FontHelper.colorString(card.name, "y") + strings.DESCRIPTIONS[4];
+		}
 	}
 
 	@Override

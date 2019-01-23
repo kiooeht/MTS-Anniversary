@@ -10,7 +10,8 @@
 		"NAME" : "Digestion",
 		"DESCRIPTIONS": [
 			"On death or after being attacked #b",
-			" times, ",
+			" more time, ",
+			" more times, ",
 			" is returned to your hand. NL NL At the end of your turn, ",
 			" is #rExhausted."
 		]
@@ -26,7 +27,7 @@
 	"theJungle:TotemStrengthPower": {
 		"NAME" : "Totemic Rage",
 		"DESCRIPTIONS": [
-			"Whenever a Totem dies, ALL Totems in combat gain #b1 Strength."
+			"Whenever a Totem dies, ALL enemies gain #b1 Strength."
 		]
 	},
 	"theJungle:BlockFromStrengthPower": {
@@ -69,7 +70,7 @@
 	"theJungle:TotemRevengeAttackPower": {
 		"NAME": "Totem Counter",
 		"DESCRIPTIONS": [
-			"Instantly attacks whenever you play a card that targets ALL enemies."
+			"Instantly attacks whenever you play a card that targets ALL or random enemies."
 		]
 	},
 	"theJungle:InfectiousSporesPower": {
