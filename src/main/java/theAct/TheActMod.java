@@ -164,10 +164,8 @@ public class TheActMod implements
         BaseMod.addMonster(MamaSnecko.ID, MamaSnecko::new);
         //Bosses
         BaseMod.addMonster(TotemBoss.ID, TotemBoss::new);
-        BaseMod.addBoss(Jungle.ID, TotemBoss.ID, assetPath("images/map/totemBoss.png"), assetPath("images/map/totemBossOutline.png"));
 
         BaseMod.addMonster(SpyderBoss.ID, SpyderBoss::new);
-        BaseMod.addBoss(Jungle.ID, SpyderBoss.ID, assetPath("images/map/spiderBoss.png"), assetPath("images/map/spiderBossOutline.png")); // A R T
 
         //Potions
         BaseMod.addPotion(JungleJuice.class, Color.GREEN, Color.GRAY, Color.BLACK, JungleJuice.POTION_ID);
@@ -178,6 +176,8 @@ public class TheActMod implements
         BaseMod.addPotion(SpyderVenom.class, Color.LIME, Color.GREEN, Color.YELLOW, SpyderVenom.POTION_ID);
 
         // Add Encounters here
+        BaseMod.addBoss(Jungle.ID, TotemBoss.ID, assetPath("images/map/totemBoss.png"), assetPath("images/map/totemBossOutline.png"));
+        BaseMod.addBoss(Jungle.ID, SpyderBoss.ID, assetPath("images/map/spiderBoss.png"), assetPath("images/map/spiderBossOutline.png")); // A R T
         BaseMod.addBoss(Jungle.ID, FunGuy.ID, assetPath("images/map/mushroomBoss.png"), assetPath("images/map/mushroomBossOutline.png"));
 
         // Add dungeon
