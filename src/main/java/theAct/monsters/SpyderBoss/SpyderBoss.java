@@ -72,7 +72,7 @@ public class SpyderBoss extends Spyder {
         AbstractDungeon.getCurrRoom().playBgmInstantly("BOSSSPIDER");
 
                      
-    	AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, stronger?24:20, true));
+    	AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, stronger?30:20, true));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, 1), 1));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new MourningPower(this)));
         
@@ -131,7 +131,7 @@ public class SpyderBoss extends Spyder {
 				art -= getPower(ArtifactPower.POWER_ID).amount;
 			if(art > 0)
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, art), art, true));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, stronger?2:1), stronger?2:1, true));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, stronger?3:2), stronger?3:2, true));
 			break;
 		case 3:
             break;
