@@ -19,6 +19,6 @@ public class InstantAddTemporaryHPAction extends AbstractGameAction { // WHY IS 
             AbstractDungeon.effectsQueue.add(new HealEffect(this.target.hb.cX - this.target.animX, this.target.hb.cY, this.amount));
             this.target.healthBarUpdatedEvent();
         }
-        this.tickDuration();
+        this.isDone = true;
     }
 }
