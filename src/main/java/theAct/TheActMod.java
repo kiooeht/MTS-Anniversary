@@ -30,7 +30,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theAct.cards.PetSnecko;
 import theAct.cards.colorless.Gourd;
-import theAct.cards.curses.EternalShame;
 import theAct.dungeons.Jungle;
 import theAct.events.River;
 import theAct.events.SneckoCultEvent;
@@ -198,7 +197,6 @@ public class TheActMod implements
     public void receiveEditCards()
     {
         BaseMod.addCard(new PetSnecko());
-        BaseMod.addCard(new EternalShame());
         BaseMod.addCard(new Gourd());
     }
 
