@@ -161,5 +161,11 @@
 			"In #b",
 			" turns, hatches into a #yBaby #ySnecko."
 		]
+	},
+    "theJungle:Mourning": {
+		"NAME" : "Mourning",
+		"DESCRIPTIONS": [
+			"Whenever this enemy loses #gGuard, it becomes stunned and loses all it's #yArtifact."
+		]
 	}
 }
