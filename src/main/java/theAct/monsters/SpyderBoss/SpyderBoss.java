@@ -40,9 +40,9 @@ public class SpyderBoss extends Spyder {
         this.stronger = AbstractDungeon.ascensionLevel >= 19;
         
         if (AbstractDungeon.ascensionLevel >= 9) {
-            this.setHp(180, 185);
-        } else {
             this.setHp(170, 175);
+        } else {
+            this.setHp(160, 165);
         }      
         
         if (stronger) {
