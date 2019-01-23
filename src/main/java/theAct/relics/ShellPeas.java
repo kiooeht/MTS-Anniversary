@@ -2,12 +2,12 @@ package theAct.relics;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theAct.TheActMod;
+import theAct.actions.InstantAddTemporaryHPAction;
 
 public class ShellPeas extends CustomRelic {
 
@@ -27,7 +27,7 @@ public class ShellPeas extends CustomRelic {
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type == DamageInfo.DamageType.NORMAL) {
             flash();
-            AbstractDungeon.actionManager.addToTop(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, TEMPORARY_HP_PER_HIT));
+            AbstractDungeon.actionManager.addToTop(new InstantAddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, TEMPORARY_HP_PER_HIT));
         }
         return damageAmount;
     }

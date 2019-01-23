@@ -23,7 +23,7 @@ public class TotemBossImmunityPower extends Power implements HealthBarRenderPowe
 		this.owner = owner;
 		this.type = PowerType.BUFF;
 		this.name = strings.NAME;
-		this.setImage("immunityPower84.png", "immunityPower32.png");
+		this.setImage("protectionPower84.png", "protectionPower32.png");
 		this.ID = powerID;
 		this.updateDescription();
 	}

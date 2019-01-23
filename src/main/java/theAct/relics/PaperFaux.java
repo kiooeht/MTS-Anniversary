@@ -28,6 +28,6 @@ public class PaperFaux extends CustomRelic {
 
     @Override
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + EXTRA_AMOUNT + DESCRIPTIONS[1];
+        return DESCRIPTIONS[0] + EXTRA_AMOUNT + DESCRIPTIONS[1] + EXTRA_AMOUNT + DESCRIPTIONS[2];
     }
 }

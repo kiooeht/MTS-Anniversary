@@ -17,10 +17,10 @@ public class CarcassSack extends AbstractMonster {
     private static final float HB_H = 100.0F;
     private static final String ANIMATION_ATLAS = TheActMod.assetPath("images/monsters/cassacara/Cassacara.atlas");
     private static final String ANIMATION_JSON = TheActMod.assetPath("images/monsters/cassacara/Cassacara.json");
-    private static final int HP_MIN = 18;
-    private static final int HP_MAX = 20;
-    private static final int ASC_HP_MIN = 20;
-    private static final int ASC_HP_MAX = 22;
+    private static final int HP_MIN = 25;
+    private static final int HP_MAX = 27;
+    private static final int ASC_HP_MIN = 27;
+    private static final int ASC_HP_MAX = 29;
     private static final byte ITS_DINNER_TIME = 1;
 
     public CarcassSack(float x, float y) {

@@ -36,10 +36,10 @@
       "You fill up your potion slots. Hopefully you made the right choice."
     ],
     "OPTIONS": [
-      "[Extend arm] #rLose #r8 #rHP and #gfill #gyour #gempty #gpotion #gslots",
-      "[Give potions] #rLose #rall #rpotions and #gfill #gall #gpotion #gslots",
+      "[Extend Arm] #rLose #r8 #rHP. #gFill #gall #gpotion #gslots.",
+      "[Give Potions] #rLose #rall #rpotions. #gFill #gall #gpotion #gslots",
       "[Leave]",
-      "[Fill potion slots]",
+      "[Fill Potion Slots]",
       "[Continue]"
     ]
   },
@@ -69,7 +69,7 @@
     ],
     "OPTIONS": [
       "[Stay] #gObtain #gSnecko #gAutograph. #rBecome #rCursed #r- #rShame.",
-      "[Attack] #gObtain #g",
+      "[Attack] #gGain #g",
       " #gGold. #rTake #r",
       " #rdamage.",
       "[Leave]"
@@ -86,12 +86,12 @@
       "Where do you even start? The fruit seems to bear more of its #r~delicious~ #r~flesh~ every time you look at it. NL NL ~...~ NL NL When you finally finish, you feel stuffed and #yslow ."
     ],
     "OPTIONS": [
-      "[Give in] Give in to your desires.",
+      "[Give In] Give in to your desires.",
       "[Resist] A little berry will suffice. #gHeal #g%d #gHP.",
       "Continue on with your adventure.",
-      "[Eat] #gObtain: #rWild #rStrawberry",
-      "[Consume] #gObtain: #gWild #gPear",
-      "[Devour] #gObtain: #yWild #yMango"
+      "[Eat] #gObtain #rWild #rStrawberry",
+      "[Consume] #gObtain #gWild #gPear",
+      "[Devour] #gObtain #yWild #yMango"
     ]
   },
   "theJungle:GremlinQuiz": {
@@ -265,10 +265,10 @@
       "[Leave] Turn back.",
       "[Agree] #gGain #g5 #gMax #gHP. #rLose #r10 #rHP.",
       "[Disagree] #gObtain #ga #gspecial #gRelic. #rBecome #rCursed #r- #rShame.",
-      "[Run] #yGain #y200 #yGold. #rBecome #rCursed #r- #rNormality",
+      "[Run] #gGain #g200 #gGold. #rBecome #rCursed #r- #rNormality",
       "[Leave]",
       "[Agree] #gGain #g5 #gMax #gHP. #rLose #r15 #rHP.",
-      "[Run] #yGain #y150 #yGold. #rBecome #rCursed #r- #rNormality",
+      "[Run] #gGain #g150 #gGold. #rBecome #rCursed #r- #rNormality",
       "[Continue]"
     ]
   },
@@ -283,14 +283,14 @@
       "You look around, and spot an abandoned shovel. This will prove useful later on. NL NL Unfortunately, you are still lost."
     ],
     "OPTIONS": [
-      "[Climb a thorny vine] #rTake #r",
-      " #rdamage. Find something.",
-      "[Squeeze through] #rBecome #rCursed #r- #rWrithe. Find something.",
-      "[Turn back] Leave.",
-      "[Go to the clearing]",
+      "[Climb a Thorny Vine] #rTake #r",
+      " #rdamage. #gFind #gsomething.",
+      "[Squeeze through] #rBecome #rCursed #r- #rWrithe. #gFind #gsomething.",
+      "[Turn back]",
+      "[Go to the Clearing]",
       "[Dig]",
       "[Locked] Requires: Shovel",
-      "[Look around]",
+      "[Look Around]",
       "[Locked]",
       "[Leave]"
     ]
@@ -314,7 +314,7 @@
       "[Locked] Requires: ",
       " Gold.",
       "[Leave]",
-      "[Fight!] #rGet #rInto #rA #rScuffle.",
+      "[Fight!] #rGet #rinto #ra #rscuffle.",
       "Remove a card from your deck."
     ]
   },
@@ -339,8 +339,9 @@
       "It is delicious."
     ],
     "OPTIONS": [
-      "[Take Gourds] #gRemove #gall Defends. #gReceive #g5 Gourds.",
-      "[Eat A Mango] #gHeal #g"," #gHP.",
+      "[Take Gourds] #gRemove #gall #gDefends. #gObtain #g5 #gGourds.",
+      "[Eat a Mango] #gHeal #g",
+      " #gHP.",
       "[Leave]"
     ]
   },

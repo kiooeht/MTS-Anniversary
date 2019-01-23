@@ -25,6 +25,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.GoldenSlashEffect;
+import theAct.powers.BlockFromStrengthPower;
+import theAct.powers.TotemRevengeAttackPower;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -67,6 +69,7 @@ public class AbstractTotemSpawn extends AbstractMonster {
     public AbstractTotemSpawn(String name, String ID, TotemBoss boss, String imgPath) {
         super(name, ID, 420, 0.0F, 0F, 160.0F, 220.0F, null, -50.0F, 15.0F);
 
+        this.powers.add(new TotemRevengeAttackPower(this));
 
         //ReflectionHacks.setPrivate(this, AbstractCreature.class,"HB_Y_OFFSET_DIST",-200F);
 
@@ -123,6 +126,10 @@ public class AbstractTotemSpawn extends AbstractMonster {
         } else {
             this.setHp(baseHP);
         }
+
+    }
+
+    public void totemAttack(){
 
     }
 

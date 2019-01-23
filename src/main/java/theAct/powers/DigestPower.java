@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import theAct.TheActMod;
@@ -24,6 +25,7 @@ public class DigestPower extends Power implements NonStackablePower
 
 	private AbstractCard card;
 	private boolean justApplied;
+	private boolean shouldGiveCardBack;
 
 	public DigestPower(AbstractCreature owner, AbstractCard card, int amount) {
 		this.owner = owner;
@@ -34,6 +36,7 @@ public class DigestPower extends Power implements NonStackablePower
 		this.ID = powerID;
 		this.card = card;
 		this.justApplied = true;
+		this.shouldGiveCardBack = true;
 		this.updateDescription();
 	}
 
@@ -42,9 +45,9 @@ public class DigestPower extends Power implements NonStackablePower
 			strings.DESCRIPTIONS[0] +
 			amount +
 			strings.DESCRIPTIONS[1] +
-			card.name +
+					FontHelper.colorString(card.name, "y") +
 			strings.DESCRIPTIONS[2] +
-			card.name +
+					FontHelper.colorString(card.name, "y") +
 			strings.DESCRIPTIONS[3];
 	}
 
@@ -64,12 +67,7 @@ public class DigestPower extends Power implements NonStackablePower
 		if (info.type == DamageInfo.DamageType.NORMAL) {
 			amount--;
 			if (amount == 0) {
-				if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
-					AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card.makeSameInstanceOf()));
-				} else {
-					AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(card.makeSameInstanceOf(), 1));
-				}
-				AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, this));
+				returnCardToHand();
 			}
 			updateDescription();
 		}
@@ -77,12 +75,19 @@ public class DigestPower extends Power implements NonStackablePower
 	}
 
 	@Override
-	public void onDeath()
-	{
-		if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
-			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card.makeSameInstanceOf()));
-		} else {
-			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(card.makeSameInstanceOf(), 1));
+	public void onDeath() {
+		returnCardToHand();
+	}
+
+	private void returnCardToHand() {
+		if (this.shouldGiveCardBack) {
+			this.shouldGiveCardBack = false;
+			if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
+				AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card.makeSameInstanceOf()));
+			} else {
+				AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(card.makeSameInstanceOf(), 1));
+			}
+			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
 		}
 	}
 }

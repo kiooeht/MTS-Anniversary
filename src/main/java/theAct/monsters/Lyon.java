@@ -56,7 +56,6 @@ public class Lyon extends AbstractMonster {
     private static final byte ROAR = 1;
     private static final byte ATTACK = 2;
     private static final byte POUNCE = 3;
-    private boolean doneRoar = false;
 
     public Lyon() {
         super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, 0, 0);
@@ -95,7 +94,6 @@ public class Lyon extends AbstractMonster {
     public void takeTurn() {
         switch (this.nextMove) {
             case ROAR: {
-                doneRoar = true;
                 AbstractDungeon.actionManager.addToBottom(new SFXAction("INTIMIDATE"));
                 AbstractDungeon.actionManager.addToBottom(new ShoutAction(this, DIALOG[0], 1.0f, 2.0f));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new ShockWaveEffect(this.hb.cX, this.hb.cY, Color.YELLOW, ShockWaveEffect.ShockWaveType.CHAOTIC), 1.25f));
@@ -131,7 +129,7 @@ public class Lyon extends AbstractMonster {
 
     @Override
     protected void getMove(int num) {
-        if (!doneRoar) {
+        if (!this.moveHistory.contains(ROAR)) {
             this.setMove(MOVES[0], ROAR, Intent.STRONG_DEBUFF);
         } else if (num < 50 && !this.lastTwoMoves(POUNCE) || this.lastTwoMoves(ATTACK)) {
             this.setMove(MOVES[1], POUNCE, Intent.ATTACK, this.damage.get(0).base);

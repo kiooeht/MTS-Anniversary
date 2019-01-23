@@ -23,7 +23,7 @@ public class DefenderSpyder extends Spyder{
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     
-    public static final int HP = 25;
+    public static final int HP = 12;
     
     public DefenderSpyder(float x, float y, int slot) {
     	this(x, y, slot, 0, true);
@@ -34,7 +34,7 @@ public class DefenderSpyder extends Spyder{
     }
     
 	public DefenderSpyder(float x, float y, int slot, int strength, boolean normal) {	
-		super(NAME, ID_WITHOUT_PREFIX, x, y, slot, strength,x + AbstractDungeon.miscRng.random(-20, 20), y + AbstractDungeon.miscRng.random(-20, 20));
+		super(NAME, ID_WITHOUT_PREFIX, x, y, slot, strength,x + AbstractDungeon.miscRng.random(-20, 20), y + AbstractDungeon.miscRng.random(-20, 20), normal);
 		
 		this.stronger = AbstractDungeon.ascensionLevel >= (normal?17:19);
 		

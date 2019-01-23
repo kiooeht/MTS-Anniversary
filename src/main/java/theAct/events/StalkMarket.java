@@ -20,7 +20,7 @@ public class StalkMarket extends AbstractImageEvent {
     public static final String[] OPTIONS = EVENT_STRINGS.OPTIONS;
     private static final int PAR_SNIP_COST = 90;
     private static final int FLAMANGO_COST = 135;
-    private static final int SHELL_PEAS_COST = 150;
+    private static final int SHELL_PEAS_COST = 175;
     private static final int BUSTED_BERRY_COST = 185;
     private CurScreen screen;
 

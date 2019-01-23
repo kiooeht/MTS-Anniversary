@@ -13,27 +13,23 @@ import theAct.monsters.SpyderBoss.Spyder;
 
 public class SpyderWebParticle extends com.megacrit.cardcrawl.vfx.AbstractGameEffect {
     private float scale = 1F;
-    private int W;
     private Texture img;
     public Spyder p;
-    private static int xOffset = -478;
-    private static int yOffset = 260;
     private static float yAnimation = 1000;
 
 
-    public SpyderWebParticle(Spyder p) {
+    public SpyderWebParticle(Spyder p, boolean animate) {
         this.duration = 0.05F;
         this.img = ImageMaster.loadImage( TheActMod.assetPath("images/monsters/spyders/webline.png"));
-        W = img.getWidth();
         this.p = p;
         this.renderBehind = true;
-
-
+        if(!animate)
+        	yAnimation = 0;
     }
 
     public void update() {
     	if(yAnimation > 0)
-    		yAnimation -= 300 * Gdx.graphics.getRawDeltaTime();
+    		yAnimation -= 200 * Gdx.graphics.getRawDeltaTime();
     	if(yAnimation < 0)
     		yAnimation = 0;
     }
@@ -54,9 +50,13 @@ public class SpyderWebParticle extends com.megacrit.cardcrawl.vfx.AbstractGameEf
     public void render(SpriteBatch sb) {
 
 
-        sb.setColor(new Color(1F, 1F, 1F, .5F));
+    	sb.setColor(new Color(1F, 1F, 1F, .5F));
 
-        sb.draw(this.img, this.p.hb.cX + W / 2.0F + ((xOffset) * Settings.scale), this.p.hb.cY - W / 2.0F + ((yOffset + yAnimation) * Settings.scale), W / 2.0F, W / 2.0F, W, W, this.scale * Settings.scale, this.scale * Settings.scale, 0.0F, 0, 0, W, W, false, false);
+        sb.draw(this.img, this.p.hb.cX - this.img.getWidth() * Settings.scale * 0.45f, this.p.hb.cY + this.img.getHeight() * Settings.scale * 0.05f + (yAnimation)*Settings.scale,
+        		this.img.getWidth() * Settings.scale *scale, this.img.getHeight()* Settings.scale *scale,
+        		0, 0,
+        		this.img.getWidth(), this.img.getHeight(),
+        		false, false);
 
 
     }

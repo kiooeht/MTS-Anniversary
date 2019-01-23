@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
 import theAct.TheActMod;
+import theAct.monsters.SpyderBoss.Spyder;
 import theAct.powers.abstracts.Power;
 
 public class GuardedPower extends Power {
@@ -30,18 +31,22 @@ public class GuardedPower extends Power {
     public void playApplyPowerSfx() {
         CardCrawlGame.sound.play("POWER_INTANGIBLE", 0.05f);
     }
+
 	@Override
 	public void onRemove() {
 		CardCrawlGame.sound.play("POWER_FOCUS", 0.1f);
 		CardCrawlGame.sound.play("BLOCK_BREAK", 0.05f);
+		((Spyder) owner).breakGuard();
 	}
     
     @Override
     public float atDamageReceive(float damage, final DamageInfo.DamageType type) {
-        if (damage > 1.0f && type == DamageType.NORMAL) {
-            damage = (float) Math.ceil(damage*0.1f);
+        if (type == DamageType.NORMAL) {
+            return Math.max(damage * 0.2F, 0.0F);
         }
-        return damage;
+        else {
+            return damage;
+        }
     }
     
     @Override

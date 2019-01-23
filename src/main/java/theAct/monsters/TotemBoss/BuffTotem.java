@@ -67,36 +67,28 @@ public class BuffTotem extends AbstractTotemSpawn {
 
 
     public void takeTurn() {
-        breakp:
+        totemAttack();
 
-        switch (this.nextMove) {
-            case 1:
-                // AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
-                AbstractDungeon.actionManager.addToBottom(new WaitAction(0.25F));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.GREEN)));
-                AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new TotemBeamEffect(this.hb.cX + beamOffsetX, this.hb.cY + beamOffsetY, AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, Color.GREEN.cpy(), this.hb.cX + beamOffsetX2, this.hb.cY + beamOffsetY2), 0.1F));
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.NONE));
+    }
 
-                ArrayList<AbstractMonster> targets = new ArrayList<>();
-                targets.addAll(AbstractDungeon.getMonsters().monsters);
+    @Override
+    public void totemAttack() {
+        // AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
+        AbstractDungeon.actionManager.addToBottom(new WaitAction(0.25F));
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.GREEN)));
+        AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new TotemBeamEffect(this.hb.cX + beamOffsetX, this.hb.cY + beamOffsetY, AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, Color.GREEN.cpy(), this.hb.cX + beamOffsetX2, this.hb.cY + beamOffsetY2), 0.1F));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.NONE));
 
-                targets.remove(owner);
+        ArrayList<AbstractMonster> targets = new ArrayList<>();
+        targets.addAll(AbstractDungeon.getMonsters().monsters);
 
-                AbstractMonster m = targets.get(AbstractDungeon.cardRng.random(targets.size() - 1));
+        targets.remove(owner);
 
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new StrengthPower(m, this.secondaryEffect), this.secondaryEffect));
+        AbstractMonster m = targets.get(AbstractDungeon.cardRng.random(targets.size() - 1));
 
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new StrengthPower(m, this.secondaryEffect), this.secondaryEffect));
 
-
-
-
-
-
-
-
-                AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
-        }
     }
 
     protected void getMove(int num)
