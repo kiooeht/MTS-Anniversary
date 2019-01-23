@@ -15,7 +15,8 @@ public class SpyderWebParticle extends com.megacrit.cardcrawl.vfx.AbstractGameEf
     private float scale = 1F;
     private Texture img;
     public Spyder p;
-    private static float yAnimation = 1000;
+    private float yAnimation = 1000;
+    private float opacity = 0.6f;
 
 
     public SpyderWebParticle(Spyder p, boolean animate) {
@@ -32,11 +33,14 @@ public class SpyderWebParticle extends com.megacrit.cardcrawl.vfx.AbstractGameEf
     		yAnimation -= 200 * Gdx.graphics.getRawDeltaTime();
     	if(yAnimation < 0)
     		yAnimation = 0;
+    	if((p == null || p.isDeadOrEscaped()) && opacity > 0)
+    		opacity -= 0.005 * Gdx.graphics.getRawDeltaTime();
+    	if(opacity < 0)
+    		this.finish();
     }
     
     public void finish(){
         this.isDone = true;
-
     }
     public void dispose() {
 
@@ -50,7 +54,7 @@ public class SpyderWebParticle extends com.megacrit.cardcrawl.vfx.AbstractGameEf
     public void render(SpriteBatch sb) {
 
 
-    	sb.setColor(new Color(1F, 1F, 1F, .5F));
+    	sb.setColor(new Color(1F, 1F, 1F, opacity));
 
         sb.draw(this.img, this.p.hb.cX - this.img.getWidth() * Settings.scale * 0.45f, this.p.hb.cY + this.img.getHeight() * Settings.scale * 0.05f + (yAnimation)*Settings.scale,
         		this.img.getWidth() * Settings.scale *scale, this.img.getHeight()* Settings.scale *scale,

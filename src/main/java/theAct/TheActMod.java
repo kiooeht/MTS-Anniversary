@@ -131,7 +131,7 @@ public class TheActMod implements
                 		new HunterSpyder(-650.0F, 300.0F, 0),
                 		new DefenderSpyder(-425.0F, 250.0F, 1),
                 		new HunterSpyder(-200.0F, 220.0F, 2),
-                		new DefenderSpyder(25.0F, 340.0F, 3),
+                		new DefenderSpyder(25.0F, 300.0F, 3),
                 		new HunterSpyder(175.0F, 120.0F, 4)
                 }));
         BaseMod.addMonster(makeID("Flameango_and_Byrd"), () -> new MonsterGroup(

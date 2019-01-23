@@ -39,7 +39,7 @@ public class DefenderSpyder extends Spyder{
 		this.stronger = AbstractDungeon.ascensionLevel >= (normal?17:19);
 		
 		if (AbstractDungeon.ascensionLevel >= (normal?7:9)) {
-            this.setHp(HP*11/10, HP*14/10);
+			this.setHp(HP*6/5, HP*3/2);
         } else {
             this.setHp(HP, HP*5/4);
         }      
