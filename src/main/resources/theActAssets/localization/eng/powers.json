@@ -75,7 +75,7 @@
 	"theJungle:TotemRevengeAttackPower": {
 		"NAME": "Totem Counter",
 		"DESCRIPTIONS": [
-			"Instantly attacks whenever you play a card that targets ALL enemies."
+			"Instantly attacks whenever you play a card that targets ALL enemies or multiple random enemies."
 		]
 	},
 	"theJungle:InfectiousSporesPower": {
