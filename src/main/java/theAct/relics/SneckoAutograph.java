@@ -62,7 +62,7 @@ public class SneckoAutograph extends CustomRelic implements ClickableRelic {
     @Override
     public void setCounter(int i) {
         super.setCounter(i);
-        description = DESCRIPTIONS[2];
+        description = getUpdatedDescription();
         tips.clear();
         tips.add(new PowerTip(name, description));
     }
