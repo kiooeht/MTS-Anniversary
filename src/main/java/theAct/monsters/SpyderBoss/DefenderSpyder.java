@@ -23,7 +23,7 @@ public class DefenderSpyder extends Spyder{
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     
-    public static final int HP = 12;
+    public static final int HP = 10;
     
     public DefenderSpyder(float x, float y, int slot) {
     	this(x, y, slot, 0, true);
@@ -34,27 +34,24 @@ public class DefenderSpyder extends Spyder{
     }
     
 	public DefenderSpyder(float x, float y, int slot, int strength, boolean normal) {	
-		super(NAME, ID_WITHOUT_PREFIX, x, y, slot, strength,x + AbstractDungeon.miscRng.random(-20, 20), y + AbstractDungeon.miscRng.random(-20, 20), normal);
+		super(NAME, ID_WITHOUT_PREFIX, x, y, slot, strength,x + AbstractDungeon.miscRng.random(-20, 20), y + AbstractDungeon.miscRng.random(-20, 20));
 		
 		this.stronger = AbstractDungeon.ascensionLevel >= (normal?17:19);
 		
 		if (AbstractDungeon.ascensionLevel >= (normal?7:9)) {
-            this.setHp(HP*11/10, HP*14/10);
+			this.setHp(HP*6/5, HP*3/2);
         } else {
             this.setHp(HP, HP*5/4);
         }      
         
         if (stronger) {
         	this.damage.add(new DamageInfo(this, 5));
-        	this.damage.add(new DamageInfo(this, 3));
             
         } else if (AbstractDungeon.ascensionLevel >= (normal?2:4)){
             this.damage.add(new DamageInfo(this, 5));
-        	this.damage.add(new DamageInfo(this, 3));
             
         } else {
         	this.damage.add(new DamageInfo(this, 4));
-        	this.damage.add(new DamageInfo(this, 2));
         }
 	}
 	
@@ -63,7 +60,6 @@ public class DefenderSpyder extends Spyder{
 	public void takeTurn(){
 		switch(this.nextMove) {
 		case 0:
-			AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(1), AttackEffect.BLUNT_LIGHT, true));
 			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, stronger?19:16, true));
             break;
 		case 1:

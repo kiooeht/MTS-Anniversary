@@ -37,7 +37,7 @@ public class AbstractTotemSpawn extends AbstractMonster {
     public TotemBoss owner;
 
     public Integer baseHP = 50;
-    public Integer HPAscBuffed = 10;
+    public Integer HPAscBuffed = 0;
     private Method refrenderIntentVfxBehind;
     private Method refrenderIntent;
     private Method refrenderIntentVfxAfter;

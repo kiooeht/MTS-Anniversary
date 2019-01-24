@@ -22,7 +22,7 @@ public class HunterSpyder extends Spyder{
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     
-    public static final int HP = 12;
+    public static final int HP = 10;
     
     public HunterSpyder(float x, float y, int slot) {
     	this(x, y, slot, 0, true);
@@ -33,27 +33,27 @@ public class HunterSpyder extends Spyder{
     }
     
     public HunterSpyder(float x, float y, int slot, int strength, boolean normal) {	
-		super(NAME, ID_WITHOUT_PREFIX, x, y, slot, strength,x + AbstractDungeon.miscRng.random(-20, 20), y + AbstractDungeon.miscRng.random(-20, 20), normal);
+		super(NAME, ID_WITHOUT_PREFIX, x, y, slot, strength,x + AbstractDungeon.miscRng.random(-20, 20), y + AbstractDungeon.miscRng.random(-20, 20));
 
 		this.stronger = AbstractDungeon.ascensionLevel >= (normal?17:19);
 		
 		if (AbstractDungeon.ascensionLevel >= (normal?7:9)) {
-            this.setHp(HP*11/10, HP*14/10);
+            this.setHp(HP*6/5, HP*3/2);
         } else {
             this.setHp(HP, HP*5/4);
         }      
         
         if (stronger) {
-        	this.damage.add(new DamageInfo(this, 3));
-        	this.damage.add(new DamageInfo(this, 11));
+        	this.damage.add(new DamageInfo(this, 2));
+        	this.damage.add(new DamageInfo(this, 7));
         	
         } else if (AbstractDungeon.ascensionLevel >= (normal?2:4)){
-        	this.damage.add(new DamageInfo(this, 4));
-        	this.damage.add(new DamageInfo(this, 9)); 
+        	this.damage.add(new DamageInfo(this, 3));
+        	this.damage.add(new DamageInfo(this, 7)); 
         	
         } else {
-        	this.damage.add(new DamageInfo(this, 3));
-        	this.damage.add(new DamageInfo(this, 7));
+        	this.damage.add(new DamageInfo(this, 2));
+        	this.damage.add(new DamageInfo(this, 5));
         }
 	}
 	

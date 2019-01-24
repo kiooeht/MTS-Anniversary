@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.vfx.combat.WebEffect;
 
 import theAct.TheActMod;
 import theAct.powers.GuardedPower;
+import theAct.powers.MourningPower;
 import theAct.powers.WebbedPower;
 
 public class SpyderBoss extends Spyder {
@@ -31,7 +32,7 @@ public class SpyderBoss extends Spyder {
     private float[] pos = new float[] {-650.0F, 300.0F, -425.0F, 220.0F, -200.0F, 250.0F};
 
     public SpyderBoss() {
-        super(NAME, ID_WITHOUT_PREFIX, 0F, 0F, -1, 0,180.0F, -180.0F, false);
+        super(NAME, ID_WITHOUT_PREFIX, 0F, 0F, -1, 0,180.0F, -180.0F);
 
         this.type = EnemyType.BOSS;
        // this.loadAnimation("images/monsters/theForest/mage/skeleton.atlas", "images/monsters/theForest/mage/skeleton.json", 1.0F); //NOT DONE
@@ -39,9 +40,9 @@ public class SpyderBoss extends Spyder {
         this.stronger = AbstractDungeon.ascensionLevel >= 19;
         
         if (AbstractDungeon.ascensionLevel >= 9) {
-            this.setHp(140, 145);
+            this.setHp(170, 175);
         } else {
-            this.setHp(135, 140);
+            this.setHp(160, 165);
         }      
         
         if (stronger) {
@@ -71,8 +72,9 @@ public class SpyderBoss extends Spyder {
         AbstractDungeon.getCurrRoom().playBgmInstantly("BOSSSPIDER");
 
                      
-    	AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, stronger?24:20, true));
+    	AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, stronger?30:20, true));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, 1), 1));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new MourningPower(this)));
         
     }
 
@@ -127,8 +129,9 @@ public class SpyderBoss extends Spyder {
 		case 2:
 			if(hasPower(ArtifactPower.POWER_ID))
 				art -= getPower(ArtifactPower.POWER_ID).amount;
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, art), art, true));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, stronger?2:1), stronger?2:1, true));
+			if(art > 0)
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, art), art, true));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, stronger?3:2), stronger?3:2, true));
 			break;
 		case 3:
             break;

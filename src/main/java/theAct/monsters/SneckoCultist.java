@@ -144,7 +144,7 @@ public class SneckoCultist extends AbstractMonster {
     {
         if(this.moveHistory.isEmpty())
         {
-            this.setMove(CONFUSE_START_NAME, MoveBytes.CONFUSE_START, Intent.MAGIC);
+            this.setMove(CONFUSE_START_NAME, MoveBytes.CONFUSE_START, Intent.DEBUFF);
             return;
         }
         else

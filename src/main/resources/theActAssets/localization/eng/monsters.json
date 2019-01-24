@@ -100,6 +100,15 @@
 			""
 		]
 	},
+	"theJungle:ConfuseTotem": {
+		"MOVES": [
+			"Totem Smash"
+		],
+		"NAME": "Bewildering Totem",
+		"DIALOG": [
+			""
+		]
+	},
 	"theJungle:AttackAndShieldTotem": {
 		"MOVES": [
 			"Totem Smash"

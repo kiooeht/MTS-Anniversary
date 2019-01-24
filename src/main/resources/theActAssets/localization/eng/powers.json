@@ -66,10 +66,16 @@
 			" more turns."
 		]
 	},
+	"theJungle:MamaSneckoRevengePower": {
+		"NAME": "Enrage",
+		"DESCRIPTIONS": [
+			"Gains 1 Strength whenever a Minion is damaged.  Loses 2 Strength at the end of each turn."
+		]
+	},
 	"theJungle:TotemRevengeAttackPower": {
 		"NAME": "Totem Counter",
 		"DESCRIPTIONS": [
-			"Instantly attacks whenever you play a card that targets ALL enemies."
+			"Instantly attacks whenever you play a card that targets ALL enemies or multiple random enemies."
 		]
 	},
 	"theJungle:InfectiousSporesPower": {
@@ -154,6 +160,12 @@
 			"Hatches into a #yBaby #ySnecko this turn.",
 			"In #b",
 			" turns, hatches into a #yBaby #ySnecko."
+		]
+	},
+    "theJungle:Mourning": {
+		"NAME" : "Mourning",
+		"DESCRIPTIONS": [
+			"Whenever this enemy loses #gGuard, it becomes stunned and loses all it's #yArtifact."
 		]
 	}
 }

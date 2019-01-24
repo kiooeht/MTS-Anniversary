@@ -28,9 +28,10 @@ public class TotemRevengeAttackPower extends Power {
 	@Override
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		super.onUseCard(card, action);
-		flash();
+
 		if (card.target == AbstractCard.CardTarget.ALL_ENEMY){
 			((AbstractTotemSpawn) this.owner).totemAttack();
+			flash();
 		}
 	}
 

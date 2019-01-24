@@ -15,11 +15,10 @@ public class Spyder extends AbstractMonster {
 	public boolean queen = false;
     public int slot;
     public int strength;
-    public boolean normal;
     public boolean stronger;
 	private SpyderWebParticle web;
 
-    public Spyder(String name, String ID, float x, float y, int slot, int strength, float offsetX, float offsetY, boolean normal) {
+    public Spyder(String name, String ID, float x, float y, int slot, int strength, float offsetX, float offsetY) {
         super(name, TheActMod.makeID(ID), 1, 0.0F, slot==-1?200.0F:30.0F, slot==-1? 240F: 160F, slot==-1? 240F: 140F, TheActMod.assetPath("images/monsters/spyders/" + ID + ".png"),
         		offsetX, offsetY);
         
@@ -31,7 +30,6 @@ public class Spyder extends AbstractMonster {
         this.dialogY = 0;
         this.slot = queen? 3: slot;
         this.strength = strength;
-        this.normal = normal;
     }    
    
     @Override    
@@ -41,7 +39,7 @@ public class Spyder extends AbstractMonster {
     	
     public void startPowers() {
     	if(!queen) {
-    		this.web = new SpyderWebParticle(this, !normal);
+    		this.web = new SpyderWebParticle(this);
     		AbstractDungeon.effectList.add(this.web);
         }
     	
