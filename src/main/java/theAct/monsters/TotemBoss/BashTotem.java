@@ -33,8 +33,8 @@ public class BashTotem extends AbstractTotemSpawn {
 
     public Integer attackDmg;
 
-    public BashTotem(TotemBoss boss) {
-        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemred.png"));
+    public BashTotem(TotemBoss boss, boolean spawnedIn) {
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemred.png"), spawnedIn);
         this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/red/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/red/Totem.json"), 1.0F);
 
         AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
@@ -53,12 +53,6 @@ public class BashTotem extends AbstractTotemSpawn {
         this.damage.add(new DamageInfo(this, this.attackDmg));
     }
 
-
-
-    public void takeTurn() {
-        totemAttack();
-    }
-
     @Override
     public void totemAttack() {
         AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F));
@@ -68,9 +62,7 @@ public class BashTotem extends AbstractTotemSpawn {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AttackEffect.NONE));
     }
 
-    protected void getMove(int num)
-    {
-        this.setMove((byte)1, intentType, this.attackDmg);
+    public void getUniqueTotemMove() {this.setMove((byte)1, intentType, this.attackDmg);
     }
 
     static {

@@ -35,7 +35,7 @@ public class SneckoCultist extends AbstractMonster {
     private int  HP_MAX = 56;
     private static final float HB_X = 0F;
     private static final float HB_Y = 0F;
-    private static final float HB_W = 320.0F;
+    private static final float HB_W = 160.0F;
     private static final float HB_H = 240.0F;
     private int WHIP_DAMAGE = 17;
     private int TACKLE_DAMAGE = 10;
@@ -100,7 +100,7 @@ public class SneckoCultist extends AbstractMonster {
             case MoveBytes.CONFUSE_START:
             {
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(player,3),3));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, this, new RandomizePower(player,2),2));
                 if (this.talky) {
                     int r = MathUtils.random(1);
                     if (r == 0) {

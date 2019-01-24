@@ -95,9 +95,9 @@
 	"theJungle:RandomizePower": {
 		"NAME": "Selective Confusion",
 		"DESCRIPTIONS": [
-			"Randomize the cost of the next card you draw.",
-			"Randomizes the cost of the next ",
-			" cards you draw."
+			"Randomize the cost of the first 2 cards you draw next turn.",
+			"Randomize the cost of the first 2 cards you draw for the next ",
+			" turns."
 		]
 	},
 	"theJungle:CautiousPower": {
