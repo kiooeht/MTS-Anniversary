@@ -36,13 +36,16 @@ public class SwingingTrapPower extends AbstractPower {
 	public void updateDescription() {
 		this.description = strings.DESCRIPTIONS[1];
 		if (this.phase == 0) {
+			this.owner.state.setAnimation(0, "Incoming", true);
 			this.description = this.description + strings.DESCRIPTIONS[2];
 			this.loadRegion("strength");
 		}
 		else if (this.phase == 1) {
+			this.owner.state.setAnimation(0, "Swinging", true);
 			this.description = this.description + strings.DESCRIPTIONS[3] + this.thornsAmt + strings.DESCRIPTIONS[4];
 			this.loadRegion("thorns");
 		} else if (this.phase == 2) {
+			this.owner.state.setAnimation(0, "Reseting", true);
 			this.description = this.description + strings.DESCRIPTIONS[5];
 			this.loadRegion("weak");
 		}
@@ -52,16 +55,6 @@ public class SwingingTrapPower extends AbstractPower {
 		this.phase++;
 		if (this.phase > 2) {
 			this.phase = 0;
-		}
-		switch (this.phase) {
-			case 0:
-				this.owner.state.setAnimation(0, "Incoming", true);
-			case 1:
-				this.owner.state.setAnimation(0, "Swinging", true);
-			case 2:
-				this.owner.state.setAnimation(0, "Reseting", true);
-			default: 
-				this.owner.state.setAnimation(0, "Incoming", true);
 		}
 
 		this.amount = (this.phase == 1) ? this.thornsAmt : 0;
