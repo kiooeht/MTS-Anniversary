@@ -25,10 +25,11 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.IntimidateEffect;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 
+import theAct.TheActMod;
 import theAct.powers.PridePower;
 
 public class Lyon extends AbstractMonster {
-    public static final String ID = "theJungle:Lyon";
+    public static final String ID = TheActMod.makeID("Lyon");
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     public static final String[] MOVES = monsterStrings.MOVES;
