@@ -45,13 +45,11 @@ public class DefenderSpyder extends Spyder{
         }      
         
         if (stronger) {
-        	this.damage.add(new DamageInfo(this, 5));
-            
-        } else if (AbstractDungeon.ascensionLevel >= (normal?2:4)){
-            this.damage.add(new DamageInfo(this, 5));
-            
+        	damage.add(new DamageInfo(this, 5));
+        } else if (AbstractDungeon.ascensionLevel >= (normal ? 2 : 4)) {
+            damage.add(new DamageInfo(this, 5));
         } else {
-        	this.damage.add(new DamageInfo(this, 4));
+        	damage.add(new DamageInfo(this, 4));
         }
 	}
 	
@@ -106,7 +104,7 @@ public class DefenderSpyder extends Spyder{
 			setMove((byte) 3, Intent.DEBUFF);	
             break;
 		case 3:
-			setMove((byte) 0, Intent.ATTACK_DEFEND, damage.get(1).base);	
+			setMove((byte) 0, Intent.DEFEND);
             break;
 		}
 	}
