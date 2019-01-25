@@ -30,10 +30,10 @@ public class Cassacara extends AbstractMonster {
     private static final float HB_H = 350.0F;
     private static final String ANIMATION_ATLAS = TheActMod.assetPath("images/monsters/cassacara/Cassacara.atlas");
     private static final String ANIMATION_JSON =TheActMod.assetPath("images/monsters/cassacara/Cassacara.json");
-    private static final int HP_MIN = 147;
-    private static final int HP_MAX = 151;
-    private static final int ASC_HP_MIN = 153;
-    private static final int ASC_HP_MAX = 157;
+    private static final int HP_MIN = 150;
+    private static final int HP_MAX = 154;
+    private static final int ASC_HP_MIN = 156;
+    private static final int ASC_HP_MAX = 160;
     private static final byte BIG_BITE = 1;
     private static final byte CHEW = 2;
     private static final byte BOTTOMLESS_STOMACH = 3;
@@ -47,8 +47,8 @@ public class Cassacara extends AbstractMonster {
     private static final int CHEW_DAMAGE = 7;
     private static final int CHEW_HIT_AMOUNT = 2;
     private static final int ASC_CHEW_DAMAGE = 8;
-    private static final int BOTTOMLESS_STOMACH_STRENGTH_GAIN_AMOUNT = 2;
-    private static final int ASC2_BOTTOMLESS_STOMACH_STRENGTH_GAIN_AMOUNT = 3;
+    private static final int BOTTOMLESS_STOMACH_STRENGTH_GAIN_AMOUNT = 3;
+    private static final int ASC2_BOTTOMLESS_STOMACH_STRENGTH_GAIN_AMOUNT = 4;
     private int bigBiteDamage;
     private int bigBiteStrengthGainPerSack;
     private int chewDamage;

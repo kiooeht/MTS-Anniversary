@@ -1,16 +1,14 @@
 package theAct.relics;
 
 import basemod.abstracts.CustomRelic;
-import com.megacrit.cardcrawl.cards.curses.Necronomicurse;
-import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.cards.curses.Shame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theAct.TheActMod;
-import theAct.cards.curses.EternalShame;
 import theAct.events.HappyBirthday;
 
 public class BirthdayCake extends CustomRelic
@@ -31,12 +29,25 @@ public class BirthdayCake extends CustomRelic
     }
 
     @Override
+    public int getPrice()
+    {
+        // Stop this from being sold via ShopMod
+        return 0;
+    }
+
+    @Override
     public void onEquip()
     {
         AbstractDungeon.player.increaseMaxHp(HappyBirthday.CAKE_MAX_HP, true);
+    }
 
-        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new EternalShame(), Settings.WIDTH / 2f, Settings.HEIGHT / 2f));
-        UnlockTracker.markCardAsSeen(EternalShame.ID);
+    @Override
+    public void atBattleStart()
+    {
+        flash();
+        AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new Shame(), 1, true, true));
+        UnlockTracker.markCardAsSeen(Shame.ID);
     }
 
     @Override

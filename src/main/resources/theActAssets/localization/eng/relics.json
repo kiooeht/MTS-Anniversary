@@ -2,14 +2,15 @@
   "theJungle:PaperFaux": {
     "NAME": "Paper Faux",
     "DESCRIPTIONS": [
-      "Whenever you apply #yWeak or #yVulnerable, apply an additional #b",
-      " #yWeak or #yVulnerable."
+      "Whenever you apply #yWeak, apply an additional #b",
+      " #yWeak. Whenever you apply #yVulnerable, apply an additional #b",
+      " #yVulnerable."
     ],
     "FLAVOR": "A silent effigy you found in the forest clearing. It seems to be watching you."
   },
   "theJungle:SpiritDisease": {
     "NAME": "Spirit Disease",
-    "DESCRIPTIONS": ["The next non-boss chest will have its relic replaced by a spirit poop."],
+    "DESCRIPTIONS": ["The next non-boss chest you open will have its relic replaced with #rSpirit #rPoop."],
     "FLAVOR": "A strange plague from drinking strange water... You don't feel too well.."
   },
   "theJungle:SneckoAutograph": {
@@ -26,24 +27,25 @@
     "NAME": "Wild Mango",
     "FLAVOR": "A succulent fruit grown within the spire, not meant to be consumed by the untainted.",
     "DESCRIPTIONS": [
-      "Raise your Max HP by #b",
-      " but start each combat with #ySlow ."
+      "Upon pickup, raise your Max HP by #b",
+      ". Start each combat with #ySlow."
     ]
   },
   "theJungle:WildStrawberry": {
     "NAME": "Wild Strawberry",
     "FLAVOR": "A delicious fruit tainted ever so slightly by the blight.",
     "DESCRIPTIONS": [
-      "Raise your Max HP by #b",
-      " but lose that amount of your current HP."
+      "Upon pickup, raise your Max HP by #b",
+      " and take #b",
+      " damage."
     ]
   },
   "theJungle:WildPear": {
     "NAME": "Wild Pear",
     "FLAVOR": "Not even this fruit was spared from the blight.",
     "DESCRIPTIONS": [
-      "Raise your Max HP by #b",
-      " but gain #b1 #ySlothful at the start of each combat."
+      "Upon pickup, raise your Max HP by #b",
+      ". Start each combat with #b1 #ySlothful."
     ]
   },
   "theJungle:BirthdayCakeSlice": {
@@ -58,7 +60,7 @@
     "FLAVOR": "It's tasty, but you feel only shame from eating it.",
     "DESCRIPTIONS": [
       "Upon pickup, raise your Max HP by #b",
-      " and obtain a special #rCurse."
+      ". At the start of combat, shuffle a #rShame into your draw pile."
     ]
   },
   "theJungle:ParSnip": {

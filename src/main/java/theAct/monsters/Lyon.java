@@ -20,14 +20,16 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
+import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.IntimidateEffect;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 
+import theAct.TheActMod;
 import theAct.powers.PridePower;
 
 public class Lyon extends AbstractMonster {
-    public static final String ID = "theJungle:Lyon";
+    public static final String ID = TheActMod.makeID("Lyon");
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     public static final String[] MOVES = monsterStrings.MOVES;
@@ -43,13 +45,18 @@ public class Lyon extends AbstractMonster {
     private static final int HP_MIN_A = HP_MIN + 6;
     private static final int HP_MAX_A = HP_MAX + 6;
     private int attackDmg, attackDmg2;
-    private int weakAmt;
+    private int debuffAmt;
     private static final int ATTACK_TIMES = 2;
+    private static final int DEBUFF_AMT = 3;
+    private static final int DEBUFF_AMT_ASC_MODIFIER = 2;
+    private static final int ATTACK_DMG = 18;
+    private static final int ATTACK_DMG_ASC_MODIFIER = 2;
+    private static final int POUNCE_DMG = 5;
+    private static final int POUNCE_DMG_ASC_MODIFIER = 1;
     // moves
     private static final byte ROAR = 1;
     private static final byte ATTACK = 2;
     private static final byte POUNCE = 3;
-    private boolean doneRoar = false;
 
     public Lyon() {
         super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, 0, 0);
@@ -64,16 +71,16 @@ public class Lyon extends AbstractMonster {
             this.setHp(HP_MIN, HP_MAX);
         }
         if (AbstractDungeon.ascensionLevel >= 2) {
-            this.attackDmg = 12;
-            this.attackDmg2 = 6;
+            attackDmg = ATTACK_DMG + ATTACK_DMG_ASC_MODIFIER;
+            attackDmg2 = POUNCE_DMG + POUNCE_DMG_ASC_MODIFIER;
         } else {
-            this.attackDmg = 10;
-            this.attackDmg2 = 5;
+            attackDmg = ATTACK_DMG;
+            attackDmg2 = POUNCE_DMG;
         }
         if (AbstractDungeon.ascensionLevel >= 17) {
-            this.weakAmt = 5;
+            debuffAmt = DEBUFF_AMT + DEBUFF_AMT_ASC_MODIFIER;
         } else {
-            this.weakAmt = 3;
+            debuffAmt = DEBUFF_AMT;
         }
         this.damage.add(new DamageInfo(this, attackDmg));
         this.damage.add(new DamageInfo(this, attackDmg2));
@@ -88,11 +95,13 @@ public class Lyon extends AbstractMonster {
     public void takeTurn() {
         switch (this.nextMove) {
             case ROAR: {
-                doneRoar = true;
                 AbstractDungeon.actionManager.addToBottom(new SFXAction("INTIMIDATE"));
                 AbstractDungeon.actionManager.addToBottom(new ShoutAction(this, DIALOG[0], 1.0f, 2.0f));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new ShockWaveEffect(this.hb.cX, this.hb.cY, Color.YELLOW, ShockWaveEffect.ShockWaveType.CHAOTIC), 1.25f));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WeakPower(AbstractDungeon.player, weakAmt, true), weakAmt));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WeakPower(AbstractDungeon.player, debuffAmt, true), debuffAmt));
+                if (AbstractDungeon.ascensionLevel >= 17) {
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new FrailPower(AbstractDungeon.player, debuffAmt, true)));
+                }
                 break;
             }
             case POUNCE: {
@@ -121,7 +130,7 @@ public class Lyon extends AbstractMonster {
 
     @Override
     protected void getMove(int num) {
-        if (!doneRoar) {
+        if (!this.moveHistory.contains(ROAR)) {
             this.setMove(MOVES[0], ROAR, Intent.STRONG_DEBUFF);
         } else if (num < 50 && !this.lastTwoMoves(POUNCE) || this.lastTwoMoves(ATTACK)) {
             this.setMove(MOVES[1], POUNCE, Intent.ATTACK, this.damage.get(0).base);

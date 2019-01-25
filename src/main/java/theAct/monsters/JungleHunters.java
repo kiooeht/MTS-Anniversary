@@ -4,18 +4,15 @@ import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BarricadePower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.vfx.combat.ClashEffect;
-import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
 import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 import theAct.TheActMod;
 import theAct.powers.CautiousPower;
@@ -26,8 +23,8 @@ public class JungleHunters extends AbstractMonster {
     public static final String EVENT_ID = TheActMod.makeID("JungleHuntersEvent");
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
-    private static final int MIN_HP = 45;
-    private static final int MAX_HP = 52;
+    private static final int MIN_HP = 52;
+    private static final int MAX_HP = 61;
     private static final int ASC_HP_MODIFIER = 5;
     private static final int START_BLOCK_AMT = 11;
     private static final int START_BLOCK_ASC_MODIFIER = 5;
@@ -49,8 +46,6 @@ public class JungleHunters extends AbstractMonster {
     private int dexLossAmt;
     public static final String STUNNED = "STUNNED";
     public static final String NOTSTUNNED = "NOTSTUNNED";
-    private boolean isFirstTurn = true;
-    private boolean doBigAttack = false;
 
     public JungleHunters(float x, float y) {
         super(NAME, ID, MAX_HP, 0.0F, 10.0F, 280.0F, 280.0F, null, x, y);
@@ -147,9 +142,8 @@ public class JungleHunters extends AbstractMonster {
 
     @Override
     protected void getMove(int i) {
-        if (isFirstTurn) {
+        if (this.moveHistory.isEmpty()) {
             setMove((byte)0, Intent.DEFEND);
-            isFirstTurn = false;
             return;
         }
         if (lastMove((byte)0) || lastMove((byte)2)) {

@@ -17,11 +17,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ConfusionPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import com.megacrit.cardcrawl.vfx.combat.IntimidateEffect;
 import theAct.TheActMod;
+import theAct.powers.MamaSneckoRevengePower;
 import theAct.powers.RandomizePower;
 
 public class BabySnecko extends AbstractMonster {
@@ -34,18 +36,18 @@ public class BabySnecko extends AbstractMonster {
     private static final float HB_Y = -20.0F;
     private static final float HB_W = 135.0f;
     private static final float HB_H = 200.0f;
-    private static final int HP_MIN = 25;
-    private static final int HP_MAX = 30;
-    private static final int ASC_HP_MIN = 28;
-    private static final int ASC_HP_MAX = 33;
+    private static final int HP_MIN = 16;
+    private static final int HP_MAX = 18;
+    private static final int ASC_HP_MIN = 19;
+    private static final int ASC_HP_MAX = 21;
     private static final byte BITE = 1;
     private static final byte GLARE = 2;
     private static final String BITE_NAME = MOVES[0];
     private static final String GLARE_NAME = MOVES[1];
     private static final int CONFUSE_AMOUNT = 3;
     private static final int ASC_CONFUSE_AMOUNT = 4;
-    private static final int BITE_DAMAGE = 7;
-    private static final int ASC_BITE_DAMAGE = 10;
+    private static final int BITE_DAMAGE = 9;
+    private static final int ASC_BITE_DAMAGE = 11;
     private int biteDamage;
     private int confuseAmount;
 
@@ -99,8 +101,7 @@ public class BabySnecko extends AbstractMonster {
             case GLARE: {
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new SFXAction("MONSTER_SNECKO_GLARE"));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new IntimidateEffect(this.hb.cX, this.hb.cY), 0.5f));
-                AbstractDungeon.actionManager.addToBottom(new FastShakeAction(AbstractDungeon.player, 1.0f, 1.0f));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new IntimidateEffect(this.hb.cX, this.hb.cY), 0.15f));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this,  new RandomizePower(AbstractDungeon.player,this.confuseAmount),this.confuseAmount));
                 break;
             }
@@ -108,16 +109,26 @@ public class BabySnecko extends AbstractMonster {
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
     }
 
+    @Override
+    public void damage(DamageInfo info) {
+        super.damage(info);
+        for (AbstractMonster m:AbstractDungeon.getMonsters().monsters){
+            if (m instanceof MamaSnecko){
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,m,new StrengthPower(m,1),1));
+                if (m.hasPower(MamaSneckoRevengePower.powerID)){
+                    m.getPower(MamaSneckoRevengePower.powerID).flash();
+                }
+            }
+        }
+    }
+
     public void getMove(int num) {
         // glares or bites at random, can't repeat 3 times in a row
-        if (num < 50 && !lastTwoMoves(GLARE)){
+        if (num < 50){
             this.setMove(GLARE_NAME,GLARE,Intent.DEBUFF);
-        }
-        else if (!lastTwoMoves(BITE)){
-            this.setMove(BITE_NAME,BITE,Intent.ATTACK,damage.get(0).base);
         }
         else{
-            this.setMove(GLARE_NAME,GLARE,Intent.DEBUFF);
+            this.setMove(BITE_NAME,BITE,Intent.ATTACK,damage.get(0).base);
         }
     }
 }

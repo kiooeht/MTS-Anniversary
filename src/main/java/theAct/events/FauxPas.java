@@ -25,7 +25,7 @@ public class FauxPas extends AbstractImageEvent {
     private boolean isA15;
 
     public FauxPas() {
-        super(NAME, DESCRIPTIONS[0], null);
+        super(NAME, DESCRIPTIONS[0], TheActMod.assetPath("images/events/fauxpas.png"));
         imageEventText.setDialogOption(OPTIONS[0]);
         imageEventText.setDialogOption(OPTIONS[1]);
         this.currentScreen = CurrentScreen.MAIN;

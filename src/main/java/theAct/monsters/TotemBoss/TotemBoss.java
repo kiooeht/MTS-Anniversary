@@ -59,7 +59,7 @@ public class TotemBoss extends AbstractMonster {
     private boolean firstTurn = true;
 
     public TotemBoss() {
-        super(NAME, "Reptomancer", 10, 0.0F, -30.0F, 220.0F, 320.0F, (String)null, -20.0F, 10.0F);
+        super(NAME, ID, 10, 0.0F, -30.0F, 220.0F, 320.0F, (String)null, -20.0F, 10.0F);
         this.type = EnemyType.BOSS;
         this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/skeleton.atlas"), TheActMod.assetPath("images/monsters/totemboss/skeleton.json"), 1.0F);
 
@@ -111,6 +111,7 @@ public class TotemBoss extends AbstractMonster {
         remainingTotems.add(4);
         remainingTotems.add(5);
         remainingTotems.add(6);
+        if (AbstractDungeon.ascensionLevel >= 9) remainingTotems.add(7);
 
         Collections.shuffle(remainingTotems,AbstractDungeon.cardRng.random);
 
@@ -159,6 +160,10 @@ public class TotemBoss extends AbstractMonster {
                     m = new DebuffTotem(this);
                     TheActMod.logger.info("Debuff Totem Picked");
                     break;
+                case 7:
+                    m = new ConfuseTotem(this);
+                    TheActMod.logger.info("Confuse Totem Picked - This should only happen with Bosses are Tougher ascension.");
+                    break;
             }
 
 
@@ -175,6 +180,8 @@ public class TotemBoss extends AbstractMonster {
     public void resolveTotemDeath(AbstractTotemSpawn m){
         this.stopTotemFall = true;
         livingTotems.remove(m);
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
+
         for (AbstractMonster m2 : livingTotems) {
 
             if (!m2.isDying) {
@@ -248,9 +255,8 @@ public class TotemBoss extends AbstractMonster {
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AttackEffect.SLASH_HORIZONTAL));
                 for (AbstractTotemSpawn t : livingTotems){
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(t, this, new StrengthPower(t, 1), 1));
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(t, this, new StrengthPower(t, 2), 2));
                 }
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
 
                 break;
 

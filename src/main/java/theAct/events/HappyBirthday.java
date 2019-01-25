@@ -20,7 +20,7 @@ public class HappyBirthday extends AbstractImageEvent
     private static final String[] OPTIONS = eventStrings.OPTIONS;
 
     public static final int SLICE_MAX_HP = 5;
-    public static final int CAKE_MAX_HP = 15;
+    public static final int CAKE_MAX_HP = 20;
 
     public HappyBirthday()
     {

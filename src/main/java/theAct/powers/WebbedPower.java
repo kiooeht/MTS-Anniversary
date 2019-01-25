@@ -35,6 +35,8 @@ public class WebbedPower extends Power implements OnCardDrawPower {
 			this.description =	strings.DESCRIPTIONS[0];
 		else if(cardAmount == 0)
 			this.description = strings.DESCRIPTIONS[1] + amount + strings.DESCRIPTIONS[2]; 
+		else if(cardAmount == 1)
+			this.description = strings.DESCRIPTIONS[1] + amount + strings.DESCRIPTIONS[2] + strings.DESCRIPTIONS[3] + cardAmount + strings.DESCRIPTIONS[5];
 		else
 			this.description = strings.DESCRIPTIONS[1] + amount + strings.DESCRIPTIONS[2] + strings.DESCRIPTIONS[3] + cardAmount + strings.DESCRIPTIONS[4];
 	}	

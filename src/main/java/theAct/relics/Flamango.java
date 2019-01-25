@@ -15,7 +15,7 @@ public class Flamango extends CustomRelic {
     public static final String ID = TheActMod.makeID("Flamango");
     public static final Texture IMAGE_PATH = ImageMaster.loadImage(TheActMod.assetPath("images/relics/Flameango.png"));
     public static final Texture IMAGE_OUTLINE_PATH = ImageMaster.loadImage(TheActMod.assetPath("images/relics/FlameangoOutline.png"));
-    private static final int DAMAGE_PER_ATTACK = 3;
+    private static final int DAMAGE_PER_ATTACK = 2;
 
     public Flamango() {
         super(ID, IMAGE_PATH, IMAGE_OUTLINE_PATH, RelicTier.SPECIAL, AbstractRelic.LandingSound.FLAT);

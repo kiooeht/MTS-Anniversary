@@ -138,9 +138,8 @@ public class Phrog extends AbstractMonster {
 
 	@Override
 	protected void getMove(int roll) {
-		if(offsetTurn) {
+		if(offsetTurn && this.moveHistory.isEmpty()) {
 			this.setMove(STRINGS.MOVES[1], MoveBytes.JUMP, Intent.STRONG_DEBUFF);
-			offsetTurn = false;
 			return;
 		}
 		if(!this.lastMove(MoveBytes.LICK)) {
@@ -160,7 +159,13 @@ public class Phrog extends AbstractMonster {
 					this.setMove(STRINGS.MOVES[2], MoveBytes.CROAK, Intent.BUFF);
 					break;
 				case STATUS:
+					this.setMove(MoveBytes.STUNNED, Intent.STUN);
+					break;
 				case CURSE:
+					this.setMove(MoveBytes.STUNNED, Intent.STUN);
+					break;
+				default:
+					TheActMod.logger.info("I love modded card types -BD");
 					this.setMove(MoveBytes.STUNNED, Intent.STUN);
 					break;
 			}

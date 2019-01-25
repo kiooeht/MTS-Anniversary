@@ -3,16 +3,17 @@
 		"NAME": "Carnivorous",
 		"DESCRIPTIONS": [
 			"Consumes #yCarcass #ySacks, healing HP equal to their HP and gaining #b",
-			" Strength for each #yCarcass #ySack."
+			" #yStrength for each #yCarcass #ySack."
 		]
 	},
 	"theJungle:DigestPower": {
 		"NAME" : "Digestion",
 		"DESCRIPTIONS": [
-			"After taking damage #b",
-			" times, ",
-			" is returned to your hand. NL NL At the end of your turn ",
-			" is #rexhausted."
+			"On death or after being attacked #b",
+			" more time, ",
+			" more times, ",
+			" is returned to your hand. NL NL At the end of your turn, ",
+			" is #rExhausted."
 		]
 	},
 	"theJungle:SlothfulPower": {
@@ -26,57 +27,69 @@
 	"theJungle:TotemStrengthPower": {
 		"NAME" : "Totemic Rage",
 		"DESCRIPTIONS": [
-			"When a Totem is destroyed, remaining Totems gain 1 Strength."
+			"Whenever a Totem dies, ALL enemies gain #b1 Strength."
 		]
 	},
 	"theJungle:BlockFromStrengthPower": {
 		"NAME" : "Defensive",
 		"DESCRIPTIONS": [
-			"Strength increases the amount of Block this enemy provides."
+			"#yStrength increases the amount of #yBlock this enemy provides."
 		]
 	},
 	"theJungle:TotemHealthLinkPower": {
 		"NAME" : "Totemic Might",
 		"DESCRIPTIONS": [
-			"This enemy loses ",
-			" HP whenever a Totem is destroyed."
+			"Whenever a Totem dies, loses ",
+			" HP."
 		]
 	},
 	"theJungle:TotemBossImmunityPower": {
 		"NAME" : "Totemic Might",
 		"DESCRIPTIONS": [
-			"This enemy is immune to damage and debuffs until all Totems have been destroyed."
+			"If Totems are still alive, is immune to damage."
 		]
 	},
 	"theJungle:SwingingTrapPower": {
 		"NAME": "Pendulum Trap",
 		"DESCRIPTIONS": [
-			" NL NL Changes position each time you play a card. NL Cycles between #rIncoming, #rMidswing, and #gResetting.",
+			" NL NL Whenever you play a card, changes its position. NL Cycles between #rIncoming, #rMidswing, and #gResetting.",
 			"#yPOSITION: ",
-			"#rINCOMING NL Ending your turn while this trap is #rIncoming will cause it to deal damage to you.", 
-			"#rMIDSWING NL Playing an #yAttack card while this trap is in #rMidswing will cause you to take #b", 
+			"#rINCOMING NL Intends to attack during its turn.",
+			"#rMIDSWING NL After you play an #yAttack, take #b",
 			" damage.",
-			"#gRESETTING NL This trap is harmless while #gResetting."
+			"#gRESETTING NL Is harmless."
 		]
 	},
 	"theJungle:FungalInfectionPower": {
 		"NAME": "Fungal Infection",
 		"DESCRIPTIONS": [
-			"Each turn, place random #rSpore #rStatus cards on top of your draw pile equal to #yFungal #yInfection's remaining duration (up to #b3 maximum). NL Lasts #b",
+			"At the end of your turn, add random #rSpore #yStatus cards on top of your draw pile equal to #yFungal #yInfection's remaining duration (up to #b3 maximum). NL Lasts #b",
 			" more turns."
+		]
+	},
+	"theJungle:MamaSneckoRevengePower": {
+		"NAME": "Enrage",
+		"DESCRIPTIONS": [
+			"Gains 1 Strength whenever a Minion is damaged.  Loses 2 Strength at the end of each turn."
+		]
+	},
+	"theJungle:TotemRevengeAttackPower": {
+		"NAME": "Totem Counter",
+		"DESCRIPTIONS": [
+			"Instantly attacks whenever you play a card that targets ALL enemies or multiple random enemies."
 		]
 	},
 	"theJungle:InfectiousSporesPower": {
 		"NAME": "Infectious Spores",
 		"DESCRIPTIONS": [
-			"When killed, applies #b",
-			" #rFungal #rInfection."
+			"On death, applies #b",
+			" #yFungal #yInfection."
 		]
 	},
 	"theJungle:RegenerativeSlime": {
 		"NAME": "Regenerative Slime",
 		"DESCRIPTIONS": [
-			"Whenever you play a non-Attack card, this heals #b",
+			"Whenever you play a #ynon-Attack card, heals #b",
 			" HP."
 		]
 	},
@@ -91,83 +104,69 @@
 	"theJungle:CautiousPower": {
 		"NAME" : "Cautious",
 		"DESCRIPTIONS": [
-			"After being attacked #b",
-			" more time this turn, become Stunned.",
-			" more times this turn, become Stunned.",
+			"After receiving attack damage #b",
+			" more time this turn, becomes Stunned.",
+			" more times this turn, becomes Stunned.",
 			"This enemy's caution is broken."
 		]
 	},
 	"theJungle:Pride": {
-      "NAME": "Pride",
-      "DESCRIPTIONS": [
-        "Whenever you play a card, ",
-        " gains #b",
-        " #yStrength for this turn only."
-      ]
+		"NAME": "Pride",
+		"DESCRIPTIONS": [
+			"Whenever you play a card, gains #b",
+			" #yStrength this turn."
+		]
     },
 	"theJungle:ObsessionPower": {
 		"NAME": "Obsessive",
 		"DESCRIPTIONS": [
-			"Whenever you play an attack that does not target #rONLY this monster, take #b",
+			"Whenever you play an #yAttack that does not target #rONLY this monster, take #b",
 			" damage."
 		]
 	},
 	"theJungle:ProtectionPower": {
 		"NAME": "Protective",
 		"DESCRIPTIONS": [
-			"Whenever you play an attack that does not target #rONLY this monster, all OTHER enemies gain #b",
+			"Whenever you play an #yAttack that does not target #rONLY this monster, ALL OTHER enemies gain #b",
 			" #yBlock."
 		]
 	},
 	"theJungle:EnergeticPower": {
 		"NAME": "Energetic",
 		"DESCRIPTIONS": [
-			"Whenever you play an attack that does not target #rONLY this monster, all OTHER enemies gain #b",
+			"Whenever you play an #yAttack that does not target #rONLY this monster, ALL OTHER enemies gain #b",
 			" #yStrength."
 		]
 	},
-    "theJungle:Squad": {
-		"NAME" : "Squad",
+    "theJungle:Guarded": {
+		"NAME" : "Guarded",
 		"DESCRIPTIONS": [
-			"Has #b1 #yStrength for every #rSpyder."
+			"Receives #b80% less #yAttack damage while there is a #rSpyder in front of this creature."
 		]
 	},
     "theJungle:Webbed": {
 		"NAME" : "Webbed",
 		"DESCRIPTIONS": [
-			"Increase the #yCost of the first card you draw by [E] for the rest of the combat.",
-			"Increase the #yCost of the first #b",
-			" cards you draw by [E] for the rest of the combat.",
-            " NL This has affacted #b",
-            " cards this turn."
-		]
-	},
-    "theJungle:FragileEggs": {
-		"NAME" : "Fragile Eggs",
-		"DESCRIPTIONS": [
-			"Every time this monster takes #b",
-			" #yUnblocked #yDamage, it spawns a big #rSpyder. NL #b",
-			" #yDamage left."
-		]
-	},
-    "theJungle:Formation": {
-		"NAME" : "Formation",
-		"DESCRIPTIONS": [
-			"Is #gIntangible, when there is at least #b6 #rSpyders."
-		]
-	},
-    "theJungle:InfiniteIntangible": {
-		"NAME" : "Intangible",
-		"DESCRIPTIONS": [
-			"Reduce ALL damage taken and HP loss to #b1."
+			"Increase the cost of the first card you draw by #b1 this combat.",
+			"Increase the cost of the first #b",
+			" cards you draw by #b1 this combat.",
+            " NL This has affected #b",
+            " cards this turn.",
+            " card this turn."
 		]
 	},
 	"theJungle:Incubation": {
 		"NAME" : "Incubation",
 		"DESCRIPTIONS": [
-			"On this enemy's turn, it will hatch into a #yBaby #ySnecko.",
+			"Hatches into a #yBaby #ySnecko this turn.",
 			"In #b",
-			" turns, this will hatch into a #yBaby #ySnecko."
+			" turns, hatches into a #yBaby #ySnecko."
+		]
+	},
+    "theJungle:Mourning": {
+		"NAME" : "Mourning",
+		"DESCRIPTIONS": [
+			"Whenever this enemy loses #gGuard, it becomes stunned and loses all it's #yArtifact."
 		]
 	}
 }

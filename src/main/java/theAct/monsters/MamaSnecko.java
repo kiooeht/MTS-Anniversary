@@ -22,6 +22,7 @@ import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import com.megacrit.cardcrawl.vfx.combat.IntimidateEffect;
 import theAct.TheActMod;
+import theAct.powers.MamaSneckoRevengePower;
 import theAct.powers.RandomizePower;
 
 import java.util.HashSet;
@@ -37,15 +38,16 @@ public class MamaSnecko extends AbstractMonster {
     private static final float HB_Y = -20.0F;
     private static final float HB_W = 310.0f;
     private static final float HB_H = 400.0f;
-    private static final int HP_MIN = 130;
-    private static final int HP_MAX = 140;
-    private static final int ASC_HP_MIN = 140;
-    private static final int ASC_HP_MAX = 150;
+    private static final int HP_MIN = 150;
+    private static final int HP_MAX = 160;
+    private static final int ASC_HP_MIN = 160;
+    private static final int ASC_HP_MAX = 170;
     private static final byte EGGS = 1;
     private static final byte GLARE = 2;
     private static final byte TAIL = 3;
     private static final byte BITE = 4;
     private static final byte FURY = 5;
+    private static final byte EGGSINITIAL = 6;
     private static final String EGGS_NAME = MOVES[0];
     private static final String GLARE_NAME = MOVES[1];
     private static final String TAIL_NAME = MOVES[2];
@@ -151,34 +153,44 @@ public class MamaSnecko extends AbstractMonster {
                 break;
             }
             case EGGS:{
-                this.waitingForEggs = true;
-                Set<Integer> posToAvoid = new HashSet<>();
-                for (final AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                    if (m != null && !m.isDying) {
-                        if (m instanceof SneckoEgg) {
-                            posToAvoid.add(((SneckoEgg) m).posIndex);
-                        }
-                        if (m instanceof BabySnecko) {
-                            posToAvoid.add(((BabySnecko) m).posIndex);
-                        }
-                    }
-                }
-                if (!posToAvoid.contains(4)) {
-                    AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-160.0f, 0.0f, 4),true, -4));
-                }
-                if (!posToAvoid.contains(3)) {
-                    AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-320.0f, 50.0f, 3),true, -3));
-                }
-                if (!posToAvoid.contains(2)) {
-                    AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-480.0f, 0.0f, 2),true,-2 ));
-                }
-                if (!posToAvoid.contains(1) && !posToAvoid.isEmpty()) {
-                    AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-640.0f, 50.0f, 1),true, -1));
-                }
+                EggSpawn();
+                break;
+            }
+            case EGGSINITIAL:{
+                EggSpawn();
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new MamaSneckoRevengePower(this)));
                 break;
             }
         }
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
+    }
+
+    public void EggSpawn(){
+        this.waitingForEggs = true;
+        Set<Integer> posToAvoid = new HashSet<>();
+        for (final AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+            if (m != null && !m.isDying) {
+                if (m instanceof SneckoEgg) {
+                    posToAvoid.add(((SneckoEgg) m).posIndex);
+                }
+                if (m instanceof BabySnecko) {
+                    posToAvoid.add(((BabySnecko) m).posIndex);
+                }
+            }
+        }
+        if (!posToAvoid.contains(4)) {
+            AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-160.0f, 0.0f, 4),true, -4));
+        }
+        if (!posToAvoid.contains(3)) {
+            AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-320.0f, 50.0f, 3),true, -3));
+        }
+        if (!posToAvoid.contains(2)) {
+            AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-480.0f, 0.0f, 2),true,-2 ));
+        }
+        if (!posToAvoid.contains(1) && !posToAvoid.isEmpty()) {
+            AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SneckoEgg(-640.0f, 50.0f, 1),true, -1));
+        }
+
     }
 
     @Override
@@ -201,6 +213,7 @@ public class MamaSnecko extends AbstractMonster {
         // starts each combat with eggs -> glare -> tailwhip.
         // after that, does random moves between eggs (50% if space), tailwhip (20%), bite (30%).
         // if all 3 eggs are destroyed before hatching, next move is fury and subsequent moves are random.
+        /*
         if (waitingForEggs && numAliveEggs() == 0){
             this.randomAction = true;
             this.waitingForEggs = false;
@@ -208,7 +221,9 @@ public class MamaSnecko extends AbstractMonster {
             AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "Attack"));
             this.setMove(FURY_NAME,FURY,Intent.ATTACK,this.damage.get(2).base);
         }
-        else if (randomAction){
+        else
+        */
+        if (randomAction){
             if (num < 50) {
                 if (numAliveMinions() <= 1 && !this.lastTwoMoves(EGGS)) {
                     this.setMove(EGGS_NAME,EGGS,Intent.UNKNOWN);
@@ -229,10 +244,10 @@ public class MamaSnecko extends AbstractMonster {
         else{
             if (this.firstTurn){
                 this.firstTurn = false;
-                this.setMove(EGGS_NAME,EGGS,Intent.UNKNOWN);
+                this.setMove(EGGS_NAME,EGGSINITIAL,Intent.UNKNOWN);
             }
             else{
-                if (this.lastMove(EGGS)){
+                if (this.lastMove(EGGS) || this.lastMove(EGGSINITIAL)){
                     this.setMove(GLARE_NAME,GLARE,Intent.DEBUFF);
                 }
                 else if (this.lastMove(GLARE)){
@@ -279,6 +294,7 @@ public class MamaSnecko extends AbstractMonster {
         return count;
     }
 
+    /*
     private int numAliveEggs() {
         int count = 0;
         for (final AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
@@ -288,4 +304,5 @@ public class MamaSnecko extends AbstractMonster {
         }
         return count;
     }
+    */
 }

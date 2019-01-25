@@ -42,7 +42,6 @@ public class SneckoCultist extends AbstractMonster {
     private int CARDS_CONFUSED = 1;
 
 
-    private boolean firstTurn = true;
     private boolean talky;
     //private int numOfCards = 3;
 
@@ -143,10 +142,9 @@ public class SneckoCultist extends AbstractMonster {
     @Override
     public void getMove(int roll)
     {
-        if(firstTurn)
+        if(this.moveHistory.isEmpty())
         {
-            firstTurn = false;
-            this.setMove(CONFUSE_START_NAME, MoveBytes.CONFUSE_START, Intent.MAGIC);
+            this.setMove(CONFUSE_START_NAME, MoveBytes.CONFUSE_START, Intent.DEBUFF);
             return;
         }
         else

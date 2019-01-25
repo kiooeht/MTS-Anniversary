@@ -20,16 +20,17 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import theAct.TheActMod;
 import theAct.actions.PhrogLickAction;
 import theAct.powers.IncubationPower;
+import theAct.powers.MamaSneckoRevengePower;
 
 public class SneckoEgg extends AbstractMonster {
 	public static final String ID = TheActMod.makeID("SneckoEgg");
 	private static final MonsterStrings STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
 	public static final String[] MOVES = STRINGS.MOVES;
 
-	private static final int HP_MIN = 8;
-	private static final int HP_MAX = 12;
-	private static final int ASC_HP_MIN = 10;
-	private static final int ASC_HP_MAX = 14;
+	private static final int HP_MIN = 14;
+	private static final int HP_MAX = 16;
+	private static final int ASC_HP_MIN = 17;
+	private static final int ASC_HP_MAX = 19;
 	private static final byte CRACK = 1;
 	private static final byte HATCH = 2;
 	private static final String CRACK_NAME = MOVES[0];
@@ -66,7 +67,7 @@ public class SneckoEgg extends AbstractMonster {
 		AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
 		e.setTime(e.getEndTime() * MathUtils.random());
 
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this,this,new IncubationPower(this,2),2));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this,this,new IncubationPower(this,1),1));
 	}
 
 	@Override
@@ -74,8 +75,8 @@ public class SneckoEgg extends AbstractMonster {
 		AbstractPlayer p = AbstractDungeon.player;
 
 		switch(this.nextMove) {
-			case CRACK:
-				break;
+			//case CRACK:
+			//	break;
 
 			case HATCH:
 				break;
@@ -84,6 +85,19 @@ public class SneckoEgg extends AbstractMonster {
 
 
 		AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
+	}
+
+	@Override
+	public void damage(DamageInfo info) {
+		super.damage(info);
+		for (AbstractMonster m:AbstractDungeon.getMonsters().monsters){
+			if (m instanceof MamaSnecko){
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,m,new StrengthPower(m,1),1));
+				if (m.hasPower(MamaSneckoRevengePower.powerID)){
+					m.getPower(MamaSneckoRevengePower.powerID).flash();
+				}
+			}
+		}
 	}
 
 	public void hatch(){

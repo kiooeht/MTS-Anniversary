@@ -6,8 +6,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theAct.TheActMod;
+import theAct.powers.abstracts.Power;
 
-public class CassacaraInfoPower extends AbstractPower implements NonStackablePower {
+public class CassacaraInfoPower extends Power implements NonStackablePower {
 
     public static final String POWER_ID = TheActMod.makeID("CassacaraInfoPower");
     private static final PowerStrings POWER_STRINGS = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
