@@ -21,7 +21,6 @@ import theAct.potions.*;
 import theAct.relics.PaperFaux;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.returnRandomPotion;
-//TODO Fix the strings in events.json because some didn't work
 public class ShamanCauldron extends AbstractImageEvent {
     public static final String ID = TheActMod.makeID("ShamanCauldron");
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
@@ -34,15 +33,10 @@ public class ShamanCauldron extends AbstractImageEvent {
 
     public ShamanCauldron() {
         super(NAME, DESCRIPTIONS[0], BASE_IMG);
-        if(AbstractDungeon.player.hasAnyPotions()){ //if the player has at least 1 potion
             imageEventText.setDialogOption(OPTIONS[0]);
-            imageEventText.setDialogOption(OPTIONS[1]);
+            imageEventText.setDialogOption(OPTIONS[1], !AbstractDungeon.player.hasAnyPotions());
             imageEventText.setDialogOption(OPTIONS[2]);
-        }
-        else {
-            imageEventText.setDialogOption(OPTIONS[0]);
-            imageEventText.setDialogOption(OPTIONS[2]);
-        }
+
         this.currentScreen = CurrentScreen.MAIN;
     }
 
