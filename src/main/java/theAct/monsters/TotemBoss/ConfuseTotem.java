@@ -33,33 +33,25 @@ public class ConfuseTotem extends AbstractTotemSpawn {
     public Integer secondaryEffect;
 
 
-    public ConfuseTotem(TotemBoss boss) {
-        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemyellow.png"));
+    public ConfuseTotem(TotemBoss boss, boolean spawnedIn) {
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemyellow.png"), spawnedIn);
         this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/white/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/white/Totem.json"), 1.0F);
 
         AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
 
         if (AbstractDungeon.ascensionLevel >= 19) {
-            this.secondaryEffect = 5;
+            this.secondaryEffect = 4;
         } else if (AbstractDungeon.ascensionLevel >= 4) {
-            this.secondaryEffect = 4;
+            this.secondaryEffect = 3;
         } else {
-            this.secondaryEffect = 4;
+            this.secondaryEffect = 3;
         }
 
         this.intentType = Intent.DEBUFF;
 
     }
 
-
-
-    public void takeTurn() {
-
-        totemAttack();
-
-
-    }
 
     @Override
     public void totemAttack() {
@@ -72,9 +64,7 @@ public class ConfuseTotem extends AbstractTotemSpawn {
 
     }
 
-    protected void getMove(int num)
-    {
-        this.setMove((byte)1, intentType);
+    public void getUniqueTotemMove() {this.setMove((byte)1, intentType);
     }
     static {
         monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);

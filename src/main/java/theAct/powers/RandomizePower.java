@@ -16,6 +16,7 @@ public class RandomizePower extends Power implements OnCardDrawPower {
     public static final String powerID = TheActMod.makeID("RandomizePower");
     private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(powerID);
     private String[] DESCRIPTIONS = strings.DESCRIPTIONS;
+    private int cardsRandomizedThisTurn;
 
     public RandomizePower(AbstractCreature p, int stackAmount) {
         this.owner = p;
@@ -26,6 +27,7 @@ public class RandomizePower extends Power implements OnCardDrawPower {
         this.amount = stackAmount;
         this.updateDescription();
         this.isTurnBased = true;
+        this.cardsRandomizedThisTurn = 0;
     }
 
     @Override
@@ -40,15 +42,28 @@ public class RandomizePower extends Power implements OnCardDrawPower {
 
     @Override
     public void onCardDraw(AbstractCard c){
-        if (amount > 0 && c.cost >= 0) {
+        if (amount > 0 && c.cost >= 0 && this.cardsRandomizedThisTurn < 2) {
             int newCost = AbstractDungeon.cardRandomRng.random(3);
             c.superFlash(Color.LIME.cpy());
             if (c.cost != newCost) {
                 c.costForTurn = newCost;
                 c.isCostModifiedForTurn = true;
             }
-            reducePower(1);
+            this.cardsRandomizedThisTurn++;
         }
+    }
+
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        super.atEndOfTurn(isPlayer);
+        cardsRandomizedThisTurn = 0;
+    }
+
+    @Override
+    public void atStartOfTurnPostDraw() {
+        super.atStartOfTurnPostDraw();
+        reducePower(1);
+        this.flash();
     }
 
     @Override
