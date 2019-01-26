@@ -57,10 +57,6 @@ public class Spyder extends AbstractMonster {
         
     }
  
- 	public void breakGuard() {
- 		
- 	}
-
     protected void getMove(int num) {
     	
     }

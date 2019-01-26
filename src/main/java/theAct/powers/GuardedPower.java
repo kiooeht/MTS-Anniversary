@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
 import theAct.TheActMod;
-import theAct.monsters.SpyderBoss.Spyder;
 import theAct.powers.abstracts.Power;
 
 public class GuardedPower extends Power {
@@ -36,7 +35,6 @@ public class GuardedPower extends Power {
 	public void onRemove() {
 		CardCrawlGame.sound.play("POWER_FOCUS", 0.1f);
 		CardCrawlGame.sound.play("BLOCK_BREAK", 0.05f);
-		((Spyder) owner).breakGuard();
 	}
     
     @Override
