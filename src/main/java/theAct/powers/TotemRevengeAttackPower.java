@@ -15,29 +15,55 @@ public class TotemRevengeAttackPower extends Power {
 	public static final String powerID = TheActMod.makeID("TotemRevengeAttackPower");
 	private static final PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(powerID);
 
+	private boolean spawnedIn;
 
-	public TotemRevengeAttackPower(AbstractCreature owner) {
+
+	public TotemRevengeAttackPower(AbstractCreature owner, boolean spawnedIn) {
 		this.owner = owner;
 		this.type = PowerType.BUFF;
 		this.name = strings.NAME;
-		this.setImage("immunityPower84.png", "immunityPower32.png");
 		this.ID = powerID;
+		this.spawnedIn = spawnedIn;
 		this.updateDescription();
+
+
+		if (spawnedIn) {
+			this.setImage("immunityPowerInactive84.png", "immunityPowerInactive32.png");
+		} else {
+			this.setImage("immunityPower84.png", "immunityPower32.png");
+
+		}
 	}
 
 	@Override
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		super.onUseCard(card, action);
 
-		if (card.target == AbstractCard.CardTarget.ALL_ENEMY){
-			((AbstractTotemSpawn) this.owner).totemAttack();
+		if (card.target == AbstractCard.CardTarget.ALL_ENEMY) {
+			if (!spawnedIn) {
+				((AbstractTotemSpawn) this.owner).totemAttack();
+				flash();
+			}
+	}
+	}
+
+	@Override
+	public void atEndOfTurn(boolean isPlayer) {
+		super.atEndOfTurn(isPlayer);
+		if (spawnedIn) {
+			this.spawnedIn = false;
+			this.setImage("immunityPower84.png", "immunityPower32.png");
 			flash();
+			this.updateDescription();
 		}
 	}
 
 	public void updateDescription() {
-		this.description =
-			strings.DESCRIPTIONS[0];
+		if (spawnedIn) {
+			this.description = strings.DESCRIPTIONS[1];
+		} else {
+			this.description = strings.DESCRIPTIONS[0];
+		}
 	}
 
 
