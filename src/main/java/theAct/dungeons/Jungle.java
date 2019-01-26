@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.monsters.MonsterInfo;
@@ -124,11 +125,11 @@ public class Jungle extends AbstractDungeon
     {
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo("Shell Parasite", 2.0F));
-        monsters.add(new MonsterInfo(GiantWrat.ID, 3.0f));
-        monsters.add(new MonsterInfo(TheActMod.makeID("Flameango_and_Byrd"), 2.0F));
-        monsters.add(new MonsterInfo(TheActMod.makeID("5_Spyders"), 2.0f));
-        monsters.add(new MonsterInfo(MushroomYandere.ENCOUNTER_ID, 3.0f));
+        monsters.add(new MonsterInfo(MonsterHelper.SHELL_PARASITE_ENC, 2.0F));
+        monsters.add(new MonsterInfo(JungleEncounterIDList.GIANT_WRAT_ENCOUNTER_ID, 3.0f));
+        monsters.add(new MonsterInfo(JungleEncounterIDList.FLAMEANGO_AND_BYRD_ENCOUNTER_ID, 2.0F));
+        monsters.add(new MonsterInfo(JungleEncounterIDList.FIVE_SPYDERS_ENCOUNTER_ID, 2.0f));
+        monsters.add(new MonsterInfo(JungleEncounterIDList.MUSHROOM_GANG_ENCOUNTER_ID, 3.0f));
         MonsterInfo.normalizeWeights(monsters);
         populateMonsterList(monsters, count, false);
     }
@@ -137,13 +138,13 @@ public class Jungle extends AbstractDungeon
     {
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo(SlimyTreeVines.ENCOUNTER_NAME, 3.0F));
-        monsters.add(new MonsterInfo(JungleHunters.ENCOUNTER_ID, 3.0f));
-        monsters.add(new MonsterInfo("Snake Plant", 2.0F));
-        monsters.add(new MonsterInfo(Lyon.ID, 3.0f));
-        monsters.add(new MonsterInfo(TheActMod.makeID("2_Flameangoes"), 2.0F));
-        monsters.add(new MonsterInfo(TheActMod.makeID("2_Snecko_Cultists"), 3.0F));
-        monsters.add(new MonsterInfo(TheActMod.makeID("Snecko_Cultist_and_trap"), 2.0F));
+        monsters.add(new MonsterInfo(JungleEncounterIDList.SLIMY_TREE_VINES_ENCOUNTER_ID, 3.0F));
+        monsters.add(new MonsterInfo(JungleEncounterIDList.TWO_JUNGLE_HUNTERS_ENCOUNTER_ID, 3.0f));
+        monsters.add(new MonsterInfo(MonsterHelper.SNAKE_PLANT_ENC, 2.0F));
+        monsters.add(new MonsterInfo(JungleEncounterIDList.LYON_ENCOUNTER_ID, 3.0f));
+        monsters.add(new MonsterInfo(JungleEncounterIDList.TWO_FLAMEANGOS_ENCOUNTER_ID, 2.0F));
+        monsters.add(new MonsterInfo(JungleEncounterIDList.TWO_SENCKO_CULTISTS_ENCOUNTER_ID, 3.0F));
+        monsters.add(new MonsterInfo(JungleEncounterIDList.SNECKO_CULTIST_AND_TRAP_ENCOUNTER_ID, 2.0F));
 
         MonsterInfo.normalizeWeights(monsters);
         populateFirstStrongEnemy(monsters, generateExclusions());
@@ -154,9 +155,9 @@ public class Jungle extends AbstractDungeon
     {
         // TODO: This is copied from TheCity
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo(MamaSnecko.ID, 1.0F));
-        monsters.add(new MonsterInfo(Cassacara.ID, 1.0F));
-        monsters.add(new MonsterInfo(Phrog.ID, 1.0f));
+        monsters.add(new MonsterInfo(JungleEncounterIDList.MAMA_SNECKO_ENCOUNTER_ID, 1.0F));
+        monsters.add(new MonsterInfo(JungleEncounterIDList.CASSACARA_ENCOUNTER_ID, 1.0F));
+        monsters.add(new MonsterInfo(JungleEncounterIDList.TWO_PHROGS_ENCOUNTER_ID, 1.0f));
         MonsterInfo.normalizeWeights(monsters);
         populateMonsterList(monsters, count, true);
     }

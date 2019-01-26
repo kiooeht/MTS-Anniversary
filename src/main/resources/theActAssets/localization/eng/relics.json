@@ -60,7 +60,7 @@
     "FLAVOR": "It's tasty, but you feel only shame from eating it.",
     "DESCRIPTIONS": [
       "Upon pickup, raise your Max HP by #b",
-      " and obtain a special #rCurse."
+      ". At the start of combat, shuffle a #rShame into your draw pile."
     ]
   },
   "theJungle:ParSnip": {

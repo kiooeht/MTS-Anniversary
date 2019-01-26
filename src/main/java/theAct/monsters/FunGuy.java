@@ -37,10 +37,8 @@ public class FunGuy extends AbstractMonster {
 
 	public static final int CHMP_DMG = 12;
 	public static final int A_CHMP_DMG = 15;
-	public static final int BURST_DMG = 2;
-	public static final int A_BURST_DMG = 3;
-	public static final int BURST_AMT = 2;
-	public static final int A_BURST_AMT = 2;
+	public static final int BURST_DMG = 4;
+	public static final int A_BURST_DMG = 5;
 	public static final int ASS_DMG = 8;
 	public static final int A_ASS_DMG = 10;
 	public static final int INF_AMT = 3;
@@ -56,7 +54,6 @@ public class FunGuy extends AbstractMonster {
 	private int chompDamage;
 	private int burstDamage;
 	private int assymDamage;
-	private int burstAmount;
 	private int infectionAmount;
 
 	private AbstractCard card;
@@ -69,12 +66,10 @@ public class FunGuy extends AbstractMonster {
 			this.chompDamage = A_CHMP_DMG;
 			this.burstDamage = A_BURST_DMG;
 			this.assymDamage = A_ASS_DMG;
-			this.burstAmount = A_BURST_AMT;
 		} else {
 			this.chompDamage = CHMP_DMG;
 			this.burstDamage = BURST_DMG;
 			this.assymDamage = ASS_DMG;
-			this.burstAmount = BURST_AMT;
 		}
 		if (AbstractDungeon.ascensionLevel >= 19){
 			this.infectionAmount = A_INF_AMT;
@@ -130,12 +125,11 @@ public class FunGuy extends AbstractMonster {
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new FungalInfectionPower(AbstractDungeon.player, this.infectionAmount), this.infectionAmount));
 			break;
 		case BURST:
-			for (int i=0; i<this.burstAmount; i++) {
-				AbstractDungeon.actionManager.addToBottom(new DamageAction(p, damage.get(1), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-			}
+			AbstractDungeon.actionManager.addToBottom(new DamageAction(p, damage.get(1), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+			AbstractDungeon.actionManager.addToBottom(new DamageAction(p, damage.get(1), AbstractGameAction.AttackEffect.BLUNT_LIGHT));		
+			
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new FrailPower(AbstractDungeon.player, 1, true), 1));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WeakPower(AbstractDungeon.player, 1, true), 1));
-			this.burstAmount++;
 			break;
 		case ASS:
 			AbstractDungeon.actionManager.addToBottom(new VampireDamageAction(AbstractDungeon.player, this.damage.get(2), AbstractGameAction.AttackEffect.POISON));
@@ -149,6 +143,7 @@ public class FunGuy extends AbstractMonster {
 						AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(m, this, InfectiousSporesPower.powerID));
 					}
 					AbstractDungeon.actionManager.addToBottom(new VampireDamageAction(m, this.damage.get(3), AbstractGameAction.AttackEffect.POISON));
+					AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
 					AbstractDungeon.actionManager.addToBottom(new SuicideAction(m));
 				}
 			}
@@ -158,7 +153,6 @@ public class FunGuy extends AbstractMonster {
 			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, 8));
 			for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
 				if (m != null && m != this && !m.isDeadOrEscaped()) {
-					AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new StrengthPower(m, 1), 1));
 					AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new SporeCloudPower(m, 1), 1));
 				}
 			}
@@ -173,39 +167,46 @@ public class FunGuy extends AbstractMonster {
 	
 	@Override
 	protected void getMove(int roll) {
-		if (this.lastMove(ASS)) {
+		if(this.moveHistory.isEmpty()) {
+			this.setMoveNow(BURST);
+			return;
+		}		
+		
+		//EVEN TURN CYCLE
+		if (this.lastMoveBefore(ASS)) {
 			this.setMoveNow(SPREAD);
 			return;
+		}else if (this.lastMoveBefore(SPREAD)) {
+			this.setMoveNow(GROWTH);
+			return;
+		}else if (this.lastMoveBefore(GROWTH)) {
+			for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+				if (m != null && m != this && !m.isDeadOrEscaped()) {
+					this.setMoveNow(ASS);
+					return;
+				}
+			}
+			this.setMoveNow(SPREAD);
+			return;			
 		}
-		if (!this.lastMove(INFECTION) && !AbstractDungeon.player.hasPower(FungalInfectionPower.powerID) && roll % 2 == 1) {
+		
+		//FAILSAFE + CYCLE ENTRANCE
+		if(this.lastMove(INFECTION) || this.lastMove(CHOMP) || this.lastMove(BURST)) {
+			this.setMoveNow(GROWTH);
+			return;
+		}
+		
+		//ODD TURNS
+		if (!this.lastMove(INFECTION) && !AbstractDungeon.player.hasPower(FungalInfectionPower.powerID)) {
 			this.setMoveNow(INFECTION);
 			return;
 		}
-		if (roll < 33) {
-			if (this.lastMove(CHOMP)) {
-				this.setMoveNow(GROWTH);
-				return;
-			} else {
-				this.setMoveNow(CHOMP);
-				return;
-			}
-		} else if (roll < 67) {
-			if (this.lastMove(BURST)) {
-				this.setMoveNow(GROWTH);
-				return;
-			} else {
-				this.setMoveNow(BURST);
-				return;
-			}
-		} else {
-			if (this.lastMove(SPREAD) || this.lastMove(ASS)) {
-				this.setMoveNow(GROWTH);
-				return;
-			} else {
-				this.setMoveNow(ASS);
-				return;
-			}
-		}
+		if (roll < 50) {
+			this.setMoveNow(CHOMP);
+			return;
+		} 
+		this.setMoveNow(BURST);
+		
 	}
 	//handy function to quickly set the next turn
 	private void setMoveNow(byte nextTurn) {
@@ -223,7 +224,7 @@ public class FunGuy extends AbstractMonster {
             	return;
 			}
 			case BURST: {
-				this.setMove(nextTurn, Intent.ATTACK_DEBUFF, this.damage.get(1).base, this.burstAmount, true);
+				this.setMove(nextTurn, Intent.ATTACK_DEBUFF, this.damage.get(1).base, 2, true);
             	return;		
 			}
 			case GROWTH: {

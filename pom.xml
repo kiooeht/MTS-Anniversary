@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>MTS Anniversary Act</name>
+    <name>The Jungle</name>
     <groupId>mts.anniversary</groupId>
-    <artifactId>TheAct</artifactId>
-    <version>0.1</version>
+    <artifactId>TheJungle</artifactId>
+    <version>1.1.1</version>
 
     <properties>
-        <SlayTheSpire.version>01-10-2019</SlayTheSpire.version>
+        <SlayTheSpire.version>01-23-2019</SlayTheSpire.version>
         <ModTheSpire.version>3.7.0</ModTheSpire.version>
         <alt.build.dir>../_ModTheSpire/mods</alt.build.dir>
     </properties>

@@ -28,10 +28,6 @@
     "NAME": "Sloth Spores",
     "DESCRIPTION": "Ethereal. NL Draw 1 card. NL Gain !M! Slothful. NL Exhaust."
   },
-  "theJungle:EternalShame": {
-    "NAME": "Eternal Shame",
-    "DESCRIPTION": "Unplayable. NL At the end of your turn, gain 1 Frail. NL Soulbound."
-  },
   "theJungle:Gourd": {
     "NAME": "Gourd",
     "DESCRIPTION": "Gain !M! Temporary HP."
