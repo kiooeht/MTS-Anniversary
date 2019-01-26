@@ -38,7 +38,7 @@ import java.util.Iterator;
 public class AbstractTotemSpawn extends AbstractMonster {
     public TotemBoss owner;
 
-    public Integer baseHP = 45;
+    public Integer baseHP = 50;
     public Integer HPAscBuffed = 0;
     private Method refrenderIntentVfxBehind;
     private Method refrenderIntent;
@@ -72,10 +72,8 @@ public class AbstractTotemSpawn extends AbstractMonster {
     public AbstractTotemSpawn(String name, String ID, TotemBoss boss, String imgPath, Boolean spawnedAfterFirst3) {
         super(name, ID, 420, 0.0F, 0F, 160.0F, 220.0F, null, -50.0F, 15.0F);
 
+        this.powers.add(new TotemRevengeAttackPower(this));
         this.spawnedAfterFirst3 = spawnedAfterFirst3;
-
-        this.powers.add(new TotemRevengeAttackPower(this,spawnedAfterFirst3));
-
 
         if (this.spawnedAfterFirst3) TheActMod.logger.info("post-3 totem spawned");
 
@@ -137,7 +135,6 @@ public class AbstractTotemSpawn extends AbstractMonster {
 
         if (spawnedAfterFirst3){
             this.setMove((byte)0, Intent.STUN);
-            createIntent();
         }
 
     }

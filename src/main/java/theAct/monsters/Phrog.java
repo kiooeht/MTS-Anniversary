@@ -28,8 +28,8 @@ public class Phrog extends AbstractMonster {
 	private static final int LICK_DAMAGE = 3;
 	private static final int LICK_DAMAGE_ASC_MODIFIER = 1;
 	private static final int LICK_DAMAGE_ASC_MODIFIER_AGAIN = 1;
-	private int maxHP = 108;
-	private int minHP = 105;
+	private int maxHP = 113;
+	private int minHP = 97;
 	private int tackleDamage = 25;
 	private int lickDmg;
 	private boolean offsetTurn;

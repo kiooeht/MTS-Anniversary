@@ -60,7 +60,7 @@ public class TotemBoss extends AbstractMonster {
     private boolean firstTurn = true;
 
     public TotemBoss() {
-        super(NAME, ID, 50, 0.0F, -30.0F, 220.0F, 320.0F, (String)null, -20.0F, 10.0F);
+        super(NAME, ID, 10, 0.0F, -30.0F, 220.0F, 320.0F, (String)null, -20.0F, 10.0F);
         this.type = EnemyType.BOSS;
         this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/skeleton.atlas"), TheActMod.assetPath("images/monsters/totemboss/skeleton.json"), 1.0F);
 

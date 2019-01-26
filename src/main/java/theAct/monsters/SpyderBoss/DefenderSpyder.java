@@ -46,15 +46,12 @@ public class DefenderSpyder extends Spyder{
         
         if (stronger) {
         	this.damage.add(new DamageInfo(this, 5));
-			this.damage.add(new DamageInfo(this, 3));
             
         } else if (AbstractDungeon.ascensionLevel >= (normal?2:4)){
             this.damage.add(new DamageInfo(this, 5));
-			this.damage.add(new DamageInfo(this, 3));
             
         } else {
         	this.damage.add(new DamageInfo(this, 4));
-			this.damage.add(new DamageInfo(this, 2));
         }
 	}
 	

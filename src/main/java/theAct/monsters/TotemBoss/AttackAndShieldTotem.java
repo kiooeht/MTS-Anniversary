@@ -74,7 +74,7 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
 
         for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
 
-            if (!m.isDying && !(m instanceof TotemBoss) && m!=this) {
+            if (!m.isDying && !(m instanceof TotemBoss)) {
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, this, this.secondaryEffect));
             }
         }
