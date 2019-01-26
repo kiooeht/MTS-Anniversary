@@ -80,12 +80,4 @@ public class SwingingTrapPower extends AbstractPower {
         }
         return damage;
     }
-}L) {
-            return damage;
-        }
-        if (this.phase != 0) {
-        	return 0f;
-        }
-        return damage;
-    }
 }
