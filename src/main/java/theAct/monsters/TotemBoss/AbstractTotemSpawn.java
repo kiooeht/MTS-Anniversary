@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
+import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -25,6 +26,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.GoldenSlashEffect;
+import theAct.TheActMod;
 import theAct.powers.BlockFromStrengthPower;
 import theAct.powers.TotemRevengeAttackPower;
 
@@ -36,7 +38,7 @@ import java.util.Iterator;
 public class AbstractTotemSpawn extends AbstractMonster {
     public TotemBoss owner;
 
-    public Integer baseHP = 50;
+    public Integer baseHP = 45;
     public Integer HPAscBuffed = 0;
     private Method refrenderIntentVfxBehind;
     private Method refrenderIntent;
@@ -64,12 +66,18 @@ public class AbstractTotemSpawn extends AbstractMonster {
 
     public Intent intentType = Intent.BUFF;
     private boolean wasFalling = false;
+    private boolean spawnedAfterFirst3 = false;
 
 
-    public AbstractTotemSpawn(String name, String ID, TotemBoss boss, String imgPath) {
+    public AbstractTotemSpawn(String name, String ID, TotemBoss boss, String imgPath, Boolean spawnedAfterFirst3) {
         super(name, ID, 420, 0.0F, 0F, 160.0F, 220.0F, null, -50.0F, 15.0F);
 
-        this.powers.add(new TotemRevengeAttackPower(this));
+        this.spawnedAfterFirst3 = spawnedAfterFirst3;
+
+        this.powers.add(new TotemRevengeAttackPower(this,spawnedAfterFirst3));
+
+
+        if (this.spawnedAfterFirst3) TheActMod.logger.info("post-3 totem spawned");
 
         //ReflectionHacks.setPrivate(this, AbstractCreature.class,"HB_Y_OFFSET_DIST",-200F);
 
@@ -127,6 +135,11 @@ public class AbstractTotemSpawn extends AbstractMonster {
             this.setHp(baseHP);
         }
 
+        if (spawnedAfterFirst3){
+            this.setMove((byte)0, Intent.STUN);
+            createIntent();
+        }
+
     }
 
     public void totemAttack(){
@@ -141,11 +154,13 @@ public class AbstractTotemSpawn extends AbstractMonster {
         }
 
         switch (this.nextMove) {
+            case 0:
+                //Should only fire if they were spawned in
+                AbstractDungeon.actionManager.addToBottom(new TextAboveCreatureAction(this, TextAboveCreatureAction.TextType.STUNNED));
+                break;
             case 1:
                 // AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
-                AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new GoldenSlashEffect(AbstractDungeon.player.hb.cX - 60.0F * Settings.scale, AbstractDungeon.player.hb.cY, false), vfxSpeed));
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, (DamageInfo) this.damage.get(0), AttackEffect.NONE));
+                totemAttack();
                 break;
         }
 
@@ -228,7 +243,17 @@ public class AbstractTotemSpawn extends AbstractMonster {
 
 
     protected void getMove(int num) {
-        this.setMove((byte) 1, intentType);
+        if (this.spawnedAfterFirst3){
+            this.setMove((byte) 0, Intent.STUN);
+            this.spawnedAfterFirst3 = false;
+
+        } else {
+            getUniqueTotemMove();
+        }
+    }
+
+    public void getUniqueTotemMove(){
+
     }
 
     public void die() {

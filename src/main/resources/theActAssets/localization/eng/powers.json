@@ -76,7 +76,8 @@
 	"theJungle:TotemRevengeAttackPower": {
 		"NAME": "Totem Counter",
 		"DESCRIPTIONS": [
-			"Instantly attacks whenever you play a card that targets ALL enemies or multiple random enemies."
+			"Instantly attacks whenever you play a card that targets ALL enemies or multiple random enemies.",
+			"Cannot counterattack this turn due to being Stunned."
 		]
 	},
 	"theJungle:InfectiousSporesPower": {
@@ -96,9 +97,9 @@
 	"theJungle:RandomizePower": {
 		"NAME": "Selective Confusion",
 		"DESCRIPTIONS": [
-			"Randomize the cost of the next card you draw.",
-			"Randomizes the cost of the next ",
-			" cards you draw."
+			"Randomize the cost of the first 2 cards you draw next turn.",
+			"Randomize the cost of the first 2 cards you draw for the next ",
+			" turns."
 		]
 	},
 	"theJungle:CautiousPower": {
@@ -166,7 +167,7 @@
     "theJungle:Mourning": {
 		"NAME" : "Mourning",
 		"DESCRIPTIONS": [
-			"Whenever this enemy loses #gGuard, it becomes stunned and loses all it's #yArtifact."
+			"Whenever this enemy loses #gGuard, it becomes stunned and loses all its #yArtifact."
 		]
 	}
 }

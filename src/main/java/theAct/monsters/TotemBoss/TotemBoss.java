@@ -53,13 +53,14 @@ public class TotemBoss extends AbstractMonster {
     public boolean stopTotemFall;
     private float totemSfxTimer = 0.f;
     public int encounterSlotsUsed = 1;
+    public int totemsSpawned = 0;
     public ArrayList<Integer> remainingTotems = new ArrayList<>();
     public ArrayList<AbstractTotemSpawn> livingTotems = new ArrayList<>();
 
     private boolean firstTurn = true;
 
     public TotemBoss() {
-        super(NAME, ID, 10, 0.0F, -30.0F, 220.0F, 320.0F, (String)null, -20.0F, 10.0F);
+        super(NAME, ID, 50, 0.0F, -30.0F, 220.0F, 320.0F, (String)null, -20.0F, 10.0F);
         this.type = EnemyType.BOSS;
         this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/skeleton.atlas"), TheActMod.assetPath("images/monsters/totemboss/skeleton.json"), 1.0F);
 
@@ -135,33 +136,35 @@ public class TotemBoss extends AbstractMonster {
             AbstractTotemSpawn m = null;
             Integer chosen = remainingTotems.get(AbstractDungeon.cardRng.random(0, remainingTotems.size() - 1));
             TheActMod.logger.info("Choosing Totem");
+            Boolean post3 = false;
+            if (this.totemsSpawned >= 3) post3 = true;
             switch (chosen) {
                 case 1:
                     TheActMod.logger.info("Bash Totem Picked");
-                    m = new BashTotem(this);
+                    m = new BashTotem(this, post3);
                     break;
                 case 2:
                     TheActMod.logger.info("Double Strike Totem Picked");
-                    m = new DoubleStrikeTotem(this);
+                    m = new DoubleStrikeTotem(this, post3);
                     break;
                 case 3:
-                    m = new AttackAndShieldTotem(this);
+                    m = new AttackAndShieldTotem(this, post3);
                     TheActMod.logger.info("Attack/Block Totem Picked");
                     break;
                 case 4:
-                    m = new ShieldOtherTotem(this);
+                    m = new ShieldOtherTotem(this, post3);
                     TheActMod.logger.info("Shield Totem Picked");
                     break;
                 case 5:
-                    m = new BuffTotem(this);
+                    m = new BuffTotem(this, post3);
                     TheActMod.logger.info("Buff Totem Picked");
                     break;
                 case 6:
-                    m = new DebuffTotem(this);
+                    m = new DebuffTotem(this, post3);
                     TheActMod.logger.info("Debuff Totem Picked");
                     break;
                 case 7:
-                    m = new ConfuseTotem(this);
+                    m = new ConfuseTotem(this, post3);
                     TheActMod.logger.info("Confuse Totem Picked - This should only happen with Bosses are Tougher ascension.");
                     break;
             }
@@ -173,6 +176,7 @@ public class TotemBoss extends AbstractMonster {
             TheActMod.logger.info("Spawning Monster");
 
             AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(m,false,-99));
+            this.totemsSpawned++;
 
         }
     }
