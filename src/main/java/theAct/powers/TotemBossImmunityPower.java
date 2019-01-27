@@ -30,13 +30,13 @@ public class TotemBossImmunityPower extends Power implements HealthBarRenderPowe
 
 	@Override
 	public int onLoseHp(int damageAmount) {
-		AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new ImmunityShieldEffect(this.owner.hb.cX,this.owner.hb.cY),0.15F));
+		AbstractDungeon.actionManager.addToTop(new VFXAction(this.owner, new ImmunityShieldEffect(this.owner.hb.cX,this.owner.hb.cY),0.10F));
 		return 0;
 	}
 
 	@Override
 	public int onAttacked(DamageInfo info, int damageAmount) {
-		AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new ImmunityShieldEffect(this.owner.hb.cX,this.owner.hb.cY),0.15F));
+		AbstractDungeon.actionManager.addToTop(new VFXAction(this.owner, new ImmunityShieldEffect(this.owner.hb.cX,this.owner.hb.cY),0.10F));
 		return super.onAttacked(info, 0);
 	}
 

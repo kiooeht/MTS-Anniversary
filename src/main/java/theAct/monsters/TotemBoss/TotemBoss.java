@@ -184,14 +184,14 @@ public class TotemBoss extends AbstractMonster {
     public void resolveTotemDeath(AbstractTotemSpawn m){
         this.stopTotemFall = true;
         livingTotems.remove(m);
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
+        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
 
         for (AbstractMonster m2 : livingTotems) {
 
             if (!m2.isDying) {
                 //Buff living totems before spawning new ones
                 this.getPower(TotemStrengthPower.powerID).flashWithoutSound();
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m2, this, new StrengthPower(m2, 1), 1));
+                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m2, this, new StrengthPower(m2, 1), 1));
             }
         }
 
@@ -200,7 +200,7 @@ public class TotemBoss extends AbstractMonster {
             //Totems are all dead - remove immunity and the totem shadow
             this.totemShadow.isDone = true;
             this.halfDead = false;
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this,this, TotemBossImmunityPower.powerID));
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this,this, TotemBossImmunityPower.powerID));
 
         } else if (remainingTotems.size() > 0) {
             //Spawn a new totem above if there are still any left in the array to kill
