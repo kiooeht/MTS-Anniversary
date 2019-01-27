@@ -81,8 +81,8 @@
       "After wandering through the jungle for what feels like an eternity, you come across a clearing with #pfruits neatly arrayed in the middle. NL NL You are #r@hungry@ from stumbling through this blasted place and would #p~love~ to eat some despite how bad of an idea that would be。",
       "You #p@MUST@ have some. You eat one, then another and when you've had your fill, just one more is all you need. NL Only 3 fruits remain: NL NL A somewhat tainted #rStrawberry looking like it would #rhurt to eat. NL A ~juicy~ #gPear that makes you #ywant #yto #ytake #ya #ybreak just looking at it. NL A #yMango which is so big that it would #ySlow you down.",
       "It would be foolish to partake in this obvious trap. A lone #rberry lies in a corner, it will suffice.",
-      "You take that last #ydelectable #ytreat and put it in your mouth. It #r@sizzles@ and #r~burns~ on its way down.",
-      "Nobody could deny such a #p@gift@ in your circumstances. With each bite, you feel your motivation being #y~sapped~ .",
+      "You take that last #ydelectable #ytreat and put it in your mouth.  #r@嘶@！ 它碰过的地方都感觉在 #r~灼烧~ 。",
+      "Nobody could deny such a #p@gift@ in your circumstances. 每咬一口，你都感觉你昏昏欲睡 #y~zzzzzz~ .",
       "你该从哪开始好呢？ The fruit seems to bear more of its #r~delicious~ #r~flesh~ every time you look at it. NL NL ~...~ NL NL 当你终于吃完了，你感觉自己非常胀而且行动 #y缓慢 ."
     ],
     "OPTIONS": [
@@ -349,15 +349,15 @@
     "NAME": "水果市场",
     "DESCRIPTIONS": [
       "A lush greenfield greets you with a curved and flowered log arch as the entrance. Etched on it reads #g\"STALK #gMARKET\". As you explore this curiously peaceful area populated with varying denizens of the Jungle, you understand what this place is about. It's the largest gathering center for exotic #gplants and #ycrops with each creature holding harvest yields with #ystalk #ycertificates.",
-      "Scattered around are many plots and gardens where everything grows. You enter one and are greeted by a dapper-looking, ecstatic gremlin. NL NL \"I've never seen your face here, you must be new to the #gStalk #gMarket! Would you like to buy a stalk from this plot? 我们这里有独家的 #r水果 与 #g蔬菜 ！只此一家！\"",
+      "附近坐落着许多的田地与花园，你进入了其中的一个被一位一身正装，欣喜若狂的地精缩接待。 NL NL \"我以前从来没有见过你，你一定是新来 #g水果市场 这地方的！ 你想从这片田里买点什么吗? 我们这里有独家的 #r水果 与 #g蔬菜 ！只此一家！\"",
       "\"Oh, I understand... But we have plenty of harvests for adventurers on the go as well!\" NL NL The gremlin gives you a personal tour through the field. She wasn't kidding; you don't recognize any of these plants, not even from before the #pSpireblight. NL NL \"...and over here, we have #rflamangos, sweet and spicy! And my personal favorite just right here, the #rcreamberry! They're so rich in flavor inside!\"",
-      "\"所以...有感兴趣的吗？ 不过，请记住，我们只允许给每位观光者出售 #b一种 水果\"",
+      "\"所以...有感兴趣的吗？ 不过，请记住，我们只允许给每位观光者出售 #b一种 水果。\"",
       "#g\"防风草， 一个#y简单 而又#g养生 的选择！许多的水果摊主甚至用这个来喂它们的孩子！对于成长非常有帮助！\" NL NL 用水冲洗之后，咬一口新鲜采摘的防风草，你感觉重获新生",
-      "#r\"火芒果, #r辣 到超乎你的想象！几乎和臭名昭著的 #p魔鬼椒 一样辣！\" NL NL 用水冲洗之后，将你的火芒果切成块。#r@好辣好辣好辣！",
-      "#g\"带壳豆 ，他们的口感一流！ 只需咬开大豆，然后咀嚼里面的小豆就好！\" NL NL 用水冲洗之后， you try out your farm-fresh #gshell #gpeas. You feel #ytough!",
+      "#r\"火芒果, #r辣 到超乎你的想象！几乎和大名鼎鼎的 #p魔鬼椒 一样辣！\" NL NL 用水冲洗之后，将你的火芒果切成块。#r@好辣好辣好辣！",
+      "#g\"带壳豆 ，他们的口感一流！ 只需咬开大豆，然后咀嚼里面的小豆就好！\" NL NL 用水冲洗之后，将刚采摘的新鲜 #g带壳豆 风干。 真正的 #y嚼劲 ！",
       "#r\"奶油浆果， 这才是#b绝对美味！吃过的人就知道 #b口水直流 到底是怎么样的了！\" NL NL 用水冲洗之后， 将刚采摘的新鲜奶油浆果含在嘴中. The #b真正的绝对美味 !",
-      "\"对不起，也许你对这里不是那么感兴趣。不过随时欢迎您的再次光临！\" NL NL You feel a little bad for not buying something given how much she seems to like her job, but so it goes.",
-      "Scattered around are many plots and gardens where everything grows. You enter one and are greeted by a #r@dapper-looking,@ ecstatic gremlin. NL NL \"I've never seen your face here, you must be new to the Stalk Market! Would you like to buy a stalk from this plot? We have special fruits and vegetables no other plot has!\""
+      "\"对不起，也许这块田提不起你的兴趣。不过随时欢迎您的再次光临！\" NL NL 你觉得什么都不买有一点对不起她的工作热情，但，就这样吧",
+      "附近坐落着许多的田地与花园，你进入了其中的一个被一位#r@一身正装@ ，欣喜若狂的地精缩接待。 NL NL \"我以前从来没有见过你，你一定是新来水果市场 这地方的！ 你想从这片田里买点什么吗? 我们这里有独家的水果与蔬菜 ！只此一家！\""
     ],
     "OPTIONS": [
       "[继续]",
