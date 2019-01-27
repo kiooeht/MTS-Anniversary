@@ -44,7 +44,7 @@ public class HunterSpyder extends Spyder{
         }      
         
         if (stronger) {
-        	this.damage.add(new DamageInfo(this, 2));
+        	this.damage.add(new DamageInfo(this, 3));
         	this.damage.add(new DamageInfo(this, 7));
         	
         } else if (AbstractDungeon.ascensionLevel >= (normal?2:4)){
@@ -67,8 +67,6 @@ public class HunterSpyder extends Spyder{
 		case 1:
 			AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0), AttackEffect.SLASH_VERTICAL, true));
 			AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0), AttackEffect.SLASH_DIAGONAL, true));
-			if(stronger)
-				AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0), AttackEffect.SLASH_HORIZONTAL, true));
             break;
 		case 2:
         	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WebbedPower(AbstractDungeon.player, 1), 1));

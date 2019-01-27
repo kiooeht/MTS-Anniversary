@@ -61,23 +61,23 @@ public class SneckoCultist extends AbstractMonster {
         this.dialogX = -50.0f * Settings.scale;
         this.dialogY = 50.0f * Settings.scale;
 
-        this.damage.add(new DamageInfo(this, WHIP_DAMAGE));
-        this.damage.add(new DamageInfo(this,TACKLE_DAMAGE));
-
-        if(AbstractDungeon.ascensionLevel >= 19)
+        if(AbstractDungeon.ascensionLevel >= 17)
         {
-            HP_MIN += 6;
-            HP_MAX += 6;
             CARDS_CONFUSED = 3;
-            WHIP_DAMAGE = 20;
-
-        }else if(AbstractDungeon.ascensionLevel >= 4)
+        }
+        if(AbstractDungeon.ascensionLevel >= 7)
         {
             HP_MIN += 4;
             HP_MAX += 4;
+        }
+        if(AbstractDungeon.ascensionLevel >= 2)
+        {
             CARDS_CONFUSED = 1;
             WHIP_DAMAGE = 20;
         }
+
+        this.damage.add(new DamageInfo(this, WHIP_DAMAGE));
+        this.damage.add(new DamageInfo(this, TACKLE_DAMAGE));
 
         this.setHp(HP_MIN, HP_MAX);
 
