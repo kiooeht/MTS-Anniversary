@@ -37,7 +37,7 @@
 		]
 	},
 	"theJungle:TotemHealthLinkPower": {
-		"NAME" : "Totemic Might",
+		"NAME" : "[DEPRECATED] Totemic Might",
 		"DESCRIPTIONS": [
 			"Whenever a Totem dies, loses ",
 			" HP."
@@ -70,14 +70,14 @@
 	"theJungle:MamaSneckoRevengePower": {
 		"NAME": "Enrage",
 		"DESCRIPTIONS": [
-			"Gains 1 Strength whenever a Minion is damaged.  Loses 2 Strength at the end of each turn."
+			"Whenever a #yBaby #ySnecko is hit, gains #b1 Strength."
 		]
 	},
 	"theJungle:TotemRevengeAttackPower": {
 		"NAME": "Totem Counter",
 		"DESCRIPTIONS": [
 			"Instantly attacks whenever you play a card that targets ALL enemies or multiple random enemies.",
-			"Cannot counterattack this turn due to being Stunned."
+			"Cannot counterattack this turn due to being #yStunned."
 		]
 	},
 	"theJungle:InfectiousSporesPower": {
@@ -97,8 +97,8 @@
 	"theJungle:RandomizePower": {
 		"NAME": "Selective Confusion",
 		"DESCRIPTIONS": [
-			"Randomize the cost of the first 2 cards you draw next turn.",
-			"Randomize the cost of the first 2 cards you draw for the next ",
+			"Randomize the cost of the first #b2 cards you draw next turn.",
+			"Randomize the cost of the first #b2 cards you draw for the next ",
 			" turns."
 		]
 	},
@@ -106,8 +106,8 @@
 		"NAME" : "Cautious",
 		"DESCRIPTIONS": [
 			"After receiving attack damage #b",
-			" more time this turn, becomes Stunned.",
-			" more times this turn, becomes Stunned.",
+			" more time this turn, becomes #yStunned.",
+			" more times this turn, becomes #yStunned.",
 			"This enemy's caution is broken."
 		]
 	},
@@ -165,7 +165,7 @@
 		]
 	},
     "theJungle:Mourning": {
-		"NAME" : "Mourning",
+		"NAME" : "[DEPRECATED] Mourning",
 		"DESCRIPTIONS": [
 			"Whenever this enemy loses #gGuard, it becomes stunned and loses all its #yArtifact."
 		]
