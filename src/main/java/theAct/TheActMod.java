@@ -116,8 +116,8 @@ public class TheActMod implements
                 }));
         BaseMod.addMonster(JungleEncounterIDList.FLAMEANGO_AND_BYRD_ENCOUNTER_ID, "Flameango and Byrd", () -> new MonsterGroup(
                 new AbstractMonster[] {
-                        new Flameango(50),
-                        new Byrd(-305.0F, 110.0F)
+                        new Byrd(-305.0F, 110.0F),
+                        new Flameango(50)
                 }));
         BaseMod.addMonster(JungleEncounterIDList.GIANT_WRAT_ENCOUNTER_ID, () -> new GiantWrat(-85.0F, -15.0F));
         BaseMod.addMonster(JungleEncounterIDList.FIVE_SPYDERS_ENCOUNTER_ID, "Spider Swarm", () -> new MonsterGroup(
