@@ -33,6 +33,8 @@ public class BashTotem extends AbstractTotemSpawn {
 
     public Integer attackDmg;
 
+    public static Color totemColor = Color.RED;
+
     public BashTotem(TotemBoss boss, boolean spawnedIn) {
         super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemred.png"), spawnedIn);
         this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/red/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/red/Totem.json"), 1.0F);
@@ -51,6 +53,8 @@ public class BashTotem extends AbstractTotemSpawn {
         this.intentType = Intent.ATTACK;
 
         this.damage.add(new DamageInfo(this, this.attackDmg));
+
+        this.totemLivingColor = totemColor;
     }
 
     @Override

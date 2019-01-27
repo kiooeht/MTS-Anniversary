@@ -32,6 +32,8 @@ public class ConfuseTotem extends AbstractTotemSpawn {
 
     public Integer secondaryEffect;
 
+    public static Color totemColor = Color.WHITE;
+
 
     public ConfuseTotem(TotemBoss boss, boolean spawnedIn) {
         super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemyellow.png"), spawnedIn);
@@ -49,6 +51,8 @@ public class ConfuseTotem extends AbstractTotemSpawn {
         }
 
         this.intentType = Intent.DEBUFF;
+
+        this.totemLivingColor = totemColor;
 
     }
 
