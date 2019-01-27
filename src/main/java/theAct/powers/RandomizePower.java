@@ -42,7 +42,7 @@ public class RandomizePower extends Power implements OnCardDrawPower {
 
     @Override
     public void onCardDraw(AbstractCard c){
-        if (amount > 0 && c.cost >= 0 && this.cardsRandomizedThisTurn < 2) {
+        if (c.cost >= 0 && this.cardsRandomizedThisTurn < 2) {
             int newCost = AbstractDungeon.cardRandomRng.random(3);
             c.superFlash(Color.LIME.cpy());
             if (c.cost != newCost) {
