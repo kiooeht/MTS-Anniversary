@@ -7,7 +7,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.Shovel;
 import com.megacrit.cardcrawl.vfx.RainingGoldEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
@@ -72,7 +74,14 @@ public class LostInTheJungle extends AbstractImageEvent {
                     break;
                 case 1:
                     this.screen = Screen.LEAVE;
-                    AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, new Shovel());
+                    AbstractRelic shovel = RelicLibrary.getRelic(Shovel.ID).makeCopy();
+                    AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, shovel);
+                    if (shovel.tier == AbstractRelic.RelicTier.RARE) {
+                        AbstractDungeon.rareRelicPool.removeIf(id ->  id.equals(Shovel.ID));
+                    }
+                    else {
+                        TheActMod.logger.info("WHO CHANGED THE SHOVEL RARITY?! -BD");
+                    }
                     this.imageEventText.updateBodyText(DESCRIPTIONS[5]);
                     this.imageEventText.clearAllDialogs();
                     this.imageEventText.setDialogOption(OPTIONS[9]);
