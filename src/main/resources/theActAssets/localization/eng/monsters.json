@@ -19,12 +19,7 @@
 			"Slam",
 			"Flail"
 		],
-		"NAME": "Giant Wrat",
-		"DIALOG": [
-			"Absolute Unit",
-			"Megachonker",
-			"ROUS"
-		]
+		"NAME": "Giant Wrat"
 	},
 	"theJungle:Phrog": {
 		"MOVES": [

@@ -22,7 +22,6 @@ public class GiantWrat extends AbstractMonster {
     public static final String ID = TheActMod.makeID("GiantWrat");
     private static final MonsterStrings MONSTER_STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = MONSTER_STRINGS.NAME;
-    public static final String CRAPPIEST_NAME = MONSTER_STRINGS.DIALOG[MathUtils.random(0, 2)];
     public static final String[] MOVES = MONSTER_STRINGS.MOVES;
     private static final float HB_X = -75.0F;
     private static final float HB_Y = 0.0F;
@@ -62,15 +61,9 @@ public class GiantWrat extends AbstractMonster {
         super(NAME, ID, HP_MAX, HB_X, HB_Y, HB_W, HB_H, null, x, y);
         if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(ASC_HP_MIN, ASC_HP_MAX);
-            if (this.maxHealth == ASC_HP_MAX && MathUtils.randomBoolean(0.05F)) {
-                this.name = CRAPPIEST_NAME;
-            }
         }
         else {
             setHp(HP_MIN, HP_MAX);
-            if (this.maxHealth == HP_MAX && MathUtils.randomBoolean(0.15F)) {
-                this.name = CRAPPIEST_NAME;
-            }
         }
         if (AbstractDungeon.ascensionLevel >= 17) {
             this.fatBurnerStrengthGainAmount = ASC2_FAT_BURNER_STRENGTH_GAIN_AMOUNT;
@@ -117,16 +110,6 @@ public class GiantWrat extends AbstractMonster {
 
     public GiantWrat() {
         this(0.0F, 0.0F);
-    }
-
-    @Override
-    public void loadAnimation(final String atlasUrl, final String skeletonUrl, float scale) {
-        if (this.name.equals(CRAPPIEST_NAME)) {
-            super.loadAnimation(atlasUrl, skeletonUrl, scale - 0.2F);
-        }
-        else {
-            super.loadAnimation(atlasUrl, skeletonUrl, scale);
-        }
     }
 
     @Override
