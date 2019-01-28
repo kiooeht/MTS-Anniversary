@@ -19,7 +19,8 @@
 			"Slam",
 			"Flail"
 		],
-		"NAME": "Giant Wrat"
+		"NAME": "Giant Wrat",
+		"DIALOG": []
 	},
 	"theJungle:Phrog": {
 		"MOVES": [

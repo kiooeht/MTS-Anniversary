@@ -70,7 +70,7 @@
 	"theJungle:MamaSneckoRevengePower": {
 		"NAME": "Enrage",
 		"DESCRIPTIONS": [
-			"Whenever a #yBaby #ySnecko is hit, gains #b1 Strength."
+			"Whenever a #yBaby #ySnecko is hit, gains #b1 Strength. NL At the end of its turn, loses #b2 Strength (cannot go negative)."
 		]
 	},
 	"theJungle:TotemRevengeAttackPower": {
