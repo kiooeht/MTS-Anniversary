@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.audio.Sfx;
 import com.megacrit.cardcrawl.audio.SoundMaster;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -247,7 +248,10 @@ public class TheActMod implements
     public void receiveEditStrings()
     {
         String language = "eng";
-        // TODO: Language support
+
+        if (Settings.language == Settings.GameLanguage.ZHS) language = "zhs";
+        if (Settings.language == Settings.GameLanguage.KOR) language = "kor";
+
         String path = "localization/" + language + "/";
 
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));

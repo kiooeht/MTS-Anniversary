@@ -13,24 +13,29 @@ import com.esotericsoftware.spine.AnimationState.TrackEntry;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.unique.IncreaseMaxHpAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
+import com.megacrit.cardcrawl.vfx.combat.HemokinesisEffect;
 import com.megacrit.cardcrawl.vfx.combat.IntimidateEffect;
 import theAct.TheActMod;
+import theAct.actions.IncreaseMaxHPFlatAction;
 import theAct.actions.SnakeMissileAction;
 import theAct.actions.TotemBossMakeUntargetable;
 import theAct.actions.TotemFallWaitAction;
 import theAct.powers.TotemBossImmunityPower;
 import theAct.powers.TotemHealthLinkPower;
 import theAct.powers.TotemStrengthPower;
+import theAct.vfx.TotemBossHPEffect;
 import theAct.vfx.TotemShadowParticle;
 
 import java.util.ArrayList;
@@ -55,9 +60,12 @@ public class TotemBoss extends AbstractMonster {
     public int encounterSlotsUsed = 1;
     public int totemsSpawned = 0;
     public ArrayList<Integer> remainingTotems = new ArrayList<>();
+    public ArrayList<Color> remainingColors = new ArrayList<>();
     public ArrayList<AbstractTotemSpawn> livingTotems = new ArrayList<>();
 
     private boolean firstTurn = true;
+
+    private boolean firstTotemDrop = true;
 
     public TotemBoss() {
         super(NAME, ID, 50, 0.0F, -30.0F, 220.0F, 320.0F, (String)null, -20.0F, 10.0F);
@@ -96,8 +104,9 @@ public class TotemBoss extends AbstractMonster {
         e.setTime(e.getEndTime() * MathUtils.random());
 
         this.powers.add(new TotemStrengthPower(this));
-        this.powers.add(new TotemBossImmunityPower(this));
+        //this.powers.add(new TotemBossImmunityPower(this));
 
+        this.firstTotemDrop = true;
 
     }
 
@@ -112,9 +121,17 @@ public class TotemBoss extends AbstractMonster {
         remainingTotems.add(4);
         remainingTotems.add(5);
         remainingTotems.add(6);
-        if (AbstractDungeon.ascensionLevel >= 9) remainingTotems.add(7);
+
+
+
+        if (AbstractDungeon.ascensionLevel >= 9){
+            remainingTotems.add(7);
+
+        }
 
         Collections.shuffle(remainingTotems,AbstractDungeon.cardRng.random);
+
+
 
         spawnNewTotem();
         spawnNewTotem();
@@ -124,6 +141,7 @@ public class TotemBoss extends AbstractMonster {
 
         AbstractDungeon.effectList.add(this.totemShadow);
 
+        initialMaxHPBoost();
         //this.halfDead = true;
 
     }
@@ -171,6 +189,7 @@ public class TotemBoss extends AbstractMonster {
 
 
             remainingTotems.remove(chosen);
+            remainingColors.remove(chosen);
             livingTotems.add(m);
             this.encounterSlotsUsed++;
             TheActMod.logger.info("Spawning Monster");
@@ -185,6 +204,11 @@ public class TotemBoss extends AbstractMonster {
         this.stopTotemFall = true;
         livingTotems.remove(m);
         AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
+
+        if (this.getPower(TotemBossImmunityPower.powerID).amount == 1){
+            ((TotemBossImmunityPower) this.getPower(TotemBossImmunityPower.powerID)).unremovable = false;
+        }
+        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(this, this, this.getPower(TotemBossImmunityPower.powerID), 1));
 
         for (AbstractMonster m2 : livingTotems) {
 
@@ -223,13 +247,58 @@ public class TotemBoss extends AbstractMonster {
         }
     }
 
-
     public void totemStoppedFalling() {
         if (totemSfxTimer <= 0.f) { // Don't overlap effects
             totemSfxTimer = 1.0f;
             CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.MED, true);
             CardCrawlGame.sound.playAV(TheActMod.makeID("totemSmash"), 0.1f, 2.0f);
         }
+    }
+
+    public void initialMaxHPBoost(){
+        float yOffset = -100 * Settings.scale;
+        float xOffset = -150 * Settings.scale;
+        TheActMod.logger.info("Totem boss max HP buff hit");
+
+        AbstractDungeon.actionManager.addToBottom(new WaitAction(0.1F));
+        AbstractDungeon.actionManager.addToBottom(new WaitAction(0.1F));
+        AbstractDungeon.actionManager.addToBottom(new WaitAction(0.1F));
+        for (int i = 0; i < livingTotems.size(); i++) {
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(new TotemBossHPEffect(this.hb.cX + xOffset, this.hb.cY + yOffset, this.hb.cX, this.hb.cY, this.livingTotems.get(i).totemLivingColor), 0.25F));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this,this, new TotemBossImmunityPower(this),1));
+            yOffset += 200 * Settings.scale;
+        }
+        for (int i = 0; i < remainingTotems.size(); i++) {
+            Color particleColor = Color.BLACK;
+            switch (remainingTotems.get(i)) {
+                case 1:
+                    particleColor = BashTotem.totemColor;
+                    break;
+                case 2:
+                    particleColor = DoubleStrikeTotem.totemColor;
+                    break;
+                case 3:
+                    particleColor = AttackAndShieldTotem.totemColor;
+                    break;
+                case 4:
+                    particleColor = ShieldOtherTotem.totemColor;
+                    break;
+                case 5:
+                    particleColor = BuffTotem.totemColor;
+                    break;
+                case 6:
+                    particleColor = DebuffTotem.totemColor;
+                    break;
+                case 7:
+                    particleColor = ConfuseTotem.totemColor;
+                    break;
+            }
+
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(new TotemBossHPEffect(this.hb.cX + xOffset, this.hb.cY + yOffset, this.hb.cX, this.hb.cY, particleColor), 0.25F));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this,this, new TotemBossImmunityPower(this),1));
+            yOffset += 200 * Settings.scale;
+        }
+
     }
 
     public void takeTurn() {
@@ -266,7 +335,7 @@ public class TotemBoss extends AbstractMonster {
 
             case 2:
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "SUMMON"));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new VulnerablePower(AbstractDungeon.player, this.debuffAmt, true), this.debuffAmt));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new FrailPower(AbstractDungeon.player, this.debuffAmt, true), this.debuffAmt));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WeakPower(AbstractDungeon.player, this.debuffAmt, true), this.debuffAmt));
                 AbstractDungeon.actionManager.addToBottom(new SFXAction("MONSTER_SNECKO_GLARE"));
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new IntimidateEffect(this.hb.cX, this.hb.cY), 0.5F));

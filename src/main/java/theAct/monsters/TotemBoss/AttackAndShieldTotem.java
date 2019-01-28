@@ -39,6 +39,8 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
     public Integer attackDmg;
     public Integer secondaryEffect;
 
+    public static Color totemColor = Color.PURPLE;
+
     public AttackAndShieldTotem(TotemBoss boss, boolean spawnedIn) {
         super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemorange.png"), spawnedIn);
         this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/purple/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/purple/Totem.json"), 1.0F);
@@ -57,9 +59,12 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
             this.secondaryEffect = 3;
         }
 
+        this.totemLivingColor = totemColor;
+
         this.damage.add(new DamageInfo(this, this.attackDmg));
 
         this.intentType = Intent.ATTACK_DEFEND;
+
     }
 
 

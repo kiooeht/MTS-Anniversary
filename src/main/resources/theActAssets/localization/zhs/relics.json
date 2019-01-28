@@ -1,0 +1,96 @@
+{
+  "theJungle:PaperFaux": {
+    "NAME": "纸狐",
+    "DESCRIPTIONS": [
+      "每当你给予 #y虚弱 时，额外给予 #b",
+      " 层#y虚弱。 每当你给予 #y易伤 时，额外给予 #b",
+      " 层#y易伤"
+    ],
+    "FLAVOR": "A silent effigy you found in the forest clearing. It seems to be watching you."
+  },
+  "theJungle:SpiritDisease": {
+    "NAME": "魂灵疫病",
+    "DESCRIPTIONS": ["The next non-boss chest you open will have its relic replaced with #rSpirit #rPoop."],
+    "FLAVOR": "喝了奇怪的水之后的奇怪疫病... 你感觉不舒服.."
+  },
+  "theJungle:SneckoAutograph": {
+    "NAME": "异蛇偶像的签名",
+    "DESCRIPTIONS": [
+      "[#2aecd7]在商店中右击使用[] NL",
+      " 随机获取其中的一样遗物",
+      "谁能想到商人是个异蛇死忠粉呢",
+      "我爱异蛇妹子!!"
+    ],
+    "FLAVOR": "To Snecko's #0-3 fan."
+  },
+  "theJungle:WildMango": {
+    "NAME": "野芒果",
+    "FLAVOR": "A succulent fruit grown within the spire, not meant to be consumed by the untainted.",
+    "DESCRIPTIONS": [
+      "当你拾起这个遗物时，提升最大生命#b",
+      ". 在每场战斗开始时，获得#y缓慢"
+    ]
+  },
+  "theJungle:WildStrawberry": {
+    "NAME": "野草莓",
+    "FLAVOR": "A delicious fruit tainted ever so slightly by the blight.",
+    "DESCRIPTIONS": [
+      "当你拾起这个遗物时，提升最大生命#b",
+      " 并且受到 #b",
+      " 点伤害."
+    ]
+  },
+  "theJungle:WildPear": {
+    "NAME": "野梨子",
+    "FLAVOR": "Not even this fruit was spared from the blight.",
+    "DESCRIPTIONS": [
+      "当你拾起这个遗物时，提升最大生命#b",
+      ". 在每场战斗开始时，获得#b1 层#y怠惰"
+    ]
+  },
+  "theJungle:BirthdayCakeSlice": {
+    "NAME": "一块生日蛋糕",
+    "FLAVOR": "庆祝用的一小块精致的生日蛋糕",
+    "DESCRIPTIONS": [
+      "当你拾起这个遗物时，提升最大生命#b"
+    ]
+  },
+  "theJungle:BirthdayCake": {
+    "NAME": "羞耻的生日蛋糕",
+    "FLAVOR": "It's tasty, but you feel only shame from eating it.",
+    "DESCRIPTIONS": [
+      "当你拾起这个遗物时，提升最大生命#b",
+      "在战斗开始时, 将一张#r羞耻 洗入你的抽牌堆"
+    ]
+  },
+  "theJungle:ParSnip": {
+    "NAME": "防风草",
+    "FLAVOR": "除了名字外绝对比你吃的一般蔬菜要好！ 富含维他命！",
+    "DESCRIPTIONS": [
+      "拾起这个遗物的时候， #y升级 所有的 #y基础 卡牌"
+    ]
+  },
+  "theJungle:ShellPeas": {
+    "NAME": "带壳豆",
+    "FLAVOR": "这些巨大的豆子里面还真有一些尺寸正常的豆子。嚼起来口感也颇为有趣。",
+    "DESCRIPTIONS": [
+      "每当你被攻击时，获得 #b",
+      " #y点临时血量"
+    ]
+  },
+  "theJungle:Flamango": {
+    "NAME": "火芒果",
+    "FLAVOR": "一个内含被遗忘的火焰之力的芒果，好辣！",
+    "DESCRIPTIONS": [
+      "每当你打出一张 #y攻击牌 的时，在回合结束的时候对所有敌人造成 #b",
+      " 点伤害"
+    ]
+  },
+  "theJungle:Creamberry": {
+    "NAME": "奶油浆果",
+    "FLAVOR": "一个被天然香草霜包裹的草莓，好吃！",
+    "DESCRIPTIONS": [
+      "所有之后的 #y罕见 与 #y稀有 卡牌奖励都将是被 #y升级 过的."
+    ]
+  }
+}

@@ -38,7 +38,7 @@ import java.util.Iterator;
 public class AbstractTotemSpawn extends AbstractMonster {
     public TotemBoss owner;
 
-    public Integer baseHP = 45;
+    public Integer baseHP = 40;
     public Integer HPAscBuffed = 0;
     private Method refrenderIntentVfxBehind;
     private Method refrenderIntent;
@@ -67,6 +67,8 @@ public class AbstractTotemSpawn extends AbstractMonster {
     public Intent intentType = Intent.BUFF;
     private boolean wasFalling = false;
     private boolean spawnedAfterFirst3 = false;
+
+    public Color totemLivingColor;
 
 
     public AbstractTotemSpawn(String name, String ID, TotemBoss boss, String imgPath, Boolean spawnedAfterFirst3) {

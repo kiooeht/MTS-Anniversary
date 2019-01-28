@@ -23,7 +23,7 @@ public class DefenderSpyder extends Spyder{
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     
-    public static final int HP = 10;
+    public static final int HP = 13;
     
     public DefenderSpyder(float x, float y, int slot) {
     	this(x, y, slot, 0, true);

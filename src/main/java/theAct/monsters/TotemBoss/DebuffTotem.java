@@ -43,6 +43,8 @@ public class DebuffTotem extends AbstractTotemSpawn {
     public Integer attackDmg;
     public Integer secondaryEffect;
 
+    public static Color totemColor = Color.ORANGE;
+
 
     public DebuffTotem(TotemBoss boss, boolean spawnedIn) {
         super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemyellow.png"), spawnedIn);
@@ -64,6 +66,8 @@ public class DebuffTotem extends AbstractTotemSpawn {
         this.damage.add(new DamageInfo(this, this.attackDmg));
 
         this.intentType = Intent.ATTACK_DEBUFF;
+
+        this.totemLivingColor = totemColor;
 
     }
 

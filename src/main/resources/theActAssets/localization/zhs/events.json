@@ -1,0 +1,374 @@
+{
+  "theJungle:ForkInTheRoad": {
+    "NAME": "Fork in the Road",
+    "DESCRIPTIONS": [
+      "You continue on your journey through the spire.\n NL After a long trek, you come upon a fork in the road.\n\n NL NL There is a signpost, but you can't make out the writing.\n\n NL  NL To your left you spot the outline of #btall #bbuildings in the distance, while the path to the right shows #ggrass and #gtrees."
+    ],
+    "OPTIONS": [
+      ".",
+      "[向左走] 前往 ",
+      "[向右走] 前往 "
+    ]
+  },
+  "theJungle:River": {
+    "NAME": "精神长河",
+    "DESCRIPTIONS": [
+      "Lost and thirsty, you are pleasantly surprised by a river running across your path. However, a cautious taste of the water reveals a suspicious taste...",
+      "Drinking the water, you initially feel ~refreshed~ , however, you soon feel ~unwell~ from drinking the tainted water.",
+      "Not wanting to take a risk, you ford the river and move on."
+    ],
+    "OPTIONS": [
+      "[痛饮] #g从你的卡组中 #g移除 #g",
+      " 张#g卡牌。 #r获得精神疾病",
+      "[离开]",
+      "选择 ",
+      " 张牌移除。",
+      "确认要移除的卡牌"
+    ]
+  },
+  "theJungle:ShamanCauldron": {
+    "NAME": "A Mysterious Cauldron",
+    "DESCRIPTIONS": [
+      "As you trudge through the jungle you spot a cave with faint green smoke pouring out.\n When you enter, you spot a lone figure wearing traditional shaman's attire crouching on the floor beside a bubbling cauldron.\n Rocking back and forth, he looks up at you, letting you catch a glimpse of green skin.\n NL \" #y@KIKIKIKIKI@ you MUST try my latest brew, I've made a delicious potion for you!\n NL I'm missing #bone #bkey #bingredient you see, either your #gpotions or your #rblood... what will it be?\"",
+      "You cautiously extend your arm and the shaman eagerly grabs it and holds it over the cauldron. \n NL NL #r@SLICE@ NL NL \n The shaman cackles as the brew turns into a murky brown color.\n The figure leans forward and his long tongue slithers out and tastes it.\n He shudders. NL NL \" #y@PEEEEEERFECT@ \"",
+      "You walk forward and dump your potions into the cauldron. \n The shaman cackles as the liquid turns into a murky brown color, stirring it quickly.\n The figure leans forward and his tongue, long and pink, ~slithers~ out and tastes it.\n He @shudders.@ NL NL \" #y@PEEEEEERFECT@ \"",
+      "You turn around and walk away. He's clearly too obsessed with potions.",
+      "You fill up your potion slots. Hopefully you made the right choice."
+    ],
+    "OPTIONS": [
+      "[伸出手] #r失去 #r8 #r点生命。 #g补充满所有的药水栏位",
+      "[交出药水] #r失去所有的药水。 #g补充满所有的药水栏位",
+      "[离开]",
+      "[补充满所有的药水栏位]",
+      "[继续]"
+    ]
+  },
+  "theJungle:SneckoCultEvent": {
+    "NAME": "Cult of The Snecko",
+    "DESCRIPTIONS": [
+      "Parting through the jungle trees, you come across a clearing with a ~strange~ altar in the center. NL Around it, you see various figures in robes and ceremonial gear surrounding a small Snecko. The @joyful@ laughter of children can be heard in the distance.",
+      "You walk straight to the altar in the center. NL NL Something about this sphere irritates you... NL The priest turns to you, singing loudly with a high pitch: #g~\"Aall~ #g~hai-iil~ #g~to~ #g~Snecko!\"~ NL You realize that the sphere in his hands is actually an exceptionally large eye. It gazes at you with an immense power, pulling your mind in. ~It~ ~is~ ~hard~ ~to~ ~resist...~ NL #g@\"Aaall@ #g@hai-iiiil@ #g@to@ #g@Snecko!\"@ NL No, this was not you who just sang along, right? ",
+      "One of the children almost discovered you by searching for a hideout. You suggest to the tribal children that you could play #phide-and-seek with them. NL \"Deal, and you will win a prize if you find all of us!\" NL NL Well, you are a bit older than them, but you don't know this place as well as they do... After a while of searching, the priest hints you to a stone plate. There you find all of them giggling together. The oldest one hands you a small animal as prize.",
+      "You hear children playing on a clearing. Lurking behind two trees, you catch a sight that leaves you puzzled: You see #bchildren of the local tribe playing with small green toy reptils. They are running around a rounded stone altar where a #bmasked #bpriest is preparing some kind a ritual involving a big white sphere. NL It seems like nobody here would harm you, with these children running around... NL Where should you go?"
+    ],
+    "OPTIONS": [
+      "[牧师] #b永久性的随机你的牌组中的卡牌耗能",
+      "[孩子] #g获得宠物异蛇",
+      "[离开]",
+      "[离开]",
+      "选择一张牌变化"
+    ]
+  },
+  "theJungle:SneckoIdol": {
+    "NAME": "异蛇生放送！？",
+    "DESCRIPTIONS": [
+      "#g~SNECKO~ #g~SNECKO~ #g~SNECKO~ NL @Thunderous@ applause breaks out as a girl in a Snecko onesie finishes a song and dance on stage. NL \"That was 'You Confuse My Heart'\"! NL #g~ENCORE~ #g~ENCORE~ #g~ENCORE~ NL Maybe it wouldn't be such a bad thing to stick around?",
+      "You decide to stay for the #g~jammin'~ tunes. The energetic concert @flows@ into your veins and you can't help but stay around to gather your newfound obsession's autograph. NL \" #g@Hey!@ \", the girl in the Snecko Onesie beams at you. \"Here's my autograph!\" NL You take it and walk off knowing you just spent time #robsessing over an idol.",
+      "Overcome with #r@rage@ from seeing another Snecko, you draw your weapon and charge towards the stage. The #r@HORDE@ of idol fanatics push you back and don't let you pass. NL On the bright side, they dropped some Snecko merch you pawn off to fans who couldn't get into the audience.",
+      "Deciding this was not worth your time, you leave the concert alone."
+    ],
+    "OPTIONS": [
+      "[驻足] #g获得异蛇偶像的签名 #r被诅咒——羞耻。",
+      "[攻击] #g获得 #g",
+      " #g金币. #r受到 #r",
+      " 点#r伤害.",
+      "[离开]"
+    ]
+  },
+  "theJungle:ExcessResources": {
+    "NAME": "Nature's Temptation",
+    "DESCRIPTIONS": [
+      "After wandering through the jungle for what feels like an eternity, you come across a clearing with #pfruits neatly arrayed in the middle. NL NL You are #r@hungry@ from stumbling through this blasted place and would #p~love~ to eat some despite how bad of an idea that would be.",
+      "You #p@MUST@ have some. You eat one, then another and when you've had your fill, just one more is all you need. NL Only 3 fruits remain: NL NL A somewhat tainted #rStrawberry looking like it would #rhurt to eat. NL A ~juicy~ #gPear that makes you #ywant #yto #ytake #ya #ybreak just looking at it. NL A #yMango which is so big that it would #ySlow you down.",
+      "It would be foolish to partake in this obvious trap. A lone #rberry lies in a corner, it will suffice.",
+      "You take that last #ydelectable #ytreat and put it in your mouth. It #r@sizzles@ and #r~burns~ on its way down.",
+      "Nobody could deny such a #p@gift@ in your circumstances. With each bite, you feel your motivation being #y~sapped~ .",
+      "Where do you even start? The fruit seems to bear more of its #r~delicious~ #r~flesh~ every time you look at it. NL NL ~...~ NL NL When you finally finish, you feel stuffed and #yslow ."
+    ],
+    "OPTIONS": [
+      "[屈服] 屈服于你的欲望",
+      "[抵抗] 一个小浆果满足了你。 #g恢复 #g%d #g点生命。",
+      "继续你的旅程",
+      "[吃掉] #g获得 #r野草莓",
+      "[咽下] #g获得 #g野梨子",
+      "[吞食] #g获得 #y野芒果"
+    ]
+  },
+  "theJungle:GremlinQuiz": {
+    "NAME": "Gremlin Quiz Show",
+    "DESCRIPTIONS": [
+      "\" LIGHTS. CAMERA. #p@ACTION!@ \" NL NL A gremlin with a wide smile approaches you. NL NL \" It's time again for the Spire-Famous Gremlin Quiz Show! I've got questions for you, here's your chance to win some #gfabulous #gprizes! NL Are you ~R~ ~E~ ~A~ ~D~ ~Y~ ~?~ Of course you are! \"",
+      "\" Please wait while we tally your score... NL NL You got #b%d #bout #bof #b%d questions right! NL ",
+      "#gYou #gdid #ggreat! NL Here is your prize. \"",
+      "#rHow #rdisappointing... \"",
+      "Do better next time. \"",
+      "铜制人偶的最强攻击叫什么？",
+      "",
+      "辨别这张图中的敌人是谁",
+      "theActAssets/images/events/quiz/identify1.png",
+      "辨别这张图中的敌人是谁",
+      "theActAssets/images/events/quiz/identify2.png",
+      "红面具强盗团的出场顺序（从左到右）依次是？",
+      "images/events/redMaskTomb.jpg",
+      "以下哪张卡不是猎人的",
+      "",
+      "这张卡是什么？",
+      "theActAssets/images/events/quiz/card1.png",
+      "以下那个敌人能对你上虚弱？",
+      "",
+      "以下哪个敌人使用左手拿武器的？",
+      "",
+      "塔内增生组织有几根触手？",
+      "",
+      "找到这张卡对应的测试玩家画风",
+      "theActAssets/images/events/quiz/card2.png",
+      "这是什么能力",
+      "theActAssets/images/events/quiz/power1.png",
+      "这是什么能力",
+      "theActAssets/images/events/quiz/power2.png",
+      "这张图里缺了什么？",
+      "theActAssets/images/events/quiz/card3.png",
+      "如果你这三样水果全拿到了，一共会会提高多少最大生命？",
+      "",
+      "说出图片中展示出来的两个诅咒的名字",
+      "theActAssets/images/events/quiz/curses1.png",
+      "进阶16有什么影响",
+      "",
+      "图片中的这个遗物是什么稀有度的？",
+      "theActAssets/images/events/quiz/relic1.png",
+      "图片中的这个遗物是什么稀有度的？",
+      "theActAssets/images/events/quiz/relic2.png",
+      "图片中的这个遗物是什么稀有度的",
+      "theActAssets/images/events/quiz/relic3.png"
+    ],
+    "OPTIONS": [
+      "[Begin Quiz]",
+      "[领取奖励] ",
+      " #g获得 #g%d #g金币",
+      " #r失去 #r%d #r点生命.",
+      "[离开]",
+
+      "[Aπ] ",
+      "[Bπ] ",
+      "[Cπ] ",
+      "[Dπ] ",
+
+      "扫荡射线",
+      ">超能光束",
+      "超能爆炸",
+      "破坏死光",
+
+      ">被拣选者，异蛇，小黑",
+      "真菌兽，被拣选者，尖刺史莱姆",
+      "异蛇，酸性史莱姆，邪教徒",
+      "觉醒者, 虱虫, 蛇花",
+
+      ">巨口，六火幽魂，倏忽魔",
+      "甜圈，塔内增生组织，巨口",
+      "大鄂虫，甜圈，守护者",
+      "扭曲团块，真菌兽，带壳寄生怪",
+
+      ">尖尖，罗密欧，熊",
+      "熊，尖尖，罗密欧",
+      "罗密欧，尖尖，熊",
+      "尖尖，熊，罗密欧",
+
+      ">刀刃风暴",
+      "闪躲翻滚",
+      "双重存在",
+      "千穿百刺",
+
+      "启动流程",
+      ">递归",
+      "机械学习",
+      "硬化机体",
+
+      "尖刺史莱姆",
+      "红虱虫",
+      "火大地精",
+      ">奴隶贩子",
+
+      "收藏家",
+      "时光吞噬者",
+      "神秘术士",
+      ">百夫长",
+
+      "一",
+      "二",
+      ">三",
+      "四",
+
+      "img:images/1024PortraitsBeta/green/skill/backflip.png",
+      "img:images/1024PortraitsBeta/green/skill/outmaneuver.png",
+      "img:images/1024PortraitsBeta/green/skill/blur.png",
+      ">img:images/1024PortraitsBeta/green/skill/acrobatics.png",
+
+      ">激怒",
+      "勒脖",
+      "神气致胜",
+      "跟踪锁定",
+
+      ">金属化",
+      "敏捷",
+      "壁垒",
+      "多层护甲",
+
+      ">一个炸弹",
+      "一个壶",
+      "一把刀",
+      "一个注射器",
+
+      ">31",
+      "34",
+      "29",
+      "26",
+
+      ">羞耻与苦恼",
+      "悔恨与痛苦",
+      "羞耻与受伤",
+      "傲慢与会很",
+
+      ">商店要价更高",
+      "部分事件变得更加不利",
+      "Boss敌人拥有更多生命",
+      "升级过的牌出现频率下降",
+
+      ">普通",
+      "罕见",
+      "稀有",
+      "商店",
+
+      "普通",
+      "罕见",
+      ">稀有",
+      "商店",
+
+      "普通",
+      "罕见",
+      "稀有",
+      ">商店"
+    ]
+  },
+  "theJungle:FauxPas": {
+    "NAME": "Faux Pas",
+    "DESCRIPTIONS": [
+      "As you walk through a #gdense #gportion of the Jungle, walls of trees seem to ~bend~ ~and~ ~twist~ into a narrow passageway. You catch a flash of light reflecting off several pairs of eyes, #y~skulking~ in the #pshadows near the tunnel of trees, watching your approach.",
+      "You decide to explore the strange formation of trees. As you walk the path, you are constantly surrounded by the ~rustling~ ~of~ #g~leaves,~ hushed whispers, and @muffled@ @laughter.@ Eventually, you find yourself approaching a clearing in the dense trees, with a #ystrange #yeffigy located on a stump right in the center. Just when you think you're walking right into an ambush, a #ysmall #yorange #yfaux ~leaps~ from behind a tree and sits at the entrance to the clearing in front of you, eyeing you curiously.",
+      "You decide, this time, that discretion is the better part of valor and make your way around the cluster of trees.",
+      "Something about the #yplayful #yfauxes captures a rare part of your imagination. You decide to humor the #yfaux and, before you know it, you find yourself caught up in their various games. NL NL Some time later you find yourself back at the entrance of the trees, out of breath but with a #rrenewed #rvigor for your quest.",
+      "A #p~hushed~ #p~silence~ falls over the clearing, and you could swear you see the faux's expression change to one of #p~deep~ #p~sadness.~ You turn to look at a quiet @sniffle@ you hear to your right, but there is nothing. When you look back, the faux's leader is gone. NL NL All that's left is the #ystrange #yobject on the stump, which you decide to take back with you, along with a deep #psense #pof #pshame for having disappointed the forest's critters.",
+      "You can only assume this is a trap. You decide to turn and flee. NL NL The fauxes begin crying excitedly. #b\"A #brace?\" #g~\"I~ #g~love~ #g~races!\"~ #p\"I'll #p@definitely@ #pwin #pthis #ptime!\" #r\"Wow, #rthis #rone #ris #rfast!\" NL NL The voices close in, but you stay just ahead of them. Just when you think your lungs might give out, you burst out into the open, outside of the maw of the forest. Your pursuers stop, and silence falls. NL NL After you catch your breath, you notice a small sack lying on the ground, #yfilled #ywith #ygold. Attached is a note simply saying #p\"winner!\" NL NL What strange creatures.",
+      "Before you can react, he speaks. #y\"Are #yyou #your #ynew #yfriend?\" NL NL Chattering voices suddenly fill the forest around you. #g\"I #glove #gnew #gfriends!\" #b\"Do #byou #bthink #bthis #bone #bwill #bstay #ba #bwhile?\" #p\"Oh #pit's #pbeen #p~so~ #p~long!\"~ #r\"I'm #rso #rexcited #rto #rplay #rwith #ryou!\" NL NL The faux speaks again. #y\"It's #ygoing #yto #ybe #y@so@ #y@much@ #y@fun!@ #yDon't #yyou #yagree?\" NL NL Do you agree?"
+    ],
+    "OPTIONS": [
+      "[进入] 探索这条通道",
+      "[离开] 回去",
+      "[同意] #g获得 #g5 #g点最大生命。 #r失去 #r10 #r点生命",
+      "[不同意] #g获得一件特殊遗物。 #r被诅咒——羞耻",
+      "[跑开] #g获得 #g200 #g金币。 #r被诅咒——凡庸",
+      "[离开]",
+      "[同意] #g获得 #g5 #g点最大生命。 #r失去 #r15 #r点生命",
+      "[跑开] #g获得 #g150 #g金币。 #r被诅咒——凡庸",
+      "[继续]"
+    ]
+  },
+  "theJungle:LostInTheJungle": {
+    "NAME": "Lost in the Jungle",
+    "DESCRIPTIONS": [
+      "You have lost your orientation, and the way ahead is blocked by rubble. You cannot move further. NL NL Where should you turn to climb higher?",
+      "You climb a nearby vine, the weight of your relics dragging you down as the vine's thorns dig into your hands. NL NL As you reach the canopy, you spot a clearing nearby.",
+      "You reach a clearing in the jungle. It looks like someone has been digging here recently.",
+      "You use your shovel to dig up the ground. NL NL Very quickly you hit a chest, which is filled with #y",
+      " #ygold! NL NL Unfortunately, you are still lost.",
+      "You look around, and spot an abandoned shovel. This will prove useful later on. NL NL Unfortunately, you are still lost."
+    ],
+    "OPTIONS": [
+      "[攀爬棘手的藤蔓] #r受到 #r",
+      " 点#r伤害。#g找到什么东西",
+      "[挤过去] #r被诅咒——苦恼。 #g找到什么东西",
+      "[回头]",
+      "[去那块空地上]",
+      "[挖地]",
+      "[锁定] 需要：铲子",
+      "[四处观望]",
+      "[锁定]",
+      "[离开]"
+    ]
+  },
+  "theJungle:Kidnappers": {
+    "NAME": "Misty Forest",
+    "DESCRIPTIONS": [
+      "As you're traversing through the ~foggy~ ~jungle~ , a rope suddenly tightens around your ankle. NL #r@You've@ #r@been@ #r@caught@ #r@in@ #r@a@ #r@trap!@",
+      "A number of tribesmen surround you. They are wearing ~black~ ~robes~ and #r@scarves@ #r@for@ #r@masks@ . You can't help but feel #r~malice~ coming from them. NL NL \"We caught one!\" NL ~\"Hey,~ ~this~ ~one~ ~doesn't~ ~look~ ~like~ ~a~ ~cultist...?\"~ NL \"You never know with those guys, #r@let's@ #r@get@ #r@'em...@ \" NL You may have time to escape in the confusion.",
+      "You make it clear that you are #r~NOT~ a cultist, nor an enemy, and have no qualms with their clan. NL Negotiating is a bit #r@painful@ , but they let you go, for a small price.",
+      "You struggle hard, but manage to use your weapon and break through the rope while they approach. NL They give chase, while more tribesmen surround you!",
+      "Seeing as you are not a cultist or an animal, you manage to bribe them with #ysome #ygold. NL They untie you and let you leave in piece, #r~but~ #r~you~ #r~can't~ #r~shake~ #r~the~ #r~feeling~ #r~that~ #r~someone~ #r~keeps~ #r~watching~ #r~you...~"
+    ],
+    "OPTIONS": [
+      "[Proceed]",
+      "[交涉] #r失去 #r",
+      " 点#r生命， #g从你的牌组中移除一张卡牌",
+      "[切断绳子] #r进入一场战斗之中",
+      "[贿赂] #r失去 #r",
+      " #r金币.",
+      "[锁定] 需要：",
+      " 金币",
+      "[开打]",
+      "[来打啊！] #r进入一场战斗之中",
+      "选择一张牌移除。"
+    ]
+  },
+  "theJungle:HappyBirthday" : {
+    "NAME": "生日快乐",
+    "DESCRIPTIONS": [
+      "While wandering the jungle, you come across... NL ...a birthday cake? NL NL A small note sits next to the cake. It reads: NL NL #b\"Happy #bBirthday #bMTS! NL #b(Please #bonly #btake #bone #bslice) NL #b- #bkio\"",
+      "You only take a single slice, just as the note asked. NL NL It's quite delicious.",
+      "Looking around, you see nothing stopping you from taking the whole cake. NL NL #gIt #gis #gextremely #gtasty, but soon you are overcome by a #r~sense~ #r~of~ #r~shame~ at the atrocity you have committed."
+    ],
+    "OPTIONS": [
+      "[拿一块] #g获得 #g%d 点#g最大生命",
+      "[偷走蛋糕] #g获得 #g%d 点#最大生命， #r永久的羞耻",
+      "[离开]"
+    ]
+  },
+  "theJungle:JungleGarden" : {
+    "NAME": "Jungle Garden",
+    "DESCRIPTIONS": [
+      "Hidden deep in the jungle you find a lush garden, overflowing with fruits and vegetables. By some miracle, it seems to be untouched by the Spireblight.",
+      "You pick several gourds from the trees around the garden. They will prove useful for carrying around water, or blood. NL You can no longer fight as effectively while holding 5 gourds in your hands, but they are probably worth it.",
+      "It is delicious."
+    ],
+    "OPTIONS": [
+      "[Take Gourds] #gRemove #gall #gDefends. #gObtain #g5 #gGourds.",
+      "[吃一个芒果] #g恢复 #g",
+      " 点#g生命",
+      "[离开]"
+    ]
+  },
+  "theJungle:StalkMarket" : {
+    "NAME": "Stalk Market",
+    "DESCRIPTIONS": [
+      "A lush greenfield greets you with a curved and flowered log arch as the entrance. Etched on it reads #g\"STALK #gMARKET\". As you explore this curiously peaceful area populated with varying denizens of the Jungle, you understand what this place is about. It's the largest gathering center for exotic #gplants and #ycrops with each creature holding harvest yields with #ystalk #ycertificates.",
+      "Scattered around are many plots and gardens where everything grows. You enter one and are greeted by a dapper-looking, ecstatic gremlin. NL NL \"I've never seen your face here, you must be new to the #gStalk #gMarket! Would you like to buy a stalk from this plot? We have special #rfruits and #gvegetables no other plot has!\"",
+      "\"Oh, I understand... But we have plenty of harvests for adventurers on the go as well!\" NL NL The gremlin gives you a personal tour through the field. She wasn't kidding; you don't recognize any of these plants, not even from before the #pSpireblight. NL NL \"...and over here, we have #rflamangos, sweet and spicy! And my personal favorite just right here, the #rcreamberry! They're so rich in flavor inside!\"",
+      "\"So, interested? Also, please note we are only allowed to sell #bone harvest per visitor.\"",
+      "#g\"Par #gsnip, a #ysimple but #ghealthy choice! Many of the stalk holders for this feed this to their kids! Still great for grown-ups!\" NL NL After rinsing with water, you take a bite out of your farm-fresh #gpar #gsnip. You feel #yinvigorated!",
+      "#r\"Flamango, #rspicier than you think! Almost as spicy as the notorious #papparition #ppeppers!\" NL NL After rinsing with water, you slice your farm-fresh #rflamango into chunks. #r@Hot,@ #r@Hot,@ #r@Hot!@",
+      "#g\"Shell #gpeas, they have quite the #ytexture! Just crunch the big pea and chew on the tiny ones!\" NL NL After rinsing with water, you try out your farm-fresh #gshell #gpeas. You feel #ytough!",
+      "#r\"Creamberry, the #babsolute #bdelicacy! Whoever created this really knows what #bmouth-watering is like!\" NL NL After rinsing with water, you soak your farm-fresh #rcreamberry into your mouth. The #babsolute #bdelicacy indeed!",
+      "\"I'm sorry, perhaps this plot isn't too interesting to you. Come back if you change your mind though!\" NL NL You feel a little bad for not buying something given how much she seems to like her job, but so it goes.",
+      "Scattered around are many plots and gardens where everything grows. You enter one and are greeted by a #r@dapper-looking,@ ecstatic gremlin. NL NL \"I've never seen your face here, you must be new to the Stalk Market! Would you like to buy a stalk from this plot? We have special fruits and vegetables no other plot has!\""
+    ],
+    "OPTIONS": [
+      "[继续]",
+      "[我就是来看看]",
+      "[防风草] #r失去 #r",
+      "[火芒果] #r失去 #r",
+      "[带壳豆] #失去 #r",
+      "[奶油浆果] #r失去 #r",
+      " #r金币. #g获得一个特殊的遗物",
+      "[什么也不买]",
+      "[离开]"
+    ]
+  }
+}

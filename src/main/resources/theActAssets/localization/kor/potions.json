@@ -1,0 +1,47 @@
+{
+  "JungleJuicePotion": {
+    "NAME": "정글 주스",
+    "DESCRIPTIONS": [
+      "#y힘 을 #b",
+      " 얻고 #y독 을 #b",
+      " 얻습니다."
+    ]
+  },
+
+  "TwistedElixir": {
+    "NAME": "뒤틀린 엘릭서",
+    "DESCRIPTIONS": [
+      "적 하나를 강하게 만들고 이 포션을 사용했을 때 체력에 따라 특별한 #y보상 을 얻습니다."
+    ]
+  },
+
+  "HauntedGourdPotion": {
+    "NAME": "귀신들린 박",
+    "DESCRIPTIONS": [
+      "#y스킬 , #y파워 , #y공격 카드 3장 중 1장씩 선택하여 손에 가져온 다음, 그 카드의 비용이 이번 턴에만 0이 됩니다. 무작위 #b저주 와 #b점액투성이 카드를 손으로 가져옵니다."
+    ]
+  },
+
+  "SneckoExtractPotion": {
+    "NAME": "스네코 추출물",
+    "DESCRIPTIONS": [
+      "이 것을 마시면 뭔가 #y어썸 한 일이 발생할 것입니다."
+    ]
+  },
+
+  "SpyderVenomPotion": {
+    "NAME": "거미 독",
+    "DESCRIPTIONS": [
+      "#y독 #y바르기 를 #b1 얻습니다."
+    ]
+  },
+
+  "AntidotePotion": {
+    "NAME": "해독제",
+    "DESCRIPTIONS": [
+      "모든 #b독 #b손상 #b약화 #b취약 을 제거하고 제거한 상태이상 만큼 체력을 회복합니다."
+    ]
+  }
+
+
+}

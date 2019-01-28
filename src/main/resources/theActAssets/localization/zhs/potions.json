@@ -1,0 +1,47 @@
+{
+  "JungleJuicePotion": {
+    "NAME": "丛林果汁",
+    "DESCRIPTIONS": [
+      "获得 #b",
+      " #y点力量 ，以及#b",
+      " #y层中毒"
+    ]
+  },
+
+  "TwistedElixir": {
+    "NAME": "扭曲虚空",
+    "DESCRIPTIONS": [
+      "是一名敌人变强，基于投掷药水时的血量百分比，获得特殊 #y奖励"
+    ]
+  },
+
+  "HauntedGourdPotion": {
+    "NAME": "鬼葫芦",
+    "DESCRIPTIONS": [
+      "发现 #y技能牌 ，#y能力牌 ，以及 #y攻击牌 各一张，这些牌在本回合耗能为0， 并将一张 #b诅咒 和 #b粘液 放入你的手牌中"
+    ]
+  },
+
+  "SneckoExtractPotion": {
+    "NAME": "Snecko Extract",
+    "DESCRIPTIONS": [
+      "喝了这个就会有#y非常 随机的事情发生"
+    ]
+  },
+
+  "SpyderVenomPotion": {
+    "NAME": "异蛛毒液",
+    "DESCRIPTIONS": [
+      "获得 #b1 层 #y荼毒."
+    ]
+  },
+
+  "AntidotePotion": {
+    "NAME": "解毒剂",
+    "DESCRIPTIONS": [
+      "移除所有的 #b中毒 ，#b脆弱 ，#b虚弱 ，以及 #b易伤 ，并回复移除总层数的血量"
+    ]
+  }
+
+
+}

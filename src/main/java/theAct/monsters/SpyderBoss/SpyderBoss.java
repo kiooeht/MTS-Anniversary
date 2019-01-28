@@ -29,14 +29,13 @@ public class SpyderBoss extends Spyder {
         super(NAME, ID_WITHOUT_PREFIX, 0F, 0F, -1, 0,180.0F, -180.0F);
 
         this.type = EnemyType.BOSS;
-       // this.loadAnimation("images/monsters/theForest/mage/skeleton.atlas", "images/monsters/theForest/mage/skeleton.json", 1.0F); //NOT DONE
         
         this.stronger = AbstractDungeon.ascensionLevel >= 19;
         
         if (AbstractDungeon.ascensionLevel >= 9) {
-            this.setHp(200);
+            this.setHp(190);
         } else {
-            this.setHp(210);
+            this.setHp(180);
         }      
         
         if (stronger) {
@@ -51,16 +50,7 @@ public class SpyderBoss extends Spyder {
 			this.damage.add(new DamageInfo(this, 4));
         }
 
-        /*
-        TrackEntry e = this.state.setAnimation(0, "Idle", true);
-        this.stateData.setMix("Idle", "Sumon", 0.1F);
-        this.stateData.setMix("Sumon", "Idle", 0.1F);
-        this.stateData.setMix("Hurt", "Idle", 0.1F);
-        this.stateData.setMix("Idle", "Hurt", 0.1F);
-        this.stateData.setMix("Attack", "Idle", 0.1F);
-        e.setTime(e.getEndTime() * MathUtils.random());
-        */
-
+        
     }
 
     public void usePreBattleAction() {
@@ -68,11 +58,6 @@ public class SpyderBoss extends Spyder {
         CardCrawlGame.music.unsilenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
         AbstractDungeon.getCurrRoom().playBgmInstantly("BOSSSPIDER");
-
-                     
-    	//AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, stronger?30:20, true));
-        //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, 1), 1));
-       // AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new MourningPower(this)));
         
     }
 
@@ -116,7 +101,6 @@ public class SpyderBoss extends Spyder {
     }
     
     public void takeTurn() {
-    	int art = 99;
         switch(this.nextMove) {
 
 		case 0:
@@ -132,10 +116,6 @@ public class SpyderBoss extends Spyder {
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new FrailPower(AbstractDungeon.player, 1, true), 1));
             break;
 		case 2:
-			//if(hasPower(ArtifactPower.POWER_ID))
-			//	art -= getPower(ArtifactPower.POWER_ID).amount;
-			//if(art > 0)
-			//	AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, art), art, true));
 			for (AbstractMonster m : AbstractDungeon.getMonsters().monsters){
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new StrengthPower(this, stronger?3:2), stronger?3:2, true));
 			}
@@ -171,10 +151,10 @@ public class SpyderBoss extends Spyder {
 		}
 
 		else if(lastMove(MoveBytes.SPIDERS)) {
-			Integer chosenStart = AbstractDungeon.cardRng.random(2);
+			Integer chosenStart = num % 3;
 			switch (chosenStart) {
 				case 0:
-					setMove(MoveBytes.STRENGTHBUFF, Intent.BUFF);
+					setMove(MoveBytes.DAMAGE, Intent.ATTACK, damage.get(0).base);
 					return;
 				case 1:
 					setMove(MoveBytes.STRENGTHBUFF, Intent.BUFF);
@@ -200,24 +180,7 @@ public class SpyderBoss extends Spyder {
 
     }
     
-    @Override
-    public void breakGuard() {
-    	//setMove((byte) 3, Intent.STUN);
-    	//createIntent();
-    	//AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this, this, ArtifactPower.POWER_ID));
-    }
-
-    /*
-    public void damage(DamageInfo info) {
-        super.damage(info);
-        if (info.owner != null && info.type != DamageType.THORNS && info.output > 0) {
-            this.state.setAnimation(0, "Hurt", false);
-            this.state.addAnimation(0, "Idle", true, 0.0F);
-        }
-
-    }
-    */
-
+    
     public void die() {
         this.useFastShakeAnimation(5.0F);
         CardCrawlGame.screenShake.rumble(4.0F);

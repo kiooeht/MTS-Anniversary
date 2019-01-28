@@ -1,0 +1,13 @@
+{
+  "theJungle:Jungle": {
+    "TEXT": [
+      "丛林",
+      "第二阶段"
+    ]
+  },
+
+  "theJungle:DysenteryEasterEgg" :
+  {
+    "TEXT": [ "你死于痢疾" ]
+  }
+}

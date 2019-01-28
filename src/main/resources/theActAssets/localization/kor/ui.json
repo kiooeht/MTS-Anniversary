@@ -1,0 +1,13 @@
+{
+  "theJungle:Jungle": {
+    "TEXT": [
+      "정글",
+      "2 막"
+    ]
+  },
+
+  "theJungle:DysenteryEasterEgg" :
+  {
+    "TEXT": [ "당신은 의문사 했습니다." ]
+  }
+}
