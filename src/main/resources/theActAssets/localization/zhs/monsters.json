@@ -1,0 +1,208 @@
+{
+	"theJungle:Cassacara": {
+		"MOVES": [
+			"吞食",
+			"咀嚼",
+			"无尽食欲"
+		],
+		"NAME": "植食花",
+		"DIALOG": []
+	},
+	"theJungle:CarcassSack": {
+		"MOVES": [],
+		"NAME": "肥料",
+		"DIALOG": []
+	},
+	"theJungle:GiantWrat": {
+		"MOVES": [
+			"脂肪燃烧",
+			"猛撞",
+			"舍身撞击"
+		],
+		"NAME": "巨鼠",
+		"DIALOG": [
+			"Absolute Unit"
+		]
+	},
+	"theJungle:Phrog": {
+		"MOVES": [
+			"舔舐",
+			"跳起",
+			"蛙鸣",
+			""
+		],
+		"NAME": "异蛙",
+		"DIALOG": [
+			"呱~~~~！"
+		]
+	},
+	"theJungle:Flameango": {
+		"MOVES": [
+			"火焰吐息",
+			"燃烧冲击"
+		],
+		"NAME": "火烈鸟",
+		"DIALOG": [
+			"Welcome to flavor town!"
+		]
+	},
+	"theJungle:TotemBoss": {
+		"MOVES": [
+			"图腾冲击"
+		],
+		"NAME": "图腾低语者",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:BashTotem": {
+		"MOVES": [
+			"图腾冲击"
+		],
+		"NAME": "恐吓图腾",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:BuffTotem": {
+		"MOVES": [
+			"图腾冲击"
+		],
+		"NAME": "丰收图腾",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:DebuffTotem": {
+		"MOVES": [
+			"图腾冲击"
+		],
+		"NAME": "虚弱图腾",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:ShieldOtherTotem": {
+		"MOVES": [
+			"图腾冲击"
+		],
+		"NAME": "守护图腾",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:DoubleStrikeTotem": {
+		"MOVES": [
+			"图腾冲击"
+		],
+		"NAME": "剔骨图腾",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:ConfuseTotem": {
+		"MOVES": [
+			"图腾冲击"
+		],
+		"NAME": "混乱图腾",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:AttackAndShieldTotem": {
+		"MOVES": [
+			"图腾冲击"
+		],
+		"NAME": "激励图腾",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:JungleHunters": {
+		"MOVES": [
+			"后空翻",
+			"中和",
+			"异蛇打击",
+			"长矛之舞"
+		],
+		"NAME": "丛林猎手"
+	},
+	"theJungle:SwingingAxe": {
+		"MOVES": [
+			"重启中"
+		],
+		"NAME": "荡斧陷阱",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:FunGuy": {
+		"MOVES": [
+			"咬碎",
+			"感染",
+			"传播孢子",
+			"孢子爆破",
+			"成长",
+			"吸收"
+		],
+		"NAME": "巨口菇",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:SlimyTreeVines": {
+		"NAME": "Slimy Jungle Vines",
+		"MOVES": ["Tangle","喷吐"],
+		"DIALOG": ["Jungle Vines"]
+	},
+	"theJungle:MamaSnecko": {
+		"NAME": "异蛇之母",
+		"MOVES": ["产卵","瞪视","扫尾","噬咬","狂怒攻击"],
+		"DIALOG": ["~Hissssss...~"]
+	},
+	"theJungle:SneckoEgg": {
+		"NAME": "异蛇之卵",
+		"MOVES": ["","孵化"],
+		"DIALOG": [""]
+	},
+	"theJungle:BabySnecko": {
+		"NAME": "异蛇宝宝",
+		"MOVES": ["噬咬","瞪视"],
+		"DIALOG": [""]
+	},
+	"theJungle:SneckoCultist": {
+		"MOVES": [
+			"鞭笞",
+			"扰乱",
+			"抓捕"
+		],
+		"NAME": "异蛇教徒",
+		"DIALOG": [
+			"@所有人@ @都将@ @臣服于@ NL @异蛇!@",
+			"@...嘶~~~~~...@"
+		]
+	},
+	"theJungle:Lyon": {
+		"NAME": "异狮",
+		"MOVES": ["咆哮","猛扑"],
+		"DIALOG": ["吼!!!!"]
+	},
+	"theJungle:MushroomYandere": {
+		"NAME": "尖头姑"
+	},
+	"theJungle:MushroomKuudere": {
+		"NAME": "害羞菇"
+	},
+	"theJungle:MushroomGenki": {
+		"NAME": "能量菇"
+	},
+	"theJungle:QueenSpyder": {
+		"NAME": "异蛛女王"
+	},
+	"theJungle:HunterSpyder": {
+		"NAME": "异蛛猎头者"
+	},
+	"theJungle:DefenderSpyder": {
+		"NAME": "异蛛守护者"
+	}
+}
