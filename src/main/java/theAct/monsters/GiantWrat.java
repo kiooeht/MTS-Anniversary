@@ -119,6 +119,17 @@ public class GiantWrat extends AbstractMonster {
         this(0.0F, 0.0F);
     }
 
+    @Override
+    public void loadAnimation(final String atlasUrl, final String skeletonUrl, float scale) {
+        if (this.name.equals(CRAPPIEST_NAME)) {
+            super.loadAnimation(atlasUrl, skeletonUrl, scale - 0.2F);
+        }
+        else {
+            super.loadAnimation(atlasUrl, skeletonUrl, scale);
+        }
+    }
+
+    @Override
     public void changeState(String key) {
         switch (key) {
             case "ATTACK": {
