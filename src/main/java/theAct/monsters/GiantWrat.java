@@ -22,7 +22,7 @@ public class GiantWrat extends AbstractMonster {
     public static final String ID = TheActMod.makeID("GiantWrat");
     private static final MonsterStrings MONSTER_STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = MONSTER_STRINGS.NAME;
-    public static final String CRAPPIEST_NAME = MONSTER_STRINGS.DIALOG[0];
+    public static final String CRAPPIEST_NAME = MONSTER_STRINGS.DIALOG[MathUtils.random(0, 2)];
     public static final String[] MOVES = MONSTER_STRINGS.MOVES;
     private static final float HB_X = -75.0F;
     private static final float HB_Y = 0.0F;
@@ -68,7 +68,7 @@ public class GiantWrat extends AbstractMonster {
         }
         else {
             setHp(HP_MIN, HP_MAX);
-            if (this.maxHealth == HP_MAX && MathUtils.randomBoolean(0.05F)) {
+            if (this.maxHealth == HP_MAX && MathUtils.randomBoolean(0.15F)) {
                 this.name = CRAPPIEST_NAME;
             }
         }
