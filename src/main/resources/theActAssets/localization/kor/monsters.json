@@ -1,0 +1,208 @@
+{
+	"theJungle:Cassacara": {
+		"MOVES": [
+			"크게 한 입",
+			"씹기",
+			"끝 없는 위장"
+		],
+		"NAME": "카사카라",
+		"DIALOG": []
+	},
+	"theJungle:CarcassSack": {
+		"MOVES": [],
+		"NAME": "시체 주머니",
+		"DIALOG": []
+	},
+	"theJungle:GiantWrat": {
+		"MOVES": [
+			"지방 태우기",
+			"강타",
+			"휘감아 치기"
+		],
+		"NAME": "거대한 쮜",
+		"DIALOG": [
+			"Absolute Unit"
+		]
+	},
+	"theJungle:Phrog": {
+		"MOVES": [
+			"핥기",
+			"뛰기",
+			"개굴",
+			""
+		],
+		"NAME": "게구리",
+		"DIALOG": [
+			"게에에구우울!"
+		]
+	},
+	"theJungle:Flameango": {
+		"MOVES": [
+			"불꽃 숨결",
+			"불 붙이기"
+		],
+		"NAME": "불라밍고",
+		"DIALOG": [
+			"플레이버 타운에 온 걸 환영한닭!"
+		]
+	},
+	"theJungle:TotemBoss": {
+		"MOVES": [
+			"토템 강타"
+		],
+		"NAME": "토템 대변자",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:BashTotem": {
+		"MOVES": [
+			"토템 강타"
+		],
+		"NAME": "위협 토템",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:BuffTotem": {
+		"MOVES": [
+			"토템 강타"
+		],
+		"NAME": "강화 토템",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:DebuffTotem": {
+		"MOVES": [
+			"토템 강타"
+		],
+		"NAME": "약화 토템",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:ShieldOtherTotem": {
+		"MOVES": [
+			"토템 강타"
+		],
+		"NAME": "돌발톱 토템",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:DoubleStrikeTotem": {
+		"MOVES": [
+			"토템 강타"
+		],
+		"NAME": "절개 토템",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:ConfuseTotem": {
+		"MOVES": [
+			"토템 강타"
+		],
+		"NAME": "혼란 토템",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:AttackAndShieldTotem": {
+		"MOVES": [
+			"토템 강타"
+		],
+		"NAME": "격려 토템",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:JungleHunters": {
+		"MOVES": [
+			"공중제비",
+			"중화",
+			"비열한 습격",
+			"창무"
+		],
+		"NAME": "정글 사냥꾼"
+	},
+	"theJungle:SwingingAxe": {
+		"MOVES": [
+			"되돌리기"
+		],
+		"NAME": "움직이는 도끼 함정",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:FunGuy": {
+		"MOVES": [
+			"덥썩",
+			"오염",
+			"포자 뿌리기",
+			"포자 대방출",
+			"성장",
+			"동화"
+		],
+		"NAME": "붜섯",
+		"DIALOG": [
+			""
+		]
+	},
+	"theJungle:SlimyTreeVines": {
+		"NAME": "끈적한 정글 덩굴",
+		"MOVES": ["Tangle","Split"],
+		"DIALOG": ["Jungle Vines"]
+	},
+	"theJungle:MamaSnecko": {
+		"NAME": "엄마 스네코",
+		"MOVES": ["알 낳기","노려보기","꼬리 휩쓸기","깨물기","격렬한 공격"],
+		"DIALOG": ["~...~"]
+	},
+	"theJungle:SneckoEgg": {
+		"NAME": "스네코 알",
+		"MOVES": ["","부화"],
+		"DIALOG": [""]
+	},
+	"theJungle:BabySnecko": {
+		"NAME": "아기 스네코",
+		"MOVES": ["깨물기","노려보기"],
+		"DIALOG": [""]
+	},
+	"theJungle:SneckoCultist": {
+		"MOVES": [
+			"휘감기",
+			"혼란",
+			"태클"
+		],
+		"NAME": "스네코 추종자",
+		"DIALOG": [
+			"@스네코님@ @께@ @충성을!@",
+			"@...쓰쓰스스..스...@"
+		]
+	},
+	"theJungle:Lyon": {
+		"NAME": "사좌",
+		"MOVES": ["포효","기습"],
+		"DIALOG": ["어흐으으응!"]
+	},
+	"theJungle:MushroomYandere": {
+		"NAME": "날 선 버섯"
+	},
+	"theJungle:MushroomKuudere": {
+		"NAME": "부끄럼쟁이 버섯"
+	},
+	"theJungle:MushroomGenki": {
+		"NAME": "활력 넘치는 버섯"
+	},
+	"theJungle:QueenSpyder": {
+		"NAME": "거미 여왕"
+	},
+	"theJungle:HunterSpyder": {
+		"NAME": "거미 사냥꾼"
+	},
+	"theJungle:DefenderSpyder": {
+		"NAME": "거미 수호자"
+	}
+}
