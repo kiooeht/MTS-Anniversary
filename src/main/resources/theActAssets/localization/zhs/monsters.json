@@ -21,7 +21,7 @@
 		],
 		"NAME": "巨鼠",
 		"DIALOG": [
-			"Absolute Unit"
+			"绝对标杆"
 		]
 	},
 	"theJungle:Phrog": {
@@ -39,11 +39,11 @@
 	"theJungle:Flameango": {
 		"MOVES": [
 			"火焰吐息",
-			"燃烧冲击"
+			"燃烧防御"
 		],
-		"NAME": "火烈鸟",
+		"NAME": "火劣鸟",
 		"DIALOG": [
-			"Welcome to flavor town!"
+			"欢迎来到风味小镇"
 		]
 	},
 	"theJungle:TotemBoss": {
@@ -151,9 +151,9 @@
 		]
 	},
 	"theJungle:SlimyTreeVines": {
-		"NAME": "Slimy Jungle Vines",
-		"MOVES": ["Tangle","喷吐"],
-		"DIALOG": ["Jungle Vines"]
+		"NAME": "粘性藤蔓",
+		"MOVES": ["缠绕","喷吐"],
+		"DIALOG": ["丛林之蔓"]
 	},
 	"theJungle:MamaSnecko": {
 		"NAME": "异蛇之母",

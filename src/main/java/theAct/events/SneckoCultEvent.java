@@ -22,7 +22,7 @@ public class SneckoCultEvent extends AbstractImageEvent {
     private boolean cardSelected = false;
 
     public SneckoCultEvent() {
-        super(NAME, DESCRIPTIONS[0], "theActAssets/images/SneckoCultEvent.png");
+        super(NAME, DESCRIPTIONS[0], TheActMod.assetPath("images/events/SneckoCultEvent.png"));
         imageEventText.setDialogOption(OPTIONS[0]);
         imageEventText.setDialogOption(OPTIONS[1], new PetSnecko());
         imageEventText.setDialogOption(OPTIONS[2]);

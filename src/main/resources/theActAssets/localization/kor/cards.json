@@ -6,27 +6,27 @@
   },
   "theJungle:SS_Clouding": {
     "NAME": "흐릿한 포자",
-    "DESCRIPTION": "휘발성. NL 카드를 1 장 뽑습니다. NL 취약 을 !M! 얻습니다. NL 소멸."
+    "DESCRIPTION": "휘발성 NL 카드를 1장 뽑습니다. NL 취약 을 !M! 얻습니다. NL 소멸"
   },
   "theJungle:SS_Bright": {
     "NAME": "선명한 포자",
-    "DESCRIPTION": "휘발성. NL 카드를 1장 뽑습니다. NL 어지러움 !M! 장을 버린 카드 더미에 섞어 넣습니다. NL 소멸."
+    "DESCRIPTION": "휘발성 NL 카드를 1장 뽑습니다. NL 어지러움 !M! 장을 버린 카드 더미에 섞어 넣습니다. NL 소멸"
   },
   "theJungle:SS_Clumping": {
     "NAME": "응집된 포자",
-    "DESCRIPTION": "휘발성. NL 카드를 1장 뽑습니다. NL 소멸."
+    "DESCRIPTION": "휘발성 NL 카드를 1장 뽑습니다. NL 소멸"
   },
   "theJungle:SS_Leeching": {
     "NAME": "거머리 포자",
-    "DESCRIPTION": "휘발성. NL 카드를 1장 뽑습니다. NL 모든 적의 체력을 !M! 회복합니다. NL 소멸."
+    "DESCRIPTION": "휘발성 NL 카드를 1장 뽑습니다. NL 모든 적의 체력을 !M! 회복합니다. NL 소멸"
   },
   "theJungle:SS_Toxin": {
     "NAME": "독성 포자",
-    "DESCRIPTION": "휘발성. NL 카드를 1장 뽑습니다. NL 피해를 !M! 받습니다. NL 소멸."
+    "DESCRIPTION": "휘발성 NL 카드를 1장 뽑습니다. NL 피해를 !M! 받습니다. NL 소멸"
   },
   "theJungle:SS_Sloth": {
     "NAME": "느릿한 포자",
-    "DESCRIPTION": "휘발성. NL 카드를 1장 뽑습니다. NL 나태함 을 !M! 얻습니다. NL 소멸."
+    "DESCRIPTION": "휘발성 NL 카드를 1장 뽑습니다. NL 나태함 을 !M! 얻습니다. NL 소멸"
   },
   "theJungle:Gourd": {
     "NAME": "박",

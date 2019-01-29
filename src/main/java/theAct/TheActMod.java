@@ -117,8 +117,8 @@ public class TheActMod implements
                 }));
         BaseMod.addMonster(JungleEncounterIDList.FLAMEANGO_AND_BYRD_ENCOUNTER_ID, "Flameango and Byrd", () -> new MonsterGroup(
                 new AbstractMonster[] {
-                        new Byrd(-305.0F, 110.0F),
-                        new Flameango(50)
+                        new Flameango(50),
+                        new Byrd(-305.0F, 110.0F)
                 }));
         BaseMod.addMonster(JungleEncounterIDList.GIANT_WRAT_ENCOUNTER_ID, () -> new GiantWrat(-85.0F, -15.0F));
         BaseMod.addMonster(JungleEncounterIDList.FIVE_SPYDERS_ENCOUNTER_ID, "Spider Swarm", () -> new MonsterGroup(
@@ -227,11 +227,22 @@ public class TheActMod implements
         BaseMod.addRelic(new SpiritDisease(), RelicType.SHARED);
     }
 
+    private String languageSupport()
+    {
+        switch (Settings.language) {
+            case ZHS:
+                return "zhs";
+            case KOR:
+                return "kor";
+            default:
+                return "eng";
+        }
+    }
+
     @Override
     public void receiveEditKeywords()
     {
-        String language = "eng";
-        // TODO: Language support
+        String language = languageSupport();
 
         Gson gson = new Gson();
         String json = Gdx.files.internal(assetPath("localization/" + language + "/keywords.json")).readString(String.valueOf(StandardCharsets.UTF_8));
@@ -247,11 +258,7 @@ public class TheActMod implements
     @Override
     public void receiveEditStrings()
     {
-        String language = "eng";
-
-        if (Settings.language == Settings.GameLanguage.ZHS) language = "zhs";
-        if (Settings.language == Settings.GameLanguage.KOR) language = "kor";
-
+        String language = languageSupport();
         String path = "localization/" + language + "/";
 
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));

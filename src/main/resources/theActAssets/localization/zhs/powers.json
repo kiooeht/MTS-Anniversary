@@ -7,7 +7,7 @@
 		]
 	},
 	"theJungle:DigestPower": {
-		"NAME" : "Digestion",
+		"NAME" : "消化",
 		"DESCRIPTIONS": [
 			"死亡或是被再攻击 #b",
 			" 次， ",
@@ -33,7 +33,7 @@
 	"theJungle:BlockFromStrengthPower": {
 		"NAME" : "守势",
 		"DESCRIPTIONS": [
-			"#y力量 会提升这位敌人的 #y格挡 获取 "
+			" # y力量 会提升这位敌人的 #y格挡 获取 "
 		]
 	},
 	"theJungle:TotemHealthLinkPower": {
@@ -50,7 +50,7 @@
 		]
 	},
 	"theJungle:SwingingTrapPower": {
-		"NAME": "Pendulum Trap",
+		"NAME": "陷阱摆动中",
 		"DESCRIPTIONS": [
 			" NL NL 每当你打出一张牌，就会使它改变形态. NL 在 #r即将攻击, #r挥动中，以及 #g重新启动中 中循环",
 			"#y形态: ",
@@ -76,7 +76,8 @@
 	"theJungle:TotemRevengeAttackPower": {
 		"NAME": "图腾反击",
 		"DESCRIPTIONS": [
-			"在你打出一张目标为所有敌人或者多个随机敌人的卡牌之后，立即攻击你"
+			"在你打出一张目标为所有敌人或者多个随机敌人的卡牌之后，立即攻击你",
+			"被眩晕的情况下则不能反击"
 		]
 	},
 	"theJungle:InfectiousSporesPower": {
@@ -107,7 +108,7 @@
 			"在本回合中,若再受到 #b",
 			" 次伤害会被击晕",
 			" 次伤害会被击晕",
-			"这名敌人的谨慎已经被打破了。"
+			"这名敌人的伪装已经被打破了。"
 		]
 	},
 	"theJungle:Pride": {
@@ -128,14 +129,14 @@
 		"NAME": "保护",
 		"DESCRIPTIONS": [
 			"每当你打出一张 #y攻击牌 时，目标 #r不只是 这个怪物的话，所有其他的敌人获得 #b",
-			" 点#y格挡"
+			" 点 #y格挡 "
 		]
 	},
 	"theJungle:EnergeticPower": {
 		"NAME": "Energetic",
 		"DESCRIPTIONS": [
 			"每当你打出一张 #y攻击牌 时，目标 #r不只是 这个怪物的话，所有其他的敌人获得 #b",
-			" 点#y力量"
+			" 点 #y力量 "
 		]
 	},
     "theJungle:Guarded": {
