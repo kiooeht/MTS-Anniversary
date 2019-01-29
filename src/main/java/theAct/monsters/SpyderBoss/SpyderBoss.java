@@ -17,53 +17,68 @@ import theAct.TheActMod;
 import theAct.powers.GuardedPower;
 
 public class SpyderBoss extends Spyder {
+
     public static final String ID_WITHOUT_PREFIX = "QueenSpyder";
 	public static final String ID = TheActMod.makeID(ID_WITHOUT_PREFIX);
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
+	private static final int HP = 180;
+	private static final int ASC_HP = 190;
+	private static final int DAMAGE_DAMAGE = 8; // Is there a better name for this?
+	private static final int ASC_DAMAGE_DAMAGE = 9;
+	private static final int STRENGTH_GAIN_AMOUNT = 2;
+	private static final int ASC2_STRENGTH_GAIN_AMOUNT = 3;
+	private static final int DAMAGE_FRAIL_DAMAGE = 4;
+	private static final int DAMAGE_FRAIL_FRAIL_AMOUNT = 1;
+	private static final int ASC_DAMAGE_FRAIL_DAMAGE = 5;
+	private int damageFrailFrailAmount;
+	private int strengthAmount;
 
     private ArrayList<Integer> choice = new ArrayList<Integer>(Arrays.asList(0,0,1,1));
     private float[] pos = new float[] {-650.0F, 300.0F, -425.0F, 220.0F, -200.0F, 250.0F};
 
     public SpyderBoss() {
-        super(NAME, ID_WITHOUT_PREFIX, 0F, 0F, -1, 0,180.0F, -180.0F);
 
+        super(NAME, ID_WITHOUT_PREFIX, 0F, 0F, -1, 0,180.0F, -180.0F);
         this.type = EnemyType.BOSS;
-        
         this.stronger = AbstractDungeon.ascensionLevel >= 19;
         
         if (AbstractDungeon.ascensionLevel >= 9) {
-            this.setHp(190);
-        } else {
-            this.setHp(180);
-        }      
-        
-        if (stronger) {
-        	this.damage.add(new DamageInfo(this, 9));
-			this.damage.add(new DamageInfo(this, 5));
-            
-        } else if (AbstractDungeon.ascensionLevel >= 4){
-        	this.damage.add(new DamageInfo(this, 9));
-			this.damage.add(new DamageInfo(this, 5));
-        } else {
-        	this.damage.add(new DamageInfo(this, 8));
-			this.damage.add(new DamageInfo(this, 4));
+            this.setHp(ASC_HP);
+        }
+        else {
+            this.setHp(HP);
         }
 
-        
+        if (this.stronger) {
+        	this.damageFrailFrailAmount = DAMAGE_FRAIL_FRAIL_AMOUNT;
+        	this.strengthAmount = ASC2_STRENGTH_GAIN_AMOUNT;
+			this.damage.add(new DamageInfo(this, ASC_DAMAGE_DAMAGE));
+			this.damage.add(new DamageInfo(this, ASC_DAMAGE_FRAIL_DAMAGE));
+		}
+        else if (AbstractDungeon.ascensionLevel >= 4){
+			this.damageFrailFrailAmount = DAMAGE_FRAIL_FRAIL_AMOUNT;
+			this.strengthAmount = STRENGTH_GAIN_AMOUNT;
+			this.damage.add(new DamageInfo(this, ASC_DAMAGE_DAMAGE));
+			this.damage.add(new DamageInfo(this, ASC_DAMAGE_FRAIL_DAMAGE));
+        } else {
+			this.damageFrailFrailAmount = DAMAGE_FRAIL_FRAIL_AMOUNT;
+			this.strengthAmount = STRENGTH_GAIN_AMOUNT;
+        	this.damage.add(new DamageInfo(this, DAMAGE_DAMAGE));
+			this.damage.add(new DamageInfo(this, DAMAGE_FRAIL_DAMAGE));
+        }
     }
 
     public void usePreBattleAction() {
-
         CardCrawlGame.music.unsilenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
         AbstractDungeon.getCurrRoom().playBgmInstantly("BOSSSPIDER");
-        
     }
 
     public void spawnSpyders(int str) {
-        if(isDying)
-            return;
+        if(this.isDying) {
+			return;
+		}
         
         ArrayList<Integer> c = (ArrayList<Integer>)choice.clone();
         
@@ -96,90 +111,75 @@ public class SpyderBoss extends Spyder {
         	m.startPowers();
         	
         }
-        
-        
     }
     
     public void takeTurn() {
         switch(this.nextMove) {
-
-		case 0:
-			int str = 0;
-			if(hasPower(StrengthPower.POWER_ID)) str += getPower(StrengthPower.POWER_ID).amount;
-			spawnSpyders(str);
-			if (!this.hasPower(GuardedPower.POWER_ID)) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new GuardedPower(this)));
-
-			break;
-		case 1:
-			AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(1), AttackEffect.SLASH_HORIZONTAL));
-
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new FrailPower(AbstractDungeon.player, 1, true), 1));
-            break;
-		case 2:
-			for (AbstractMonster m : AbstractDungeon.getMonsters().monsters){
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new StrengthPower(this, stronger?3:2), stronger?3:2, true));
+			case MoveBytes.SPIDERS: {
+				int str = 0;
+				if (this.hasPower(StrengthPower.POWER_ID)) {
+					str = this.getPower(StrengthPower.POWER_ID).amount;
+				}
+				spawnSpyders(str);
+				if (!this.hasPower(GuardedPower.POWER_ID)) {
+					AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new GuardedPower(this)));
+				}
+				break;
 			}
-
-			break;
-
-			case 3:
+			case MoveBytes.DAMAGE: {
 				AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(0), AttackEffect.SLASH_HEAVY));
 				break;
-            
+			}
+			case MoveBytes.STRENGTH_BUFF: {
+				for (AbstractMonster m : AbstractDungeon.getMonsters().monsters){
+					if (!m.isDeadOrEscaped()) {
+						AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new StrengthPower(this, this.strengthAmount), this.strengthAmount, true));
+					}
+				}
+				break;
+			}
+			case MoveBytes.DAMAGE_FRAIL: {
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, damage.get(1), AttackEffect.SLASH_HORIZONTAL));
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new FrailPower(AbstractDungeon.player, damageFrailFrailAmount, true), damageFrailFrailAmount));
+				break;
+			}
         }
-
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
     }
-    
 
     protected void getMove(int num) {
 		TheActMod.logger.info("spider boss monster count " + AbstractDungeon.getMonsters().monsters.size());
 
-		if(this.moveHistory.isEmpty())
-		{
-			setMove(MoveBytes.SPIDERS, Intent.UNKNOWN);
-			return;
-		}
-		int livingSpiders = 0;
+		boolean spidersStillAlive = false;
 		for (AbstractMonster m : AbstractDungeon.getMonsters().monsters){
-			if (!m.isDying && !m.isDead && !(m instanceof SpyderBoss))
-				livingSpiders++;
+			if (!m.isDeadOrEscaped() && !(m instanceof SpyderBoss)) {
+				spidersStillAlive = true;
+			}
 		}
-		if (livingSpiders == 0) {
+		if (!spidersStillAlive) {
 			setMove(MoveBytes.SPIDERS, Intent.UNKNOWN);
-			return;
 		}
-
-		else if(lastMove(MoveBytes.SPIDERS)) {
-			Integer chosenStart = num % 3;
-			switch (chosenStart) {
-				case 0:
-					setMove(MoveBytes.DAMAGE, Intent.ATTACK, damage.get(0).base);
-					return;
-				case 1:
-					setMove(MoveBytes.STRENGTHBUFF, Intent.BUFF);
-					return;
-				case 2:
-					setMove(MoveBytes.DAMAGEFRAIL, Intent.ATTACK_DEBUFF, damage.get(1).base);
-					return;
-
-			}
-		} else
-		{
-			if(lastMove(MoveBytes.DAMAGE)) {
-				setMove(MoveBytes.STRENGTHBUFF, Intent.BUFF);
-			}
-			else if(lastMove(MoveBytes.STRENGTHBUFF)) {
-				setMove(MoveBytes.DAMAGEFRAIL, Intent.ATTACK_DEBUFF, damage.get(1).base);
-			}
-			else if(lastMove(MoveBytes.DAMAGEFRAIL)) {
+		else if(lastMove(MoveBytes.DAMAGE)) {
+			setMove(MoveBytes.STRENGTH_BUFF, Intent.BUFF);
+		}
+		else if(lastMove(MoveBytes.STRENGTH_BUFF)) {
+			setMove(MoveBytes.DAMAGE_FRAIL, Intent.ATTACK_DEBUFF, damage.get(1).base);
+		}
+		else if(lastMove(MoveBytes.DAMAGE_FRAIL)) {
 			setMove(MoveBytes.DAMAGE, Intent.ATTACK, damage.get(0).base);
-
+		}
+		else {
+			if (num % 3 == 0) {
+				setMove(MoveBytes.STRENGTH_BUFF, Intent.BUFF);
+			}
+			else if (num % 3 == 1) {
+				setMove(MoveBytes.DAMAGE_FRAIL, Intent.ATTACK_DEBUFF, damage.get(1).base);
+			}
+			else {
+				setMove(MoveBytes.DAMAGE, Intent.ATTACK, damage.get(0).base);
 			}
 		}
-
     }
-    
     
     public void die() {
         this.useFastShakeAnimation(5.0F);
@@ -196,11 +196,10 @@ public class SpyderBoss extends Spyder {
 
     }
 
-
 	public static class MoveBytes {
 		public static final byte SPIDERS = 0;
 		public static final byte DAMAGE = 1;
-		public static final byte STRENGTHBUFF = 2;
-		public static final byte DAMAGEFRAIL = 3;
+		public static final byte STRENGTH_BUFF = 2;
+		public static final byte DAMAGE_FRAIL = 3;
 	}
 }
