@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.audio.Sfx;
 import com.megacrit.cardcrawl.audio.SoundMaster;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -226,11 +227,22 @@ public class TheActMod implements
         BaseMod.addRelic(new SpiritDisease(), RelicType.SHARED);
     }
 
+    private String languageSupport()
+    {
+        switch (Settings.language) {
+            case ZHS:
+                return "zhs";
+            case KOR:
+                return "kor";
+            default:
+                return "eng";
+        }
+    }
+
     @Override
     public void receiveEditKeywords()
     {
-        String language = "eng";
-        // TODO: Language support
+        String language = languageSupport();
 
         Gson gson = new Gson();
         String json = Gdx.files.internal(assetPath("localization/" + language + "/keywords.json")).readString(String.valueOf(StandardCharsets.UTF_8));
@@ -246,8 +258,7 @@ public class TheActMod implements
     @Override
     public void receiveEditStrings()
     {
-        String language = "eng";
-        // TODO: Language support
+        String language = languageSupport();
         String path = "localization/" + language + "/";
 
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));
