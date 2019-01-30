@@ -70,6 +70,8 @@ public class Phrog extends AbstractMonster {
 		AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
 		e.setTime(e.getEndTime() * MathUtils.random());
 
+		this.type = EnemyType.ELITE;
+
 	}
 
 	public void usePreBattleAction() {
