@@ -142,7 +142,7 @@
     "theJungle:Guarded": {
 		"NAME" : "Guarded",
 		"DESCRIPTIONS": [
-			"ALL damage this creature takes is reduced to #g20% while there is a #rSpyder in front it."
+			"ALL damage this creature takes is reduced by #g80% while there is a #rSpyder in front it."
 		]
 	},
     "theJungle:Webbed": {
