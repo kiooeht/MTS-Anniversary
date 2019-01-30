@@ -2,7 +2,7 @@
   "theJungle:ForkInTheRoad": {
     "NAME": "分岔口",
     "DESCRIPTIONS": [
-      "继续着你在高塔中的旅途\n NL 在一段长途跋涉之后，你来到了一个分岔口面前\n\n NL NL 这里有一个路标，但是你根本看不懂\n\n NL  NL 往左边看去，你在不远处看到了#b高楼 的轮廓，然而往右走的小径上有 #g野草 与 #g树木"
+      "继续着你在高塔中的旅途\n NL 在一段长途跋涉之后，你来到了一个分岔口面前\n\n NL NL 这里有一个路标，但是你根本看不懂\n\n NL  NL 往左边看去，你在不远处看到了 #b高楼 的轮廓，然而往右走的小径上有 #g野草 与 #g树木"
     ],
     "OPTIONS": [
       "",
@@ -14,12 +14,12 @@
     "NAME": "精神长河",
     "DESCRIPTIONS": [
       "你现在迷路又口渴, 然后你惊奇的发现要走的路上正好有一条河流过。 然而，你谨慎地小啜了一口，发现这水有一股子可疑的味道...",
-      "喝完了水，你霎时间感觉整个人~如获新生~ ，然后又因为喝了被污染的水，感觉 ~很难受~ ",
+      "喝完了水，你霎时间感觉整个人 ~如获新生~ ，然后又因为喝了被污染的水，感觉 ~很难受~ ",
       "你并不想冒险，于是趟了过去继续踏上旅途"
     ],
     "OPTIONS": [
       "[痛饮] #g从你的卡组中 #g移除 #g",
-      " 张#g卡牌。 #r获得精神疾病",
+      " 张 #g卡牌。 #r获得魂灵疫病",
       "[离开]",
       "选择 ",
       " 张牌移除。",
@@ -29,9 +29,9 @@
   "theJungle:ShamanCauldron": {
     "NAME": "一口神奇的大锅",
     "DESCRIPTIONS": [
-      "在你跋涉丛林的过程中，你发现了一个正在往外冒着稀薄青烟的山洞。\n 在你进去的时候，看到了一个穿着传统萨满服饰的孤独身影，正跪在一口冒泡的大锅旁不停晃动。\n 她抬头望着你，让你瞥见了一眼绿色的皮肤\n NL \" #y@嘻嘻嘻嘻@ 你必须试试我的新配方！ 我为你准备了一剂美味的药水！\n NL 我缺少了 #b一样关键原料，你懂的。要么交出你的药剂，要么交出你的血液... 会是什么呢？\"",
+      "在你跋涉丛林的过程中，你发现了一个正在往外冒着稀薄青烟的山洞。\n 在你进去的时候，看到了一个穿着传统萨满服饰的孤独身影，正跪在一口冒泡的大锅旁不停晃动。\n 她抬头望着你，让你瞥见了一眼绿色的皮肤\n NL \" #y@嘻嘻嘻嘻@ 你必须试试我的新配方！ 我为你准备了一剂美味的药水！\n NL 我缺少了 #b一样关键原料 ，你懂的。要么交出你的 #g药剂，要么交出你的 #r血液... 会是什么呢？\"",
       "你小心的伸出了手臂，然而萨满焦急的抓住你的手并且置于锅的上方。 \n NL NL #r@一刀@ NL NL \n 在萨满咯咯笑着的同时，药剂变成了黑褐色。\n 这个身影前倾了一下，吐出了~长信子~并尝了一口\n 他颤抖着说到。 NL NL \" #y@完~~~~~美@ \"",
-      "你上前把你所有的药水全都倒进了大锅里。 \n 在萨满咯咯笑着并快速搅拌的同时，药剂变成了黑褐色。\n 这个身影前倾了一下，伴随着他那又长又粉的舌头快速~划过~药剂并尝了一口\n 他颤抖着说到。 NL NL \" #y@完~~~~~美@ \"",
+      "你上前把你所有的药水全都倒进了大锅里。 \n 在萨满咯咯笑着并快速搅拌的同时，药剂变成了黑褐色。\n 这个身影前倾了一下，伴随着他那又长又粉的舌头快速 ~划过~ 药剂并尝了一口\n 他颤抖着说到。 NL NL \" #y@完~~~~~美@ \"",
       "你转身离开了。 这人肯定是想药想疯了",
       "你补满了你的药水栏位，希望你做了个明智的选择。"
     ],
@@ -52,7 +52,7 @@
       "你听到孩子们在空地上玩耍。于是你潜伏在树后，你瞟了一眼，却发现了一件让你疑惑的事情。你看到本地部落的 #b孩子们 正在玩一件小型绿色爬行动物玩偶。他们正在一个原石祭坛旁边跑来跑去。祭坛上一个#b带着面具的牧师 正在准备某种用到了一个大型白色球体的仪式。 NL 看起来在有孩子乱跑的情况下，这里没人会对你不利... NL 该去哪？"
     ],
     "OPTIONS": [
-      "[牧师] #b永久性的随机你的牌组中的卡牌耗能",
+      "[牧师] #b永久性的随机你牌组中一张牌的卡牌耗能",
       "[孩子] #g获得宠物异蛇",
       "[离开]",
       "[离开]",
@@ -62,28 +62,28 @@
   "theJungle:SneckoIdol": {
     "NAME": "异蛇生放送！？",
     "DESCRIPTIONS": [
-      "#g~异蛇~ #g~异蛇~ #g~异蛇~ NL 一个在台上穿着异蛇连体服的女孩唱跳完了一首歌之后，现场爆发了名副其实的@雷鸣@ 般的掌声。 NL \"那是 '你扰乱了我的心'\"！ NL #g~依可~ #g~依可~ #g~依~ NL 再在这里呆一会似乎也不赖？",
+      "#g~异蛇！~ #g~异蛇！~ #g~异蛇！~ NL 一个在台上穿着异蛇连体服的女孩唱跳完了一首歌之后，现场爆发了名副其实的 @雷鸣@ 般的掌声。 NL \"那是 '你扰乱了我的心'\"！ NL #g~依可~ #g~依可~ #g~依~ NL 再在这里呆一会似乎也不赖？",
       "你决定为了这首好听的歌驻足。 这充满活力的歌曲 @沁入@ 了你的血脉，你控制不住自己的想要在附近停留，以来获得你新的沉迷对象的签名。 NL \" #g@嘿！@ \", 那个穿着异蛇连衣服的女孩盯着你， \"这是我的签名！\" NL 你收下并离开了，而后才意识到你刚刚在居然花时间 #r追星",
-      "你抑制不住看见另一只异蛇的#r@愤怒@ ， 于是拔出了武器向舞台冲去。 但是 #r@狂热@ 的偶像粉丝团却将你推了回去并且不让你过去 NL 往好了想，你至少把他们掉的异蛇周边转手卖给了那些进不了场的粉丝",
+      "你抑制不住看见另一只异蛇的 #r@愤怒@ ， 于是拔出了武器向舞台冲去。 但是 #r@狂热@ 的偶像粉丝团却将你推了回去并且不让你过去 NL 往好了想，你至少把他们掉的异蛇周边转手卖给了那些进不了场的粉丝",
       "你觉得这就是浪费时间，于是你独自离开了"
     ],
     "OPTIONS": [
       "[驻足] #g获得异蛇偶像的签名 #r被诅咒——羞耻。",
       "[攻击] #g获得 #g",
       " #g金币。 #r受到 #r",
-      " 点#r伤害。",
+      " 点 #r伤害。",
       "[离开]"
     ]
   },
   "theJungle:ExcessResources": {
     "NAME": "大自然的诱惑",
     "DESCRIPTIONS": [
-      "After wandering through the jungle for what feels like an eternity, you come across a clearing with #pfruits neatly arrayed in the middle. NL NL You are #r@hungry@ from stumbling through this blasted place and would #p~love~ to eat some despite how bad of an idea that would be。",
-      "You #p@MUST@ have some. You eat one, then another and when you've had your fill, just one more is all you need. NL Only 3 fruits remain: NL NL A somewhat tainted #rStrawberry looking like it would #rhurt to eat. NL A ~juicy~ #gPear that makes you #ywant #yto #ytake #ya #ybreak just looking at it. NL A #yMango which is so big that it would #ySlow you down.",
-      "It would be foolish to partake in this obvious trap. A lone #rberry lies in a corner, it will suffice.",
-      "You take that last #ydelectable #ytreat and put it in your mouth.  #r@嘶@！ 它碰过的地方都感觉在 #r~灼烧~ 。",
-      "Nobody could deny such a #p@gift@ in your circumstances. 每咬一口，你都感觉你昏昏欲睡 #y~zzzzzz~ .",
-      "你该从哪开始好呢？ The fruit seems to bear more of its #r~delicious~ #r~flesh~ every time you look at it. NL NL ~...~ NL NL 当你终于吃完了，你感觉自己非常胀而且行动 #y缓慢 ."
+      "就在你感觉花了一个世纪来穿过这个丛林之后，你来到了一片空地上， #p水果 整齐的躺在空地的正中间。 NL NL 从这个烦人的地方磕磕绊绊地走过来使你 #r@饿得很@ ，不管这是个陷阱与否，你非常非常 #p~想要~ 吃点什么。",
+      "你 #p@一定@ 要整一个！ 你吃了一个又一个，当你感觉，你只要在吃一个就够了的时候。 NL 只剩下这三种水果了： NL NL一个受污染的 #r草莓 ，看上去吃起来会 #r很疼 。 NL 一个 ~多汁~ 的，当你看了一眼的时候就想让你去休息会的 #g梨子 。 NL 一个大到会让你 #y慢 下来的 #y芒果。",
+      "傻子才中这么显眼的陷阱。 一个 #r浆果 静静的躺在角落，这对你来说已经足够了",
+      "你抓起这个 #y美味的水果 就往你的嘴里送，  #r@嘶@！ 它碰过的地方都感觉在 #r~灼烧~ 。",
+      "没有人会在这种情况下拒绝如此一份 #p@大礼@。 只是每咬一口，你都感觉你昏昏欲睡 #y~zzzzzz~ .",
+      "你该从哪开始好呢？ 每次看它你都觉得这个水果承担了他不该有的 #r~美味果肉~ 。 NL NL ~...~ NL NL 当你终于吃完了之后，你感觉自己非常胀而且行动 #y缓慢 ."
     ],
     "OPTIONS": [
       "[屈服] 屈服于你的欲望",
@@ -97,7 +97,7 @@
   "theJungle:GremlinQuiz": {
     "NAME": "Gremlin Quiz Show",
     "DESCRIPTIONS": [
-      "\" 灯光，摄像 #p@开拍！@ \" NL NL 一个挂着微笑的地精靠近了你 NL NL \" 又到了全高塔文明的地精答题秀环节了！你们会对你进行提问，然后根据结果你将有机会赢得 #g大礼！ NL 你 ~准~ ~备~ ~好~ ~了~ ~吗~ ~？~ 你当然准备好了！ \"",
+      "\" 灯光，摄像 #p@开拍！@ \" NL NL 一个挂着微笑的地精靠近了你 NL NL \" 又到了全高塔最受欢迎的地精问答秀环节了！你们会对你进行提问，然后根据结果你将有机会赢得 #g大礼！ NL 你 ~准~ ~备~ ~好~ ~了~ ~吗~ ~？~ 你当然准备好了！ \"",
       "\" 请等待我们宣布你的分数... NL NL 你在 #b%d 题中，答对了 #b%d 道题！ NL ",
       "#g完美！ NL 这是你的奖品 \"",
       "#r多么令人失望 \"",
@@ -252,13 +252,13 @@
   "theJungle:FauxPas": {
     "NAME": "与异狐的奇遇",
     "DESCRIPTIONS": [
-      "As you walk through a #gdense #gportion of the Jungle, walls of trees seem to ~bend~ ~and~ ~twist~ into a narrow passageway. You catch a flash of light reflecting off several pairs of eyes, #y~skulking~ in the #pshadows near the tunnel of trees, watching your approach.",
-      "You decide to explore the strange formation of trees. As you walk the path, you are constantly surrounded by the ~rustling~ ~of~ #g~leaves,~ hushed whispers, and @muffled@ @laughter.@ Eventually, you find yourself approaching a clearing in the dense trees, with a #ystrange #yeffigy located on a stump right in the center. Just when you think you're walking right into an ambush, a #y小巧的橘色异狐 ~leaps~ from behind a tree and sits at the entrance to the clearing in front of you, eyeing you curiously.",
-      "You decide, this time, that discretion is the better part of valor and make your way around the cluster of trees.",
-      "Something about the #yplayful #yfauxes captures a rare part of your imagination. You decide to humor the #yfaux and, before you know it, you find yourself caught up in their various games. NL NL Some time later you find yourself back at the entrance of the trees, out of breath but with a #rrenewed #rvigor for your quest.",
-      "空地上迎来了一段寂静，异狐的心情以肉眼可见的速度变成了 #p~非常伤心~ 你看向在你右手边的 @抽泣@ 的声音来源，但，那里什么都没有。 当你回头看的时候，异狐的头领已经走了 NL NL 剩下的就只有 一个#y在树桩上放着的奇怪物体，带着使森林的小动物失望 #p羞愧感 ，你准备把这个一起带回去，保留下来。",
+      "当你穿过一块 #g茂密 的树林时，灌木丛看上去像是会 ~扭曲~ 成一条狭小的通道一样。你瞟见有几对闪着光的眼睛正在树旁的 #p阴影 之中 #y~潜伏着~ ，并等待着你靠近它们。",
+      "你决定探索这片奇异的树林。 当你走在小路上的时候，你的耳边总是萦绕着 #g~树叶~ 的 ~沙沙声~ ， ~ hushed whispers, 以及 @抑制不住的笑声@。 终于，你意识到了你正在靠近一片中心的树桩上有着一尊 #y奇怪雕像 的空地。 就在你以为自己被埋伏了的时候，一只 #y小巧的橘色异狐 从树后 ~跳出~ ，就坐在你面前的空地的入口处, 好奇地看着你。",
+      "你觉得，这种情况下慎重要远比大胆好得多，于是你绕开了这片树林。",
+      " #y贪玩的异狐 的某些特质触动了你心里的某根弦。你决定迎合 #y异狐 。不过你还没反应过来，就发现你反而已经被他们的各种游戏吸引住了。 NL NL 过了一段时间之后你发现你已经上不接下气地回到了树林的出口，但是你却反而感觉自己 #r充满活力 ",
+      "空地上迎来了一段寂静，异狐的心情以肉眼可见的速度变成了 #p~非常伤心~ 你看向在你右手边的 @抽泣@ 的声音来源，但，那里什么都没有。 当你回头的时候，异狐的头领已经走了 NL NL 剩下的就只有一个坐落树桩上的 #y奇怪雕像，带着使森林的小动物失望 #p羞愧感 ，你准备把这个一起带回去，保留下来。",
       "你只能设想这是一个陷阱。你决定回头立马离开。 NL NL 医护开心地叫了起来 #b\"赛跑？我喜欢赛跑了！\"~ #p\"这次我绝对会赢的！\" #r\"哇，他跑的好快！\" NL NL 声音离你越来越近了，但你仍然保持领先。就在你思考着你的肺什么时候会撑不住的时候，你冲出了入口，回到了森林的巨口的外部。追兵停了下来，沉寂了下来。 NL NL 在你缓上气来之后，你发现地上躺着个#y装满了金币 的小包，旁边有个备注，写着 #p\"胜利者的奖励！\" NL NL 神奇的生物",
-      "在你能反应过来之前，他先开口问道 #y\"你是我们的新朋友吗？\" NL NL 喋喋不休的声音瞬间充斥了整个森林在你耳边环绕. #g\"我喜欢新朋友！\" #b你觉得他会待上一会吗？\" #p\"已经过了好久了\"~ #r\"我很高兴和你一起玩！\" NL NL 这只异狐又开口了。 #y\"这会很好玩的！你说是不是呀？\" NL NL 你同意么？"
+      "在你能反应过来之前，他先开口问道 #y\"你是我们的新朋友吗？\" NL NL 喋喋不休的声音瞬间充斥了整个森林在你耳边环绕. #g\"我喜欢新朋友！\" #b\你觉得他会待上一会吗？\" #p\"已经过了好久了\"~ #r\"我很高兴和你一起玩！\" NL NL 这只异狐又开口了。 #y\"这会很好玩的！你说是不是呀？\" NL NL 你同意么？"
     ],
     "OPTIONS": [
       "[进入] 探索这条通道",
@@ -284,7 +284,7 @@
     ],
     "OPTIONS": [
       "[攀爬棘手的藤蔓] #r受到 #r",
-      " 点#r伤害。#g找到什么东西",
+      " 点#r伤害。 #g找到什么东西",
       "[挤过去] #r被诅咒——苦恼。 #g找到什么东西",
       "[回头]",
       "[去那块空地上]",
@@ -321,13 +321,13 @@
   "theJungle:HappyBirthday" : {
     "NAME": "生日快乐",
     "DESCRIPTIONS": [
-      "当你穿过丛林的时候，你路过了一个... NL ...额...蛋糕？ NL NL 在蛋糕旁有一条备注。 这上面写着：NL NL #b\"MTS生日快乐！ NL #b(请只拿一块) NL #b- #bkio\"",
+      "当你穿过丛林的时候，你路过了一个... NL ...额...蛋糕？ NL NL 在蛋糕旁有一条备注。 这上面写着： NL NL #b\"MTS生日快乐！ NL #b(随意享用，但请只拿一块走) NL #b- #bkio\"",
       "你找这备注上所说的只拿走了一块。 NL NL 好吃！",
       "你环顾四周, 并没有看到有任何东西能阻止你拿走整个蛋糕 NL NL #g这真的太好吃了， 但 #r~一股羞耻感~ 涌上心头，盖过了美味，在你的心中肆虐"
     ],
     "OPTIONS": [
-      "[拿一块] #g获得 #g%d 点#g最大生命",
-      "[偷走蛋糕] #g获得 #g%d 点#最大生命， #r永久的羞耻",
+      "[拿一块] #g获得 #g%d 点 #g最大生命",
+      "[偷走蛋糕] #g获得 #g%d 点 #g最大生命 ，以及 #r永恒的羞耻",
       "[离开]"
     ]
   },
@@ -346,18 +346,18 @@
     ]
   },
   "theJungle:StalkMarket" : {
-    "NAME": "水果市场",
+    "NAME": "农贸市场",
     "DESCRIPTIONS": [
-      "A lush greenfield greets you with a curved and flowered log arch as the entrance. Etched on it reads #g\"STALK #gMARKET\". As you explore this curiously peaceful area populated with varying denizens of the Jungle, you understand what this place is about. It's the largest gathering center for exotic #gplants and #ycrops with each creature holding harvest yields with #ystalk #ycertificates.",
-      "附近坐落着许多的田地与花园，你进入了其中的一个被一位一身正装，欣喜若狂的地精缩接待。 NL NL \"我以前从来没有见过你，你一定是新来 #g水果市场 这地方的！ 你想从这片田里买点什么吗? 我们这里有独家的 #r水果 与 #g蔬菜 ！只此一家！\"",
-      "\"Oh, I understand... But we have plenty of harvests for adventurers on the go as well!\" NL NL The gremlin gives you a personal tour through the field. She wasn't kidding; you don't recognize any of these plants, not even from before the #pSpireblight. NL NL \"...and over here, we have #rflamangos, sweet and spicy! And my personal favorite just right here, the #rcreamberry! They're so rich in flavor inside!\"",
+      "一片青葱的田野以及一个原木拱门坐落在了你的眼前。 门牌上写着#g\"农贸市场\"。 你探索着这片充满了森林的原住民，却出奇的祥和的地方。而后，你终于搞懂了这块地方是来干嘛用的。 这里是各类生物的 #y农贸市场 ，同时也是各种异域 #g植物 与 #y农作物 的最大贸易中心 ",
+      "附近坐落着许多的田地与花园，你进入了其中的一个被一位一身正装，欣喜若狂的地精所接待。 NL NL \"我以前从来没有见过你，你一定是新来 #g农务市场 这地方的！ 你想从这片田里买点什么吗? 这有独家的 #r水果 与 #g蔬菜 ！只此一家！\"",
+      "\"哦，我懂了... 没事，我们也有这里有各种提供给冒险者的农作物\" NL NL 这只地精带你去田里晃了一圈，她没在骗人；你认不出来其中的任何一种植物，哪怕是在 #p高塔的荒疫 爆发之前也曾未见过。 NL NL \"...来这边！我们有又甜又辣的 #r火芒果 ！还有我个人最喜欢的 #r奶油浆果！他们都非常好吃！\"",
       "\"所以...有感兴趣的吗？ 不过，请记住，我们只允许给每位观光者出售 #b一种 水果。\"",
-      "#g\"防风草， 一个#y简单 而又#g养生 的选择！许多的水果摊主甚至用这个来喂它们的孩子！对于成长非常有帮助！\" NL NL 用水冲洗之后，咬一口新鲜采摘的防风草，你感觉重获新生",
+      "#g\"防风草， 一个 #y简单 而又 #g养生 的选择！许多的摊主甚至用这个来喂它们的孩子！对于成长非常有帮助！\" NL NL 用水冲洗之后，咬一口新鲜采摘的防风草，你将感觉重获新生",
       "#r\"火芒果, #r辣 到超乎你的想象！几乎和大名鼎鼎的 #p魔鬼椒 一样辣！\" NL NL 用水冲洗之后，将你的火芒果切成块。#r@好辣好辣好辣！",
       "#g\"带壳豆 ，他们的口感一流！ 只需咬开大豆，然后咀嚼里面的小豆就好！\" NL NL 用水冲洗之后，将刚采摘的新鲜 #g带壳豆 风干。 真正的 #y嚼劲 ！",
-      "#r\"奶油浆果， 这才是#b绝对美味！吃过的人就知道 #b口水直流 到底是怎么样的了！\" NL NL 用水冲洗之后， 将刚采摘的新鲜奶油浆果含在嘴中. The #b真正的绝对美味 !",
+      "#r\"奶油浆果， 这才是 #b绝对美味！吃过的人就知道 #b口水直流 到底是怎么样的了！\" NL NL 用水冲洗之后， 将刚采摘的新鲜奶油浆果含在嘴中. The #b真正的绝对美味 !",
       "\"对不起，也许这块田提不起你的兴趣。不过随时欢迎您的再次光临！\" NL NL 你觉得什么都不买有一点对不起她的工作热情，但，就这样吧",
-      "附近坐落着许多的田地与花园，你进入了其中的一个被一位#r@一身正装@ ，欣喜若狂的地精缩接待。 NL NL \"我以前从来没有见过你，你一定是新来水果市场 这地方的！ 你想从这片田里买点什么吗? 我们这里有独家的水果与蔬菜 ！只此一家！\""
+      "附近坐落着许多的田地与花园，你进入了其中的一个被一位 #r@一身正装@ ，欣喜若狂的地精所接待。 NL NL \"我以前从来没有见过你，你一定是新来这地方的！ 你想从这片田里买点什么吗? 这有独家的水果与蔬菜 ！只此一家！\""
     ],
     "OPTIONS": [
       "[继续]",
