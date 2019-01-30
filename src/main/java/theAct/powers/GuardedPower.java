@@ -39,12 +39,7 @@ public class GuardedPower extends Power {
     
     @Override
     public float atDamageReceive(float damage, final DamageInfo.DamageType type) {
-        if (type == DamageType.NORMAL) {
-            return Math.max(damage * 0.2F, 0.0F);
-        }
-        else {
-            return damage;
-        }
+        return Math.max(damage * 0.2F, 0.0F);
     }
     
     @Override

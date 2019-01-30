@@ -142,7 +142,7 @@
     "theJungle:Guarded": {
 		"NAME" : "Guarded",
 		"DESCRIPTIONS": [
-			"Receives #b80% less #yAttack damage while there is a #rSpyder in front of this creature."
+			"ALL damage this creature takes is reduced to #g20% while there is a #rSpyder in front it."
 		]
 	},
     "theJungle:Webbed": {

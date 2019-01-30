@@ -22,8 +22,8 @@ public class SpyderBoss extends Spyder {
 	public static final String ID = TheActMod.makeID(ID_WITHOUT_PREFIX);
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
-	private static final int HP = 180;
-	private static final int ASC_HP = 190;
+	private static final int HP = 190;
+	private static final int ASC_HP = 200;
 	private static final int DAMAGE_DAMAGE = 8; // Is there a better name for this?
 	private static final int ASC_DAMAGE_DAMAGE = 9;
 	private static final int STRENGTH_GAIN_AMOUNT = 2;
