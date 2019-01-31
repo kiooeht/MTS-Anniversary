@@ -6,27 +6,27 @@
   },
   "theJungle:SS_Clouding": {
     "NAME": "Clouding Spores",
-    "DESCRIPTION": "Ethereal. NL Draw 1 card. NL Gain !M! Vulnerable. NL Exhaust."
+    "DESCRIPTION": "Draw 1 card. NL Gain !M! Weak."
   },
   "theJungle:SS_Bright": {
     "NAME": "Bright Spores",
-    "DESCRIPTION": "Ethereal. NL Draw 1 card. NL Add !M! Dazed into your discard pile. NL Exhaust."
+    "DESCRIPTION": "Draw 1 card. NL Add !M! Dazed into your discard pile."
   },
   "theJungle:SS_Clumping": {
     "NAME": "Clumping Spores",
-    "DESCRIPTION": "Ethereal. NL Draw 1 card. NL Exhaust."
+    "DESCRIPTION": "Draw 1 card."
   },
   "theJungle:SS_Leeching": {
     "NAME": "Leeching Spores",
-    "DESCRIPTION": "Ethereal. NL Draw 1 card. NL ALL enemies heal !M! HP. NL Exhaust."
+    "DESCRIPTION": "Draw 1 card. NL ALL enemies heal !M! HP."
   },
   "theJungle:SS_Toxin": {
     "NAME": "Toxin Spores",
-    "DESCRIPTION": "Ethereal. NL Draw 1 card. NL Take !M! damage. NL Exhaust."
+    "DESCRIPTION": "Draw 1 card. NL Take !D! damage."
   },
   "theJungle:SS_Sloth": {
     "NAME": "Sloth Spores",
-    "DESCRIPTION": "Ethereal. NL Draw 1 card. NL Gain !M! Slothful. NL Exhaust."
+    "DESCRIPTION": "Draw 1 card. NL Gain !M! Slothful."
   },
   "theJungle:Gourd": {
     "NAME": "Gourd",

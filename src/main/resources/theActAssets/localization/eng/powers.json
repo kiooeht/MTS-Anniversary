@@ -86,6 +86,12 @@
 			" #yFungal #yInfection."
 		]
 	},
+	"theJungle:PuffballPower": {
+		"NAME": "Puffball",
+		"DESCRIPTIONS": [
+			"Adds a random #rSpore #yStatus card into your draw pile each time it hits."
+		]
+	},
 	"theJungle:RegenerativeSlime": {
 		"NAME": "Regenerative Slime",
 		"DESCRIPTIONS": [

@@ -26,9 +26,7 @@ public class SS_Leeching extends CustomCard {
 
     public SS_Leeching() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.STATUS, CardColor.COLORLESS, CardRarity.SPECIAL, CardTarget.NONE);
-        this.magicNumber = this.baseMagicNumber = 6;
-        this.exhaust = true;
-        this.isEthereal = true;
+        this.magicNumber = this.baseMagicNumber = 5;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -52,5 +50,7 @@ public class SS_Leeching extends CustomCard {
     }
     @Override
     public void upgrade() {
+        upgradeName();
+        upgradeMagicNumber(3);
     }
 }
