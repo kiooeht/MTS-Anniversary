@@ -47,8 +47,8 @@ public class FunGuy extends AbstractMonster {
 	public static final int A_BURST_AMT = 2;
 	public static final int ASS_DMG = 2;
 	public static final int A_ASS_DMG = 2;
-	public static final int INF_AMT = 3;
-	public static final int A_INF_AMT = 4;
+	public static final int INF_AMT = 2;
+	public static final int A_INF_AMT = 3;
 
     private static final byte CHOMP = 1;
     private static final byte INFECTION = 2;
@@ -94,7 +94,6 @@ public class FunGuy extends AbstractMonster {
 		this.damage.add(new DamageInfo(this, chompDamage));
 		this.damage.add(new DamageInfo(this, burstDamage));
 		this.damage.add(new DamageInfo(this, assymDamage));
-		this.damage.add(new DamageInfo(this, assymDamage+(AbstractDungeon.ascensionLevel >= 9 ? 2 : 0)));
 	}
 	
 	private void spawnTheBeasts(int cloud, int infection) {
@@ -136,7 +135,7 @@ public class FunGuy extends AbstractMonster {
 			AbstractDungeon.actionManager.addToBottom(new DamageAction(p, damage.get(0), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			break;
 		case INFECTION: // Apply 2 Vuln, Gain 14 Block
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new VulnerablePower(AbstractDungeon.player, 2, true), 2));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new VulnerablePower(AbstractDungeon.player, this.infectionAmount, true), this.infectionAmount));
 			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, 14));
 			break;
 		case BURST: // Deal 6(8)x2 damage, scales up the number of attacks for later
@@ -177,7 +176,7 @@ public class FunGuy extends AbstractMonster {
 
   			break;
 		case SPREAD: // Multi-hit for 3x5 and Block. Primarily gives spores, but is very scary after the 3(4) str buff.
-			for (int i=0; i<5; i++) {
+			for (int i=0; i<4; i++) {
 				AbstractDungeon.actionManager.addToBottom(new DamageAction(p, damage.get(2), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
 			}
 			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, 9));
@@ -223,8 +222,8 @@ public class FunGuy extends AbstractMonster {
 	      	return;
 	    }
 
-		// Start with this, and then every four turns
-        if (this.moveHistory.isEmpty() || (AbstractDungeon.actionManager.turn % 4) == 3) {
+		// Start with this, and then every four turns (five turns on A19+). You'll be vuln for all but one of the break turns.
+        if (this.moveHistory.isEmpty() || (AbstractDungeon.actionManager.turn % (this.infectionAmount+2)) == this.infectionAmount+1) {
 			this.setMoveNow(INFECTION);
 			return;
         }
