@@ -68,20 +68,20 @@
     "NAME": "파스닙",
     "FLAVOR": "이름은 그래도 평범한 야채보다는 확실히 비타민이 풍부합니다!",
     "DESCRIPTIONS": [
-      "모든 #y기본 #y카드 를 강화 합니다."
+      "획득 시 모든 #y기본 #y카드 를 강화 합니다."
     ]
   },
   "theJungle:ShellPeas": {
     "NAME": "깍지 완두콩",
     "FLAVOR": "평범한 크기의 완두콩이 들어있는 거대한 완두콩입니다. 씹으면 특이한 질감이 느껴집니다.",
     "DESCRIPTIONS": [
-      "공격 카드를 사용하면, #y임시 체력을 #b",
+      "공격 받을 때 마다 #y임시 체력을 #b",
       " 얻습니다."
     ]
   },
   "theJungle:Flamango": {
     "NAME": "플라망고",
-    "FLAVOR": "A mango concentrated with a forgotten firepower. Spicy!",
+    "FLAVOR": "이탈리아 배관공이 좋아하는 #r불 #r꽃 과 접붙인 망고입니다. 매워라!",
     "DESCRIPTIONS": [
       "#y공격 카드를 사용하면, 내 턴이 끝날 때 모든 적에게 #b",
       " 피해를 줍니다."
