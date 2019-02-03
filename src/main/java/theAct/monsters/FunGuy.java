@@ -67,7 +67,7 @@ public class FunGuy extends AbstractMonster {
     public static final Logger logger = LogManager.getLogger("fffffffff");
 
 	public FunGuy() {
-		super(STRINGS.NAME, ID, 360, 0, 0, 300, 400, null, -50f, -50f);
+		super(STRINGS.NAME, ID, 360, 0, 0, 300, 400, null, -20f, -50f);
 		this.img = ImageMaster.loadImage(TheActMod.assetPath("/images/monsters/funguy/placeholder.png"));
 		this.type = AbstractMonster.EnemyType.BOSS;
 		if (AbstractDungeon.ascensionLevel >= 4){

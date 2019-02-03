@@ -22,7 +22,7 @@
   },
   "theJungle:SS_Toxin": {
     "NAME": "Toxin Spores",
-    "DESCRIPTION": "Draw 1 card. NL Take !D! damage."
+    "DESCRIPTION": "Draw 1 card. NL Take !M! damage."
   },
   "theJungle:SS_Sloth": {
     "NAME": "Sloth Spores",
