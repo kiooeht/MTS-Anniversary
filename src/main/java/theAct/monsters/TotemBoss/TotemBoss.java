@@ -54,7 +54,7 @@ public class TotemBoss extends AbstractMonster {
     private int strikeAmt;;
     private int superAmt;
 
-    private int multiStrikeCount = 6;
+    private int multiStrikeCount = 4;
     public boolean stopTotemFall;
     private float totemSfxTimer = 0.f;
     public int encounterSlotsUsed = 1;

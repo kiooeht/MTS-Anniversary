@@ -4,9 +4,11 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theAct.TheActMod;
+import theAct.actions.TotemCounterAttackAction;
 import theAct.monsters.TotemBoss.AbstractTotemSpawn;
 import theAct.powers.abstracts.Power;
 
@@ -41,11 +43,13 @@ public class TotemRevengeAttackPower extends Power {
 
 		if (this.owner instanceof AbstractTotemSpawn && card.target == AbstractCard.CardTarget.ALL_ENEMY) {
 			if (!spawnedIn) {
-				((AbstractTotemSpawn) this.owner).totemAttack();
+				AbstractDungeon.actionManager.addToBottom(new TotemCounterAttackAction((AbstractTotemSpawn)this.owner));
 				flash();
 			}
 	}
 	}
+
+
 
 	@Override
 	public void atEndOfTurn(boolean isPlayer) {
