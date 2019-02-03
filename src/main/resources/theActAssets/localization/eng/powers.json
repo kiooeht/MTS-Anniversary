@@ -70,7 +70,7 @@
 	"theJungle:MamaSneckoRevengePower": {
 		"NAME": "Enrage",
 		"DESCRIPTIONS": [
-			"Whenever a #yBaby #ySnecko is hit, gains #b1 Strength. NL At the end of its turn, loses #b2 Strength (cannot go negative)."
+			"Whenever a #yBaby #ySnecko or #ySnecko #yEgg takes damage, gains #b1 Strength. NL At the end of its turn, loses #b2 Strength (cannot go negative)."
 		]
 	},
 	"theJungle:TotemRevengeAttackPower": {
@@ -85,6 +85,12 @@
 		"DESCRIPTIONS": [
 			"On death, applies #b",
 			" #yFungal #yInfection."
+		]
+	},
+	"theJungle:PuffballPower": {
+		"NAME": "Puffball",
+		"DESCRIPTIONS": [
+			"Adds a random #rSpore #yStatus card into your draw pile each time it hits."
 		]
 	},
 	"theJungle:RegenerativeSlime": {

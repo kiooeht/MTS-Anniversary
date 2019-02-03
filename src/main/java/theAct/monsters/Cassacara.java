@@ -119,7 +119,7 @@ public class Cassacara extends AbstractMonster {
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(new BiteEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, Color.CHARTREUSE.cpy()), 0.3F));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.NONE));
                 for (AbstractMonster m : this.carcassSacks) {
-                    if (!m.isDeadOrEscaped()) {
+                    if (m != null && !m.isDeadOrEscaped()) {
                         AbstractDungeon.actionManager.addToBottom(new CassacaraSacrificeAction(this, m, this.bigBiteStrengthGainPerSack));
                     }
                 }

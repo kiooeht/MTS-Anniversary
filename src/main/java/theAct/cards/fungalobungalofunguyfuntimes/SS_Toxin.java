@@ -29,9 +29,9 @@ public class SS_Toxin extends CustomCard {
 
     public SS_Toxin() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.STATUS, CardColor.COLORLESS, CardRarity.SPECIAL, CardTarget.NONE);
-        this.magicNumber = this.baseMagicNumber = 3;
-        this.exhaust = true;
-        this.isEthereal = true;
+        this.baseMagicNumber = this.magicNumber = 3;
+        // this.exhaust = true;
+        // this.isEthereal = true;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -51,5 +51,7 @@ public class SS_Toxin extends CustomCard {
     }
     @Override
     public void upgrade() {
+        upgradeName();
+        upgradeMagicNumber(2);
     }
 }
