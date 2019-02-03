@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 
 import theAct.TheActMod;
 
@@ -24,13 +24,13 @@ public class SS_Clouding extends CustomCard {
     public SS_Clouding() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.STATUS, CardColor.COLORLESS, CardRarity.SPECIAL, CardTarget.NONE);
         this.magicNumber = this.baseMagicNumber = 1;
-        this.exhaust = true;
-        this.isEthereal = true;
+        // this.exhaust = true;
+        // this.isEthereal = true;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new VulnerablePower(p, this.magicNumber, false), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new WeakPower(p, this.magicNumber, false), this.magicNumber));
     }
     @Override
     public void triggerWhenDrawn() {
@@ -45,5 +45,7 @@ public class SS_Clouding extends CustomCard {
     }
     @Override
     public void upgrade() {
+        upgradeName();
+        upgradeMagicNumber(1);
     }
 }
