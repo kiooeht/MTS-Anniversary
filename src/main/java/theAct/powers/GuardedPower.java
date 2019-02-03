@@ -1,7 +1,5 @@
 package theAct.powers;
 
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -22,7 +20,7 @@ public class GuardedPower extends Power {
 		this.amount = -1;
 		this.type = PowerType.BUFF;
 		this.setImage(IMG + "84.png", IMG + "32.png");
-        this.priority = 99;
+        //this.priority = 99;
 		this.updateDescription();
 	}
 	
@@ -36,11 +34,6 @@ public class GuardedPower extends Power {
 		CardCrawlGame.sound.play("POWER_FOCUS", 0.1f);
 		CardCrawlGame.sound.play("BLOCK_BREAK", 0.05f);
 	}
-    
-    @Override
-    public float atDamageReceive(float damage, final DamageInfo.DamageType type) {
-        return Math.max(damage * 0.2F, 0.0F);
-    }
     
     @Override
     public void updateDescription() {
