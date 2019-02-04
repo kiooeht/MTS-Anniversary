@@ -119,7 +119,7 @@ public class FunGuy extends AbstractMonster {
     public void usePreBattleAction() {
 		CardCrawlGame.music.unsilenceBGM();
 		AbstractDungeon.scene.fadeOutAmbiance();
-		AbstractDungeon.getCurrRoom().playBgmInstantly("BOSSTOTEM");
+		AbstractDungeon.getCurrRoom().playBgmInstantly("MUSHROOMGANG");
         UnlockTracker.markBossAsSeen(ID);
         
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new PuffballPower(this), 1));
