@@ -41,8 +41,10 @@ public class BuffTotem extends AbstractTotemSpawn {
 
     public Integer secondaryEffect;
 
-    public BuffTotem(TotemBoss boss) {
-        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemgreen.png"));
+    public static Color totemColor = Color.GREEN;
+
+    public BuffTotem(TotemBoss boss, boolean spawnedIn) {
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemgreen.png"), spawnedIn);
         this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/green/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/green/Totem.json"), 1.0F);
 
         AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
@@ -62,14 +64,10 @@ public class BuffTotem extends AbstractTotemSpawn {
 
         this.intentType = Intent.ATTACK_BUFF;
 
-    }
-
-
-
-    public void takeTurn() {
-        totemAttack();
+        this.totemLivingColor = totemColor;
 
     }
+
 
     @Override
     public void totemAttack() {
@@ -91,9 +89,7 @@ public class BuffTotem extends AbstractTotemSpawn {
 
     }
 
-    protected void getMove(int num)
-    {
-        this.setMove((byte)1, intentType, this.attackDmg);
+    public void getUniqueTotemMove() {this.setMove((byte)1, intentType, this.attackDmg);
     }
 
     static {

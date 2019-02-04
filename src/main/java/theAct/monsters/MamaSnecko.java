@@ -55,8 +55,8 @@ public class MamaSnecko extends AbstractMonster {
     private static final String FURY_NAME = MOVES[4];
     private static final int TAIL_DAMAGE = 8;
     private static final int ASC_TAIL_DAMAGE = 10;
-    private static final int CONFUSE_AMOUNT = 8;
-    private static final int ASC_CONFUSE_AMOUNT = 12;
+    private static final int CONFUSE_AMOUNT = 4;
+    private static final int ASC_CONFUSE_AMOUNT = 5;
     private static final int TAIL_VULN = 2;
     private static final int ASC_TAIL_WEAK = 2;
     private static final int BITE_DAMAGE = 15;
@@ -98,7 +98,7 @@ public class MamaSnecko extends AbstractMonster {
         if (AbstractDungeon.ascensionLevel >= 18) {
             this.confuseAmount = ASC_CONFUSE_AMOUNT;
         }
-        else if (AbstractDungeon.ascensionLevel >= 3) {
+        if (AbstractDungeon.ascensionLevel >= 3) {
             this.biteDamage = ASC_BITE_DAMAGE;
             this.furyDamage = ASC_FURY_DAMAGE;
             this.tailDamage = ASC_TAIL_DAMAGE;

@@ -39,8 +39,10 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
     public Integer attackDmg;
     public Integer secondaryEffect;
 
-    public AttackAndShieldTotem(TotemBoss boss) {
-        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemorange.png"));
+    public static Color totemColor = Color.PURPLE;
+
+    public AttackAndShieldTotem(TotemBoss boss, boolean spawnedIn) {
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemorange.png"), spawnedIn);
         this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/purple/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/purple/Totem.json"), 1.0F);
 
         AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
@@ -57,17 +59,15 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
             this.secondaryEffect = 3;
         }
 
+        this.totemLivingColor = totemColor;
+
         this.damage.add(new DamageInfo(this, this.attackDmg));
 
         this.intentType = Intent.ATTACK_DEFEND;
-    }
-
-
-
-    public void takeTurn() {
-        totemAttack();
 
     }
+
+
 
     @Override
     public void totemAttack() {
@@ -79,15 +79,16 @@ public class AttackAndShieldTotem extends AbstractTotemSpawn {
 
         for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
 
-            if (!m.isDying && !(m instanceof TotemBoss)) {
+            if (!m.isDying && !(m instanceof TotemBoss) && m!=this) {
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, this, this.secondaryEffect));
             }
         }
     }
 
-    protected void getMove(int num)
-    {
-        this.setMove((byte)1, Intent.ATTACK_DEFEND, this.attackDmg);
+    public void getUniqueTotemMove() {
+
+            this.setMove((byte) 1, Intent.ATTACK_DEFEND, this.attackDmg);
+
     }
 
     static {

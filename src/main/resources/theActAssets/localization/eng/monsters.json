@@ -20,9 +20,7 @@
 			"Flail"
 		],
 		"NAME": "Giant Wrat",
-		"DIALOG": [
-			"Absolute Unit"
-		]
+		"DIALOG": []
 	},
 	"theJungle:Phrog": {
 		"MOVES": [

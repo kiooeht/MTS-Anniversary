@@ -30,7 +30,7 @@
     "NAME": "A Mysterious Cauldron",
     "DESCRIPTIONS": [
       "As you trudge through the jungle you spot a cave with faint green smoke pouring out.\n When you enter, you spot a lone figure wearing traditional shaman's attire crouching on the floor beside a bubbling cauldron.\n Rocking back and forth, he looks up at you, letting you catch a glimpse of green skin.\n NL \" #y@KIKIKIKIKI@ you MUST try my latest brew, I've made a delicious potion for you!\n NL I'm missing #bone #bkey #bingredient you see, either your #gpotions or your #rblood... what will it be?\"",
-      "You cautiously extend your arm and the shaman eagerly grabs it and holds it over the cauldron. \n NL NL #r@SLICE@ NL NL \n The shaman cackles as the brew turns into a murky brown color.\n The figure leans forward and his long tongue slithers out and tastes it.\n He shudders. NL NL \" #y@PEEEEEERFECT@ \"",
+      "You cautiously extend your arm and the shaman eagerly grabs it and holds it over the cauldron. \n NL NL #r@SLICE@ NL NL \n The shaman cackles as the brew turns into a murky brown color.\n The figure leans forward and his long tongue slithers out and tastes it.\n He @shudders.@ NL NL \" #y@PEEEEEERFECT@ \"",
       "You walk forward and dump your potions into the cauldron. \n The shaman cackles as the liquid turns into a murky brown color, stirring it quickly.\n The figure leans forward and his tongue, long and pink, ~slithers~ out and tastes it.\n He @shudders.@ NL NL \" #y@PEEEEEERFECT@ \"",
       "You turn around and walk away. He's clearly too obsessed with potions.",
       "You fill up your potion slots. Hopefully you made the right choice."
@@ -46,15 +46,15 @@
   "theJungle:SneckoCultEvent": {
     "NAME": "Cult of The Snecko",
     "DESCRIPTIONS": [
-      "Parting through the jungle trees, you come across a clearing with a ~strange~ altar in the center. NL Around it, you see various figures in robes and ceremonial gear surrounding a small Snecko. The @joyful@ laughter of children can be heard in the distance.",
-      "You walk straight to the altar in the center. NL NL Something about this sphere irritates you... NL The priest turns to you, singing loudly with a high pitch: #g~\"Aall~ #g~hai-iil~ #g~to~ #g~Snecko!\"~ NL You realize that the sphere in his hands is actually an exceptionally large eye. It gazes at you with an immense power, pulling your mind in. ~It~ ~is~ ~hard~ ~to~ ~resist...~ NL #g@\"Aaall@ #g@hai-iiiil@ #g@to@ #g@Snecko!\"@ NL No, this was not you who just sang along, right? ",
-      "One of the children almost discovered you by searching for a hideout. You suggest to the tribal children that you could play #phide-and-seek with them. NL \"Deal, and you will win a prize if you find all of us!\" NL NL Well, you are a bit older than them, but you don't know this place as well as they do... After a while of searching, the priest hints you to a stone plate. There you find all of them giggling together. The oldest one hands you a small animal as prize.",
-      "You hear children playing on a clearing. Lurking behind two trees, you catch a sight that leaves you puzzled: You see #bchildren of the local tribe playing with small green toy reptils. They are running around a rounded stone altar where a #bmasked #bpriest is preparing some kind a ritual involving a big white sphere. NL It seems like nobody here would harm you, with these children running around... NL Where should you go?"
+      "You hear the @joyful@ laughter of children playing. Lurking behind two trees, you catch a sight that leaves you puzzled: You see #bchildren of the local tribe playing with small green reptils. They are running around a rounded stone altar where a #bmasked #bpriest is preparing some kind a ritual involving a big white sphere. NL It seems like nobody here would harm you, with these children running around... NL Where should you go?",
+      "You walk straight to the altar in the center. NL NL Something about this sphere irritates you... NL The priest turns to you, singing loudly with a high pitch: #g~\"Aall~ #g~hai-iil~ #g~to~ #g~Snecko!\"~ NL You realize that the sphere in his hands is actually an exceptionally large eye. It gazes at you with an immense power, pulling your mind in. ~It~ ~is~ ~hard~ ~to~ ~resist...~ NL #g@\"Aaall@ #g@hai-iiiil@ #g@to@ #g@Snecko!\"@ NL No, that wasn't you who just sang along, right?",
+      "One of the children almost discovered you by searching for a hideout. You suggest to the tribal children that you could play #phide-and-seek with them. NL \"Deal, and you will win a prize if you find all of us!\" NL NL Well, you are a bit older than them, but you don't know this place as well as they do... After a while of searching, the priest hints you to a stone plate. There you find all of them giggling together. The oldest one hands a small animal as prize to you.",
+      "You know the drill. NL NL ~#gSnecko~ is not your friend, and neither are these members of this tribe where even the children seem to worship it."
     ],
     "OPTIONS": [
       "[Priest] #bRandomize #bthe #bcost #bof #ba #bcard #bin #byour #bdeck #bpermanently.",
       "[Children] #gObtain #ga #gPet #gSnecko.",
-      "[Leave]",
+      "[Leave] Thanks!",
       "[Leave]",
       "Pick a card to randomize"
     ]

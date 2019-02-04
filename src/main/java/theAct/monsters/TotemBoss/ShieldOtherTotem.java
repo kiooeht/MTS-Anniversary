@@ -29,10 +29,10 @@ public class ShieldOtherTotem extends AbstractTotemSpawn {
     public static final String[] DIALOG;
 
     public Integer secondaryEffect;
+    public static Color totemColor = Color.CYAN;
 
-
-    public ShieldOtherTotem(TotemBoss boss) {
-        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemcyan.png"));
+    public ShieldOtherTotem(TotemBoss boss, boolean spawnedIn) {
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemcyan.png"), spawnedIn);
         this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/cyan/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/cyan/Totem.json"), 1.0F);
 
         AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
@@ -49,14 +49,11 @@ public class ShieldOtherTotem extends AbstractTotemSpawn {
         this.intentType = Intent.DEFEND;
         this.powers.add(new BlockFromStrengthPower(this));
 
+        this.totemLivingColor = totemColor;
+
 
     }
 
-
-
-    public void takeTurn() {
-        totemAttack();
-    }
 
     @Override
     public void totemAttack() {
@@ -70,15 +67,13 @@ public class ShieldOtherTotem extends AbstractTotemSpawn {
         }
         for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
 
-            if (!m.isDying && !(m instanceof TotemBoss)) {
+            if (!m.isDying && !(m instanceof TotemBoss) && m!=this) {
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, this, this.secondaryEffect + blockBonus));
             }
         }
     }
 
-    protected void getMove(int num)
-    {
-        this.setMove((byte)1, intentType);
+    public void getUniqueTotemMove() {this.setMove((byte)1, intentType);
     }
     static {
         monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);

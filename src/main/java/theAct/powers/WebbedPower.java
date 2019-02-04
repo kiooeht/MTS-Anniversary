@@ -46,7 +46,9 @@ public class WebbedPower extends Power implements OnCardDrawPower {
 	            if (amount > 0) {
 	                if ((c.cost >= 0)) {
 	                    c.superFlash();
-	                    c.modifyCostForCombat(1);;
+	                    int turnCost = c.costForTurn;
+	                    c.modifyCostForCombat(1);
+	                    c.setCostForTurn(turnCost + 1);
 	                    reducePower(1);
 	                    cardAmount++;
 	                    updateDescription();

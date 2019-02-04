@@ -44,8 +44,8 @@ public class BabySnecko extends AbstractMonster {
     private static final byte GLARE = 2;
     private static final String BITE_NAME = MOVES[0];
     private static final String GLARE_NAME = MOVES[1];
-    private static final int CONFUSE_AMOUNT = 3;
-    private static final int ASC_CONFUSE_AMOUNT = 4;
+    private static final int CONFUSE_AMOUNT = 1;
+    private static final int ASC_CONFUSE_AMOUNT = 2;
     private static final int BITE_DAMAGE = 9;
     private static final int ASC_BITE_DAMAGE = 11;
     private int biteDamage;
@@ -73,7 +73,7 @@ public class BabySnecko extends AbstractMonster {
         if (AbstractDungeon.ascensionLevel >= 17) {
             this.confuseAmount = ASC_CONFUSE_AMOUNT;
         }
-        else if (AbstractDungeon.ascensionLevel >= 2) {
+        if (AbstractDungeon.ascensionLevel >= 2) {
             this.biteDamage = ASC_BITE_DAMAGE;
         }
         this.damage.add(new DamageInfo(this, biteDamage));

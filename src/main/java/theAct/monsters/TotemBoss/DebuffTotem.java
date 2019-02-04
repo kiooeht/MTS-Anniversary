@@ -43,9 +43,11 @@ public class DebuffTotem extends AbstractTotemSpawn {
     public Integer attackDmg;
     public Integer secondaryEffect;
 
+    public static Color totemColor = Color.ORANGE;
 
-    public DebuffTotem(TotemBoss boss) {
-        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemyellow.png"));
+
+    public DebuffTotem(TotemBoss boss, boolean spawnedIn) {
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemyellow.png"), spawnedIn);
         this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/orange/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/orange/Totem.json"), 1.0F);
 
         AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
@@ -53,7 +55,7 @@ public class DebuffTotem extends AbstractTotemSpawn {
 
         if (AbstractDungeon.ascensionLevel >= 19) {
             this.attackDmg = 5;
-            this.secondaryEffect = 3;
+            this.secondaryEffect = 2;
         } else if (AbstractDungeon.ascensionLevel >= 4) {
             this.attackDmg = 5;
             this.secondaryEffect = 2;
@@ -65,16 +67,11 @@ public class DebuffTotem extends AbstractTotemSpawn {
 
         this.intentType = Intent.ATTACK_DEBUFF;
 
-    }
-
-
-
-    public void takeTurn() {
-
-        totemAttack();
-
+        this.totemLivingColor = totemColor;
 
     }
+
+
 
     @Override
     public void totemAttack() {
@@ -90,9 +87,7 @@ public class DebuffTotem extends AbstractTotemSpawn {
 
     }
 
-    protected void getMove(int num)
-    {
-        this.setMove((byte)1, intentType, this.attackDmg);
+    public void getUniqueTotemMove() {this.setMove((byte)1, intentType, this.attackDmg);
     }
     static {
         monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);

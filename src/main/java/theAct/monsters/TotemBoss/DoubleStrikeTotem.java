@@ -33,9 +33,10 @@ public class DoubleStrikeTotem extends AbstractTotemSpawn {
     public Integer attackDmg;
 
     public Integer secondaryEffect;
+    public static Color totemColor = Color.YELLOW;
 
-    public DoubleStrikeTotem(TotemBoss boss) {
-        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemorange.png"));
+    public DoubleStrikeTotem(TotemBoss boss, boolean spawnedIn) {
+        super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemorange.png"), spawnedIn);
         this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/yellow/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/yellow/Totem.json"), 1.0F);
 
         AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
@@ -55,13 +56,10 @@ public class DoubleStrikeTotem extends AbstractTotemSpawn {
         this.intentType = Intent.ATTACK;
 
         this.damage.add(new DamageInfo(this, this.attackDmg));
+
+        this.totemLivingColor = totemColor;
     }
 
-
-
-    public void takeTurn() {
-        totemAttack();
-    }
 
     @Override
     public void totemAttack() {
@@ -85,9 +83,7 @@ public class DoubleStrikeTotem extends AbstractTotemSpawn {
 
     }
 
-    protected void getMove(int num)
-    {
-        this.setMove((byte)1, Intent.ATTACK, this.attackDmg, 2, true);
+    public void getUniqueTotemMove() {this.setMove((byte)1, Intent.ATTACK, this.attackDmg, 2, true);
     }
 
 

@@ -28,8 +28,8 @@ public class Phrog extends AbstractMonster {
 	private static final int LICK_DAMAGE = 3;
 	private static final int LICK_DAMAGE_ASC_MODIFIER = 1;
 	private static final int LICK_DAMAGE_ASC_MODIFIER_AGAIN = 1;
-	private int maxHP = 113;
-	private int minHP = 97;
+	private int maxHP = 106;
+	private int minHP = 103;
 	private int tackleDamage = 25;
 	private int lickDmg;
 	private boolean offsetTurn;
@@ -69,6 +69,8 @@ public class Phrog extends AbstractMonster {
 
 		AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
 		e.setTime(e.getEndTime() * MathUtils.random());
+
+		this.type = EnemyType.ELITE;
 
 	}
 

@@ -1,0 +1,97 @@
+{
+  "theJungle:PaperFaux": {
+    "NAME": "종이 여우",
+    "DESCRIPTIONS": [
+      "#y약화 를 부여할 때 마다 #y약화 를 #b",
+      " 더 부여합니다. #y취약 을 부여할 때 마다 #y취약 을 #b",
+      " 더 부여합니다."
+    ],
+    "FLAVOR": "숲을 떠돌다 발견한 인형입니다. 가끔 나를 쳐다보는 느낌이 듭니다."
+  },
+  "theJungle:SpiritDisease": {
+    "NAME": "영혼 질병",
+    "DESCRIPTIONS": ["다음에 여는 보스가 아닌 상자에서 #r정령의 #r똥 이 나옵니다."],
+    "FLAVOR": "이상한 물을 마시고 걸린 이상한 병입니다.. 기분이 썩 좋진 않군요.."
+  },
+  "theJungle:SneckoAutograph": {
+    "NAME": "스네코의 친필사인",
+    "DESCRIPTIONS": [
+      "[#2aecd7]상점에서 [#2aecd7]이 [#2aecd7]유물을 [#2aecd7]오른쪽 [#2aecd7]클릭하여 [#2aecd7]1번 [#2aecd7]활성화 [#2aecd7]합니다. NL",
+      " 무작위 유물 중 하나를 얻습니다.",
+      "누가 상점주인이 스네코의 팬이라고 생각할까요?",
+      " '스네코쨩 다이스키!!' !!"
+    ],
+    "FLAVOR": "0-3 명의 스네코 팬들에게 바칩니다."
+  },
+  "theJungle:WildMango": {
+    "NAME": "야생 망고",
+    "FLAVOR": "첨탑에서 자란 즙이 많은 과일입니다. 그렇다고 아무나 먹을 수 있는 건 아니죠.",
+    "DESCRIPTIONS": [
+      "최대 체력을 #b",
+      "얻습니다. 전투가 시작할 때 #y둔화 를 얻습니다."
+    ]
+  },
+  "theJungle:WildStrawberry": {
+    "NAME": "야생 딸기",
+    "FLAVOR": "마름병에 걸린 것 같지만 그래도 맛있는 과일입니다.",
+    "DESCRIPTIONS": [
+      "최대 체력을 #b",
+      " 얻고 피해를 #b",
+      " 입습니다."
+    ]
+  },
+  "theJungle:WildPear": {
+    "NAME": "야생 배",
+    "FLAVOR": "이 과일도 마름병에서 벗어날 순 없었습니다.",
+    "DESCRIPTIONS": [
+      "최대 체력을 #b",
+      "얻습니다. 전투가 시작할 때 #y나태함 을 #b1 얻습니다."
+    ]
+  },
+  "theJungle:BirthdayCakeSlice": {
+    "NAME": "생일 케익 조각",
+    "FLAVOR": "생일 축하하기 딱 좋은 조각이군요.",
+    "DESCRIPTIONS": [
+      "최대 체력을 #b ",
+	  " 얻습니다."
+    ]
+  },
+  "theJungle:BirthdayCake": {
+    "NAME": "훔친 생일케익",
+    "FLAVOR": "맛있긴 하지만 먹는 것 만으로도 수치스러움이 느껴집니다.",
+    "DESCRIPTIONS": [
+      "최대 체력을 #b",
+      " 얻습니다. 전투가 시작할 때 #r수치 를 뽑을 카드 더미에 한 장 넣습니다."
+    ]
+  },
+  "theJungle:ParSnip": {
+    "NAME": "파스닙",
+    "FLAVOR": "이름은 그래도 평범한 야채보다는 확실히 비타민이 풍부합니다!",
+    "DESCRIPTIONS": [
+      "모든 #y기본 #y카드 를 강화 합니다."
+    ]
+  },
+  "theJungle:ShellPeas": {
+    "NAME": "깍지 완두콩",
+    "FLAVOR": "평범한 크기의 완두콩이 들어있는 거대한 완두콩입니다. 씹으면 특이한 질감이 느껴집니다.",
+    "DESCRIPTIONS": [
+      "공격 카드를 사용하면, #y임시 체력을 #b",
+      " 얻습니다."
+    ]
+  },
+  "theJungle:Flamango": {
+    "NAME": "플라망고",
+    "FLAVOR": "A mango concentrated with a forgotten firepower. Spicy!",
+    "DESCRIPTIONS": [
+      "#y공격 카드를 사용하면, 내 턴이 끝날 때 모든 적에게 #b",
+      " 피해를 줍니다."
+    ]
+  },
+  "theJungle:Creamberry": {
+    "NAME": "크림베리",
+    "FLAVOR": "천연 바닐라 크림이 들어있는 딸기입니다. 맛있군요!",
+    "DESCRIPTIONS": [
+      "이후 얻게 되는 #y특별 카드와 #y희귀 카드 보상이 #y강화 됩니다."
+    ]
+  }
+}
