@@ -33,6 +33,7 @@ public class DoubleStrikeTotem extends AbstractTotemSpawn {
     public Integer attackDmg;
 
     public Integer secondaryEffect;
+    public static Color totemColor = Color.YELLOW;
 
     public DoubleStrikeTotem(TotemBoss boss, boolean spawnedIn) {
         super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemorange.png"), spawnedIn);
@@ -55,6 +56,8 @@ public class DoubleStrikeTotem extends AbstractTotemSpawn {
         this.intentType = Intent.ATTACK;
 
         this.damage.add(new DamageInfo(this, this.attackDmg));
+
+        this.totemLivingColor = totemColor;
     }
 
 

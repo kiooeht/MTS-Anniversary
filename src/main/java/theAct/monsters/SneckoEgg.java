@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theAct.TheActMod;
+import theAct.actions.AddActionLaterAction;
 import theAct.actions.PhrogLickAction;
 import theAct.powers.IncubationPower;
 import theAct.powers.MamaSneckoRevengePower;
@@ -109,7 +110,7 @@ public class SneckoEgg extends AbstractMonster {
 		}
 		AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(this));
 		AbstractDungeon.actionManager.addToTop(new SuicideAction(this));
-		AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new BabySnecko(snekX,snekY,posIndex),true,AbstractDungeon.getMonsters().monsters.indexOf(this)));
+		AbstractDungeon.actionManager.addToBottom(new AddActionLaterAction(new SpawnMonsterAction(new BabySnecko(snekX,snekY,posIndex),true,AbstractDungeon.getMonsters().monsters.indexOf(this)), 0));
 	}
 
 	@Override

@@ -29,7 +29,7 @@ public class ShieldOtherTotem extends AbstractTotemSpawn {
     public static final String[] DIALOG;
 
     public Integer secondaryEffect;
-
+    public static Color totemColor = Color.CYAN;
 
     public ShieldOtherTotem(TotemBoss boss, boolean spawnedIn) {
         super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemcyan.png"), spawnedIn);
@@ -48,6 +48,8 @@ public class ShieldOtherTotem extends AbstractTotemSpawn {
 
         this.intentType = Intent.DEFEND;
         this.powers.add(new BlockFromStrengthPower(this));
+
+        this.totemLivingColor = totemColor;
 
 
     }

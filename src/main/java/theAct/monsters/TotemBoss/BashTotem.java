@@ -33,6 +33,8 @@ public class BashTotem extends AbstractTotemSpawn {
 
     public Integer attackDmg;
 
+    public static Color totemColor = Color.RED;
+
     public BashTotem(TotemBoss boss, boolean spawnedIn) {
         super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemred.png"), spawnedIn);
         this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/red/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/red/Totem.json"), 1.0F);
@@ -41,7 +43,7 @@ public class BashTotem extends AbstractTotemSpawn {
         e.setTime(e.getEndTime() * MathUtils.random());
 
         if (AbstractDungeon.ascensionLevel >= 19) {
-            this.attackDmg = 10;
+            this.attackDmg = 9;
         } else if (AbstractDungeon.ascensionLevel >= 4) {
             this.attackDmg = 9;
         } else {
@@ -51,6 +53,8 @@ public class BashTotem extends AbstractTotemSpawn {
         this.intentType = Intent.ATTACK;
 
         this.damage.add(new DamageInfo(this, this.attackDmg));
+
+        this.totemLivingColor = totemColor;
     }
 
     @Override

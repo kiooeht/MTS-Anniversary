@@ -41,6 +41,8 @@ public class BuffTotem extends AbstractTotemSpawn {
 
     public Integer secondaryEffect;
 
+    public static Color totemColor = Color.GREEN;
+
     public BuffTotem(TotemBoss boss, boolean spawnedIn) {
         super(NAME, ID, boss, TheActMod.assetPath("images/monsters/totemboss/totemgreen.png"), spawnedIn);
         this.loadAnimation(TheActMod.assetPath("images/monsters/totemboss/green/Totem.atlas"), TheActMod.assetPath("images/monsters/totemboss/green/Totem.json"), 1.0F);
@@ -61,6 +63,8 @@ public class BuffTotem extends AbstractTotemSpawn {
         this.damage.add(new DamageInfo(this, this.attackDmg));
 
         this.intentType = Intent.ATTACK_BUFF;
+
+        this.totemLivingColor = totemColor;
 
     }
 

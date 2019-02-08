@@ -90,8 +90,6 @@ public class Flameango extends AbstractMonster
         {
             this.burnAmount += ASC_BURNS;
             this.flameArmor += ASC_ARMOR;
-            this.peckDamage += ASC_DAMAGE;
-            this.flameDamage += ASC_DAMAGE;
         }
 
         this.damage.add(new DamageInfo(this, peckDamage));

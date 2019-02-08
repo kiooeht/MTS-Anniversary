@@ -73,7 +73,7 @@ public class BabySnecko extends AbstractMonster {
         if (AbstractDungeon.ascensionLevel >= 17) {
             this.confuseAmount = ASC_CONFUSE_AMOUNT;
         }
-        else if (AbstractDungeon.ascensionLevel >= 2) {
+        if (AbstractDungeon.ascensionLevel >= 2) {
             this.biteDamage = ASC_BITE_DAMAGE;
         }
         this.damage.add(new DamageInfo(this, biteDamage));
