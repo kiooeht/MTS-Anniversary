@@ -61,10 +61,21 @@ public class Spyder extends AbstractMonster {
     	
     }
     
+    @Override
     public void die() {
         this.useFastShakeAnimation(0.5F);
         super.die();
         for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+    		if(m instanceof Spyder && ((Spyder) m).slot == slot+1 && m.hasPower(GuardedPower.POWER_ID)) {
+    			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(m, this, GuardedPower.POWER_ID));
+    		}
+        }
+    }
+    
+    @Override
+    public void escape() {
+    	super.escape();
+    	for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
     		if(m instanceof Spyder && ((Spyder) m).slot == slot+1 && m.hasPower(GuardedPower.POWER_ID)) {
     			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(m, this, GuardedPower.POWER_ID));
     		}
