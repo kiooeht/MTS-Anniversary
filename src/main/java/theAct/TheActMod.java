@@ -239,11 +239,8 @@ public class TheActMod implements
         }
     }
 
-    @Override
-    public void receiveEditKeywords()
+    void loadLocKeywords(String language)
     {
-        String language = languageSupport();
-
         Gson gson = new Gson();
         String json = Gdx.files.internal(assetPath("localization/" + language + "/keywords.json")).readString(String.valueOf(StandardCharsets.UTF_8));
         Keyword[] keywords = gson.fromJson(json, Keyword[].class);
@@ -256,9 +253,17 @@ public class TheActMod implements
     }
 
     @Override
-    public void receiveEditStrings()
+    public void receiveEditKeywords()
     {
         String language = languageSupport();
+
+        // Load english first to avoid crashing if translation doesn't exist for something
+        loadLocKeywords("eng");
+        loadLocKeywords(language);
+    }
+
+    private void loadLocStrings(String language)
+    {
         String path = "localization/" + language + "/";
 
         BaseMod.loadCustomStringsFile(EventStrings.class, assetPath(path + "events.json"));
@@ -269,6 +274,16 @@ public class TheActMod implements
         BaseMod.loadCustomStringsFile(PowerStrings.class, assetPath(path + "powers.json"));
         BaseMod.loadCustomStringsFile(RelicStrings.class, assetPath(path + "relics.json"));
         BaseMod.loadCustomStringsFile(ScoreBonusStrings.class, assetPath(path + "score_bonuses.json"));
+    }
+
+    @Override
+    public void receiveEditStrings()
+    {
+        String language = languageSupport();
+
+        // Load english first to avoid crashing if translation doesn't exist for something
+        loadLocStrings("eng");
+        loadLocStrings(language);
     }
 
     private static void addSound(String id, String path)
