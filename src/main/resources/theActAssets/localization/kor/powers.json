@@ -87,6 +87,12 @@
 			" 부여합니다."
 		]
 	},
+	"theJungle:PuffballPower": {
+		"NAME": "포자 주머니",
+		"DESCRIPTIONS": [
+			"공격 피해를 입을 때 마다 무작위 #r포자 #y상태이상 카드를 뽑을 카드 더미에 추가합니다."
+		]
+	},
 	"theJungle:RegenerativeSlime": {
 		"NAME": "재생하는 슬라임",
 		"DESCRIPTIONS": [
