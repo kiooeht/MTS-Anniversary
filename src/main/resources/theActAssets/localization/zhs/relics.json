@@ -45,7 +45,7 @@
     "FLAVOR": "甚至这个水果也没有逃过荒疫的魔爪",
     "DESCRIPTIONS": [
       "当你拾起这个遗物时，提升最大生命 #b",
-      " 。在每场战斗开始时，获得 #b1 层#y怠惰"
+      " 。在每场战斗开始时，获得 #b1 层 #y怠惰"
     ]
   },
   "theJungle:BirthdayCakeSlice": {
