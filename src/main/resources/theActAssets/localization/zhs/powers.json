@@ -87,6 +87,12 @@
 			" 层#y真菌传染"
 		]
 	},
+	"theJungle:PuffballPower": {
+		"NAME": "粉状真菌",
+		"DESCRIPTIONS": [
+			"每当这名敌人攻击的时候，会往你的抽牌堆中添加一张随机的 #r孢子 #y状态牌 "
+		]
+	},
 	"theJungle:RegenerativeSlime": {
 		"NAME": "再生史莱姆",
 		"DESCRIPTIONS": [
