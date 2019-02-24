@@ -33,7 +33,7 @@
 	"theJungle:BlockFromStrengthPower": {
 		"NAME" : "守势",
 		"DESCRIPTIONS": [
-			" # y力量 会提升这位敌人的 #y格挡 获取 "
+			" #y力量 会提升这位敌人的 #y格挡 获取 "
 		]
 	},
 	"theJungle:TotemHealthLinkPower": {
