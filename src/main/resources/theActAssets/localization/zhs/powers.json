@@ -1,9 +1,9 @@
 {
 	"theJungle:CassacaraInfoPower": {
-		"NAME": "Carnivorous",
+		"NAME": "植食",
 		"DESCRIPTIONS": [
-			"吃掉 #y肥料，并且恢复等同于他们血量的血量, 并且每吃掉一个#y肥料，获得#b",
-			" 点#y力量。"
+			"吃掉 #y肥料 ，并且恢复等同于他们血量的血量, 并且每吃掉一个 #y肥料 ，获得#b",
+			" 点 #y力量 。"
 		]
 	},
 	"theJungle:DigestPower": {
@@ -12,8 +12,8 @@
 			"死亡或是被再攻击 #b",
 			" 次， ",
 			" 次， ",
-			" 将会被还到你的手中。 NL NL 在你的回合结束时， ",
-			" 将会被 #r消耗"
+			" 将会被还到你的手牌中。 NL NL 在你的回合结束时， ",
+			" 将会被 #r消耗 "
 		]
 	},
 	"theJungle:SlothfulPower": {
@@ -27,7 +27,7 @@
 	"theJungle:TotemStrengthPower": {
 		"NAME" : "图腾暴走",
 		"DESCRIPTIONS": [
-			"每当有图腾死亡，所有敌人获得 #b1 点力量"
+			"每当有图腾死亡，所有敌人获得 #b1 点 力量 "
 		]
 	},
 	"theJungle:BlockFromStrengthPower": {
@@ -40,7 +40,7 @@
 		"NAME" : "图腾之力",
 		"DESCRIPTIONS": [
 			"每当一个图腾死亡，失去 ",
-			" 点生命"
+			" 生命"
 		]
 	},
 	"theJungle:TotemBossImmunityPower": {
@@ -52,103 +52,103 @@
 	"theJungle:SwingingTrapPower": {
 		"NAME": "陷阱摆动中",
 		"DESCRIPTIONS": [
-			" NL NL 每当你打出一张牌，就会使它改变形态. NL 在 #r即将攻击, #r挥动中，以及 #g重新启动中 ，这三种形态中循环",
-			"#y形态: ",
-			"#r即将攻击 NL 在这回合结束的时候会进行攻击",
-			"#r挥动中 NL 在你打出一张 #y攻击 后，会受到 #b",
-			" 点伤害.",
-			"#g重启中 NL 无害"
+			" NL NL 每当你打出一张牌，将改变状态。 NL 在 #r-即将攻击- #r-摇荡挥动- #g-重新启动- 中 ，这三种状态中循环。",
+			"#y位置: ",
+			"#r-即将攻击- NL 在这回合结束的时候会进行攻击。",
+			"#r-摇荡挥动- NL 在你打出一张 #y攻击牌 后，会受到 #b",
+			" 点伤害。",
+			"#g-重新启动- NL 无害"
 		]
 	},
 	"theJungle:FungalInfectionPower": {
 		"NAME": "真菌感染",
 		"DESCRIPTIONS": [
-			"在你的回合结束时，将等同于你的 #y真菌感染 剩余层数的随机的 #r孢子 牌，放入你的抽牌堆顶端(最多#b3 张). NL 还有 #b",
-			" 回合"
+			"在你的回合结束时，将等同于你的 #y真菌感染 剩余层数的随机的 #r孢子 牌，加入你的抽牌堆顶部（最多#b3 张）。 NL 持续 #b",
+			" 个回合。"
 		]
 	},
 	"theJungle:MamaSneckoRevengePower": {
 		"NAME": "怒火",
 		"DESCRIPTIONS": [
-			"每当爪牙受到伤害时，获得 1 点力量。 在每回合结束时失去 2 点力量"
+			"每当 #y异蛇宝宝 或者 #y异蛇蛋 受到伤害时，获得 #b1 点 力量 。在它的回合结束时，失去 #b2 点 力量 。（不能为负）"
 		]
 	},
 	"theJungle:TotemRevengeAttackPower": {
 		"NAME": "图腾反击",
 		"DESCRIPTIONS": [
-			"在你打出一张目标为所有敌人或者多个随机敌人的卡牌之后，立即攻击你",
-			"被眩晕的情况下则不能反击"
+			"在你打出一张目标为所有敌人或者多个随机敌人的卡牌之后，立即还击。",
+			"被眩晕的情况下不能反击。"
 		]
 	},
 	"theJungle:InfectiousSporesPower": {
-		"NAME": "传染性孢子",
+		"NAME": "孢子传染",
 		"DESCRIPTIONS": [
 			"死亡时，给予 #b",
-			" 层#y真菌传染"
+			" 层 #y真菌传染 "
 		]
 	},
 	"theJungle:PuffballPower": {
 		"NAME": "粉状真菌",
 		"DESCRIPTIONS": [
-			"每当这名敌人攻击的时候，会往你的抽牌堆中添加一张随机的 #r孢子 #y状态牌 "
+			"每当这名敌人击中你时，将一张随机 #r孢子 #y状态牌 加入你的抽牌堆。"
 		]
 	},
 	"theJungle:RegenerativeSlime": {
 		"NAME": "再生史莱姆",
 		"DESCRIPTIONS": [
-			"每当你打出一张#y非攻击牌时，恢复 #b",
-			" 点血量."
+			"每当你打出一张 #y非攻击牌 时，恢复 #b",
+			" 生命。"
 		]
 	},
 	"theJungle:RandomizePower": {
 		"NAME": "选择性混乱",
 		"DESCRIPTIONS": [
-			"随机变化你抽的下一张牌的耗能",
-			"随机变化你抽的下 ",
-			" 张牌的耗能"
+			"下一",
+			"下 ",
+			" 个回合，随机变化你抽的前 #b2 张牌的耗能。"
 		]
 	},
 	"theJungle:CautiousPower": {
 		"NAME" : "谨慎",
 		"DESCRIPTIONS": [
 			"在本回合中,若再受到 #b",
-			" 次伤害会被击晕",
-			" 次伤害会被击晕",
-			"这名敌人的伪装已经被打破了。"
+			" 次伤害会被 #y击晕 ",
+			" 次伤害会被 #y击晕 ",
+			"这名敌人的伪装已经被识破。"
 		]
 	},
 	"theJungle:Pride": {
-		"NAME": "骄傲",
+		"NAME": "自豪",
 		"DESCRIPTIONS": [
-			"每当你打出一张卡，在本回合内获得 #b",
-			" 点#y力量"
+			"每当你打出一张牌，它在本回合内获得 #b",
+			" 点 #y力量 。"
 		]
     },
 	"theJungle:ObsessionPower": {
-		"NAME": "Obsessive",
+		"NAME": "强迫",
 		"DESCRIPTIONS": [
 			"每当你打出一张 #y攻击牌 时，目标 #r不只是 这个怪物的话，受到 #b",
-			" 点伤害"
+			" 点伤害。"
 		]
 	},
 	"theJungle:ProtectionPower": {
 		"NAME": "保护",
 		"DESCRIPTIONS": [
 			"每当你打出一张 #y攻击牌 时，目标 #r不只是 这个怪物的话，所有其他的敌人获得 #b",
-			" 点 #y格挡 "
+			" 点 #y格挡 。"
 		]
 	},
 	"theJungle:EnergeticPower": {
-		"NAME": "Energetic",
+		"NAME": "活力",
 		"DESCRIPTIONS": [
 			"每当你打出一张 #y攻击牌 时，目标 #r不只是 这个怪物的话，所有其他的敌人获得 #b",
-			" 点 #y力量 "
+			" 点 #y力量 。"
 		]
 	},
     "theJungle:Guarded": {
-		"NAME" : "被守护",
+		"NAME" : "掩护",
 		"DESCRIPTIONS": [
-			"当这个生物面前有 #r异蛛 的时候,将本回合受到的所有攻击伤害降低 #b80%"
+			"当这个生物面前有 #r异蛛 的时,将本回合受到的所有攻击伤害降低 #b80%"
 		]
 	},
     "theJungle:Webbed": {
@@ -158,22 +158,22 @@
 			"在本场战斗中，你抽到的前",
 			" 张牌耗能加 #b1",
             " NL 这回合中已经有 #b",
-            " 张卡受到影响",
-            " 张卡受到影响"
+            " 张卡受到影响。",
+            " 张卡受到影响。"
 		]
 	},
 	"theJungle:Incubation": {
 		"NAME" : "孵化",
 		"DESCRIPTIONS": [
-			"本回合将会孵化出 #y异蛇宝宝 ",
+			"本回合将会孵化出 #y异蛇宝宝 。",
 			"在 #b",
-			" 回合中, 将会孵化出 #y异蛇宝宝"
+			" 回合， 将会孵化出 #y异蛇宝宝 。"
 		]
 	},
     "theJungle:Mourning": {
-		"NAME" : "悼念",
+		"NAME" : "悲恸",
 		"DESCRIPTIONS": [
-			"当这名敌人失去了 #g守护 的时候，它将被眩晕并且丢失所有的 #y人工制品 层数"
+			"当这名敌人失去了 #g掩护 时，它将被 #y眩晕 并且丢失所有的 #y人工制品 。"
 		]
 	}
 }
