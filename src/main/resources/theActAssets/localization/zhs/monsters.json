@@ -10,7 +10,7 @@
 	},
 	"theJungle:CarcassSack": {
 		"MOVES": [],
-		"NAME": "肥料",
+		"NAME": "养分",
 		"DIALOG": []
 	},
 	"theJungle:GiantWrat": {
@@ -158,7 +158,7 @@
 	"theJungle:MamaSnecko": {
 		"NAME": "异蛇之母",
 		"MOVES": ["产卵","瞪视","扫尾","噬咬","狂怒攻击"],
-		"DIALOG": ["~Hissssss...~"]
+		"DIALOG": ["~嘶~~~~~……~"]
 	},
 	"theJungle:SneckoEgg": {
 		"NAME": "异蛇之卵",
@@ -178,8 +178,8 @@
 		],
 		"NAME": "异蛇教徒",
 		"DIALOG": [
-			"@所有人@ @都将@ @臣服于@ NL @异蛇!@",
-			"@...嘶~~~~~...@"
+			"@所有人@ @都将@ @臣服于@ NL @异蛇！@",
+			"@……嘶~~~~~……@"
 		]
 	},
 	"theJungle:Lyon": {

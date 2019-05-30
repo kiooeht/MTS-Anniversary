@@ -1,35 +1,35 @@
 {
   "theJungle:PetSnecko": {
-    "NAME": "异蛇宝宝",
-    "DESCRIPTION": "抽 !M! 张卡 NL ， 你的所有手牌在这回合的耗能都会随机变化",
-    "UPGRADE_DESCRIPTION": "抽 !M! 张卡 。 NL 你的所有手牌在这回合的耗能都会随机变化"
+    "NAME": "宠物异蛇",
+    "DESCRIPTION": "抽 !M! 张牌。 NL 本回合，你的手牌能耗随机变化",
+    "UPGRADE_DESCRIPTION": "抽 !M! 张牌。 NL 本回合，你的手牌能耗随机变化"
   },
   "theJungle:SS_Clouding": {
-    "NAME": "烟雾孢子",
-    "DESCRIPTION": " 虚无 。 NL 抽 1 张卡 。 NL 获得 !M! 层 易伤 。 NL 消耗。"
+    "NAME": "云雾孢子",
+    "DESCRIPTION": "抽 1 张牌 。 NL 获得 !M! 层 虚弱 。"
   },
   "theJungle:SS_Bright": {
-    "NAME": "闪光孢子",
-    "DESCRIPTION": " 虚无 。 NL 抽 1 张卡 。 NL 将 !M! 张 眩晕 放入你的弃牌堆中 。 NL 消耗。"
+    "NAME": "发光孢子",
+    "DESCRIPTION": "抽 1 张牌 。 NL 将 !M! 张 眩晕 放入你的弃牌堆中 。"
   },
   "theJungle:SS_Clumping": {
-    "NAME": "膨胀孢子",
-    "DESCRIPTION": " 虚无 。 NL 抽 1 张卡 。 NL 消耗。"
+    "NAME": "凝集孢子",
+    "DESCRIPTION": "抽 1 张牌。"
   },
   "theJungle:SS_Leeching": {
     "NAME": "吸血孢子",
-    "DESCRIPTION": " 虚无 。 NL 抽 1 张卡 。 NL 所有敌人回复 !M! 点血量 。 NL 消耗。"
+    "DESCRIPTION": "抽 1 张牌 。 NL 所有敌人回复 !M! 生命 。"
   },
   "theJungle:SS_Toxin": {
     "NAME": "剧毒孢子",
-    "DESCRIPTION": " 虚无 。 NL 抽 1 张卡 。 NL 承受 !M! 点伤害 。 NL 消耗。"
+    "DESCRIPTION": "抽 1 张牌 。 NL 承受 !M! 点伤害 。"
   },
   "theJungle:SS_Sloth": {
     "NAME": "怠惰孢子",
-    "DESCRIPTION": " 虚无 。 NL 抽 1 张卡 。 NL 给予 !M! 层怠惰 。 NL 消耗。"
+    "DESCRIPTION": "抽 1 张牌 。 NL 给予 !M! 层 怠惰 。"
   },
   "theJungle:Gourd": {
     "NAME": "葫芦",
-    "DESCRIPTION": "获得 !M! 点临时血量。"
+    "DESCRIPTION": "获得 !M! 暂时性生命 。"
   }
 }
