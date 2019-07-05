@@ -153,7 +153,7 @@ public class SneckoExtract extends CustomPotion
             //Beserk
             if (random100() < this.potency) {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new VulnerablePower(player, this.potency, false), this.potency));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new BerserkPower(Berserk.NAME, AbstractDungeon.player, 1), 1));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new BerserkPower(AbstractDungeon.player, 1), 1));
             }
             //Brutality
             if (random100() < this.potency) {
