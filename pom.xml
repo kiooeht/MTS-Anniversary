@@ -7,10 +7,10 @@
     <name>The Jungle</name>
     <groupId>mts.anniversary</groupId>
     <artifactId>TheJungle</artifactId>
-    <version>1.5.0</version>
+    <version>1.5.1</version>
 
     <properties>
-        <SlayTheSpire.version>01-23-2019</SlayTheSpire.version>
+        <SlayTheSpire.version>07-01-2019</SlayTheSpire.version>
         <ModTheSpire.version>3.7.0</ModTheSpire.version>
         <alt.build.dir>../_ModTheSpire/mods</alt.build.dir>
     </properties>
