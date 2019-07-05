@@ -1,15 +1,4 @@
 {
-  "theJungle:ForkInTheRoad": {
-    "NAME": "Fork in the Road",
-    "DESCRIPTIONS": [
-      "You continue on your journey through the spire.\n NL After a long trek, you come upon a fork in the road.\n\n NL NL There is a signpost, but you can't make out the writing.\n\n NL  NL To your left you spot the outline of #btall #bbuildings in the distance, while the path to the right shows #ggrass and #gtrees."
-    ],
-    "OPTIONS": [
-      ".",
-      "[Go Left] Go to ",
-      "[Go Right] Go to "
-    ]
-  },
   "theJungle:River": {
     "NAME": "Spirit River",
     "DESCRIPTIONS": [
