@@ -40,8 +40,6 @@ public class Jungle extends CustomDungeon
         super(NAME, ID);
         setMainMusic(TheActMod.assetPath("audio/music/jungle_main.ogg"));
 
-        isFinalAct(true);
-
         addTempMusic("MUSHROOMGANG", TheActMod.assetPath("audio/music/boss_mushroom.ogg"));
         addTempMusic("BOSSSPIDER", TheActMod.assetPath("audio/music/boss_spider.ogg"));
         addTempMusic("BOSSTOTEM", TheActMod.assetPath("audio/music/boss_totem.ogg"));
