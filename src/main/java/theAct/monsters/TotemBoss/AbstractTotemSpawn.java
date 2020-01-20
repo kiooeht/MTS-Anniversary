@@ -271,10 +271,6 @@ public class AbstractTotemSpawn extends AbstractMonster {
     public void render(SpriteBatch sb) {
 
         if (!this.isDead && !this.escaped) {
-            if (this.damageFlash) {
-                ShaderHelper.setShader(sb, ShaderHelper.Shader.WHITE_SILHOUETTE);
-            }
-
             if (this.atlas == null) {
                 sb.setColor(this.tint.color);
                 if (this.img != null) {
@@ -302,14 +298,6 @@ public class AbstractTotemSpawn extends AbstractMonster {
                 if (this.img != null) {
                     sb.draw(this.img, this.drawX - (float) this.img.getWidth() * Settings.scale / 2.0F + this.animX, this.drawY + this.animY + AbstractDungeon.sceneOffsetY, (float) this.img.getWidth() * Settings.scale, (float) this.img.getHeight() * Settings.scale, 0, 0, this.img.getWidth(), this.img.getHeight(), this.flipHorizontal, this.flipVertical);
                     sb.setBlendFunction(770, 771);
-                }
-            }
-
-            if (this.damageFlash) {
-                ShaderHelper.setShader(sb, ShaderHelper.Shader.DEFAULT);
-                --this.damageFlashFrames;
-                if (this.damageFlashFrames == 0) {
-                    this.damageFlash = false;
                 }
             }
 

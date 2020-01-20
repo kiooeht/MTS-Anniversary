@@ -49,8 +49,6 @@ public class SnakeMissileAction extends AbstractGameAction {
         if (doDamage && damageCount < projectileCount) {
             damageCount++;
             doDamage = false;
-            this.target.damageFlash = true;
-            this.target.damageFlashFrames = 4;
             FlashAtkImgEffect coloredPoison = new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, AttackEffect.POISON);
             ReflectionHacks.setPrivateInherited(coloredPoison, FlashAtkImgEffect.class, "color", effectColor.cpy());
             AbstractDungeon.effectList.add(coloredPoison);

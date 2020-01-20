@@ -45,9 +45,9 @@ public class HauntedGourd extends CustomPotion
 
     public void use(final AbstractCreature target) {
 
-        AbstractDungeon.actionManager.addToBottom(new DiscoveryAction(AbstractCard.CardType.ATTACK));
-        AbstractDungeon.actionManager.addToBottom(new DiscoveryAction(AbstractCard.CardType.SKILL));
-        AbstractDungeon.actionManager.addToBottom(new DiscoveryAction(AbstractCard.CardType.POWER));
+        AbstractDungeon.actionManager.addToBottom(new DiscoveryAction(AbstractCard.CardType.ATTACK, 1));
+        AbstractDungeon.actionManager.addToBottom(new DiscoveryAction(AbstractCard.CardType.SKILL, 1));
+        AbstractDungeon.actionManager.addToBottom(new DiscoveryAction(AbstractCard.CardType.POWER, 1));
       //ADD CURSE TO HAND
         AbstractCard c = AbstractDungeon.returnRandomCurse().makeCopy();
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, 1));
