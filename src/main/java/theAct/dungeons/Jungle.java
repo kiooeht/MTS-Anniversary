@@ -1,89 +1,127 @@
 package theAct.dungeons;
 
-import com.badlogic.gdx.graphics.Color;
+import actlikeit.dungeons.CustomDungeon;
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import com.megacrit.cardcrawl.map.MapRoomNode;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.monsters.MonsterInfo;
-import com.megacrit.cardcrawl.rooms.EmptyRoom;
+import com.megacrit.cardcrawl.monsters.city.Byrd;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
+import com.megacrit.cardcrawl.scenes.AbstractScene;
 import theAct.TheActMod;
 import theAct.monsters.*;
+import theAct.monsters.MUSHROOMPOWER.MushroomGenki;
+import theAct.monsters.MUSHROOMPOWER.MushroomKuudere;
 import theAct.monsters.MUSHROOMPOWER.MushroomYandere;
+import theAct.monsters.SpyderBoss.DefenderSpyder;
+import theAct.monsters.SpyderBoss.HunterSpyder;
+import theAct.monsters.SpyderBoss.SpyderBoss;
 import theAct.monsters.TotemBoss.TotemBoss;
-import theAct.patches.GetDungeonPatches;
 import theAct.scenes.TheJungleScene;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
-public class Jungle extends AbstractDungeon
+public class Jungle extends CustomDungeon
 {
     public static final String ID = TheActMod.makeID("Jungle");
 
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
     public static final String[] TEXT = uiStrings.TEXT;
     public static final String NAME = TEXT[0];
-    public static final String NUM = TEXT[1];
 
-    public Jungle(AbstractPlayer p, ArrayList<String> emptyList)
+    public Jungle()
     {
-        super(NAME, ID, p, emptyList);
+        super(NAME, ID);
+        setMainMusic(TheActMod.assetPath("audio/music/jungle_main.ogg"));
 
-        if (scene != null) {
-            scene.dispose();
-        }
-        scene = new TheJungleScene(); // TODO
-        fadeColor = Color.valueOf("0f220aff");
+        addTempMusic("MUSHROOMGANG", TheActMod.assetPath("audio/music/boss_mushroom.ogg"));
+        addTempMusic("BOSSSPIDER", TheActMod.assetPath("audio/music/boss_spider.ogg"));
+        addTempMusic("BOSSTOTEM", TheActMod.assetPath("audio/music/boss_totem.ogg"));
 
+        addTempMusic("SNECKOIDOL", TheActMod.assetPath("audio/music/snecko_idol.ogg"));
 
+        addTempMusic("JUNGLEELITE", TheActMod.assetPath("audio/music/jungle_elite.ogg"));
 
-        initializeLevelSpecificChances();
-        mapRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + AbstractDungeon.actNum * 100);
-        generateMap();
+        // Weak Pool
+        addMonster(JungleEncounterIDList.MUSHROOM_GANG_ENCOUNTER_ID, "Mushroom Gang" , () -> new MonsterGroup(
+                new AbstractMonster[]{
+                        new MushroomYandere(-385.0F, -15.0F),
+                        new MushroomKuudere(-133.0F, 0.0F),
+                        new MushroomGenki(125.0F, -30.0F)
+                }), 1.5F);
+        addMonster(JungleEncounterIDList.FLAMEANGO_AND_BYRD_ENCOUNTER_ID, "Flameango and Byrd", () -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new Flameango(50),
+                        new Byrd(-305.0F, 110.0F)
+                }));
+        addMonster(JungleEncounterIDList.GIANT_WRAT_ENCOUNTER_ID, () -> new GiantWrat(-85.0F, -15.0F), 1.5F);
+        addMonster(JungleEncounterIDList.FIVE_SPYDERS_ENCOUNTER_ID, "Spider Swarm", () -> new MonsterGroup(
+                new AbstractMonster[]{
+                        new HunterSpyder(-650.0F, 300.0F, 0),
+                        new DefenderSpyder(-425.0F, 250.0F, 1),
+                        new HunterSpyder(-200.0F, 220.0F, 2),
+                        new DefenderSpyder(25.0F, 300.0F, 3),
+                        new HunterSpyder(175.0F, 120.0F, 4)
+                }));
+        BaseMod.addMonsterEncounter(Jungle.ID, new MonsterInfo(MonsterHelper.SHELL_PARASITE_ENC, 1F));
 
-        CardCrawlGame.music.changeBGM("JUNGLEMAIN");
-        AbstractDungeon.currMapNode = new MapRoomNode(0, -1);
-        AbstractDungeon.currMapNode.room = new EmptyRoom();
+        // Strong Pool
+        addStrongMonster(JungleEncounterIDList.TWO_SENCKO_CULTISTS_ENCOUNTER_ID, "2 Snecko Cultists", () -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new SneckoCultist(-250, -20),
+                        new SneckoCultist(80, 20, true)
+                }), 1.5F);
+        addStrongMonster(JungleEncounterIDList.TWO_JUNGLE_HUNTERS_ENCOUNTER_ID, "2 Jungle Hunters", () -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new JungleHunters(-385.0F, -15.0F),
+                        new JungleHunters(150.0F, -30.0F)
+                }), 1.5F);
+        addStrongMonster(JungleEncounterIDList.SLIMY_TREE_VINES_ENCOUNTER_ID, SlimyTreeVines::new, 1.5F);
+        addStrongMonster(JungleEncounterIDList.TWO_FLAMEANGOS_ENCOUNTER_ID, "2 Flameangos", () -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new Flameango(-250),
+                        new Flameango(80)
+                }));
+        addStrongMonster(JungleEncounterIDList.SNECKO_CULTIST_AND_TRAP_ENCOUNTER_ID, "Snecko Cultist and Trap", () -> new MonsterGroup(
+                new AbstractMonster[]{
+                        new SwingingAxe(-450.0F, 100.0F),
+                        new SneckoCultist(120, 0)
+                }));
+        addStrongMonster(JungleEncounterIDList.LYON_ENCOUNTER_ID, Lyon::new, 1.5F);
+
+        // Elite Pool
+        addEliteEncounter(JungleEncounterIDList.MAMA_SNECKO_ENCOUNTER_ID, MamaSnecko::new);
+        addEliteEncounter(JungleEncounterIDList.TWO_PHROGS_ENCOUNTER_ID, "Two Phrogs", () -> new MonsterGroup(
+                new AbstractMonster[] {
+                        new Phrog(-175,0, false),
+                        new Phrog(175, 0, true)
+                }));
+        addEliteEncounter(JungleEncounterIDList.CASSACARA_ENCOUNTER_ID, () -> new Cassacara(50.0F, 0.0F));
+
+        // Bosses
+        addBoss(TotemBoss.ID, TotemBoss::new, TheActMod.assetPath("images/map/totemBoss.png"), TheActMod.assetPath("images/map/totemBossOutline.png"));
+        addBoss(SpyderBoss.ID, SpyderBoss::new, TheActMod.assetPath("images/map/spiderBoss.png"), TheActMod.assetPath("images/map/spiderBossOutline.png")); // A R T
+        addBoss(FunGuy.ID, FunGuy::new, TheActMod.assetPath("images/map/mushroomBoss.png"), TheActMod.assetPath("images/map/mushroomBossOutline.png"));
     }
 
-    public Jungle(AbstractPlayer p, SaveFile saveFile)
+    public Jungle(CustomDungeon cd, AbstractPlayer p, ArrayList<String> emptyList)
     {
-        super(NAME, p, saveFile);
-
-        CardCrawlGame.dungeon = this;
-        if (scene != null) {
-            scene.dispose();
-        }
-        scene = new TheJungleScene(); // TODO
-        fadeColor = Color.valueOf("0f220aff");
-
-        initializeLevelSpecificChances();
-        miscRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + saveFile.floor_num);
-        CardCrawlGame.music.changeBGM("JUNGLEMAIN");
-        mapRng = new com.megacrit.cardcrawl.random.Random(Settings.seed + saveFile.act_num * 100);
-        generateMap();
-        firstRoomChosen = true;
-
-        populatePathTaken(saveFile);
+        super(cd, p, emptyList);
+    }
+    public Jungle(CustomDungeon cd, AbstractPlayer p, SaveFile saveFile)
+    {
+        super(cd, p, saveFile);
     }
 
-    public static GetDungeonPatches.AbstractDungeonBuilder builder() {
-        return new GetDungeonPatches.AbstractDungeonBuilder() {
-            @Override
-            public AbstractDungeon build(AbstractPlayer p, ArrayList<String> theList) {
-                return new Jungle(p,theList);
-            }
-            @Override
-            public AbstractDungeon build(AbstractPlayer p, SaveFile save) {
-                return new Jungle(p,save);
-            }
-        };
+    @Override
+    public AbstractScene DungeonScene() {
+        return new TheJungleScene();
     }
 
     @Override
@@ -110,90 +148,6 @@ public class Jungle extends AbstractDungeon
         } else {
             cardUpgradedChance = 0.25F;
         }
-    }
-
-    @Override
-    protected void generateMonsters()
-    {
-        // TODO: This is copied from TheCity
-        generateWeakEnemies(2);
-        generateStrongEnemies(12);
-        generateElites(10);
-    }
-
-    protected void generateWeakEnemies(int count)
-    {
-        // TODO: This is copied from TheCity
-        ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo(MonsterHelper.SHELL_PARASITE_ENC, 2.0F));
-        monsters.add(new MonsterInfo(JungleEncounterIDList.GIANT_WRAT_ENCOUNTER_ID, 3.0f));
-        monsters.add(new MonsterInfo(JungleEncounterIDList.FLAMEANGO_AND_BYRD_ENCOUNTER_ID, 2.0F));
-        monsters.add(new MonsterInfo(JungleEncounterIDList.FIVE_SPYDERS_ENCOUNTER_ID, 2.0f));
-        monsters.add(new MonsterInfo(JungleEncounterIDList.MUSHROOM_GANG_ENCOUNTER_ID, 3.0f));
-        MonsterInfo.normalizeWeights(monsters);
-        populateMonsterList(monsters, count, false);
-    }
-
-    protected void generateStrongEnemies(int count)
-    {
-        // TODO: This is copied from TheCity
-        ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo(JungleEncounterIDList.SLIMY_TREE_VINES_ENCOUNTER_ID, 3.0F));
-        monsters.add(new MonsterInfo(JungleEncounterIDList.TWO_JUNGLE_HUNTERS_ENCOUNTER_ID, 3.0f));
-        monsters.add(new MonsterInfo(MonsterHelper.SNAKE_PLANT_ENC, 2.0F));
-        monsters.add(new MonsterInfo(JungleEncounterIDList.LYON_ENCOUNTER_ID, 3.0f));
-        monsters.add(new MonsterInfo(JungleEncounterIDList.TWO_FLAMEANGOS_ENCOUNTER_ID, 2.0F));
-        monsters.add(new MonsterInfo(JungleEncounterIDList.TWO_SENCKO_CULTISTS_ENCOUNTER_ID, 3.0F));
-        monsters.add(new MonsterInfo(JungleEncounterIDList.SNECKO_CULTIST_AND_TRAP_ENCOUNTER_ID, 2.0F));
-
-        MonsterInfo.normalizeWeights(monsters);
-        populateFirstStrongEnemy(monsters, generateExclusions());
-        populateMonsterList(monsters, count, false);
-    }
-
-    protected void generateElites(int count)
-    {
-        // TODO: This is copied from TheCity
-        ArrayList<MonsterInfo> monsters = new ArrayList<>();
-        monsters.add(new MonsterInfo(JungleEncounterIDList.MAMA_SNECKO_ENCOUNTER_ID, 1.0F));
-        monsters.add(new MonsterInfo(JungleEncounterIDList.CASSACARA_ENCOUNTER_ID, 1.0F));
-        monsters.add(new MonsterInfo(JungleEncounterIDList.TWO_PHROGS_ENCOUNTER_ID, 1.0f));
-        MonsterInfo.normalizeWeights(monsters);
-        populateMonsterList(monsters, count, true);
-    }
-
-    @Override
-    protected ArrayList<String> generateExclusions()
-    {
-        // TODO: This is copied from TheCity
-        ArrayList<String> retVal = new ArrayList<>();
-        switch (monsterList.get(monsterList.size() - 1))
-        {
-            case "Spheric Guardian":
-                retVal.add("Sentry and Sphere");
-                break;
-            case "3 Byrds":
-                retVal.add("Chosen and Byrds");
-                break;
-            case "Chosen":
-                retVal.add("Chosen and Byrds");
-                retVal.add("Cultist and Chosen");
-                break;
-        }
-        return retVal;
-    }
-
-    @Override
-    protected void initializeBoss()
-    {
-        bossList.clear();
-        // Bosses are added via BaseMod in TheActMod.receivePostInitialize()
-    }
-
-    @Override
-    protected void initializeEventList()
-    {
-        // Events are added via BaseMod in TheActMod.receivePostInitialize()
     }
 
     @Override

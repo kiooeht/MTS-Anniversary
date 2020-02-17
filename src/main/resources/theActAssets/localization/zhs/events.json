@@ -1,15 +1,4 @@
 {
-  "theJungle:ForkInTheRoad": {
-    "NAME": "分岔口",
-    "DESCRIPTIONS": [
-      "继续着你在高塔中的旅途\n NL 在一段长途跋涉之后，你来到了一个分岔口面前\n\n NL NL 这里有一个路标，但是你根本看不懂\n\n NL  NL 往左边看去，你在不远处看到了 #b高楼 的轮廓，然而往右走的小径上有 #g野草 与 #g树木"
-    ],
-    "OPTIONS": [
-      "",
-      "[向左走] 前往 ",
-      "[向右走] 前往 "
-    ]
-  },
   "theJungle:River": {
     "NAME": "精神长河",
     "DESCRIPTIONS": [
